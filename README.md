@@ -7,7 +7,7 @@ No model data leaves the machine.
 ```
  you (terminal)
       │
-  agent.py ──HTTP──► llama-server (Saluki 27B GGUF, GPU)       ← local LLM, OpenAI-compatible API
+  agent.py ──HTTP──► llama-server (Qwen 3.5 9B GGUF, GPU)      ← local LLM, OpenAI-compatible API
       │
   pipesim_tools.py ──► sixgill (PIPESIM Python Toolkit) ──► PIPESIM engine / .pips model
       │
@@ -16,7 +16,7 @@ No model data leaves the machine.
 
 ## 1. Prerequisites (Windows PC with PIPESIM)
 - PIPESIM 2017.1 or later with a core license. The Python Toolkit is included with that license.
-- An NVIDIA GPU with about 12 GB of VRAM or more. The Saluki file is about 7.9 GB, plus room for the context cache.
+- An NVIDIA GPU with 8 GB of VRAM or more. Qwen 3.5 9B at Q4_K_M is about 6 GB and fits entirely on an 8 GB card.
 - The Python environment that has `sixgill`. The PIPESIM installer ships the toolkit. Either use its bundled
   Python, or `pip install` the sixgill wheel from the PIPESIM install folder into your own venv.
 
@@ -31,7 +31,8 @@ Adjust `pipesim_tools.py` using PIPESIM's Python Toolkit help, which has the exa
 
 ## 3. Start the local model
 1. Download a CUDA build of llama.cpp: https://github.com/ggml-org/llama.cpp/releases
-2. Download the Saluki 27B GGUF from Underdog's Hugging Face page.
+2. Download the Qwen 3.5 9B Q4_K_M GGUF (about 6 GB) from Unsloth's or Qwen's Hugging Face page.
+   Fallback if tool calls come out malformed: Gemma 4 E4B (about 5 GB).
 3. Set `MODEL_PATH` in `start_llm.bat` and run it. `--jinja` is required for tool calling.
 
 ## 4. Run
@@ -73,7 +74,7 @@ It only checks the plumbing. The numbers it produces mean nothing.
 - If the model guesses parameter names, add the exact names your models use (from the Python Toolkit
   `Parameters` reference) to the system prompt in `agent.py`.
 - Swapping models only needs a new GGUF. Any llama.cpp model with tool calling works,
-  for example a non-quantized Qwen if you have more VRAM.
+  With 16-24 GB of VRAM, Qwen3.8-27B at Q4_K_M plans and reasons noticeably better.
 
 ## Using it from Claude or other MCP clients
 Run `python mcp_server.py` (needs Python 3.10 or later and `pip install mcp`) and register it as a stdio MCP server.
