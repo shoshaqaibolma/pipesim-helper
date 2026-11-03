@@ -2,17 +2,21 @@
 import json
 from .definitions import ALL
 class _R:
-    def __init__(s, node, profile=None): s.node, s.system, s.profile, s.state = node, {}, profile or {}, "Completed"
+    def __init__(s, node, profile=None, state="Completed"): s.node, s.system, s.profile, s.state = node, {}, profile or {}, state
 class _Tasks:
     def __init__(s, m): s.networksimulation = s.ptprofilesimulation = s; s.m = m
-    def run(s, system_variables=None, producer=None, **kw):
+    def get_conditions(s, producer=None): return {"OutletPressure": None}
+    def run(s, system_variables=None, producer=None, parameters=None, **kw):
+        bc = {"OUTLETPRESSURE", "LIQUIDFLOWRATE", "GASFLOWRATE"}
+        if producer is not None and not bc & set(parameters or {}):
+            return _R({}, {}, state="Failed")  # 2023.1: silent failure without a boundary condition
         v = s.m.v; pr = v.get(("Completion","Well:Completion","ReservoirPressure"), 250)
         sep = v.get(("Sink","Sink","Pressure"), 15); wc = v.get(("BlackOilFluid","BO","WaterCut"), 20)
         pi = v.get(("Completion","Well:Completion","LiquidPI"), 10); gor = v.get(("BlackOilFluid","BO","GOR"), 100)
         liq = max(0.0, pi * (pr - sep - 120 - 0.6 * wc)); oil = liq * (1 - wc / 100)
         node = {"StockTankLiquidFlowrate": {"Well": liq}, "StockTankOilFlowrate": {"Well": oil},
                 "StockTankGasFlowrate": {"Well": oil * gor}, "Pressure": {"Well": sep + 0.002 * liq}}
-        prof = {"Well": {"TotalDistance": [0, 1000, 2000], "Pressure": [pr-50, pr-120, sep], "Temperature": [90, 60, 30]}}
+        prof = {"Flowrate=1000 sm3/d": {"TotalDistance": [0, 1000, 2000], "Pressure": [pr-50, pr-120, sep], "Temperature": [90, 60, 30]}}
         return _R(node, prof)
 class Model:
     def __init__(s, path): s.path, s.v, s.comps = path, {}, {"Well": ["Well"], "Sink": ["Sink"], "Flowline": ["FL"]}; s.tasks = _Tasks(s)

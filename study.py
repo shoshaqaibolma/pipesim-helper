@@ -14,7 +14,9 @@ Spec shape (all keys optional until check() says ready):
      "variables": [ {"alias": "water_cut", "values": [0, 20, 40, 60]}
                   | {"component_type": "Well", "name": "W1", "parameter": "...", "start": 0, "stop": 50, "steps": 6}
                   | (tornado) {..., "low": 10, "high": 40} ],
-     "producer": "Well"                    # pt_profile only
+     "producer": "Well",                   # pt_profile only
+     "conditions": {"outlet_pressure": 15} # pt_profile only: EITHER outlet_pressure (rate is calculated)
+                                           # OR liquid_flowrate / gas_flowrate (outlet pressure is calculated)
   },
   "kpis": [{"component": "Well", "variable": "VOLUME_FLOWRATE_OIL_STOCKTANK", "label": "Oil rate"}]
 }
@@ -30,6 +32,9 @@ ANALYSES = {
     "pt_profile": "pressure/temperature/holdup profile along one well or flowline",
 }
 MAX_CASES = 300
+# P/T profile boundary conditions: friendly key -> sixgill Parameters.PTProfileSimulation constant
+PT_CONDITIONS = {"outlet_pressure": "OUTLETPRESSURE", "liquid_flowrate": "LIQUIDFLOWRATE",
+                 "gas_flowrate": "GASFLOWRATE"}
 DEFAULT_KPI_VARS = ["VOLUME_FLOWRATE_LIQUID_STOCKTANK", "VOLUME_FLOWRATE_OIL_STOCKTANK",
                     "VOLUME_FLOWRATE_GAS_STOCKTANK", "PRESSURE"]
 
@@ -124,8 +129,20 @@ def check(spec, known_components=None):
             ask("analysis.variables", "Which 2-3 variables should be combined, and the values for each?")
         if t == "tornado" and len(vs) < 2:
             ask("analysis.variables", "Which uncertain variables (at least 2), with a low and high value for each?")
-        if t == "pt_profile" and not a.get("producer"):
-            ask("analysis.producer", "Which well or source should the profile be run for?")
+        if t == "pt_profile":
+            if not a.get("producer"):
+                ask("analysis.producer", "Which well or source should the profile be run for?")
+            cond = a.get("conditions") or {}
+            unknown = [k for k in cond if k not in PT_CONDITIONS]
+            given = [k for k in cond if k in PT_CONDITIONS]
+            if unknown:
+                errors.append(f"Unknown P/T condition(s) {unknown}. Use one of {list(PT_CONDITIONS)}.")
+            elif not given:
+                ask("analysis.conditions", "P/T profile boundary condition: give EITHER the outlet pressure "
+                    "(PIPESIM calculates the rate) OR a liquid or gas flow rate (PIPESIM calculates the "
+                    "outlet pressure)?", "model units", {"outlet_pressure": 15})
+            elif len(given) > 1:
+                errors.append("Give only ONE P/T condition: outlet_pressure OR a flow rate, not both.")
         for i, v in enumerate(vs):
             try:
                 ctype, name, _ = resolve_var(v, spec)
@@ -160,6 +177,9 @@ def plan_text(spec):
         lines.append(f"     {label}: {values_of(v)}")
     if a["type"] == "pt_profile":
         lines.append(f"     producer: {a['producer']}")
+        for k, v in (a.get("conditions") or {}).items():
+            lines.append(f"     fixed {k} = {v} -> PIPESIM calculates "
+                         + ("the flow rate" if k == "outlet_pressure" else "the outlet pressure"))
     kpis = spec.get("kpis") or [{"variable": k, "component": "(each producer)"} for k in DEFAULT_KPI_VARS]
     lines.append("3. Results recorded: " + ", ".join(f"{k.get('label') or k['variable']} @ {k['component']}" for k in kpis))
     lines.append(f"4. Total simulation runs: {n_cases(spec)}. Outputs: CSV, charts, report.md in runs/<timestamp>/")

@@ -29,7 +29,7 @@ for a in [{"type": "sweep", "variables": [{"alias": "water_cut", "start": 0, "st
           {"type": "tornado", "variables": [{"alias": "water_cut", "low": 10, "high": 50},
                                             {"alias": "reservoir_pressure", "low": 220, "high": 300},
                                             {"alias": "separator_pressure", "low": 8, "high": 30}]},
-          {"type": "pt_profile", "producer": "Well"},
+          {"type": "pt_profile", "producer": "Well", "conditions": {"outlet_pressure": 15}},
           {"type": "single_run"}]:
     spec = study.merge(agent.SPEC, {"analysis": a})
     spec["analysis"] = a
@@ -38,7 +38,20 @@ for a in [{"type": "sweep", "variables": [{"alias": "water_cut", "start": 0, "st
     assert not r["failed_cases"] and os.path.exists(r["report"]), r
     print(f"{a['type']:<11} rows={r['n_rows']:<3} charts={len(r['charts'])}  {r['table'][1][:90]}")
 
-# 4. the existing-model path rejects component names that are not in the model
+# 4. P/T profile: the checker asks for a boundary condition, rejects two at once, and a failed run is a clear error
+pt = study.merge(agent.SPEC, {}); pt["analysis"] = {"type": "pt_profile", "producer": "Well"}
+assert any(m["field"] == "analysis.conditions" for m in study.check(pt)["missing"])
+pt["analysis"]["conditions"] = {"outlet_pressure": 15, "liquid_flowrate": 500}
+assert study.check(pt)["errors"]
+pt["analysis"]["conditions"] = {"outlet_pressure": 15}
+assert study.check(pt)["ready"] and "calculates the flow rate" in study.plan_text(pt)
+pt["analysis"]["conditions"] = {}
+try:
+    executor.run(pt, progress=lambda s: None); raise AssertionError("expected failure")
+except RuntimeError as e:
+    assert "did not complete" in str(e); print("P/T without condition fails clearly:", str(e)[:80])
+
+# 5. the existing-model path rejects component names that are not in the model
 spec = {"objective": "x", "model": {"source": "existing", "path": __file__},
         "analysis": {"type": "sweep", "variables": [{"component_type": "Sink", "name": "Nope", "parameter": "Pressure",
                                                       "values": [1, 2]}]}}

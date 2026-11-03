@@ -30,6 +30,7 @@ WORKFLOW (follow it strictly):
 Analysis types: {json.dumps(study.ANALYSES)}
 Model templates for new models: { {k: v['description'] for k, v in TEMPLATES.items()} }
 Template sweep aliases: { {k: list(v['aliases']) for k, v in TEMPLATES.items()} }
+P/T profiles need ONE boundary condition in analysis.conditions: {{"outlet_pressure": x}} OR {{"liquid_flowrate": x}} OR {{"gas_flowrate": x}}.
 For existing models, refer to variables as component_type + name + parameter (e.g. Sink / "Sink-1" / "Pressure").
 Use model units (METRIC unless the user says FIELD). Never invent results: every number comes from a tool.
 Keep messages short."""
@@ -89,7 +90,7 @@ FUNCS = {f.__name__: f for f in (update_spec, check_spec, propose_plan, run_stud
 _S = {"type": "string"}
 PARAMS = {
     "update_spec": ({"patch": {"type": "object", "description": "Partial spec to merge. Keys: objective, units, "
-                               "model{source,path|template,params}, base_changes[], analysis{type,variables[],producer}, kpis[]"}},
+                               "model{source,path|template,params}, base_changes[], analysis{type,variables[],producer,conditions}, kpis[]"}},
                     ["patch"]),
     "check_spec": ({}, []), "propose_plan": ({}, []), "run_study": ({}, []),
     "inspect_model": ({"path": _S, "units": {"type": "string", "enum": ["METRIC", "FIELD", "SI"]}}, ["path"]),

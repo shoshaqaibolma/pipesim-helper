@@ -60,6 +60,25 @@ def _run_case(model, kpis):
     return row
 
 
+def _pt_parameters(conditions):
+    """Translate friendly P/T conditions into the sixgill parameters dict, telling PIPESIM what to calculate."""
+    P = getattr(d.Parameters, "PTProfileSimulation", None)
+    C = getattr(d.Constants, "CalculatedVariable", None)
+    out = {}
+    for k, v in conditions.items():
+        out[getattr(P, study.PT_CONDITIONS[k], None) or "".join(w.title() for w in k.split("_"))] = v
+    if P is not None and C is not None and hasattr(P, "CALCULATEDVARIABLE"):
+        calc = "FLOWRATE" if "outlet_pressure" in conditions else "OUTLETPRESSURE"
+        if hasattr(C, calc):
+            out[P.CALCULATEDVARIABLE] = getattr(C, calc)
+    if "liquid_flowrate" in conditions or "gas_flowrate" in conditions:
+        FT = getattr(d.Constants, "FlowRateType", None)
+        kind = "LIQUIDFLOWRATE" if "liquid_flowrate" in conditions else "GASFLOWRATE"
+        if P is not None and FT is not None and hasattr(P, "FLOWRATETYPE") and hasattr(FT, kind):
+            out[P.FLOWRATETYPE] = getattr(FT, kind)
+    return out
+
+
 def _set(model, ref, value):
     ctype, name, param = ref
     model.set_value(**{ctype: name}, parameter=param, value=value)
@@ -144,15 +163,20 @@ def run(spec, progress=print):
             return row
 
         if a["type"] == "pt_profile":
-            r = model.tasks.ptprofilesimulation.run(
-                producer=a["producer"],
+            task = model.tasks.ptprofilesimulation
+            r = task.run(
+                producer=a["producer"], parameters=_pt_parameters(a.get("conditions") or {}),
                 system_variables=[_sv(k["variable"]) for k in kpis],
                 profile_variables=[getattr(d.ProfileVariables, n) for n in
                                    ("TOTAL_DISTANCE", "ELEVATION", "PRESSURE", "TEMPERATURE", "HOLDUP_FRACTION_LIQUID")
                                    if hasattr(d.ProfileVariables, n)])
             if str(getattr(r, "state", "Completed")) != "Completed":
+                try:
+                    current = task.get_conditions(producer=a["producer"])
+                except Exception:
+                    current = "unavailable"
                 raise RuntimeError(f"P/T profile for {a['producer']} did not complete (state {r.state}). "
-                                   "Its boundary conditions are probably incomplete, e.g. no OutletPressure.")
+                                   f"Conditions sent: {a.get('conditions')}. Conditions in the model: {current}")
             prof = getattr(r, "profile", {}) or {}
             if isinstance(prof, dict) and a["producer"] in prof:
                 prof = prof[a["producer"]]
