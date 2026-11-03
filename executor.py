@@ -188,7 +188,8 @@ def run(spec, progress=print):
             dist = next((c for c in cols if "distance" in c.lower()), None)
             if dist:
                 for c in cols:
-                    if c != dist:
+                    # skip text columns such as BranchEquipment (2023.1), which matplotlib cannot plot
+                    if c != dist and any(isinstance(v, (int, float)) and not isinstance(v, bool) for v in prof[c]):
                         charts.append(_chart(os.path.join(out, f"profile_{c}.png".replace(" ", "_")),
                                              prof[dist], {c: prof[c]}, dist, f"{a['producer']}: {c}"))
         else:
