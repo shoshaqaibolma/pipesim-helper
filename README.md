@@ -60,9 +60,12 @@ Example:
 
 Terminal commands: `spec` shows the current spec, `reset` starts a new study.
 
-## Tests (no PIPESIM or LLM needed)
-`python tests/test_workflow.py` runs the whole workflow against a fake `sixgill` with a toy formula.
-It only checks the plumbing. The numbers it produces mean nothing.
+## Tests
+- `python tests/test_workflow.py` and `python tests/test_agent_loop.py`: offline, with a fake `sixgill` and a
+  scripted fake LLM. They only check the plumbing. The numbers they produce mean nothing.
+- Real end-to-end test on the PC (PIPESIM, llama-server and the agent together; works on a temp copy of the model):
+  `"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py "path\to\model.pips"`
+- Unattended runs: `agent.py --script lines.txt --log log.jsonl` (one user message per line; approvals answered y).
 
 ## Adding templates and analyses
 - New model template: add a field table, aliases and a build function in `builder.py`.

@@ -32,6 +32,9 @@ ANALYSES = {
     "pt_profile": "pressure/temperature/holdup profile along one well or flowline",
 }
 MAX_CASES = 300
+SPEC_KEYS = {"objective", "units", "model", "base_changes", "analysis", "kpis"}
+MODEL_KEYS = {"source", "path", "template", "params"}
+ANALYSIS_KEYS = {"type", "variables", "producer", "conditions"}
 # P/T profile boundary conditions: friendly key -> sixgill Parameters.PTProfileSimulation constant
 PT_CONDITIONS = {"outlet_pressure": "OUTLETPRESSURE", "liquid_flowrate": "LIQUIDFLOWRATE",
                  "gas_flowrate": "GASFLOWRATE"}
@@ -96,12 +99,25 @@ def check(spec, known_components=None):
     def ask(field, question, unit="", default=None):
         missing.append({"field": field, "question": question, "unit": unit, "suggested_default": default})
 
+    for k in spec:
+        if k not in SPEC_KEYS:
+            errors.append(f"Remove top-level key '{k}'. Allowed keys: {sorted(SPEC_KEYS)}. "
+                          "Results come from run_study and are never written into the spec.")
+    for part, allowed in (("model", MODEL_KEYS), ("analysis", ANALYSIS_KEYS)):
+        for k in (spec.get(part) or {}):
+            if k not in allowed:
+                errors.append(f"Remove '{part}.{k}'. Allowed keys in {part}: {sorted(allowed)}.")
     if not spec.get("objective"):
         ask("objective", "What question should this study answer?")
     model = spec.get("model", {})
     src = model.get("source")
-    if src not in ("existing", "new"):
-        ask("model.source", "Use an existing .pips model (give its path), or build a new one from a description?")
+    if src is not None and src not in ("existing", "new"):
+        errors.append(f"model.source is '{src}' but must be exactly \"existing\" or \"new\". "
+                      + ("The file path belongs in model.path, e.g. {\"model\": {\"source\": \"existing\", "
+                         "\"path\": \"...\"}}." if (".pips" in str(src).lower() or "\\" in str(src) or "/" in str(src)) else ""))
+    elif src is None:
+        ask("model.source", "Use an existing .pips model (then give its path), or build a new one from a description? "
+            "[spec: model.source = \"existing\" + model.path, or model.source = \"new\" + model.template]")
     elif src == "existing":
         if not model.get("path"):
             ask("model.path", "Full path to the .pips model?")
@@ -119,8 +135,10 @@ def check(spec, known_components=None):
 
     a = spec.get("analysis", {})
     t = a.get("type")
-    if t not in ANALYSES:
-        ask("analysis.type", f"Which analysis? {ANALYSES}")
+    if t is not None and t not in ANALYSES:
+        errors.append(f"analysis.type is '{t}' but must be exactly one of {list(ANALYSES)}.")
+    elif t is None:
+        ask("analysis.type", f"Which analysis? [spec: analysis.type = one of {list(ANALYSES)}] {ANALYSES}")
     else:
         vs = a.get("variables", [])
         if t == "sweep" and len(vs) != 1:
@@ -151,13 +169,26 @@ def check(spec, known_components=None):
                                   f"Available {ctype}: {known_components.get(ctype, [])}")
             except KeyError as e:
                 errors.append(f"Variable {i}: {e}. Use an alias, or give component_type, name and parameter.")
+            keys = set(v)
+            if t in ("sweep", "grid") and keys & {"low", "high"}:
+                errors.append(f"Variable {i}: low/high are only for tornado. For a {t} use \"values\": [...] "
+                              "or \"start\", \"stop\", \"steps\".")
+            if t == "tornado" and keys & {"values", "start", "stop", "steps"}:
+                errors.append(f"Variable {i}: a tornado uses only \"low\" and \"high\", not values/start/stop/steps.")
             if t == "tornado" and not ("low" in v and "high" in v):
                 ask(f"analysis.variables[{i}]", f"Low and high value for variable {i}?")
             elif t in ("sweep", "grid") and values_of(v) is None:
                 ask(f"analysis.variables[{i}]", f"Range for variable {i}: a list of values, or start/stop/steps?")
         if n_cases(spec) > MAX_CASES:
             errors.append(f"{n_cases(spec)} cases is too many (max {MAX_CASES}). Use fewer steps.")
-    return {"ready": not missing and not errors, "missing": missing, "errors": errors,
+    if errors:
+        nxt = "Fix every item in 'errors' with ONE update_spec call (exact keys/values as stated), then check_spec once."
+    elif missing:
+        nxt = ("STOP calling tools. Ask the user about every item in 'missing' in ONE numbered message, "
+               "with the suggested defaults. Wait for the answer.")
+    else:
+        nxt = "Call propose_plan and show the plan to the user word for word."
+    return {"ready": not missing and not errors, "next_step": nxt, "missing": missing, "errors": errors,
             "n_cases": n_cases(spec) if t in ANALYSES else None}
 
 

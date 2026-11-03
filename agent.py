@@ -33,6 +33,7 @@ Template sweep aliases: { {k: list(v['aliases']) for k, v in TEMPLATES.items()} 
 P/T profiles need ONE boundary condition in analysis.conditions: {{"outlet_pressure": x}} OR {{"liquid_flowrate": x}} OR {{"gas_flowrate": x}}.
 For existing models, refer to variables as component_type + name + parameter (e.g. Sink / "Sink-1" / "Pressure").
 Use model units (METRIC unless the user says FIELD). Never invent results: every number comes from a tool.
+Every check_spec result has a "next_step" field: always do exactly what it says.
 Keep messages short."""
 
 SPEC = {}
@@ -101,46 +102,104 @@ TOOLS = [{"type": "function", "function": {"name": n, "description": FUNCS[n].__
           "parameters": {"type": "object", "properties": p, "required": r}}} for n, (p, r) in PARAMS.items()]
 
 
+MAX_SPEC_CALLS = 6     # update_spec/check_spec calls allowed per user turn before the agent must ask the user
+MAX_REPLY_TOKENS = 1500
+
+
+def chat(client, msgs):
+    return client.chat.completions.create(
+        model=MODEL, messages=msgs, tools=TOOLS, temperature=0.0, max_tokens=MAX_REPLY_TOKENS,
+        # Qwen 3.5 thinks by default; on a 16k context that can eat the whole window and return an empty reply.
+        extra_body={"chat_template_kwargs": {"enable_thinking": False}}).choices[0].message
+
+
 def main():
-    client = OpenAI(base_url=BASE_URL, api_key="sk-local")
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--script", help="text file with one user message per line (for unattended tests); "
+                                     "terminal approvals are answered 'y' automatically")
+    ap.add_argument("--log", help="write the full conversation as JSONL to this file")
+    args = ap.parse_args()
+    global SPEC, input
+    script = [l.rstrip("\n") for l in open(args.script, encoding="utf-8") if l.strip()] if args.script else None
+    if script is not None:
+        import builtins
+        _real_input = builtins.input
+
+        def input(prompt=""):
+            if "[y/N]" in prompt:
+                print(prompt + "y (auto, --script)"); return "y"
+            if not script:
+                raise EOFError
+            line = script.pop(0); print(prompt + line); return line
+        builtins.input = input  # run_study's approval prompt uses input() too
+    log = open(args.log, "a", encoding="utf-8") if args.log else None
+
+    def show(text):
+        print(text)
+        if log:
+            log.write(json.dumps({"agent": text}) + "\n"); log.flush()
+
+    client = OpenAI(base_url=BASE_URL, api_key="sk-local", timeout=600, max_retries=1)
     msgs = [{"role": "system", "content": SYSTEM}]
-    print("PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.\n")
-    global SPEC
+    show("PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.\n")
     while True:
         try:
             user = input("you> ").strip()
         except (EOFError, KeyboardInterrupt):
             break
+        if log:
+            log.write(json.dumps({"user": user}) + "\n")
         if user.lower() in {"exit", "quit"}:
             break
         if user.lower() == "spec":
-            print(json.dumps(SPEC, indent=2)); continue
+            show(json.dumps(SPEC, indent=2)); continue
         if user.lower() == "reset":
             SPEC = {}; STATE.update(plan_ok_for=None, components=None)
-            msgs = msgs[:1]; print("(new study)\n"); continue
+            msgs = msgs[:1]; show("(new study)\n"); continue
         if not user:
             continue
+        turn_start = len(msgs)
         msgs.append({"role": "user", "content": user})
-        for _ in range(MAX_STEPS):
-            msg = client.chat.completions.create(model=MODEL, messages=msgs, tools=TOOLS,
-                                                 temperature=0.0).choices[0].message
-            msgs.append(msg.model_dump(exclude_none=True))
-            if not msg.tool_calls:
-                print(f"\nagent> {msg.content}\n"); break
-            for tc in msg.tool_calls:
-                name = tc.function.name
-                try:
-                    args = json.loads(tc.function.arguments or "{}")
-                    print(f"  [{name}]")
-                    result = FUNCS[name](**args) if name in FUNCS else {"error": f"unknown tool {name}"}
-                except Exception as e:
-                    result = {"error": f"{type(e).__name__}: {e}"}
-                text = json.dumps(result, default=str)
-                if len(text) > 12000:
-                    text = text[:12000] + "...[truncated]"
-                msgs.append({"role": "tool", "tool_call_id": tc.id, "content": text})
-        else:
-            print("\nagent> (stopped: step limit reached)\n")
+        spec_calls = 0
+        try:
+            for _ in range(MAX_STEPS):
+                msg = chat(client, msgs)
+                msgs.append(msg.model_dump(exclude_none=True))
+                if not msg.tool_calls:
+                    show(f"\nagent> {msg.content or '(empty reply: try rephrasing, or type reset)'}\n"); break
+                for tc in msg.tool_calls:
+                    name = tc.function.name
+                    try:
+                        targs = json.loads(tc.function.arguments or "{}")
+                        print(f"  [{name}] {json.dumps(targs)[:160]}")
+                        if name in ("update_spec", "check_spec"):
+                            spec_calls += 1
+                        if spec_calls > MAX_SPEC_CALLS:
+                            result = {"error": "Too many spec edits this turn. STOP calling tools and ask the user "
+                                               "the open questions from the last check_spec in one message."}
+                        else:
+                            result = FUNCS[name](**targs) if name in FUNCS else {"error": f"unknown tool {name}"}
+                    except Exception as e:
+                        result = {"error": f"{type(e).__name__}: {e}"}
+                    text = json.dumps(result, default=str)
+                    if len(text) > 12000:
+                        text = text[:12000] + "...[truncated]"
+                    if log:
+                        log.write(json.dumps({"tool": name, "args": tc.function.arguments, "result": text[:3000]}) + "\n")
+                    msgs.append({"role": "tool", "tool_call_id": tc.id, "content": text})
+            else:
+                show("\nagent> (stopped: step limit reached)\n")
+        except Exception as e:  # server down, timeout, context overflow...
+            del msgs[turn_start:]  # drop the half-finished turn so the conversation stays valid
+            kind = type(e).__name__
+            hint = ("Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health"
+                    if "Connection" in kind else "Try again, or type reset if the conversation got too long.")
+            show(f"\nagent> (could not reach the model: {kind}: {str(e)[:200]}. {hint})\n")
+            if script is not None:
+                break
+    if log:
+        log.write(json.dumps({"final_spec": SPEC}) + "\n"); log.close()
 
 
 if __name__ == "__main__":

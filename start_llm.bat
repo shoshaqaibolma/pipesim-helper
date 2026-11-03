@@ -6,8 +6,9 @@ REM 3. Set MODEL_PATH below.
 REM Alternative if tool calls come out malformed: Gemma 4 E4B (about 5 GB). Swap MODEL_PATH only.
 set MODEL_PATH=D:\models\Qwen3.5-9B-Q4_K_M.gguf
 set LLAMA_DIR=D:\llama.cpp\b12081
-"%LLAMA_DIR%\llama-server.exe" -m "%MODEL_PATH%" --jinja -c 16384 -ngl 99 -fa on --host 127.0.0.1 --port 8080 --temp 0
+"%LLAMA_DIR%\llama-server.exe" -m "%MODEL_PATH%" --jinja -c 16384 -ngl 99 -fa on --reasoning-budget 0 --host 127.0.0.1 --port 8080 --temp 0
 REM --jinja   : required for tool calling (uses the model's own chat template)
 REM -c 16384  : context size; drop to 8192 if you get out-of-memory errors
 REM -ngl 99   : keep the whole model on the GPU (it fits in 8 GB at Q4)
 REM -fa on    : flash attention, which saves VRAM (older builds use plain -fa)
+REM --reasoning-budget 0 : thinking off; Qwen 3.5 otherwise thinks until the context is full
