@@ -150,8 +150,14 @@ def run(spec, progress=print):
                 profile_variables=[getattr(d.ProfileVariables, n) for n in
                                    ("TOTAL_DISTANCE", "ELEVATION", "PRESSURE", "TEMPERATURE", "HOLDUP_FRACTION_LIQUID")
                                    if hasattr(d.ProfileVariables, n)])
+            if str(getattr(r, "state", "Completed")) != "Completed":
+                raise RuntimeError(f"P/T profile for {a['producer']} did not complete (state {r.state}). "
+                                   "Its boundary conditions are probably incomplete, e.g. no OutletPressure.")
             prof = getattr(r, "profile", {}) or {}
-            prof = prof.get(a["producer"], prof) if isinstance(prof, dict) else prof
+            if isinstance(prof, dict) and a["producer"] in prof:
+                prof = prof[a["producer"]]
+            elif isinstance(prof, dict) and prof and all(isinstance(v, dict) for v in prof.values()):
+                prof = next(iter(prof.values()))  # PIPESIM 2023.1 keys the profile by case, e.g. "Flowrate=..."
             cols = list(prof.keys()) if isinstance(prof, dict) else []
             n = max((len(prof[c]) for c in cols), default=0)
             rows = [{c: prof[c][i] if i < len(prof[c]) else None for c in cols} for i in range(n)]

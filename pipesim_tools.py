@@ -83,7 +83,7 @@ def model_summary():
     """List the component names in the open model, grouped by component type."""
     m, out = _m(), {}
     for t in ["Well", "Source", "Sink", "Junction", "Flowline", "Riser", "Choke", "Pump", "Compressor",
-              "Separator", "HeatExchanger", "MultiplierAdder", "Completion", "Tubing", "Casing", "GasLiftInjection", "ESP"]:
+              "TwoPhaseSeparator", "ThreePhaseSeparator", "HeatExchanger", "MultiplierAdder", "Completion", "Tubing", "Casing", "GasLiftInjection", "ESP"]:
         try:
             names = m.find(**{t: ALL})
             if names:
@@ -136,8 +136,15 @@ def run_pt_profile(producer: str, conditions: dict = None):
     if conditions:
         kw["parameters"] = conditions
     r = task.run(**kw)
-    return {"state": str(getattr(r, "state", "")), "messages": getattr(r, "messages", None),
-            "system": getattr(r, "system", None), "profile": getattr(r, "profile", None)}
+    out = {"state": str(getattr(r, "state", "")), "messages": getattr(r, "messages", None),
+           "system": getattr(r, "system", None), "node": getattr(r, "node", None),
+           "profile": getattr(r, "profile", None)}
+    if out["state"] != "Completed":
+        # PIPESIM gives no message here; the usual cause is a missing boundary condition (e.g. OutletPressure)
+        out["hint"] = ("Run did not complete. Check that the boundary conditions are fully specified, "
+                       "e.g. pass conditions={'OutletPressure': ...}.")
+        out["current_conditions"] = task.get_conditions(producer=producer)
+    return out
 
 
 @_safe
