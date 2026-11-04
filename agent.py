@@ -341,12 +341,16 @@ def main():
         if log:
             log.write(json.dumps({"agent": text}) + "\n"); log.flush()
 
+    last_args = {}
+
     def emit(ev):
         if ev["type"] == "tool":
-            print(f"  [{ev['name']}] {json.dumps(ev['args'])[:160]}")
+            last_args["v"] = json.dumps(ev["args"])
+            print(f"  [{ev['name']}] {last_args['v'][:160]}")
         elif ev["type"] == "result":
             if log:
-                log.write(json.dumps({"tool": ev["name"], "args": "", "result": json.dumps(ev["result"], default=str)[:3000]}) + "\n")
+                log.write(json.dumps({"tool": ev["name"], "args": last_args.get("v", ""),
+                                      "result": json.dumps(ev["result"], default=str)[:3000]}) + "\n")
         elif ev["type"] == "assistant":
             show(f"\nagent> {ev['text']}\n")
         else:

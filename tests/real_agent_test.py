@@ -78,6 +78,9 @@ def main():
             rep = os.path.join(latest, "report.md")
             if os.path.exists(rep):
                 print(open(rep, encoding="utf-8").read()[:3000])
+    if "could not reach the model" in open(log, encoding="utf-8").read() and os.path.exists(os.path.join(tmp, "llama.log")):
+        print("\n=== llama-server log (tail), the model stopped responding:")
+        print("".join(open(os.path.join(tmp, "llama.log"), errors="replace").readlines()[-30:]))
     if server is not None:
         subprocess.run(["taskkill", "/F", "/T", "/PID", str(server.pid)], capture_output=True)
         print("\n(llama-server stopped)")

@@ -72,6 +72,8 @@ FLUID_FIELDS = {
                   "wgr":       ("Water-gas ratio?", "sm3/mmsm3", 0.0),
                   "api":       ("Condensate gravity?", "API", 50.0)},
 }
+RESERVED_FLUID_NAMES = {"water", "methane", "ethane", "propane", "butane", "isobutane", "pentane", "isopentane",
+                        "hexane", "heptane", "nitrogen", "carbon dioxide", "hydrogen sulfide", "oxygen", "hydrogen"}
 SOURCE_BC = {"pressure": "bara", "liquid_rate": "sm3/d", "gas_rate": "mmsm3/d"}
 
 
@@ -113,7 +115,7 @@ def check_project(p):
             if unknown:
                 errors.append(f"{n}: unknown field(s) {unknown} for {kind}. Allowed: {sorted(allowed_keys(kind) - {'_delete'})}")
             for f, (q, unit, dflt) in FIELDS[kind].items():
-                if f not in e:
+                if e.get(f) is None:
                     ask(f"{kind}.{n}.{f}", f"{n}: {q}", unit, dflt)
             if kind == "wells" and isinstance(e.get("ipr"), dict):
                 model = e["ipr"].get("model")
@@ -124,13 +126,15 @@ def check_project(p):
                         if f not in e["ipr"]:
                             ask(f"wells.{n}.ipr.{f}", f"{n}: IPR parameter {f}?",
                                 {"liquid_pi": "sm3/d/bar", "aof": "sm3/d", "c": "mmsm3/d/bar^2n", "n": ""}[f])
+            if kind == "fluids" and str(n).strip().lower() in RESERVED_FLUID_NAMES:
+                errors.append(f"Fluid name '{n}' clashes with a built-in PIPESIM fluid component; use e.g. '{n}_fluid'")
             if kind == "fluids":
                 ftype = e.get("type", "black_oil")
                 if ftype not in FLUID_FIELDS:
                     errors.append(f"Fluid {n}: type must be one of {list(FLUID_FIELDS)}")
                 else:
                     for f, (q, unit, dflt) in FLUID_FIELDS[ftype].items():
-                        if f not in e:
+                        if e.get(f) is None:
                             ask(f"fluids.{n}.{f}", f"{n}: {q}", unit, dflt)
             if kind == "wells" and "gas_lift" in e:
                 gl = e["gas_lift"]
@@ -155,7 +159,7 @@ def check_project(p):
                 elif len(given) > 1:
                     errors.append(f"{n}: give only one of {list(EQUIP_SPEC)} (got {given})")
             if kind == "sources":
-                given = [k for k in SOURCE_BC if k in e]
+                given = [k for k in SOURCE_BC if e.get(k) is not None]
                 if not given:
                     ask(f"sources.{n}.pressure", f"{n}: fixed pressure (bara), OR fixed flow rate: liquid_rate (sm3/d) "
                         "or gas_rate (mmsm3/d)? Give exactly one; PIPESIM calculates the rest.", "", None)
@@ -238,6 +242,12 @@ def check_project(p):
                 elif n and inlets.get(n, 0) > 1:
                     errors.append(f"{kind[:-1].title()} {n} has {inlets[n]} inlets; it can have only one (either "
                                   "\"from\" or one flowline ending at it)")
+        for kind in ("sinks", "separators"):   # VERIFIED (job 16): "The inlet port of destination SEP has been occupied"
+            for j in p.get(kind) or []:
+                n = j.get("name")
+                if n and inlets.get(n, 0) > 1:
+                    errors.append(f"{kind[:-1].title()} {n} has {inlets[n]} inlets; PIPESIM allows one. Join the lines "
+                                  f"in a junction first (e.g. flowlines into a manifold, one line from it to {n}).")
         for j in p.get("separators") or []:
             n = j.get("name")
             if n and inlets.get(n, 0) == 0:

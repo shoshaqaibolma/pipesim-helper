@@ -34,7 +34,12 @@ def values(m, ctype, name):
     return next(iter(v.values())) if isinstance(v, dict) and v else {}
 
 
+def safe_name(name):
+    return f"{name}_fluid" if str(name).strip().lower() in prj.RESERVED_FLUID_NAMES else name
+
+
 def fluid_from(name, v, notes):
+    name = safe_name(name)
     gr, wr = v.get("UseGasRatio"), v.get("UseWaterRatio")
     if gr == "OGR":
         return {"name": name, "type": "gas", "gas_sg": v.get("GasSpecificGravity"), "ogr": v.get("OGR") or 0,
@@ -111,45 +116,68 @@ def copy_details(orig, built, fluids, flowlines, notes):
     return n
 
 
+PT_KEYS = ("InletPressure", "OutletPressure", "FlowRateType", "GasFlowRate", "LiquidFlowRate", "MassFlowRate",
+           "CalculatedVariable")
+PT_MAIN = ("SystemInletPressure", "SystemOutletPressure", "SystemOutletTemperature", "InletVolumeFlowrateLiquid",
+           "OutletVolumeFlowrateLiquid", "OutletVolumeFlowrateGas", "SystemPressureLoss", "TotalLiquidHoldup")
+
+
+def run_pt(m, src, cond):
+    r = m.tasks.ptprofilesimulation.run(producer=src, parameters=cond)
+    sysr = getattr(r, "system", {}) or {}
+    out = {}
+    for var, vals in sysr.items():
+        if isinstance(vals, dict):
+            nums = [v for k, v in vals.items() if k != "Unit" and isinstance(v, (int, float))]
+            if nums:
+                out[var] = (nums[0], vals.get("Unit", ""))
+    return str(getattr(r, "state", "")), out
+
+
+def compare_pt(o, b):
+    rows = []
+    for var in PT_MAIN:
+        if var in o and var in b:
+            ov, unit = o[var]; bv = b[var][0]
+            rows.append({"node": "system", "variable": var, "unit": unit, "original": round(ov, 4), "rebuilt": round(bv, 4),
+                         "diff_pct": round(100 * (bv - ov) / abs(ov), 2) if abs(ov) > 1e-9 else 0.0})
+    return rows
+
+
 def pipeline_case(path, tmp):
+    """Training pipelines are single-branch P/T profile exercises: compare through the P/T profile task."""
     notes = []
-    out = {"type": "pipeline", "notes": notes}
+    out = {"type": "pipeline (P/T profile)", "notes": notes}
     c = os.path.join(tmp, "orig.pips"); shutil.copy2(path, c)
     orig = sa.open_model(c)
     try:
         conns = orig.connections()
         comps = {t: [n for n in (orig.find(**{t: d.ALL}) or []) if ":" not in n] for t in ("Source", "Sink", "Junction", "Flowline")}
-        bcs = sa.get_boundaries(orig) or {}
-        out["original_state"], out["original"] = run_network(orig)
-        proj = {"name": os.path.basename(path), "fluids": [], "sources": [], "sinks": [], "junctions": [],
-                "flowlines": []}
-        fluids = set()
-        for s in comps["Source"]:
-            sv, b = values(orig, "Source", s), bcs.get(s, {})
-            fl = sv.get("AssociatedBlackOilFluid")
-            fluids.add(fl)
-            temp = b.get("Temperature") if b.get("Temperature") is not None else sv.get("Temperature")
-            item = {"name": s, "fluid": fl, "temperature": temp}
-            if b.get("Pressure") is not None and not b.get("LiquidFlowRate") and not b.get("GasFlowRate"):
-                item["pressure"] = b["Pressure"]
-            elif b.get("FlowRateType") == "GasFlowRate" or (b.get("GasFlowRate") and not b.get("LiquidFlowRate")):
-                item["gas_rate"] = b.get("GasFlowRate")
-            else:
-                item["liquid_rate"] = b.get("LiquidFlowRate")
-            proj["sources"].append(item)
-        for k in comps["Sink"]:
-            pk = bcs.get(k, {}).get("Pressure")
-            proj["sinks"].append({"name": k, "pressure": pk if pk is not None else values(orig, "Sink", k).get("Pressure")})
-        proj["junctions"] = [{"name": j} for j in comps["Junction"]]
-        for f in fluids:
-            proj["fluids"].append(fluid_from(f, values(orig, "BlackOilFluid", f), notes))
-        for fl in comps["Flowline"]:
-            v = values(orig, "Flowline", fl)
-            up = next((x["Source"] for x in conns if x["Destination"] == fl), None)
-            dn = next((x["Destination"] for x in conns if x["Source"] == fl), None)
-            amb = v.get("AmbientAirTemperature") if v.get("AmbientFluidType") != "Water" else v.get("AmbientWaterTemperature")
-            proj["flowlines"].append({"name": fl, "from": up, "to": dn, "length": v.get("HorizontalDistance"),
+        src, snk = comps["Source"][0], comps["Sink"][0]
+        raw = orig.tasks.ptprofilesimulation.get_conditions(producer=src)
+        raw = raw[0] if isinstance(raw, (list, tuple)) else raw
+        cond = {k: raw[k] for k in PT_KEYS if isinstance(raw, dict) and raw.get(k) is not None}
+        out["pt_conditions"] = cond
+        out["original_state"], o = run_pt(orig, src, cond)
+        sv = values(orig, "Source", src)
+        fl = sv.get("AssociatedBlackOilFluid")
+        fluid = fluid_from(fl, values(orig, "BlackOilFluid", fl), notes)
+        item = {"name": src, "fluid": fluid["name"], "temperature": sv.get("Temperature")}
+        if cond.get("LiquidFlowRate") is not None:
+            item["liquid_rate"] = cond["LiquidFlowRate"]
+        elif cond.get("GasFlowRate") is not None:
+            item["gas_rate"] = cond["GasFlowRate"]
+        else:
+            item["pressure"] = cond.get("InletPressure")
+        proj = {"name": os.path.basename(path), "fluids": [fluid], "sources": [item],
+                "sinks": [{"name": snk, "pressure": cond.get("OutletPressure") or 1.0}], "junctions": [], "flowlines": []}
+        for f in comps["Flowline"]:
+            v = values(orig, "Flowline", f)
+            up = next((x["Source"] for x in conns if x["Destination"] == f), None)
+            dn = next((x["Destination"] for x in conns if x["Source"] == f), None)
+            proj["flowlines"].append({"name": f, "from": up, "to": dn, "length": v.get("HorizontalDistance"),
                                       "id": v.get("InnerDiameter"), "elevation_change": v.get("ElevationDifference") or 0})
+            amb = v.get("AmbientWaterTemperature") if v.get("AmbientFluidType") == "Water" else v.get("AmbientAirTemperature")
             if amb is not None:
                 proj["ambient_temperature"] = amb
         out["project"] = proj
@@ -160,11 +188,28 @@ def pipeline_case(path, tmp):
         built, rep = netbuilder.build(proj, os.path.join(tmp, "rebuilt.pips"))
         try:
             out["build"] = {k: rep[k] for k in ("boundary_conditions", "validation")}
-            out["rebuilt_state"], rb = run_network(built)
-            out["level1"] = compare(out["original"], rb)
-            out["copied_details"] = copy_details(orig, built, fluids, comps["Flowline"], notes)
-            out["rebuilt2_state"], rb2 = run_network(built)
-            out["level2"] = compare(out["original"], rb2)
+            out["rebuilt_state"], b = run_pt(built, src, cond)
+            out["level1"] = compare_pt(o, b)
+            n = 0
+            for k, val in values(orig, "BlackOilFluid", fl).items():
+                if k not in FLUID_SKIP and val is not None and not isinstance(val, (list, dict)):
+                    try:
+                        built.set_value(BlackOilFluid=fluid["name"], parameter=k, value=val); n += 1
+                    except Exception:
+                        pass
+            for f in comps["Flowline"]:
+                v = values(orig, "Flowline", f)
+                for k in FLOWLINE_EXTRA:
+                    if v.get(k) is not None:
+                        try:
+                            built.set_value(Flowline=f, parameter=k, value=v[k]); n += 1
+                        except Exception:
+                            pass
+                if v.get("DetailedModel"):
+                    notes.append(f"flowline {f}: detailed geometry in the original (rebuilt as a simple line)")
+            out["copied_details"] = n
+            out["rebuilt2_state"], b2 = run_pt(built, src, cond)
+            out["level2"] = compare_pt(o, b2)
         finally:
             built.close()
     finally:
@@ -205,7 +250,7 @@ def well_case(path, tmp, outlet_pressure=20.0):
         if len(tub) > 1:
             notes.append(f"original tubing has {len(tub)} sections; rebuilt with one (first section ID)")
         fl = cv.get("AssociatedBlackOilFluid")
-        w = {"name": "W", "fluid": fl, "reservoir_pressure": cv.get("ReservoirPressure"),
+        w = {"name": "W", "fluid": safe_name(fl), "reservoir_pressure": cv.get("ReservoirPressure"),
              "reservoir_temperature": cv.get("ReservoirTemperature"), "depth": depth,
              "tubing_id": tub[0].get("InnerDiameter"), "tubing_wall": tub[0].get("WallThickness") or 6.45,
              "ipr": {"model": "pi", "liquid_pi": pi}}
@@ -217,22 +262,65 @@ def well_case(path, tmp, outlet_pressure=20.0):
         out["project"] = proj
         o = sa.nodal(orig, well, outlet_pressure)
         out["original"] = {k: v.get("value") for k, v in o["operating_point"].items()}
-        built, rep = netbuilder.build(proj, os.path.join(tmp, "rebuilt.pips"))
-        try:
-            b = sa.nodal(built, "W", outlet_pressure, completion="W_Comp")
-            out["rebuilt"] = {k: v.get("value") for k, v in b["operating_point"].items()}
-            for f in [fl]:
-                for k, v in values(orig, "BlackOilFluid", f).items():
-                    if k not in FLUID_SKIP and v is not None and not isinstance(v, (list, dict)):
-                        try:
-                            built.set_value(BlackOilFluid=f, parameter=k, value=v)
-                        except Exception:
-                            pass
-            sa.sync_boundaries(built)
-            b2 = sa.nodal(built, "W", outlet_pressure, completion="W_Comp")
-            out["rebuilt2"] = {k: v.get("value") for k, v in b2["operating_point"].items()}
-        finally:
-            built.close()
+        op = lambda m, w, comp=None: {k: round(v.get("value"), 3) for k, v in
+                                       sa.nodal(m, w, outlet_pressure, completion=comp)["operating_point"].items()
+                                       if isinstance(v.get("value"), (int, float))}
+        steps = []
+
+        def factor(label, apply):
+            """Build the well afresh, apply one difference from the original, run nodal analysis."""
+            built, _ = netbuilder.build(proj, os.path.join(tmp, f"rebuilt_{len(steps)}.pips"))
+            try:
+                msg = apply(built) if apply else None
+                sa.sync_boundaries(built)
+                steps.append({"step": label, "result": op(built, "W", "W_Comp"), "note": msg})
+            except Exception as e:
+                steps.append({"step": label, "error": f"{type(e).__name__}: {str(e)[:200]}"})
+            finally:
+                built.close()
+
+        def fluid_details(b):
+            for k, v in values(orig, "BlackOilFluid", fl).items():
+                if k not in FLUID_SKIP and v is not None and not isinstance(v, (list, dict)):
+                    try:
+                        b.set_value(BlackOilFluid=safe_name(fl), parameter=k, value=v)
+                    except Exception:
+                        pass
+
+        def trajectory(b):
+            b.set_trajectory(Well="W", value=orig.get_trajectory(Well=well))
+
+        def geothermal(b):
+            b.set_geothermal_profile(Well="W", value=orig.get_geothermal_profile(Well=well))
+
+        def tubulars(b):
+            sa.set_value(b, "Tubing", "W:Tubing", "Length", tub[0].get("Length"))
+            if cas:
+                sa.set_value(b, "Casing", "W:Casing", "Length", cas[0].get("Length"))
+            return f"tubing {tub[0].get('Length')} m, casing {cas[0].get('Length') if cas else '-'} m"
+
+        def well_settings(b):
+            for k, v in values(orig, "Well", well).items():
+                if k not in ("Name", "IsActive") and v is not None and not isinstance(v, (list, dict)):
+                    try:
+                        b.set_value(Well="W", parameter=k, value=v)
+                    except Exception:
+                        pass
+
+        def everything(b):
+            for f in (fluid_details, trajectory, geothermal, tubulars, well_settings):
+                try:
+                    f(b)
+                except Exception:
+                    pass
+
+        out["original"] = op(orig, well)
+        factor("rebuilt from the description", None)
+        for label, f in (("+ full fluid settings", fluid_details), ("+ deviation survey", trajectory),
+                         ("+ geothermal profile", geothermal), ("+ exact tubing/casing lengths", tubulars),
+                         ("+ well settings", well_settings), ("+ all of the above", everything)):
+            factor(label, f)
+        out["steps"] = steps
     finally:
         orig.close()
     return out
@@ -264,10 +352,16 @@ def main():
                  "node / variable / original / rebuilt / unit / diff", r["level1"])
             show(f"level 2 - plus {r.get('copied_details')} detailed inputs copied (state {r.get('rebuilt2_state')}):",
                  r["level2"])
-        if "rebuilt" in r:
-            print("   nodal operating point at 20 bara outlet: original", json.dumps(r["original"]))
-            print("                                     rebuilt      ", json.dumps(r["rebuilt"]))
-            print("                       rebuilt + fluid details    ", json.dumps(r.get("rebuilt2")))
+        if "steps" in r:
+            o = r["original"]
+            print(f"   nodal analysis at 20 bara outlet; original: liquid {o.get('liquid_rate')} sm3/d, "
+                  f"Pwf {o.get('bottomhole_pressure')} bara")
+            for s in r["steps"]:
+                if "error" in s:
+                    print(f"     {s['step']:<34} ERROR {s['error']}"); continue
+                q, p = s["result"].get("liquid_rate"), s["result"].get("bottomhole_pressure")
+                dq = 100 * (q - o["liquid_rate"]) / o["liquid_rate"] if q and o.get("liquid_rate") else float("nan")
+                print(f"     {s['step']:<34} liquid {q} sm3/d ({dq:+.1f} %), Pwf {p} bara {s.get('note') or ''}")
         shutil.rmtree(tmp, ignore_errors=True)
     os.makedirs(os.path.join(ROOT, "knowledge"), exist_ok=True)
     json.dump(results, open(os.path.join(ROOT, "knowledge", "compare.json"), "w"), indent=1, default=str)

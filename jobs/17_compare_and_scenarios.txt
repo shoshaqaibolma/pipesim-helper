@@ -1,0 +1,4 @@
+# Case-study comparison (P/T profile for pipelines, factor analysis for the well), then the two scenarios that failed.
+"D:\Program\Pipesim toolkit\python.exe" tools\rebuild_compare.py "D:\Program\Pipesim2023.1\Case Studies"
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\debottleneck.txt
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\pipeline_sizing.txt

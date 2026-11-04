@@ -68,6 +68,17 @@ assert any("type must be one of" in e for e in check_project({"fluids": [{"name"
 z = dict(full, flowlines=[dict(full["flowlines"][2], length=0)] + full["flowlines"][:2])
 assert any("length must be greater than 0" in e for e in check_project(z)["errors"])
 
+# a sink takes one inlet (job 16 build failed: "The inlet port of destination SEP has been occupied")
+two = dict(full, flowlines=full["flowlines"] + [{"name": "FL9", "from": "W2", "to": "Sep", "length": 10, "id": 50, "elevation_change": 0}])
+two["flowlines"] = [f for f in two["flowlines"] if f["name"] != "FL2"]
+assert any("has 2 inlets; PIPESIM allows one" in e for e in check_project(two)["errors"]), check_project(two)
+
+# None is missing, not a value; built-in component names cannot be fluid names (job 16: 'Water' was ambiguous)
+nn = dict(full, sinks=[{"name": "Sep", "pressure": None}], fluids=[dict(full["fluids"][0], name="Water")],
+          wells=[dict(w, fluid="Water") for w in full["wells"]])
+c = check_project(nn)
+assert any(m["field"] == "sinks.Sep.pressure" for m in c["missing"]) and any("clashes" in e for e in c["errors"]), c
+
 # "use defaults" fills only fields that have a default; required ones stay missing
 d = apply_defaults(p, {m["field"] for m in check_project(p)["missing"]})
 left = {m["field"] for m in check_project(d)["missing"]}
