@@ -94,3 +94,13 @@ assert len(c[2]["content"]) < 400 and c[4]["content"] == "y" * 20000 and c[1] ==
 assert agent.compact(msgs[:2]) == msgs[:2]
 print("compaction: old tool results shortened, latest kept")
 print("\nALL OK")
+
+# --- one turn with many tool calls is shortened too (job 21 overflowed the 16k context inside one turn)
+big = "x" * 5000
+ms = [{"role": "system", "content": "s"}, {"role": "user", "content": "u"}]
+for i in range(12):
+    ms += [{"role": "assistant", "content": None, "tool_calls": [{"id": f"t{i}"}]},
+           {"role": "tool", "tool_call_id": f"t{i}", "content": big}]
+out = agent.compact(ms, limit=20000)
+assert sum(len(str(m.get("content") or "")) for m in out) < 30000 and out[-1]["content"] == big
+print("compaction: older results inside a long turn are shortened, the latest stay")

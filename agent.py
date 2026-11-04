@@ -286,9 +286,10 @@ MAX_HISTORY_CHARS = 40000   # about 10k tokens: keeps long sessions inside the 1
 
 
 def compact(msgs, limit=MAX_HISTORY_CHARS):
-    """Shorten old tool results (before the latest user message) when the conversation gets long."""
-    size = sum(len(str(m.get("content") or "")) for m in msgs)
-    if size <= limit:
+    """Shorten old tool results when the conversation gets long: first those before the latest user message, then,
+    if a single turn has grown too long (many tool calls), older results inside that turn too (the last 4 stay)."""
+    size = lambda ms: sum(len(str(m.get("content") or "")) + len(json.dumps(m.get("tool_calls") or "")) for m in ms)
+    if size(msgs) <= limit:
         return msgs
     last_user = max(i for i, m in enumerate(msgs) if m.get("role") == "user")
     out = []
@@ -296,6 +297,11 @@ def compact(msgs, limit=MAX_HISTORY_CHARS):
         if i < last_user and m.get("role") == "tool" and len(str(m.get("content") or "")) > 300:
             m = dict(m, content=str(m["content"])[:300] + " ...[older result shortened]")
         out.append(m)
+    if size(out) > limit:
+        for i in range(last_user + 1, len(out) - 4):
+            m = out[i]
+            if m.get("role") == "tool" and len(str(m.get("content") or "")) > 300:
+                out[i] = dict(m, content=str(m["content"])[:300] + " ...[older result shortened]")
     return out
 
 

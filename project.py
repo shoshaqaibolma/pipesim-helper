@@ -576,10 +576,6 @@ def summary(p):
             lines.append(f"  {kind[:-1]:<10} {name}: {describe_item(kind, e)}")
     return "\n".join(lines)
 
-DEFAULT_NAMES = {"fluids": None, "wells": "W", "sources": "Source", "junctions": "M", "sinks": "SEP", "chokes": "CK",
-                 "separators": "SEP", "pumps": "P", "compressors": "C", "flowlines": "FL-"}
-
-
 def rename(p, old, new):
     """Rename one item everywhere it is referenced (fluid, from, to)."""
     p = copy.deepcopy(p)
@@ -594,27 +590,22 @@ def rename(p, old, new):
 
 
 def replace_placeholders(p, placeholders, user_text):
-    """Items named like a recipe example although the user never wrote that name get a plain default name.
+    """FLUIDS named like a recipe example although the user never wrote that name get a plain name (BO / Gas).
+    Only fluids: other names (flowlines "FL-A" for a well "A", ...) are usually built from the user's own names.
     Returns (project, [(old, new)])."""
     said = str(user_text).lower()
     taken = {e.get("name") for kind in FIELDS for e in p.get(kind) or []}
     done = []
-    for kind in FIELDS:
-        for i, e in enumerate(p.get(kind) or []):
-            n = e.get("name")
-            if n not in placeholders or re.search(rf"(?<![\w-]){re.escape(n.lower())}(?![\w-])", said):
-                continue
-            if kind == "fluids":
-                base = "Gas" if e.get("type") == "gas" else "BO"
-            else:
-                base = DEFAULT_NAMES.get(kind) or kind[:-1].title()
-            new, k = base, 1
-            while new in taken:
-                k += 1
-                new = f"{base}{k}" if not base.endswith("-") else f"{base}{k}"
-            if base.endswith("-") and new == base:
-                new = f"{base}1"
-            taken.add(new)
-            p = rename(p, n, new)
-            done.append((n, new))
+    for e in list(p.get("fluids") or []):
+        n = e.get("name")
+        if n not in placeholders or re.search(rf"(?<![\w-]){re.escape(str(n).lower())}(?![\w-])", said):
+            continue
+        base = "Gas" if e.get("type") == "gas" else "BO"
+        new, k = base, 1
+        while new in taken:
+            k += 1
+            new = f"{base}{k}"
+        taken.add(new)
+        p = rename(p, n, new)
+        done.append((n, new))
     return p, done

@@ -141,7 +141,15 @@ agent.STATE["user_text"] = "the fluid is called OilA"
 agent.PROJECT = {}
 agent.update_project({"fluids": [{"name": "OilA", "type": "black_oil"}]})
 assert agent.PROJECT["fluids"][0]["name"] == "OilA"
-print("names: recipe example names are replaced by BO/SEP/W.. unless the user used them")
+# job 21: flowlines named after the user's wells (FL-A for well A) must stay, and names must never collide
+agent.STATE["user_text"] = "two oil wells, A and B, each with a 2 km line into manifold M"
+agent.PROJECT = {}
+agent.update_project({"fluids": [{"name": "OilA", "type": "black_oil"}, {"name": "Gas1", "type": "gas"}],
+                      "wells": [{"name": "A"}, {"name": "B"}],
+                      "flowlines": [{"name": "FL-A", "from": "A", "to": "M"}, {"name": "FL-B", "from": "B", "to": "M"}]})
+assert [f["name"] for f in agent.PROJECT["flowlines"]] == ["FL-A", "FL-B"], agent.PROJECT
+assert [f["name"] for f in agent.PROJECT["fluids"]] == ["BO", "Gas"], agent.PROJECT["fluids"]
+print("names: copied example FLUID names are replaced (BO/Gas) unless the user used them; other names untouched")
 
 # --- approvals are answered from the workflow state
 msgs = agent.new_conversation()
