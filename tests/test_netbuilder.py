@@ -62,6 +62,11 @@ assert "[sm3/d]" in r["table"][0], r["table"][0]          # units from the resul
 liq = [float(row.split(" | ")[2]) for row in r["table"][2:]]
 assert liq == sorted(liq, reverse=True) and liq[0] > liq[-1] and not r["warnings"], r
 assert os.path.exists(os.path.join(r["output_dir"], "project.json"))
+sm = r["summary"]["Sep oil rate"]       # precomputed numbers the LLM quotes instead of calculating
+assert sm["highest"]["case"] == "Sep.Pressure=10" and sm["lowest"]["case"] == "Sep.Pressure=30", sm
+b, v30 = sm["base"], next(float(x.split(" | ")[3]) for x in r["table"] if x.startswith("Sep.Pressure=30"))
+assert abs(sm["change_vs_base_pct"]["Sep.Pressure=30"] - round(100 * (v30 - b) / b, 2)) < 0.02, sm
+assert "Sep oil rate change vs base [%]" in r["table"][0]
 print("study on project: separator pressure 10->30 bara lowers field liquid", [round(x) for x in liq])
 
 # 4. a variable with no effect on the outputs triggers the flat-result warning

@@ -116,6 +116,44 @@ def _get(model, ref):
     return sa.get_param(model, *ref)
 
 
+def _summary(a, rows, kpi_cols, labels):
+    """Numbers the LLM should quote instead of computing: change vs base per case, best/worst case, tornado ranking."""
+    if a["type"] not in ("sweep", "grid", "tornado") or not rows:
+        return {}
+    base, cases = rows[0], rows[1:]
+    out = {}
+    for k in kpi_cols:
+        b = base.get(k)
+        vals = [(r.get(k), r["case"]) for r in cases if isinstance(r.get(k), (int, float))]
+        if not isinstance(b, (int, float)) or not vals:
+            continue
+        hi, lo = max(vals), min(vals)
+        s = {"unit": UNITS.get(k, ""), "base": round(b, 4), "highest": {"value": round(hi[0], 4), "case": hi[1]},
+             "lowest": {"value": round(lo[0], 4), "case": lo[1]}}
+        if b:
+            s["change_vs_base_pct"] = {c: round(100 * (v - b) / abs(b), 2) for v, c in vals}
+        out[k] = s
+    if a["type"] == "tornado":
+        for k, s in out.items():
+            swings = []
+            for i, l in enumerate(labels):
+                lo_v, hi_v = rows[1 + 2 * i].get(k), rows[2 + 2 * i].get(k)
+                if isinstance(lo_v, (int, float)) and isinstance(hi_v, (int, float)):
+                    swings.append({"variable": l, "low_case": round(lo_v, 4), "high_case": round(hi_v, 4),
+                                   "swing": round(abs(hi_v - lo_v), 4)})
+            s["ranking"] = sorted(swings, key=lambda x: -x["swing"])
+    return out
+
+
+def _primary(kpi_cols):
+    """The result most studies are about: oil (else liquid, else gas) rate at the first sink, else the first result."""
+    for word in ("oil rate", "liquid rate", "gas rate"):
+        for k in kpi_cols:
+            if k.endswith(word):
+                return k
+    return kpi_cols[0] if kpi_cols else None
+
+
 def _flat_warning(rows, kpi_cols):
     """Warn when no recorded result changed across the cases: the varied input had no effect on these outputs."""
     vals = {k: [r.get(k) for r in rows if isinstance(r.get(k), (int, float))] for k in kpi_cols}
@@ -271,11 +309,18 @@ def run(spec, progress=print, project=None):
                             bars.append({"var": l, "low": lo, "high": hi, "base": base[k]})
                     charts.append(_tornado_chart(os.path.join(out, f"tornado_{len(charts)}.png"), bars, k))
 
-        warnings = []
+        warnings, summary = [], {}
         if a["type"] in ("sweep", "grid", "tornado"):
             w = _flat_warning(rows, kpi_cols)
             if w:
                 warnings.append(w)
+            summary = _summary(a, rows, kpi_cols, labels)
+            p = _primary(kpi_cols)
+            if p and summary.get(p, {}).get("change_vs_base_pct"):  # precomputed % change column for the main result
+                col = f"{p} change vs base [%]"
+                for r in rows[1:]:
+                    r[col] = summary[p]["change_vs_base_pct"].get(r["case"])
+                rows[0][col] = 0.0
         # write outputs
         csv_path = os.path.join(out, "results.csv")
         cols = list(dict.fromkeys(c for r in rows for c in r))
@@ -297,7 +342,7 @@ def run(spec, progress=print, project=None):
                 f.write(f"\n![]({os.path.basename(c)})\n")
         failed = [r["case"] for r in rows if str(r.get("_status", "")).startswith("FAILED")]
         return {"output_dir": out, "report": report, "csv": csv_path, "charts": charts, "warnings": warnings,
-                "n_rows": len(rows), "failed_cases": failed, "table": _compact(rows, cols)}
+                "n_rows": len(rows), "failed_cases": failed, "table": _compact(rows, cols), "summary": summary}
     finally:
         model.close()
 

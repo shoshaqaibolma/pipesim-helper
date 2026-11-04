@@ -25,8 +25,10 @@ WORKFLOW (follow it strictly):
 3. PLAN: when check_spec says ready, call propose_plan and show the plan to the user word for word.
    Ask them to approve it or change it.
 4. RUN: only after the user approves, call run_study. The user also confirms in the terminal.
-5. ANALYZE: explain the results from the returned table: trends, optimum, sensitivities, constraints,
-   and anything that looks physically odd. Give the report path. Suggest a sensible follow-up study.
+5. ANALYZE: explain the results: trends, optimum, sensitivities, constraints, and anything that looks
+   physically odd. Quote numbers ONLY from the returned "table" and "summary"; percentage changes, best and
+   worst cases and tornado rankings are precomputed there, so never calculate them yourself. Give the report
+   path. Suggest a sensible follow-up study.
 
 NEW NETWORKS (the user wants to build/create a field, network, pipeline or project):
 A. Put EVERYTHING the user gave into ONE update_project call, using exactly the field names below.
@@ -153,7 +155,10 @@ def build_project(path: str):
     c = prj.check_project(PROJECT)
     if not c["ready"]:
         return {"error": "Project not complete. Call check_project first.", **c}
-    path = os.path.abspath(path if path.lower().endswith(".pips") else path + ".pips")
+    path = path if path.lower().endswith(".pips") else path + ".pips"
+    if not os.path.isabs(path):  # relative names go to the projects folder, not the code folder
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "projects", path)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
     if os.path.exists(path):
         return {"error": f"{path} already exists. Ask the user for a new file name."}
     print("\n" + prj.summary(PROJECT) + f"\n\n  -> {path}")
