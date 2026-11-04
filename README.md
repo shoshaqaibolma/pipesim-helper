@@ -95,6 +95,16 @@ ranked chart. Example: "we have 0.15 MMsm3/d of lift gas, how should we split it
 Results always come with units; percentage changes, best/worst cases and tornado rankings are computed by the code,
 not the language model; networks with several sinks get field totals.
 
+**Guards for a small model:**
+- *Number check* (`numguard.py`): every number in a reply must come from a simulation result, the checker, the
+  plan or your own message (or be a difference / % change between run results). If not, the model is asked once
+  to rewrite; anything still unverified is flagged under the reply. Switch off with `PIPESIM_NUMBER_GUARD=0`.
+- *Recipes* (`recipes.py`): a table "question -> study type" in the system prompt, and one or two short worked
+  examples added to your message when it matches (manifold, pipeline, gas lift, nodal, tornado, grid, facility).
+  Switch off with `PIPESIM_AGENT_KNOWLEDGE=0`.
+- *Sanity checks*: likely unit mistakes (psi for bara, inch for mm, ft for m, scf/stb for sm3/sm3) are reported as
+  warnings before the plan; impossible inputs (water cut over 100 %, elevation larger than the line length) block.
+
 Terminal commands: `spec` shows the current spec and project, `reset` starts over.
 
 ## How the code is organised
@@ -109,6 +119,8 @@ Terminal commands: `spec` shows the current spec and project, `reset` starts ove
   `tests/test_agent_robustness.py` replays tool calls the local model really made.
 - On the PC with PIPESIM (`tests/real_*.py`): builder smoke test, pipelines and gas wells, gas lift curve,
   nodal analysis, a CSN_301-style facility, and the full agent (`real_agent_test.py - tests\scripts\<script>.txt`).
+- Before/after evaluation of the agent (8 scenarios, recipes and number check off vs on, scored automatically):
+  `"D:\Program\Pipesim toolkit\python.exe" tests\real_eval.py` -> `knowledge\eval_summary.md`
 - Real end-to-end test on the PC (PIPESIM, llama-server and the agent together; works on a temp copy of the model):
   `"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py "path\to\model.pips"`
 
