@@ -1,305 +1,75 @@
-JOB jobs/07_record_tasks_and_equipment.txt started 2026-11-04 12:48:55
+JOB jobs/08_gaslift_and_nodal_probe.txt started 2026-11-04 13:03:05
 
-$ "D:\Program\Pipesim toolkit\python.exe" tools\introspect_tasks.py "D:\Program\Pipesim2023.1\Case Studies"
+$ "D:\Program\Pipesim toolkit\python.exe" tests\real_gaslift_test.py
 [exit 0]
-opening CSN_301_Small Network
-opening Nodal_example
-tasks recorded: ['gldiagnosticssimulation', 'networkoptimizersimulation', 'networksimulation', 'nodalanalysis', 'ptprofilesimulation', 'systemanalysissimulation', 'vfptablessimulation', 'wellperformancecurvessimulation']
-definitions recorded: ['Connection', 'EspCurvesVariables', 'OptimizerVariables', 'OutputVariables', 'Parameters.Compressor', 'Parameters.ESP', 'Parameters.GasLiftInjection', 'Parameters.NetworkOptimizerSimulation', 'Parameters.NodalAnalysisSimulation', 'Parameters.OptimizerInitialConditions', 'Parameters.PTProfileSimulation', 'Parameters.Pump', 'Parameters.RateConstraint', 'Parameters.SystemAnalysisSimulation', 'Parameters.ThreePhaseSeparator', 'Parameters.TwoPhaseSeparator', 'Parameters.WellPerformanceCurvesSimulation', 'SimulationOptions', 'SimulationState', 'Tasks']
-equipment values: {'CSN_301_Small Network': 6, 'Nodal_example': 11}
-errors: ['not found: CSN_312_Gas_Lift_Optimization', 'not found: CSN_313_ESP_Optimization', 'not found: TF_M3B_Final_Oil_Well', 'not found: TF_M6_Pipeline_Network']
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 21412
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 22732
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52830/api/metadata#'
-
-
-$ "D:\Program\Pipesim toolkit\python.exe" tools\introspect.py "D:\Program\Pipesim2023.1\Case Studies" 60
-[exit 0]
- is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 17080
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:57797/api/metadata#'
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 24392
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:57865/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-ERROR:sixgill.core.run_or_start_simulation:Simulation did not run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 6784
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:57999/api/metadata#'
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 8884
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:58068/api/metadata#'
+check: {"ready": true, "next_step": "Call propose_plan and show the plan to the user word for word.", "missing": [], "errors": [], "n_cases": 6}
+Building the model...
+  case 1/6: base
+  case 2/6: W1:W1_GL.GasRate=0.0
+  case 3/6: W1:W1_GL.GasRate=0.02
+  case 4/6: W1:W1_GL.GasRate=0.05
+  case 5/6: W1:W1_GL.GasRate=0.1
+  case 6/6: W1:W1_GL.GasRate=0.2
+case | W1:W1_GL.GasRate | SEP liquid rate [sm3/d] | SEP oil rate [sm3/d] | SEP gas rate [mmsm3/d] | W1 liquid rate [sm3/d] | W1 pressure [bara] | _status | SEP oil rate change vs base [%]
+base | 0.05 | 541.9 | 271 | 0.06626 | 541.9 | 29.18 | Completed | 0
+W1:W1_GL.GasRate=0.0 | 0 |  |  |  |  |  | Completed | 
+W1:W1_GL.GasRate=0.02 | 0.02 | 440.9 | 220.5 | 0.03325 | 440.4 | 22.6 | Completed | -18.64
+W1:W1_GL.GasRate=0.05 | 0.05 | 541.9 | 271 | 0.06626 | 541.9 | 29.18 | Completed | 0
+W1:W1_GL.GasRate=0.1 | 0.1 | 570.5 | 285.3 | 0.1171 | 570.5 | 36.79 | Completed | 5.28
+W1:W1_GL.GasRate=0.2 | 0.2 | 535.5 | 267.8 | 0.2161 | 535.5 | 47.89 | Completed | -1.18
+warnings: [] | failed: []
+summary W1 liquid rate: {"unit": "sm3/d", "base": 541.9206, "highest": {"value": 570.5178, "case": "W1:W1_GL.GasRate=0.1"}, "lowest": {"value": 440.4204, "case": "W1:W1_GL.GasRate=0.02"}, "change_vs_base_pct": {"W1:W1_GL.GasRate=0.02": -18.73, "W1:W1_GL.GasRate=0.05": 0.0, "W1:W1_GL.GasRate=0.1": 5.28, "W1:W1_GL.GasRate=0.2": -1.18}}
 INFO:manta.server.manager:Starting PIPESIM server on thread ID: 5632
 INFO:manta.server.manager:Python toolkit license is checked out successfully
 INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:58136/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-ERROR:sixgill.core.run_or_start_simulation:Simulation did not run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 8996
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:58277/api/metadata#'
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 22824
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:58345/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 24784
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:58655/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-ERROR:sixgill.core.run_or_start_simulation:Simulation did not run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 1332
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:58795/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-ERROR:sixgill.core.run_or_start_simulation:Simulation did not run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 10268
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:58933/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-ERROR:sixgill.core.run_or_start_simulation:Simulation did not run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 10940
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:59067/api/metadata#'
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 11648
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:59208/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-ERROR:sixgill.core.run_or_start_simulation:Simulation did not run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 16236
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:59343/api/metadata#'
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 8952
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:59596/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-ERROR:sixgill.core.run_or_start_simulation:Simulation did not run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 16504
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:59730/api/metadata#'
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 7388
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:59798/api/metadata#'
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 25556
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:60051/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 24968
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:60360/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 22324
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:60608/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 23340
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:60925/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-ERROR:sixgill.core.run_or_start_simulation:Simulation did not run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 13016
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:61131/api/metadata#'
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 7640
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:61199/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 10584
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:61333/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 15120
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:61556/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 5432
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:61849/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 17064
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:61983/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 6340
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:62117/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 17736
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:62251/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 1104
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:62387/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 21836
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:62526/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 3396
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:62660/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 6704
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:62872/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 17640
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:63072/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 13464
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:63272/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 8628
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:63482/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 21052
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:63879/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 
 
-JOB finished 2026-11-04 12:59:51
+$ "D:\Program\Pipesim toolkit\python.exe" tools\probe_nodal.py "D:\Program\Pipesim2023.1\Case Studies"
+[exit 0]
+Connection.Separator values: OK {"BOOT": "Boot Port", "BOTTOM": "Bottom Port", "TOP": "Top Port"}
+units: pump power: OK "kilowatt"
+units: compressor power: OK "kilowatt"
+units: compressor pressure differential: OK "bar"
+units: separator efficiency: OK "percent"
+built well: nodalanalysis.get_conditions(W1): OK [{"Producer": "W1", "BranchTerminator": "W1", "Description": "", "NodalMeasurementPoint": "W1.NA", "OutletPressure": null, "MaxFlowRateType": "LiquidFlowRate", "MaxGasRate": null, "MaxLiquidRate": null, "MaxMassRate": null, "MaxOutflowPressure": null, "InflowPoints": 30.0, "OutflowPoints": 30.0, "LimitInflow": false, "LimitOutflow": true, "UsePhaseRatio": false, "SensitivityVariables": [{}, {}]}, {"W1:W1_Comp": {"BoundaryNodeType": "Completion", "WellName": "W1", "BoundaryNodeName": "W1_Comp", "IsActive": true, "UsePQCurve": false, "IsSurfaceCondition": false, "Temperature": 90.0, "Pressure": 
+built well: nodalanalysis.run(W1, OutletPressure=20): OK {"type": "NodalAnalysisResult", "cases": ["Operating Point: Flowrate=7697.628 sbbl/day"], "esp_curves": {}, "fluid_base": "Liquid", "inflow_cases": ["OperatingPointInflow:"], "inflow_curves": ["<sixgill.core.simulation_result_handler.Curve object at 0x000001DBAFE66610>"], "messages": ["2026-11-04T08:03:44.912Z    Service starting...", "2026-11-04T08:03:44.928Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs", "2026-11-04T08:03:45.103Z    Service listening at 'net.pipe://localhost/pipe/926d66043b854024b2a8759197da886e'...", "2026-11-04T08:03:45.178Z    ", "2026-11-04T08:03:45.178Z  
+Nodal_example: get_conditions(first well): OK [{"Producer": "Well 1 - oil", "BranchTerminator": "Well 1 - oil", "Description": "", "NodalMeasurementPoint": "Well 1 - oil.NA", "OutletPressure": 52.60699814687454, "MaxFlowRateType": "LiquidFlowRate", "MaxGasRate": null, "MaxLiquidRate": null, "MaxMassRate": null, "MaxOutflowPressure": null, "InflowPoints": 30.0, "OutflowPoints": 30.0, "LimitInflow": false, "LimitOutflow": true, "UsePhaseRatio": true, "SensitivityVariables": [{}, {}]}, {"Well 1 - oil:Completion": {"BoundaryNodeType": "Completion", "WellName": "Well 1 - oil", "BoundaryNodeName": "Completion", "IsActive": true, "UsePQCurve": f
+Nodal_example: run(first well) with its own settings: OK {"type": "NodalAnalysisResult", "cases": ["Operating Point: Flowrate=1982.008 sbbl/day"], "esp_curves": {}, "fluid_base": "Liquid", "inflow_cases": ["OperatingPointInflow:"], "inflow_curves": ["<sixgill.core.simulation_result_handler.Curve object at 0x000001DBA9FF9450>"], "messages": ["2026-11-04T08:04:10.726Z    Service starting...", "2026-11-04T08:04:10.742Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs", "2026-11-04T08:04:10.919Z    Service listening at 'net.pipe://localhost/pipe/c969c5a216204fbca442e81e10d7d0c2'...", "2026-11-04T08:04:10.986Z    ", "2026-11-04T08:04:10.986Z  
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 22920
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 10156
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:64810/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 14940
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:64945/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+
+
+JOB finished 2026-11-04 13:04:34

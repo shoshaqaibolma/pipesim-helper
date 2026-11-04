@@ -1,0 +1,3173 @@
+{
+ "Connection.Separator values": {
+  "ok": true,
+  "result": {
+   "BOOT": "Boot Port",
+   "BOTTOM": "Bottom Port",
+   "TOP": "Top Port"
+  }
+ },
+ "units: pump power": {
+  "ok": true,
+  "result": "kilowatt"
+ },
+ "units: compressor power": {
+  "ok": true,
+  "result": "kilowatt"
+ },
+ "units: compressor pressure differential": {
+  "ok": true,
+  "result": "bar"
+ },
+ "units: separator efficiency": {
+  "ok": true,
+  "result": "percent"
+ },
+ "build": {
+  "file": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_nodal__2eu38bh\\nodal_well.pips",
+  "components": 4,
+  "connections": 2,
+  "boundaries_synced": false,
+  "boundary_conditions": {
+   "SEP": "ok",
+   "W1:W1_Comp": "ok"
+  },
+  "validation": []
+ },
+ "built well: nodalanalysis.get_conditions(W1)": {
+  "ok": true,
+  "result": [
+   {
+    "Producer": "W1",
+    "BranchTerminator": "W1",
+    "Description": "",
+    "NodalMeasurementPoint": "W1.NA",
+    "OutletPressure": null,
+    "MaxFlowRateType": "LiquidFlowRate",
+    "MaxGasRate": null,
+    "MaxLiquidRate": null,
+    "MaxMassRate": null,
+    "MaxOutflowPressure": null,
+    "InflowPoints": 30.0,
+    "OutflowPoints": 30.0,
+    "LimitInflow": false,
+    "LimitOutflow": true,
+    "UsePhaseRatio": false,
+    "SensitivityVariables": [
+     {},
+     {}
+    ]
+   },
+   {
+    "W1:W1_Comp": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "W1",
+     "BoundaryNodeName": "W1_Comp",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 90.0,
+     "Pressure": 250.0,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 100.0,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 20.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "W1_Comp",
+     "IsBottomCompletion": false
+    }
+   }
+  ]
+ },
+ "built well: nodalanalysis.run(W1, OutletPressure=20)": {
+  "ok": true,
+  "result": {
+   "type": "NodalAnalysisResult",
+   "cases": [
+    "Operating Point: Flowrate=7697.628 sbbl/day"
+   ],
+   "esp_curves": {},
+   "fluid_base": "Liquid",
+   "inflow_cases": [
+    "OperatingPointInflow:"
+   ],
+   "inflow_curves": [
+    "<sixgill.core.simulation_result_handler.Curve object at 0x000001DBAFE66610>"
+   ],
+   "messages": [
+    "2026-11-04T08:03:44.912Z    Service starting...",
+    "2026-11-04T08:03:44.928Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+    "2026-11-04T08:03:45.103Z    Service listening at 'net.pipe://localhost/pipe/926d66043b854024b2a8759197da886e'...",
+    "2026-11-04T08:03:45.178Z    ",
+    "2026-11-04T08:03:45.178Z    ",
+    "2026-11-04T08:03:45.178Z    ",
+    "2026-11-04T08:03:45.178Z    ",
+    "2026-11-04T08:03:45.178Z    ",
+    "2026-11-04T08:03:45.178Z    ",
+    "2026-11-04T08:03:45.178Z    ",
+    "2026-11-04T08:03:45.178Z    ",
+    "2026-11-04T08:03:45.178Z    ",
+    "... 140 items"
+   ],
+   "node": {
+    "Operating Point: Flowrate=7697.628 sbbl/day": {
+     "Enthalpy": {
+      "Unit": "kJ/kg",
+      "W1_GL": 291.001226138963,
+      "W1_Comp": 289.1756694731879
+     },
+     "VolumeFlowrateOilStockTank": {
+      "Unit": "sm3/d",
+      "W1_GL": 979.0600971824718,
+      "W1_Comp": 979.0600971824718
+     },
+     "VolumeFlowrateWaterStockTank": {
+      "Unit": "sm3/d",
+      "W1_GL": 244.76502429561785,
+      "W1_Comp": 244.76502429561785
+     },
+     "VolumeFlowrateLiquidStockTank": {
+      "Unit": "sm3/d",
+      "W1_GL": 1223.8251214780896,
+      "W1_Comp": 1223.8251214780896
+     },
+     "VolumeFlowrateGasStockTank": {
+      "Unit": "mmsm3/d",
+      "W1_GL": 0.14790525418465142,
+      "W1_Comp": 0.0979062944070116
+     },
+     "MassFlowrateOIlStockTank": {
+      "Unit": "kg/s",
+      "W1_GL": 9.630354119870047,
+      "W1_Comp": 9.630354119870047
+     },
+     "MassFlowrateWaterStockTank": {
+      "Unit": "kg/s",
+      "W1_GL": 2.8896166787588853,
+      "W1_Comp": 2.8896166787588853
+     },
+     "MassFlowrateGasStockTank": {
+      "Unit": "kg/s",
+      "W1_GL": 1.4240075531079814,
+      "W1_Comp": 0.9707538513047386
+     },
+     "MassFlowrateStockTank": {
+      "Unit": "kg/s",
+      "W1_GL": 13.943978351736916,
+      "W1_Comp": 13.490724649933673
+     },
+     "VolumeFlowrateLiquidInSitu": {
+      "Unit": "m3/d",
+      "W1_GL": 1398.7010996670451,
+      "W1_Comp": 1445.9079994105568
+     },
+     "GLRStockTank": {
+      "Unit": "sm3/sm3",
+      "W1_GL": 120.85489350129954,
+      "W1_Comp": 80.00023291190257
+     },
+     "GORStockTank": {
+      "Unit": "sm3/sm3",
+      "W1_GL": 151.06861687662442,
+      "W1_Comp": 100.0002911398782
+     },
+     "LGRStockTank": {
+      "Unit": "sm3/mmsm3",
+      "W1_GL": 8274.385678799568,
+      "W1_Comp": 12499.963607621175
+     },
+     "WaterCutStockTank": {
+      "Unit": "%",
+      "W1_GL": 20.0,
+      "W1_Comp": 20.0
+     },
+     "DensityOilStockTank": {
+      "Unit": "kg/m3",
+      "W1_GL": 849.8585545113907,
+      "W1_Comp": 849.8585545113907
+     },
+     "DensityGasStockTank": {
+      "Unit": "kg/m3",
+      "W1_GL": 0.8318450434152364,
+      "W1_Comp": 0.8566674212393882
+     },
+     "DensityWaterStockTank": {
+      "Unit": "kg/m3",
+      "W1_GL": 1020.0104474393604,
+      "W1_Comp": 1020.0104474393604
+     },
+     "SpecificGravityGasStockTank": {
+      "Unit": "fract.",
+      "W1_GL": 0.6797171410443412,
+      "W1_Comp": 0.7
+     },
+     "ArtificialLiftFlowrateConversionFactor": {
+      "Unit": " ",
+      "W1_GL": 0.0
+     },
+     "InjectionGasTemperatureAtInjectionPoint": {
+      "Unit": "degC",
+      "W1_GL": 90.44620177253614
+     },
+     "InjectionFluidLiquidFlowrateStockTank": {
+      "Unit": "sm3/d",
+      "W1_GL": 0.0
+     },
+     "InjectionFluidMassFlowrateStockTank": {
+      "Unit": "kg/s",
+      "W1_GL": 0.4532546284812413
+     },
+     "InjectionPortDeltaPressure": {
+      "Unit": "bar",
+      "W1_GL": 0.0
+     },
+     "InjectionPortDeltaTemperature": {
+      "Unit": "degC",
+      "W1_GL": 0.0
+     },
+     "InjectionFluidTemperature": {
+      "Unit": "degC",
+      "W1_GL": 90.44620177253614
+     },
+     "InjectionFluidEnthalpy": {
+      "Unit": " ",
+      "W1_GL": 239.062673728385
+     },
+     "InjectionFluidSpecificGravityGas": {
+      "Unit": " ",
+      "W1_GL": 0.0
+     },
+     "TemperatureProductionFluid": {
+      "Unit": "%",
+      "W1_GL": 194.803163190565
+     },
+     "TemperatureMixedFluid": {
+      "Unit": "degC",
+      "W1_GL": 90.2088387170906
+     },
+     "SurfaceInjectionPressure": {
+      "Unit": "bara",
+      "W1_GL": 0.0
+     },
+     "FluidHandleString": {
+      "Unit": " ",
+      "W1_GL": "4BDFF3D2"
+     },
+     "InjectionFluidGasFlowrateStockTank": {
+      "Unit": "mmsm3/d",
+      "W1_GL": 0.04999905602751201
+     },
+     "GLDiagnosticsValveType": {
+      "Unit": " ",
+      "W1_GL": "****"
+     },
+     "GLDiagnosticsValveOperationMode": {
+      "Unit": " ",
+      "W1_GL": "****"
+     },
+     "GLDiagnosticsValveStatus": {
+      "Unit": " ",
+      "W1_GL": "*****"
+     },
+     "GLDiagnosticsValvePositionStatus": {
+      "Unit": " ",
+      "W1_GL": "*****"
+     },
+     "InjectionGasPressureAtInjectionPoint": {
+      "Unit": "bara",
+      "W1_GL": 86.77296135347775
+     },
+     "TubingPressure": {
+      "Unit": "bara",
+      "W1_GL": 86.77296135347775
+     },
+     "VolumeFlowrateGasStandard": {
+      "Unit": "mmsm3/d",
+      "W1_GL": 0.10679957055958814,
+      "W1_Comp": 0.04078362084727764
+     },
+     "WaterCutInSitu": {
+      "Unit": "%",
+      "W1_GL": 18.024279073722003,
+      "W1_Comp": 17.45009033793012
+     },
+     "VolumeFlowrateOilInSitu": {
+      "Unit": "m3/d",
+      "W1_GL": 1146.5953100558384,
+      "W1_Comp": 1193.5957473100566
+     },
+     "VolumeFlowrateWaterInSitu": {
+      "Unit": "m3/d",
+      "W1_GL": 252.10578961120675,
+      "W1_Comp": 252.3122521005003
+     },
+     "OGRStockTank": {
+      "Unit": "sm3/mmsm3",
+      "W1_GL": 6619.508543039655,
+      "W1_Comp": 9999.970886096942
+     },
+     "WGRStockTank": {
+      "Unit": "sm3/mmsm3",
+      "W1_GL": 1654.877135759913,
+      "W1_Comp": 2499.992721524234
+     },
+     "GWRStockTank": {
+      "Unit": "sm3/sm3",
+      "W1_GL": 604.274467506498,
+      "W1_Comp": 400.00116455951303
+     },
+     "FlowingGasVolumeFlowrate": {
+      "Unit": "m3/d",
+      "W1_GL": 1419.743208766549,
+      "W1_Comp": 396.3451397461728
+     },
+     "IsInjectingIntoCompletion": {
+      "Unit": " ",
+      "W1_Comp": false
+     },
+     "StaticReservoirPressure": {
+      "Unit": "bara",
+      "W1_Comp": 249.99700469299134
+     },
+     "TemperatureFlowing": {
+      "Unit": "degC",
+      "W1_Comp": 93.40395743539341
+     },
+     "ReservoirTemperatureAverage": {
+      "Unit": "degC",
+      "W1_Comp": 90.00000000000006
+     },
+     "Flowrate": {
+      "Unit": "sm3/d",
+      "W1_Comp": 0.0
+     },
+     "MassFlowrateFluid": {
+      "Unit": "kg/s",
+      "W1_Comp": 13.490724649933673
+     },
+     "CompletionVolumeFlowrateLiquidStockTank": {
+      "Unit": "sm3/d",
+      "W1_Comp": 1223.8251214780896
+     },
+     "Gas flowrate": {
+      "Unit": "mmsm3/d",
+      "W1_Comp": 0.0979062944070116
+     },
+     "Mass flowrate": {
+      "Unit": "kg/s",
+      "W1_Comp": 13.490724649933673
+     }
+    }
+   },
+   "operating_envelope": "<sixgill.core.simulation_result_handler.OperatingEnvelope object at 0x000001DBAFC9B5D0>",
+   "operating_points": [
+    "<sixgill.core.simulation_result_handler.OperationPoint object at 0x000001DBB0067F10>"
+   ],
+   "outflow_cases": [
+    "OperatingPointOutflow:"
+   ],
+   "outflow_curves": [
+    "<sixgill.core.simulation_result_handler.Curve object at 0x000001DBAFE7AB90>"
+   ],
+   "profile": {
+    "Operating Point: Flowrate=7697.628 sbbl/day": {
+     "HorizontalDistance": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      "... 14 items"
+     ],
+     "BranchEquipment": [
+      null,
+      "W1_Comp",
+      "Tubing",
+      null,
+      null,
+      "W1_GL",
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      "... 14 items"
+     ],
+     "TotalDistance": [
+      0.0,
+      0.0,
+      0.0,
+      195.19999999999942,
+      499.99999999999943,
+      499.99999999999943,
+      499.99999999999943,
+      671.2000000000004,
+      976.0000000000005,
+      1280.8000000000004,
+      1585.6000000000006,
+      1890.4000000000005,
+      "... 14 items"
+     ],
+     "Elevation": [
+      -2500.0000000000005,
+      -2500.0000000000005,
+      -2500.0000000000005,
+      -2304.800000000001,
+      -2000.0000000000011,
+      -2000.0000000000011,
+      -2000.0000000000011,
+      -1828.8000000000002,
+      -1524.0,
+      -1219.2,
+      -914.4000000000001,
+      -609.6,
+      "... 14 items"
+     ],
+     "Pressure": [
+      249.99700469299134,
+      116.28497005193042,
+      116.28497005193042,
+      104.2630048039981,
+      86.77296135347761,
+      86.77296135347761,
+      86.77296135347761,
+      79.54130499743191,
+      67.65401364366379,
+      56.968275333820095,
+      46.893019651330896,
+      37.32505177527459,
+      "... 14 items"
+     ],
+     "Temperature": [
+      90.00000000000006,
+      93.40395743539364,
+      93.40395743539364,
+      92.39398339358922,
+      90.44620177253626,
+      90.20883871709037,
+      90.20883871709037,
+      88.95340293168675,
+      86.41074089299644,
+      83.49456170868586,
+      80.22414302658717,
+      76.62001333508141,
+      "... 14 items"
+     ],
+     "HoldupFractionLiquid": [
+      NaN,
+      NaN,
+      78.48216464478197,
+      73.64905041109553,
+      65.6514879777959,
+      NaN,
+      49.623847821990694,
+      46.43480936544039,
+      40.86771428453959,
+      36.81840571699886,
+      34.95689940244146,
+      32.76445954091506,
+      "... 14 items"
+     ],
+     "VelocityLiquid": [
+      NaN,
+      NaN,
+      1.166154771495382,
+      1.227814347893828,
+      1.3534259992355135,
+      NaN,
+      1.7841129566592389,
+      1.892985883566152,
+      2.1248515418707106,
+      2.3317524334851494,
+      2.42848908801291,
+      2.5622575551518585,
+      "... 14 items"
+     ],
+     "VelocityGas": [
+      NaN,
+      NaN,
+      1.1661547714953824,
+      1.2278143478938277,
+      1.3534259992355135,
+      NaN,
+      1.7841129566592389,
+      1.892985883566152,
+      2.1248515418707106,
+      2.4681805403921273,
+      3.030223644857189,
+      3.8181870667326474,
+      "... 14 items"
+     ],
+     "MeanVelocityFluid": [
+      NaN,
+      NaN,
+      1.1661547714953822,
+      1.227814347893828,
+      1.3534259992355135,
+      NaN,
+      1.7841129566592389,
+      1.892985883566152,
+      2.1248515418707106,
+      2.417949886479095,
+      2.8198759011514074,
+      3.406688550048347,
+      "... 14 items"
+     ],
+     "NodeNumber": [
+      NaN,
+      NaN,
+      1.0,
+      NaN,
+      NaN,
+      NaN,
+      1.0,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "HydrostaticHead": [
+      NaN,
+      NaN,
+      -625.7851429292199,
+      -535.4956783403899,
+      -376.8504659575262,
+      NaN,
+      70.42203925732879,
+      184.5916494358125,
+      398.25205890932773,
+      565.2621114362495,
+      634.9748191728456,
+      708.0543299045218,
+      "... 14 items"
+     ],
+     "PipeInsideDiameter": [
+      NaN,
+      NaN,
+      75.99934,
+      75.99934,
+      75.99934,
+      NaN,
+      75.99934,
+      75.99934,
+      75.99934,
+      75.99934,
+      75.99934,
+      75.99934,
+      "... 14 items"
+     ],
+     "EnthalpyFluid": [
+      289175.6694717137,
+      289175.6694731879,
+      289175.6694731879,
+      286738.0707646582,
+      282095.92127299565,
+      291001.22613896296,
+      291001.22613896296,
+      288023.979480802,
+      282018.97658218886,
+      275151.8822690253,
+      267471.64255803224,
+      259026.32789171144,
+      "... 14 items"
+     ],
+     "Watercut": [
+      16.27900196131766,
+      17.45009033793012,
+      17.450258208825897,
+      17.659106009930507,
+      17.96241357925416,
+      18.024279073722003,
+      18.024389463207076,
+      18.14519530993698,
+      18.34647792338666,
+      18.531558450503507,
+      18.71123989495387,
+      18.888142547370546,
+      "... 14 items"
+     ],
+     "VolumeFractionLiquid": [
+      100.0,
+      78.48584798424615,
+      78.48216464478197,
+      73.64905041109554,
+      65.65148797779588,
+      49.62670693648669,
+      49.62384782199069,
+      46.434809365440394,
+      40.86771428453958,
+      35.505867018885326,
+      30.105030052893795,
+      24.64298768902299,
+      "... 14 items"
+     ],
+     "PipeWallThickness": [
+      NaN,
+      NaN,
+      6.450076,
+      6.450076,
+      6.450076,
+      NaN,
+      6.450076,
+      6.450076,
+      6.450076,
+      6.450076,
+      6.450076,
+      6.450076,
+      "... 14 items"
+     ],
+     "Dist.= on node card": [
+      NaN,
+      NaN,
+      0.0,
+      0.0,
+      0.0,
+      NaN,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      "... 14 items"
+     ],
+     "Elev= on node card": [
+      NaN,
+      NaN,
+      -2500.0000000000005,
+      -2304.8000000000006,
+      -2000.0000000000011,
+      NaN,
+      -2000.0000000000011,
+      -1828.8000000000002,
+      -1524.0,
+      -1219.2,
+      -914.4000000000001,
+      -609.6,
+      "... 14 items"
+     ],
+     "TrueVerticalDepth": [
+      NaN,
+      NaN,
+      2500.0000000000005,
+      2304.8000000000006,
+      2000.0000000000011,
+      NaN,
+      2000.0000000000011,
+      1828.8000000000002,
+      1524.0,
+      1219.2,
+      914.4000000000001,
+      609.6,
+      "... 14 items"
+     ],
+     "MeasuredDepth": [
+      NaN,
+      NaN,
+      2500.0000000000005,
+      2304.8000000000006,
+      2000.0000000000011,
+      NaN,
+      2000.0000000000011,
+      1828.8000000000002,
+      1524.0,
+      1219.2,
+      914.4000000000001,
+      609.6,
+      "... 14 items"
+     ],
+     "FlowrateLiquidInsitu": [
+      1536.5837162291928,
+      1445.9079994105568,
+      1445.894020737796,
+      1428.5950829029093,
+      1403.7455222563092,
+      1398.7010996670451,
+      1398.691960829421,
+      1388.6741059672365,
+      1371.886669226138,
+      1356.3029706172624,
+      1341.1530954972284,
+      1326.2795892794043,
+      "... 14 items"
+     ],
+     "FlowrateGasInSitu": [
+      0.0,
+      0.04078362084727764,
+      0.04078857675533613,
+      0.04689584303671275,
+      0.055558489945194044,
+      0.10679957055958814,
+      0.10680267734848267,
+      0.11017739247585652,
+      0.11568329395435795,
+      0.120605225917817,
+      0.125266067345833,
+      0.12974774349560336,
+      "... 14 items"
+     ],
+     "Reservoir specific liquid inflow": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "ReservoirDrawdown": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "PressureGradientTotal": [
+      NaN,
+      NaN,
+      0.06310340079689292,
+      0.060021867774566216,
+      0.05462643974596522,
+      NaN,
+      0.04340794739381574,
+      0.04107484883673256,
+      0.03693243371446757,
+      0.03382360360060381,
+      0.03226288128127438,
+      0.030453285485103676,
+      "... 14 items"
+     ],
+     "LayerStaticPressure": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "OilFormationVolumeFactor": [
+      1.3139573624020253,
+      1.219124087218925,
+      1.2191098218872864,
+      1.2014767695523707,
+      1.1762290683303556,
+      1.171118415872013,
+      1.1711091869830956,
+      1.1610078691718002,
+      1.1441522206311525,
+      1.1285914889507234,
+      1.1135238026526908,
+      1.0987783211423543,
+      "... 14 items"
+     ],
+     "AmbientTemperatureAtNode": [
+      NaN,
+      NaN,
+      90.00000000000006,
+      84.14400000000006,
+      75.00000000000006,
+      NaN,
+      75.00000000000006,
+      69.86400000000003,
+      60.72000000000003,
+      51.57600000000002,
+      42.432000000000016,
+      33.28800000000001,
+      "... 14 items"
+     ],
+     "SkinTurbulentDueToDamagedWellbore": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "SkinFactorOverall": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "SkinFactorRateDependent": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "SkinDueToDamagedWellbore": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "SkinDueToPerforationGeometry": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "SkinDueToCompactedZone": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "SkinDueToGravelPack": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "SkinTurbulentDueToPerforations": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "SkinTurbulentDueToGravelPacking": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "EffectivePermeability": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "CasingGasPressure": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "CasingGasTemperature": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "Measured pressure": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "Measured temperature": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "Measured liquid holdup": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "EquivalentHydraulicDiameter": [
+      NaN,
+      NaN,
+      75.99934,
+      75.99934,
+      75.99934,
+      NaN,
+      75.99934,
+      75.99934,
+      75.99934,
+      75.99934,
+      75.99934,
+      75.99934,
+      "... 14 items"
+     ],
+     "CrossSectionalAreaForFlow": [
+      NaN,
+      NaN,
+      0.0016987343803853462,
+      0.0016987343803853462,
+      0.0016987343803853462,
+      NaN,
+      0.0016987343803853462,
+      0.0016987343803853462,
+      0.0016987343803853462,
+      0.0016987343803853462,
+      0.0016987343803853462,
+      0.0016987343803853462,
+      "... 14 items"
+     ],
+     "AnnulusInsideDiameter": [
+      NaN,
+      NaN,
+      88.89949200000001,
+      88.89949200000001,
+      88.89949200000001,
+      NaN,
+      88.89949200000001,
+      88.89949200000001,
+      88.89949200000001,
+      88.89949200000001,
+      88.89949200000001,
+      88.89949200000001,
+      "... 14 items"
+     ],
+     "AnnulusOutsideDiameter": [
+      NaN,
+      NaN,
+      159.40024,
+      159.40024,
+      159.40024,
+      NaN,
+      159.40024,
+      159.40024,
+      159.40024,
+      159.40024,
+      159.40024,
+      159.40024,
+      "... 14 items"
+     ],
+     "PressureGradientFriction": [
+      NaN,
+      NaN,
+      0.0010586326624065026,
+      0.0010928790675355838,
+      0.0011665685516523388,
+      NaN,
+      0.0014905336817105745,
+      0.0015681781893328746,
+      0.0017365761643668542,
+      0.0018981138391397584,
+      0.001995892663957291,
+      0.0021245771886659096,
+      "... 14 items"
+     ],
+     "PressureGradientElevation": [
+      NaN,
+      NaN,
+      0.06204463144298883,
+      0.05892881373069801,
+      0.05345962250155014,
+      NaN,
+      0.04191693093894922,
+      0.03950612640105111,
+      0.035195183342422984,
+      0.03192462029242439,
+      0.03026576853518596,
+      0.028326891907970452,
+      "... 14 items"
+     ],
+     "PressureGradientAcceleration": [
+      NaN,
+      NaN,
+      1.3669149758984957e-07,
+      1.7497633262520683e-07,
+      2.486927627441273e-07,
+      NaN,
+      4.82773155940156e-07,
+      5.442463485718877e-07,
+      6.742076777277555e-07,
+      8.694690396631632e-07,
+      1.2200821311304173e-06,
+      1.8163884673087629e-06,
+      "... 14 items"
+     ],
+     "ReynoldsNumber": [
+      NaN,
+      NaN,
+      139899.98560211642,
+      163312.3364577324,
+      215840.58944495418,
+      NaN,
+      445911.69505542796,
+      505342.85427790566,
+      633666.2959460166,
+      747682.1116849515,
+      798562.0061952801,
+      867651.9865235272,
+      "... 14 items"
+     ],
+     "MolecularWeightFluid": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 14 items"
+     ],
+     "VolumeFlowrateGasStockTank": [
+      0.0979062944070116,
+      0.0979062944070116,
+      0.0979062944070116,
+      0.0979062944070116,
+      0.0979062944070116,
+      0.14790525418465142,
+      0.14790525418465142,
+      0.14790525418465142,
+      0.14790525418465142,
+      0.14790525418465142,
+      0.14790525418465142,
+      0.14790525418465142,
+      "... 14 items"
+     ],
+     "VolumeFlowrateLiquidStockTank": [
+      1223.8251214780896,
+      1223.8251214780896,
+      1223.8251214780896,
+      1223.8251214780896,
+      1223.8251214780896,
+      1223.8251214780896,
+      1223.8251214780896,
+      1223.8251214780896,
+      1223.8251214780896,
+      1223.8251214780896,
+      1223.8251214780896,
+      1223.8251214780896,
+      "... 14 items"
+     ],
+     "VolumeFlowrateOilStockTank": [
+      979.0600971824718,
+      979.0600971824718,
+      979.0600971824718,
+      979.0600971824718,
+      979.0600971824718,
+      979.0600971824718,
+      979.0600971824718,
+      979.0600971824718,
+      979.0600971824718,
+      979.0600971824718,
+      979.0600971824718,
+      979.0600971824718,
+      "... 14 items"
+     ],
+     "VolumeFlowrateWaterStockTank": [
+      244.76502429561785,
+      244.76502429561785,
+      244.76502429561785,
+      244.76502429561785,
+      244.76502429561785,
+      244.76502429561785,
+      244.76502429561785,
+      244.76502429561785,
+      244.76502429561785,
+      244.76502429561785,
+      244.76502429561785,
+      244.76502429561785,
+      "... 14 items"
+     ],
+     "MassFlowrateGasStockTank": [
+      0.9707538513047386,
+      0.9707538513047386,
+      0.9707538513047386,
+      0.9707538513047386,
+      0.9707538513047386,
+      1.4240075531079814,
+      1.4240075531079814,
+      1.4240075531079814,
+      1.4240075531079814,
+      1.4240075531079814,
+      1.4240075531079814,
+      1.4240075531079814,
+      "... 14 items"
+     ],
+     "MassFlowrateLiquidStockTank": [
+      12.519970798628933,
+      12.519970798628933,
+      12.519970798628933,
+      12.519970798628933,
+      12.519970798628933,
+      12.519970798628933,
+      12.519970798628933,
+      12.519970798628933,
+      12.519970798628933,
+      12.519970798628933,
+      12.519970798628933,
+      12.519970798628933,
+      "... 14 items"
+     ],
+     "MassFlowrateOilStockTank": [
+      9.630354119870047,
+      9.630354119870047,
+      9.630354119870047,
+      9.630354119870047,
+      9.630354119870047,
+      9.630354119870047,
+      9.630354119870047,
+      9.630354119870047,
+      9.630354119870047,
+      9.630354119870047,
+      9.630354119870047,
+      9.630354119870047,
+      "... 14 items"
+     ]
+    }
+   },
+   "profile_units": {
+    "HorizontalDistance": "m",
+    "BranchEquipment": "",
+    "TotalDistance": "m",
+    "Elevation": "m",
+    "Pressure": "bara",
+    "Temperature": "degC",
+    "HoldupFractionLiquid": "%",
+    "VelocityLiquid": "m/s",
+    "VelocityGas": "m/s",
+    "MeanVelocityFluid": "m/s",
+    "NodeNumber": " ",
+    "HydrostaticHead": "m",
+    "PipeInsideDiameter": "mm",
+    "EnthalpyFluid": "J/kg",
+    "Watercut": "%",
+    "VolumeFractionLiquid": "%",
+    "PipeWallThickness": "mm",
+    "TrueVerticalDepth": "m",
+    "MeasuredDepth": "m",
+    "FlowrateLiquidInsitu": "m3/d",
+    "FlowrateGasInSitu": "mmsm3/d",
+    "ReservoirDrawdown": "bar",
+    "PressureGradientTotal": "bar/m",
+    "LayerStaticPressure": "bara",
+    "OilFormationVolumeFactor": " ",
+    "AmbientTemperatureAtNode": "degC",
+    "SkinTurbulentDueToDamagedWellbore": " ",
+    "SkinFactorOverall": " ",
+    "SkinFactorRateDependent": " ",
+    "SkinDueToDamagedWellbore": " ",
+    "SkinDueToPerforationGeometry": " ",
+    "SkinDueToCompactedZone": " ",
+    "SkinDueToGravelPack": " ",
+    "SkinTurbulentDueToPerforations": " ",
+    "SkinTurbulentDueToGravelPacking": " ",
+    "EffectivePermeability": " ",
+    "CasingGasPressure": "bara",
+    "CasingGasTemperature": "degC",
+    "EquivalentHydraulicDiameter": "mm",
+    "CrossSectionalAreaForFlow": "m2",
+    "AnnulusInsideDiameter": "mm",
+    "AnnulusOutsideDiameter": "mm",
+    "PressureGradientFriction": "bar/m",
+    "PressureGradientElevation": "bar/m",
+    "PressureGradientAcceleration": "bar/m",
+    "ReynoldsNumber": " ",
+    "MolecularWeightFluid": " ",
+    "VolumeFlowrateGasStockTank": "mmsm3/d",
+    "VolumeFlowrateLiquidStockTank": "sm3/d",
+    "VolumeFlowrateOilStockTank": "sm3/d",
+    "VolumeFlowrateWaterStockTank": "sm3/d",
+    "MassFlowrateGasStockTank": "kg/s",
+    "MassFlowrateLiquidStockTank": "kg/s",
+    "MassFlowrateOilStockTank": "kg/s",
+    "MassFlowrateWaterStockTank": "kg/s",
+    "GLRStockTank": "sm3/sm3",
+    "GORStockTank": "sm3/sm3",
+    "LGRStockTank": "sm3/mmsm3",
+    "OGRStockTank": "sm3/mmsm3",
+    "WaterCutStockTank": "%"
+   },
+   "state": "Completed",
+   "summary": {
+    "Info": [
+     "2026-11-04T08:03:44.862Z    Beginning simulation...",
+     "2026-11-04T08:03:44.861Z    Running with 1 core",
+     "2026-11-04T08:03:45.944Z    Solver converged to a solution.",
+     "2026-11-04T08:03:45.979Z    Finished simulation"
+    ],
+    "Error": [],
+    "Warning": [
+     "2026-11-04T08:03:45.300Z    [Case 32] Caution 29003101   from PSIM : Case 32 failed to converge"
+    ]
+   },
+   "system": {
+    "PipeOutsideDiameter": {
+     "Unit": "mm",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 88.89949200000001
+    },
+    "SystemPressureLoss": {
+     "Unit": "bar",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 229.97705182584144
+    },
+    "SystemInletPressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 249.99700469299134
+    },
+    "SystemOutletPressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 20.019952867150156
+    },
+    "SystemOutletTemperature": {
+     "Unit": "degC",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 68.49023148560082
+    },
+    "TotalLiquidHoldup": {
+     "Unit": "sm3",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 19.934550080498653
+    },
+    "InletVolumeFlowrateLiquid": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 1536.5837162291887
+    },
+    "InletVolumeFlowrateGas": {
+     "Unit": "mmsm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 0.0
+    },
+    "InletVelocityFluid": {
+     "Unit": "m/s",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 1.1661547714953822
+    },
+    "OutletVolumeFlowrateLiquid": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 1297.630638095578
+    },
+    "OutletVolumeFlowrateGas": {
+     "Unit": "mmsm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 0.1381315731021745
+    },
+    "OutletVelocityFluid": {
+     "Unit": "m/s",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 5.91126164767394
+    },
+    "HeatTransferCoefficient": {
+     "Unit": "J/(s.degC.m2)",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 11.356526
+    },
+    "OutletVolumeFlowrateLiquidStockTank": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 1223.8251214780896
+    },
+    "OutletGLRStockTank": {
+     "Unit": "sm3/sm3",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 120.85489350129954
+    },
+    "OutletMassFlowrateFluid": {
+     "Unit": "kg/s",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 13.943978351736916
+    },
+    "CaseNumber": {
+     "Unit": " ",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 1.0
+    },
+    "InletWaterCutStockTank": {
+     "Unit": "%",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 20.0
+    },
+    "InputTubingHeadPressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 20.00031195602276
+    },
+    "InputFlowrate": {
+     "Unit": "L/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 899871.412851541
+    },
+    "TotalInjectionGas": {
+     "Unit": "mmsm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 0.049999056027512014
+    },
+    "GasLiftInjectionRatio": {
+     "Unit": " ",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 100.0002911398782
+    },
+    "GasLiftInjectionCasingPressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "GasLiftInjectionCasingTemperature": {
+     "Unit": "degC",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 90.44620177253626
+    },
+    "GasLiftInjectionPortDiameter": {
+     "Unit": "mm",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "GasLiftInjectionSourcePressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "GasLiftInjectionCasingHeadTemperature": {
+     "Unit": "degC",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "MaximumErosionRisk": {
+     "Unit": " ",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 3.0
+    },
+    "MaximumCorrosionRisk": {
+     "Unit": " ",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "ESP Power": {
+     "Unit": "kW",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "ESP Head": {
+     "Unit": "m",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "ESP delta P": {
+     "Unit": "bar",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "ESP Efficiency": {
+     "Unit": "%",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "ESP Number of stages": {
+     "Unit": " ",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "ESPIntakeGasVolumeFraction": {
+     "Unit": "%",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "BottomHolePressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 116.28497005193042
+    },
+    "InputWatercut": {
+     "Unit": "%",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 20.0
+    },
+    "InletVolumeFlowrateLiquidStockTank": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 1223.8251214780896
+    },
+    "InletMassFlowrateFluid": {
+     "Unit": "kg/s",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 13.490724649933673
+    },
+    "ArtificialLiftQuantity": {
+     "Unit": " ",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 1.2345e+25
+    },
+    "HeelPressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "HeelTemperature": {
+     "Unit": "degC",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "HeelVelocityFluid": {
+     "Unit": "m/s",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "ToePressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "ToeTemperature": {
+     "Unit": "degC",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "ToeVelocityFluid": {
+     "Unit": "m/s",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "HeelVolumeFlowrateLiquidStockTank": {
+     "Unit": "m/s",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "HeelVolumeFlowrateLiquidInSitu": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "Gas flowrate at heel (standard cond)": {
+     "Unit": "mmsm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "HeelMassFlowrateFluid": {
+     "Unit": "kg/s",
+     "Operating Point: Flowrate=7697.628 sbbl/day": NaN
+    },
+    "WellheadPressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 20.019952867150156
+    },
+    "WellheadVolumeFlowrateLiquidStockTank": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 1223.8251214780896
+    },
+    "WellheadVolumeFlowrateLiquidInSitu": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 1297.630638095578
+    },
+    "Flowing gas flowrate at wellhead (standard cond)": {
+     "Unit": "mmsm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 0.1381315731021745
+    },
+    "WellheadMassFlowrateFluid": {
+     "Unit": "kg/s",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 13.943978351736916
+    },
+    "NodalPointVolumeFlowrateLiquidStockTank": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 1223.8251214780896
+    },
+    "NodalPointPressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 116.28497005193042
+    },
+    "NodalPointVolumeFlowrateLiquidInSitu": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 1445.907999410553
+    },
+    "NodalPointVolumeFlowrateGasInSitu": {
+     "Unit": "mmsm3/d",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 0.04078362084727764
+    },
+    "NodalPointMassFlowrateFluid": {
+     "Unit": "kg/s",
+     "Operating Point: Flowrate=7697.628 sbbl/day": 13.490724649933673
+    }
+   }
+  }
+ },
+ "nodal_example_wells": [
+  "Well 1 - oil",
+  "Well 2 - ESP",
+  "Well 3 - gas",
+  "Well 4 - Horizontal Gas well"
+ ],
+ "Nodal_example: get_conditions(first well)": {
+  "ok": true,
+  "result": [
+   {
+    "Producer": "Well 1 - oil",
+    "BranchTerminator": "Well 1 - oil",
+    "Description": "",
+    "NodalMeasurementPoint": "Well 1 - oil.NA",
+    "OutletPressure": 52.60699814687454,
+    "MaxFlowRateType": "LiquidFlowRate",
+    "MaxGasRate": null,
+    "MaxLiquidRate": null,
+    "MaxMassRate": null,
+    "MaxOutflowPressure": null,
+    "InflowPoints": 30.0,
+    "OutflowPoints": 30.0,
+    "LimitInflow": false,
+    "LimitOutflow": true,
+    "UsePhaseRatio": true,
+    "SensitivityVariables": [
+     {},
+     {}
+    ]
+   },
+   {
+    "Well 1 - oil:Completion": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "Well 1 - oil",
+     "BoundaryNodeName": "Completion",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 93.33333333333343,
+     "Pressure": 248.211262554061,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 97.95917808380473,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 15.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "Completion",
+     "IsBottomCompletion": false
+    }
+   }
+  ]
+ },
+ "Nodal_example: run(first well) with its own settings": {
+  "ok": true,
+  "result": {
+   "type": "NodalAnalysisResult",
+   "cases": [
+    "Operating Point: Flowrate=1982.008 sbbl/day"
+   ],
+   "esp_curves": {},
+   "fluid_base": "Liquid",
+   "inflow_cases": [
+    "OperatingPointInflow:"
+   ],
+   "inflow_curves": [
+    "<sixgill.core.simulation_result_handler.Curve object at 0x000001DBA9FF9450>"
+   ],
+   "messages": [
+    "2026-11-04T08:04:10.726Z    Service starting...",
+    "2026-11-04T08:04:10.742Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+    "2026-11-04T08:04:10.919Z    Service listening at 'net.pipe://localhost/pipe/c969c5a216204fbca442e81e10d7d0c2'...",
+    "2026-11-04T08:04:10.986Z    ",
+    "2026-11-04T08:04:10.986Z    ",
+    "2026-11-04T08:04:10.986Z    ",
+    "2026-11-04T08:04:10.986Z    ",
+    "2026-11-04T08:04:10.986Z    ",
+    "2026-11-04T08:04:10.986Z    ",
+    "2026-11-04T08:04:10.987Z    ",
+    "2026-11-04T08:04:10.987Z    ",
+    "2026-11-04T08:04:10.987Z    ",
+    "... 135 items"
+   ],
+   "node": {
+    "Operating Point: Flowrate=1982.008 sbbl/day": {
+     "Enthalpy": {
+      "Unit": "kJ/kg",
+      "Gas lift injection": 244.61600469379266,
+      "Completion": 266.08004715991865
+     },
+     "VolumeFlowrateOilStockTank": {
+      "Unit": "sm3/d",
+      "Gas lift injection": 267.84704869417794,
+      "Completion": 267.84704869417794
+     },
+     "VolumeFlowrateWaterStockTank": {
+      "Unit": "sm3/d",
+      "Gas lift injection": 47.267126240149075,
+      "Completion": 47.267126240149075
+     },
+     "VolumeFlowrateLiquidStockTank": {
+      "Unit": "sm3/d",
+      "Gas lift injection": 315.114174934327,
+      "Completion": 315.114174934327
+     },
+     "VolumeFlowrateGasStockTank": {
+      "Unit": "mmsm3/d",
+      "Gas lift injection": 0.08287171590216005,
+      "Completion": 0.026238076647205063
+     },
+     "MassFlowrateOIlStockTank": {
+      "Unit": "kg/s",
+      "Gas lift injection": 2.618901703333702,
+      "Completion": 2.618901703333702
+     },
+     "MassFlowrateWaterStockTank": {
+      "Unit": "kg/s",
+      "Gas lift injection": 0.5744327629272274,
+      "Completion": 0.5744327629272274
+     },
+     "MassFlowrateGasStockTank": {
+      "Unit": "kg/s",
+      "Gas lift injection": 0.7786302523119789,
+      "Completion": 0.29731885528617275
+     },
+     "MassFlowrateStockTank": {
+      "Unit": "kg/s",
+      "Gas lift injection": 3.9719647185729086,
+      "Completion": 3.4906533215471027
+     },
+     "VolumeFlowrateLiquidInSitu": {
+      "Unit": "m3/d",
+      "Gas lift injection": 377.75188064211346,
+      "Completion": 378.29996442550504
+     },
+     "GLRStockTank": {
+      "Unit": "sm3/sm3",
+      "Gas lift injection": 262.98949014159865,
+      "Completion": 83.26530137123402
+     },
+     "GORStockTank": {
+      "Unit": "sm3/sm3",
+      "Gas lift injection": 309.39940016658664,
+      "Completion": 97.95917808380473
+     },
+     "LGRStockTank": {
+      "Unit": "sm3/mmsm3",
+      "Gas lift injection": 3802.4333195276386,
+      "Completion": 12009.80460686201
+     },
+     "WaterCutStockTank": {
+      "Unit": "%",
+      "Gas lift injection": 15.0,
+      "Completion": 15.0
+     },
+     "DensityOilStockTank": {
+      "Unit": "kg/m3",
+      "Gas lift injection": 844.7847720963972,
+      "Completion": 844.7847720963972
+     },
+     "DensityGasStockTank": {
+      "Unit": "kg/m3",
+      "Gas lift injection": 0.8117806306702187,
+      "Completion": 0.9790484814164438
+     },
+     "DensityWaterStockTank": {
+      "Unit": "kg/m3",
+      "Gas lift injection": 1050.0107547169887,
+      "Completion": 1050.0107547169887
+     },
+     "SpecificGravityGasStockTank": {
+      "Unit": "fract.",
+      "Gas lift injection": 0.6633221100518091,
+      "Completion": 0.8
+     },
+     "ArtificialLiftFlowrateConversionFactor": {
+      "Unit": " ",
+      "Gas lift injection": 0.0
+     },
+     "InjectionGasTemperatureAtInjectionPoint": {
+      "Unit": "degC",
+      "Gas lift injection": 93.13918433483508
+     },
+     "InjectionFluidLiquidFlowrateStockTank": {
+      "Unit": "sm3/d",
+      "Gas lift injection": 0.0
+     },
+     "InjectionFluidMassFlowrateStockTank": {
+      "Unit": "kg/s",
+      "Gas lift injection": 0.48131190372222177
+     },
+     "InjectionPortDeltaPressure": {
+      "Unit": "bar",
+      "Gas lift injection": 0.0
+     },
+     "InjectionPortDeltaTemperature": {
+      "Unit": "degC",
+      "Gas lift injection": 0.0
+     },
+     "InjectionFluidTemperature": {
+      "Unit": "degC",
+      "Gas lift injection": 93.13918433483508
+     },
+     "InjectionFluidEnthalpy": {
+      "Unit": " ",
+      "Gas lift injection": 55.524168895183
+     },
+     "InjectionFluidSpecificGravityGas": {
+      "Unit": " ",
+      "Gas lift injection": 0.0
+     },
+     "TemperatureProductionFluid": {
+      "Unit": "%",
+      "Gas lift injection": 199.650531802703
+     },
+     "TemperatureMixedFluid": {
+      "Unit": "degC",
+      "Gas lift injection": 93.13917792819723
+     },
+     "SurfaceInjectionPressure": {
+      "Unit": "bara",
+      "Gas lift injection": 0.0
+     },
+     "FluidHandleString": {
+      "Unit": " ",
+      "Gas lift injection": "2C995391"
+     },
+     "InjectionFluidGasFlowrateStockTank": {
+      "Unit": "mmsm3/d",
+      "Gas lift injection": 0.056633693184019944
+     },
+     "GLDiagnosticsValveType": {
+      "Unit": " ",
+      "Gas lift injection": "****"
+     },
+     "GLDiagnosticsValveOperationMode": {
+      "Unit": " ",
+      "Gas lift injection": "****"
+     },
+     "GLDiagnosticsValveStatus": {
+      "Unit": " ",
+      "Gas lift injection": "*****"
+     },
+     "GLDiagnosticsValvePositionStatus": {
+      "Unit": " ",
+      "Gas lift injection": "*****"
+     },
+     "InjectionGasPressureAtInjectionPoint": {
+      "Unit": "bara",
+      "Gas lift injection": 161.96243271218245
+     },
+     "TubingPressure": {
+      "Unit": "bara",
+      "Gas lift injection": 161.96243271218245
+     },
+     "VolumeFlowrateGasStandard": {
+      "Unit": "mmsm3/d",
+      "Gas lift injection": 0.05578705221763636,
+      "Completion": 0.0
+     },
+     "WaterCutInSitu": {
+      "Unit": "%",
+      "Gas lift injection": 12.868580774054788,
+      "Completion": 12.85736269607117
+     },
+     "VolumeFlowrateOilInSitu": {
+      "Unit": "m3/d",
+      "Gas lift injection": 329.14057475617204,
+      "Completion": 329.66056592020965
+     },
+     "VolumeFlowrateWaterInSitu": {
+      "Unit": "m3/d",
+      "Gas lift injection": 48.611305885941405,
+      "Completion": 48.63939850529539
+     },
+     "OGRStockTank": {
+      "Unit": "sm3/mmsm3",
+      "Gas lift injection": 3232.0683215984923,
+      "Completion": 10208.333915832707
+     },
+     "WGRStockTank": {
+      "Unit": "sm3/mmsm3",
+      "Gas lift injection": 570.3649979291459,
+      "Completion": 1801.4706910293023
+     },
+     "GWRStockTank": {
+      "Unit": "sm3/sm3",
+      "Gas lift injection": 1753.2632676106568,
+      "Completion": 555.1020091415598
+     },
+     "FlowingGasVolumeFlowrate": {
+      "Unit": "m3/d",
+      "Gas lift injection": 374.7512939505375,
+      "Completion": 0.0
+     },
+     "IsInjectingIntoCompletion": {
+      "Unit": " ",
+      "Completion": false
+     },
+     "StaticReservoirPressure": {
+      "Unit": "bara",
+      "Completion": 248.21126255406074
+     },
+     "TemperatureFlowing": {
+      "Unit": "degC",
+      "Completion": 95.15210352604953
+     },
+     "ReservoirTemperatureAverage": {
+      "Unit": "degC",
+      "Completion": 93.33333333333343
+     },
+     "Flowrate": {
+      "Unit": "sm3/d",
+      "Completion": 0.0
+     },
+     "MassFlowrateFluid": {
+      "Unit": "kg/s",
+      "Completion": 3.4906533215471027
+     },
+     "CompletionVolumeFlowrateLiquidStockTank": {
+      "Unit": "sm3/d",
+      "Completion": 315.114174934327
+     },
+     "Gas flowrate": {
+      "Unit": "mmsm3/d",
+      "Completion": 0.026238076647205063
+     },
+     "Mass flowrate": {
+      "Unit": "kg/s",
+      "Completion": 3.4906533215471027
+     }
+    }
+   },
+   "operating_envelope": "<sixgill.core.simulation_result_handler.OperatingEnvelope object at 0x000001DBA53637D0>",
+   "operating_points": [
+    "<sixgill.core.simulation_result_handler.OperationPoint object at 0x000001DBAD284BD0>"
+   ],
+   "outflow_cases": [
+    "OperatingPointOutflow:"
+   ],
+   "outflow_curves": [
+    "<sixgill.core.simulation_result_handler.Curve object at 0x000001DBAB00DA90>"
+   ],
+   "profile": {
+    "Operating Point: Flowrate=1982.008 sbbl/day": {
+     "HorizontalDistance": [
+      0.0,
+      0.0,
+      0.0,
+      26.571847959823987,
+      26.571847959823945,
+      106.28739183929581,
+      106.28739183929581,
+      106.28739183929578,
+      172.71701173885563,
+      224.71199672779474,
+      328.70196670567293,
+      432.6919366835511,
+      "... 18 items"
+     ],
+     "BranchEquipment": [
+      null,
+      "Completion",
+      "Casing",
+      null,
+      "Tubing",
+      null,
+      "Gas lift injection",
+      null,
+      null,
+      null,
+      null,
+      null,
+      "... 18 items"
+     ],
+     "TotalDistance": [
+      0.0,
+      0.0,
+      0.0,
+      60.96,
+      60.96,
+      243.84,
+      243.84,
+      243.84,
+      396.24,
+      548.64,
+      853.44,
+      1158.24,
+      "... 18 items"
+     ],
+     "Elevation": [
+      -2551.176,
+      -2551.176,
+      -2551.176,
+      -2496.3120000000004,
+      -2496.3120000000004,
+      -2331.7200000000003,
+      -2331.7200000000003,
+      -2331.7200000000003,
+      -2194.56,
+      -2051.304,
+      -1764.7920000000001,
+      -1478.28,
+      "... 18 items"
+     ],
+     "Pressure": [
+      248.21126255406074,
+      179.8839278148706,
+      179.8839278148706,
+      175.5948444030134,
+      175.58969406427082,
+      161.96243271218265,
+      161.96243271218265,
+      161.96243271218265,
+      154.4911504820747,
+      146.87986139741412,
+      132.0583133278414,
+      117.78410067683028,
+      "... 18 items"
+     ],
+     "Temperature": [
+      93.33333333333343,
+      95.15210352604942,
+      95.15210352604942,
+      94.5390944700955,
+      94.53921124669898,
+      93.13918433483525,
+      93.13917792819751,
+      93.13917792819751,
+      91.36924750951755,
+      89.28120712694812,
+      84.3363651190524,
+      78.5384259161757,
+      "... 18 items"
+     ],
+     "HoldupFractionLiquid": [
+      NaN,
+      NaN,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      NaN,
+      60.80680678384607,
+      48.80204522595779,
+      46.90272804754979,
+      43.272107737406664,
+      39.70141769983139,
+      "... 18 items"
+     ],
+     "VelocityLiquid": [
+      NaN,
+      NaN,
+      0.2683090028948953,
+      0.26872546406632525,
+      1.6959506290731705,
+      1.7065057902968923,
+      NaN,
+      2.780644935831801,
+      3.427011891684262,
+      3.5259218592423314,
+      3.757327704814775,
+      4.034520261458821,
+      "... 18 items"
+     ],
+     "VelocityGas": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      4.280169909049512,
+      3.490965995214091,
+      3.593631900467408,
+      3.8333952196557517,
+      4.120623959871697,
+      "... 18 items"
+     ],
+     "MeanVelocityFluid": [
+      NaN,
+      NaN,
+      0.2683090028948953,
+      0.26872546406632525,
+      1.6959506290731705,
+      1.7065057902968923,
+      NaN,
+      3.368356655909499,
+      3.4597550846856078,
+      3.5618740439707266,
+      3.8004792026805965,
+      4.086439570909798,
+      "... 18 items"
+     ],
+     "NodeNumber": [
+      NaN,
+      NaN,
+      1.0,
+      NaN,
+      1.0,
+      NaN,
+      NaN,
+      1.0,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "HydrostaticHead": [
+      NaN,
+      NaN,
+      -250.3209508654005,
+      -246.8314916409198,
+      -246.59666332396898,
+      -243.94140839921434,
+      NaN,
+      803.1498476152559,
+      1328.809558324068,
+      1395.6000934442395,
+      1538.5090843773344,
+      1686.1526728476415,
+      "... 18 items"
+     ],
+     "PipeInsideDiameter": [
+      NaN,
+      NaN,
+      144.14499999999998,
+      144.14499999999998,
+      57.37859999999999,
+      57.37859999999999,
+      NaN,
+      57.37859999999999,
+      57.37859999999999,
+      57.37859999999999,
+      57.37859999999999,
+      57.37859999999999,
+      "... 18 items"
+     ],
+     "EnthalpyFluid": [
+      266080.0471599187,
+      266080.04715991864,
+      266080.04715991864,
+      264445.3524209844,
+      264445.3524252402,
+      260537.2476062021,
+      244616.00469379267,
+      244616.00469379267,
+      240786.8045161926,
+      236258.34536976926,
+      225497.35091229042,
+      212846.21424103394,
+      "... 18 items"
+     ],
+     "Watercut": [
+      13.151200891483668,
+      12.85736269607117,
+      12.857305387344024,
+      12.834397596899864,
+      12.834240336062692,
+      12.75047015379078,
+      12.868580774054788,
+      12.868730698758906,
+      12.998697982236074,
+      13.131661809735323,
+      13.322538433734184,
+      13.48296976463777,
+      "... 18 items"
+     ],
+     "VolumeFractionLiquid": [
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      100.0,
+      50.19937359932651,
+      50.19721977806714,
+      48.34018167013353,
+      46.4293099754297,
+      42.780786468403726,
+      39.19700055247562,
+      "... 18 items"
+     ],
+     "PipeWallThickness": [
+      NaN,
+      NaN,
+      12.065,
+      12.065,
+      7.823199999999999,
+      7.823199999999999,
+      NaN,
+      7.823199999999999,
+      7.823199999999999,
+      7.823199999999999,
+      7.823199999999999,
+      7.823199999999999,
+      "... 18 items"
+     ],
+     "TrueVerticalDepth": [
+      NaN,
+      NaN,
+      2551.176,
+      2496.312000000001,
+      2496.3120000000004,
+      2331.7200000000003,
+      NaN,
+      2331.7200000000003,
+      2194.56,
+      2051.3040000000005,
+      1764.7920000000006,
+      1478.2800000000007,
+      "... 18 items"
+     ],
+     "MeasuredDepth": [
+      NaN,
+      NaN,
+      2682.2400000000002,
+      2621.28,
+      2621.28,
+      2438.4,
+      NaN,
+      2438.4,
+      2286.0,
+      2133.6,
+      1828.8000000000002,
+      1524.0,
+      "... 18 items"
+     ],
+     "FlowrateLiquidInsitu": [
+      368.1869946742257,
+      378.29996442550504,
+      378.30147595590904,
+      378.8886641386776,
+      378.8931256441142,
+      381.251259164734,
+      377.75188064211346,
+      377.7472007131377,
+      373.64326205656636,
+      369.46585435967586,
+      363.2374724568214,
+      357.8503420154542,
+      "... 18 items"
+     ],
+     "FlowrateGasInSitu": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.05578705221763636,
+      0.05578855031251234,
+      0.05706231852322945,
+      0.05833092351416058,
+      0.06072248362371127,
+      0.06295662778145703,
+      "... 18 items"
+     ],
+     "ReservoirDrawdown": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "PressureGradientTotal": [
+      NaN,
+      NaN,
+      0.0704138053999524,
+      0.07030485322341075,
+      0.07471872144364544,
+      0.07430761540738794,
+      NaN,
+      0.05602960663149801,
+      0.048620147558487765,
+      0.049513756545702815,
+      0.04772472836581949,
+      0.04594785647988844,
+      "... 18 items"
+     ],
+     "LayerStaticPressure": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "OilFormationVolumeFactor": [
+      1.193837994135986,
+      1.230779161194373,
+      1.230784888295814,
+      1.2330193225709976,
+      1.2330360662633897,
+      1.241902543917082,
+      1.2288377876882148,
+      1.2288204493418302,
+      1.213657213979687,
+      1.1982541880801743,
+      1.175465707455001,
+      1.1558891169726992,
+      "... 18 items"
+     ],
+     "AmbientTemperatureAtNode": [
+      NaN,
+      NaN,
+      91.57777777777784,
+      89.82341696535252,
+      89.82341696535252,
+      84.56033452807651,
+      NaN,
+      84.56033452807651,
+      80.17443249701319,
+      75.5936014867915,
+      66.43193946634813,
+      57.270277445904696,
+      "... 18 items"
+     ],
+     "SkinTurbulentDueToDamagedWellbore": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "SkinFactorOverall": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "SkinFactorRateDependent": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "SkinDueToDamagedWellbore": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "SkinDueToPerforationGeometry": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "SkinDueToCompactedZone": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "SkinDueToGravelPack": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "SkinTurbulentDueToPerforations": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "SkinTurbulentDueToGravelPacking": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "EffectivePermeability": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "CasingGasPressure": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "CasingGasTemperature": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "EquivalentHydraulicDiameter": [
+      NaN,
+      NaN,
+      144.14499999999998,
+      144.14499999999998,
+      57.37859999999999,
+      57.37859999999999,
+      NaN,
+      57.37859999999999,
+      57.37859999999999,
+      57.37859999999999,
+      57.37859999999999,
+      57.37859999999999,
+      "... 18 items"
+     ],
+     "CrossSectionalAreaForFlow": [
+      NaN,
+      NaN,
+      0.0015160690143961291,
+      0.0015160690143961291,
+      0.00024022582955783697,
+      0.00024022582955783697,
+      NaN,
+      0.00024022582955783697,
+      0.00024022582955783697,
+      0.00024022582955783697,
+      0.00024022582955783697,
+      0.00024022582955783697,
+      "... 18 items"
+     ],
+     "AnnulusInsideDiameter": [
+      NaN,
+      NaN,
+      168.27499999999998,
+      168.27499999999998,
+      73.02499999999999,
+      73.02499999999999,
+      NaN,
+      73.02499999999999,
+      73.02499999999999,
+      73.02499999999999,
+      73.02499999999999,
+      73.02499999999999,
+      "... 18 items"
+     ],
+     "AnnulusOutsideDiameter": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      144.14499999999998,
+      144.14499999999998,
+      NaN,
+      144.14499999999998,
+      144.14499999999998,
+      144.14499999999998,
+      144.14499999999998,
+      144.14499999999998,
+      "... 18 items"
+     ],
+     "PressureGradientFriction": [
+      NaN,
+      NaN,
+      5.220999011904465e-05,
+      5.230171289624284e-05,
+      0.004466997164134325,
+      0.004490415452511947,
+      NaN,
+      0.009526115717518182,
+      0.009156234282951365,
+      0.009457042776330239,
+      0.010143929001377004,
+      0.01095755241974499,
+      "... 18 items"
+     ],
+     "PressureGradientElevation": [
+      NaN,
+      NaN,
+      0.07036159540983336,
+      0.0702525515105145,
+      0.07025172427951112,
+      0.06981719995487598,
+      NaN,
+      0.04650132819598426,
+      0.039461899435019425,
+      0.04005446859553468,
+      0.03757815956621571,
+      0.03498716316541721,
+      "... 18 items"
+     ],
+     "PressureGradientAcceleration": [
+      NaN,
+      NaN,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      NaN,
+      2.1627179955692415e-06,
+      2.0138405169704542e-06,
+      2.2451738378960283e-06,
+      2.6397982267723338e-06,
+      3.1408947262364933e-06,
+      "... 18 items"
+     ],
+     "ReynoldsNumber": [
+      NaN,
+      NaN,
+      20221.904173331826,
+      20204.142493428557,
+      50756.95167607625,
+      51043.81490176168,
+      NaN,
+      110953.62022472882,
+      114835.22783378199,
+      114082.99343254624,
+      111727.74684901434,
+      108480.32486205848,
+      "... 18 items"
+     ],
+     "MolecularWeightFluid": [
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      NaN,
+      "... 18 items"
+     ],
+     "VolumeFlowrateGasStockTank": [
+      0.026238076647205063,
+      0.026238076647205063,
+      0.026238076647205063,
+      0.026238076647205063,
+      0.026238076647205063,
+      0.026238076647205063,
+      0.08287171590216005,
+      0.08287171590216005,
+      0.08287171590216005,
+      0.08287171590216005,
+      0.08287171590216005,
+      0.08287171590216005,
+      "... 18 items"
+     ],
+     "VolumeFlowrateLiquidStockTank": [
+      315.114174934327,
+      315.114174934327,
+      315.114174934327,
+      315.114174934327,
+      315.114174934327,
+      315.114174934327,
+      315.114174934327,
+      315.114174934327,
+      315.114174934327,
+      315.114174934327,
+      315.114174934327,
+      315.114174934327,
+      "... 18 items"
+     ],
+     "VolumeFlowrateOilStockTank": [
+      267.84704869417794,
+      267.84704869417794,
+      267.84704869417794,
+      267.84704869417794,
+      267.84704869417794,
+      267.84704869417794,
+      267.84704869417794,
+      267.84704869417794,
+      267.84704869417794,
+      267.84704869417794,
+      267.84704869417794,
+      267.84704869417794,
+      "... 18 items"
+     ],
+     "VolumeFlowrateWaterStockTank": [
+      47.267126240149075,
+      47.267126240149075,
+      47.267126240149075,
+      47.267126240149075,
+      47.267126240149075,
+      47.267126240149075,
+      47.267126240149075,
+      47.267126240149075,
+      47.267126240149075,
+      47.267126240149075,
+      47.267126240149075,
+      47.267126240149075,
+      "... 18 items"
+     ],
+     "MassFlowrateGasStockTank": [
+      0.29731885528617275,
+      0.29731885528617275,
+      0.29731885528617275,
+      0.29731885528617275,
+      0.29731885528617275,
+      0.29731885528617275,
+      0.7786302523119789,
+      0.7786302523119789,
+      0.7786302523119789,
+      0.7786302523119789,
+      0.7786302523119789,
+      0.7786302523119789,
+      "... 18 items"
+     ],
+     "MassFlowrateLiquidStockTank": [
+      3.1933344662609295,
+      3.1933344662609295,
+      3.1933344662609295,
+      3.1933344662609295,
+      3.1933344662609295,
+      3.1933344662609295,
+      3.1933344662609295,
+      3.1933344662609295,
+      3.1933344662609295,
+      3.1933344662609295,
+      3.1933344662609295,
+      3.1933344662609295,
+      "... 18 items"
+     ],
+     "MassFlowrateOilStockTank": [
+      2.618901703333702,
+      2.618901703333702,
+      2.618901703333702,
+      2.618901703333702,
+      2.618901703333702,
+      2.618901703333702,
+      2.618901703333702,
+      2.618901703333702,
+      2.618901703333702,
+      2.618901703333702,
+      2.618901703333702,
+      2.618901703333702,
+      "... 18 items"
+     ],
+     "MassFlowrateWaterStockTank": [
+      0.5744327629272274,
+      0.5744327629272274,
+      0.5744327629272274,
+      0.5744327629272274,
+      0.5744327629272274,
+      0.5744327629272274,
+      0.5744327629272274,
+      0.5744327629272274,
+      0.5744327629272274,
+      0.5744327629272274,
+      0.5744327629272274,
+      0.5744327629272274,
+      "... 18 items"
+     ],
+     "GLRStockTank": [
+      83.26530137123402,
+      83.26530137123402,
+      83.26530137123402,
+      83.26530137123402,
+      83.26530137123402,
+      83.26530137123402,
+      262.98949014159865,
+      262.98949014159865,
+      262.98949014159865,
+      262.98949014159865,
+      262.98949014159865,
+      262.98949014159865,
+      "... 18 items"
+     ],
+     "GORStockTank": [
+      97.95917808380473,
+      97.95917808380473,
+      97.95917808380473,
+      97.95917808380473,
+      97.95917808380473,
+      97.95917808380473,
+      309.39940016658664,
+      309.39940016658664,
+      309.39940016658664,
+      309.39940016658664,
+      309.39940016658664,
+      309.39940016658664,
+      "... 18 items"
+     ],
+     "LGRStockTank": [
+      12009.80457754011,
+      12009.80457754011,
+      12009.80457754011,
+      12009.80457754011,
+      12009.80457754011,
+      12009.80457754011,
+      3802.433310244009,
+      3802.433310244009,
+      3802.433310244009,
+      3802.433310244009,
+      3802.433310244009,
+      3802.433310244009,
+      "... 18 items"
+     ],
+     "OGRStockTank": [
+      10208.333890909093,
+      10208.333890909093,
+      10208.333890909093,
+      10208.333890909093,
+      10208.333890909093,
+      10208.333890909093,
+      3232.0683137074075,
+      3232.0683137074075,
+      3232.0683137074075,
+      3232.0683137074075,
+      3232.0683137074075,
+      3232.0683137074075,
+      "... 18 items"
+     ],
+     "WaterCutStockTank": [
+      15.0,
+      15.0,
+      15.0,
+      15.0,
+      15.0,
+      15.0,
+      15.0,
+      15.0,
+      15.0,
+      15.0,
+      15.0,
+      15.0,
+      "... 18 items"
+     ]
+    }
+   },
+   "profile_units": {
+    "HorizontalDistance": "m",
+    "BranchEquipment": "",
+    "TotalDistance": "m",
+    "Elevation": "m",
+    "Pressure": "bara",
+    "Temperature": "degC",
+    "HoldupFractionLiquid": "%",
+    "VelocityLiquid": "m/s",
+    "VelocityGas": "m/s",
+    "MeanVelocityFluid": "m/s",
+    "NodeNumber": " ",
+    "HydrostaticHead": "m",
+    "PipeInsideDiameter": "mm",
+    "EnthalpyFluid": "J/kg",
+    "Watercut": "%",
+    "VolumeFractionLiquid": "%",
+    "PipeWallThickness": "mm",
+    "TrueVerticalDepth": "m",
+    "MeasuredDepth": "m",
+    "FlowrateLiquidInsitu": "m3/d",
+    "FlowrateGasInSitu": "mmsm3/d",
+    "ReservoirDrawdown": "bar",
+    "PressureGradientTotal": "bar/m",
+    "LayerStaticPressure": "bara",
+    "OilFormationVolumeFactor": " ",
+    "AmbientTemperatureAtNode": "degC",
+    "SkinTurbulentDueToDamagedWellbore": " ",
+    "SkinFactorOverall": " ",
+    "SkinFactorRateDependent": " ",
+    "SkinDueToDamagedWellbore": " ",
+    "SkinDueToPerforationGeometry": " ",
+    "SkinDueToCompactedZone": " ",
+    "SkinDueToGravelPack": " ",
+    "SkinTurbulentDueToPerforations": " ",
+    "SkinTurbulentDueToGravelPacking": " ",
+    "EffectivePermeability": " ",
+    "CasingGasPressure": "bara",
+    "CasingGasTemperature": "degC",
+    "EquivalentHydraulicDiameter": "mm",
+    "CrossSectionalAreaForFlow": "m2",
+    "AnnulusInsideDiameter": "mm",
+    "AnnulusOutsideDiameter": "mm",
+    "PressureGradientFriction": "bar/m",
+    "PressureGradientElevation": "bar/m",
+    "PressureGradientAcceleration": "bar/m",
+    "ReynoldsNumber": " ",
+    "MolecularWeightFluid": " ",
+    "VolumeFlowrateGasStockTank": "mmsm3/d",
+    "VolumeFlowrateLiquidStockTank": "sm3/d",
+    "VolumeFlowrateOilStockTank": "sm3/d",
+    "VolumeFlowrateWaterStockTank": "sm3/d",
+    "MassFlowrateGasStockTank": "kg/s",
+    "MassFlowrateLiquidStockTank": "kg/s",
+    "MassFlowrateOilStockTank": "kg/s",
+    "MassFlowrateWaterStockTank": "kg/s",
+    "GLRStockTank": "sm3/sm3",
+    "GORStockTank": "sm3/sm3",
+    "LGRStockTank": "sm3/mmsm3",
+    "OGRStockTank": "sm3/mmsm3",
+    "WaterCutStockTank": "%"
+   },
+   "state": "Completed",
+   "summary": {
+    "Info": [
+     "2026-11-04T08:04:10.678Z    Beginning simulation...",
+     "2026-11-04T08:04:10.677Z    Running with 1 core",
+     "2026-11-04T08:04:11.737Z    Solver converged to a solution.",
+     "2026-11-04T08:04:11.776Z    Finished simulation"
+    ],
+    "Error": [],
+    "Warning": []
+   },
+   "system": {
+    "PipeOutsideDiameter": {
+     "Unit": "mm",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 73.02499999999999
+    },
+    "SystemPressureLoss": {
+     "Unit": "bar",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 195.6000556999152
+    },
+    "SystemInletPressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 248.21126255406074
+    },
+    "SystemOutletPressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 52.611206854145735
+    },
+    "SystemOutletTemperature": {
+     "Unit": "degC",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 41.106245337782184
+    },
+    "TotalLiquidHoldup": {
+     "Unit": "sm3",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 3.7284700100943784
+    },
+    "InletVolumeFlowrateLiquid": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 368.1869946742247
+    },
+    "InletVolumeFlowrateGas": {
+     "Unit": "mmsm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 0.0
+    },
+    "InletVelocityFluid": {
+     "Unit": "m/s",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 0.2683090028948953
+    },
+    "OutletVolumeFlowrateLiquid": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 331.82459331506624
+    },
+    "OutletVolumeFlowrateGas": {
+     "Unit": "mmsm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 0.073140478190432
+    },
+    "OutletVelocityFluid": {
+     "Unit": "m/s",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 7.4464912778437595
+    },
+    "HeatTransferCoefficient": {
+     "Unit": "J/(s.degC.m2)",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 28.391314999999995
+    },
+    "OutletVolumeFlowrateLiquidStockTank": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 315.114174934327
+    },
+    "OutletGLRStockTank": {
+     "Unit": "sm3/sm3",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 262.98949014159865
+    },
+    "OutletMassFlowrateFluid": {
+     "Unit": "kg/s",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 3.9719647185729086
+    },
+    "CaseNumber": {
+     "Unit": " ",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 1.0
+    },
+    "InletWaterCutStockTank": {
+     "Unit": "%",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 15.0
+    },
+    "InputTubingHeadPressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 52.60699814687454
+    },
+    "InputFlowrate": {
+     "Unit": "L/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 231701.59921641805
+    },
+    "TotalInjectionGas": {
+     "Unit": "mmsm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 0.05663369318401993
+    },
+    "GasLiftInjectionRatio": {
+     "Unit": " ",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 97.95917808380473
+    },
+    "GasLiftInjectionCasingPressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "GasLiftInjectionCasingTemperature": {
+     "Unit": "degC",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 93.13918433483525
+    },
+    "GasLiftInjectionPortDiameter": {
+     "Unit": "mm",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "GasLiftInjectionSourcePressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "GasLiftInjectionCasingHeadTemperature": {
+     "Unit": "degC",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "MaximumErosionRisk": {
+     "Unit": " ",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 4.0
+    },
+    "MaximumCorrosionRisk": {
+     "Unit": " ",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 5.0
+    },
+    "ESP Power": {
+     "Unit": "kW",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "ESP Head": {
+     "Unit": "m",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "ESP delta P": {
+     "Unit": "bar",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "ESP Efficiency": {
+     "Unit": "%",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "ESP Number of stages": {
+     "Unit": " ",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "ESPIntakeGasVolumeFraction": {
+     "Unit": "%",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "BottomHolePressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 179.8839278148706
+    },
+    "InputWatercut": {
+     "Unit": "%",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 15.0
+    },
+    "InletVolumeFlowrateLiquidStockTank": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 315.114174934327
+    },
+    "InletMassFlowrateFluid": {
+     "Unit": "kg/s",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 3.4906533215471027
+    },
+    "ArtificialLiftQuantity": {
+     "Unit": " ",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 1.2345e+25
+    },
+    "HeelPressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "HeelTemperature": {
+     "Unit": "degC",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "HeelVelocityFluid": {
+     "Unit": "m/s",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "ToePressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "ToeTemperature": {
+     "Unit": "degC",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "ToeVelocityFluid": {
+     "Unit": "m/s",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "HeelVolumeFlowrateLiquidStockTank": {
+     "Unit": "m/s",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "HeelVolumeFlowrateLiquidInSitu": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "Gas flowrate at heel (standard cond)": {
+     "Unit": "mmsm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "HeelMassFlowrateFluid": {
+     "Unit": "kg/s",
+     "Operating Point: Flowrate=1982.008 sbbl/day": NaN
+    },
+    "WellheadPressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 52.611206854145735
+    },
+    "WellheadVolumeFlowrateLiquidStockTank": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 315.114174934327
+    },
+    "WellheadVolumeFlowrateLiquidInSitu": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 331.82459331506624
+    },
+    "Flowing gas flowrate at wellhead (standard cond)": {
+     "Unit": "mmsm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 0.073140478190432
+    },
+    "WellheadMassFlowrateFluid": {
+     "Unit": "kg/s",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 3.9719647185729086
+    },
+    "NodalPointVolumeFlowrateLiquidStockTank": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 315.114174934327
+    },
+    "NodalPointPressure": {
+     "Unit": "bara",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 179.8839278148706
+    },
+    "NodalPointVolumeFlowrateLiquidInSitu": {
+     "Unit": "sm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 378.299964425504
+    },
+    "NodalPointVolumeFlowrateGasInSitu": {
+     "Unit": "mmsm3/d",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 0.0
+    },
+    "NodalPointMassFlowrateFluid": {
+     "Unit": "kg/s",
+     "Operating Point: Flowrate=1982.008 sbbl/day": 3.4906533215471027
+    }
+   }
+  }
+ }
+}
