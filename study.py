@@ -127,6 +127,10 @@ def clean(spec):
             if k not in allowed:
                 notes.append(f"ignored '{part}.{k}'" + (" (results are chosen automatically)" if k == "kpis" else ""))
                 spec[part].pop(k)
+    a = spec.get("analysis") or {}
+    if a.get("type") == "grid" and len(a.get("variables") or []) == 1:
+        a["type"] = "sweep"
+        notes.append("a grid needs 2-3 variables; with one variable this is a sweep (changed analysis.type to sweep)")
     if (spec.get("model") or {}).get("source") == "project" and "path" in spec["model"]:
         spec["model"].pop("path")   # a project study builds its own model
     return spec, notes

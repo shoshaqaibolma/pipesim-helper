@@ -32,7 +32,8 @@ WORKFLOW (follow it strictly):
    path. Suggest a sensible follow-up study.
 
 NEW NETWORKS (the user wants to build/create a field, network, pipeline or project):
-A. Put EVERYTHING the user gave into ONE update_project call, using exactly the field names below. Use only the
+A. Put EVERYTHING the user gave into ONE update_project call, using exactly the field names below. After that,
+   send only what changes (e.g. {{"flowlines":[{{"name":"FL-1","length":2000}}]}}), never the whole project again. Use only the
    components the user describes: do not add junctions, chokes or flowlines they did not mention. A single well
    or source can connect straight to its sink with one flowline.
 B. Call check_project. If "missing" is not empty, ask the user about those items in ONE numbered message,
@@ -271,10 +272,19 @@ def run_turn(client, msgs, user, emit):
     {"type": "error", "text"}. msgs is updated in place."""
     turn_start = len(msgs)
     msgs.append({"role": "user", "content": user})
-    spec_calls = 0
+    spec_calls, bad_json = 0, 0
     try:
         for _ in range(MAX_STEPS):
-            msg = chat(client, msgs)
+            try:
+                msg = chat(client, msgs)
+            except Exception as e:   # llama-server rejects a tool call whose arguments are not valid JSON
+                if "parse tool call" not in str(e) or bad_json >= 2:
+                    raise
+                bad_json += 1
+                emit({"type": "tool", "name": "(retry)", "args": {"reason": "invalid tool-call JSON"}})
+                msgs.append({"role": "user", "content": "(system note) Your last tool call was not valid JSON. "
+                             "Retry with a smaller call: send only the items that change."})
+                continue
             msgs.append(msg.model_dump(exclude_none=True))
             if not msg.tool_calls:
                 emit({"type": "assistant", "text": msg.content or "(empty reply: try rephrasing, or start a new chat)"})

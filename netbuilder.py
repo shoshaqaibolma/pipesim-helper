@@ -31,6 +31,11 @@ def _fluid(m, f):
         params = {P("BlackOilFluid", "GASSPECIFICGRAVITY"): f["gas_sg"], P("BlackOilFluid", "API"): f["api"],
                   P("BlackOilFluid", "USEGASRATIO"): C("GasRatioOption", "OGR"), P("BlackOilFluid", "OGR"): f["ogr"],
                   P("BlackOilFluid", "USEWATERRATIO"): C("WaterRatioOption", "WGR"), P("BlackOilFluid", "WGR"): f["wgr"]}
+    elif f.get("water_cut", 0) >= 100:   # VERIFIED (job 17): "GOR cannot be chosen when watercut is 100%"
+        params = {P("BlackOilFluid", "API"): f["api"],
+                  P("BlackOilFluid", "USEGASRATIO"): C("GasRatioOption", "GLR"), P("BlackOilFluid", "GLR"): 0.0,
+                  P("BlackOilFluid", "USEWATERRATIO"): C("WaterRatioOption", "WATERCUT"),
+                  P("BlackOilFluid", "WATERCUT"): 100.0, P("BlackOilFluid", "GASSPECIFICGRAVITY"): f["gas_sg"]}
     else:
         params = {P("BlackOilFluid", "API"): f["api"],
                   P("BlackOilFluid", "USEGASRATIO"): C("GasRatioOption", "GOR"), P("BlackOilFluid", "GOR"): f["gor"],

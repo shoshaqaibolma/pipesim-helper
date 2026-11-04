@@ -74,6 +74,17 @@ print("server down: clear message instead of a stack trace")
 out = run(["hello"], lambda c, m: Msg(""))
 assert "empty reply" in out
 print("empty reply: explained to the user")
+# --- an invalid tool-call JSON from llama-server is retried, not reported as a dead server
+calls = {"n": 0}
+def flaky(client, msgs):
+    calls["n"] += 1
+    if calls["n"] == 1:
+        raise Exception("Error code: 500 - Failed to parse tool call arguments as JSON")
+    return Msg("recovered")
+out = run(["hello"], flaky)
+assert "recovered" in out and "could not reach" not in out, out
+print("invalid tool-call JSON: retried with a smaller call")
+
 # --- long sessions: old tool results are shortened, the latest turn is kept intact
 msgs = [{"role": "system", "content": "s"}, {"role": "user", "content": "u1"},
         {"role": "tool", "tool_call_id": "a", "content": "x" * 30000}, {"role": "user", "content": "u2"},

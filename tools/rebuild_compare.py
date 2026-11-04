@@ -156,7 +156,8 @@ def pipeline_case(path, tmp):
         src, snk = comps["Source"][0], comps["Sink"][0]
         raw = orig.tasks.ptprofilesimulation.get_conditions(producer=src)
         raw = raw[0] if isinstance(raw, (list, tuple)) else raw
-        cond = {k: raw[k] for k in PT_KEYS if isinstance(raw, dict) and raw.get(k) is not None}
+        cond = {k: v for k, v in (raw or {}).items() if k not in ("Producer", "BranchTerminator") and v is not None
+                and not isinstance(v, (list, dict))}   # includes which variable PIPESIM calculates
         out["pt_conditions"] = cond
         out["original_state"], o = run_pt(orig, src, cond)
         sv = values(orig, "Source", src)

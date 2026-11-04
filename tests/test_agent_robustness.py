@@ -59,4 +59,7 @@ assert "kpis" not in agent.SPEC["analysis"] and "path" not in agent.SPEC["model"
 agent.update_spec({"analysis": {"producer": "W1"}}); agent.update_spec({"analysis": {"producer": None}})
 assert "producer" not in agent.SPEC["analysis"]
 print("spec: stray keys dropped with a note, null deletes a key")
+r = agent.update_spec({"analysis": {"type": "grid", "variables": [{"component_type": "Flowline", "name": "FL-1",
+                                                                   "parameter": "InnerDiameter", "values": [203, 254]}]}})
+assert agent.SPEC["analysis"]["type"] == "sweep" and any("sweep" in n for n in r["ignored"]), r
 print("\nALL OK")
