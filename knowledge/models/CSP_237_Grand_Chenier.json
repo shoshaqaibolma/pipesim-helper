@@ -1,0 +1,260 @@
+{
+ "file": "D:\\Program\\Pipesim2023.1\\Case Studies\\Pipeline Models\\CSP_237_Grand_Chenier.pips",
+ "components": {
+  "BlackOilFluid": [
+   "dead condensate"
+  ],
+  "FlowCorrelation": [
+   "Default",
+   "FL:Default"
+  ],
+  "Flowline": [
+   "FL"
+  ],
+  "GlobalCatalog": [
+   "CustomPlotVariables",
+   "PIPESIM_FIELD"
+  ],
+  "Sink": [
+   "Iowa Plant"
+  ],
+  "Source": [
+   "Grand Chenier"
+  ],
+  "Study": [
+   "prediction",
+   "validation"
+  ]
+ },
+ "values": {
+  "BlackOilFluid|dead condensate": {
+   "dead condensate": {
+    "Name": "dead condensate",
+    "API": 62.07,
+    "DeadOilDensity": 731.0091933469726,
+    "DeadOilTemperature1": 71.1111111111112,
+    "DeadOilTemperature2": 15.555555555555657,
+    "DeadOilViscosity1": 0.00026815568638528987,
+    "DeadOilViscosity2": 0.0006047376493765717,
+    "DeadOilViscosityCorr": "Glaso",
+    "COFraction": 0.0,
+    "CO2Fraction": 0.0,
+    "H2Fraction": 0.0,
+    "H2SFraction": 0.0,
+    "N2Fraction": 0.0,
+    "GasSpecificGravity": 0.58,
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": 48.0608360757404,
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "LiveOilViscosityCorr": "ChewandConnaly",
+    "OGR": null,
+    "Richardsonkoiw": 3.8,
+    "Richardsonkwio": 6.6,
+    "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+    "UndersaturatedOilViscosityParA": 0.0239,
+    "UndersaturatedOilViscosityParB": 0.01638,
+    "UseBraunerUllmanEquation": false,
+    "UseDeadOilDensity": false,
+    "UseGasRatio": "LGR",
+    "UserWatercutCutOff": 60.0,
+    "UseWaterRatio": "WaterCut",
+    "VandUserk1": 2.5,
+    "VandUserk2": 0.609,
+    "WaterCut": 0.0,
+    "WaterSpecificGravity": 1.02,
+    "WGR": null,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "FlowCorrelation|Default": {
+   "Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   },
+   "FL:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   }
+  },
+  "FlowCorrelation|FL:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL:Default', 'Template': '___NONE___'})"
+  },
+  "Flowline|FL": {
+   "FL": {
+    "Name": "FL",
+    "AmbientAirTemperature": 18.333333333333428,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": 15.555555555555657,
+    "DepthAtStart": 0.0,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": -0.9144,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 50324.18688,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": 50324.186888307464,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 736.5999999999999,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "GlobalCatalog|CustomPlotVariables": {
+   "CustomPlotVariables": {
+    "Name": "CustomPlotVariables",
+    "CatalogType": "PlotVariableSettings"
+   }
+  },
+  "GlobalCatalog|PIPESIM_FIELD": {
+   "PIPESIM_FIELD": {
+    "Name": "PIPESIM_FIELD",
+    "CatalogType": "CustomUnitSystem"
+   }
+  },
+  "Sink|Iowa Plant": {
+   "Iowa Plant": {
+    "Name": "Iowa Plant",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "IsActive": true,
+    "FlowrateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Grand Chenier": {
+   "Grand Chenier": {
+    "Name": "Grand Chenier",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 48.26330105217847,
+    "Temperature": 70.00000000000006,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "dead condensate",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Study|prediction": {
+   "prediction": {
+    "Name": "prediction",
+    "Description": ""
+   }
+  },
+  "Study|validation": {
+   "validation": {
+    "Name": "validation",
+    "Description": ""
+   }
+  }
+ },
+ "probe": {
+  "about": {
+   "ok": true,
+   "result": {
+    "WebAPIVersion": "2023.1.615.0",
+    "ToolkitVersion": "2023.1",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_xqpl47hx\\CSP_237_Grand_Chenier.pips",
+    "UnitSystem": "PIPESIM_METRIC",
+    "UiUnitSystem": "PIPESIM_FIELD"
+   }
+  },
+  "connections": {
+   "ok": true,
+   "result": [
+    {
+     "Source": "Grand Chenier",
+     "Source Port": "",
+     "Destination": "FL"
+    },
+    {
+     "Source": "FL",
+     "Source Port": "",
+     "Destination": "Iowa Plant"
+    }
+   ]
+  },
+  "get_connections": {
+   "ok": true,
+   "result": {
+    "Grand Chenier": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Iowa Plant",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    }
+   }
+  },
+  "networksimulation.get_conditions": {
+   "ok": false,
+   "error": "RuntimeError: Multiple studies exist in the model. Please specify a study."
+  },
+  "networksimulation.run": {
+   "ok": false,
+   "error": "RuntimeError: Multiple studies exist in the model. Please specify a study."
+  }
+ },
+ "about": {
+  "WebAPIVersion": "2023.1.615.0",
+  "ToolkitVersion": "2023.1",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_xqpl47hx\\CSP_237_Grand_Chenier.pips",
+  "UnitSystem": "PIPESIM_METRIC",
+  "UiUnitSystem": "PIPESIM_FIELD"
+ },
+ "seconds": 5.4
+}

@@ -1,0 +1,1853 @@
+{
+ "file": "D:\\Program\\Pipesim2023.1\\Case Studies\\Network Models\\CSN_313_ESP Optimization.pips",
+ "components": {
+  "BlackOilFluid": [
+   "oil1",
+   "oil2"
+  ],
+  "Casing": [
+   "W1:Csg Tubing_1_Tub#1",
+   "W2:Csg Tubing_2_Tub#1",
+   "W3:Csg Tubing_3_Tub#1",
+   "W4:Csg Tubing_5_Tub#1",
+   "W5:Csg Tubing_6_Tub#1",
+   "W6:Csg Tubing_7_Tub#1",
+   "W7:Csg Tubing_4_Tub#1"
+  ],
+  "CheckValve": [
+   "Check_Valve"
+  ],
+  "Completion": [
+   "W1:VertWell_1",
+   "W2:VertWell_2",
+   "W3:VertWell_3",
+   "W4:VertWell_4",
+   "W5:VertWell_5",
+   "W6:VertWell_6",
+   "W7:VertWell_7"
+  ],
+  "ESP": [
+   "W1:Tubing_1_EspLift",
+   "W2:Tubing_2_EspLift",
+   "W3:Tubing_3_EspLift",
+   "W4:Tubing_5_EspLift",
+   "W5:Tubing_6_EspLift",
+   "W6:Tubing_7_EspLift",
+   "W7:Tubing_4_EspLift"
+  ],
+  "FlowCorrelation": [
+   "Default",
+   "Flowline_1:Default",
+   "Flowline_2:Default",
+   "W1:Default",
+   "W2:Default",
+   "W3:Default",
+   "W4:Default",
+   "W5:Default",
+   "W6:Default",
+   "W7:Default"
+  ],
+  "Flowline": [
+   "Flowline_1",
+   "Flowline_2"
+  ],
+  "GlobalCatalog": [
+   "PIPESIM_FIELD"
+  ],
+  "GravelPack": [
+   "W1:VertWell_1:GravelPack",
+   "W2:VertWell_2:GravelPack",
+   "W3:VertWell_3:GravelPack",
+   "W4:VertWell_4:GravelPack",
+   "W5:VertWell_5:GravelPack",
+   "W6:VertWell_6:GravelPack",
+   "W7:VertWell_7:GravelPack"
+  ],
+  "IPRBackPressure": [
+   "W1:VertWell_1:IPRBACKPRESSURE",
+   "W2:VertWell_2:IPRBACKPRESSURE",
+   "W3:VertWell_3:IPRBACKPRESSURE",
+   "W4:VertWell_4:IPRBACKPRESSURE",
+   "W5:VertWell_5:IPRBACKPRESSURE",
+   "W6:VertWell_6:IPRBACKPRESSURE",
+   "W7:VertWell_7:IPRBACKPRESSURE"
+  ],
+  "IPRDarcy": [
+   "W1:VertWell_1:IPRDARCY",
+   "W2:VertWell_2:IPRDARCY",
+   "W3:VertWell_3:IPRDARCY",
+   "W4:VertWell_4:IPRDARCY",
+   "W5:VertWell_5:IPRDARCY",
+   "W6:VertWell_6:IPRDARCY",
+   "W7:VertWell_7:IPRDARCY"
+  ],
+  "IPRFetkovitch": [
+   "W1:VertWell_1:IPRFETKOVITCH",
+   "W2:VertWell_2:IPRFETKOVITCH",
+   "W3:VertWell_3:IPRFETKOVITCH",
+   "W4:VertWell_4:IPRFETKOVITCH",
+   "W5:VertWell_5:IPRFETKOVITCH",
+   "W6:VertWell_6:IPRFETKOVITCH",
+   "W7:VertWell_7:IPRFETKOVITCH"
+  ],
+  "IPRForchheimer": [
+   "W1:VertWell_1:IPRFORCHHEIMER",
+   "W2:VertWell_2:IPRFORCHHEIMER",
+   "W3:VertWell_3:IPRFORCHHEIMER",
+   "W4:VertWell_4:IPRFORCHHEIMER",
+   "W5:VertWell_5:IPRFORCHHEIMER",
+   "W6:VertWell_6:IPRFORCHHEIMER",
+   "W7:VertWell_7:IPRFORCHHEIMER"
+  ],
+  "IPRHorizontalPI": [
+   "W1:VertWell_1:IPRHORIZONTALPI",
+   "W2:VertWell_2:IPRHORIZONTALPI",
+   "W3:VertWell_3:IPRHORIZONTALPI",
+   "W4:VertWell_4:IPRHORIZONTALPI",
+   "W5:VertWell_5:IPRHORIZONTALPI",
+   "W6:VertWell_6:IPRHORIZONTALPI",
+   "W7:VertWell_7:IPRHORIZONTALPI"
+  ],
+  "IPRHydraulicFracture": [
+   "W1:VertWell_1:IPRHYDRAULICFRACTURE",
+   "W2:VertWell_2:IPRHYDRAULICFRACTURE",
+   "W3:VertWell_3:IPRHYDRAULICFRACTURE",
+   "W4:VertWell_4:IPRHYDRAULICFRACTURE",
+   "W5:VertWell_5:IPRHYDRAULICFRACTURE",
+   "W6:VertWell_6:IPRHYDRAULICFRACTURE",
+   "W7:VertWell_7:IPRHYDRAULICFRACTURE"
+  ],
+  "IPRJones": [
+   "W1:VertWell_1:IPRJONES",
+   "W2:VertWell_2:IPRJONES",
+   "W3:VertWell_3:IPRJONES",
+   "W4:VertWell_4:IPRJONES",
+   "W5:VertWell_5:IPRJONES",
+   "W6:VertWell_6:IPRJONES",
+   "W7:VertWell_7:IPRJONES"
+  ],
+  "IPRPIModel": [
+   "W1:VertWell_1:IPRPIModel",
+   "W2:VertWell_2:IPRPIModel",
+   "W3:VertWell_3:IPRPIModel",
+   "W4:VertWell_4:IPRPIModel",
+   "W5:VertWell_5:IPRPIModel",
+   "W6:VertWell_6:IPRPIModel",
+   "W7:VertWell_7:IPRPIModel"
+  ],
+  "IPRPSSBabuOdeh": [
+   "W1:VertWell_1:IPRPSSBABUODEH",
+   "W2:VertWell_2:IPRPSSBABUODEH",
+   "W3:VertWell_3:IPRPSSBABUODEH",
+   "W4:VertWell_4:IPRPSSBABUODEH",
+   "W5:VertWell_5:IPRPSSBABUODEH",
+   "W6:VertWell_6:IPRPSSBABUODEH",
+   "W7:VertWell_7:IPRPSSBABUODEH"
+  ],
+  "IPRSSJoshi": [
+   "W1:VertWell_1:IPRSSJOSHI",
+   "W2:VertWell_2:IPRSSJOSHI",
+   "W3:VertWell_3:IPRSSJOSHI",
+   "W4:VertWell_4:IPRSSJOSHI",
+   "W5:VertWell_5:IPRSSJOSHI",
+   "W6:VertWell_6:IPRSSJOSHI",
+   "W7:VertWell_7:IPRSSJOSHI"
+  ],
+  "IPRTriLinear": [
+   "W1:VertWell_1:IPRTRILINEAR",
+   "W2:VertWell_2:IPRTRILINEAR",
+   "W3:VertWell_3:IPRTRILINEAR",
+   "W4:VertWell_4:IPRTRILINEAR",
+   "W5:VertWell_5:IPRTRILINEAR",
+   "W6:VertWell_6:IPRTRILINEAR",
+   "W7:VertWell_7:IPRTRILINEAR"
+  ],
+  "Junction": [
+   "J1",
+   "J2",
+   "J_3",
+   "Manifold"
+  ],
+  "Packer": [
+   "W1:Packer",
+   "W2:Packer",
+   "W3:Packer",
+   "W4:Packer",
+   "W5:Packer",
+   "W6:Packer",
+   "W7:Packer"
+  ],
+  "Sink": [
+   "Oil-to-Sales"
+  ],
+  "Source": [
+   "W1:Well Outlet 10341",
+   "W1:WellString outlet10347",
+   "W1:WellString outlet10349",
+   "W2:Well Outlet 10278",
+   "W2:WellString outlet10284",
+   "W2:WellString outlet10286",
+   "W3:Well Outlet 10414",
+   "W3:WellString outlet10420",
+   "W3:WellString outlet10422",
+   "W4:Well Outlet 10550",
+   "W4:WellString outlet10556",
+   "W4:WellString outlet10558",
+   "W5:Well Outlet 10487",
+   "W5:WellString outlet10493",
+   "W5:WellString outlet10495",
+   "W6:Well Outlet 10622",
+   "W6:WellString outlet10628",
+   "W6:WellString outlet10630",
+   "W7:Well Outlet 10694",
+   "W7:WellString outlet10700",
+   "W7:WellString outlet10702"
+  ],
+  "Study": [
+   "Study 1"
+  ],
+  "Tubing": [
+   "W1:Tubing_1_Tub#1",
+   "W2:Tubing_2_Tub#1",
+   "W3:Tubing_3_Tub#1",
+   "W4:Tubing_5_Tub#1",
+   "W5:Tubing_6_Tub#1",
+   "W6:Tubing_7_Tub#1",
+   "W7:Tubing_4_Tub#1"
+  ],
+  "Well": [
+   "W1",
+   "W2",
+   "W3",
+   "W4",
+   "W5",
+   "W6",
+   "W7"
+  ]
+ },
+ "values": {
+  "BlackOilFluid|oil1": {
+   "oil1": {
+    "Name": "oil1",
+    "API": 30.0,
+    "DeadOilDensity": 876.1699662920959,
+    "DeadOilTemperature1": 93.33333299999998,
+    "DeadOilTemperature2": 15.555555999999967,
+    "DeadOilViscosity1": 0.0026439104470132313,
+    "DeadOilViscosity2": 0.16604364089740423,
+    "DeadOilViscosityCorr": "BeggsAndRobinson",
+    "COFraction": 0.0,
+    "CO2Fraction": 0.0,
+    "H2Fraction": 0.0,
+    "H2SFraction": 0.0,
+    "N2Fraction": 0.0,
+    "GasSpecificGravity": 0.82,
+    "GLR": null,
+    "GOR": 51.000148481337995,
+    "GWR": null,
+    "LGR": null,
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "LiveOilViscosityCorr": "ChewandConnaly",
+    "OGR": 19607.78605117043,
+    "Richardsonkoiw": 3.8,
+    "Richardsonkwio": 6.6,
+    "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+    "UndersaturatedOilViscosityParA": 0.0239,
+    "UndersaturatedOilViscosityParB": 0.01638,
+    "UseBraunerUllmanEquation": false,
+    "UseDeadOilDensity": false,
+    "UseGasRatio": "GOR",
+    "UserWatercutCutOff": 60.0,
+    "UseWaterRatio": "WaterCut",
+    "VandUserk1": 2.5,
+    "VandUserk2": 0.609,
+    "WaterCut": 30.0,
+    "WaterSpecificGravity": 1.053,
+    "WGR": null,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "BlackOilFluid|oil2": {
+   "oil2": {
+    "Name": "oil2",
+    "API": 30.0,
+    "DeadOilDensity": 876.1699662920959,
+    "DeadOilTemperature1": 93.33333333333331,
+    "DeadOilTemperature2": 15.555555555555543,
+    "DeadOilViscosity1": 0.002643910430573813,
+    "DeadOilViscosity2": 0.16604365153742323,
+    "DeadOilViscosityCorr": "BeggsAndRobinson",
+    "COFraction": 0.0,
+    "CO2Fraction": 0.0,
+    "H2Fraction": 0.0,
+    "H2SFraction": 0.0,
+    "N2Fraction": 0.0,
+    "GasSpecificGravity": 1.0,
+    "GLR": null,
+    "GOR": 78.00022708910517,
+    "GWR": null,
+    "LGR": null,
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "LiveOilViscosityCorr": "ChewandConnaly",
+    "OGR": 12820.475494996053,
+    "Richardsonkoiw": 3.8,
+    "Richardsonkwio": 6.6,
+    "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+    "UndersaturatedOilViscosityParA": 0.0239,
+    "UndersaturatedOilViscosityParB": 0.01638,
+    "UseBraunerUllmanEquation": false,
+    "UseDeadOilDensity": false,
+    "UseGasRatio": "GOR",
+    "UserWatercutCutOff": 60.0,
+    "UseWaterRatio": "WaterCut",
+    "VandUserk1": 2.5,
+    "VandUserk2": 0.609,
+    "WaterCut": 90.0,
+    "WaterSpecificGravity": 1.12,
+    "WGR": null,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "Casing|W1:Csg Tubing_1_Tub#1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'W1:Csg Tubing_1_Tub#1', 'Template': '___NONE___'})"
+  },
+  "Casing|W2:Csg Tubing_2_Tub#1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'W2:Csg Tubing_2_Tub#1', 'Template': '___NONE___'})"
+  },
+  "Casing|W3:Csg Tubing_3_Tub#1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'W3:Csg Tubing_3_Tub#1', 'Template': '___NONE___'})"
+  },
+  "Casing|W4:Csg Tubing_5_Tub#1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'W4:Csg Tubing_5_Tub#1', 'Template': '___NONE___'})"
+  },
+  "Casing|W5:Csg Tubing_6_Tub#1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'W5:Csg Tubing_6_Tub#1', 'Template': '___NONE___'})"
+  },
+  "Casing|W6:Csg Tubing_7_Tub#1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'W6:Csg Tubing_7_Tub#1', 'Template': '___NONE___'})"
+  },
+  "Casing|W7:Csg Tubing_4_Tub#1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'W7:Csg Tubing_4_Tub#1', 'Template': '___NONE___'})"
+  },
+  "CheckValve|Check_Valve": {
+   "Check_Valve": {
+    "Name": "Check_Valve",
+    "CheckValveSetting": "BlockReverse",
+    "IsActive": true
+   }
+  },
+  "Completion|W1:VertWell_1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'W1:VertWell_1', 'Template': '___NONE___'})"
+  },
+  "Completion|W2:VertWell_2": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'W2:VertWell_2', 'Template': '___NONE___'})"
+  },
+  "Completion|W3:VertWell_3": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'W3:VertWell_3', 'Template': '___NONE___'})"
+  },
+  "Completion|W4:VertWell_4": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'W4:VertWell_4', 'Template': '___NONE___'})"
+  },
+  "Completion|W5:VertWell_5": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'W5:VertWell_5', 'Template': '___NONE___'})"
+  },
+  "Completion|W6:VertWell_6": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'W6:VertWell_6', 'Template': '___NONE___'})"
+  },
+  "Completion|W7:VertWell_7": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'W7:VertWell_7', 'Template': '___NONE___'})"
+  },
+  "ESP|W1:Tubing_1_EspLift": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'ESP': 'W1:Tubing_1_EspLift', 'Template': '___NONE___'})"
+  },
+  "ESP|W2:Tubing_2_EspLift": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'ESP': 'W2:Tubing_2_EspLift', 'Template': '___NONE___'})"
+  },
+  "ESP|W3:Tubing_3_EspLift": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'ESP': 'W3:Tubing_3_EspLift', 'Template': '___NONE___'})"
+  },
+  "ESP|W4:Tubing_5_EspLift": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'ESP': 'W4:Tubing_5_EspLift', 'Template': '___NONE___'})"
+  },
+  "ESP|W5:Tubing_6_EspLift": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'ESP': 'W5:Tubing_6_EspLift', 'Template': '___NONE___'})"
+  },
+  "ESP|W6:Tubing_7_EspLift": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'ESP': 'W6:Tubing_7_EspLift', 'Template': '___NONE___'})"
+  },
+  "ESP|W7:Tubing_4_EspLift": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'ESP': 'W7:Tubing_4_EspLift', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|Default": {
+   "W2:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "W1:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "W3:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "W5:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "W4:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "W6:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "W7:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": true
+   },
+   "Flowline_1:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "Flowline_2:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   }
+  },
+  "FlowCorrelation|Flowline_1:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Flowline_1:Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|Flowline_2:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Flowline_2:Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|W1:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'W1:Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|W2:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'W2:Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|W3:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'W3:Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|W4:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'W4:Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|W5:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'W5:Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|W6:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'W6:Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|W7:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'W7:Default', 'Template': '___NONE___'})"
+  },
+  "Flowline|Flowline_1": {
+   "Flowline_1": {
+    "Name": "Flowline_1",
+    "AmbientAirTemperature": 20.0,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": 20.0,
+    "DepthAtStart": null,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 2564.0000028000004,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": false,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 158.9999995,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": 2564.1281967951604,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|Flowline_2": {
+   "Flowline_2": {
+    "Name": "Flowline_2",
+    "AmbientAirTemperature": 20.0,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": 20.0,
+    "DepthAtStart": null,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 30.0,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": false,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 158.99999999999997,
+    "Roughness": 0.0254,
+    "WallThickness": 12.699999999999998,
+    "Length": 30.001499962501875,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "GlobalCatalog|PIPESIM_FIELD": {
+   "PIPESIM_FIELD": {
+    "Name": "PIPESIM_FIELD",
+    "CatalogType": "CustomUnitSystem"
+   }
+  },
+  "GravelPack|W1:VertWell_1:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'W1:VertWell_1:GravelPack', 'Template': '___NONE___'})"
+  },
+  "GravelPack|W2:VertWell_2:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'W2:VertWell_2:GravelPack', 'Template': '___NONE___'})"
+  },
+  "GravelPack|W3:VertWell_3:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'W3:VertWell_3:GravelPack', 'Template': '___NONE___'})"
+  },
+  "GravelPack|W4:VertWell_4:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'W4:VertWell_4:GravelPack', 'Template': '___NONE___'})"
+  },
+  "GravelPack|W5:VertWell_5:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'W5:VertWell_5:GravelPack', 'Template': '___NONE___'})"
+  },
+  "GravelPack|W6:VertWell_6:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'W6:VertWell_6:GravelPack', 'Template': '___NONE___'})"
+  },
+  "GravelPack|W7:VertWell_7:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'W7:VertWell_7:GravelPack', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|W1:VertWell_1:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'W1:VertWell_1:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|W2:VertWell_2:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'W2:VertWell_2:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|W3:VertWell_3:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'W3:VertWell_3:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|W4:VertWell_4:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'W4:VertWell_4:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|W5:VertWell_5:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'W5:VertWell_5:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|W6:VertWell_6:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'W6:VertWell_6:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|W7:VertWell_7:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'W7:VertWell_7:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|W1:VertWell_1:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'W1:VertWell_1:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|W2:VertWell_2:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'W2:VertWell_2:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|W3:VertWell_3:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'W3:VertWell_3:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|W4:VertWell_4:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'W4:VertWell_4:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|W5:VertWell_5:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'W5:VertWell_5:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|W6:VertWell_6:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'W6:VertWell_6:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|W7:VertWell_7:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'W7:VertWell_7:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRFetkovitch|W1:VertWell_1:IPRFETKOVITCH": null,
+  "IPRFetkovitch|W2:VertWell_2:IPRFETKOVITCH": null,
+  "IPRFetkovitch|W3:VertWell_3:IPRFETKOVITCH": null,
+  "IPRFetkovitch|W4:VertWell_4:IPRFETKOVITCH": null,
+  "IPRFetkovitch|W5:VertWell_5:IPRFETKOVITCH": null,
+  "IPRFetkovitch|W6:VertWell_6:IPRFETKOVITCH": null,
+  "IPRFetkovitch|W7:VertWell_7:IPRFETKOVITCH": null,
+  "IPRForchheimer|W1:VertWell_1:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'W1:VertWell_1:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRForchheimer|W2:VertWell_2:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'W2:VertWell_2:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRForchheimer|W3:VertWell_3:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'W3:VertWell_3:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRForchheimer|W4:VertWell_4:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'W4:VertWell_4:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRForchheimer|W5:VertWell_5:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'W5:VertWell_5:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRForchheimer|W6:VertWell_6:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'W6:VertWell_6:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRForchheimer|W7:VertWell_7:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'W7:VertWell_7:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|W1:VertWell_1:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'W1:VertWell_1:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|W2:VertWell_2:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'W2:VertWell_2:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|W3:VertWell_3:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'W3:VertWell_3:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|W4:VertWell_4:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'W4:VertWell_4:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|W5:VertWell_5:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'W5:VertWell_5:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|W6:VertWell_6:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'W6:VertWell_6:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|W7:VertWell_7:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'W7:VertWell_7:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|W1:VertWell_1:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'W1:VertWell_1:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|W2:VertWell_2:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'W2:VertWell_2:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|W3:VertWell_3:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'W3:VertWell_3:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|W4:VertWell_4:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'W4:VertWell_4:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|W5:VertWell_5:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'W5:VertWell_5:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|W6:VertWell_6:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'W6:VertWell_6:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|W7:VertWell_7:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'W7:VertWell_7:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRJones|W1:VertWell_1:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'W1:VertWell_1:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRJones|W2:VertWell_2:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'W2:VertWell_2:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRJones|W3:VertWell_3:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'W3:VertWell_3:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRJones|W4:VertWell_4:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'W4:VertWell_4:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRJones|W5:VertWell_5:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'W5:VertWell_5:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRJones|W6:VertWell_6:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'W6:VertWell_6:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRJones|W7:VertWell_7:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'W7:VertWell_7:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|W1:VertWell_1:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'W1:VertWell_1:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|W2:VertWell_2:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'W2:VertWell_2:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|W3:VertWell_3:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'W3:VertWell_3:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|W4:VertWell_4:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'W4:VertWell_4:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|W5:VertWell_5:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'W5:VertWell_5:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|W6:VertWell_6:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'W6:VertWell_6:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|W7:VertWell_7:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'W7:VertWell_7:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|W1:VertWell_1:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'W1:VertWell_1:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|W2:VertWell_2:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'W2:VertWell_2:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|W3:VertWell_3:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'W3:VertWell_3:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|W4:VertWell_4:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'W4:VertWell_4:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|W5:VertWell_5:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'W5:VertWell_5:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|W6:VertWell_6:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'W6:VertWell_6:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|W7:VertWell_7:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'W7:VertWell_7:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|W1:VertWell_1:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'W1:VertWell_1:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|W2:VertWell_2:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'W2:VertWell_2:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|W3:VertWell_3:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'W3:VertWell_3:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|W4:VertWell_4:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'W4:VertWell_4:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|W5:VertWell_5:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'W5:VertWell_5:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|W6:VertWell_6:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'W6:VertWell_6:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|W7:VertWell_7:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'W7:VertWell_7:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|W1:VertWell_1:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'W1:VertWell_1:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|W2:VertWell_2:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'W2:VertWell_2:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|W3:VertWell_3:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'W3:VertWell_3:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|W4:VertWell_4:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'W4:VertWell_4:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|W5:VertWell_5:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'W5:VertWell_5:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|W6:VertWell_6:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'W6:VertWell_6:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|W7:VertWell_7:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'W7:VertWell_7:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "Junction|J1": {
+   "J1": {
+    "Name": "J1",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J2": {
+   "J2": {
+    "Name": "J2",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J_3": {
+   "J_3": {
+    "Name": "J_3",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|Manifold": {
+   "Manifold": {
+    "Name": "Manifold",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Packer|W1:Packer": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'W1:Packer', 'Template': '___NONE___'})"
+  },
+  "Packer|W2:Packer": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'W2:Packer', 'Template': '___NONE___'})"
+  },
+  "Packer|W3:Packer": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'W3:Packer', 'Template': '___NONE___'})"
+  },
+  "Packer|W4:Packer": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'W4:Packer', 'Template': '___NONE___'})"
+  },
+  "Packer|W5:Packer": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'W5:Packer', 'Template': '___NONE___'})"
+  },
+  "Packer|W6:Packer": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'W6:Packer', 'Template': '___NONE___'})"
+  },
+  "Packer|W7:Packer": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'W7:Packer', 'Template': '___NONE___'})"
+  },
+  "Sink|Oil-to-Sales": {
+   "Oil-to-Sales": {
+    "Name": "Oil-to-Sales",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 15.1987499306468,
+    "IsActive": true,
+    "FlowrateType": "LiquidFlowRate"
+   }
+  },
+  "Source|W1:Well Outlet 10341": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W1:Well Outlet 10341', 'Template': '___NONE___'})"
+  },
+  "Source|W1:WellString outlet10347": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W1:WellString outlet10347', 'Template': '___NONE___'})"
+  },
+  "Source|W1:WellString outlet10349": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W1:WellString outlet10349', 'Template': '___NONE___'})"
+  },
+  "Source|W2:Well Outlet 10278": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W2:Well Outlet 10278', 'Template': '___NONE___'})"
+  },
+  "Source|W2:WellString outlet10284": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W2:WellString outlet10284', 'Template': '___NONE___'})"
+  },
+  "Source|W2:WellString outlet10286": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W2:WellString outlet10286', 'Template': '___NONE___'})"
+  },
+  "Source|W3:Well Outlet 10414": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W3:Well Outlet 10414', 'Template': '___NONE___'})"
+  },
+  "Source|W3:WellString outlet10420": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W3:WellString outlet10420', 'Template': '___NONE___'})"
+  },
+  "Source|W3:WellString outlet10422": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W3:WellString outlet10422', 'Template': '___NONE___'})"
+  },
+  "Source|W4:Well Outlet 10550": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W4:Well Outlet 10550', 'Template': '___NONE___'})"
+  },
+  "Source|W4:WellString outlet10556": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W4:WellString outlet10556', 'Template': '___NONE___'})"
+  },
+  "Source|W4:WellString outlet10558": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W4:WellString outlet10558', 'Template': '___NONE___'})"
+  },
+  "Source|W5:Well Outlet 10487": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W5:Well Outlet 10487', 'Template': '___NONE___'})"
+  },
+  "Source|W5:WellString outlet10493": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W5:WellString outlet10493', 'Template': '___NONE___'})"
+  },
+  "Source|W5:WellString outlet10495": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W5:WellString outlet10495', 'Template': '___NONE___'})"
+  },
+  "Source|W6:Well Outlet 10622": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W6:Well Outlet 10622', 'Template': '___NONE___'})"
+  },
+  "Source|W6:WellString outlet10628": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W6:WellString outlet10628', 'Template': '___NONE___'})"
+  },
+  "Source|W6:WellString outlet10630": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W6:WellString outlet10630', 'Template': '___NONE___'})"
+  },
+  "Source|W7:Well Outlet 10694": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W7:Well Outlet 10694', 'Template': '___NONE___'})"
+  },
+  "Source|W7:WellString outlet10700": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W7:WellString outlet10700', 'Template': '___NONE___'})"
+  },
+  "Source|W7:WellString outlet10702": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'W7:WellString outlet10702', 'Template': '___NONE___'})"
+  },
+  "Study|Study 1": {
+   "Study 1": {
+    "Name": "Study 1",
+    "Description": ""
+   }
+  },
+  "Tubing|W1:Tubing_1_Tub#1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'W1:Tubing_1_Tub#1', 'Template': '___NONE___'})"
+  },
+  "Tubing|W2:Tubing_2_Tub#1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'W2:Tubing_2_Tub#1', 'Template': '___NONE___'})"
+  },
+  "Tubing|W3:Tubing_3_Tub#1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'W3:Tubing_3_Tub#1', 'Template': '___NONE___'})"
+  },
+  "Tubing|W4:Tubing_5_Tub#1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'W4:Tubing_5_Tub#1', 'Template': '___NONE___'})"
+  },
+  "Tubing|W5:Tubing_6_Tub#1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'W5:Tubing_6_Tub#1', 'Template': '___NONE___'})"
+  },
+  "Tubing|W6:Tubing_7_Tub#1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'W6:Tubing_7_Tub#1', 'Template': '___NONE___'})"
+  },
+  "Tubing|W7:Tubing_4_Tub#1": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'W7:Tubing_4_Tub#1', 'Template': '___NONE___'})"
+  },
+  "Well|W1": {
+   "W1": {
+    "Name": "W1",
+    "GasSpecificGravity": 0.64,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": 15.555555600000048,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "UseGasSpecificGravity",
+    "IsInjection": false,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "W1",
+    "IsMultiPointing": false
+   }
+  },
+  "Well|W2": {
+   "W2": {
+    "Name": "W2",
+    "GasSpecificGravity": 0.64,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": 15.555555600000048,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "UseGasSpecificGravity",
+    "IsInjection": false,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "W2",
+    "IsMultiPointing": false
+   }
+  },
+  "Well|W3": {
+   "W3": {
+    "Name": "W3",
+    "GasSpecificGravity": 0.64,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": 15.555555600000048,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "UseGasSpecificGravity",
+    "IsInjection": false,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "W3",
+    "IsMultiPointing": false
+   }
+  },
+  "Well|W4": {
+   "W4": {
+    "Name": "W4",
+    "GasSpecificGravity": 0.64,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": 15.555555600000048,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "UseGasSpecificGravity",
+    "IsInjection": false,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "W4",
+    "IsMultiPointing": false
+   }
+  },
+  "Well|W5": {
+   "W5": {
+    "Name": "W5",
+    "GasSpecificGravity": 0.64,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": 15.555555600000048,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "UseGasSpecificGravity",
+    "IsInjection": false,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "W5",
+    "IsMultiPointing": false
+   }
+  },
+  "Well|W6": {
+   "W6": {
+    "Name": "W6",
+    "GasSpecificGravity": 0.64,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": 15.555555600000048,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "UseGasSpecificGravity",
+    "IsInjection": false,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "W6",
+    "IsMultiPointing": false
+   }
+  },
+  "Well|W7": {
+   "W7": {
+    "Name": "W7",
+    "GasSpecificGravity": 0.64,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": 15.555555600000048,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "UseGasSpecificGravity",
+    "IsInjection": false,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "W7",
+    "IsMultiPointing": false
+   }
+  }
+ },
+ "probe": {
+  "about": {
+   "ok": true,
+   "result": {
+    "WebAPIVersion": "2023.1.615.0",
+    "ToolkitVersion": "2023.1",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_yj_msxvp\\CSN_313_ESP Optimization.pips",
+    "UnitSystem": "PIPESIM_METRIC",
+    "UiUnitSystem": "PIPESIM_FIELD"
+   }
+  },
+  "connections": {
+   "ok": true,
+   "result": [
+    {
+     "Source": "W2",
+     "Source Port": "",
+     "Destination": "Manifold"
+    },
+    {
+     "Source": "W1",
+     "Source Port": "",
+     "Destination": "Manifold"
+    },
+    {
+     "Source": "W3",
+     "Source Port": "",
+     "Destination": "Manifold"
+    },
+    {
+     "Source": "W5",
+     "Source Port": "",
+     "Destination": "Manifold"
+    },
+    {
+     "Source": "W4",
+     "Source Port": "",
+     "Destination": "Manifold"
+    },
+    {
+     "Source": "W6",
+     "Source Port": "",
+     "Destination": "Manifold"
+    },
+    {
+     "Source": "W7",
+     "Source Port": "",
+     "Destination": "Manifold"
+    },
+    {
+     "Source": "Manifold",
+     "Source Port": "",
+     "Destination": "J1"
+    },
+    {
+     "Source": "J1",
+     "Source Port": "",
+     "Destination": "Check_Valve"
+    },
+    {
+     "Source": "Check_Valve",
+     "Source Port": "",
+     "Destination": "J2"
+    },
+    {
+     "Source": "J2",
+     "Source Port": "",
+     "Destination": "Flowline_1"
+    },
+    {
+     "Source": "Flowline_1",
+     "Source Port": "",
+     "Destination": "J_3"
+    },
+    {
+     "Source": "Flowline_2",
+     "Source Port": "",
+     "Destination": "Oil-to-Sales"
+    },
+    {
+     "Source": "J_3",
+     "Source Port": "",
+     "Destination": "Flowline_2"
+    }
+   ]
+  },
+  "get_connections": {
+   "ok": true,
+   "result": {
+    "W2": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Manifold",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "W1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Manifold",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "W3": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Manifold",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "W5": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Manifold",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "W4": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Manifold",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "W6": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Manifold",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "W7": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Manifold",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Manifold": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Check_Valve",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Check_Valve": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J2",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J2": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Flowline_1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Flowline_1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J_3",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Flowline_2": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Oil-to-Sales",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J_3": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Flowline_2",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    }
+   }
+  },
+  "networksimulation.get_conditions": {
+   "ok": true,
+   "result": {
+    "W2:VertWell_2": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "W2",
+     "BoundaryNodeName": "VertWell_2",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 44.30000000000001,
+     "Pressure": 141.85499889305297,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 51.000148481337995,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 63.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "VertWell_2",
+     "IsBottomCompletion": false
+    },
+    "W1:VertWell_1": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "W1",
+     "BoundaryNodeName": "VertWell_1",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 44.30000000000001,
+     "Pressure": 141.85499889305297,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 51.000148481337995,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 78.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "VertWell_1",
+     "IsBottomCompletion": false
+    },
+    "W3:VertWell_3": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "W3",
+     "BoundaryNodeName": "VertWell_3",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 44.30000000000001,
+     "Pressure": 187.45124730604198,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 51.000148481337995,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 80.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "VertWell_3",
+     "IsBottomCompletion": false
+    },
+    "W5:VertWell_5": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "W5",
+     "BoundaryNodeName": "VertWell_5",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 44.30000000000001,
+     "Pressure": 141.85499889305297,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 51.000148481337995,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 90.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "VertWell_5",
+     "IsBottomCompletion": false
+    },
+    "W4:VertWell_4": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "W4",
+     "BoundaryNodeName": "VertWell_4",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 44.30000000000001,
+     "Pressure": 141.85499889305297,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 51.000148481337995,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 88.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "VertWell_4",
+     "IsBottomCompletion": false
+    },
+    "W6:VertWell_6": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "W6",
+     "BoundaryNodeName": "VertWell_6",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 44.30000000000001,
+     "Pressure": 141.85499889305297,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 51.000148481337995,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 80.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "VertWell_6",
+     "IsBottomCompletion": false
+    },
+    "W7:VertWell_7": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "W7",
+     "BoundaryNodeName": "VertWell_7",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 73.99999999999994,
+     "Pressure": 253.312496545861,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 78.00022708910517,
+     "OGR": 12820.475494996053,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 90.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "VertWell_7",
+     "IsBottomCompletion": false
+    },
+    "Oil-to-Sales": {
+     "BoundaryNodeType": "Sink",
+     "WellName": null,
+     "BoundaryNodeName": "Oil-to-Sales",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": null,
+     "Pressure": 15.1987499306468,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    }
+   }
+  }
+ },
+ "about": {
+  "WebAPIVersion": "2023.1.615.0",
+  "ToolkitVersion": "2023.1",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_yj_msxvp\\CSN_313_ESP Optimization.pips",
+  "UnitSystem": "PIPESIM_METRIC",
+  "UiUnitSystem": "PIPESIM_FIELD"
+ },
+ "baseline": {
+  "state": "Completed",
+  "summary": {
+   "Info": [
+    "2026-11-04T06:30:33.888Z    Beginning simulation...",
+    "2026-11-04T06:30:33.886Z    Running with 8 cores",
+    "2026-11-04T06:30:35.138Z    Solver converged to a solution.",
+    "2026-11-04T06:30:35.166Z    Finished simulation"
+   ],
+   "Error": [],
+   "Warning": []
+  },
+  "messages": [
+   "2026-11-04T06:30:34.044Z    Service starting...",
+   "2026-11-04T06:30:34.089Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T06:30:34.295Z    Service listening at 'net.pipe://localhost/pipe/6da56dd056b5417da2db4e4063933f00'...",
+   "2026-11-04T06:30:34.445Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\18112",
+   "2026-11-04T06:30:34.445Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\18112\\CSN_313_ESP Optimization.tnt (8)",
+   "2026-11-04T06:30:34.486Z    ...................................................................................................................... ",
+   "2026-11-04T06:30:34.488Z    Processing branch W5.. ",
+   "2026-11-04T06:30:34.490Z    Processing branch Oil-to-Sales.. ",
+   "2026-11-04T06:30:34.493Z    Processing branch W4.. ",
+   "2026-11-04T06:30:34.496Z    Processing branch W2.. ",
+   "2026-11-04T06:30:34.499Z    Processing branch W7.. ",
+   "2026-11-04T06:30:34.501Z    Processing branch W3.. ",
+   "2026-11-04T06:30:34.503Z    Processing branch W1.. ",
+   "2026-11-04T06:30:34.505Z    Processing branch W6.",
+   "2026-11-04T06:30:34.505Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T06:30:34.586Z    ",
+   "2026-11-04T06:30:34.630Z     Iteration   1 P error : 112.85 %, F error :   0.21 %, L error :   0.00 %",
+   "2026-11-04T06:30:34.695Z     Iteration   2 P error :   0.08 %, F error :   0.16 %, L error :   0.00 %",
+   "2026-11-04T06:30:34.695Z    ",
+   "2026-11-04T06:30:34.695Z    ",
+   "2026-11-04T06:30:34.695Z     Converged.                                                                     ",
+   "2026-11-04T06:30:34.695Z    ",
+   "2026-11-04T06:30:34.695Z    WARNING: node Manifold has flow residual of  0.44879E-01 lb/s (  0.1246%)",
+   "2026-11-04T06:30:34.695Z     ... network converged at iteration   2, final rms error :   0.838731E-03",
+   "2026-11-04T06:30:34.695Z      Start Post-Processing results",
+   "2026-11-04T06:30:34.739Z    ",
+   "2026-11-04T06:30:34.739Z       Elapsed time:",
+   "2026-11-04T06:30:34.739Z    ",
+   "2026-11-04T06:30:34.739Z       Network Executive      0.29",
+   "2026-11-04T06:30:34.739Z       PIPESIM sub-tasks      0.00",
+   "2026-11-04T06:30:34.739Z                         ---------",
+   "2026-11-04T06:30:34.739Z                 Total        0.29",
+   "2026-11-04T06:30:34.739Z    ",
+   "2026-11-04T06:30:34.739Z       CPU time:",
+   "2026-11-04T06:30:34.739Z    ",
+   "2026-11-04T06:30:34.739Z               User task      0.47",
+   "2026-11-04T06:30:34.739Z               System         0.09",
+   "2026-11-04T06:30:34.739Z                         ---------",
+   "2026-11-04T06:30:34.739Z                 Total        0.56",
+   "2026-11-04T06:30:34.988Z     Disposing communication agent.",
+   "2026-11-04T06:30:34.988Z     Disposing communication agent.",
+   "2026-11-04T06:30:34.988Z     Disposing communication agent.",
+   "2026-11-04T06:30:34.988Z     Disposing communication agent.",
+   "2026-11-04T06:30:34.988Z     Disposing communication agent.",
+   "2026-11-04T06:30:34.988Z     Disposing communication agent.",
+   "2026-11-04T06:30:34.988Z     Disposing communication agent.",
+   "2026-11-04T06:30:35.141Z     Disposing communication agent."
+  ],
+  "system": {},
+  "node": {
+   "Pressure": {
+    "Unit": "bara",
+    "W6": 15.96149492411203,
+    "W4": 15.961494942180163,
+    "Tubing_2_EspLift": 190.25275070700843,
+    "W2": 15.961494929277832,
+    "W5": 15.961494930257732,
+    "Tubing_1_EspLift": 198.68198310620733,
+    "W7": 15.961494906130087,
+    "VertWell_6": 24.027411993707688,
+    "VertWell_5": 34.02231248854198,
+    "VertWell_2": 14.268866505278003,
+    "Oil-to-Sales": 15.19880390757951,
+    "VertWell_3": 12.503658399041,
+    "W3": 15.961494924662377,
+    "Tubing_5_EspLift": 205.5196273177849,
+    "W1": 15.961495087901882,
+    "Manifold": 15.961494925597888,
+    "VertWell_4": 39.215639839863655,
+    "Tubing_7_EspLift": 199.2480868761661,
+    "Tubing_3_EspLift": 194.7851923045112,
+    "VertWell_1": 34.442190340264055,
+    "VertWell_7": 33.268960170505494,
+    "Tubing_4_EspLift": 326.055540199329,
+    "Tubing_6_EspLift": 205.84918252749048
+   },
+   "Temperature": {
+    "Unit": "degC",
+    "W6": 11.931668838905921,
+    "W4": 11.640959137166135,
+    "Tubing_2_EspLift": 51.47460530426292,
+    "W2": 33.72071053551679,
+    "W5": 12.249887761530829,
+    "Tubing_1_EspLift": 94.81642119418154,
+    "W7": 60.05050596356989,
+    "VertWell_6": 46.81964241036633,
+    "VertWell_5": 46.717796490993805,
+    "VertWell_2": 46.67155524348277,
+    "Oil-to-Sales": 46.89425128762343,
+    "VertWell_3": 48.167313812572615,
+    "W3": 33.26945181490379,
+    "Tubing_5_EspLift": 77.68985693019073,
+    "W1": 11.08477074915055,
+    "Manifold": 48.39501613309915,
+    "VertWell_4": 46.620278768582125,
+    "Tubing_7_EspLift": 74.09033431536358,
+    "Tubing_3_EspLift": 52.321213307151254,
+    "VertWell_1": 46.67357654773457,
+    "VertWell_7": 78.61146357026547,
+    "Tubing_4_EspLift": 83.10079182320237,
+    "Tubing_6_EspLift": 72.85220801351272
+   },
+   "VolumeFlowrateLiquidStockTank": {
+    "Unit": "sm3/d",
+    "W6": 8.130859122998526,
+    "W4": 6.330697667198298,
+    "Tubing_2_EspLift": 151.95106126923855,
+    "W2": 151.95106126923855,
+    "W5": 8.496026864471203,
+    "Tubing_1_EspLift": 4.708995990875195,
+    "W7": 365.0300349620355,
+    "VertWell_6": 8.130859122998524,
+    "VertWell_5": 8.496026864471203,
+    "VertWell_2": 151.95106126923855,
+    "Oil-to-Sales": 664.1237173588186,
+    "VertWell_3": 120.61861857185183,
+    "W3": 120.61861857185183,
+    "Tubing_5_EspLift": 6.330697667198298,
+    "W1": 4.708995990875195,
+    "Manifold": 665.2662975722749,
+    "VertWell_4": 6.330697667198298,
+    "Tubing_7_EspLift": 8.130859122998526,
+    "Tubing_3_EspLift": 120.61861857185183,
+    "VertWell_1": 4.708995990875195,
+    "VertWell_7": 365.03003496203553,
+    "Tubing_4_EspLift": 365.0300349620355,
+    "Tubing_6_EspLift": 8.496026864471203
+   },
+   "VolumeFlowrateOilStockTank": {
+    "Unit": "sm3/d",
+    "W6": 1.626171824599705,
+    "W4": 0.7596837200637958,
+    "Tubing_2_EspLift": 56.221892669618256,
+    "W2": 56.221892669618256,
+    "W5": 0.8496026864471201,
+    "Tubing_1_EspLift": 1.0359791179925428,
+    "W7": 36.50300349620354,
+    "VertWell_6": 1.6261718245997043,
+    "VertWell_5": 0.8496026864471201,
+    "VertWell_2": 56.221892669618256,
+    "Oil-to-Sales": 120.9120367664125,
+    "VertWell_3": 24.123723714370364,
+    "W3": 24.123723714370364,
+    "Tubing_5_EspLift": 0.7596837200637958,
+    "W1": 1.0359791179925428,
+    "Manifold": 121.12005779798687,
+    "VertWell_4": 0.7596837200637958,
+    "Tubing_7_EspLift": 1.626171824599705,
+    "Tubing_3_EspLift": 24.123723714370364,
+    "VertWell_1": 1.0359791179925428,
+    "VertWell_7": 36.50300349620355,
+    "Tubing_4_EspLift": 36.50300349620354,
+    "Tubing_6_EspLift": 0.8496026864471201
+   },
+   "VolumeFlowrateGasStockTank": {
+    "Unit": "mmsm3/d",
+    "W6": 5.7917927673360765e-05,
+    "W4": 3.0760485043145626e-05,
+    "Tubing_2_EspLift": 0.0018242474167533696,
+    "W2": 0.0018242474167533696,
+    "W5": 3.298603911071024e-05,
+    "Tubing_1_EspLift": 4.036293299049147e-05,
+    "W7": 0.001904905185843387,
+    "VertWell_6": 8.29336718959654e-05,
+    "VertWell_5": 4.3329166926798906e-05,
+    "VertWell_2": 0.002867278801353029,
+    "Oil-to-Sales": 0.004651424196172988,
+    "VertWell_3": 0.0012302937224539557,
+    "W3": 0.0007682496816815268,
+    "Tubing_5_EspLift": 3.0760485043145626e-05,
+    "W1": 4.036293299049147e-05,
+    "Manifold": 0.004659426658834727,
+    "VertWell_4": 3.874335997672744e-05,
+    "Tubing_7_EspLift": 5.7917927673360765e-05,
+    "Tubing_3_EspLift": 0.0007682496816815268,
+    "VertWell_1": 5.283423987733578e-05,
+    "VertWell_7": 0.002847250353578557,
+    "Tubing_4_EspLift": 0.001904905185843387,
+    "Tubing_6_EspLift": 3.298603911071024e-05
+   },
+   "VolumeFlowrateWaterStockTank": {
+    "Unit": "sm3/d",
+    "W6": 6.504687298398821,
+    "W4": 5.571013947134501,
+    "Tubing_2_EspLift": 95.72916859962028,
+    "W2": 95.72916859962028,
+    "W5": 7.646424178024083,
+    "Tubing_1_EspLift": 3.673016872882652,
+    "W7": 328.52703146583195,
+    "VertWell_6": 6.50468729839882,
+    "VertWell_5": 7.646424178024083,
+    "VertWell_2": 95.72916859962028,
+    "Oil-to-Sales": 543.2116805924061,
+    "VertWell_3": 96.49489485748148,
+    "W3": 96.49489485748148,
+    "Tubing_5_EspLift": 5.571013947134501,
+    "W1": 3.673016872882652,
+    "Manifold": 544.1462397742879,
+    "VertWell_4": 5.571013947134501,
+    "Tubing_7_EspLift": 6.504687298398821,
+    "Tubing_3_EspLift": 96.49489485748148,
+    "VertWell_1": 3.673016872882652,
+    "VertWell_7": 328.52703146583207,
+    "Tubing_4_EspLift": 328.52703146583195,
+    "Tubing_6_EspLift": 7.646424178024083
+   }
+  }
+ },
+ "seconds": 9.8
+}

@@ -1,0 +1,329 @@
+{
+ "file": "D:\\Program\\Pipesim2023.1\\Case Studies\\Pipeline Models\\CSP_238_Cousiana.pips",
+ "components": {
+  "BlackOilFluid": [
+   "cousiana oil"
+  ],
+  "FlowCorrelation": [
+   "Default",
+   "flowline:Default"
+  ],
+  "Flowline": [
+   "flowline"
+  ],
+  "GlobalCatalog": [
+   "PIPESIM_FIELD"
+  ],
+  "Sink": [
+   "LTT Process"
+  ],
+  "Source": [
+   "wellpad"
+  ],
+  "Study": [
+   "Study 1"
+  ]
+ },
+ "values": {
+  "BlackOilFluid|cousiana oil": {
+   "cousiana oil": {
+    "Name": "cousiana oil",
+    "API": 35.2,
+    "DeadOilDensity": 848.8389295511307,
+    "DeadOilTemperature1": 93.3333333333,
+    "DeadOilTemperature2": 15.555560000000014,
+    "DeadOilViscosity1": 0.0017590781336695182,
+    "DeadOilViscosity2": 0.05483992178510568,
+    "DeadOilViscosityCorr": "BeggsAndRobinson",
+    "COFraction": 0.0,
+    "CO2Fraction": 0.0,
+    "H2Fraction": 0.0,
+    "H2SFraction": 0.0,
+    "N2Fraction": 0.0,
+    "GasSpecificGravity": 0.761,
+    "GLR": null,
+    "GOR": 284.9721544256138,
+    "GWR": null,
+    "LGR": null,
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "LiveOilViscosityCorr": "ChewandConnaly",
+    "OGR": null,
+    "Richardsonkoiw": 3.8,
+    "Richardsonkwio": 6.6,
+    "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+    "UndersaturatedOilViscosityParA": 0.0239,
+    "UndersaturatedOilViscosityParB": 0.01638,
+    "UseBraunerUllmanEquation": false,
+    "UseDeadOilDensity": false,
+    "UseGasRatio": "GOR",
+    "UserWatercutCutOff": 60.0,
+    "UseWaterRatio": "WaterCut",
+    "VandUserk1": 2.5,
+    "VandUserk2": 0.609,
+    "WaterCut": 0.05,
+    "WaterSpecificGravity": 1.02,
+    "WGR": null,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "FlowCorrelation|Default": {
+   "Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   },
+   "flowline:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   }
+  },
+  "FlowCorrelation|flowline:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'flowline:Default', 'Template': '___NONE___'})"
+  },
+  "Flowline|flowline": {
+   "flowline": {
+    "Name": "flowline",
+    "AmbientAirTemperature": 27.222222222222285,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": 0.0,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 193.67499999999998,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": 5631.071649733055,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "GlobalCatalog|PIPESIM_FIELD": {
+   "PIPESIM_FIELD": {
+    "Name": "PIPESIM_FIELD",
+    "CatalogType": "CustomUnitSystem"
+   }
+  },
+  "Sink|LTT Process": {
+   "LTT Process": {
+    "Name": "LTT Process",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "IsActive": true,
+    "FlowrateType": "LiquidFlowRate"
+   }
+  },
+  "Source|wellpad": {
+   "wellpad": {
+    "Name": "wellpad",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": 98.33333333333343,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "cousiana oil",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Study|Study 1": {
+   "Study 1": {
+    "Name": "Study 1",
+    "Description": ""
+   }
+  }
+ },
+ "probe": {
+  "about": {
+   "ok": true,
+   "result": {
+    "WebAPIVersion": "2023.1.615.0",
+    "ToolkitVersion": "2023.1",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect__qnn3ctr\\CSP_238_Cousiana.pips",
+    "UnitSystem": "PIPESIM_METRIC",
+    "UiUnitSystem": "PIPESIM_FIELD"
+   }
+  },
+  "connections": {
+   "ok": true,
+   "result": [
+    {
+     "Source": "wellpad",
+     "Source Port": "",
+     "Destination": "flowline"
+    },
+    {
+     "Source": "flowline",
+     "Source Port": "",
+     "Destination": "LTT Process"
+    }
+   ]
+  },
+  "get_connections": {
+   "ok": true,
+   "result": {
+    "wellpad": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "flowline",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "flowline": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "LTT Process",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    }
+   }
+  },
+  "networksimulation.get_conditions": {
+   "ok": true,
+   "result": {
+    "wellpad": {
+     "BoundaryNodeType": "Source",
+     "WellName": null,
+     "BoundaryNodeName": "wellpad",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": true,
+     "Temperature": 98.33333333333343,
+     "Pressure": null,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": 1219.406070800229,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 284.9721544256138,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 0.05,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    },
+    "LTT Process": {
+     "BoundaryNodeType": "Sink",
+     "WellName": null,
+     "BoundaryNodeName": "LTT Process",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": true,
+     "Temperature": null,
+     "Pressure": 113.4877050455511,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    }
+   }
+  }
+ },
+ "about": {
+  "WebAPIVersion": "2023.1.615.0",
+  "ToolkitVersion": "2023.1",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect__qnn3ctr\\CSP_238_Cousiana.pips",
+  "UnitSystem": "PIPESIM_METRIC",
+  "UiUnitSystem": "PIPESIM_FIELD"
+ },
+ "baseline": {
+  "state": "Failed",
+  "summary": {
+   "Info": [
+    "2026-11-04T06:33:01.235Z    Beginning simulation...",
+    "2026-11-04T06:33:01.234Z    Running with 1 core",
+    "2026-11-04T06:33:01.788Z    Finished simulation"
+   ],
+   "Error": [
+    "2026-11-04T06:33:01.770Z    Stopping engine..."
+   ],
+   "Warning": []
+  },
+  "messages": [
+   "2026-11-04T06:33:01.290Z    Service starting...",
+   "2026-11-04T06:33:01.307Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T06:33:01.483Z    Service listening at 'net.pipe://localhost/pipe/289983df384749719b1801b13914e325'...",
+   "2026-11-04T06:33:01.568Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\20124",
+   "2026-11-04T06:33:01.568Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\20124\\cousiana.tnt (1)",
+   "2026-11-04T06:33:01.598Z    .................................................................... ",
+   "2026-11-04T06:33:01.700Z    Processing branch wellpad.. ",
+   "2026-11-04T06:33:01.701Z    Processing branch LTT Process.",
+   "2026-11-04T06:33:01.701Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T06:33:01.751Z    ",
+   "2026-11-04T06:33:01.751Z     Fatal Error     1914  Job Aborted,  : ",
+   "2026-11-04T06:33:01.751Z              User DLL error: OLGAS v. 7.3.1 3-Phase",
+   "2026-11-04T06:33:01.751Z                olga_ error no. 9999:",
+   "2026-11-04T06:33:01.751Z               License checkout failed (pipesim_olgas_3p, olgas_3p)",
+   "2026-11-04T06:33:01.751Z               error number is 9999",
+   "2026-11-04T06:33:01.751Z               Branch name is wellpad",
+   "2026-11-04T06:33:01.751Z    ",
+   "2026-11-04T06:33:01.778Z    "
+  ],
+  "system": {},
+  "node": {}
+ },
+ "seconds": 7.7
+}

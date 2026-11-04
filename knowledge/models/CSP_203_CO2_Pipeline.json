@@ -1,0 +1,469 @@
+{
+ "file": "D:\\Program\\Pipesim2023.1\\Case Studies\\Pipeline Models\\CSP_203_CO2 Pipeline.pips",
+ "components": {
+  "CompositionalFluid": [
+   "_default"
+  ],
+  "FlowCorrelation": [
+   "Correlation CO2_pipe",
+   "Flowline:Correlation CO2_pipe"
+  ],
+  "Flowline": [
+   "Flowline"
+  ],
+  "FluidComponent": [
+   "Carbon Dioxide",
+   "Methane"
+  ],
+  "GlobalCatalog": [
+   "PIPESIM_FIELD"
+  ],
+  "Sink": [
+   "Sink"
+  ],
+  "Source": [
+   "Source"
+  ],
+  "Study": [
+   "Study 1"
+  ]
+ },
+ "values": {
+  "CompositionalFluid|_default": {
+   "_default": {
+    "Name": "_default",
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "Richardsonkoiw": null,
+    "Richardsonkwio": null,
+    "UseBraunerUllmanEquation": false,
+    "UserWatercutCutOff": 60.0,
+    "VandUserk1": null,
+    "VandUserk2": null,
+    "ComponentFractionType": "Mole",
+    "SaltWaterDensity": null,
+    "SaltWaterDensityType": "DefaultDensity",
+    "SaltWaterSalinity": null,
+    "SaltWaterTemperature": null,
+    "ShowAllComponents": false,
+    "SodiumIon": null,
+    "CalciumIon": null,
+    "MagnesiumIon": null,
+    "PotassiumIon": null,
+    "StrontiumIon": null,
+    "BariumIon": null,
+    "IronIon": null,
+    "ChlorideIon": null,
+    "SulphateIon": null,
+    "BicarbonateIon": null,
+    "BromideIon": null,
+    "TotalDissolvedSolids": null,
+    "UseTunedFractions": false,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "FlowCorrelation|Correlation CO2_pipe": {
+   "Correlation CO2_pipe": {
+    "Name": "Correlation CO2_pipe",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": true
+   },
+   "Flowline:Correlation CO2_pipe": {
+    "Name": "Correlation CO2_pipe",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   }
+  },
+  "FlowCorrelation|Flowline:Correlation CO2_pipe": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Flowline:Correlation CO2_pipe', 'Template': '___NONE___'})"
+  },
+  "Flowline|Flowline": {
+   "Flowline": {
+    "Name": "Flowline",
+    "AmbientAirTemperature": 7.2222222222222285,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": 7.2222222222222285,
+    "DepthAtStart": 0.0,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "measuredDistance",
+    "HorizontalDistance": 3048.0000000000005,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": false,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 102.26039999999999,
+    "Roughness": 0.04572,
+    "WallThickness": 6.019799999999999,
+    "Length": 3048.000000000001,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "FluidComponent|Carbon Dioxide": {
+   "Carbon Dioxide": {
+    "Name": "Carbon Dioxide",
+    "Acf": null,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": null,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": null,
+    "Pcrit": null,
+    "ReferenceDensity": null,
+    "SpecificGravity": null,
+    "Tboil": null,
+    "Tcrit": null,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": null,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": null
+   }
+  },
+  "FluidComponent|Methane": {
+   "Methane": {
+    "Name": "Methane",
+    "Acf": null,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": null,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": null,
+    "Pcrit": null,
+    "ReferenceDensity": null,
+    "SpecificGravity": null,
+    "Tboil": null,
+    "Tcrit": null,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": null,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": null
+   }
+  },
+  "GlobalCatalog|PIPESIM_FIELD": {
+   "PIPESIM_FIELD": {
+    "Name": "PIPESIM_FIELD",
+    "CatalogType": "CustomUnitSystem"
+   }
+  },
+  "Sink|Sink": {
+   "Sink": {
+    "Name": "Sink",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "IsActive": true,
+    "FlowrateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Source": {
+   "Source": {
+    "Name": "Source",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 55.158055999999995,
+    "Temperature": 10.0,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": "_default",
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Study|Study 1": {
+   "Study 1": {
+    "Name": "Study 1",
+    "Description": ""
+   }
+  }
+ },
+ "probe": {
+  "about": {
+   "ok": true,
+   "result": {
+    "WebAPIVersion": "2023.1.615.0",
+    "ToolkitVersion": "2023.1",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_byl2s50m\\CSP_203_CO2 Pipeline.pips",
+    "UnitSystem": "PIPESIM_METRIC",
+    "UiUnitSystem": "PIPESIM_FIELD"
+   }
+  },
+  "connections": {
+   "ok": true,
+   "result": [
+    {
+     "Source": "Flowline",
+     "Source Port": "",
+     "Destination": "Sink"
+    },
+    {
+     "Source": "Source",
+     "Source Port": "",
+     "Destination": "Flowline"
+    }
+   ]
+  },
+  "get_connections": {
+   "ok": true,
+   "result": {
+    "Flowline": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Sink",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Source": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Flowline",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    }
+   }
+  },
+  "networksimulation.get_conditions": {
+   "ok": true,
+   "result": {
+    "Source": {
+     "BoundaryNodeType": "Source",
+     "WellName": null,
+     "BoundaryNodeName": "Source",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": true,
+     "Temperature": 10.0,
+     "Pressure": 55.158055999999995,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": Infinity,
+     "OGR": 0.0,
+     "GLR": Infinity,
+     "LGR": 0.0,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": Infinity,
+     "WGR": 0.0,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    },
+    "Sink": {
+     "BoundaryNodeType": "Sink",
+     "WellName": null,
+     "BoundaryNodeName": "Sink",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": true,
+     "Temperature": null,
+     "Pressure": 20.68427187950506,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    }
+   }
+  }
+ },
+ "about": {
+  "WebAPIVersion": "2023.1.615.0",
+  "ToolkitVersion": "2023.1",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_byl2s50m\\CSP_203_CO2 Pipeline.pips",
+  "UnitSystem": "PIPESIM_METRIC",
+  "UiUnitSystem": "PIPESIM_FIELD"
+ },
+ "baseline": {
+  "state": "Completed",
+  "summary": {
+   "Info": [
+    "2026-11-04T06:31:23.052Z    Beginning simulation...",
+    "2026-11-04T06:31:23.050Z    Running with 1 core",
+    "2026-11-04T06:31:24.476Z    Solver converged to a solution.",
+    "2026-11-04T06:31:24.508Z    Finished simulation"
+   ],
+   "Error": [],
+   "Warning": [
+    "2026-11-04T06:31:24.181Z    [PSENGINE] Warning 13003574   from COMPMAN : CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+    "2026-11-04T06:31:24.182Z    [PSENGINE] Warning 13003574   from COMPMAN : CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+    "2026-11-04T06:31:24.225Z    [PSENGINE] Warning 13003574   from COMPMAN : CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+    "2026-11-04T06:31:24.225Z    [PSENGINE] Warning 13003574   from COMPMAN : CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+    "2026-11-04T06:31:24.286Z    [PSENGINE] Warning 13003574   from COMPMAN : CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+    "2026-11-04T06:31:24.287Z    [PSENGINE] Warning 13003574   from COMPMAN : CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+    "2026-11-04T06:31:24.287Z    [PSENGINE] Warning 13003574   from COMPMAN : CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+    "2026-11-04T06:31:24.289Z    [PSENGINE] Warning 13003574   from COMPMAN : CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+    "2026-11-04T06:31:24.307Z    [PSENGINE] Warning 13003574   from COMPMAN : CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+    "2026-11-04T06:31:24.307Z    [PSENGINE] Warning 13003574   from COMPMAN : CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+    "2026-11-04T06:31:24.309Z    [PSENGINE] Warning 13003574   from COMPMAN : CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension"
+   ]
+  },
+  "messages": [
+   "2026-11-04T06:31:23.103Z    Service starting...",
+   "2026-11-04T06:31:23.119Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T06:31:23.316Z    Service listening at 'net.pipe://localhost/pipe/66645466a8e440c4b4bbeb0182e93e81'...",
+   "2026-11-04T06:31:23.395Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\11248",
+   "2026-11-04T06:31:23.395Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\11248\\CSP_203_CO2 Pipeline.tnt (1)",
+   "2026-11-04T06:31:24.113Z    ........................................................ ",
+   "2026-11-04T06:31:24.114Z    Processing branch Sink.. ",
+   "2026-11-04T06:31:24.115Z    Processing branch Source.",
+   "2026-11-04T06:31:24.115Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T06:31:24.131Z    ",
+   "2026-11-04T06:31:24.161Z    ",
+   "2026-11-04T06:31:24.161Z     Warning 13003574  from COMPMAN :  CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+   "2026-11-04T06:31:24.182Z    ",
+   "2026-11-04T06:31:24.182Z     Warning 13003574  from COMPMAN :  CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+   "2026-11-04T06:31:24.224Z    ",
+   "2026-11-04T06:31:24.224Z     Warning 13003574  from COMPMAN :  CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+   "2026-11-04T06:31:24.225Z    ",
+   "2026-11-04T06:31:24.225Z     Warning 13003574  from COMPMAN :  CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+   "2026-11-04T06:31:24.286Z    ",
+   "2026-11-04T06:31:24.286Z     Warning 13003574  from COMPMAN :  CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+   "2026-11-04T06:31:24.287Z    ",
+   "2026-11-04T06:31:24.287Z     Warning 13003574  from COMPMAN :  CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+   "2026-11-04T06:31:24.287Z    ",
+   "2026-11-04T06:31:24.287Z     Warning 13003574  from COMPMAN :  CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+   "2026-11-04T06:31:24.287Z     Iteration   1 P error :   0.00 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T06:31:24.288Z    ",
+   "2026-11-04T06:31:24.288Z    ",
+   "2026-11-04T06:31:24.288Z     Converged.                                                                     ",
+   "2026-11-04T06:31:24.288Z     ... network converged at iteration   1, final rms error :   0.644223E-06",
+   "2026-11-04T06:31:24.288Z      Start Post-Processing results",
+   "2026-11-04T06:31:24.289Z    ",
+   "2026-11-04T06:31:24.289Z     Warning 13003574  from COMPMAN :  CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+   "2026-11-04T06:31:24.307Z    ",
+   "2026-11-04T06:31:24.307Z     Warning 13003574  from COMPMAN :  CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+   "2026-11-04T06:31:24.307Z    ",
+   "2026-11-04T06:31:24.307Z     Warning 13003574  from COMPMAN :  CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+   "2026-11-04T06:31:24.309Z    ",
+   "2026-11-04T06:31:24.309Z     Warning 13003574  from COMPMAN :  CMAN_FTAB_GPTFV: VQ is Rundef for Liquid Gas Surface Tension",
+   "2026-11-04T06:31:24.310Z    ",
+   "2026-11-04T06:31:24.310Z       Elapsed time:",
+   "2026-11-04T06:31:24.310Z    ",
+   "2026-11-04T06:31:24.310Z       Network Executive      0.73",
+   "2026-11-04T06:31:24.310Z       PIPESIM sub-tasks      0.18",
+   "2026-11-04T06:31:24.310Z                         ---------",
+   "2026-11-04T06:31:24.310Z                 Total        0.92",
+   "2026-11-04T06:31:24.310Z    ",
+   "2026-11-04T06:31:24.310Z       CPU time:",
+   "2026-11-04T06:31:24.310Z    ",
+   "2026-11-04T06:31:24.310Z               User task      0.78",
+   "2026-11-04T06:31:24.310Z               System         0.27",
+   "2026-11-04T06:31:24.310Z                         ---------",
+   "2026-11-04T06:31:24.310Z                 Total        1.05",
+   "2026-11-04T06:31:24.491Z     Disposing communication agent."
+  ],
+  "system": {},
+  "node": {
+   "Pressure": {
+    "Unit": "bara",
+    "Sink": 20.68427187950506,
+    "Source": 55.158058345346824
+   },
+   "Temperature": {
+    "Unit": "degC",
+    "Sink": -21.616615203531552,
+    "Source": 10.000000000000057
+   },
+   "VolumeFlowrateLiquidStockTank": {
+    "Unit": "sm3/d",
+    "Sink": 0.0,
+    "Source": 0.0
+   },
+   "VolumeFlowrateOilStockTank": {
+    "Unit": "sm3/d",
+    "Sink": 0.0,
+    "Source": 0.0
+   },
+   "VolumeFlowrateGasStockTank": {
+    "Unit": "mmsm3/d",
+    "Sink": 1.295364601850585,
+    "Source": 1.2953648391192976
+   },
+   "VolumeFlowrateWaterStockTank": {
+    "Unit": "sm3/d",
+    "Sink": 0.0,
+    "Source": 0.0
+   }
+  }
+ },
+ "seconds": 7.4
+}
