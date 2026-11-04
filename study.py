@@ -127,8 +127,7 @@ def check(spec, known_components=None, project=None):
         for k in (spec.get(part) or {}):
             if k not in allowed:
                 errors.append(f"Remove '{part}.{k}'. Allowed keys in {part}: {sorted(allowed)}.")
-    if not spec.get("objective"):
-        ask("objective", "What question should this study answer?")
+    # the objective is optional: plan_text describes the study when none is given
     model = spec.get("model", {})
     src = model.get("source")
     if src is not None and src not in SOURCES:
@@ -245,9 +244,25 @@ def check(spec, known_components=None, project=None):
             "n_cases": n_cases(spec) if t in ANALYSES else None}
 
 
+def describe(spec):
+    """A short title for a study when the user gave no objective."""
+    a = spec.get("analysis", {})
+    names = [v.get("alias") or f"{v.get('name')}.{v.get('parameter')}" for v in a.get("variables", [])]
+    t = a.get("type")
+    if t == "nodal":
+        return f"Nodal analysis of {a.get('producer')}"
+    if t == "pt_profile":
+        return f"P/T profile of {a.get('producer')}"
+    if t == "optimize":
+        return f"Find the best {', '.join(names)}"
+    if t in ("sweep", "grid", "tornado"):
+        return f"{t.title()} of {', '.join(names)}"
+    return "Single run"
+
+
 def plan_text(spec, project=None):
     m, a = spec["model"], spec["analysis"]
-    lines = [f"STUDY PLAN: {spec['objective']}", f"Units: {spec.get('units', 'METRIC')}"]
+    lines = [f"STUDY PLAN: {spec.get('objective') or describe(spec)}", f"Units: {spec.get('units', 'METRIC')}"]
     if m["source"] == "existing":
         lines.append(f"1. Open a COPY of {m['path']} (the original is not modified)")
     elif m["source"] == "project":

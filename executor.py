@@ -118,12 +118,19 @@ def _get(model, ref):
     return sa.get_param(model, *ref)
 
 
-def _summary(a, rows, kpi_cols, labels):
-    """Numbers the LLM should quote instead of computing: change vs base per case, best/worst case, tornado ranking."""
+def _summary(a, rows, kpi_cols, labels, producers=()):
+    """Numbers the LLM should quote instead of computing: change vs base per case, best/worst case, tornado ranking,
+    and which wells do not flow in which case."""
     if a["type"] not in ("sweep", "grid", "tornado", "optimize") or not rows:
         return {}
     base, cases = rows[0], rows[1:]
     out = {}
+    dead = {r["case"]: [p for p in producers if f"{p} liquid rate" in r and r.get(f"{p} liquid rate") is None]
+            for r in rows if str(r.get("_status", "")).startswith("Completed")}
+    dead = {c: ws for c, ws in dead.items() if ws}
+    if dead:
+        out["not_flowing"] = {"note": "these wells/sources produced nothing (they cannot flow at these conditions)",
+                              "cases": dead}
     for k in kpi_cols:
         b = base.get(k)
         vals = [(r.get(k), r["case"]) for r in cases if isinstance(r.get(k), (int, float))]
@@ -221,6 +228,33 @@ def _nodal_chart(path, curves, op, well, base="liquid"):
     ax.set_xlabel(f"{base.title()} rate{f' [{unit}]' if unit else ''}")
     ax.set_ylabel("Pressure at nodal point [bara]")
     ax.set_title(f"Nodal analysis: {well}"); ax.grid(alpha=.3); ax.legend(fontsize=8)
+    fig.tight_layout(); fig.savefig(path, dpi=130); plt.close(fig)
+    return path
+
+
+def _ranking_chart(path, ranked, obj, labels, unit, base_value):
+    """Every feasible combination, best first; the base case as a dashed line."""
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+    except ImportError:
+        return None
+    ranked = ranked[:20]
+    fig, ax = plt.subplots(figsize=(7.5, 0.38 * len(ranked) + 1.6))
+    names = [", ".join(f"{l.split('.')[0].split(':')[-1]}={r[l]:g}" for l in labels) for r in ranked]
+    vals = [r[obj] for r in ranked]
+    ax.barh(range(len(vals)), vals, color=["#2E7D32"] + ["#4C78A8"] * (len(vals) - 1))
+    ax.set_yticks(range(len(vals))); ax.set_yticklabels(names, fontsize=8); ax.invert_yaxis()
+    span = vals + ([base_value] if isinstance(base_value, (int, float)) else [])
+    lo, hi = min(span), max(span)
+    pad = 0.08 * (hi - lo or abs(hi) or 1)
+    ax.set_xlim(lo - pad, hi + pad)   # zoomed: differences of a few percent must stay visible
+    if isinstance(base_value, (int, float)):
+        ax.axvline(base_value, color="k", ls="--", lw=.8, label=f"base {base_value:.4g}")
+        ax.legend(fontsize=8, loc="lower right")
+    ax.set_xlabel(f"{obj}{f' [{unit}]' if unit else ''} (axis zoomed to the results)")
+    ax.set_title("Optimization: feasible combinations, best first", fontsize=10)
     fig.tight_layout(); fig.savefig(path, dpi=130); plt.close(fig)
     return path
 
@@ -390,7 +424,7 @@ def run(spec, progress=print, project=None):
             w = _flat_warning(rows, kpi_cols)
             if w:
                 warnings.append(w)
-            summary = _summary(a, rows, kpi_cols, labels)
+            summary = _summary(a, rows, kpi_cols, labels, _producers(model, proj))
             p = _primary(kpi_cols, rows[0])
             if a["type"] == "optimize":
                 obj = a.get("maximize") if a.get("maximize") in kpi_cols else p
@@ -407,6 +441,9 @@ def run(spec, progress=print, project=None):
                     sw = rows[1:]
                     charts.append(_chart(os.path.join(out, "optimize.png"), [r[labels[0]] for r in sw],
                                          {obj: [r.get(obj) for r in sw]}, labels[0], f"{obj} (maximize)"))
+                elif ok:
+                    charts.append(_ranking_chart(os.path.join(out, "optimize.png"), ok, obj, labels,
+                                                 UNITS.get(obj, ""), rows[0].get(obj)))
             if p and summary.get(p, {}).get("change_vs_base_pct"):  # precomputed % change column for the main result
                 col = f"{p} change vs base [%]"
                 for r in rows[1:]:

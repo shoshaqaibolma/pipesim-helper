@@ -71,6 +71,10 @@ outlets named, one inlet per choke/pump/compressor). It then writes a new `.pips
 **Nodal analysis** of a well at a given outlet pressure: operating point (rates, flowing bottom-hole pressure),
 inflow/outflow curves and the IPR/VLP plot.
 
+**Optimization** (`optimize`): tries every combination of 1-3 variables, such as each well's gas lift rate, that
+respects an optional limit on their sum (the lift gas available), and reports the best case, the top five and a
+ranked chart. Example: "we have 0.15 MMsm3/d of lift gas, how should we split it between W1 and W2?"
+
 Results always come with units; percentage changes, best/worst cases and tornado rankings are computed by the code,
 not the language model; networks with several sinks get field totals.
 

@@ -74,4 +74,12 @@ print("server down: clear message instead of a stack trace")
 out = run(["hello"], lambda c, m: Msg(""))
 assert "empty reply" in out
 print("empty reply: explained to the user")
+# --- long sessions: old tool results are shortened, the latest turn is kept intact
+msgs = [{"role": "system", "content": "s"}, {"role": "user", "content": "u1"},
+        {"role": "tool", "tool_call_id": "a", "content": "x" * 30000}, {"role": "user", "content": "u2"},
+        {"role": "tool", "tool_call_id": "b", "content": "y" * 20000}]
+c = agent.compact(msgs)
+assert len(c[2]["content"]) < 400 and c[4]["content"] == "y" * 20000 and c[1] == msgs[1]
+assert agent.compact(msgs[:2]) == msgs[:2]
+print("compaction: old tool results shortened, latest kept")
 print("\nALL OK")

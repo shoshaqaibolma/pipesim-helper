@@ -27,7 +27,8 @@ WORKFLOW (follow it strictly):
 4. RUN: only after the user approves, call run_study. The user also confirms in the terminal.
 5. ANALYZE: explain the results: trends, optimum, sensitivities, constraints, and anything that looks
    physically odd. Quote numbers ONLY from the returned "table" and "summary"; percentage changes, best and
-   worst cases and tornado rankings are precomputed there, so never calculate them yourself. Give the report
+   worst cases, tornado rankings and the optimum are precomputed there, so never calculate them yourself.
+   summary.not_flowing lists wells that produce nothing in a case: say so explicitly. Give the report
    path. Suggest a sensible follow-up study.
 
 NEW NETWORKS (the user wants to build/create a field, network, pipeline or project):
@@ -223,7 +224,25 @@ MAX_SPEC_CALLS = 10    # spec/project edit+check calls allowed per user turn bef
 MAX_REPLY_TOKENS = 1500
 
 
+MAX_HISTORY_CHARS = 40000   # about 10k tokens: keeps long sessions inside the 16k context of the local model
+
+
+def compact(msgs, limit=MAX_HISTORY_CHARS):
+    """Shorten old tool results (before the latest user message) when the conversation gets long."""
+    size = sum(len(str(m.get("content") or "")) for m in msgs)
+    if size <= limit:
+        return msgs
+    last_user = max(i for i, m in enumerate(msgs) if m.get("role") == "user")
+    out = []
+    for i, m in enumerate(msgs):
+        if i < last_user and m.get("role") == "tool" and len(str(m.get("content") or "")) > 300:
+            m = dict(m, content=str(m["content"])[:300] + " ...[older result shortened]")
+        out.append(m)
+    return out
+
+
 def chat(client, msgs):
+    msgs[:] = compact(msgs)
     return client.chat.completions.create(
         model=MODEL, messages=msgs, tools=TOOLS, temperature=0.0, max_tokens=MAX_REPLY_TOKENS,
         # Qwen 3.5 thinks by default; on a 16k context that can eat the whole window and return an empty reply.

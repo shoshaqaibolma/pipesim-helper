@@ -183,6 +183,13 @@ o = r["summary"]["optimum"]
 assert o["combinations_run"] == 6 and o["skipped_over_max_total"] == 3, o
 s_best = o["best"]["settings"]
 assert sum(s_best.values()) <= 0.1 + 1e-9 and o["best"]["value"] >= max(x["value"] for x in o["top"]), o
+assert any(c.endswith("optimize.png") for c in r["charts"]), r["charts"]
+assert study.check(dict(spec_o, objective=""), project=GL2)["ready"]                 # objective is optional
+assert "Find the best W1:W1_GL.GasRate" in study.plan_text(dict(spec_o, objective=""), GL2)
+rows = [{"case": "base", "W1 liquid rate": 500.0, "W2 liquid rate": 600.0, "_status": "Completed"},   # as in job 12:
+        {"case": "W1=0, W2=0.1", "W1 liquid rate": None, "W2 liquid rate": 776.3, "_status": "Completed"}]  # W1 dies
+nf = executor._summary({"type": "optimize"}, rows, ["W1 liquid rate", "W2 liquid rate"], [], ["W1", "W2"])["not_flowing"]
+assert nf["cases"] == {"W1=0, W2=0.1": ["W1"]}, nf
 bad = dict(spec_o, analysis=dict(spec_o["analysis"], max_total=-1))
 assert any("max_total must be" in e for e in study.check(bad, project=GL2)["errors"])
 print("optimize: 6 of 9 gas-lift combinations within 0.1 mmsm3/d run; best", o["best"]["case"], "->", o["best"]["value"])
