@@ -1,7 +1,7 @@
 """
 Before/after evaluation of the agent on the real PC (PIPESIM + llama-server).
 
-Runs every scenario in tests/scripts twice: "before" (recipes and number guard off) and "after" (both on), scores
+Runs every scenario in tests/scripts under each condition in CONDITIONS (plain / + knowledge / + structured), scores
 each conversation automatically from the study outputs it produced, and writes knowledge/eval_<condition>.json and
 knowledge/eval_summary.md.
 
@@ -17,8 +17,10 @@ from real_agent_test import healthy  # noqa: E402
 SCENARIOS = ["field_project", "gaslift_nodal", "gaslift_allocation", "uncertainty", "debottleneck",
              "pipeline_sizing", "choke_sizing", "water_rise"]
 HELD_OUT = {"choke_sizing", "water_rise"}   # no study recipe written for these
-CONDITIONS = {"before": {"PIPESIM_AGENT_KNOWLEDGE": "0", "PIPESIM_NUMBER_GUARD": "0"},
-              "after": {"PIPESIM_AGENT_KNOWLEDGE": "1", "PIPESIM_NUMBER_GUARD": "1"}}
+CONDITIONS = {   # before: plain agent; knowledge: + recipes and number check; structured: + constrained extraction
+    "before": {"PIPESIM_AGENT_KNOWLEDGE": "0", "PIPESIM_NUMBER_GUARD": "0", "PIPESIM_AGENT_STRUCTURED": "0"},
+    "knowledge": {"PIPESIM_AGENT_KNOWLEDGE": "1", "PIPESIM_NUMBER_GUARD": "1", "PIPESIM_AGENT_STRUCTURED": "0"},
+    "structured": {"PIPESIM_AGENT_KNOWLEDGE": "1", "PIPESIM_NUMBER_GUARD": "1", "PIPESIM_AGENT_STRUCTURED": "1"}}
 
 
 # ---------- reading a study output folder
@@ -138,7 +140,7 @@ def score(name, runs):
 # ---------- one conversation
 def run_one(name, env_extra, tmp):
     script = os.path.join(HERE, "scripts", name + ".txt")
-    log = os.path.join(tmp, f"{name}_{env_extra['PIPESIM_AGENT_KNOWLEDGE']}.jsonl")
+    log = os.path.join(tmp, f"{name}_{''.join(env_extra.values())}.jsonl")
     runs_dir = os.path.join(ROOT, "runs")
     before = set(os.listdir(runs_dir)) if os.path.isdir(runs_dir) else set()
     t0 = time.time()
@@ -171,6 +173,10 @@ def run_one(name, env_extra, tmp):
                 m["unverified_numbers"] += res.get("unverified", [])
                 m["numbers_flagged_after_rewrite"] += res.get("still_unverified", res.get("unverified", []))
                 continue
+            if t.startswith("("):
+                if t == "(extraction skipped)":
+                    m["extraction_skipped"] = m.get("extraction_skipped", 0) + 1
+                continue
             m["tool_calls"] += 1
             try:
                 res = json.loads(e["result"])
@@ -198,7 +204,7 @@ def table(results):
             lines.append(f"| {name}{' (held out)' if m['held_out'] else ''} | {cond} | {'yes' if m['completed'] else 'NO'} | "
                          f"{'yes' if m['correct'] else 'NO'} | {m['tool_calls']} | {m['checker_errors']} | "
                          f"{m['json_retries']} | {len(m['unverified_numbers'])} | "
-                         f"{len(m['numbers_flagged_after_rewrite']) if cond == 'after' else '-'} | {m['seconds']} |")
+                         f"{len(m['numbers_flagged_after_rewrite']) if cond != 'before' else '-'} | {m['seconds']} |")
     lines.append("")
     for cond, res in results.items():
         n = len(res)
@@ -209,7 +215,7 @@ def table(results):
                      f"{sum(m['correct'] for m in res.values())}/{n}, invented numbers in replies "
                      f"{sum(len(m['unverified_numbers']) for m in res.values())}"
                      + (f" (left after rewrite: {sum(len(m['numbers_flagged_after_rewrite']) for m in res.values())})"
-                        if cond == "after" else "")
+                        if cond != "before" else "")
                      + f", checker errors {sum(m['checker_errors'] for m in res.values())}, "
                      f"time {sum(m['seconds'] for m in res.values()) // 60} min")
     lines.append("")
