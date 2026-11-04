@@ -1,0 +1,24 @@
+{
+  "model": {
+    "source": "project",
+    "path": "Field_A.pips"
+  },
+  "analysis": {
+    "type": "sweep",
+    "variables": [
+      {
+        "component_type": "Sink",
+        "name": "SEP",
+        "parameter": "Pressure",
+        "values": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ]
+      }
+    ],
+    "producer": "field_oil_rate"
+  }
+}

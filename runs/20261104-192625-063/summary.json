@@ -1,0 +1,135 @@
+{
+ "type": "sweep",
+ "primary": "SEP oil rate",
+ "summary": {
+  "not_flowing": {
+   "note": "these wells/sources produced nothing (they cannot flow at these conditions)",
+   "cases": {
+    "BO.WaterCut=70": [
+     "W-A",
+     "W-B"
+    ]
+   }
+  },
+  "SEP liquid rate": {
+   "unit": "sm3/d",
+   "base": 905.5096,
+   "highest": {
+    "value": 1011.2919,
+    "case": "BO.WaterCut=10"
+   },
+   "lowest": {
+    "value": 714.1024,
+    "case": "BO.WaterCut=50"
+   },
+   "change_vs_base_pct": {
+    "BO.WaterCut=10": 11.68,
+    "BO.WaterCut=30": 0.0,
+    "BO.WaterCut=50": -21.14
+   }
+  },
+  "SEP oil rate": {
+   "unit": "sm3/d",
+   "base": 633.8567,
+   "highest": {
+    "value": 910.1627,
+    "case": "BO.WaterCut=10"
+   },
+   "lowest": {
+    "value": 357.0512,
+    "case": "BO.WaterCut=50"
+   },
+   "change_vs_base_pct": {
+    "BO.WaterCut=10": 43.59,
+    "BO.WaterCut=30": 0.0,
+    "BO.WaterCut=50": -43.67
+   }
+  },
+  "SEP gas rate": {
+   "unit": "mmsm3/d",
+   "base": 0.0697,
+   "highest": {
+    "value": 0.1001,
+    "case": "BO.WaterCut=10"
+   },
+   "lowest": {
+    "value": 0.0393,
+    "case": "BO.WaterCut=50"
+   },
+   "change_vs_base_pct": {
+    "BO.WaterCut=10": 43.59,
+    "BO.WaterCut=30": 0.0,
+    "BO.WaterCut=50": -43.67
+   }
+  },
+  "W-A liquid rate": {
+   "unit": "sm3/d",
+   "base": 410.9653,
+   "highest": {
+    "value": 455.9242,
+    "case": "BO.WaterCut=10"
+   },
+   "lowest": {
+    "value": 320.8147,
+    "case": "BO.WaterCut=50"
+   },
+   "change_vs_base_pct": {
+    "BO.WaterCut=10": 10.94,
+    "BO.WaterCut=30": 0.0,
+    "BO.WaterCut=50": -21.94
+   }
+  },
+  "W-A pressure": {
+   "unit": "bara",
+   "base": 28.1112,
+   "highest": {
+    "value": 31.696,
+    "case": "BO.WaterCut=10"
+   },
+   "lowest": {
+    "value": 23.8267,
+    "case": "BO.WaterCut=50"
+   },
+   "change_vs_base_pct": {
+    "BO.WaterCut=10": 12.75,
+    "BO.WaterCut=30": 0.0,
+    "BO.WaterCut=50": -15.24
+   }
+  },
+  "W-B liquid rate": {
+   "unit": "sm3/d",
+   "base": 494.5443,
+   "highest": {
+    "value": 555.3676,
+    "case": "BO.WaterCut=10"
+   },
+   "lowest": {
+    "value": 393.2877,
+    "case": "BO.WaterCut=50"
+   },
+   "change_vs_base_pct": {
+    "BO.WaterCut=10": 12.3,
+    "BO.WaterCut=30": 0.0,
+    "BO.WaterCut=50": -20.47
+   }
+  },
+  "W-B pressure": {
+   "unit": "bara",
+   "base": 30.0359,
+   "highest": {
+    "value": 34.2022,
+    "case": "BO.WaterCut=10"
+   },
+   "lowest": {
+    "value": 25.0385,
+    "case": "BO.WaterCut=50"
+   },
+   "change_vs_base_pct": {
+    "BO.WaterCut=10": 13.87,
+    "BO.WaterCut=30": 0.0,
+    "BO.WaterCut=50": -16.64
+   }
+  }
+ },
+ "failed_cases": []
+}

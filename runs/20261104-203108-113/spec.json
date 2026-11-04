@@ -1,0 +1,10 @@
+{
+  "model": {
+    "source": "project"
+  },
+  "analysis": {
+    "type": "nodal",
+    "producer": "W1",
+    "outlet_pressure": 20
+  }
+}

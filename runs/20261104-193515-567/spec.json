@@ -1,0 +1,21 @@
+{
+  "objective": "Find smallest diameter that keeps inlet pressure \u2264 90 bara",
+  "model": {
+    "source": "project"
+  },
+  "analysis": {
+    "type": "sweep",
+    "variables": [
+      {
+        "component_type": "Flowline",
+        "name": "Line",
+        "parameter": "InnerDiameter",
+        "values": [
+          203,
+          254,
+          305
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+ "type": "sweep",
+ "primary": "SEP oil rate",
+ "summary": {
+  "SEP liquid rate": {
+   "unit": "sm3/d",
+   "base": 928.2532,
+   "highest": {
+    "value": 939.3647,
+    "case": "W1:W1_GL.GasRate=0.08"
+   },
+   "lowest": {
+    "value": 831.6297,
+    "case": "W1:W1_GL.GasRate=0"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_GL.GasRate=0": -10.41,
+    "W1:W1_GL.GasRate=0.04": -0.91,
+    "W1:W1_GL.GasRate=0.08": 1.2,
+    "W1:W1_GL.GasRate=0.12": 0.84,
+    "W1:W1_GL.GasRate=0.16": -0.7,
+    "W1:W1_GL.GasRate=0.2": -2.96
+   }
+  },
+  "SEP oil rate": {
+   "unit": "sm3/d",
+   "base": 742.6026,
+   "highest": {
+    "value": 751.4917,
+    "case": "W1:W1_GL.GasRate=0.08"
+   },
+   "lowest": {
+    "value": 665.3037,
+    "case": "W1:W1_GL.GasRate=0"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_GL.GasRate=0": -10.41,
+    "W1:W1_GL.GasRate=0.04": -0.91,
+    "W1:W1_GL.GasRate=0.08": 1.2,
+    "W1:W1_GL.GasRate=0.12": 0.84,
+    "W1:W1_GL.GasRate=0.16": -0.7,
+    "W1:W1_GL.GasRate=0.2": -2.96
+   }
+  },
+  "SEP gas rate": {
+   "unit": "mmsm3/d",
+   "base": 0.1243,
+   "highest": {
+    "value": 0.2721,
+    "case": "W1:W1_GL.GasRate=0.2"
+   },
+   "lowest": {
+    "value": 0.0665,
+    "case": "W1:W1_GL.GasRate=0"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_GL.GasRate=0": -46.46,
+    "W1:W1_GL.GasRate=0.04": -8.59,
+    "W1:W1_GL.GasRate=0.08": 24.86,
+    "W1:W1_GL.GasRate=0.12": 56.84,
+    "W1:W1_GL.GasRate=0.16": 88.11,
+    "W1:W1_GL.GasRate=0.2": 118.94
+   }
+  },
+  "W1 liquid rate": {
+   "unit": "sm3/d",
+   "base": 928.2532,
+   "highest": {
+    "value": 939.3647,
+    "case": "W1:W1_GL.GasRate=0.08"
+   },
+   "lowest": {
+    "value": 831.6297,
+    "case": "W1:W1_GL.GasRate=0"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_GL.GasRate=0": -10.41,
+    "W1:W1_GL.GasRate=0.04": -0.91,
+    "W1:W1_GL.GasRate=0.08": 1.2,
+    "W1:W1_GL.GasRate=0.12": 0.84,
+    "W1:W1_GL.GasRate=0.16": -0.7,
+    "W1:W1_GL.GasRate=0.2": -2.96
+   }
+  },
+  "W1 pressure": {
+   "unit": "bara",
+   "base": 43.8414,
+   "highest": {
+    "value": 62.9971,
+    "case": "W1:W1_GL.GasRate=0.2"
+   },
+   "lowest": {
+    "value": 32.9156,
+    "case": "W1:W1_GL.GasRate=0"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_GL.GasRate=0": -24.92,
+    "W1:W1_GL.GasRate=0.04": -4.09,
+    "W1:W1_GL.GasRate=0.08": 11.0,
+    "W1:W1_GL.GasRate=0.12": 23.4,
+    "W1:W1_GL.GasRate=0.16": 34.1,
+    "W1:W1_GL.GasRate=0.2": 43.69
+   }
+  }
+ },
+ "failed_cases": []
+}

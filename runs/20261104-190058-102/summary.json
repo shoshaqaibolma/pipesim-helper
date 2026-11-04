@@ -1,0 +1,169 @@
+{
+ "type": "grid",
+ "primary": "SEP oil rate",
+ "summary": {
+  "SEP liquid rate": {
+   "unit": "sm3/d",
+   "base": 1395.5663,
+   "highest": {
+    "value": 1919.5992,
+    "case": "Trunk.InnerDiameter=203, SEP.Pressure=8"
+   },
+   "lowest": {
+    "value": 1395.5663,
+    "case": "Trunk.InnerDiameter=152, SEP.Pressure=12"
+   },
+   "change_vs_base_pct": {
+    "Trunk.InnerDiameter=152, SEP.Pressure=12": 0.0,
+    "Trunk.InnerDiameter=152, SEP.Pressure=8": 2.07,
+    "Trunk.InnerDiameter=203, SEP.Pressure=12": 34.27,
+    "Trunk.InnerDiameter=203, SEP.Pressure=8": 37.55
+   }
+  },
+  "SEP oil rate": {
+   "unit": "sm3/d",
+   "base": 976.8964,
+   "highest": {
+    "value": 1343.7195,
+    "case": "Trunk.InnerDiameter=203, SEP.Pressure=8"
+   },
+   "lowest": {
+    "value": 976.8964,
+    "case": "Trunk.InnerDiameter=152, SEP.Pressure=12"
+   },
+   "change_vs_base_pct": {
+    "Trunk.InnerDiameter=152, SEP.Pressure=12": 0.0,
+    "Trunk.InnerDiameter=152, SEP.Pressure=8": 2.07,
+    "Trunk.InnerDiameter=203, SEP.Pressure=12": 34.27,
+    "Trunk.InnerDiameter=203, SEP.Pressure=8": 37.55
+   }
+  },
+  "SEP gas rate": {
+   "unit": "mmsm3/d",
+   "base": 0.1672,
+   "highest": {
+    "value": 0.2112,
+    "case": "Trunk.InnerDiameter=203, SEP.Pressure=8"
+   },
+   "lowest": {
+    "value": 0.1672,
+    "case": "Trunk.InnerDiameter=152, SEP.Pressure=12"
+   },
+   "change_vs_base_pct": {
+    "Trunk.InnerDiameter=152, SEP.Pressure=12": 0.0,
+    "Trunk.InnerDiameter=152, SEP.Pressure=8": 1.45,
+    "Trunk.InnerDiameter=203, SEP.Pressure=12": 23.99,
+    "Trunk.InnerDiameter=203, SEP.Pressure=8": 26.29
+   }
+  },
+  "W1 liquid rate": {
+   "unit": "sm3/d",
+   "base": 454.5319,
+   "highest": {
+    "value": 658.0075,
+    "case": "Trunk.InnerDiameter=203, SEP.Pressure=8"
+   },
+   "lowest": {
+    "value": 454.5319,
+    "case": "Trunk.InnerDiameter=152, SEP.Pressure=12"
+   },
+   "change_vs_base_pct": {
+    "Trunk.InnerDiameter=152, SEP.Pressure=12": 0.0,
+    "Trunk.InnerDiameter=152, SEP.Pressure=8": 2.29,
+    "Trunk.InnerDiameter=203, SEP.Pressure=12": 40.89,
+    "Trunk.InnerDiameter=203, SEP.Pressure=8": 44.77
+   }
+  },
+  "W1 pressure": {
+   "unit": "bara",
+   "base": 40.3567,
+   "highest": {
+    "value": 40.3567,
+    "case": "Trunk.InnerDiameter=152, SEP.Pressure=12"
+   },
+   "lowest": {
+    "value": 29.319,
+    "case": "Trunk.InnerDiameter=203, SEP.Pressure=8"
+   },
+   "change_vs_base_pct": {
+    "Trunk.InnerDiameter=152, SEP.Pressure=12": 0.0,
+    "Trunk.InnerDiameter=152, SEP.Pressure=8": -1.33,
+    "Trunk.InnerDiameter=203, SEP.Pressure=12": -24.75,
+    "Trunk.InnerDiameter=203, SEP.Pressure=8": -27.35
+   }
+  },
+  "W2 liquid rate": {
+   "unit": "sm3/d",
+   "base": 509.9408,
+   "highest": {
+    "value": 769.7825,
+    "case": "Trunk.InnerDiameter=203, SEP.Pressure=8"
+   },
+   "lowest": {
+    "value": 509.9408,
+    "case": "Trunk.InnerDiameter=152, SEP.Pressure=12"
+   },
+   "change_vs_base_pct": {
+    "Trunk.InnerDiameter=152, SEP.Pressure=12": 0.0,
+    "Trunk.InnerDiameter=152, SEP.Pressure=8": 2.89,
+    "Trunk.InnerDiameter=203, SEP.Pressure=12": 46.6,
+    "Trunk.InnerDiameter=203, SEP.Pressure=8": 50.96
+   }
+  },
+  "W2 pressure": {
+   "unit": "bara",
+   "base": 40.8554,
+   "highest": {
+    "value": 40.8554,
+    "case": "Trunk.InnerDiameter=152, SEP.Pressure=12"
+   },
+   "lowest": {
+    "value": 31.147,
+    "case": "Trunk.InnerDiameter=203, SEP.Pressure=8"
+   },
+   "change_vs_base_pct": {
+    "Trunk.InnerDiameter=152, SEP.Pressure=12": 0.0,
+    "Trunk.InnerDiameter=152, SEP.Pressure=8": -1.25,
+    "Trunk.InnerDiameter=203, SEP.Pressure=12": -21.5,
+    "Trunk.InnerDiameter=203, SEP.Pressure=8": -23.76
+   }
+  },
+  "W3 liquid rate": {
+   "unit": "sm3/d",
+   "base": 430.4428,
+   "highest": {
+    "value": 492.681,
+    "case": "Trunk.InnerDiameter=203, SEP.Pressure=8"
+   },
+   "lowest": {
+    "value": 430.4428,
+    "case": "Trunk.InnerDiameter=152, SEP.Pressure=12"
+   },
+   "change_vs_base_pct": {
+    "Trunk.InnerDiameter=152, SEP.Pressure=12": 0.0,
+    "Trunk.InnerDiameter=152, SEP.Pressure=8": 0.93,
+    "Trunk.InnerDiameter=203, SEP.Pressure=12": 13.14,
+    "Trunk.InnerDiameter=203, SEP.Pressure=8": 14.46
+   }
+  },
+  "W3 pressure": {
+   "unit": "bara",
+   "base": 42.3626,
+   "highest": {
+    "value": 42.3626,
+    "case": "Trunk.InnerDiameter=152, SEP.Pressure=12"
+   },
+   "lowest": {
+    "value": 30.1547,
+    "case": "Trunk.InnerDiameter=203, SEP.Pressure=8"
+   },
+   "change_vs_base_pct": {
+    "Trunk.InnerDiameter=152, SEP.Pressure=12": 0.0,
+    "Trunk.InnerDiameter=152, SEP.Pressure=8": -1.8,
+    "Trunk.InnerDiameter=203, SEP.Pressure=12": -26.1,
+    "Trunk.InnerDiameter=203, SEP.Pressure=8": -28.82
+   }
+  }
+ },
+ "failed_cases": []
+}

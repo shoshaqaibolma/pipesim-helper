@@ -1,0 +1,21 @@
+{
+  "model": {
+    "source": "project"
+  },
+  "analysis": {
+    "type": "sweep",
+    "variables": [
+      {
+        "component_type": "BlackOilFluid",
+        "name": "BO",
+        "parameter": "WaterCut",
+        "values": [
+          10,
+          30,
+          50,
+          70
+        ]
+      }
+    ]
+  }
+}

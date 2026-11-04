@@ -1,0 +1,33 @@
+{
+  "objective": "Compare field oil production for four combinations: trunkline 152 or 203 mm diameter, separator at 12 or 8 bara",
+  "analysis": {
+    "type": "grid",
+    "variables": [
+      {
+        "component_type": "Flowline",
+        "name": "Trunk152",
+        "parameter": "InnerDiameter",
+        "values": [
+          152,
+          203
+        ]
+      },
+      {
+        "component_type": "Sink",
+        "name": "SEP",
+        "parameter": "Pressure",
+        "values": [
+          12,
+          8
+        ]
+      }
+    ],
+    "producer": "Field A",
+    "conditions": {
+      "outlet_pressure": 12
+    }
+  },
+  "model": {
+    "source": "project"
+  }
+}

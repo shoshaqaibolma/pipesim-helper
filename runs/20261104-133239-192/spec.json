@@ -1,0 +1,22 @@
+{
+  "objective": "Separator pressure vs field liquid rate",
+  "units": "METRIC",
+  "model": {
+    "source": "project"
+  },
+  "analysis": {
+    "type": "sweep",
+    "variables": [
+      {
+        "component_type": "Sink",
+        "name": "Sep",
+        "parameter": "Pressure",
+        "values": [
+          10,
+          20,
+          30
+        ]
+      }
+    ]
+  }
+}

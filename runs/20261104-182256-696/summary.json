@@ -1,0 +1,207 @@
+{
+ "type": "tornado",
+ "primary": "SEP oil rate",
+ "summary": {
+  "SEP liquid rate": {
+   "unit": "sm3/d",
+   "base": 596.0235,
+   "highest": {
+    "value": 705.4795,
+    "case": "W1:W1_Comp.ReservoirPressure high=250"
+   },
+   "lowest": {
+    "value": 429.3507,
+    "case": "W1:W1_Comp.ReservoirPressure low=200"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_Comp.ReservoirPressure low=200": -27.96,
+    "W1:W1_Comp.ReservoirPressure high=250": 18.36,
+    "W1:W1_Comp.LiquidPI low=6": -27.23,
+    "W1:W1_Comp.LiquidPI high=14": 18.2,
+    "OilA.WaterCut low=20": 6.47,
+    "OilA.WaterCut high=50": -18.85
+   },
+   "ranking": [
+    {
+     "variable": "W1:W1_Comp.ReservoirPressure",
+     "low_case": 429.3507,
+     "high_case": 705.4795,
+     "swing": 276.1288
+    },
+    {
+     "variable": "W1:W1_Comp.LiquidPI",
+     "low_case": 433.7449,
+     "high_case": 704.5084,
+     "swing": 270.7635
+    },
+    {
+     "variable": "OilA.WaterCut",
+     "low_case": 634.5634,
+     "high_case": 483.6574,
+     "swing": 150.906
+    }
+   ]
+  },
+  "SEP oil rate": {
+   "unit": "sm3/d",
+   "base": 417.2165,
+   "highest": {
+    "value": 507.6507,
+    "case": "OilA.WaterCut low=20"
+   },
+   "lowest": {
+    "value": 241.8287,
+    "case": "OilA.WaterCut high=50"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_Comp.ReservoirPressure low=200": -27.96,
+    "W1:W1_Comp.ReservoirPressure high=250": 18.36,
+    "W1:W1_Comp.LiquidPI low=6": -27.23,
+    "W1:W1_Comp.LiquidPI high=14": 18.2,
+    "OilA.WaterCut low=20": 21.68,
+    "OilA.WaterCut high=50": -42.04
+   },
+   "ranking": [
+    {
+     "variable": "OilA.WaterCut",
+     "low_case": 507.6507,
+     "high_case": 241.8287,
+     "swing": 265.822
+    },
+    {
+     "variable": "W1:W1_Comp.ReservoirPressure",
+     "low_case": 300.5455,
+     "high_case": 493.8356,
+     "swing": 193.2901
+    },
+    {
+     "variable": "W1:W1_Comp.LiquidPI",
+     "low_case": 303.6215,
+     "high_case": 493.1559,
+     "swing": 189.5344
+    }
+   ]
+  },
+  "SEP gas rate": {
+   "unit": "mmsm3/d",
+   "base": 0.0375,
+   "highest": {
+    "value": 0.0457,
+    "case": "OilA.WaterCut low=20"
+   },
+   "lowest": {
+    "value": 0.0218,
+    "case": "OilA.WaterCut high=50"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_Comp.ReservoirPressure low=200": -27.96,
+    "W1:W1_Comp.ReservoirPressure high=250": 18.36,
+    "W1:W1_Comp.LiquidPI low=6": -27.23,
+    "W1:W1_Comp.LiquidPI high=14": 18.2,
+    "OilA.WaterCut low=20": 21.68,
+    "OilA.WaterCut high=50": -42.04
+   },
+   "ranking": [
+    {
+     "variable": "OilA.WaterCut",
+     "low_case": 0.0457,
+     "high_case": 0.0218,
+     "swing": 0.0239
+    },
+    {
+     "variable": "W1:W1_Comp.ReservoirPressure",
+     "low_case": 0.027,
+     "high_case": 0.0444,
+     "swing": 0.0174
+    },
+    {
+     "variable": "W1:W1_Comp.LiquidPI",
+     "low_case": 0.0273,
+     "high_case": 0.0444,
+     "swing": 0.0171
+    }
+   ]
+  },
+  "W1 liquid rate": {
+   "unit": "sm3/d",
+   "base": 596.0235,
+   "highest": {
+    "value": 705.4795,
+    "case": "W1:W1_Comp.ReservoirPressure high=250"
+   },
+   "lowest": {
+    "value": 429.3507,
+    "case": "W1:W1_Comp.ReservoirPressure low=200"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_Comp.ReservoirPressure low=200": -27.96,
+    "W1:W1_Comp.ReservoirPressure high=250": 18.36,
+    "W1:W1_Comp.LiquidPI low=6": -27.23,
+    "W1:W1_Comp.LiquidPI high=14": 18.2,
+    "OilA.WaterCut low=20": 6.47,
+    "OilA.WaterCut high=50": -18.85
+   },
+   "ranking": [
+    {
+     "variable": "W1:W1_Comp.ReservoirPressure",
+     "low_case": 429.3507,
+     "high_case": 705.4795,
+     "swing": 276.1288
+    },
+    {
+     "variable": "W1:W1_Comp.LiquidPI",
+     "low_case": 433.7449,
+     "high_case": 704.5084,
+     "swing": 270.7635
+    },
+    {
+     "variable": "OilA.WaterCut",
+     "low_case": 634.5634,
+     "high_case": 483.6574,
+     "swing": 150.906
+    }
+   ]
+  },
+  "W1 pressure": {
+   "unit": "bara",
+   "base": 28.9781,
+   "highest": {
+    "value": 32.7578,
+    "case": "W1:W1_Comp.ReservoirPressure high=250"
+   },
+   "lowest": {
+    "value": 23.5302,
+    "case": "W1:W1_Comp.ReservoirPressure low=200"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_Comp.ReservoirPressure low=200": -18.8,
+    "W1:W1_Comp.ReservoirPressure high=250": 13.04,
+    "W1:W1_Comp.LiquidPI low=6": -17.51,
+    "W1:W1_Comp.LiquidPI high=14": 12.98,
+    "OilA.WaterCut low=20": 8.5,
+    "OilA.WaterCut high=50": -18.0
+   },
+   "ranking": [
+    {
+     "variable": "W1:W1_Comp.ReservoirPressure",
+     "low_case": 23.5302,
+     "high_case": 32.7578,
+     "swing": 9.2276
+    },
+    {
+     "variable": "W1:W1_Comp.LiquidPI",
+     "low_case": 23.9054,
+     "high_case": 32.7381,
+     "swing": 8.8327
+    },
+    {
+     "variable": "OilA.WaterCut",
+     "low_case": 31.4405,
+     "high_case": 23.7615,
+     "swing": 7.6789
+    }
+   ]
+  }
+ },
+ "failed_cases": []
+}

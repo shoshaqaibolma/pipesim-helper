@@ -1,0 +1,12 @@
+{
+  "model": {
+    "source": "project",
+    "path": "Field_W1.pips"
+  },
+  "analysis": {
+    "type": "nodal",
+    "producer": "W1",
+    "outlet_pressure": 20
+  },
+  "objective": "Analyze well performance at 20 bara wellhead pressure"
+}

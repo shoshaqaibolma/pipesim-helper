@@ -1,0 +1,223 @@
+{
+ "type": "optimize",
+ "primary": "SEP oil rate",
+ "summary": {
+  "not_flowing": {
+   "note": "these wells/sources produced nothing (they cannot flow at these conditions)",
+   "cases": {
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.05": [
+     "W1"
+    ],
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.1": [
+     "W1"
+    ],
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.15": [
+     "W1"
+    ],
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0": [
+     "W2"
+    ],
+    "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0": [
+     "W2"
+    ],
+    "W1:W1_GL.GasRate=0.15, W2:W2_GL.GasRate=0": [
+     "W2"
+    ]
+   }
+  },
+  "SEP liquid rate": {
+   "unit": "sm3/d",
+   "base": 1255.907,
+   "highest": {
+    "value": 1278.6393,
+    "case": "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1"
+   },
+   "lowest": {
+    "value": 668.1644,
+    "case": "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0": -44.53,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.05": -40.99,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.1": -38.27,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.15": -39.02,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0": -46.8,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.05": 0.0,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1": 1.81,
+    "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0": -44.57,
+    "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0.05": 0.97,
+    "W1:W1_GL.GasRate=0.15, W2:W2_GL.GasRate=0": -45.24
+   }
+  },
+  "SEP oil rate": {
+   "unit": "sm3/d",
+   "base": 753.5442,
+   "highest": {
+    "value": 767.1836,
+    "case": "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1"
+   },
+   "lowest": {
+    "value": 400.8987,
+    "case": "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0": -44.53,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.05": -40.99,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.1": -38.27,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.15": -39.02,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0": -46.8,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.05": 0.0,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1": 1.81,
+    "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0": -44.57,
+    "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0.05": 0.97,
+    "W1:W1_GL.GasRate=0.15, W2:W2_GL.GasRate=0": -45.24
+   }
+  },
+  "SEP gas rate": {
+   "unit": "mmsm3/d",
+   "base": 0.1603,
+   "highest": {
+    "value": 0.2115,
+    "case": "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1"
+   },
+   "lowest": {
+    "value": 0.0334,
+    "case": "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0": -79.14,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.05": -46.67,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.1": -14.51,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.15": 16.43,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0": -48.85,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.05": 0.0,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1": 31.93,
+    "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0": -16.78,
+    "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0.05": 31.46,
+    "W1:W1_GL.GasRate=0.15, W2:W2_GL.GasRate=0": 14.04
+   }
+  },
+  "W1 liquid rate": {
+   "unit": "sm3/d",
+   "base": 597.5469,
+   "highest": {
+    "value": 696.0307,
+    "case": "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0"
+   },
+   "lowest": {
+    "value": 333.4642,
+    "case": "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0": -44.19,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0": 11.94,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.05": 0.0,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1": -4.35,
+    "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0": 16.48,
+    "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0.05": 7.21,
+    "W1:W1_GL.GasRate=0.15, W2:W2_GL.GasRate=0": 15.23
+   }
+  },
+  "W1 pressure": {
+   "unit": "bara",
+   "base": 37.7507,
+   "highest": {
+    "value": 43.8352,
+    "case": "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0.05"
+   },
+   "lowest": {
+    "value": 20.2002,
+    "case": "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0": -46.49,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0": -20.35,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.05": 0.0,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1": 7.48,
+    "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0": -3.0,
+    "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0.05": 16.12,
+    "W1:W1_GL.GasRate=0.15, W2:W2_GL.GasRate=0": 10.48
+   }
+  },
+  "W2 liquid rate": {
+   "unit": "sm3/d",
+   "base": 657.691,
+   "highest": {
+    "value": 776.3426,
+    "case": "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.1"
+   },
+   "lowest": {
+    "value": 363.2409,
+    "case": "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0": -44.77,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.05": 12.81,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.1": 18.04,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.15": 16.51,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.05": 0.0,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1": 7.3,
+    "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0.05": -4.48
+   }
+  },
+  "W2 pressure": {
+   "unit": "bara",
+   "base": 38.4661,
+   "highest": {
+    "value": 45.3565,
+    "case": "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1"
+   },
+   "lowest": {
+    "value": 20.6705,
+    "case": "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0"
+   },
+   "change_vs_base_pct": {
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0": -46.26,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.05": -17.29,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.1": 0.75,
+    "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.15": 14.4,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.05": 0.0,
+    "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1": 17.91,
+    "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0.05": 6.2
+   }
+  },
+  "optimum": {
+   "maximized": "SEP oil rate",
+   "unit": "sm3/d",
+   "best": {
+    "case": "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1",
+    "value": 767.1836,
+    "settings": {
+     "W1:W1_GL.GasRate": 0.05,
+     "W2:W2_GL.GasRate": 0.1
+    }
+   },
+   "base_value": 753.5441828771643,
+   "top": [
+    {
+     "case": "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1",
+     "value": 767.1836
+    },
+    {
+     "case": "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0.05",
+     "value": 760.8679
+    },
+    {
+     "case": "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.05",
+     "value": 753.5442
+    },
+    {
+     "case": "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.1",
+     "value": 465.1445
+    },
+    {
+     "case": "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.15",
+     "value": 459.5288
+    }
+   ],
+   "combinations_run": 10,
+   "skipped_over_max_total": 6
+  }
+ },
+ "failed_cases": []
+}

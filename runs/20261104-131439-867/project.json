@@ -1,0 +1,128 @@
+{
+  "name": "Facility test",
+  "fluids": [
+    {
+      "name": "BF",
+      "type": "black_oil",
+      "api": 32,
+      "gor": 1500,
+      "water_cut": 20,
+      "gas_sg": 0.65
+    }
+  ],
+  "wells": [
+    {
+      "name": "W1",
+      "fluid": "BF",
+      "reservoir_pressure": 200,
+      "reservoir_temperature": 55,
+      "ipr": {
+        "model": "pi",
+        "liquid_pi": 5
+      },
+      "depth": 1500,
+      "tubing_id": 100
+    }
+  ],
+  "chokes": [
+    {
+      "name": "CK",
+      "bean_size": 50.8
+    }
+  ],
+  "junctions": [
+    {
+      "name": "MAN"
+    }
+  ],
+  "separators": [
+    {
+      "name": "SEP1",
+      "efficiency": 99.9
+    }
+  ],
+  "compressors": [
+    {
+      "name": "C1",
+      "efficiency": 70,
+      "power": 1000
+    }
+  ],
+  "pumps": [
+    {
+      "name": "P1",
+      "efficiency": 70,
+      "power": 350
+    }
+  ],
+  "sinks": [
+    {
+      "name": "GasSales",
+      "pressure": 41.4
+    },
+    {
+      "name": "OilFacility",
+      "pressure": 20.7
+    }
+  ],
+  "flowlines": [
+    {
+      "name": "FL-1",
+      "from": "W1",
+      "to": "CK",
+      "length": 61,
+      "id": 154,
+      "elevation_change": 3
+    },
+    {
+      "name": "FL-2",
+      "from": "CK",
+      "to": "MAN",
+      "length": 61,
+      "id": 154,
+      "elevation_change": 3
+    },
+    {
+      "name": "FL-4",
+      "from": "MAN",
+      "to": "SEP1",
+      "length": 30,
+      "id": 154,
+      "elevation_change": 0
+    },
+    {
+      "name": "GL-1",
+      "from": "SEP1",
+      "port": "gas",
+      "to": "C1",
+      "length": 7,
+      "id": 154,
+      "elevation_change": 3
+    },
+    {
+      "name": "GL-2",
+      "from": "C1",
+      "to": "GasSales",
+      "length": 6096,
+      "id": 154,
+      "elevation_change": 0
+    },
+    {
+      "name": "LL-1",
+      "from": "SEP1",
+      "port": "liquid",
+      "to": "P1",
+      "length": 61,
+      "id": 154,
+      "elevation_change": 3
+    },
+    {
+      "name": "LL-2",
+      "from": "P1",
+      "to": "OilFacility",
+      "length": 3109,
+      "id": 154,
+      "elevation_change": 0
+    }
+  ]
+}

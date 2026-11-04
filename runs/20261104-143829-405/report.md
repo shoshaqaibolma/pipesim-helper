@@ -1,0 +1,29 @@
+STUDY PLAN: Find minimum flowline ID that keeps inlet pressure <= 90 bara
+Units: METRIC
+1. Build this network as a new PIPESIM model:
+   PROJECT: Gas Export Pipeline (METRIC)
+     fluid      DryGas: gas, SG 0.62, OGR 0 sm3/mmsm3, WGR 0 sm3/mmsm3
+     source     Plant: gas rate 3 mmsm3/d, 40 degC, fluid DryGas
+     flowline   FL-1: Plant -> Terminal, 25000 m, ID 203 mm, elevation +0 m
+     sink       Terminal: 60 bara
+2. Analysis: sweep (vary ONE variable over a range, everything else at base)
+     Flowline:FL-1.InnerDiameter: [203, 254, 305]
+3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source
+4. Total simulation runs: 4. Outputs: CSV, charts, report.md in runs/<timestamp>/
+
+## Results
+
+| case | FL-1.InnerDiameter | Terminal liquid rate [sm3/d] | Terminal oil rate [sm3/d] | Terminal gas rate [mmsm3/d] | Plant liquid rate [sm3/d] | Plant pressure [bara] | _status |
+|---|---|---|---|---|---|---|---|
+| base | 203 | 0 | 0 | 3 | 0 | 126 | Completed |
+| FL-1.InnerDiameter=203 | 203 | 0 | 0 | 3 | 0 | 126 | Completed |
+| FL-1.InnerDiameter=254 | 254 | 0 | 0 | 3 | 0 | 87.09 | Completed |
+| FL-1.InnerDiameter=305 | 305 | 0 | 0 | 3 | 0 | 71.92 | Completed |
+
+![](sweep_liquid_rate.png)
+
+![](sweep_oil_rate.png)
+
+![](sweep_gas_rate.png)
+
+![](sweep_pressure.png)

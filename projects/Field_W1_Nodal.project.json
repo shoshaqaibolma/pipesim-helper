@@ -1,0 +1,61 @@
+{
+  "name": "Field W1",
+  "fluids": [
+    {
+      "name": "BO",
+      "type": "black_oil",
+      "api": 35,
+      "gor": 100,
+      "water_cut": 20,
+      "gas_sg": 0.7
+    }
+  ],
+  "wells": [
+    {
+      "name": "W1",
+      "fluid": "BO",
+      "reservoir_pressure": 250,
+      "reservoir_temperature": 90,
+      "depth": 2500,
+      "tubing_id": 76,
+      "ipr": {
+        "model": "pi",
+        "liquid_pi": 10
+      },
+      "gas_lift": {
+        "depth": 2000,
+        "rate": 0.05
+      }
+    }
+  ],
+  "junctions": [
+    {
+      "name": "J1"
+    }
+  ],
+  "sinks": [
+    {
+      "name": "SEP",
+      "pressure": 15
+    }
+  ],
+  "flowlines": [
+    {
+      "name": "FL-W1",
+      "from": "W1",
+      "to": "J1",
+      "length": 2000,
+      "id": 100,
+      "elevation_change": 0
+    },
+    {
+      "name": "FL-J1-SEP",
+      "from": "J1",
+      "to": "SEP",
+      "length": 0,
+      "id": 100,
+      "elevation_change": 0
+    }
+  ],
+  "chokes": []
+}

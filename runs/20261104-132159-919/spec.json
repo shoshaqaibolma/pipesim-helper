@@ -1,0 +1,22 @@
+{
+  "model": {
+    "source": "project",
+    "path": "Field_W1_Nodal.pips"
+  },
+  "analysis": {
+    "type": "sweep",
+    "producer": "W1",
+    "outlet_pressure": 20,
+    "variables": [
+      {
+        "component_type": "GasLiftInjection",
+        "name": "W1:W1_GL",
+        "parameter": "GasRate",
+        "start": 0,
+        "stop": 0.2,
+        "steps": 5
+      }
+    ]
+  },
+  "objective": "Analyze well performance and determine the optimal operating point for gas-lifted well W1 at 20 bara wellhead pressure"
+}

@@ -1,0 +1,107 @@
+{
+ "type": "sweep",
+ "primary": "Sep oil rate",
+ "summary": {
+  "Sep liquid rate": {
+   "unit": "sm3/d",
+   "base": 511.2623,
+   "highest": {
+    "value": 668.8345,
+    "case": "CK1.BeanSize=32"
+   },
+   "lowest": {
+    "value": 267.0198,
+    "case": "CK1.BeanSize=12"
+   },
+   "change_vs_base_pct": {
+    "CK1.BeanSize=12": -47.77,
+    "CK1.BeanSize=16": -21.24,
+    "CK1.BeanSize=20": 0.0,
+    "CK1.BeanSize=24": 15.93,
+    "CK1.BeanSize=28": 24.94,
+    "CK1.BeanSize=32": 30.82
+   }
+  },
+  "Sep oil rate": {
+   "unit": "sm3/d",
+   "base": 460.1361,
+   "highest": {
+    "value": 601.951,
+    "case": "CK1.BeanSize=32"
+   },
+   "lowest": {
+    "value": 240.3178,
+    "case": "CK1.BeanSize=12"
+   },
+   "change_vs_base_pct": {
+    "CK1.BeanSize=12": -47.77,
+    "CK1.BeanSize=16": -21.24,
+    "CK1.BeanSize=20": 0.0,
+    "CK1.BeanSize=24": 15.93,
+    "CK1.BeanSize=28": 24.94,
+    "CK1.BeanSize=32": 30.82
+   }
+  },
+  "Sep gas rate": {
+   "unit": "mmsm3/d",
+   "base": 0.069,
+   "highest": {
+    "value": 0.0903,
+    "case": "CK1.BeanSize=32"
+   },
+   "lowest": {
+    "value": 0.036,
+    "case": "CK1.BeanSize=12"
+   },
+   "change_vs_base_pct": {
+    "CK1.BeanSize=12": -47.77,
+    "CK1.BeanSize=16": -21.24,
+    "CK1.BeanSize=20": 0.0,
+    "CK1.BeanSize=24": 15.93,
+    "CK1.BeanSize=28": 24.94,
+    "CK1.BeanSize=32": 30.82
+   }
+  },
+  "P1 liquid rate": {
+   "unit": "sm3/d",
+   "base": 511.2623,
+   "highest": {
+    "value": 668.8345,
+    "case": "CK1.BeanSize=32"
+   },
+   "lowest": {
+    "value": 267.0198,
+    "case": "CK1.BeanSize=12"
+   },
+   "change_vs_base_pct": {
+    "CK1.BeanSize=12": -47.77,
+    "CK1.BeanSize=16": -21.24,
+    "CK1.BeanSize=20": 0.0,
+    "CK1.BeanSize=24": 15.93,
+    "CK1.BeanSize=28": 24.94,
+    "CK1.BeanSize=32": 30.82
+   }
+  },
+  "P1 pressure": {
+   "unit": "bara",
+   "base": 48.9491,
+   "highest": {
+    "value": 64.8505,
+    "case": "CK1.BeanSize=12"
+   },
+   "lowest": {
+    "value": 36.2772,
+    "case": "CK1.BeanSize=32"
+   },
+   "change_vs_base_pct": {
+    "CK1.BeanSize=12": 32.49,
+    "CK1.BeanSize=16": 16.9,
+    "CK1.BeanSize=20": 0.0,
+    "CK1.BeanSize=24": -12.9,
+    "CK1.BeanSize=28": -20.56,
+    "CK1.BeanSize=32": -25.89
+   }
+  }
+ },
+ "failed_cases": []
+}

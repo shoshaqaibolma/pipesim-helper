@@ -1,0 +1,57 @@
+{
+  "name": "Well study",
+  "fluids": [
+    {
+      "name": "OilA",
+      "type": "black_oil",
+      "api": 38,
+      "gor": 150,
+      "water_cut": 10,
+      "gas_sg": 0.72
+    }
+  ],
+  "wells": [
+    {
+      "name": "P1",
+      "fluid": "OilA",
+      "reservoir_pressure": 280,
+      "reservoir_temperature": 95,
+      "depth": 3000,
+      "tubing_id": 89,
+      "ipr": {
+        "model": "pi",
+        "liquid_pi": 6
+      }
+    }
+  ],
+  "sinks": [
+    {
+      "name": "Sep",
+      "pressure": 20
+    }
+  ],
+  "chokes": [
+    {
+      "name": "CK1",
+      "bean_size": 20
+    }
+  ],
+  "flowlines": [
+    {
+      "name": "FL-P1",
+      "from": "P1",
+      "to": "CK1",
+      "length": 4000,
+      "id": 127,
+      "elevation_change": 0
+    },
+    {
+      "name": "FL-CK1",
+      "from": "CK1",
+      "to": "Sep",
+      "length": 10,
+      "id": 127,
+      "elevation_change": 0
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "objective": "Compressor power vs production",
+  "units": "METRIC",
+  "model": {
+    "source": "project"
+  },
+  "analysis": {
+    "type": "sweep",
+    "variables": [
+      {
+        "component_type": "Compressor",
+        "name": "C1",
+        "parameter": "Power",
+        "values": [
+          600,
+          1000,
+          1400
+        ]
+      }
+    ]
+  }
+}

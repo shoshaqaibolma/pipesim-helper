@@ -1,0 +1,23 @@
+{
+  "objective": "Find minimum diameter that delivers 3 MMsm3/d at 60 bara terminal",
+  "analysis": {
+    "type": "sweep",
+    "variables": [
+      {
+        "component_type": "Flowline",
+        "name": "Line",
+        "parameter": "InnerDiameter",
+        "values": [
+          203,
+          254,
+          305
+        ]
+      }
+    ],
+    "producer": "Plant",
+    "outlet_pressure": 60
+  },
+  "model": {
+    "source": "project"
+  }
+}

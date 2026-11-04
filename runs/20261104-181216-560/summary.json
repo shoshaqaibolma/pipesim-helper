@@ -1,0 +1,77 @@
+{
+ "type": "sweep",
+ "primary": "Terminal oil rate",
+ "summary": {
+  "Terminal liquid rate": {
+   "unit": "sm3/d",
+   "base": 0.0,
+   "highest": {
+    "value": 0.0,
+    "case": "FL-1.InnerDiameter=305"
+   },
+   "lowest": {
+    "value": 0.0,
+    "case": "FL-1.InnerDiameter=203"
+   }
+  },
+  "Terminal oil rate": {
+   "unit": "sm3/d",
+   "base": 0.0,
+   "highest": {
+    "value": 0.0,
+    "case": "FL-1.InnerDiameter=305"
+   },
+   "lowest": {
+    "value": 0.0,
+    "case": "FL-1.InnerDiameter=203"
+   }
+  },
+  "Terminal gas rate": {
+   "unit": "mmsm3/d",
+   "base": 2.9999,
+   "highest": {
+    "value": 2.9999,
+    "case": "FL-1.InnerDiameter=305"
+   },
+   "lowest": {
+    "value": 2.9999,
+    "case": "FL-1.InnerDiameter=203"
+   },
+   "change_vs_base_pct": {
+    "FL-1.InnerDiameter=203": 0.0,
+    "FL-1.InnerDiameter=254": 0.0,
+    "FL-1.InnerDiameter=305": 0.0
+   }
+  },
+  "Plant liquid rate": {
+   "unit": "sm3/d",
+   "base": 0.0,
+   "highest": {
+    "value": 0.0,
+    "case": "FL-1.InnerDiameter=305"
+   },
+   "lowest": {
+    "value": 0.0,
+    "case": "FL-1.InnerDiameter=203"
+   }
+  },
+  "Plant pressure": {
+   "unit": "bara",
+   "base": 125.9765,
+   "highest": {
+    "value": 125.9765,
+    "case": "FL-1.InnerDiameter=203"
+   },
+   "lowest": {
+    "value": 71.9212,
+    "case": "FL-1.InnerDiameter=305"
+   },
+   "change_vs_base_pct": {
+    "FL-1.InnerDiameter=203": 0.0,
+    "FL-1.InnerDiameter=254": -30.87,
+    "FL-1.InnerDiameter=305": -42.91
+   }
+  }
+ },
+ "failed_cases": []
+}

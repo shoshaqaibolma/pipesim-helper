@@ -1,0 +1,21 @@
+{
+  "objective": "Find the smallest flowline diameter (203, 254, or 305 mm) that allows gas to flow from Plant to Terminal at 60 bara with inlet pressure \u2264 90 bara",
+  "analysis": {
+    "type": "sweep",
+    "variables": [
+      {
+        "component_type": "Flowline",
+        "name": "FL-1",
+        "parameter": "InnerDiameter",
+        "values": [
+          203,
+          254,
+          305
+        ]
+      }
+    ]
+  },
+  "model": {
+    "source": "project"
+  }
+}

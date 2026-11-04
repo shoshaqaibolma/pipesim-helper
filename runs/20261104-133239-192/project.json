@@ -1,0 +1,84 @@
+{
+  "name": "Smoke test field",
+  "ambient_temperature": 15,
+  "fluids": [
+    {
+      "name": "BO",
+      "type": "black_oil",
+      "api": 35,
+      "gor": 100,
+      "water_cut": 20,
+      "gas_sg": 0.7
+    }
+  ],
+  "wells": [
+    {
+      "name": "W1",
+      "fluid": "BO",
+      "reservoir_pressure": 250,
+      "reservoir_temperature": 90,
+      "ipr": {
+        "model": "pi",
+        "liquid_pi": 10
+      },
+      "depth": 2500,
+      "tubing_id": 76
+    },
+    {
+      "name": "W2",
+      "fluid": "BO",
+      "reservoir_pressure": 230,
+      "reservoir_temperature": 90,
+      "ipr": {
+        "model": "pi",
+        "liquid_pi": 15
+      },
+      "depth": 2500,
+      "tubing_id": 76
+    }
+  ],
+  "chokes": [
+    {
+      "name": "CK1",
+      "from": "W1",
+      "bean_size": 40
+    }
+  ],
+  "junctions": [
+    {
+      "name": "J1"
+    }
+  ],
+  "sinks": [
+    {
+      "name": "Sep",
+      "pressure": 15
+    }
+  ],
+  "flowlines": [
+    {
+      "name": "FL1",
+      "from": "CK1",
+      "to": "J1",
+      "length": 1500,
+      "id": 100,
+      "elevation_change": 0
+    },
+    {
+      "name": "FL2",
+      "from": "W2",
+      "to": "J1",
+      "length": 900,
+      "id": 100,
+      "elevation_change": 5
+    },
+    {
+      "name": "FL3",
+      "from": "J1",
+      "to": "Sep",
+      "length": 4000,
+      "id": 152,
+      "elevation_change": 10
+    }
+  ]
+}

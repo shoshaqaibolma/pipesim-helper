@@ -1,0 +1,31 @@
+{
+  "model": {
+    "source": "project"
+  },
+  "analysis": {
+    "type": "tornado",
+    "variables": [
+      {
+        "component_type": "Completion",
+        "name": "W1:W1_Comp",
+        "parameter": "ReservoirPressure",
+        "low": 200,
+        "high": 250
+      },
+      {
+        "component_type": "Completion",
+        "name": "W1:W1_Comp",
+        "parameter": "LiquidPI",
+        "low": 6,
+        "high": 14
+      },
+      {
+        "component_type": "BlackOilFluid",
+        "name": "BO",
+        "parameter": "WaterCut",
+        "low": 20,
+        "high": 50
+      }
+    ]
+  }
+}

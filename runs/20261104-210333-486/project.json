@@ -1,0 +1,100 @@
+{
+  "name": "Field A",
+  "fluids": [
+    {
+      "name": "BO",
+      "type": "black_oil",
+      "api": 33,
+      "gor": 120,
+      "water_cut": 30,
+      "gas_sg": 0.7
+    }
+  ],
+  "wells": [
+    {
+      "name": "W1",
+      "fluid": "BO",
+      "reservoir_pressure": 240,
+      "depth": 2600,
+      "ipr": {
+        "model": "pi",
+        "liquid_pi": 9
+      },
+      "reservoir_temperature": 90.0,
+      "tubing_id": 76.0
+    },
+    {
+      "name": "W2",
+      "fluid": "BO",
+      "reservoir_pressure": 220,
+      "depth": 2500,
+      "ipr": {
+        "model": "pi",
+        "liquid_pi": 14
+      },
+      "reservoir_temperature": 90.0,
+      "tubing_id": 76.0
+    },
+    {
+      "name": "W3",
+      "fluid": "BO",
+      "reservoir_pressure": 210,
+      "depth": 2450,
+      "ipr": {
+        "model": "pi",
+        "liquid_pi": 6
+      },
+      "gas_lift": {
+        "depth": 2200,
+        "rate": 0.05
+      },
+      "reservoir_temperature": 90.0,
+      "tubing_id": 76.0
+    }
+  ],
+  "junctions": [
+    {
+      "name": "M"
+    }
+  ],
+  "sinks": [
+    {
+      "name": "SEP",
+      "pressure": 12
+    }
+  ],
+  "flowlines": [
+    {
+      "name": "FL-W1",
+      "from": "W1",
+      "to": "M",
+      "length": 1000,
+      "id": 100,
+      "elevation_change": 0
+    },
+    {
+      "name": "FL-W2",
+      "from": "W2",
+      "to": "M",
+      "length": 1000,
+      "id": 100,
+      "elevation_change": 0
+    },
+    {
+      "name": "FL-W3",
+      "from": "W3",
+      "to": "M",
+      "length": 1000,
+      "id": 100,
+      "elevation_change": 0
+    },
+    {
+      "name": "Trunk",
+      "from": "M",
+      "to": "SEP",
+      "length": 6000,
+      "id": 152,
+      "elevation_change": 15
+    }
+  ]
+}

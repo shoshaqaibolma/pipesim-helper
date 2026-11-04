@@ -1,0 +1,23 @@
+{
+  "objective": "Study how field oil rate changes with separator pressure",
+  "analysis": {
+    "type": "sweep",
+    "variables": [
+      {
+        "component_type": "Sink",
+        "name": "SEP",
+        "parameter": "Pressure",
+        "values": [
+          10,
+          15,
+          20,
+          25,
+          30
+        ]
+      }
+    ]
+  },
+  "model": {
+    "source": "project"
+  }
+}
