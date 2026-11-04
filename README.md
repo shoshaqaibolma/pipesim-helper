@@ -55,12 +55,24 @@ Analysis types: `single_run`, `sweep` (1 variable), `grid` (2-3 variables, full 
 `tornado` (low/high per variable, ranked), `pt_profile`. If no result changes across the cases, the report
 says so (the varied input may be isolated by a pump or fixed-pressure node, or did not take effect).
 
-**New networks** ("a field with 3 wells into a manifold and a 6 km trunkline to the separator"):
-the agent describes the network as a project (`project.py`: fluids, wells with IPR, sources, chokes,
-junctions, sinks, flowlines), the checker asks for every missing input per component and validates the
-layout (every well reaches a sink, no loops, one outlet per well), then it either writes a new `.pips`
-file you can open in PIPESIM (`build_project`, never overwrites) or runs studies on it.
-Project units: bara, degC, m, mm (diameters), sm3/d.
+**New projects** described in plain language, like the PIPESIM case studies:
+- **Networks:** oil or gas wells (PI, Vogel or back-pressure IPR, optional gas lift), sources with a fixed pressure
+  or flow rate, chokes, manifolds (junctions), two-phase separators with gas/liquid outlets, pumps and compressors
+  (by discharge pressure, pressure rise, ratio or power), flowlines and sinks.
+- **Pipelines:** a source with a fixed liquid or gas rate, flowlines and a delivery pressure; PIPESIM calculates
+  the inlet pressure.
+- **Fluids:** black oil (API, GOR, water cut, gas SG) or gas/condensate (gas SG, OGR, WGR).
+
+The agent writes the project, the checker asks for every missing input per component (with suggested defaults;
+"use defaults" fills them all) and validates the layout (every well reaches a sink, one outlet per well, separator
+outlets named, one inlet per choke/pump/compressor). It then writes a new `.pips` file into `projects\`
+(`build_project`, never overwrites) or runs studies on the network. Project units: bara, degC, m, mm, sm3/d, mmsm3/d.
+
+**Nodal analysis** of a well at a given outlet pressure: operating point (rates, flowing bottom-hole pressure),
+inflow/outflow curves and the IPR/VLP plot.
+
+Results always come with units; percentage changes, best/worst cases and tornado rankings are computed by the code,
+not the language model; networks with several sinks get field totals.
 
 Terminal commands: `spec` shows the current spec and project, `reset` starts over.
 
@@ -72,9 +84,10 @@ Terminal commands: `spec` shows the current spec and project, `reset` starts ove
   `tools/introspect.py` records from the real install.
 
 ## Tests
-- Offline (fake `sixgill`, scripted fake LLM; numbers mean nothing): `tests/test_workflow.py`,
-  `tests/test_agent_loop.py`, `tests/test_project.py`, `tests/test_netbuilder.py`, `tests/test_agent_project.py`,
-  `tests/test_api_names.py`.
+- Offline (fake `sixgill`, scripted fake LLM; numbers mean nothing): every `tests/test_*.py`.
+  `tests/test_agent_robustness.py` replays tool calls the local model really made.
+- On the PC with PIPESIM (`tests/real_*.py`): builder smoke test, pipelines and gas wells, gas lift curve,
+  nodal analysis, a CSN_301-style facility, and the full agent (`real_agent_test.py - tests\scripts\<script>.txt`).
 - Real end-to-end test on the PC (PIPESIM, llama-server and the agent together; works on a temp copy of the model):
   `"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py "path\to\model.pips"`
 

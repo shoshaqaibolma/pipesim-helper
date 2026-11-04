@@ -1,0 +1,7 @@
+Build a new PIPESIM model of one gas-lifted oil well and analyse it. Well W1: reservoir 250 bara and 90 degC, depth 2500 m, PI 10 sm3/d/bar, 76 mm tubing, gas lift injected at 2000 m with 0.05 MMsm3/d. Black oil: 35 API, GOR 100 sm3/sm3, 20% water cut, gas SG 0.7. A flat 2 km, 100 mm flowline goes to a separator SEP at 15 bara. First run a nodal analysis of W1 at 20 bara wellhead pressure.
+Use the suggested defaults for everything else.
+Yes, approved. Run it.
+Now sweep the gas lift rate from 0 to 0.2 MMsm3/d in 5 steps and tell me which rate gives the most oil.
+Yes, approved. Run it.
+Approved.
+exit

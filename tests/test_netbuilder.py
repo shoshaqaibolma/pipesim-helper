@@ -149,6 +149,11 @@ assert m.ports == {("SEP1", "GL-1"): "Top Port", ("SEP1", "LL-1"): "Bottom Port"
 assert m.v[("Compressor", "C1", "POWER")] == 1000 and m.v[("Pump", "P1", "PRESSUREDIFFERENTIAL")] == 10
 assert m.v[("TwoPhaseSeparator", "SEP1", "PRODUCTIONSTREAM")] == "GAS" and rep["validation"] == []
 m.close()
+spec_f = dict(spec, analysis={"type": "sweep", "variables": [{"component_type": "Sink", "name": "OilFacility",
+                                                              "parameter": "Pressure", "values": [15, 25]}]})
+r = executor.run(spec_f, progress=lambda s: None, project=FAC)
+assert "Total oil rate [sm3/d]" in r["table"][0] and "Total oil rate change vs base [%]" in r["table"][0], r["table"][0]
+assert "Total oil rate" in r["summary"]
 def errs(p): return prj.check_project(p)
 bad = dict(FAC, flowlines=[dict(f, port=None) if f["name"] == "GL-1" else f for f in FAC["flowlines"]])
 bad["flowlines"] = [{k: v for k, v in f.items() if v is not None} for f in bad["flowlines"]]

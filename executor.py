@@ -147,13 +147,29 @@ def _summary(a, rows, kpi_cols, labels):
     return out
 
 
-def _primary(kpi_cols):
-    """The result most studies are about: oil (else liquid, else gas) rate at the first sink, else the first result."""
+def _primary(kpi_cols, base=None):
+    """The result most studies are about: total oil (else liquid, else gas) rate when there are several sinks,
+    otherwise the sink/producer with the largest base value of that kind."""
     for word in ("oil rate", "liquid rate", "gas rate"):
-        for k in kpi_cols:
-            if k.endswith(word):
-                return k
+        if f"Total {word}" in kpi_cols:
+            return f"Total {word}"
+        cands = [k for k in kpi_cols if k.endswith(word)]
+        if cands:
+            return max(cands, key=lambda k: abs((base or {}).get(k) or 0))
     return kpi_cols[0] if kpi_cols else None
+
+
+def _add_totals(row, sinks):
+    """Field totals over several sinks (e.g. gas sales + oil facility)."""
+    if len(sinks) < 2:
+        return
+    for var in ("liquid rate", "oil rate", "gas rate"):
+        vals = [row.get(f"{s} {var}") for s in sinks]
+        if any(isinstance(v, (int, float)) for v in vals):
+            row[f"Total {var}"] = sum(v for v in vals if isinstance(v, (int, float)))
+            unit = next((UNITS[f"{s} {var}"] for s in sinks if f"{s} {var}" in UNITS), None)
+            if unit:
+                UNITS[f"Total {var}"] = unit
 
 
 def _flat_warning(rows, kpi_cols):
@@ -250,6 +266,8 @@ def run(spec, progress=print, project=None):
         for c in spec.get("base_changes", []):
             _set(model, (c["component_type"], c["name"], c["parameter"]), c["value"])
         a, kpis = spec["analysis"], _kpis(model, spec, proj)
+        sinks = list(dict.fromkeys(k["component"] for k in kpis if k["label"].endswith(" oil rate")
+                                   and k["component"] not in _producers(model, proj)))
         refs = [study.resolve_var(v, spec) for v in a.get("variables", [])]
         labels = [v.get("alias") or f"{r[1]}.{r[2]}" for v, r in zip(a.get("variables", []), refs)]
         base_vals = [_get(model, r) for r in refs]
@@ -261,6 +279,7 @@ def run(spec, progress=print, project=None):
             progress(f"  case {len(rows) + 1}/{study.n_cases(spec)}: {name}")
             try:
                 row = _run_case(model, kpis)
+                _add_totals(row, sinks)
             except Exception as e:
                 row = {"_status": f"FAILED: {e}"}
             for r, b in zip(refs, base_vals):  # restore the base case
@@ -369,7 +388,7 @@ def run(spec, progress=print, project=None):
             if w:
                 warnings.append(w)
             summary = _summary(a, rows, kpi_cols, labels)
-            p = _primary(kpi_cols)
+            p = _primary(kpi_cols, rows[0])
             if p and summary.get(p, {}).get("change_vs_base_pct"):  # precomputed % change column for the main result
                 col = f"{p} change vs base [%]"
                 for r in rows[1:]:
