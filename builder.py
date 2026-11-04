@@ -26,8 +26,8 @@ SINGLE_WELL_FIELDS = {
 
 # Friendly sweep-variable names -> (component type, component name, (Parameters group, constant)).
 SINGLE_WELL_ALIASES = {
-    "reservoir_pressure": ("Completion", "Well:Completion", ("Completion", "RESERVOIRPRESSURE")),
-    "productivity_index": ("Completion", "Well:Completion", ("IPRPIModel", "LIQUIDPI")),
+    "reservoir_pressure": ("Completion", "Well:Well_Comp", ("Completion", "RESERVOIRPRESSURE")),
+    "productivity_index": ("Completion", "Well:Well_Comp", ("IPRPIModel", "LIQUIDPI")),
     "water_cut":          ("BlackOilFluid", "BO", ("BlackOilFluid", "WATERCUT")),
     "gor":                ("BlackOilFluid", "BO", ("BlackOilFluid", "GOR")),
     "separator_pressure": ("Sink", "Sink", ("Sink", "PRESSURE")),

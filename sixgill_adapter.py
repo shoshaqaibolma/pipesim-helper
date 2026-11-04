@@ -153,6 +153,22 @@ def set_boundary(model, node, key, value):
     return isinstance(back, dict) and _same((back.get(node) or {}).get(key), value)
 
 
+def set_boundaries(model, node, values):
+    """Set several boundary values of one node in a single call, then verify them all."""
+    nt = model.tasks.networksimulation
+    conds = get_boundaries(model)
+    if not isinstance(conds, dict) or not isinstance(conds.get(node), dict):
+        return False
+    new = copy.deepcopy(conds)
+    new[node].update(values)
+    try:
+        nt.set_conditions(boundaries=new)
+    except Exception:
+        return False
+    back = (get_boundaries(model) or {}).get(node) or {}
+    return all(_same(back.get(k), v) for k, v in values.items())
+
+
 def sync_boundaries(model):
     """Re-synchronise the network boundary conditions with the component values (after building a model)."""
     nt = model.tasks.networksimulation

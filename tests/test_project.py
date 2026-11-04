@@ -51,7 +51,18 @@ assert w["W1"]["depth"] == 3000 and w["W1"]["ipr"] == {"model": "pi", "liquid_pi
 assert [x["name"] for x in m["wells"]] == ["W1", "W2", "W3"]
 m = merge_project(m, {"wells": [{"name": "W3", "_delete": True}]})
 assert [x["name"] for x in m["wells"]] == ["W1", "W2"]
-assert known_components(full)["Completion"] == ["W1:Completion", "W2:Completion"]
+assert known_components(full)["Completion"] == ["W1:W1_Comp", "W2:W2_Comp"]
+
+# fluids ask type-specific fields; sources need exactly one of pressure / liquid_rate / gas_rate
+g = check_project({"name": "x", "fluids": [{"name": "G", "type": "gas"}], "sources": [{"name": "S", "fluid": "G"}]})
+f = {m["field"] for m in g["missing"]}
+assert {"fluids.G.gas_sg", "fluids.G.ogr", "fluids.G.wgr", "sources.S.pressure"} <= f and "fluids.G.gor" not in f, f
+g = check_project({"name": "x", "fluids": [{"name": "G", "type": "gas", "gas_sg": .6, "ogr": 0, "wgr": 0, "api": 50}],
+                   "sources": [{"name": "S", "fluid": "G", "temperature": 30, "pressure": 60, "gas_rate": 1}],
+                   "sinks": [{"name": "K", "pressure": 40}],
+                   "flowlines": [{"name": "L", "from": "S", "to": "K", "length": 1000, "id": 200, "elevation_change": 0}]})
+assert any("give only one" in e for e in g["errors"]), g
+assert any("type must be one of" in e for e in check_project({"fluids": [{"name": "Z", "type": "steam"}]})["errors"])
 
 # "use defaults" fills only fields that have a default; required ones stay missing
 d = apply_defaults(p, {m["field"] for m in check_project(p)["missing"]})

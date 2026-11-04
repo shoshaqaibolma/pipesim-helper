@@ -20,11 +20,10 @@ assert prj.check_project(FIELD)["ready"], prj.check_project(FIELD)
 # 1. build: every component and connection is created; the sink boundary condition is set and verified
 tmp = tempfile.mkdtemp()
 m, rep = netbuilder.build(FIELD, os.path.join(tmp, "field.pips"))
-assert m.comps["Well"] == ["W1", "W2"] and m.comps["Completion"] == ["W1:Completion", "W2:Completion"], m.comps
+assert m.comps["Well"] == ["W1", "W2"] and m.comps["Completion"] == ["W1:W1_Comp", "W2:W2_Comp"], m.comps
 assert m.edges == {"W1": ["CK1"], "CK1": ["FL1"], "FL1": ["J1"], "W2": ["FL2"], "FL2": ["J1"], "J1": ["FL3"], "FL3": ["Sep"]}, m.edges
 assert rep["connections"] == 7 and rep["boundaries_synced"] and not rep["validation"], rep
-assert rep["boundary_conditions"] == {"Sep.Pressure": "ok", "W1:Completion.Pressure": "ok", "W1:Completion.Temperature": "ok",
-                                      "W2:Completion.Pressure": "ok", "W2:Completion.Temperature": "ok"}, rep
+assert rep["boundary_conditions"] == {"Sep": "ok", "W1:W1_Comp": "ok", "W2:W2_Comp": "ok"}, rep
 assert m.comps["Casing"] == ["W1:Casing", "W2:Casing"]
 m.close()
 assert os.path.exists(netbuilder.build_file(FIELD, os.path.join(tmp, "out.pips"))["file"])
@@ -40,14 +39,14 @@ assert m.tasks.networksimulation.run().node["VolumeFlowrateLiquidStockTank"]["Se
 assert sa.get_param(m, "Sink", "Sep", "Pressure") == 40
 # in-well items: Completion="W1:Completion" is rejected (as on 2023.1); the adapter uses Well="W1", Completion="Completion"
 try:
-    m.get_value(Completion="W1:Completion", parameter="ReservoirPressure"); raise AssertionError("expected failure")
+    m.get_value(Completion="W1:W1_Comp", parameter="ReservoirPressure"); raise AssertionError("expected failure")
 except LookupError:
     pass
-assert sa.get_value(m, "Completion", "W1:Completion", "ReservoirPressure") == 260
+assert sa.get_value(m, "Completion", "W1:W1_Comp", "ReservoirPressure") == 260
 r2 = m.tasks.networksimulation.run().node["VolumeFlowrateLiquidStockTank"]["W1"]
-sa.set_param(m, "Completion", "W1:Completion", "ReservoirPressure", 300)   # reservoir pressure is a boundary value too
+sa.set_param(m, "Completion", "W1:W1_Comp", "ReservoirPressure", 300)   # reservoir pressure is a boundary value too
 assert m.tasks.networksimulation.run().node["VolumeFlowrateLiquidStockTank"]["W1"] > r2
-assert sa.get_param(m, "Completion", "W1:Completion", "ReservoirPressure") == 300
+assert sa.get_param(m, "Completion", "W1:W1_Comp", "ReservoirPressure") == 300
 print("adapter: set_value alone leaves the network result unchanged; set_param moves the boundary condition "
       "(sink pressure and well reservoir pressure); in-well items addressed as Well=..., Completion=...")
 
@@ -72,7 +71,21 @@ r = executor.run(spec2, progress=lambda s: None, project=FIELD)
 assert r["warnings"] and "No recorded result changed" in r["warnings"][0]
 print("flat results are flagged:", r["warnings"][0][:70], "...")
 
-# 5. checker: unknown component in a project study, incomplete project, non-metric units
+# 5. a gas pipeline: rate-specified source (PIPESIM calculates its pressure), gas fluid by OGR/WGR
+PIPE = {"name": "Gas export", "fluids": [{"name": "DryGas", "type": "gas", "gas_sg": 0.65, "ogr": 0, "wgr": 0, "api": 50}],
+        "sources": [{"name": "Plant", "fluid": "DryGas", "temperature": 40, "gas_rate": 2.0}],
+        "sinks": [{"name": "Terminal", "pressure": 50}],
+        "flowlines": [{"name": "Export", "from": "Plant", "to": "Terminal", "length": 20000, "id": 254, "elevation_change": 0}]}
+assert prj.check_project(PIPE)["ready"], prj.check_project(PIPE)
+m, rep = netbuilder.build(PIPE, os.path.join(tmp, "pipe.pips"))
+assert rep["boundary_conditions"] == {"Terminal": "ok", "Plant": "ok"}, rep
+assert m.v[("BlackOilFluid", "DryGas", "UseGasRatio")] == "OGR" and m.v[("Source", "Plant", "GasFlowRate")] == 2.0
+r = m.tasks.networksimulation.run().node
+assert r["VolumeFlowrateGasStockTank"]["Terminal"] == 2.0 and r["Pressure"]["Plant"] > 50, r
+m.close()
+print("gas pipeline: rate-specified source, OGR/WGR gas fluid, boundary conditions verified")
+
+# 6. checker: unknown component in a project study, incomplete project, non-metric units
 bad = dict(spec, analysis={"type": "sweep", "variables": [{"component_type": "Sink", "name": "Nope",
                                                            "parameter": "Pressure", "values": [1, 2]}]})
 assert any("Available Sink: ['Sep']" in e for e in study.check(bad, project=FIELD)["errors"])

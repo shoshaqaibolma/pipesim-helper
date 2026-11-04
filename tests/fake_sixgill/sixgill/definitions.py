@@ -11,7 +11,9 @@ class _Params:
         return type("G", (), {"__getattr__": lambda s, n: {"WATERCUT":"WaterCut","GOR":"GOR","RESERVOIRPRESSURE":"ReservoirPressure",
             "PRESSURE":"Pressure","INNERDIAMETER":"InnerDiameter","HORIZONTALDISTANCE":"HorizontalDistance","LIQUIDPI":"LiquidPI",
             "TEMPERATURE":"Temperature","BEANSIZE":"BeanSize","ASSOCIATEDBLACKOILFLUID":"AssociatedBlackOilFluid",
-            "RESERVOIRTEMPERATURE":"ReservoirTemperature","CONSTANTC":"ConstantC","SLOPEN":"SlopeN"}.get(n, n)})()
+            "RESERVOIRTEMPERATURE":"ReservoirTemperature","CONSTANTC":"ConstantC","SLOPEN":"SlopeN",
+            "SELECTEDRATETYPE":"SelectedRateType","LIQUIDFLOWRATE":"LiquidFlowRate","GASFLOWRATE":"GasFlowRate",
+            "OGR":"OGR","WGR":"WGR","USEGASRATIO":"UseGasRatio","USEWATERRATIO":"UseWaterRatio"}.get(n, n)})()
 Parameters = _Params(); Constants = _Params()
 class SystemVariables:  # values as recorded from PIPESIM 2023.1
     PRESSURE="Pressure"; VOLUME_FLOWRATE_LIQUID_STOCKTANK="VolumeFlowrateLiquidStockTank"

@@ -17,14 +17,21 @@ IPR = {  # ipr.model -> (IPR model constant, {project field: sixgill parameter})
                      {"c": lambda: P("IPRBackPressure", "CONSTANTC"), "n": lambda: P("IPRBackPressure", "SLOPEN")}),
 }
 CASING_ID_MM = 159.4   # 7" 26 lb/ft production casing, used when the project gives none
+CASING_WALL_MM = 9.19  # VERIFIED: validate() requires a wall thickness on casing and tubing
+TUBING_WALL_MM = 6.45  # 3-1/2" 9.3 lb/ft tubing
 
 
 def _fluid(m, f):
-    if f.get("type", "black_oil") != "black_oil":
-        raise NotImplementedError(f"Fluid {f['name']}: only black_oil fluids can be built so far")
-    sa.add(m, MC("BLACKOILFLUID"), f["name"], parameters={
-        P("BlackOilFluid", "API"): f["api"], P("BlackOilFluid", "GOR"): f["gor"],
-        P("BlackOilFluid", "WATERCUT"): f["water_cut"], P("BlackOilFluid", "GASSPECIFICGRAVITY"): f["gas_sg"]})
+    if f.get("type", "black_oil") == "gas":   # gas/condensate: black-oil model driven by OGR and WGR (as in TF_M2B)
+        params = {P("BlackOilFluid", "GASSPECIFICGRAVITY"): f["gas_sg"], P("BlackOilFluid", "API"): f["api"],
+                  P("BlackOilFluid", "USEGASRATIO"): C("GasRatioOption", "OGR"), P("BlackOilFluid", "OGR"): f["ogr"],
+                  P("BlackOilFluid", "USEWATERRATIO"): C("WaterRatioOption", "WGR"), P("BlackOilFluid", "WGR"): f["wgr"]}
+    else:
+        params = {P("BlackOilFluid", "API"): f["api"],
+                  P("BlackOilFluid", "USEGASRATIO"): C("GasRatioOption", "GOR"), P("BlackOilFluid", "GOR"): f["gor"],
+                  P("BlackOilFluid", "USEWATERRATIO"): C("WaterRatioOption", "WATERCUT"),
+                  P("BlackOilFluid", "WATERCUT"): f["water_cut"], P("BlackOilFluid", "GASSPECIFICGRAVITY"): f["gas_sg"]}
+    sa.add(m, MC("BLACKOILFLUID"), f["name"], parameters=params)
 
 
 def _well(m, w, ambient):
@@ -32,10 +39,11 @@ def _well(m, w, ambient):
     # VERIFIED (2023.1): casing/tubing sections need TopMeasuredDepth AND Length (not BottomMeasuredDepth)
     sa.add(m, MC("CASING"), "Casing", context=w["name"], parameters={
         P("Casing", "TOPMEASUREDDEPTH"): 0.0, P("Casing", "LENGTH"): w["depth"],
-        P("Casing", "INNERDIAMETER"): w.get("casing_id", CASING_ID_MM)})
+        P("Casing", "INNERDIAMETER"): w.get("casing_id", CASING_ID_MM),
+        P("Casing", "WALLTHICKNESS"): w.get("casing_wall", CASING_WALL_MM)})
     sa.add(m, MC("TUBING"), "Tubing", context=w["name"], parameters={
         P("Tubing", "TOPMEASUREDDEPTH"): 0.0, P("Tubing", "LENGTH"): w["depth"],
-        P("Tubing", "INNERDIAMETER"): w["tubing_id"]})
+        P("Tubing", "INNERDIAMETER"): w["tubing_id"], P("Tubing", "WALLTHICKNESS"): w.get("tubing_wall", TUBING_WALL_MM)})
     ipr_const, fields = IPR[w["ipr"]["model"]]
     params = {P("Completion", "TOPMEASUREDDEPTH"): w["depth"],
               P("Completion", "FLUIDENTRYTYPE"): C("CompletionFluidEntry", "SINGLEPOINT"),
@@ -46,7 +54,7 @@ def _well(m, w, ambient):
               P("Completion", "ASSOCIATEDBLACKOILFLUID"): w["fluid"]}
     for field, param in fields.items():
         params[param()] = w["ipr"][field]
-    sa.add(m, MC("COMPLETION"), "Completion", context=w["name"], parameters=params)
+    sa.add(m, MC("COMPLETION"), prj.completion_name(w["name"]), context=w["name"], parameters=params)
 
 
 def build(project, path, units="METRIC"):
@@ -67,8 +75,15 @@ def build(project, path, units="METRIC"):
             _well(m, w, ambient)
             kind_of[w["name"]] = "wells"
         for s in project.get("sources") or []:
-            params = {P("Source", "PRESSURE"): s["pressure"], P("Source", "TEMPERATURE"): s["temperature"],
-                      P("Source", "ASSOCIATEDBLACKOILFLUID"): s["fluid"]}
+            params = {P("Source", "TEMPERATURE"): s["temperature"], P("Source", "ASSOCIATEDBLACKOILFLUID"): s["fluid"]}
+            if "pressure" in s:
+                params[P("Source", "PRESSURE")] = s["pressure"]
+            elif "liquid_rate" in s:
+                params.update({P("Source", "SELECTEDRATETYPE"): C("FlowRateType", "LIQUIDFLOWRATE"),
+                               P("Source", "LIQUIDFLOWRATE"): s["liquid_rate"]})
+            else:
+                params.update({P("Source", "SELECTEDRATETYPE"): C("FlowRateType", "GASFLOWRATE"),
+                               P("Source", "GASFLOWRATE"): s["gas_rate"]})
             sa.add(m, MC("SOURCE"), s["name"], parameters=params)
             kind_of[s["name"]] = "sources"
         for j in project.get("junctions") or []:
@@ -92,18 +107,24 @@ def build(project, path, units="METRIC"):
             sa.connect(m, KIND_TYPE[kind_of[fl["from"]]](), fl["from"], MC("FLOWLINE"), fl["name"])
             sa.connect(m, MC("FLOWLINE"), fl["name"], KIND_TYPE[kind_of[fl["to"]]](), fl["to"])
             links += 2
-        # the network task keeps its own boundary conditions: sync them with the components, then verify each one
+        # the network task keeps its own boundary conditions: sync them with the components, then verify each node
         synced = sa.sync_boundaries(m)
+        wanted = {k["name"]: {"Pressure": k["pressure"]} for k in project.get("sinks") or []}
+        for s in project.get("sources") or []:
+            if "pressure" in s:
+                wanted[s["name"]] = {"Pressure": s["pressure"], "Temperature": s["temperature"]}
+            else:
+                kind = "LiquidFlowRate" if "liquid_rate" in s else "GasFlowRate"
+                wanted[s["name"]] = {"FlowRateType": kind, kind: s.get("liquid_rate", s.get("gas_rate")),
+                                     "Pressure": None, "Temperature": s["temperature"]}
+        for w in project.get("wells") or []:
+            wanted[f"{w['name']}:{prj.completion_name(w['name'])}"] = {"Pressure": w["reservoir_pressure"],
+                                                                      "Temperature": w["reservoir_temperature"]}
         bcs = {}
-        targets = [(k["name"], "Pressure", k["pressure"]) for k in project.get("sinks") or []]
-        targets += [(s["name"], key, s[f]) for s in project.get("sources") or []
-                    for key, f in (("Pressure", "pressure"), ("Temperature", "temperature"))]
-        targets += [(f"{w['name']}:Completion", key, w[f]) for w in project.get("wells") or []
-                    for key, f in (("Pressure", "reservoir_pressure"), ("Temperature", "reservoir_temperature"))]
-        for node, key, value in targets:
-            cur = ((sa.get_boundaries(m) or {}).get(node) or {}).get(key)
-            bcs[f"{node}.{key}"] = ("ok" if cur is not None and sa._same(cur, value)
-                                    else "set" if sa.set_boundary(m, node, key, value) else "NOT SET")
+        for node, values in wanted.items():
+            cur = (sa.get_boundaries(m) or {}).get(node) or {}
+            bcs[node] = ("ok" if cur and all(sa._same(cur.get(k), v) for k, v in values.items())
+                         else "set" if sa.set_boundaries(m, node, values) else "NOT SET")
         issues = sa.validate(m)
         m.save()
     except Exception:

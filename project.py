@@ -27,11 +27,8 @@ UNITS_METRIC = {"pressure": "bara", "temperature": "degC", "length": "m", "id": 
 # entity -> field -> (question, unit, default). None default = must be asked, no sensible default.
 FIELDS = {
     "fluids": {
-        "type":      ("Fluid model: black_oil (oil/water/gas by API, GOR, water cut) or dry_gas?", "", "black_oil"),
-        "api":       ("Oil gravity?", "API", 35.0),
-        "gor":       ("Producing gas-oil ratio?", "sm3/sm3", 100.0),
-        "water_cut": ("Water cut?", "%", 0.0),
-        "gas_sg":    ("Gas specific gravity?", "air=1", 0.7),
+        "type": ("Fluid model: black_oil (oil: API, GOR, water cut) or gas (gas/condensate: gas SG, OGR, WGR)?",
+                 "", "black_oil"),
     },
     "wells": {
         "fluid":                 ("Which fluid does this well produce?", "", None),
@@ -42,9 +39,8 @@ FIELDS = {
         "depth":                 ("Depth to mid-perforation (vertical)?", "m", None),
         "tubing_id":             ("Tubing inner diameter?", "mm", 76.0),
     },
-    "sources": {
+    "sources": {   # plus exactly one of SOURCE_BC
         "fluid":       ("Which fluid enters at this source?", "", None),
-        "pressure":    ("Source pressure?", "bara", None),
         "temperature": ("Source temperature?", "degC", 60.0),
     },
     "sinks": {"pressure": ("Delivery / separator pressure?", "bara", None)},
@@ -60,6 +56,22 @@ FIELDS = {
     "junctions": {},
 }
 IPR_FIELDS = {"pi": ["liquid_pi"], "vogel": ["aof"], "backpressure": ["c", "n"]}
+FLUID_FIELDS = {
+    "black_oil": {"api":       ("Oil gravity?", "API", 35.0),
+                  "gor":       ("Producing gas-oil ratio?", "sm3/sm3", 100.0),
+                  "water_cut": ("Water cut?", "%", 0.0),
+                  "gas_sg":    ("Gas specific gravity?", "air=1", 0.7)},
+    "gas":       {"gas_sg":    ("Gas specific gravity?", "air=1", 0.65),
+                  "ogr":       ("Condensate-gas ratio (0 for dry gas)?", "sm3/mmsm3", 0.0),
+                  "wgr":       ("Water-gas ratio?", "sm3/mmsm3", 0.0),
+                  "api":       ("Condensate gravity?", "API", 50.0)},
+}
+SOURCE_BC = {"pressure": "bara", "liquid_rate": "sm3/d", "gas_rate": "mmsm3/d"}
+
+
+def completion_name(well):
+    """Completions get unique names: PIPESIM reports results by short name, so two "Completion"s would collide."""
+    return f"{well}_Comp"
 NODE_KINDS = ("wells", "sources", "junctions", "sinks", "chokes")
 
 
@@ -103,8 +115,22 @@ def check_project(p):
                         if f not in e["ipr"]:
                             ask(f"wells.{n}.ipr.{f}", f"{n}: IPR parameter {f}?",
                                 {"liquid_pi": "sm3/d/bar", "aof": "sm3/d", "c": "sm3/d/bar^2n", "n": ""}[f])
-            if kind == "fluids" and e.get("type") not in (None, "black_oil", "dry_gas"):
-                errors.append(f"Fluid {n}: type must be black_oil or dry_gas")
+            if kind == "fluids":
+                ftype = e.get("type", "black_oil")
+                if ftype not in FLUID_FIELDS:
+                    errors.append(f"Fluid {n}: type must be one of {list(FLUID_FIELDS)}")
+                else:
+                    for f, (q, unit, dflt) in FLUID_FIELDS[ftype].items():
+                        if f not in e:
+                            ask(f"fluids.{n}.{f}", f"{n}: {q}", unit, dflt)
+            if kind == "sources":
+                given = [k for k in SOURCE_BC if k in e]
+                if not given:
+                    ask(f"sources.{n}.pressure", f"{n}: fixed pressure (bara), OR fixed flow rate: liquid_rate (sm3/d) "
+                        "or gas_rate (mmsm3/d)? Give exactly one; PIPESIM calculates the rest.", "", None)
+                elif len(given) > 1:
+                    errors.append(f"Source {n}: give only one of {list(SOURCE_BC)} (got {given}); "
+                                  "PIPESIM calculates the others.")
     fluids = {f.get("name") for f in p.get("fluids") or []}
     for kind in ("wells", "sources"):
         for e in p.get(kind) or []:
@@ -199,7 +225,8 @@ def merge_project(base, patch):
 def known_components(p):
     """Component names the built model will have, by sixgill component type (for validating study variables)."""
     wells = [w["name"] for w in p.get("wells") or [] if w.get("name")]
-    return {"Well": wells, "Completion": [f"{w}:Completion" for w in wells], "Tubing": [f"{w}:Tubing" for w in wells],
+    return {"Well": wells, "Completion": [f"{w}:{completion_name(w)}" for w in wells],
+            "Tubing": [f"{w}:Tubing" for w in wells],
             "Source": [e["name"] for e in p.get("sources") or []], "Sink": [e["name"] for e in p.get("sinks") or []],
             "Junction": [e["name"] for e in p.get("junctions") or []], "Choke": [e["name"] for e in p.get("chokes") or []],
             "Flowline": [e["name"] for e in p.get("flowlines") or []],

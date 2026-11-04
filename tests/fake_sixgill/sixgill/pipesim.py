@@ -42,7 +42,9 @@ class _Net:
             for t in ("Sink", "Source"):
                 for n in s.m.comps.get(t, []):
                     s.bc[n] = {"BoundaryNodeType": t, "Pressure": v.get((t, n, "Pressure")),
-                               "Temperature": v.get((t, n, "Temperature"))}
+                               "Temperature": v.get((t, n, "Temperature")),
+                               "FlowRateType": v.get((t, n, "SelectedRateType"), "LiquidFlowRate"),
+                               "LiquidFlowRate": v.get((t, n, "LiquidFlowRate")), "GasFlowRate": v.get((t, n, "GasFlowRate"))}
             for c in s.m.comps.get("Completion", []):
                 s.bc[c] = {"BoundaryNodeType": "Completion", "Pressure": v.get(("Completion", c, "ReservoirPressure")),
                            "Temperature": v.get(("Completion", c, "ReservoirTemperature"))}
@@ -67,8 +69,19 @@ class _Net:
         sinks = m.comps.get("Sink", [])
         node = {k: {"Unit": u} for k, u in UNITS.items()}
         totals = {k: [0.0, 0.0, 0.0] for k in sinks}
+        for src in m.comps.get("Source", []):
+            b, dest = bcs.get(src) or {}, s._sink_of(src) or (sinks[0] if sinks else None)
+            psink = (bcs.get(dest) or {}).get("Pressure") or 15
+            liq = b.get("LiquidFlowRate") or 0.0 if b.get("FlowRateType") == "LiquidFlowRate" else 0.0
+            gas = b.get("GasFlowRate") or 0.0 if b.get("FlowRateType") == "GasFlowRate" else 0.0
+            if b.get("Pressure") is not None:
+                liq = max(0.0, 10 * (b["Pressure"] - psink))
+            node["VolumeFlowrateLiquidStockTank"][src], node["VolumeFlowrateGasStockTank"][src] = liq, gas
+            node["Pressure"][src] = b.get("Pressure") if b.get("Pressure") is not None else psink + 0.01 * liq + 5 * gas
+            if dest in totals:
+                totals[dest][0] += liq; totals[dest][2] += gas
         for w in m.comps.get("Well", []):
-            c = f"{w}:Completion"
+            c = next((x for x in m.comps.get("Completion", []) if x.startswith(f"{w}:")), f"{w}:Completion")
             pr = (bcs.get(c) or {}).get("Pressure")
             pr = 250 if pr is None else pr
             pi = m.v.get(("Completion", c, "LiquidPI"), 10)
@@ -162,6 +175,8 @@ class Model:
         s.v[(t, n, parameter)] = value
 
     def get_values(s, **kw): return {}
+    def describe(s, parameter=None, **kw):
+        return type("D", (), {"units": {"ConstantC": "mmsm3/d/bar2n"}.get(parameter, "fake-unit")})()
     def validate(s): return []
     def save(s, path=None): open(path or s.path, "w").write("fake")
     def close(s): pass
