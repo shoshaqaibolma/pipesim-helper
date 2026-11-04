@@ -212,7 +212,7 @@ def _nodal_chart(path, curves, op, well, base="liquid"):
         pts = [(q, p) for q, p in zip(cv["rate"], cv["pressure"]) if q is not None and p is not None]
         if pts:
             ax.plot(*zip(*pts), label=("Inflow (IPR)" if name.startswith("inflow") else "Outflow (VLP)"))
-    rate = op.get("liquid_rate") if base == "liquid" else op.get("gas_rate")
+    rate = op.get("liquid_rate") if base == "liquid" else op.get("reservoir_gas_rate")
     q = (rate or {}).get("value")
     p = (op.get("bottomhole_pressure") or {}).get("value")
     if q is not None and p is not None:
@@ -309,7 +309,7 @@ def run(spec, progress=print, project=None):
                                   "the operating point is still valid. Raw data saved to nodal_raw.json."]
             else:
                 warnings_extra = []
-            if not op.get("liquid_rate") and not op.get("gas_rate"):
+            if not op.get("liquid_rate") and not op.get("reservoir_gas_rate"):
                 warnings_extra.append("No operating point found: the well may not flow at this outlet pressure "
                                       f"(PIPESIM summary: {str(res.get('summary_messages'))[:300]}).")
         elif a["type"] == "pt_profile":

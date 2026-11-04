@@ -168,6 +168,12 @@ def check_project(p):
             if e.get("fluid") and e["fluid"] not in fluids:
                 errors.append(f"{e.get('name')}: fluid '{e['fluid']}' is not defined in fluids {sorted(fluids)}")
 
+    for f in p.get("flowlines") or []:
+        for k in ("length", "id"):
+            v = f.get(k)
+            if isinstance(v, (int, float)) and v <= 0:
+                errors.append(f"{f.get('name')}: {k} must be greater than 0 (got {v}). If two components are "
+                              "directly connected, use a choke/pump/compressor 'from' link instead of a 0 m flowline.")
     # topology: edges are flowlines plus direct "from" links of in-line equipment (chokes, pumps, compressors);
     # every well/source must reach a sink, no cycles, no dead ends, separators leave through named ports
     edges = [(e.get("from"), e.get("to"), e.get("name")) for e in p.get("flowlines") or []]

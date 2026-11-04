@@ -303,15 +303,16 @@ def nodal(model, producer, outlet_pressure, completion=None):
         comps = [c.split(":", 1)[1] for c in model.find(Completion=d.ALL) or [] if c.startswith(f"{producer}:")]
         comp = comps[0] if comps else None
     op = {}
+    # rates at the completion = what the reservoir delivers (gas lift gas enters higher up the well)
     for key, var in (("liquid_rate", "VolumeFlowrateLiquidStockTank"), ("oil_rate", "VolumeFlowrateOilStockTank"),
-                     ("gas_rate", "VolumeFlowrateGasStockTank"), ("water_rate", "VolumeFlowrateWaterStockTank")):
+                     ("reservoir_gas_rate", "VolumeFlowrateGasStockTank"), ("water_rate", "VolumeFlowrateWaterStockTank")):
         row = node.get(var) or {}
         if comp in row and _num(row[comp]):
             op[key] = {"value": row[comp], "unit": row.get("Unit")}
     pts = _plain(getattr(r, "operating_points", None)) or []
     if pts and isinstance(pts[0], dict):   # PIPESIM's own operating point
         pd, units = pts[0].get("point_data") or {}, pts[0].get("units") or {}
-        for key, var in (("liquid_rate", RATE_KEYS["liquid"]), ("gas_rate", RATE_KEYS["gas"]),
+        for key, var in (("liquid_rate", RATE_KEYS["liquid"]), ("reservoir_gas_rate", RATE_KEYS["gas"]),
                          ("bottomhole_pressure", "NodalPointPressure")):
             if _num(pd.get(var)):
                 op[key] = {"value": pd[var], "unit": units.get(var)}

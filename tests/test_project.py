@@ -64,6 +64,10 @@ g = check_project({"name": "x", "fluids": [{"name": "G", "type": "gas", "gas_sg"
 assert any("give only one" in e for e in g["errors"]), g
 assert any("type must be one of" in e for e in check_project({"fluids": [{"name": "Z", "type": "steam"}]})["errors"])
 
+# flowlines must have a real length and diameter (the 9B model once joined two nodes with a 0 m flowline)
+z = dict(full, flowlines=[dict(full["flowlines"][2], length=0)] + full["flowlines"][:2])
+assert any("length must be greater than 0" in e for e in check_project(z)["errors"])
+
 # "use defaults" fills only fields that have a default; required ones stay missing
 d = apply_defaults(p, {m["field"] for m in check_project(p)["missing"]})
 left = {m["field"] for m in check_project(d)["missing"]}
