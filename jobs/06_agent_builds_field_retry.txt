@@ -1,0 +1,3 @@
+# Retry of job 05 after the robustness fixes: the local LLM agent builds a 2-well field from a plain-language
+# description and runs a separator-pressure sweep (starts and stops llama-server via start_llm.bat).
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\field_project.txt
