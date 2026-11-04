@@ -1,0 +1,178 @@
+{
+ "field_project": {
+  "scenario": "field_project",
+  "held_out": false,
+  "seconds": 110,
+  "exit": 0,
+  "runs": 1,
+  "tool_calls": 14,
+  "checker_errors": 1,
+  "json_retries": 0,
+  "model_unreachable": false,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> I need to ask you about the missing values:\n\n**Missing inputs (with suggested defaults):**\n\n1. **W1:**\n   - Reservoir temperature: 90.0 degC\n   - Tubing inner diameter: 76.0 mm\n\n2. **W2:**\n   - Reservoir temperature: 90.0 degC\n   - Tubing inner diameter: 76.0 mm\n\nPlease provide these values, or reply \"use defaults\" to accept the suggested defaults.",
+   "agent> Here's the study plan:\n\n**STUDY PLAN: Study how field oil rate changes with separator pressure**\nUnits: METRIC\n1. Build this network as a new PIPESIM model:\n   PROJECT: Field A (METRIC)\n     fluid      BO: black oil, 35 API, GOR 100 sm3/sm3, water cut 20 %, gas SG 0.7\n     well       W1: reservoir 250 bara / 90 degC, depth 2500 m, tubing 76 mm, PI 10 sm3/d/bar, fluid BO\n     well       W2: reservoir 230 bara / 90 degC, depth 2400 m, tubing 76 mm, PI 15 sm3/d/bar, fluid BO\n     junction   J1: \n     flowline   FL-W1: W1 -> J1, 1500 m, ID 100 mm, elevation +0 m\n     flowline   FL-W2: W2 -> J1, 900 m, ID 100 mm, elevation +0 m\n     flowline   Trunk: J1 -> SEP, 5000 m, ID 152 mm, elevation +10 m\n     sink       SEP: 15 bara\n2. Analysis: sweep (vary ONE variable over a range, everything else at base)\n     Sink:SEP.Pressure: [10, 15, 20, 25, 30]\n3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source\n4. Total simulation runs: 6. Outputs: CSV, charts, report.md in runs/<timestamp>/\n\n**Do you approve this plan?** Please confirm \"approve\" or suggest changes.",
+   "agent> ## Study Results: Field Oil Rate vs Separator Pressure\n\nThe study is complete! Here's the analysis:\n\n### **Key Findings:**\n\n**Field Oil Rate (SEP oil rate) vs Separator Pressure:**\n- **Base case (15 bara):** 1,217 sm\u00b3/d\n- **At 10 bara:** 1,259 sm\u00b3/d (+3.47%)\n- **At 30 bara:** 1,011 sm\u00b3/d (-16.9%)\n\n### **Trends:**\n1. **Lower separator pressure = higher production** (as expected)\n   - Reducing separator pressure from 15\u219210 bara increases oil rate by **3.47%**\n   - Increasing separator pressure from 15\u219230 bara decreases oil rate by **16.9%**\n\n2. **Both wells respond similarly:**\n   - W1: 677\u2192699 sm\u00b3/d (10 bara) and 677\u2192571 sm\u00b3/d (30 bara)\n   - W2: 844\u2192875 sm\u00b3/d (10 bara) and 844\u2192693 sm\u00b3/d (30 bara)\n\n3. **Wellbore pressures increase as separator pressure rises:**\n   - W1: 39.4\u219244.0 bara (at 30 bara separator)\n   - W2: 38.9\u219243.4 bara (at 30 bara separator)\n   - This backpressure reduces well deliverability\n\n### **Physical Observations:**\n- All wells remain flowing at all separator pressures (no non-flowing wells)\n- The 16.9% production loss at 30 bara is significant - this is the economic trade-off\n- The relationship is non-linear: the penalty accelerates as separator pressure in",
+   "agent> Here's the tornado study plan:\n\n**STUDY PLAN: Sensitivity Analysis of Field Oil Rate**\nUnits: METRIC\n1. Build this network as a new PIPESIM model:\n   PROJECT: Field A (METRIC)\n     fluid      BO: black oil, 35 API, GOR 100 sm3/sm3, water cut 20 %, gas SG 0.7\n     well       W1: reservoir 250 bara / 90 degC, depth 2500 m, tubing 76 mm, PI 10 sm3/d/bar, fluid BO\n     well       W2: reservoir 230 bara / 90 degC, depth 2400 m, tubing 76 mm, PI 15 sm3/d/bar, fluid BO\n     junction   J1: \n     flowline   FL-W1: W1 -> J1, 1500 m, ID 100 mm, elevation +0 m\n     flowline   FL-W2: W2 -> J1, 900 m, ID 100 mm, elevation +0 m\n     flowline   Trunk: J1 -> SEP, 5000 m, ID 152 mm, elevation +10 m\n     sink       SEP: 15 bara\n2. Analysis: tornado (vary each variable to its low and high value one at a time, then rank the impacts)\n     Sink:SEP.Pressure: [10, 30]\n     Flowline:FL-W1.InnerDiameter: [76, 152]\n     Flowline:FL-W2.InnerDiameter: [76, 152]\n     Flowline:Trunk.InnerDiameter: [100, 203]\n     Completion:W1:W1_Comp.LiquidPI: [5, 15]\n     Completion:W2:W2_Comp.LiquidPI: [7.5, 22.5]\n3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure at each well and sour"
+  ],
+  "completed": true,
+  "correct": true,
+  "note": "most oil at separator 10.0 bara (expected the lowest, 10)",
+  "run_dirs": [
+   "D:\\github reps\\pipesim helper\\runs\\20261104-151715-639"
+  ]
+ },
+ "gaslift_nodal": {
+  "scenario": "gaslift_nodal",
+  "held_out": false,
+  "seconds": 67,
+  "exit": 0,
+  "runs": 1,
+  "tool_calls": 6,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> ## Nodal Analysis Results for W1\n\nThe nodal analysis has been completed successfully. Here's the analysis:\n\n### Operating Point (at 20 bara wellhead pressure)\n- **Liquid rate**: 1,224 sm\u00b3/d\n- **Oil rate**: 979.1 sm\u00b3/d\n- **Gas rate**: 0.098 mmsm\u00b3/d (from reservoir)\n- **Water rate**: 244.8 sm\u00b3/d\n- **Bottomhole pressure**: 116.3 bara\n- **Status**: Completed (well is flowing)\n\n### Key Observations\n\n1. **Well is flowing**: The well produces at the operating point with a bottomhole pressure of 116.3 bara, which is well above the reservoir pressure requirement for flow.\n\n2. **IPR vs VLP curves**: The inflow curve (IPR) shows the well's ability to produce at various bottomhole pressures (from 248.3 bara at 16.75 sm\u00b3/d down to 2.4 bara at 1,675 sm\u00b3/d). The outflow curve (VLP) shows the flowline's ability to deliver at various bottomhole pressures.\n\n3. **Operating point intersection**: The curves intersect at 1,224 sm\u00b3/d liquid rate and 116.3 bara bottomhole pressure, which is the stable operating condition.\n\n4. **Gas lift contribution**: The injected gas lift rate is 0.05 mmsm\u00b3/d, and the total reservoir gas rate is 0.098 mmsm\u00b3/d, meaning the gas lift is contributing about 52% of the",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "nodal run: True, gas lift sweep: False",
+  "run_dirs": [
+   "D:\\github reps\\pipesim helper\\runs\\20261104-151839-485"
+  ]
+ },
+ "gaslift_allocation": {
+  "scenario": "gaslift_allocation",
+  "held_out": false,
+  "seconds": 14,
+  "exit": 0,
+  "runs": 0,
+  "tool_calls": 0,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "no optimize run",
+  "run_dirs": []
+ },
+ "uncertainty": {
+  "scenario": "uncertainty",
+  "held_out": false,
+  "seconds": 6,
+  "exit": 0,
+  "runs": 0,
+  "tool_calls": 0,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "no tornado run",
+  "run_dirs": []
+ },
+ "debottleneck": {
+  "scenario": "debottleneck",
+  "held_out": false,
+  "seconds": 6,
+  "exit": 0,
+  "runs": 0,
+  "tool_calls": 0,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "no grid run",
+  "run_dirs": []
+ },
+ "pipeline_sizing": {
+  "scenario": "pipeline_sizing",
+  "held_out": false,
+  "seconds": 6,
+  "exit": 0,
+  "runs": 0,
+  "tool_calls": 0,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "no diameter sweep",
+  "run_dirs": []
+ },
+ "choke_sizing": {
+  "scenario": "choke_sizing",
+  "held_out": true,
+  "seconds": 6,
+  "exit": 0,
+  "runs": 0,
+  "tool_calls": 0,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "no choke-size sweep",
+  "run_dirs": []
+ },
+ "water_rise": {
+  "scenario": "water_rise",
+  "held_out": true,
+  "seconds": 6,
+  "exit": 0,
+  "runs": 0,
+  "tool_calls": 0,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "no water-cut sweep",
+  "run_dirs": []
+ }
+}

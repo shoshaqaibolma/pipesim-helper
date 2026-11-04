@@ -1,0 +1,170 @@
+{
+ "field_project": {
+  "scenario": "field_project",
+  "held_out": false,
+  "seconds": 6,
+  "exit": 0,
+  "runs": 0,
+  "tool_calls": 0,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "no separator-pressure sweep",
+  "run_dirs": []
+ },
+ "gaslift_nodal": {
+  "scenario": "gaslift_nodal",
+  "held_out": false,
+  "seconds": 6,
+  "exit": 0,
+  "runs": 0,
+  "tool_calls": 0,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "nodal run: False, gas lift sweep: False",
+  "run_dirs": []
+ },
+ "gaslift_allocation": {
+  "scenario": "gaslift_allocation",
+  "held_out": false,
+  "seconds": 6,
+  "exit": 0,
+  "runs": 0,
+  "tool_calls": 0,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "no optimize run",
+  "run_dirs": []
+ },
+ "uncertainty": {
+  "scenario": "uncertainty",
+  "held_out": false,
+  "seconds": 6,
+  "exit": 0,
+  "runs": 0,
+  "tool_calls": 0,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "no tornado run",
+  "run_dirs": []
+ },
+ "debottleneck": {
+  "scenario": "debottleneck",
+  "held_out": false,
+  "seconds": 6,
+  "exit": 0,
+  "runs": 0,
+  "tool_calls": 0,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "no grid run",
+  "run_dirs": []
+ },
+ "pipeline_sizing": {
+  "scenario": "pipeline_sizing",
+  "held_out": false,
+  "seconds": 6,
+  "exit": 0,
+  "runs": 0,
+  "tool_calls": 0,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "no diameter sweep",
+  "run_dirs": []
+ },
+ "choke_sizing": {
+  "scenario": "choke_sizing",
+  "held_out": true,
+  "seconds": 6,
+  "exit": 0,
+  "runs": 0,
+  "tool_calls": 0,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "no choke-size sweep",
+  "run_dirs": []
+ },
+ "water_rise": {
+  "scenario": "water_rise",
+  "held_out": true,
+  "seconds": 6,
+  "exit": 0,
+  "runs": 0,
+  "tool_calls": 0,
+  "checker_errors": 0,
+  "json_retries": 0,
+  "model_unreachable": true,
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
+  "replies": [
+   "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
+   "agent> (could not reach the model: APIConnectionError: Connection error.. Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health)"
+  ],
+  "completed": false,
+  "correct": false,
+  "note": "no water-cut sweep",
+  "run_dirs": []
+ }
+}
