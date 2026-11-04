@@ -1,0 +1,3 @@
+# Builder smoke test (expect no validation messages now), then pipelines and a gas well. All in %TEMP%.
+"D:\Program\Pipesim toolkit\python.exe" tests\real_build_test.py
+"D:\Program\Pipesim toolkit\python.exe" tests\real_pipeline_test.py
