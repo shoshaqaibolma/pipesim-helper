@@ -46,6 +46,8 @@ assert "Trunk: J1 -> Sep, 6000 m" in plan, plan
 agent.update_project({"wells": [{"name": "W2", "reservoir_pressure": 250}]})
 assert "changed" in agent.run_study()["error"]
 agent.propose_plan()
+assert "not seen the plan" in agent.run_study()["error"]      # same turn as the plan: must wait for the user
+agent.STATE["turn"] += 1                                       # the user answers
 r = agent.run_study()
 assert r["n_rows"] == 4 and not r["failed_cases"] and not r["warnings"], r
 print("project workflow: asked 4+ items -> merged answers -> built .pips -> stale plan refused -> 4-run study OK")

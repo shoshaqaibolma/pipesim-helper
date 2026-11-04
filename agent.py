@@ -3,7 +3,7 @@ PIPESIM study agent. Describe a study in plain language and it will:
   understand -> ask about missing parameters -> propose a plan -> (you approve) -> run -> analyze.
 Usage:  python agent.py         (llama-server must be running, see start_llm.bat)
 """
-import json, os, sys
+import json, os, re, sys
 from openai import OpenAI
 import pipesim_tools as pt
 import study, executor, netbuilder, recipes, numguard
@@ -98,7 +98,8 @@ PROJECT = {}
 # Front-end hooks: the terminal asks with input(); the web window (webui.py) uses its Approve button.
 HOOKS = {"confirm": lambda question: input(f"\n  {question} [y/N] ").strip().lower() == "y",
          "progress": lambda text: print("   " + text)}
-STATE = {"plan_ok_for": None, "components": None, "recipes_given": set()}
+STATE = {"plan_ok_for": None, "components": None, "recipes_given": set(), "turn": 0, "plan_turn": None,
+         "ran_plan": None, "user_text": ""}
 LEDGER = numguard.Ledger()   # numbers that really came from tools or the user in this conversation
 
 
@@ -129,7 +130,10 @@ def propose_plan():
     if not c["ready"]:
         return {"error": "Spec not ready", **c}
     STATE["plan_ok_for"] = _plan_key()
-    return {"plan": study.plan_text(SPEC, PROJECT)}
+    STATE["plan_turn"] = STATE["turn"]
+    return {"plan": study.plan_text(SPEC, PROJECT),
+            "next_step": "Show this plan to the user word for word and ask them to approve it. Do not call run_study "
+                         "in this turn: wait for their answer."}
 
 
 def run_study():
@@ -137,11 +141,16 @@ def run_study():
     if STATE["plan_ok_for"] != _plan_key():
         return {"error": "The spec or project changed, or was never planned. Call propose_plan and get user "
                          "approval first."}
+    if STATE["plan_turn"] == STATE["turn"]:
+        return {"error": "The user has not seen the plan yet. Show it to them and wait for their approval; "
+                         "call run_study only in a later turn, after they approve."}
     if not HOOKS["confirm"]("Run this study now?"):
         return {"error": "The user has not approved the run yet. Ask them to approve the plan (in the web window: "
                          "the Approve button), then call run_study again."}
     pt.close_model() if pt._state["model"] else None
-    return executor.run(SPEC, progress=HOOKS["progress"], project=PROJECT or None)
+    res = executor.run(SPEC, progress=HOOKS["progress"], project=PROJECT or None)
+    STATE["ran_plan"] = _plan_key()
+    return res
 
 
 def update_project(patch: dict):
@@ -149,8 +158,11 @@ def update_project(patch: dict):
     {"name": "X", "_delete": true} removes X."""
     global PROJECT
     PROJECT, notes, errors = prj.apply_patch(PROJECT, patch)
+    PROJECT, renamed = prj.replace_placeholders(PROJECT, recipes.PLACEHOLDERS, STATE["user_text"])
     STATE["plan_ok_for"] = None
     out = {"project": prj.summary(PROJECT), "next_step": "Call check_project."}
+    if renamed:   # names copied from a recipe example, not given by the user
+        out["renamed"] = [f"{a} -> {b} (example name, not the user's; use {b})" for a, b in renamed]
     if notes:
         out["normalized"] = notes
     if errors:
@@ -270,9 +282,35 @@ def chat(client, msgs):
 def new_conversation():
     global SPEC, PROJECT, LEDGER
     SPEC, PROJECT = {}, {}
-    STATE.update(plan_ok_for=None, components=None, recipes_given=set())
+    STATE.update(plan_ok_for=None, components=None, recipes_given=set(), turn=0, plan_turn=None, ran_plan=None,
+                 user_text="")
     LEDGER = numguard.Ledger()
     return [{"role": "system", "content": SYSTEM}]
+
+
+APPROVAL = re.compile(r"^\W*(yes|yeah|yep|y|ok|okay|sure|approved?|go( ahead)?|run( it)?|proceed|confirm(ed)?|do it|"
+                      r"looks good|lgtm)\b", re.I)
+
+
+CHANGE = re.compile(r"\d|\b(but|change|instead|except|also|modify|add|remove|not|no|wait|first)\b", re.I)
+
+
+def approval_note(user):
+    """Short approvals are answered by state, not guessed by the model: run the waiting plan, or say that the
+    last plan already ran instead of inventing a new study."""
+    if len(user) > 80 or not APPROVAL.match(user) or CHANGE.search(user):
+        return None
+    key = _plan_key()
+    if STATE["plan_ok_for"] == key and STATE["ran_plan"] != key:
+        return "The user approved the plan above. Call run_study now."
+    if STATE["ran_plan"] is not None and STATE["ran_plan"] == key:
+        return ("This is an approval, but no plan is waiting: the approved study already ran and its results were "
+                "shown. Do NOT propose, plan or run another study. Reply in one or two sentences: say the study is "
+                "done, give the report path, and ask what they want to do next.")
+    if STATE["plan_ok_for"] is None:
+        return ("No plan has been proposed yet, so there is nothing to approve. Continue the workflow: resolve "
+                "check_project / check_spec, then propose_plan and show it.")
+    return None
 
 
 def check_numbers(client, msgs, text, emit):
@@ -301,13 +339,18 @@ def run_turn(client, msgs, user, emit):
     {"type": "tool", "name", "args"}, {"type": "result", "name", "result"}, {"type": "assistant", "text"},
     {"type": "error", "text"}. msgs is updated in place."""
     turn_start = len(msgs)
+    STATE["turn"] += 1
     LEDGER.add_user(user)
+    STATE["user_text"] += "\n" + user
     content = user
+    note = approval_note(user)
+    if note:
+        content += "\n\n[Guidance for the assistant - state] " + note
     if KNOWLEDGE:   # recipes matching this message, each one only once per conversation
         hits = [r for r in recipes.select(user) if r["name"] not in STATE["recipes_given"]]
         if hits:
             STATE["recipes_given"].update(r["name"] for r in hits)
-            content = user + recipes.GUIDANCE + "\n\n".join(r["text"] for r in hits)
+            content += recipes.GUIDANCE + "\n\n".join(r["text"] for r in hits)
     msgs.append({"role": "user", "content": content})
     spec_calls, bad_json = 0, 0
     try:

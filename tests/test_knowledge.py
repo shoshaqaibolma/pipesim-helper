@@ -129,4 +129,34 @@ agent.run_turn(None, msgs, "Build two oil wells into a manifold", events.append)
 assert recipes.GUIDANCE not in msgs[1]["content"] and events[-1]["text"] == "About 64 sm3/d."
 agent.KNOWLEDGE = agent.NUMBER_GUARD = True
 print("agent: recipes once per conversation; PIPESIM_AGENT_KNOWLEDGE / PIPESIM_NUMBER_GUARD switches work")
+
+# --- names copied from a recipe example (job 20: fluid "OilA") are replaced unless the user wrote them
+msgs = agent.new_conversation()
+agent.STATE["user_text"] = "Build one oil well W1 ... Black oil: 32 API ... separator SEP"
+r = agent.update_project({"name": "x", "fluids": [{"name": "OilA", "type": "black_oil", "api": 32}],
+                          "wells": [{"name": "W1", "fluid": "OilA"}]})
+assert agent.PROJECT["fluids"][0]["name"] == "BO" and agent.PROJECT["wells"][0]["fluid"] == "BO", agent.PROJECT
+assert any("OilA -> BO" in x for x in r["renamed"]), r
+agent.STATE["user_text"] = "the fluid is called OilA"
+agent.PROJECT = {}
+agent.update_project({"fluids": [{"name": "OilA", "type": "black_oil"}]})
+assert agent.PROJECT["fluids"][0]["name"] == "OilA"
+print("names: recipe example names are replaced by BO/SEP/W.. unless the user used them")
+
+# --- approvals are answered from the workflow state
+msgs = agent.new_conversation()
+assert "nothing to approve" in agent.approval_note("Approved.")
+agent.SPEC, agent.PROJECT = {"model": {"source": "x"}}, {}
+agent.STATE["plan_ok_for"] = agent._plan_key()
+assert "Call run_study now" in agent.approval_note("Yes, approved. Run it.")
+agent.STATE["ran_plan"] = agent._plan_key()
+assert "Do NOT propose" in agent.approval_note("Approved. Run the study and explain the result.")
+assert agent.approval_note("Use the suggested defaults for everything else.") is None
+assert agent.approval_note("Yes, but set the separator to 10 bara") is None        # a change, not an approval
+assert agent.approval_note("Yes, but sweep the water cut from 10 to 70 % in 4 steps and the GOR as well please, thanks") is None
+fake, seen = scripted([Msg("The study is done.")])
+agent.chat = fake
+agent.run_turn(None, msgs, "Approved.", lambda e: None)
+assert "Do NOT propose" in seen[0][-1]["content"] and agent.LEDGER.unverified("") == []
+print("approvals: run the waiting plan / say it already ran / nothing to approve; longer requests untouched")
 print("ALL KNOWLEDGE TESTS PASSED")

@@ -5,7 +5,10 @@ to that message (select()). Each recipe shows the exact calls; names and numbers
 """
 import re
 
-GUIDANCE = "\n\n[Guidance for the assistant - matching recipes; use the user's own names and numbers]\n"
+GUIDANCE_NOTE = ("Names and numbers in recipes are examples only. Use the user's names; if the user gives none, "
+                 "name black oil fluids BO, gas fluids Gas, the separator SEP.")
+GUIDANCE = ("\n\n[Guidance for the assistant - matching recipes; use the user's own names and numbers] "
+            + GUIDANCE_NOTE + "\n")
 
 STUDY_TYPES = """CHOOSING THE STUDY TYPE:
 - one input over a range ("how does X change", "which diameter", "from A to B") -> sweep (ONE variable)
@@ -71,6 +74,12 @@ The ranking is in summary[<result>].ranking - quote it, do not compute it."""},
 {"type":"grid","variables":[{"component_type":"Flowline","name":"Export","parameter":"InnerDiameter","values":[200,250]},
  {"component_type":"Sink","name":"Plant","parameter":"Pressure","values":[25,18]}]}; summary.highest names the best case."""},
 ]
+
+
+# every "name" used in a recipe: if one of these shows up in a project and the user never wrote it, the model
+# copied it from the example (seen in job 20: fluid "OilA")
+PLACEHOLDERS = sorted({m for r in RECIPES for m in re.findall(r'"name":"([^"]+)"', r["text"])
+                      if ":" not in m and m not in ("C1", "P1", "SEP1", "Sep")})   # generic names stay
 
 
 def select(text, limit=2):

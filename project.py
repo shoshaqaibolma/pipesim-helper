@@ -19,7 +19,7 @@ Topology: nodes are wells, sources, chokes, junctions and sinks; flowlines conne
 connected directly to its upstream node. Every well/source must reach a sink. Lists merge by "name"
 (see merge_project), so the agent can change one well without resending the others.
 """
-import copy
+import copy, re
 
 UNITS_METRIC = {"pressure": "bara", "temperature": "degC", "length": "m", "id": "mm", "bean": "mm", "rate": "sm3/d",
                 "gas_rate": "mmsm3/d", "pi": "sm3/d/bar", "gor": "sm3/sm3", "pct": "%"}
@@ -575,3 +575,46 @@ def summary(p):
             name = e.get("name", f"<unnamed {kind}[{i}]>")
             lines.append(f"  {kind[:-1]:<10} {name}: {describe_item(kind, e)}")
     return "\n".join(lines)
+
+DEFAULT_NAMES = {"fluids": None, "wells": "W", "sources": "Source", "junctions": "M", "sinks": "SEP", "chokes": "CK",
+                 "separators": "SEP", "pumps": "P", "compressors": "C", "flowlines": "FL-"}
+
+
+def rename(p, old, new):
+    """Rename one item everywhere it is referenced (fluid, from, to)."""
+    p = copy.deepcopy(p)
+    for kind in FIELDS:
+        for e in p.get(kind) or []:
+            if e.get("name") == old:
+                e["name"] = new
+            for ref in ("fluid", "from", "to"):
+                if e.get(ref) == old:
+                    e[ref] = new
+    return p
+
+
+def replace_placeholders(p, placeholders, user_text):
+    """Items named like a recipe example although the user never wrote that name get a plain default name.
+    Returns (project, [(old, new)])."""
+    said = str(user_text).lower()
+    taken = {e.get("name") for kind in FIELDS for e in p.get(kind) or []}
+    done = []
+    for kind in FIELDS:
+        for i, e in enumerate(p.get(kind) or []):
+            n = e.get("name")
+            if n not in placeholders or re.search(rf"(?<![\w-]){re.escape(n.lower())}(?![\w-])", said):
+                continue
+            if kind == "fluids":
+                base = "Gas" if e.get("type") == "gas" else "BO"
+            else:
+                base = DEFAULT_NAMES.get(kind) or kind[:-1].title()
+            new, k = base, 1
+            while new in taken:
+                k += 1
+                new = f"{base}{k}" if not base.endswith("-") else f"{base}{k}"
+            if base.endswith("-") and new == base:
+                new = f"{base}1"
+            taken.add(new)
+            p = rename(p, n, new)
+            done.append((n, new))
+    return p, done
