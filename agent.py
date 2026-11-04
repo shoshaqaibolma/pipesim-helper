@@ -66,6 +66,7 @@ STUDY VARIABLES on a project (component_type / name / parameter):
 Analysis types: {json.dumps(study.ANALYSES)}
 Model templates for new models: { {k: v['description'] for k, v in TEMPLATES.items()} }
 Template sweep aliases: { {k: list(v['aliases']) for k, v in TEMPLATES.items()} }
+Nodal analysis of a well: analysis = {{"type":"nodal","producer":"<well>","outlet_pressure":<bara>}}.
 P/T profiles need ONE boundary condition in analysis.conditions: {{"outlet_pressure": x}} OR {{"liquid_flowrate": x}} OR {{"gas_flowrate": x}}.
 For existing models, refer to variables as component_type + name + parameter (e.g. Sink / "Sink-1" / "Pressure").
 Use model units (METRIC unless the user says FIELD). Never invent results: every number comes from a tool.

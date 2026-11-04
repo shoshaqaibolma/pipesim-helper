@@ -106,7 +106,22 @@ errs = prj.check_project(bad)["errors"]
 assert any("above the completion" in e for e in errs) and any("very high" in e for e in errs), errs
 print("gas lift: injection point built in the well; gas-lift-rate sweep changes the well rate; bad depth/rate caught")
 
-# 7. checker: unknown component in a project study, incomplete project, non-metric units
+# 7. nodal analysis of a built well: operating point, curves, nodal plot
+spec_n = dict(spec, analysis={"type": "nodal", "producer": "W1", "outlet_pressure": 20})
+assert study.check(spec_n, project=FIELD)["ready"], study.check(spec_n, project=FIELD)
+assert "outlet pressure: 20 bara" in study.plan_text(spec_n, FIELD)
+r = executor.run(spec_n, progress=lambda s: None, project=FIELD)
+opp = r["summary"]["operating_point"]
+assert opp["liquid_rate [sm3/d]"] > 0 and opp["bottomhole_pressure [bara]"] < 260, opp
+assert any(c.endswith("nodal.png") for c in r["charts"]) and not r["warnings"], r
+assert any("Ask" in m["question"] or "pressure" in m["question"] for m in
+           study.check(dict(spec, analysis={"type": "nodal", "producer": "W1"}), project=FIELD)["missing"])
+assert any("No well named" in e for e in
+           study.check(dict(spec, analysis={"type": "nodal", "producer": "X", "outlet_pressure": 5}), project=FIELD)["errors"])
+print("nodal: operating point", round(opp["liquid_rate [sm3/d]"]), "sm3/d at Pwf", round(opp["bottomhole_pressure [bara]"], 1),
+      "bara; IPR/VLP chart written; missing outlet pressure asked; unknown well caught")
+
+# 8. checker: unknown component in a project study, incomplete project, non-metric units
 bad = dict(spec, analysis={"type": "sweep", "variables": [{"component_type": "Sink", "name": "Nope",
                                                            "parameter": "Pressure", "values": [1, 2]}]})
 assert any("Available Sink: ['Sep']" in e for e in study.check(bad, project=FIELD)["errors"])

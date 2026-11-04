@@ -118,9 +118,38 @@ class _Net:
         return None
 
 
+class _Curve:
+    def __init__(s, q, p): s.FlowRate, s.Pressure = q, p
+
+
+class _Nodal:
+    """Toy nodal analysis: straight-line IPR, quadratic VLP; result layout as recorded on PIPESIM 2023.1."""
+    def __init__(s, m): s.m = m
+
+    def run(s, producer, parameters=None, **kw):
+        m = s.m
+        comp = next((c for c in m.comps.get("Completion", []) if c.startswith(f"{producer}:")), None)
+        if comp is None:
+            raise ValueError(f"No producer named {producer}")
+        short = comp.split(":", 1)[1]
+        pr = m.v.get(("Completion", comp, "ReservoirPressure"), 250)
+        pi = m.v.get(("Completion", comp, "LiquidPI"), 10)
+        pout = (parameters or {}).get("OutletPressure", 20)
+        qs = [i * pi * pr / 20 for i in range(21)]
+        ipr = [pr - q / pi for q in qs]
+        vlp = [pout + 120 + 0.00004 * q * q for q in qs]
+        q_op = next((q for q, a, b in zip(qs, ipr, vlp) if a <= b), qs[-1])
+        case = f"Operating Point: Flowrate={q_op * 6.29:.3f} sbbl/day"
+        r = _R({case: {"VolumeFlowrateLiquidStockTank": {"Unit": "sm3/d", short: q_op},
+                       "Pressure": {"Unit": "bara", short: pr - q_op / pi}}})
+        r.cases, r.inflow_curves, r.outflow_curves = [case], [_Curve(qs, ipr)], [_Curve(qs, vlp)]
+        r.operating_points, r.summary = [], {"Error": [], "Warning": []}
+        return r
+
+
 class _Tasks:
     def __init__(s, m):
-        s.networksimulation, s.ptprofilesimulation = _Net(m), _PT(m)
+        s.networksimulation, s.ptprofilesimulation, s.nodalanalysis = _Net(m), _PT(m), _Nodal(m)
 
 
 class Model:

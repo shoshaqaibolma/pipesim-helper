@@ -31,11 +31,12 @@ ANALYSES = {
     "grid": "full-factorial combination of 2-3 variables",
     "tornado": "vary each variable to its low and high value one at a time, then rank the impacts",
     "pt_profile": "pressure/temperature/holdup profile along one well or flowline",
+    "nodal": "nodal analysis of one well: inflow (IPR) vs outflow (VLP) curves and the operating point",
 }
 MAX_CASES = 300
 SPEC_KEYS = {"objective", "units", "model", "base_changes", "analysis", "kpis"}
 MODEL_KEYS = {"source", "path", "template", "params"}
-ANALYSIS_KEYS = {"type", "variables", "producer", "conditions"}
+ANALYSIS_KEYS = {"type", "variables", "producer", "conditions", "outlet_pressure"}
 # P/T profile boundary conditions: friendly key -> sixgill Parameters.PTProfileSimulation constant
 PT_CONDITIONS = {"outlet_pressure": "OUTLETPRESSURE", "liquid_flowrate": "LIQUIDFLOWRATE",
                  "gas_flowrate": "GASFLOWRATE"}
@@ -166,6 +167,15 @@ def check(spec, known_components=None, project=None):
             ask("analysis.variables", "Which 2-3 variables should be combined, and the values for each?")
         if t == "tornado" and len(vs) < 2:
             ask("analysis.variables", "Which uncertain variables (at least 2), with a low and high value for each?")
+        if t == "nodal":
+            if not a.get("producer"):
+                ask("analysis.producer", "Which well should the nodal analysis be run for?")
+            if not isinstance(a.get("outlet_pressure"), (int, float)):
+                ask("analysis.outlet_pressure", "Outlet (wellhead or separator) pressure for the nodal analysis?",
+                    "bara", None)
+            if known_components is not None and a.get("producer") and \
+                    a["producer"] not in known_components.get("Well", []):
+                errors.append(f"No well named '{a['producer']}'. Wells: {known_components.get('Well', [])}")
         if t == "pt_profile":
             if not a.get("producer"):
                 ask("analysis.producer", "Which well or source should the profile be run for?")
@@ -229,12 +239,17 @@ def plan_text(spec, project=None):
     for v in a.get("variables", []):
         label = v.get("alias") or f"{v['component_type']}:{v['name']}.{v['parameter']}"
         lines.append(f"     {label}: {values_of(v)}")
+    if a["type"] == "nodal":
+        lines.append(f"     well: {a['producer']}, outlet pressure: {a['outlet_pressure']} bara")
     if a["type"] == "pt_profile":
         lines.append(f"     producer: {a['producer']}")
         for k, v in (a.get("conditions") or {}).items():
             lines.append(f"     fixed {k} = {v} -> PIPESIM calculates "
                          + ("the flow rate" if k == "outlet_pressure" else "the outlet pressure"))
-    if spec.get("kpis"):
+    if a["type"] == "nodal":
+        lines.append("3. Results: operating point (liquid, oil, gas rate; flowing bottom-hole pressure), "
+                     "inflow and outflow curves, nodal plot")
+    elif spec.get("kpis"):
         lines.append("3. Results recorded: " + ", ".join(f"{k.get('label') or k['variable']} @ {k['component']}"
                                                          for k in spec["kpis"]))
     else:

@@ -210,6 +210,104 @@ def result(table, variable, component):
     return None, None
 
 
+def _plain(o, depth=0):
+    """Public data attributes of a sixgill result object as plain Python (lists/dicts/numbers)."""
+    if depth > 3:
+        return None
+    if hasattr(o, "tolist"):
+        try:
+            return o.tolist()
+        except Exception:
+            pass
+    if hasattr(o, "to_dict"):
+        try:
+            o = o.to_dict()
+        except Exception:
+            pass
+    if isinstance(o, dict):
+        return {str(k): _plain(v, depth + 1) for k, v in o.items()}
+    if isinstance(o, (list, tuple)):
+        return [_plain(v, depth + 1) for v in o]
+    if o is None or isinstance(o, (int, float, str, bool)):
+        return o
+    out = {}
+    for k in dir(o):
+        if k.startswith("_"):
+            continue
+        try:
+            v = getattr(o, k)
+        except Exception:
+            continue
+        if not callable(v):
+            out[k] = _plain(v, depth + 1)
+    return out
+
+
+def _series(d, prefix=""):
+    """All numeric lists inside a (nested) dict, keyed by their path."""
+    found = {}
+    if isinstance(d, dict):
+        for k, v in d.items():
+            path = f"{prefix}{k}"
+            if isinstance(v, list) and len(v) > 1 and all(isinstance(x, (int, float)) or x is None for x in v):
+                found[path] = v
+            elif isinstance(v, dict):
+                vals = list(v.values())
+                if len(vals) > 1 and all(isinstance(x, (int, float)) or x is None for x in vals):
+                    found[path] = vals
+                else:
+                    found.update(_series(v, path + "."))
+    return found
+
+
+def curve_xy(curve):
+    """(rates, pressures, raw) of a nodal Curve, found by attribute name (rate/flow vs pressure)."""
+    raw = _plain(curve)
+    s = _series(raw)
+    x = next((v for k, v in s.items() if any(w in k.lower() for w in ("flow", "rate"))), None)
+    y = next((v for k, v in s.items() if "press" in k.lower()), None)
+    return x, y, raw
+
+
+def nodal(model, producer, outlet_pressure, completion=None):
+    """Run nodal analysis at a given outlet pressure (VERIFIED call). Returns the operating point (rates and
+    flowing bottom-hole pressure at the completion), the inflow/outflow curves, and raw data for inspection."""
+    r = model.tasks.nodalanalysis.run(producer, parameters={P("NodalAnalysisSimulation", "OUTLETPRESSURE"): outlet_pressure})
+    out = {"state": str(getattr(r, "state", "")), "cases": list(getattr(r, "cases", []) or [])}
+    case = out["cases"][0] if out["cases"] else None
+    node = (getattr(r, "node", {}) or {}).get(case, {}) if case else {}
+    comp = completion
+    if comp is None:
+        comps = [c.split(":", 1)[1] for c in model.find(Completion=d.ALL) or [] if c.startswith(f"{producer}:")]
+        comp = comps[0] if comps else None
+    op = {}
+    for key, var in (("liquid_rate", "VolumeFlowrateLiquidStockTank"), ("oil_rate", "VolumeFlowrateOilStockTank"),
+                     ("gas_rate", "VolumeFlowrateGasStockTank"), ("water_rate", "VolumeFlowrateWaterStockTank"),
+                     ("bottomhole_pressure", "Pressure")):
+        row = node.get(var) or {}
+        if comp in row:
+            op[key] = {"value": row[comp], "unit": row.get("Unit")}
+    prof = (getattr(r, "profile", {}) or {}).get(case, {}) if case else {}
+    if "bottomhole_pressure" not in op and prof.get("BranchEquipment") and prof.get("Pressure"):
+        for eq, p in zip(prof["BranchEquipment"], prof["Pressure"]):
+            if eq == comp:
+                op["bottomhole_pressure"] = {"value": p, "unit": "bara"}
+                break
+    op["outlet_pressure"] = {"value": outlet_pressure, "unit": "bara"}
+    out["operating_point"] = op
+    curves, raw = {}, {}
+    for kind in ("inflow", "outflow"):
+        for i, c in enumerate(getattr(r, f"{kind}_curves", []) or []):
+            x, y, rc = curve_xy(c)
+            raw[f"{kind}_{i}"] = rc
+            if x and y:
+                curves[f"{kind}_{i}"] = {"rate": x, "pressure": y}
+    raw["operating_points"] = _plain(getattr(r, "operating_points", None))
+    out["curves"], out["raw"] = curves, raw
+    out["summary_messages"] = _plain(getattr(r, "summary", None))
+    return out
+
+
 def validate(model):
     """Model validation messages (empty list when valid)."""
     try:

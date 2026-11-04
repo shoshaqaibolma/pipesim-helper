@@ -81,6 +81,8 @@ def _run_case(model, kpis):
         if unit:
             UNITS[label] = unit
     row["_status"] = str(getattr(r, "state", "ok"))
+    if kpis and all(row.get(k.get("label") or f"{k['component']} {k['variable']}") is None for k in kpis):
+        row["_status"] += ": no results - the system may not flow at these conditions"
     return row
 
 
@@ -180,6 +182,32 @@ def _chart(path, x, ys, xlabel, title):
     return path
 
 
+def _nodal_chart(path, curves, op, well):
+    if not curves:
+        return None
+    try:
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+    except ImportError:
+        return None
+    fig, ax = plt.subplots(figsize=(7, 4.6))
+    for name, cv in curves.items():
+        pts = [(q, p) for q, p in zip(cv["rate"], cv["pressure"]) if q is not None and p is not None]
+        if pts:
+            ax.plot(*zip(*pts), label=("Inflow (IPR)" if name.startswith("inflow") else "Outflow (VLP)"))
+    q = (op.get("liquid_rate") or op.get("gas_rate") or {}).get("value")
+    p = (op.get("bottomhole_pressure") or {}).get("value")
+    if q is not None and p is not None:
+        ax.plot([q], [p], "ko", label=f"Operating point ({q:.0f}, {p:.1f} bara)")
+    unit = (op.get("liquid_rate") or op.get("gas_rate") or {}).get("unit") or ""
+    ax.set_xlabel(f"{'Liquid' if op.get('liquid_rate') else 'Gas'} rate{f' [{unit}]' if unit else ''}")
+    ax.set_ylabel("Pressure at nodal point [bara]")
+    ax.set_title(f"Nodal analysis: {well}"); ax.grid(alpha=.3); ax.legend(fontsize=8)
+    fig.tight_layout(); fig.savefig(path, dpi=130); plt.close(fig)
+    return path
+
+
 def _tornado_chart(path, bars, kpi):
     try:
         import matplotlib
@@ -241,7 +269,30 @@ def run(spec, progress=print, project=None):
             rows.append(row)
             return row
 
-        if a["type"] == "pt_profile":
+        if a["type"] == "nodal":
+            comp = None
+            if proj:
+                import project as prj
+                comp = prj.completion_name(a["producer"])
+            res = sa.nodal(model, a["producer"], a["outlet_pressure"], completion=comp)
+            json.dump(res["raw"], open(os.path.join(out, "nodal_raw.json"), "w"), indent=1, default=str)
+            op = res["operating_point"]
+            rows = [{"case": "operating point", **{f"{k} [{v.get('unit') or ''}]": v.get("value") for k, v in op.items()},
+                     "_status": res["state"]}]
+            for name, cv in res["curves"].items():
+                for q, p in zip(cv["rate"], cv["pressure"]):
+                    rows.append({"case": name, "curve rate": q, "curve pressure [bara]": p})
+            charts.append(_nodal_chart(os.path.join(out, "nodal.png"), res["curves"], op, a["producer"]))
+            if not res["curves"]:
+                charts.append(None)
+                warnings_extra = ["Inflow/outflow curve points could not be read from this PIPESIM version; "
+                                  "the operating point is still valid. Raw data saved to nodal_raw.json."]
+            else:
+                warnings_extra = []
+            if not op.get("liquid_rate") and not op.get("gas_rate"):
+                warnings_extra.append("No operating point found: the well may not flow at this outlet pressure "
+                                      f"(PIPESIM summary: {str(res.get('summary_messages'))[:300]}).")
+        elif a["type"] == "pt_profile":
             task = model.tasks.ptprofilesimulation
             r = task.run(
                 producer=a["producer"], parameters=_pt_parameters(a.get("conditions") or {}),
@@ -309,7 +360,9 @@ def run(spec, progress=print, project=None):
                             bars.append({"var": l, "low": lo, "high": hi, "base": base[k]})
                     charts.append(_tornado_chart(os.path.join(out, f"tornado_{len(charts)}.png"), bars, k))
 
-        warnings, summary = [], {}
+        warnings, summary = (list(warnings_extra) if a["type"] == "nodal" else []), {}
+        if a["type"] == "nodal":
+            summary = {"operating_point": rows[0]}
         if a["type"] in ("sweep", "grid", "tornado"):
             w = _flat_warning(rows, kpi_cols)
             if w:
