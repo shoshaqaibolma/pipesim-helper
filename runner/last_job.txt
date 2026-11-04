@@ -1,674 +1,161 @@
-JOB jobs/13_regression.txt started 2026-11-04 13:31:57
+JOB jobs/14_webui_and_compare.txt started 2026-11-04 14:02:37
 
-$ "D:\Program\Pipesim toolkit\python.exe" tests\real_build_test.py
+$ "D:\Program\Pipesim toolkit\python.exe" tests\real_webui_test.py
 [exit 0]
-
-== build the 2-well field
-   OK ["<sixgill.pipesim.Model object at 0x000001D1406E2F10>", {"file": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_buildtest_75wrooa2\\smoke.pips", "components": 9, "connections": 7, "boundaries_synced": false, "boundary_conditions": {"Sep": "ok", "W1:W1_Comp": "ok", "W2:W2_Comp": "ok"}, "validation": []}]
-   build report: {"file": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_buildtest_75wrooa2\\smoke.pips", "components": 9, "connections": 7, "boundaries_synced": false, "boundary_conditions": {"Sep": "ok", "W1:W1_Comp": "ok", "W2:W2_Comp": "ok"}, "validation": []}
-
-== components the model reports
-   OK {"Well": ["W1", "W2"], "Junction": ["J1"], "Sink": ["Sep"], "Flowline": ["FL1", "FL2", "FL3"], "Choke": ["CK1"], "Completion": ["W1:W1_Comp", "W2:W2_Comp"], "Tubing": ["W1:Tubing", "W2:Tubing"]}
-
-== read back key values
-   OK {"W1 reservoir pressure": 250.0, "W1 liquid PI (expect 10)": 10.0, "W1 IPR model": "IPRPIModel", "W1 fluid": "BO", "W1 tubing length": 2500.0, "FL3 inner diameter": 152.0, "Sep pressure (boundary)": 15.0}
-
-== network boundary conditions
-   OK {"W1:W1_Comp": {"BoundaryNodeType": "Completion", "WellName": "W1", "BoundaryNodeName": "W1_Comp", "IsActive": true, "UsePQCurve": false, "IsSurfaceCondition": false, "Temperature": 90.0, "Pressure": 250.0, "FlowRateType": "LiquidFlowRate", "GasFlowRate": null, "LiquidFlowRate": null, "MassFlowRate": null, "UseGasRatio": "GOR", "GOR": 100.0, "OGR": null, "GLR": null, "LGR": null, "UseWaterRatio": "WaterCut", "WaterCut": 20.0, "GWR": null, "WGR": null, "CompletionName": "W1_Comp", "IsBottomCompletion": false}, "W2:W2_Comp": {"BoundaryNodeType": "Completion", "WellName": "W2", "BoundaryNodeName": "W2_Comp", "IsActive": true, "UsePQCurve": false, "IsSurfaceCondition": false, "Temperature": 90.0, "Pressure": 230.0, "FlowRateType": "LiquidFlowRate", "GasFlowRate": null, "LiquidFlowRate": null, "MassFlowRate": null, "UseGasRatio": "GOR", "GOR": 100.0, "OGR": null, "GLR": null, "LGR": null, "UseWaterRatio": "WaterCut", "WaterCut": 20.0, "GWR": null, "WGR": null, "CompletionName": "W2_Comp", "IsBottomCompletion": false}, "Sep": {"BoundaryNodeType": "Sink", "WellName": null, "BoundaryNodeName": "Sep", "IsActive": true, "UsePQCurve": false, "IsSurfaceCondition": false, "Temperature": null, "Pressure": 15.0, "FlowRateType": "LiquidFlowRate", "GasFlowRate": null, "LiquidFlowRate": null, "MassFlowRate": null, "UseGasRatio": "GLR", "GOR": null, "OGR": null, "GLR": null, "LGR": null, "UseWaterRatio": "WaterCut", "WaterCut": null, "GWR": null, "WGR": null, "CompletionName": "", "IsBottomComp
-
-== network simulation at Sep = 15 bara
-   OK {"state": "Completed", "messages": "['2026-11-04T08:32:05.978Z    Service starting...', '2026-11-04T08:32:05.996Z    Loading engine from D:\\\\Program\\\\Pipesim2023.1\\\\Programs', \"2026-11-04T08:32:06.208Z    Service listening at 'net.pipe://localhost/pipe/d635c6326b494db6b9d6be3ba7277bc5'...\", '2026-11-04T08:32:06.292Z     CWD is now C:\\\\Users\\\\Home\\\\AppData\\\\Local\\\\Temp\\\\PIPESIM\\\\2956', '2026-11-04T08:32:06.293Z    Processing C:\\\\Users\\\\Home\\\\AppData\\\\Local\\\\Temp\\\\PIPESIM\\\\2956\\\\New workspace.tnt (4)', '2026-11-04T08:32:06.381Z    .......................................................................... ', '2026-11-04T08:32:06.382Z    Processing branch W1.. ', '2026-11-04T08:32:06.383Z    Processing branch Sep.. ', '2026-11-04T08:32:06.385Z    Processing branch W2.', '2026-11-04T08:32:06.385Z    Processing branch geometry (.P", "node": {"Pressure": {"Unit": "bara", "W2": 36.253624442389665, "Sep": 15.000233964176601, "W2_Comp": 174.752539249766, "J1": 30.12600269782469, "W1": 38.834984951619155, "CK1": 37.39666612284973, "W1_Comp": 180.77619820725508}, "VolumeFlowrateLiquidStockTank": {"Unit": "sm3/d", "W2": 824.9952125764326, "Sep": 1516.7890274193605, "W2_Comp": 824.9952125764326, "J1": 1516.7890274193605, "W1": 691.7938148429281, "CK1": 691.7938148429281, "W1_Comp": 691.7938148429281}, "VolumeFlowrateOilStockTank": {"Unit": "sm3/d", "W2": 659.996170061146, "Sep": 1213.4312219354886, "W2_Comp": 659.996170061146, "J1": 1213.4312219354886,
-
-== set Sep = 30 bara through the adapter
-   OK 30.0
-
-== network simulation at Sep = 30 bara
-   OK {"state": "Completed", "messages": "['2026-11-04T08:32:08.524Z    Service starting...', '2026-11-04T08:32:08.548Z    Loading engine from D:\\\\Program\\\\Pipesim2023.1\\\\Programs', \"2026-11-04T08:32:08.740Z    Service listening at 'net.pipe://localhost/pipe/7b8625f09c444585a21373e9ec7c01c0'...\", '2026-11-04T08:32:08.782Z     CWD is now C:\\\\Users\\\\Home\\\\AppData\\\\Local\\\\Temp\\\\PIPESIM\\\\2956', '2026-11-04T08:32:08.783Z    Processing C:\\\\Users\\\\Home\\\\AppData\\\\Local\\\\Temp\\\\PIPESIM\\\\2956\\\\New workspace.tnt (4)', '2026-11-04T08:32:08.818Z    .......................................................................... ', '2026-11-04T08:32:08.820Z    Processing branch W1.. ', '2026-11-04T08:32:08.821Z    Processing branch Sep.. ', '2026-11-04T08:32:08.822Z    Processing branch W2.', '2026-11-04T08:32:08.822Z    Processing branch geometry (.P", "node": {"Pressure": {"Unit": "bara", "J1": 37.72916449808051, "W2": 41.22513310679858, "CK1": 42.35249296251902, "W2_Comp": 186.7919728239805, "Sep": 29.999778459219854, "W1_Comp": 191.33059634056136, "W1": 43.284160465091354}, "VolumeFlowrateLiquidStockTank": {"Unit": "sm3/d", "J1": 1234.8207224876771, "W2": 648.152797698976, "CK1": 586.6679247887012, "W2_Comp": 648.152797698976, "Sep": 1234.8207224876785, "W1_Comp": 586.6679247887012, "W1": 586.6679247887012}, "VolumeFlowrateOilStockTank": {"Unit": "sm3/d", "J1": 987.8565779901417, "W2": 518.5222381591808, "CK1": 469.3343398309609, "W2_Comp": 518.5222381591808, "
-
-== verdict: results CHANGED when the separator pressure changed
-
-(model left at C:\Users\Home\AppData\Local\Temp\pipesim_buildtest_75wrooa2\smoke.pips; open it in PIPESIM to inspect)
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 1812
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-
-
-$ "D:\Program\Pipesim toolkit\python.exe" tests\real_pipeline_test.py
-[exit 0]
-
-== gas export pipeline (2 mmsm3/d fixed, inlet pressure calculated)
-   build: {"boundary_conditions": {"Terminal": "ok", "Plant": "ok"}, "validation": []}
-   units: OGR sm3/mmsm3 | WGR sm3/mmsm3 | GOR standard cubic meters per standard cubic meter
-   units: source gas rate mmsm3/d | liquid rate standard cubic meters per day
-   result: {"state": "Completed", "node": {"Pressure": {"Unit": "bara", "Terminal": 50.00009321327676, "Plant": 63.45912103145809}, "Temperature": {"Unit": "degC", "Terminal": 29.720029332395484, "Plant": 40.00000000000006}, "VolumeFlowrateLiquidStockTank": {"Unit": "sm3/d", "Terminal": 0.0, "Plant": 0.0}, "VolumeFlowrateGasStockTank": {"Unit": "mmsm3/d", "Terminal": 1.9999905575260826, "Plant": 1.9999905579470725}}}
-
-== oil pipeline (2000 sm3/d fixed)
-   build: {"boundary_conditions": {"Refinery": "ok", "Field": "ok"}, "validation": []}
-   units: OGR sm3/mmsm3 | WGR sm3/mmsm3 | GOR standard cubic meters per standard cubic meter
-   units: source gas rate mmsm3/d | liquid rate standard cubic meters per day
-   result: {"state": "Completed", "node": {"Pressure": {"Unit": "bara", "Refinery": 10.00015597801138, "Field": 28.91709430063711}, "Temperature": {"Unit": "degC", "Refinery": 48.452939033220844, "Field": 60.00000000000006}, "VolumeFlowrateLiquidStockTank": {"Unit": "sm3/d", "Refinery": 2000.060292390762, "Field": 2000.0602915660756}, "VolumeFlowrateGasStockTank": {"Unit": "mmsm3/d", "Refinery": 0.09500314013562725, "Field": 0.09500314009645454}}}
-
-== gas well, back-pressure IPR
-   build: {"boundary_conditions": {"Plant": "ok", "GW1:GW1_Comp": "ok"}, "validation": []}
-   units of back-pressure C: mmsm3/d/bar2n | n: None
-   C set to 0.0005 -> 0.0005
-   units: OGR sm3/mmsm3 | WGR sm3/mmsm3 | GOR standard cubic meters per standard cubic meter
-   result: {"state": "Completed", "node": {"Pressure": {"Unit": "bara", "Plant": 60.00025118335489, "GW1_Comp": 124.16297927300786, "GW1": 77.49399998049466}, "Temperature": {"Unit": "degC", "Plant": 60.46388450723191, "GW1_Comp": 93.79541877277154, "GW1": 64.62311783112233}, "VolumeFlowrateLiquidStockTank": {"Unit": "sm3/d", "Plant": 0.0, "GW1_Comp": 0.0, "GW1": 0.0}, "VolumeFlowrateGasStockTank": {"Unit": "mmsm3/d", "Plant": 1.6274620275315403, "GW1_Comp": 1.6274620285611712, "GW1": 1.6274620285611712}}}
-
-(models left in C:\Users\Home\AppData\Local\Temp\pipesim_pipetest_69_a2alq)
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 23792
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 19320
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:56403/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 3732
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:56537/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-
-
-$ "D:\Program\Pipesim toolkit\python.exe" tests\real_project_study.py
-[exit 0]
-check: {"ready": true, "next_step": "Call propose_plan and show the plan to the user word for word.", "missing": [], "errors": [], "n_cases": 4}
-Building the model...
-  case 1/4: base
-  case 2/4: Sep.Pressure=10
-  case 3/4: Sep.Pressure=20
-  case 4/4: Sep.Pressure=30
-case | Sep.Pressure | Sep liquid rate [sm3/d] | Sep oil rate [sm3/d] | Sep gas rate [mmsm3/d] | W1 liquid rate [sm3/d] | W1 pressure [bara] | W2 liquid rate [sm3/d] | W2 pressure [bara] | _status | Sep oil rate change vs base [%]
-base | 15 | 1517 | 1213 | 0.1213 | 691.8 | 38.83 | 825 | 36.25 | Completed | 0
-Sep.Pressure=10 | 10 | 1580 | 1264 | 0.1264 | 716.8 | 37.78 | 863.1 | 35.15 | Completed | 4.16
-Sep.Pressure=20 | 20 | 1443 | 1154 | 0.1154 | 664.4 | 39.97 | 778.6 | 37.56 | Completed | -4.86
-Sep.Pressure=30 | 30 | 1235 | 987.9 | 0.09879 | 586.7 | 43.28 | 648.2 | 41.23 | Completed | -18.59
-warnings: [] | failed cases: []
-outputs: D:\github reps\pipesim helper\runs\20261104-133239-192 ['model.pipr', 'model.pips', 'project.json', 'report.md', 'results.csv', 'spec.json', 'sweep_gas_rate.png', 'sweep_liquid_rate.png', 'sweep_oil_rate.png', 'sweep_pressure.png']
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 22224
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-
-
-$ "D:\Program\Pipesim toolkit\python.exe" tests\real_gaslift_test.py
-[exit 0]
-check: {"ready": true, "next_step": "Call propose_plan and show the plan to the user word for word.", "missing": [], "errors": [], "n_cases": 6}
-Building the model...
-  case 1/6: base
-  case 2/6: W1:W1_GL.GasRate=0.0
-  case 3/6: W1:W1_GL.GasRate=0.02
-  case 4/6: W1:W1_GL.GasRate=0.05
-  case 5/6: W1:W1_GL.GasRate=0.1
-  case 6/6: W1:W1_GL.GasRate=0.2
-case | W1:W1_GL.GasRate | SEP liquid rate [sm3/d] | SEP oil rate [sm3/d] | SEP gas rate [mmsm3/d] | W1 liquid rate [sm3/d] | W1 pressure [bara] | _status | SEP oil rate change vs base [%]
-base | 0.05 | 541.9 | 271 | 0.06626 | 541.9 | 29.18 | Completed | 0
-W1:W1_GL.GasRate=0.0 | 0 |  |  |  |  |  | Completed: no results - the system may not flow at these conditions | 
-W1:W1_GL.GasRate=0.02 | 0.02 | 440.9 | 220.5 | 0.03325 | 440.4 | 22.6 | Completed | -18.64
-W1:W1_GL.GasRate=0.05 | 0.05 | 541.9 | 271 | 0.06626 | 541.9 | 29.18 | Completed | 0
-W1:W1_GL.GasRate=0.1 | 0.1 | 570.5 | 285.3 | 0.1171 | 570.5 | 36.79 | Completed | 5.28
-W1:W1_GL.GasRate=0.2 | 0.2 | 535.5 | 267.8 | 0.2161 | 535.5 | 47.89 | Completed | -1.18
-warnings: [] | failed: []
-summary W1 liquid rate: {"unit": "sm3/d", "base": 541.9206, "highest": {"value": 570.5178, "case": "W1:W1_GL.GasRate=0.1"}, "lowest": {"value": 440.4204, "case": "W1:W1_GL.GasRate=0.02"}, "change_vs_base_pct": {"W1:W1_GL.GasRate=0.02": -18.73, "W1:W1_GL.GasRate=0.05": 0.0, "W1:W1_GL.GasRate=0.1": 5.28, "W1:W1_GL.GasRate=0.2": -1.18}}
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 15704
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-
-
-$ "D:\Program\Pipesim toolkit\python.exe" tests\real_nodal_test.py
-[exit 0]
-
-== natural flow: check True
-operating point: {"case": "operating point", "liquid_rate [sm3/d]": 1089.9112203919644, "oil_rate [sm3/d]": 871.9289763135715, "reservoir_gas_rate [mmsm3/d]": 0.08719315116878924, "water_rate [sm3/d]": 217.9822440783928, "bottomhole_pressure [bara]": 135.01423173286105, "outlet_pressure [bara]": 20, "_status": "Completed"}
-charts: ['nodal.png'] | warnings: []
-raw inflow_0: {"case": "OperatingPointInflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [0.13400252975087065, 0.0013400252975087066, 0.08719315116878924, 0.04426658823314898, 0.022803306765328844, 0.11059784045982995, 0.12230018510535033, 0.01207166603141878, 0.06572986970096911, 0.1281513574281104
-raw outflow_0: {"case": "OperatingPointOutflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [NaN, 0.13400252975087065, 0.00013400252975087065, 0.08719315116878924, 0.03495766198536623, 0.014063466311997013, 0.005705788042649328, 0.05585185765873545, 0.10591690260162183, 0.009048859350388403, 0.0683883
-raw operating_points: [{"case": "Operating Point: Flowrate=6855.335 sbbl/day", "point_data": {"NodalPointVolumeFlowrateLiquidStockTank": 1089.9112203919644, "NodalPointPressure": 135.01423173286105, "NodalPointMassFlowrateFluid": 12.014536970300629, "NodalPointVolumeFlowrateGasStockTank": 0.08719315116878924}, "units": {
-
-== gas lift 0.05 mmsm3/d: check True
-operating point: {"case": "operating point", "liquid_rate [sm3/d]": 1223.8251214780896, "oil_rate [sm3/d]": 979.0600971824718, "reservoir_gas_rate [mmsm3/d]": 0.0979062944070116, "water_rate [sm3/d]": 244.76502429561785, "bottomhole_pressure [bara]": 116.28497005193042, "outlet_pressure [bara]": 20, "_status": "Completed"}
-charts: ['nodal.png'] | warnings: []
-raw inflow_0: {"case": "OperatingPointInflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [0.13401248236511798, 0.0013401248236511799, 0.0979062944070116, 0.049623209615331385, 0.025481667219491286, 0.11595938838606479, 0.013410896021571231, 0.0737647520111715, 0.12498593537559137, 0.0375524384174113
-raw outflow_0: {"case": "OperatingPointOutflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [NaN, 0.13401248236511798, 0.00013401248236511799, 0.0979062944070116, 0.03924292525222372, 0.06270827291413887, 0.015777577590308556, 0.07678748151128796, 0.11234876959025415, 0.025163716655074615, 0.048629064
-raw operating_points: [{"case": "Operating Point: Flowrate=7697.628 sbbl/day", "point_data": {"NodalPointVolumeFlowrateLiquidStockTank": 1223.8251214780896, "NodalPointPressure": 116.28497005193042, "NodalPointMassFlowrateFluid": 13.490724649933673, "NodalPointVolumeFlowrateGasStockTank": 0.0979062944070116}, "units": {"
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 18412
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 10296
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:58083/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-
-
-$ "D:\Program\Pipesim toolkit\python.exe" tests\real_facility_test.py
-[exit 0]
-check: {"ready": true, "next_step": "Project complete. Continue with the study spec (model.source = \"project\").", "missing": [], "errors": []}
-build: {"connections": 14, "boundary_conditions": {"GasSales": "ok", "OilFacility": "ok", "W1:W1_Comp": "ok"}, "validation": []}
-connections: [{"Source": "W1", "Source Port": "", "Destination": "FL-1"}, {"Source": "FL-1", "Source Port": "", "Destination": "CK"}, {"Source": "CK", "Source Port": "", "Destination": "FL-2"}, {"Source": "FL-2", "Source Port": "", "Destination": "MAN"}, {"Source": "MAN", "Source Port": "", "Destination": "FL-4"}, {"Source": "FL-4", "Source Port": "", "Destination": "SEP1"}, {"Source": "SEP1", "Source Port": "Top Port", "Destination": "GL-1"}, {"Source": "GL-1", "Source Port": "", "Destination": "C1"}, {"Source": "C1", "Source Port": "", "Destination": "GL-2"}, {"Source": "GL-2", "Source Port": "", "Destination": "GasSales"}, {"Source": "SEP1", "Source Port": "Bottom Port", "Destination": "LL-1"}, {"Source": "LL-1", "Source Port": "", "Destination": "P1"}, {"Source": "P1", "Source Port": "", "Destination": "LL-2"}, {"Source": "LL-2", "Source Port": "", "Destination": "OilFacility"}]
-network: Completed {"Pressure": {"Unit": "bara", "W1": 32.84697954453689, "CK": 23.627833216285218, "OilFacility": 20.70012984767086, "W1_Comp": 61.72725421972798, "SEP1": 22.926771914937245, "GasSales": 41.400259635651366, "C1": 57.36749316165279, "P1": 21.48153397788781}, "VolumeFlowrateLiquidStockTank": {"Unit": "sm3/d", "W1": 478.92789977742177, "CK": 478.92789977742177, "OilFacility": 478.44076358342517, "W1_Comp": 478.92789977742177, "SEP1": 0.4789147492772953, "GasSales": 0.4789100550440286, "C1": 0.4789100550440286, "P1": 478.44076358342517}, "VolumeFlowrateGasStockTank": {"Unit": "mmsm3/d", "W1": 0.5747151508710814, "CK": 0.5747151508710814, "OilFacility": 0.0042483237865049844, "W1_Comp": 0.5747151508710814, "SEP1": 0.5704510902062416, "GasSales": 0.5704454987507922, "C1": 0.5704454987507922, "P1": 0.0042483237865049844}}
-summary: {"Info": ["2026-11-04T08:34:37.003Z    Beginning simulation...", "2026-11-04T08:34:37.001Z    Running with 4 cores", "2026-11-04T08:34:38.389Z    Solver converged to a solution.", "2026-11-04T08:34:38.407Z    Finished simulation"], "Error": [], "Warning": []}
-study check: True []
-case | C1.Power | GasSales liquid rate [sm3/d] | GasSales oil rate [sm3/d] | GasSales gas rate [mmsm3/d] | OilFacility liquid rate [sm3/d] | OilFacility oil rate [sm3/d] | OilFacility gas rate [mmsm3/d] | W1 liquid rate [sm3/d] | W1 pressure [bara] | _status | Total liquid rate [sm3/d] | Total oil rate [sm3/d] | Total gas rate [mmsm3/d] | Total oil rate change vs base [%]
-base | 1000 | 0.4789 | 0.3831 | 0.5704 | 478.4 | 382.8 | 0.004248 | 478.9 | 32.85 | Completed | 478.9 | 383.1 | 0.5747 | 0
-C1.Power=600 | 600 | 0.4676 | 0.374 | 0.5555 | 467.1 | 373.7 | 0.00555 | 467.6 | 38 | Completed | 467.6 | 374 | 0.5611 | -2.37
-C1.Power=1000 | 1000 | 0.4789 | 0.3831 | 0.5704 | 478.4 | 382.8 | 0.004248 | 478.9 | 32.85 | Completed | 478.9 | 383.1 | 0.5747 | 0
-C1.Power=1400 | 1400 | 0.4836 | 0.3869 | 0.5771 | 483 | 386.4 | 0.003256 | 485.3 | 29.81 | Completed | 483.4 | 386.8 | 0.5804 | 0.94
-warnings: []
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 5600
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 17004
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:58452/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-
-
-$ "D:\Program\Pipesim toolkit\python.exe" tests\real_optimize_test.py
-[exit 0]
-check: True [] cases: 11
-case | W1:W1_GL.GasRate | W2:W2_GL.GasRate | SEP liquid rate [sm3/d] | SEP oil rate [sm3/d] | SEP gas rate [mmsm3/d] | W1 liquid rate [sm3/d] | W1 pressure [bara] | W2 liquid rate [sm3/d] | W2 pressure [bara] | _status | SEP oil rate change vs base [%]
-base | 0.05 | 0.05 | 1256 | 753.5 | 0.1603 | 597.5 | 37.75 | 657.7 | 38.47 | Completed | 0
-W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0 | 0 | 0 | 696.7 | 418 | 0.03344 | 333.5 | 20.2 | 363.2 | 20.67 | Completed | -44.53
-W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.05 | 0 | 0.05 | 741.1 | 444.6 | 0.08551 |  |  | 741.9 | 31.81 | Completed | -40.99
-W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.1 | 0 | 0.1 | 775.2 | 465.1 | 0.1371 |  |  | 776.3 | 38.75 | Completed | -38.27
-W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.15 | 0 | 0.15 | 765.9 | 459.5 | 0.1867 |  |  | 766.3 | 44.01 | Completed | -39.02
-W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0 | 0.05 | 0 | 668.2 | 400.9 | 0.08202 | 668.9 | 30.07 |  |  | Completed | -46.8
-W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.05 | 0.05 | 0.05 | 1256 | 753.5 | 0.1603 | 597.5 | 37.75 | 657.7 | 38.47 | Completed | 0
-W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1 | 0.05 | 0.1 | 1279 | 767.2 | 0.2115 | 571.6 | 40.57 | 705.7 | 45.36 | Completed | 1.81
-W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0 | 0.1 | 0 | 696.2 | 417.7 | 0.1334 | 696 | 36.62 |  |  | Completed | -44.57
-W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0.05 | 0.1 | 0.05 | 1268 | 760.9 | 0.2108 | 640.6 | 43.84 | 628.3 | 40.85 | Completed | 0.97
-W1:W1_GL.GasRate=0.15, W2:W2_GL.GasRate=0 | 0.15 | 0 | 687.8 | 412.7 | 0.1828 | 688.5 | 41.71 |  |  | Completed | -45.24
-optimum: {
- "maximized": "SEP oil rate",
- "unit": "sm3/d",
- "best": {
-  "case": "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1",
-  "value": 767.1836,
-  "settings": {
-   "W1:W1_GL.GasRate": 0.05,
-   "W2:W2_GL.GasRate": 0.1
-  }
- },
- "base_value": 753.5441828771643,
- "top": [
-  {
-   "case": "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1",
-   "value": 767.1836
-  },
-  {
-   "case": "W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0.05",
-   "value": 760.8679
-  },
-  {
-   "case": "W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.05",
-   "value": 753.5442
-  },
-  {
-   "case": "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.1",
-   "value": 465.1445
-  },
-  {
-   "case": "W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.15",
-   "value": 459.5288
-  }
- ],
- "combinations_run": 10,
- "skipped_over_max_total": 6
-}
-warnings: [] | failed: []
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 10620
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-
-
-$ "D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\field_project.txt
-[exit 0]
-starting llama-server ...
-=== agent finished in 90s, exit code 0
-=== transcript (tool results shortened)
-AGENT: PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.
+PIPESIM assistant running at http://127.0.0.1:8799  (Ctrl+C to stop)
+health: {"model": true, "busy": false}
 
 USER: Build a new PIPESIM model of a small oil field and study it. Two oil wells, W1 and W2, flow into a manifold J1, then a 5 km trunkline goes to a separator at 15 bara. Black oil: 35 API, GOR 100 sm3/sm3, 20% water cut. W1: reservoir 250 bara, depth 2500 m, PI 10 sm3/d/bar. W2: reservoir 230 bara, depth 2400 m, PI 15 sm3/d/bar. Flowlines from each well to J1: 1.5 km and 0.9 km, 100 mm ID, flat. Trunkline: 152 mm ID, 10 m uphill. Question: how does the field oil rate change if the separator pressure goes from 10 to 30 bara?
-  TOOL update_project({"patch":{"name": "Field A", "fluids": [{"name": "BO", "type": "black_oil", "api": 35, "gor": 100, "water_cut": 20, "gas_sg": 0.7}], "wells": [{"name": "W1", "fluid": "BO", "reservoir_pressure": 250, "depth": 2500, "ipr": {"model": "pi", "liquid_pi": 10}}, {"name": "W2", "fluid": "BO", "reservoir_pr) -> {"project": "PROJECT: Field A (METRIC)\n  fluid     BO: type=black_oil, api=35, gor=100, water_cut=20, gas_sg=0.7\n  well      W1: fluid=BO, reservoir_pressure=250, depth=2500, ipr={'model': 'pi', 'liquid_pi': 10}\n  well      W2: fluid=BO, reservoir_pressure=230, depth=2400, ipr={'model': 'pi', 'liquid_pi': 15}\n  sink      SEP: pressure=15\n  flowline  FL-W1: from=W1, to=J1, length=1500, id=100,
-  TOOL check_project({}) -> {"ready": false, "next_step": "STOP calling tools. Ask the user about every item in 'missing' in ONE numbered message (group by component), with the suggested defaults. Wait for the answer.", "missing": [{"field": "wells.W1.reservoir_temperature", "question": "W1: Reservoir temperature?", "unit": "degC", "suggested_default": 90.0}, {"field": "wells.W1.tubing_id", "question": "W1: Tubing inner diam
-AGENT: agent> I need a few more details for the wells. Here are the missing items:
+  TOOL update_project
+  TOOL check_project
 
-1. **W1: Reservoir temperature?** (degC) - Suggested: 90.0
-2. **W1: Tubing inner diameter?** (mm) - Suggested: 76.0
-3. **W2: Reservoir temperature?** (degC) - Suggested: 90.0
-4. **W2: Tubing inner diameter?** (mm) - Suggested: 76.0
+ASSISTANT: I need to ask you about the missing values:
 
-Would you like to use these suggested defaults? You can reply "use defaults" or provide your own values.
+**Missing inputs (with suggested defaults):**
+
+1. **W1**: Reservoir temperature? (suggested: 90.0 degC)
+2. **W1**: Tubing inner diameter? (suggested: 76.0 mm)
+3. **W2**: Reservoir temperature? (suggested: 90.0 degC)
+4. **W2**: Tubing inner diameter? (suggested: 76.0 mm)
+
+You can reply with your values, or say "use defaults" to accept the suggested values.
 
 USER: Use the suggested defaults for everything else.
-  TOOL use_defaults({"fields":["all"]}) -> {"project": "PROJECT: Field A (METRIC)\n  fluid     BO: type=black_oil, api=35, gor=100, water_cut=20, gas_sg=0.7\n  well      W1: fluid=BO, reservoir_pressure=250, depth=2500, ipr={'model': 'pi', 'liquid_pi': 10}, reservoir_temperature=90.0, tubing_id=76.0\n  well      W2: fluid=BO, reservoir_pressure=230, depth=2400, ipr={'model': 'pi', 'liquid_pi': 15}, reservoir_temperature=90.0, tubing_id=76.
-  TOOL build_project({"path":"Field_A.pips"}) -> {"file": "D:\\github reps\\pipesim helper\\projects\\Field_A.pips", "components": 8, "connections": 6, "boundaries_synced": false, "boundary_conditions": {"SEP": "ok", "W1:W1_Comp": "ok", "W2:W2_Comp": "ok"}, "validation": []}
-  TOOL update_spec({"patch":{"model": {"source": "project", "path": "Field_A.pips"}, "analysis": {"type": "sweep", "variables": [{"component_type": "Sink", "name": "SEP", "parameter": "Pressure", "values": [10, 15, 20, 25, 30]}], "producer": "field_oil_rate"}}}) -> {"spec": {"model": {"source": "project", "path": "Field_A.pips"}, "analysis": {"type": "sweep", "variables": [{"component_type": "Sink", "name": "SEP", "parameter": "Pressure", "values": [10, 15, 20, 25, 30]}], "producer": "field_oil_rate"}}}
-  TOOL check_spec({}) -> {"ready": true, "next_step": "Call propose_plan and show the plan to the user word for word.", "missing": [], "errors": [], "n_cases": 6}
-  TOOL propose_plan({}) -> {"plan": "STUDY PLAN: Sweep of SEP.Pressure\nUnits: METRIC\n1. Build this network as a new PIPESIM model:\n   PROJECT: Field A (METRIC)\n     fluid     BO: type=black_oil, api=35, gor=100, water_cut=20, gas_sg=0.7\n     well      W1: fluid=BO, reservoir_pressure=250, depth=2500, ipr={'model': 'pi', 'liquid_pi': 10}, reservoir_temperature=90.0, tubing_id=76.0\n     well      W2: fluid=BO, reservoir
-AGENT: agent> Here's the study plan:
+  TOOL use_defaults
+  TOOL build_project
+  TOOL build_project
 
-**STUDY PLAN: Sweep of SEP.Pressure**
-- **Units:** METRIC
-- **Analysis:** Sweep (vary ONE variable over a range, everything else at base)
-  - Sink:SEP.Pressure: [10, 15, 20, 25, 30] bara
-- **Results recorded:** liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source
-- **Total simulation runs:** 6 (5 pressure cases + 1 base case)
-- **Outputs:** CSV, charts, report.md in runs/<timestamp>/
+ASSISTANT: The project is ready. Would you like me to:
+1. Build the PIPESIM file (Field_A_study.pips)?
+2. Set up the study to analyze how separator pressure (10-30 bara) affects field oil rate?
 
-The plan will simulate the field at separator pressures of 10, 15, 20, 25, and 30 bara to see how the field oil rate changes.
+Please confirm you want to proceed, and I'll build the file and set up the sweep study.
 
-**Do you approve this plan?** Reply "approve" or suggest any changes.
+USER: Please show me the plan.
+  TOOL update_spec
+  TOOL check_spec
+  TOOL update_spec
+  TOOL check_spec
+  TOOL update_spec
+  TOOL check_spec
+  TOOL update_spec
+  TOOL check_spec
+  TOOL update_spec
+  TOOL update_spec
+  TOOL update_spec
 
-USER: Yes, the plan is approved. Run it.
-  TOOL run_study({}) -> {"output_dir": "D:\\github reps\\pipesim helper\\runs\\20261104-133659-415", "report": "D:\\github reps\\pipesim helper\\runs\\20261104-133659-415\\report.md", "csv": "D:\\github reps\\pipesim helper\\runs\\20261104-133659-415\\results.csv", "charts": ["D:\\github reps\\pipesim helper\\runs\\20261104-133659-415\\sweep_liquid_rate.png", "D:\\github reps\\pipesim helper\\runs\\20261104-133659-415\\s
-AGENT: agent> ## Study Results: Separator Pressure Impact on Field Oil Rate
+ASSISTANT: I've hit the limit. Let me ask the user about the issue:
 
-The study is complete! Here's what the results show:
+The spec validation is failing because it's detecting "analysis.kpis" which is not allowed. The system seems to be automatically adding "kpis" to the analysis section. 
 
-### Key Findings:
+**Question for you:** 
 
-**Field Oil Rate vs Separator Pressure:**
-- **Base case (15 bara):** 1,217 sm³/d
-- **At 10 bara:** 1,259 sm³/d (+3.47%)
-- **At 30 bara:** 1,011 sm³/d (-16.9%)
+For this sweep study (separator pressure 10-30 bara), would you like me to:
+1. Proceed with the study using the current spec (the system might automatically measure total oil)?
+2. Or would you prefer a different approach to specify what results to measure?
 
-**Trend:** Lower separator pressure increases field oil rate, while higher separator pressure reduces it.
+The study will run 6 cases (5 pressure values + 1 base case). Please confirm how you'd like to proceed.
 
-### Detailed Results:
+USER: Please show me the plan.
 
-| Separator Pressure | Field Oil Rate | Change vs Base |
-|-------------------|----------------|----------------|
-| 10 bara | 1,259 sm³/d | +3.47% |
-| 15 bara | 1,217 sm³/d | 0% (base) |
-| 20 bara | 1,162 sm³/d | -4.52% |
-| 25 bara | 1,093 sm³/d | -10.16% |
-| 30 bara | 1,011 sm³/d | -16.9% |
+ASSISTANT: Based on the current spec, here's the plan:
 
-### Well Performance:
+**STUDY PLAN:**
 
-**W1 (250 bara reservoir, PI=10):**
-- Liquid rate: 677 → 571 sm³/d as separator pressure increases
-- Wellhead pressure: 39.4 → 44.0 bara (increases with higher separator pressure)
+**Model:** Field_A_study.pips (project-based model)
 
-**W2 (230 bara reservoir, PI=15):**
-- Liquid rate: 844 → 693 sm³/d as separator pressure increases  
-- Wellhead pressure: 38.9 → 43.4 bara (increases with higher separator pressure)
+**Analysis Type:** Sweep study
 
-### Physical Interpretation:
+**Variable to vary:** Separator pressure (SEP) from 10 to 30 bara in steps of 5 (10, 15, 20, 25, 30 bara)
 
-1. **Lower separator pressure (10 bara)** creates a stronger pressure drawdown, allowing more oil to flow from both wells. This is beneficial for production but may require more compression downstream.
+**Cases to run:** 6 total (5 sweep cases + 1 base case at 15 bara)
 
-2. **Higher separator pressure (30 bara)** reduces the pressure differential, causing backpressure that restricts flow. Both wells show ~15-18% reduction 
+**Results:** The study will automatically measure total oil production across all cases
 
-USER: Approved. Run the study and explain the result.
-AGENT: agent> I notice you've approved a study, but I need to clarify which study you want me to run. Looking at the current state:
+**Output:** CSV file, charts, and report.md with the results
 
-1. We just completed a **sweep study** analyzing how separator pressure affects field oil rate (10-30 bara)
-2. The results are already available in the report at `D:\github reps\pipesim helper\runs\20261104-133659-415\report.md`
+**Next steps:**
+1. Build the PIPESIM file (Field_A_study.pips) - needs your approval
+2. Run the study
+3. Analyze how field oil rate changes with separator pressure
 
-Could you clarify which study you'd like me to run? Options include:
+**Expected outcome:** The study will show how increasing separator pressure from 10 to 30 bara affects the total oil production rate. Higher separator pressure typically reduces the pressure drawdown, which can reduce well productivity and thus oil rate.
 
-1. **Run the same separator pressure sweep again** (already completed)
-2. **Run a new study** with different parameters (e.g., different pressure range, or add more variables)
-3. **Run a different analysis type** such as:
-   - **Tornado analysis** - compare impacts of multiple variables
-   - **Optimize study** - find best separator pressure and other parameters
-   - **Grid study** - full factorial of 2-3 variables
-   - **Nodal analysis** - detailed inflow/outflow curves for a well
-   - **P/T profile** - pressure/temperature along a flowline
+**Would you like to:**
+- Approve and proceed with this plan?
+- Modify the plan (e.g., different pressure range, add more KPIs)?
 
-Please let me know which study you'd like me to run, and I'll execute it and explain the results!
+Please confirm your approval or any changes you'd like to make.
 
-USER: exit
-
-=== final spec
-{
- "model": {
-  "source": "project",
-  "path": "Field_A.pips"
- },
- "analysis": {
-  "type": "sweep",
-  "variables": [
-   {
-    "component_type": "Sink",
-    "name": "SEP",
-    "parameter": "Pressure",
-    "values": [
-     10,
-     15,
-     20,
-     25,
-     30
-    ]
-   }
-  ],
-  "producer": "field_oil_rate"
- }
-}
-
-=== study output D:\github reps\pipesim helper\runs\20261104-133659-415: ['model.pipr', 'model.pips', 'project.json', 'report.md', 'results.csv', 'spec.json', 'sweep_gas_rate.png', 'sweep_liquid_rate.png', 'sweep_oil_rate.png', 'sweep_pressure.png']
-STUDY PLAN: Sweep of SEP.Pressure
-Units: METRIC
-1. Build this network as a new PIPESIM model:
-   PROJECT: Field A (METRIC)
-     fluid     BO: type=black_oil, api=35, gor=100, water_cut=20, gas_sg=0.7
-     well      W1: fluid=BO, reservoir_pressure=250, depth=2500, ipr={'model': 'pi', 'liquid_pi': 10}, reservoir_temperature=90.0, tubing_id=76.0
-     well      W2: fluid=BO, reservoir_pressure=230, depth=2400, ipr={'model': 'pi', 'liquid_pi': 15}, reservoir_temperature=90.0, tubing_id=76.0
-     sink      SEP: pressure=15
-     flowline  FL-W1: from=W1, to=J1, length=1500, id=100, elevation_change=0
-     flowline  FL-W2: from=W2, to=J1, length=900, id=100, elevation_change=0
-     flowline  Trunk: from=J1, to=SEP, length=5000, id=152, elevation_change=10
-     junction  J1: 
-2. Analysis: sweep (vary ONE variable over a range, everything else at base)
-     Sink:SEP.Pressure: [10, 15, 20, 25, 30]
-3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source
-4. Total simulation runs: 6. Outputs: CSV, charts, report.md in runs/<timestamp>/
-
-## Results
-
-| case | SEP.Pressure | SEP liquid rate [sm3/d] | SEP oil rate [sm3/d] | SEP gas rate [mmsm3/d] | W1 liquid rate [sm3/d] | W1 pressure [bara] | W2 liquid rate [sm3/d] | W2 pressure [bara] | _status | SEP oil rate change vs base [%] |
-|---|---|---|---|---|---|---|---|---|---|---|
-| base | 15 | 1521 | 1217 | 0.1217 | 677.3 | 39.44 | 844 | 38.87 | Completed | 0 |
-| SEP.Pressure=10 | 10 | 1574 | 1259 | 0.1259 | 699.4 | 38.51 | 874.7 | 37.94 | Completed | 3.47 |
-| SEP.Pressure=15 | 15 | 1521 | 1217 | 0.1217 | 677.3 | 39.44 | 844 | 38.87 | Completed | 0 |
-| SEP.Pressure=20 | 20 | 1453 | 1162 | 0.1162 | 648.5 | 40.64 | 804 | 40.08 | Completed | -4.52 |
-| SEP.Pressure=25 | 25 | 1367 | 1093 | 0.1093 | 612.9 | 42.15 | 753.8 | 41.6 | Completed | -10.16 |
-| SEP.Pressure=30 | 30 | 1264 | 1011 | 0.1011 | 570.7 | 43.97 | 693.4 | 43.4 | Completed | -16.9 |
-
-![](sweep_liquid_rate.png)
-
-![](sweep_oil_rate.png)
-
-![](sweep_gas_rate.png)
-
-![](sweep_pressure.png)
+chart files served: 0
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
 
 
-(llama-server stopped)
-
-(temp files in C:\Users\Home\AppData\Local\Temp\pipesim_agenttest_5etr6zni)
-
-
-$ "D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\gaslift_allocation.txt
+$ "D:\Program\Pipesim toolkit\python.exe" tools\rebuild_compare.py "D:\Program\Pipesim2023.1\Case Studies"
 [exit 0]
-starting llama-server ...
-=== agent finished in 107s, exit code 0
-=== transcript (tool results shortened)
-AGENT: PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.
 
-USER: Build a field with two gas-lifted oil wells, W1 and W2, each flowing through a 1 km, 100 mm flat flowline into manifold J1, then a 4 km, 152 mm flat trunkline to a separator SEP at 15 bara. Black oil: 30 API, GOR 80 sm3/sm3, 40% water cut, gas SG 0.7. W1: reservoir 220 bara, depth 2500 m, PI 8 sm3/d/bar, gas lift injected at 2200 m. W2: reservoir 200 bara, depth 2400 m, PI 12 sm3/d/bar, gas lift injected at 2100 m. Both wells currently get 0.05 MMsm3/d of lift gas. We only have 0.15 MMsm3/d of lift gas in total: how should we split it between W1 and W2 to get the most field oil? Try 0, 0.05, 0.1 and 0.15 MMsm3/d for each well.
-  TOOL update_project({"patch":{"name": "Field A", "fluids": [{"name": "BO", "type": "black_oil", "api": 30, "gor": 80, "water_cut": 40, "gas_sg": 0.7}], "wells": [{"name": "W1", "fluid": "BO", "reservoir_pressure": 220, "depth": 2500, "ipr": {"model": "pi", "liquid_pi": 8}, "gas_lift": {"depth": 2200, "rate": 0.05}}, {") -> {"project": "PROJECT: Field A (METRIC)\n  fluid     BO: type=black_oil, api=30, gor=80, water_cut=40, gas_sg=0.7\n  well      W1: fluid=BO, reservoir_pressure=220, depth=2500, ipr={'model': 'pi', 'liquid_pi': 8}, gas_lift={'depth': 2200, 'rate': 0.05}\n  well      W2: fluid=BO, reservoir_pressure=200, depth=2400, ipr={'model': 'pi', 'liquid_pi': 12}, gas_lift={'depth': 2100, 'rate': 0.05}\n  sink 
-  TOOL check_project({}) -> {"ready": false, "next_step": "STOP calling tools. Ask the user about every item in 'missing' in ONE numbered message (group by component), with the suggested defaults. Wait for the answer.", "missing": [{"field": "wells.W1.reservoir_temperature", "question": "W1: Reservoir temperature?", "unit": "degC", "suggested_default": 90.0}, {"field": "wells.W1.tubing_id", "question": "W1: Tubing inner diam
-AGENT: agent> I need to ask you about the missing well parameters:
-
-**Missing items:**
-1. W1: Reservoir temperature? (suggested: 90.0 degC)
-2. W1: Tubing inner diameter? (suggested: 76.0 mm)
-3. W2: Reservoir temperature? (suggested: 90.0 degC)
-4. W2: Tubing inner diameter? (suggested: 76.0 mm)
-
-Please provide these values, or say "use defaults" to accept the suggested values.
-
-USER: Use the suggested defaults for everything else.
-  TOOL use_defaults({"fields":["all"]}) -> {"project": "PROJECT: Field A (METRIC)\n  fluid     BO: type=black_oil, api=30, gor=80, water_cut=40, gas_sg=0.7\n  well      W1: fluid=BO, reservoir_pressure=220, depth=2500, ipr={'model': 'pi', 'liquid_pi': 8}, gas_lift={'depth': 2200, 'rate': 0.05}, reservoir_temperature=90.0, tubing_id=76.0\n  well      W2: fluid=BO, reservoir_pressure=200, depth=2400, ipr={'model': 'pi', 'liquid_pi': 12}, gas
-  TOOL update_spec({"patch":{"model": {"source": "project", "path": "Field A.pips"}, "analysis": {"type": "optimize", "variables": [{"component_type": "GasLiftInjection", "name": "W1:W1_GL", "parameter": "GasRate", "values": [0, 0.05, 0.1, 0.15]}, {"component_type": "GasLiftInjection", "name": "W2:W2_GL", "parameter":) -> {"spec": {"model": {"source": "project", "path": "Field A.pips"}, "analysis": {"type": "optimize", "variables": [{"component_type": "GasLiftInjection", "name": "W1:W1_GL", "parameter": "GasRate", "values": [0, 0.05, 0.1, 0.15]}, {"component_type": "GasLiftInjection", "name": "W2:W2_GL", "parameter": "GasRate", "values": [0, 0.05, 0.1, 0.15]}], "max_total": 0.15}}}
-  TOOL check_spec({}) -> {"ready": true, "next_step": "Call propose_plan and show the plan to the user word for word.", "missing": [], "errors": [], "n_cases": 11}
-  TOOL propose_plan({}) -> {"plan": "STUDY PLAN: Find the best W1:W1_GL.GasRate, W2:W2_GL.GasRate\nUnits: METRIC\n1. Build this network as a new PIPESIM model:\n   PROJECT: Field A (METRIC)\n     fluid     BO: type=black_oil, api=30, gor=80, water_cut=40, gas_sg=0.7\n     well      W1: fluid=BO, reservoir_pressure=220, depth=2500, ipr={'model': 'pi', 'liquid_pi': 8}, gas_lift={'depth': 2200, 'rate': 0.05}, reservoir_tempera
-AGENT: agent> Here's the study plan:
-
-**STUDY PLAN: Find the best W1:W1_GL.GasRate, W2:W2_GL.GasRate**
-- Units: METRIC
-- Build the Field A network as described
-- Run an optimization analysis trying all combinations of gas lift rates for W1 and W2 (0, 0.05, 0.1, 0.15 MMsm3/d each), with the constraint that the total ≤ 0.15 MMsm3/d
-- Maximize total oil production
-- 11 simulation cases will be run
-- Results saved to runs/<timestamp>/ (CSV, charts, report.md)
-
-**Do you approve this plan?** Please confirm "approve" or suggest any changes.
-
-USER: Yes, approved. Run it.
-  TOOL run_study({}) -> {"output_dir": "D:\\github reps\\pipesim helper\\runs\\20261104-133828-672", "report": "D:\\github reps\\pipesim helper\\runs\\20261104-133828-672\\report.md", "csv": "D:\\github reps\\pipesim helper\\runs\\20261104-133828-672\\results.csv", "charts": ["D:\\github reps\\pipesim helper\\runs\\20261104-133828-672\\optimize.png"], "warnings": [], "n_rows": 11, "failed_cases": [], "table": ["case | W1
-AGENT: agent> ## Results Analysis
-
-**OPTIMUM FOUND:**
-- **Best allocation:** W1 = 0.05 MMsm³/d, W2 = 0.1 MMsm³/d
-- **Maximum oil rate:** 767.2 sm³/d (1.81% improvement over base case of 753.5 sm³/d)
-- **Total gas used:** 0.15 MMsm³/d (full allocation)
-
-**Key Findings:**
-
-1. **W2 is more responsive to gas lift:** W2 has a higher PI (12 vs 8) and lower reservoir pressure (200 vs 220 bara), making it more sensitive to gas lift assistance.
-
-2. **Top 3 allocations by oil production:**
-   - W1=0.05, W2=0.1 → **767.2 sm³/d** (+1.81%)
-   - W1=0.1, W2=0.05 → 760.9 sm³/d (+0.97%)
-   - Base case (both 0.05) → 753.5 sm³/d (0%)
-
-3. **When one well gets no gas lift:**
-   - W1=0, W2=0.1 → 465.1 sm³/d (only W2 flowing)
-   - W1=0.1, W2=0 → 417.7 sm³/d (only W1 flowing)
-   - Both wells need some gas lift to flow effectively
-
-4. **Well pressures:** With optimal allocation, W1 pressure = 43.8 bara, W2 pressure = 45.4 bara (both well above the 15 bara separator pressure)
-
-**Recommendation:** Allocate **0.05 MMsm³/d to W1** and **0.1 MMsm³/d to W2** for maximum field oil production. This gives you 1.8% more oil than the current equal split.
-
-**Report:** `D:\github reps\pipesim helper\runs\20261104-133828-672\report.md`
-
-**Follow-up study:** Consider running a finer grid around the optimum (e.g., 0.02-0.08 for W1 and 0.07-0.13 for W2) to find the precise optimum, or evaluate the economic trade-off of the extra gas cost vs. the 1.8% oil gain.
-
-USER: Approved.
-AGENT: agent> Great! The study is complete and approved. Here's a summary of what was accomplished:
-
-**Study Completed:**
-- Built Field A network with 2 gas-lifted wells (W1, W2) flowing through flowlines to manifold J1, then to separator SEP at 15 bara
-- Ran optimization analysis testing all valid combinations of gas lift rates (0, 0.05, 0.1, 0.15 MMsm³/d per well) with total ≤ 0.15 MMsm³/d
-- Executed 11 simulation cases successfully
-
-**Optimal Gas Lift Allocation:**
-- **W1:** 0.05 MMsm³/d
-- **W2:** 0.10 MMsm³/d
-- **Result:** 767.2 sm³/d oil (1.81% improvement over base case)
-
-**Key Insights:**
-- W2 benefits more from additional gas lift due to its higher productivity index (12 vs 8) and lower reservoir pressure
-- Both wells require some gas lift to flow effectively at the separator pressure
-- The optimum uses the full 0.15 MMsm³/d gas budget
-
-**Deliverables:**
-- CSV results: `D:\github reps\pipesim helper\runs\20261104-133828-672\results.csv`
-- Charts: `D:\github reps\pipesim helper\runs\20261104-133828-672\optimize.png`
-- Full report: `D:\github reps\pipesim helper\runs\20261104-133828-672\report.md`
-
-The network model is saved as `Field A.pips` and can be opened in PIPESIM for further analysis or modification.
-
-USER: exit
-
-=== final spec
-{
- "model": {
-  "source": "project",
-  "path": "Field A.pips"
- },
- "analysis": {
-  "type": "optimize",
-  "variables": [
-   {
-    "component_type": "GasLiftInjection",
-    "name": "W1:W1_GL",
-    "parameter": "GasRate",
-    "values": [
-     0,
-     0.05,
-     0.1,
-     0.15
-    ]
-   },
-   {
-    "component_type": "GasLiftInjection",
-    "name": "W2:W2_GL",
-    "parameter": "GasRate",
-    "values": [
-     0,
-     0.05,
-     0.1,
-     0.15
-    ]
-   }
-  ],
-  "max_total": 0.15
- }
-}
-
-=== study output D:\github reps\pipesim helper\runs\20261104-133828-672: ['model.pipr', 'model.pips', 'optimize.png', 'project.json', 'report.md', 'results.csv', 'spec.json']
-STUDY PLAN: Find the best W1:W1_GL.GasRate, W2:W2_GL.GasRate
-Units: METRIC
-1. Build this network as a new PIPESIM model:
-   PROJECT: Field A (METRIC)
-     fluid     BO: type=black_oil, api=30, gor=80, water_cut=40, gas_sg=0.7
-     well      W1: fluid=BO, reservoir_pressure=220, depth=2500, ipr={'model': 'pi', 'liquid_pi': 8}, gas_lift={'depth': 2200, 'rate': 0.05}, reservoir_temperature=90.0, tubing_id=76.0
-     well      W2: fluid=BO, reservoir_pressure=200, depth=2400, ipr={'model': 'pi', 'liquid_pi': 12}, gas_lift={'depth': 2100, 'rate': 0.05}, reservoir_temperature=90.0, tubing_id=76.0
-     sink      SEP: pressure=15
-     flowline  FL-W1: from=W1, to=J1, length=1000, id=100, elevation_change=0
-     flowline  FL-W2: from=W2, to=J1, length=1000, id=100, elevation_change=0
-     flowline  Trunk: from=J1, to=SEP, length=4000, id=152, elevation_change=0
-     junction  J1: 
-2. Analysis: optimize (try every combination of 1-3 variables (e.g. each well's gas lift rate) and pick the one that maximizes the main result (total oil by default); optional max_total limits the sum of the variables (e.g. the lift gas available))
-     GasLiftInjection:W1:W1_GL.GasRate: [0, 0.05, 0.1, 0.15]
-     GasLiftInjection:W2:W2_GL.GasRate: [0, 0.05, 0.1, 0.15]
-     maximize: total oil rate (or the main oil rate); only combinations whose sum <= 0.15
-3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source
-4. Total simulation runs: 11. Outputs: CSV, charts, report.md in runs/<timestamp>/
-
-## Results
-
-| case | W1:W1_GL.GasRate | W2:W2_GL.GasRate | SEP liquid rate [sm3/d] | SEP oil rate [sm3/d] | SEP gas rate [mmsm3/d] | W1 liquid rate [sm3/d] | W1 pressure [bara] | W2 liquid rate [sm3/d] | W2 pressure [bara] | _status | SEP oil rate change vs base [%] |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| base | 0.05 | 0.05 | 1256 | 753.5 | 0.1603 | 597.5 | 37.75 | 657.7 | 38.47 | Completed | 0 |
-| W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0 | 0 | 0 | 696.7 | 418 | 0.03344 | 333.5 | 20.2 | 363.2 | 20.67 | Completed | -44.53 |
-| W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.05 | 0 | 0.05 | 741.1 | 444.6 | 0.08551 |  |  | 741.9 | 31.81 | Completed | -40.99 |
-| W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.1 | 0 | 0.1 | 775.2 | 465.1 | 0.1371 |  |  | 776.3 | 38.75 | Completed | -38.27 |
-| W1:W1_GL.GasRate=0, W2:W2_GL.GasRate=0.15 | 0 | 0.15 | 765.9 | 459.5 | 0.1867 |  |  | 766.3 | 44.01 | Completed | -39.02 |
-| W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0 | 0.05 | 0 | 668.2 | 400.9 | 0.08202 | 668.9 | 30.07 |  |  | Completed | -46.8 |
-| W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.05 | 0.05 | 0.05 | 1256 | 753.5 | 0.1603 | 597.5 | 37.75 | 657.7 | 38.47 | Completed | 0 |
-| W1:W1_GL.GasRate=0.05, W2:W2_GL.GasRate=0.1 | 0.05 | 0.1 | 1279 | 767.2 | 0.2115 | 571.6 | 40.57 | 705.7 | 45.36 | Completed | 1.81 |
-| W1:W1_GL.GasRate=0.1, W2:W2_GL.GasRate=0 | 0.1 | 0 | 696.2 | 417.7 | 0.1334 | 696 | 36.62 |  |  | Completed | -44.57 |
-| W1:W1_GL.GasRate=0.1, W2:W2_
-
-(llama-server stopped)
-
-(temp files in C:\Users\Home\AppData\Local\Temp\pipesim_agenttest_n05ukjtr)
+===== TF_M2A_Water_Pipeline: D:\Program\Pipesim2023.1\Case Studies\Training Exercises\Pipesim Fundamentals\TF_M2A_Water Pipeline.pips
+   ERROR: Traceback (most recent call last):
+  File "D:\github reps\pipesim helper\tools\rebuild_compare.py", line 249, in main
+    r = (pipeline_case if stem in PIPELINES else well_case)(path, tmp)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\github reps\pipesim helper\tools\rebuild_compare.py", line 115, in pipeline_case
+    notes, out = [], {"type": "pipeline", "notes": notes}
+                                                   ^^^^^
+UnboundLocalError: cannot access local variable 'notes' where it is not associated with a value
 
 
-JOB finished 2026-11-04 13:39:53
+===== TF_M2B_Gas_Pipeline: D:\Program\Pipesim2023.1\Case Studies\Training Exercises\Pipesim Fundamentals\TF_M2B_Gas Pipeline.pips
+   ERROR: Traceback (most recent call last):
+  File "D:\github reps\pipesim helper\tools\rebuild_compare.py", line 249, in main
+    r = (pipeline_case if stem in PIPELINES else well_case)(path, tmp)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\github reps\pipesim helper\tools\rebuild_compare.py", line 115, in pipeline_case
+    notes, out = [], {"type": "pipeline", "notes": notes}
+                                                   ^^^^^
+UnboundLocalError: cannot access local variable 'notes' where it is not associated with a value
+
+
+===== TF_M2C_Multiphase_Pipeline: D:\Program\Pipesim2023.1\Case Studies\Training Exercises\Pipesim Fundamentals\TF_M2C_Multiphase Pipeline.pips
+   ERROR: Traceback (most recent call last):
+  File "D:\github reps\pipesim helper\tools\rebuild_compare.py", line 249, in main
+    r = (pipeline_case if stem in PIPELINES else well_case)(path, tmp)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\github reps\pipesim helper\tools\rebuild_compare.py", line 115, in pipeline_case
+    notes, out = [], {"type": "pipeline", "notes": notes}
+                                                   ^^^^^
+UnboundLocalError: cannot access local variable 'notes' where it is not associated with a value
+
+
+===== TF_M3A_Base_Oil_Well: D:\Program\Pipesim2023.1\Case Studies\Training Exercises\Pipesim Fundamentals\TF_M3A_Base Oil Well.pips
+   ERROR: Traceback (most recent call last):
+  File "D:\github reps\pipesim helper\tools\rebuild_compare.py", line 249, in main
+    r = (pipeline_case if stem in PIPELINES else well_case)(path, tmp)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\github reps\pipesim helper\tools\rebuild_compare.py", line 175, in well_case
+    notes, out = [], {"type": "well (nodal analysis)", "notes": notes}
+                                                                ^^^^^
+UnboundLocalError: cannot access local variable 'notes' where it is not associated with a value
+
+
+
+JOB finished 2026-11-04 14:03:47

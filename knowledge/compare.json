@@ -1,0 +1,14 @@
+{
+ "TF_M2A_Water_Pipeline": {
+  "error": "Traceback (most recent call last):\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 249, in main\n    r = (pipeline_case if stem in PIPELINES else well_case)(path, tmp)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 115, in pipeline_case\n    notes, out = [], {\"type\": \"pipeline\", \"notes\": notes}\n                                                   ^^^^^\nUnboundLocalError: cannot access local variable 'notes' where it is not associated with a value\n"
+ },
+ "TF_M2B_Gas_Pipeline": {
+  "error": "Traceback (most recent call last):\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 249, in main\n    r = (pipeline_case if stem in PIPELINES else well_case)(path, tmp)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 115, in pipeline_case\n    notes, out = [], {\"type\": \"pipeline\", \"notes\": notes}\n                                                   ^^^^^\nUnboundLocalError: cannot access local variable 'notes' where it is not associated with a value\n"
+ },
+ "TF_M2C_Multiphase_Pipeline": {
+  "error": "Traceback (most recent call last):\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 249, in main\n    r = (pipeline_case if stem in PIPELINES else well_case)(path, tmp)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 115, in pipeline_case\n    notes, out = [], {\"type\": \"pipeline\", \"notes\": notes}\n                                                   ^^^^^\nUnboundLocalError: cannot access local variable 'notes' where it is not associated with a value\n"
+ },
+ "TF_M3A_Base_Oil_Well": {
+  "error": "Traceback (most recent call last):\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 249, in main\n    r = (pipeline_case if stem in PIPELINES else well_case)(path, tmp)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 175, in well_case\n    notes, out = [], {\"type\": \"well (nodal analysis)\", \"notes\": notes}\n                                                                ^^^^^\nUnboundLocalError: cannot access local variable 'notes' where it is not associated with a value\n"
+ }
+}
