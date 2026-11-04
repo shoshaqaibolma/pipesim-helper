@@ -1,0 +1,4 @@
+# Gas lift allocation on real PIPESIM: direct optimize study, then the local LLM agent asked the same question
+# in plain language (starts/stops llama-server via start_llm.bat). Models in %TEMP% / runs\.
+"D:\Program\Pipesim toolkit\python.exe" tests\real_optimize_test.py
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\gaslift_allocation.txt
