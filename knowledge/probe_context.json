@@ -1,0 +1,124 @@
+{
+ "completion": "Well:VertComp",
+ "sinks": [
+  "Gas-Sales",
+  "Oil-Facility"
+ ],
+ "keyword form ReservoirPressure": {
+  "ok": true,
+  "result": 173.3341983502526
+ },
+ "context form ReservoirPressure": {
+  "ok": true,
+  "result": 173.3341983502526
+ },
+ "keyword form LiquidPI (IPR param via completion)": {
+  "ok": true,
+  "result": null
+ },
+ "keyword form IPRModel": {
+  "ok": true,
+  "result": "IPRPIModel"
+ },
+ "completion: all values": {
+  "ok": true,
+  "result": {
+   "Well:VertComp": {
+    "Name": "VertComp",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "B-Fluid",
+    "AssociatedCompositionalFluid": "C-Fluid",
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 173.3341983502526,
+    "ReservoirTemperature": 54.44444444444446,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": true,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRPIModel"
+   }
+  }
+ },
+ "tubing: all values": {
+  "ok": true,
+  "result": {
+   "Well:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 100.53320000000001,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 6.8834,
+    "Length": 1341.1200000000001,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  }
+ },
+ "adapter get_value": {
+  "ok": true,
+  "result": 173.3341983502526
+ },
+ "well liquid rate, base": {
+  "ok": true,
+  "result": 804.6089921425155
+ },
+ "adapter set_param ReservoirPressure x1.2": {
+  "ok": true,
+  "result": 208.0010380203031
+ },
+ "well liquid rate, reservoir pressure x1.2": {
+  "ok": true,
+  "result": 988.1806684635164
+ },
+ "verdict_reservoir_pressure": "CHANGED",
+ "set_value only (no boundary) then reset_conditions syncs?": {
+  "ok": true,
+  "result": [
+   173.3341983502526,
+   true,
+   156.00077851522732
+  ]
+ },
+ "adapter sink pressure round trip": {
+  "ok": true,
+  "result": 33.0
+ },
+ "validate()": {
+  "ok": true,
+  "result": []
+ }
+}
