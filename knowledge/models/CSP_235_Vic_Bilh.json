@@ -83,7 +83,7 @@
    }
   },
   "FlowCorrelation|Flowline - surveyed:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Flowline - surveyed:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Flowline - surveyed', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "Flowline|Flowline - surveyed": {
    "Flowline - surveyed": {
@@ -185,7 +185,7 @@
    "result": {
     "WebAPIVersion": "2023.1.615.0",
     "ToolkitVersion": "2023.1",
-    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_vo3k0nz0\\CSP_235_Vic Bilh.pips",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_licqqsiv\\CSP_235_Vic Bilh.pips",
     "UnitSystem": "PIPESIM_METRIC",
     "UiUnitSystem": "PIPESIM_FIELD"
    }
@@ -285,7 +285,7 @@
  "about": {
   "WebAPIVersion": "2023.1.615.0",
   "ToolkitVersion": "2023.1",
-  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_vo3k0nz0\\CSP_235_Vic Bilh.pips",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_licqqsiv\\CSP_235_Vic Bilh.pips",
   "UnitSystem": "PIPESIM_METRIC",
   "UiUnitSystem": "PIPESIM_FIELD"
  },
@@ -293,37 +293,37 @@
   "state": "Failed",
   "summary": {
    "Info": [
-    "2026-11-04T06:32:42.669Z    Beginning simulation...",
-    "2026-11-04T06:32:42.668Z    Running with 1 core",
-    "2026-11-04T06:32:43.393Z    Finished simulation"
+    "2026-11-04T07:54:12.543Z    Beginning simulation...",
+    "2026-11-04T07:54:12.541Z    Running with 1 core",
+    "2026-11-04T07:54:12.997Z    Finished simulation"
    ],
    "Error": [
-    "2026-11-04T06:32:43.340Z    Stopping engine..."
+    "2026-11-04T07:54:12.978Z    Stopping engine..."
    ],
    "Warning": []
   },
   "messages": [
-   "2026-11-04T06:32:42.721Z    Service starting...",
-   "2026-11-04T06:32:42.738Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
-   "2026-11-04T06:32:42.921Z    Service listening at 'net.pipe://localhost/pipe/5cafdb27f67f4e32bc29f70b5badae42'...",
-   "2026-11-04T06:32:43.009Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\8204",
-   "2026-11-04T06:32:43.009Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\8204\\CSP_235_Vic Bilh.tnt (1)",
-   "2026-11-04T06:32:43.047Z    ........................................................................ ",
-   "2026-11-04T06:32:43.221Z    Processing branch Vic Bilh Source.. ",
-   "2026-11-04T06:32:43.222Z    Processing branch Lacq Plant.",
-   "2026-11-04T06:32:43.222Z    Processing branch geometry (.PSM/.PST) files",
-   "2026-11-04T06:32:43.319Z    ",
-   "2026-11-04T06:32:43.319Z     Fatal Error     1914  Job Aborted,  : ",
-   "2026-11-04T06:32:43.320Z              User DLL error: OLGAS v. 7.2 2-Phase",
-   "2026-11-04T06:32:43.320Z                olga_ error no. 9999:",
-   "2026-11-04T06:32:43.320Z               License checkout failed (olgas_2p, olgas_3p, pipesim_olgas_2p, pipesim_olgas_2p)",
-   "2026-11-04T06:32:43.320Z               error number is 9999",
-   "2026-11-04T06:32:43.320Z               Branch name is Vic Bilh Source",
-   "2026-11-04T06:32:43.320Z    ",
-   "2026-11-04T06:32:43.347Z    "
+   "2026-11-04T07:54:12.592Z    Service starting...",
+   "2026-11-04T07:54:12.611Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T07:54:12.796Z    Service listening at 'net.pipe://localhost/pipe/d6dbd76733ba4efaac4bf974743a7690'...",
+   "2026-11-04T07:54:12.881Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\19832",
+   "2026-11-04T07:54:12.881Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\19832\\CSP_235_Vic Bilh.tnt (1)",
+   "2026-11-04T07:54:12.923Z    ........................................................................ ",
+   "2026-11-04T07:54:12.934Z    Processing branch Vic Bilh Source.. ",
+   "2026-11-04T07:54:12.934Z    Processing branch Lacq Plant.",
+   "2026-11-04T07:54:12.934Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T07:54:12.957Z    ",
+   "2026-11-04T07:54:12.957Z     Fatal Error     1914  Job Aborted,  : ",
+   "2026-11-04T07:54:12.957Z              User DLL error: OLGAS v. 7.2 2-Phase",
+   "2026-11-04T07:54:12.957Z                olga_ error no. 9999:",
+   "2026-11-04T07:54:12.957Z               License checkout failed (olgas_2p, olgas_3p, pipesim_olgas_2p, pipesim_olgas_2p)",
+   "2026-11-04T07:54:12.957Z               error number is 9999",
+   "2026-11-04T07:54:12.957Z               Branch name is Vic Bilh Source",
+   "2026-11-04T07:54:12.957Z    ",
+   "2026-11-04T07:54:12.986Z    "
   ],
   "system": {},
   "node": {}
  },
- "seconds": 8.2
+ "seconds": 8.1
 }

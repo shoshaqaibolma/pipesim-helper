@@ -146,10 +146,10 @@
    }
   },
   "FlowCorrelation|FL-GIS_TI=1:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL-GIS_TI=1:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL-GIS_TI=1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|FL2-GIS_TI=1:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL2-GIS_TI=1:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL2-GIS_TI=1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "Flowline|FL-GIS_TI=1": {
    "FL-GIS_TI=1": {
@@ -601,7 +601,7 @@
    }
   },
   "Source|MCP 01:MCP 01_SimpleSource": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'MCP 01:MCP 01_SimpleSource', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'MCP 01', 'Source': 'MCP 01_SimpleSource', 'Template': '___NONE___'})"
   },
   "Study|General data plus Datapoint 8": {
    "General data plus Datapoint 8": {
@@ -622,7 +622,7 @@
    "result": {
     "WebAPIVersion": "2023.1.615.0",
     "ToolkitVersion": "2023.1",
-    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_w62mrg5q\\CSP_234_Frigg.pips",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_now5n1x0\\CSP_234_Frigg.pips",
     "UnitSystem": "PIPESIM_METRIC",
     "UiUnitSystem": "PIPESIM_FIELD"
    }
@@ -701,7 +701,7 @@
  "about": {
   "WebAPIVersion": "2023.1.615.0",
   "ToolkitVersion": "2023.1",
-  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_w62mrg5q\\CSP_234_Frigg.pips",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_now5n1x0\\CSP_234_Frigg.pips",
   "UnitSystem": "PIPESIM_METRIC",
   "UiUnitSystem": "PIPESIM_FIELD"
  },

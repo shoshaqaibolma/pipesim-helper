@@ -238,16 +238,66 @@
    }
   },
   "BlackOilFluid|oil:Hor_Well:Completion": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'BlackOilFluid': 'oil:Hor_Well:Completion', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'BlackOilFluid': 'Hor_Well:Completion', 'Well': 'oil', 'Template': '___NONE___'})"
   },
   "BlackOilFluid|oil:Hor_Well:Source 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'BlackOilFluid': 'oil:Hor_Well:Source 1', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'BlackOilFluid': 'Hor_Well:Source 1', 'Well': 'oil', 'Template': '___NONE___'})"
   },
   "Casing|Hor_Well:Intermediate": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'Hor_Well:Intermediate', 'Template': '___NONE___'})"
+   "Hor_Well:Intermediate": {
+    "Name": "Intermediate",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 224.40900000000002,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 10.033,
+    "Length": 2438.4,
+    "CatalogLabel": "Main-U140-0.168275",
+    "CatalogName": "Main-U140-0.168275",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Casing|Hor_Well:Production": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'Hor_Well:Production', 'Template': '___NONE___'})"
+   "Hor_Well:Production": {
+    "Name": "Production",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 150.3934,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 8.9408,
+    "Length": 2895.6000000000004,
+    "CatalogLabel": "Api-P110-0.219075",
+    "CatalogName": "Api-P110-0.219075",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Choke|Well_1.Choke": {
    "Well_1.Choke": {
@@ -281,7 +331,38 @@
    }
   },
   "Completion|Hor_Well:Completion": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'Hor_Well:Completion', 'Template': '___NONE___'})"
+   "Hor_Well:Completion": {
+    "Name": "Completion",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "oil",
+    "AssociatedCompositionalFluid": "CFluid",
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "Distributed",
+    "GeometryProfileType": "Horizontal",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 220.63223338138755,
+    "ReservoirTemperature": 101.1111111111112,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRPSSBabuOdeh"
+   }
   },
   "CompositionalFluid|CFluid": {
    "CFluid": {
@@ -342,13 +423,17 @@
    }
   },
   "FlowCorrelation|FL-1:Correlation Mod_5_Les_1_Ex_3_MultiHorzInterval": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL-1:Correlation Mod_5_Les_1_Ex_3_MultiHorzInterval', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL-1', 'FlowCorrelation': 'Correlation Mod_5_Les_1_Ex_3_MultiHorzInterval', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|FL-2:Correlation Mod_5_Les_1_Ex_3_MultiHorzInterval": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL-2:Correlation Mod_5_Les_1_Ex_3_MultiHorzInterval', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL-2', 'FlowCorrelation': 'Correlation Mod_5_Les_1_Ex_3_MultiHorzInterval', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|Hor_Well:Correlation Mod_5_Les_1_Ex_3_MultiHorzInterval": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Hor_Well:Correlation Mod_5_Les_1_Ex_3_MultiHorzInterval', 'Template': '___NONE___'})"
+   "Hor_Well:Correlation Mod_5_Les_1_Ex_3_MultiHorzInterval": {
+    "Name": "Correlation Mod_5_Les_1_Ex_3_MultiHorzInterval",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   }
   },
   "Flowline|FL-1": {
    "FL-1": {
@@ -817,44 +902,72 @@
    }
   },
   "GravelPack|Hor_Well:Completion:GravelPack": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'Hor_Well:Completion:GravelPack', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Hor_Well', 'GravelPack': 'Completion:GravelPack', 'Template': '___NONE___'})"
   },
   "IPRBackPressure|Hor_Well:Completion:IPRBACKPRESSURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'Hor_Well:Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Hor_Well', 'IPRBackPressure': 'Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
   },
   "IPRDarcy|Hor_Well:Completion:IPRDARCY": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'Hor_Well:Completion:IPRDARCY', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Hor_Well', 'IPRDarcy': 'Completion:IPRDARCY', 'Template': '___NONE___'})"
   },
   "IPRFetkovitch|Hor_Well:Completion:IPRFETKOVITCH": null,
   "IPRForchheimer|Hor_Well:Completion:IPRFORCHHEIMER": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'Hor_Well:Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Hor_Well', 'IPRForchheimer': 'Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
   },
   "IPRHorizontalPI|Hor_Well:Completion:IPRHORIZONTALPI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'Hor_Well:Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Hor_Well', 'IPRHorizontalPI': 'Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
   },
   "IPRHydraulicFracture|Hor_Well:Completion:IPRHYDRAULICFRACTURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'Hor_Well:Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Hor_Well', 'IPRHydraulicFracture': 'Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
   },
   "IPRJones|Hor_Well:Completion:IPRJONES": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'Hor_Well:Completion:IPRJONES', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Hor_Well', 'IPRJones': 'Completion:IPRJONES', 'Template': '___NONE___'})"
   },
   "IPRPIModel|Hor_Well:Completion:IPRPIModel": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'Hor_Well:Completion:IPRPIModel', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Hor_Well', 'IPRPIModel': 'Completion:IPRPIModel', 'Template': '___NONE___'})"
   },
   "IPRPSSBabuOdeh|Hor_Well:Completion:IPRPSSBABUODEH": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'Hor_Well:Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Hor_Well', 'IPRPSSBabuOdeh': 'Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
   },
   "IPRSSJoshi|Hor_Well:Completion:IPRSSJOSHI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'Hor_Well:Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Hor_Well', 'IPRSSJoshi': 'Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
   },
   "IPRTriLinear|Hor_Well:Completion:IPRTRILINEAR": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'Hor_Well:Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Hor_Well', 'IPRTriLinear': 'Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
   },
   "Liner|Hor_Well:Liner": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Liner': 'Hor_Well:Liner', 'Template': '___NONE___'})"
+   "Hor_Well:Liner": {
+    "Name": "Liner",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": 200.152,
+    "CementDensity": 1900.0,
+    "CementTop": 2895.6000000000004,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 124.2568,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 2895.6000000000004,
+    "WallThickness": 7.7216,
+    "Length": 1463.04,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Packer|Hor_Well:Packer": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'Hor_Well:Packer', 'Template': '___NONE___'})"
+   "Hor_Well:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
   },
   "Sink|Manifold": {
    "Manifold": {
@@ -868,13 +981,85 @@
    }
   },
   "Source|Hor_Well:Source 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Hor_Well:Source 1', 'Template': '___NONE___'})"
+   "Hor_Well:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 15.168466044970394,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "oil",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Hor_Well:WellString outlet10041": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Hor_Well:WellString outlet10041', 'Template': '___NONE___'})"
+   "Hor_Well:WellString outlet10041": {
+    "Name": "WellString outlet10041",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Hor_Well:WellString outlet10043": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Hor_Well:WellString outlet10043', 'Template': '___NONE___'})"
+   "Hor_Well:WellString outlet10043": {
+    "Name": "WellString outlet10043",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Study|Study 1": {
    "Study 1": {
@@ -883,7 +1068,32 @@
    }
   },
   "Tubing|Hor_Well:tubing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'Hor_Well:tubing', 'Template': '___NONE___'})"
+   "Hor_Well:tubing": {
+    "Name": "tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 75.99680000000001,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 6.4516,
+    "Length": 2895.6000000000004,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Well|Hor_Well": {
    "Hor_Well": {
@@ -930,7 +1140,7 @@
    "result": {
     "WebAPIVersion": "2023.1.615.0",
     "ToolkitVersion": "2023.1",
-    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_tcck0y0t\\CSW_105_Horizontal_Oil_Well.pips",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_pnk5rauu\\CSW_105_Horizontal_Oil_Well.pips",
     "UnitSystem": "PIPESIM_METRIC",
     "UiUnitSystem": "PIPESIM_FIELD"
    }
@@ -1081,7 +1291,7 @@
  "about": {
   "WebAPIVersion": "2023.1.615.0",
   "ToolkitVersion": "2023.1",
-  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_tcck0y0t\\CSW_105_Horizontal_Oil_Well.pips",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_pnk5rauu\\CSW_105_Horizontal_Oil_Well.pips",
   "UnitSystem": "PIPESIM_METRIC",
   "UiUnitSystem": "PIPESIM_FIELD"
  },
@@ -1089,92 +1299,92 @@
   "state": "Completed",
   "summary": {
    "Info": [
-    "2026-11-04T06:35:47.988Z    Beginning simulation...",
-    "2026-11-04T06:35:47.988Z    Running with 1 core",
-    "2026-11-04T06:35:48.735Z    Solver converged to a solution.",
-    "2026-11-04T06:35:48.754Z    Finished simulation"
+    "2026-11-04T07:57:22.526Z    Beginning simulation...",
+    "2026-11-04T07:57:22.524Z    Running with 1 core",
+    "2026-11-04T07:57:23.285Z    Solver converged to a solution.",
+    "2026-11-04T07:57:23.305Z    Finished simulation"
    ],
    "Error": [],
    "Warning": []
   },
   "messages": [
-   "2026-11-04T06:35:48.036Z    Service starting...",
-   "2026-11-04T06:35:48.053Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
-   "2026-11-04T06:35:48.232Z    Service listening at 'net.pipe://localhost/pipe/cbc5ecffb286435f89f3638b7aafa74d'...",
-   "2026-11-04T06:35:48.312Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\21484",
-   "2026-11-04T06:35:48.312Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\21484\\CSW_105_Horizontal_Oil_Well.tnt (1)",
-   "2026-11-04T06:35:48.344Z    .................................................................. ",
-   "2026-11-04T06:35:48.345Z    Processing branch Hor_Well.. ",
-   "2026-11-04T06:35:48.346Z    Processing branch Manifold.",
-   "2026-11-04T06:35:48.346Z    Processing branch geometry (.PSM/.PST) files",
-   "2026-11-04T06:35:48.359Z    ",
-   "2026-11-04T06:35:48.393Z     Iteration   1 P error :   0.00 %, F error :   0.00 %, L error :   0.00 %",
-   "2026-11-04T06:35:48.394Z    ",
-   "2026-11-04T06:35:48.394Z    ",
-   "2026-11-04T06:35:48.394Z     Converged.                                                                     ",
-   "2026-11-04T06:35:48.394Z     ... network converged at iteration   1, final rms error :   0.618463E-07",
-   "2026-11-04T06:35:48.394Z      Start Post-Processing results",
-   "2026-11-04T06:35:48.405Z    ",
-   "2026-11-04T06:35:48.405Z       Elapsed time:",
-   "2026-11-04T06:35:48.405Z    ",
-   "2026-11-04T06:35:48.405Z       Network Executive      0.04",
-   "2026-11-04T06:35:48.405Z       PIPESIM sub-tasks      0.05",
-   "2026-11-04T06:35:48.405Z                         ---------",
-   "2026-11-04T06:35:48.405Z                 Total        0.09",
-   "2026-11-04T06:35:48.405Z    ",
-   "2026-11-04T06:35:48.405Z       CPU time:",
-   "2026-11-04T06:35:48.405Z    ",
-   "2026-11-04T06:35:48.405Z               User task      0.22",
-   "2026-11-04T06:35:48.405Z               System         0.19",
-   "2026-11-04T06:35:48.405Z                         ---------",
-   "2026-11-04T06:35:48.405Z                 Total        0.41",
-   "2026-11-04T06:35:48.739Z     Disposing communication agent."
+   "2026-11-04T07:57:22.574Z    Service starting...",
+   "2026-11-04T07:57:22.591Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T07:57:22.768Z    Service listening at 'net.pipe://localhost/pipe/8d8b7a80f0354f36b9ff0155fca96740'...",
+   "2026-11-04T07:57:22.846Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\6836",
+   "2026-11-04T07:57:22.846Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\6836\\CSW_105_Horizontal_Oil_Well.tnt (1)",
+   "2026-11-04T07:57:22.878Z    .................................................................. ",
+   "2026-11-04T07:57:22.880Z    Processing branch Hor_Well.. ",
+   "2026-11-04T07:57:22.880Z    Processing branch Manifold.",
+   "2026-11-04T07:57:22.880Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T07:57:22.894Z    ",
+   "2026-11-04T07:57:22.930Z     Iteration   1 P error :   0.00 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:57:22.930Z    ",
+   "2026-11-04T07:57:22.930Z    ",
+   "2026-11-04T07:57:22.930Z     Converged.                                                                     ",
+   "2026-11-04T07:57:22.930Z     ... network converged at iteration   1, final rms error :   0.618463E-07",
+   "2026-11-04T07:57:22.930Z      Start Post-Processing results",
+   "2026-11-04T07:57:22.942Z    ",
+   "2026-11-04T07:57:22.942Z       Elapsed time:",
+   "2026-11-04T07:57:22.942Z    ",
+   "2026-11-04T07:57:22.942Z       Network Executive      0.04",
+   "2026-11-04T07:57:22.942Z       PIPESIM sub-tasks      0.05",
+   "2026-11-04T07:57:22.942Z                         ---------",
+   "2026-11-04T07:57:22.942Z                 Total        0.10",
+   "2026-11-04T07:57:22.942Z    ",
+   "2026-11-04T07:57:22.942Z       CPU time:",
+   "2026-11-04T07:57:22.942Z    ",
+   "2026-11-04T07:57:22.942Z               User task      0.27",
+   "2026-11-04T07:57:22.942Z               System         0.16",
+   "2026-11-04T07:57:22.942Z                         ---------",
+   "2026-11-04T07:57:22.942Z                 Total        0.42",
+   "2026-11-04T07:57:23.288Z     Disposing communication agent."
   ],
   "system": {},
   "node": {
    "Pressure": {
     "Unit": "bara",
+    "Well_1.Choke": 18.566978871356458,
     "Completion": 173.94180905189145,
     "Hor_Well": 23.957439553772666,
-    "Well_1.Choke": 18.566978871356458,
     "Manifold": 15.168466044970378
    },
    "Temperature": {
     "Unit": "degC",
+    "Well_1.Choke": 64.6020482227052,
     "Completion": 101.8704687241788,
     "Hor_Well": 64.55306604237035,
-    "Well_1.Choke": 64.6020482227052,
     "Manifold": 64.35961900409438
    },
    "VolumeFlowrateLiquidStockTank": {
     "Unit": "sm3/d",
+    "Well_1.Choke": 829.3241394942827,
     "Completion": 829.3241394942827,
     "Hor_Well": 829.3241394942827,
-    "Well_1.Choke": 829.3241394942827,
     "Manifold": 829.3101263429455
    },
    "VolumeFlowrateOilStockTank": {
     "Unit": "sm3/d",
+    "Well_1.Choke": 663.4593115954261,
     "Completion": 663.4593115954261,
     "Hor_Well": 663.4593115954261,
-    "Well_1.Choke": 663.4593115954261,
     "Manifold": 663.4481010743564
    },
    "VolumeFlowrateGasStockTank": {
     "Unit": "mmsm3/d",
+    "Well_1.Choke": 0.07680864291513238,
     "Completion": 0.07680864291513238,
     "Hor_Well": 0.07680864291513238,
-    "Well_1.Choke": 0.07680864291513238,
     "Manifold": 0.07680734507381086
    },
    "VolumeFlowrateWaterStockTank": {
     "Unit": "sm3/d",
+    "Well_1.Choke": 165.86482789885653,
     "Completion": 165.86482789885653,
     "Hor_Well": 165.86482789885653,
-    "Well_1.Choke": 165.86482789885653,
     "Manifold": 165.86202526858912
    }
   }
  },
- "seconds": 9.0
+ "seconds": 8.7
 }

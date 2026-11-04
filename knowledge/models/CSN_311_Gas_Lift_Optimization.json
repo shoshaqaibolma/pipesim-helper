@@ -350,37 +350,261 @@
    }
   },
   "Casing|Well_11:Casing 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'Well_11:Casing 1', 'Template': '___NONE___'})"
+   "Well_11:Casing 1": {
+    "Name": "Casing 1",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 151.99360000000001,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 15.19936,
+    "Length": 1524.0000000000002,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Casing|Well_12:Casing 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'Well_12:Casing 1', 'Template': '___NONE___'})"
+   "Well_12:Casing 1": {
+    "Name": "Casing 1",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 151.99360000000001,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 15.19936,
+    "Length": 1676.4,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Casing|Well_21:Casing 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'Well_21:Casing 1', 'Template': '___NONE___'})"
+   "Well_21:Casing 1": {
+    "Name": "Casing 1",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 151.99360000000001,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 15.19936,
+    "Length": 1432.5600000000002,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Casing|Well_22:Casing 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'Well_22:Casing 1', 'Template': '___NONE___'})"
+   "Well_22:Casing 1": {
+    "Name": "Casing 1",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 151.99360000000001,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 15.19936,
+    "Length": 1828.8000000000002,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Completion|Well_11:VERTICAL COMPLETION 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'Well_11:VERTICAL COMPLETION 1', 'Template': '___NONE___'})"
+   "Well_11:VERTICAL COMPLETION 1": {
+    "Name": "VERTICAL COMPLETION 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "Well_11.Fluid11",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 103.421355,
+    "ReservoirTemperature": 87.77777777777777,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRPIModel"
+   }
   },
   "Completion|Well_12:VERTICAL COMPLETION 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'Well_12:VERTICAL COMPLETION 1', 'Template': '___NONE___'})"
+   "Well_12:VERTICAL COMPLETION 1": {
+    "Name": "VERTICAL COMPLETION 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "Well_12.GOAL 1a",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 110.31611199999999,
+    "ReservoirTemperature": 87.77777777777777,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRPIModel"
+   }
   },
   "Completion|Well_21:VERTICAL COMPLETION 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'Well_21:VERTICAL COMPLETION 1', 'Template': '___NONE___'})"
+   "Well_21:VERTICAL COMPLETION 1": {
+    "Name": "VERTICAL COMPLETION 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "Well_21.GOAL 1a",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 96.52659799999999,
+    "ReservoirTemperature": 87.77777777777777,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRPIModel"
+   }
   },
   "Completion|Well_22:VERTICAL COMPLETION 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'Well_22:VERTICAL COMPLETION 1', 'Template': '___NONE___'})"
+   "Well_22:VERTICAL COMPLETION 1": {
+    "Name": "VERTICAL COMPLETION 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "Well_22.GOAL 1a",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 110.31611199999999,
+    "ReservoirTemperature": 87.77777777777777,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRPIModel"
+   }
   },
   "FlowCorrelation|B_1.Flowline:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'B_1.Flowline:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'B_1.Flowline', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|B_2.Flowline:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'B_2.Flowline:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'B_2.Flowline', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|B_3.Flowline:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'B_3.Flowline:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'B_3.Flowline', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|Default": {
    "Default": {
@@ -405,28 +629,44 @@
    }
   },
   "FlowCorrelation|Well_11.FLOWLINE 1:Correlation": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well_11.FLOWLINE 1:Correlation', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_11.FLOWLINE 1', 'FlowCorrelation': 'Correlation', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|Well_11:Correlation": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well_11:Correlation', 'Template': '___NONE___'})"
+   "Well_11:Correlation": {
+    "Name": "Correlation",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": true
+   }
   },
   "FlowCorrelation|Well_12.FLOWLINE 1:Correlation": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well_12.FLOWLINE 1:Correlation', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_12.FLOWLINE 1', 'FlowCorrelation': 'Correlation', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|Well_12:Correlation": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well_12:Correlation', 'Template': '___NONE___'})"
+   "Well_12:Correlation": {
+    "Name": "Correlation",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": true
+   }
   },
   "FlowCorrelation|Well_21.FLOWLINE 1:Correlation": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well_21.FLOWLINE 1:Correlation', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_21.FLOWLINE 1', 'FlowCorrelation': 'Correlation', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|Well_21:Correlation": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well_21:Correlation', 'Template': '___NONE___'})"
+   "Well_21:Correlation": {
+    "Name": "Correlation",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": true
+   }
   },
   "FlowCorrelation|Well_22.FLOWLINE 1:Correlation": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well_22.FLOWLINE 1:Correlation', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_22.FLOWLINE 1', 'FlowCorrelation': 'Correlation', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|Well_22:Correlation": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well_22:Correlation', 'Template': '___NONE___'})"
+   "Well_22:Correlation": {
+    "Name": "Correlation",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": true
+   }
   },
   "Flowline|B_1.Flowline": {
    "B_1.Flowline": {
@@ -730,152 +970,232 @@
    }
   },
   "GasLiftInjection|Well_11:Tubing_Gas lift injection": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GasLiftInjection': 'Well_11:Tubing_Gas lift injection', 'Template': '___NONE___'})"
+   "Well_11:Tubing_Gas lift injection": {
+    "Name": "Tubing_Gas lift injection",
+    "GLR": null,
+    "DischargeCoefficient": null,
+    "Manufacturer": "",
+    "Series": "",
+    "IsActive": true,
+    "BellowArea": null,
+    "DischargeToFullyOpen": null,
+    "GasLiftType": "InjectionGasRate",
+    "GasRate": 0.012709218815788589,
+    "GLRIncrease": null,
+    "PortArea": null,
+    "PortSize": null,
+    "Ptro": null,
+    "SpringPressure": null,
+    "ValveChoke": null,
+    "ValveDiameter": 38.099999999999994,
+    "ValveSize": null,
+    "ValveType": ""
+   }
   },
   "GasLiftInjection|Well_12:Tubing_Gas lift injection": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GasLiftInjection': 'Well_12:Tubing_Gas lift injection', 'Template': '___NONE___'})"
+   "Well_12:Tubing_Gas lift injection": {
+    "Name": "Tubing_Gas lift injection",
+    "GLR": null,
+    "DischargeCoefficient": null,
+    "Manufacturer": "",
+    "Series": "",
+    "IsActive": true,
+    "BellowArea": null,
+    "DischargeToFullyOpen": null,
+    "GasLiftType": "InjectionGasRate",
+    "GasRate": 0.026987652773042797,
+    "GLRIncrease": null,
+    "PortArea": null,
+    "PortSize": null,
+    "Ptro": null,
+    "SpringPressure": null,
+    "ValveChoke": null,
+    "ValveDiameter": 25.4,
+    "ValveSize": null,
+    "ValveType": ""
+   }
   },
   "GasLiftInjection|Well_21:Tubing_Gas lift injection": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GasLiftInjection': 'Well_21:Tubing_Gas lift injection', 'Template': '___NONE___'})"
+   "Well_21:Tubing_Gas lift injection": {
+    "Name": "Tubing_Gas lift injection",
+    "GLR": null,
+    "DischargeCoefficient": null,
+    "Manufacturer": "",
+    "Series": "",
+    "IsActive": true,
+    "BellowArea": null,
+    "DischargeToFullyOpen": null,
+    "GasLiftType": "InjectionGasRate",
+    "GasRate": 0.020776052858753974,
+    "GLRIncrease": null,
+    "PortArea": null,
+    "PortSize": null,
+    "Ptro": null,
+    "SpringPressure": null,
+    "ValveChoke": null,
+    "ValveDiameter": 25.4,
+    "ValveSize": null,
+    "ValveType": ""
+   }
   },
   "GasLiftInjection|Well_22:Tubing_Gas lift injection": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GasLiftInjection': 'Well_22:Tubing_Gas lift injection', 'Template': '___NONE___'})"
+   "Well_22:Tubing_Gas lift injection": {
+    "Name": "Tubing_Gas lift injection",
+    "GLR": null,
+    "DischargeCoefficient": null,
+    "Manufacturer": "",
+    "Series": "",
+    "IsActive": true,
+    "BellowArea": null,
+    "DischargeToFullyOpen": null,
+    "GasLiftType": "InjectionGasRate",
+    "GasRate": 0.01881413950794257,
+    "GLRIncrease": null,
+    "PortArea": null,
+    "PortSize": null,
+    "Ptro": null,
+    "SpringPressure": null,
+    "ValveChoke": null,
+    "ValveDiameter": 25.4,
+    "ValveSize": null,
+    "ValveType": ""
+   }
   },
   "GravelPack|Well_11:VERTICAL COMPLETION 1:GravelPack": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'Well_11:VERTICAL COMPLETION 1:GravelPack', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_11', 'GravelPack': 'VERTICAL COMPLETION 1:GravelPack', 'Template': '___NONE___'})"
   },
   "GravelPack|Well_12:VERTICAL COMPLETION 1:GravelPack": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'Well_12:VERTICAL COMPLETION 1:GravelPack', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_12', 'GravelPack': 'VERTICAL COMPLETION 1:GravelPack', 'Template': '___NONE___'})"
   },
   "GravelPack|Well_21:VERTICAL COMPLETION 1:GravelPack": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'Well_21:VERTICAL COMPLETION 1:GravelPack', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_21', 'GravelPack': 'VERTICAL COMPLETION 1:GravelPack', 'Template': '___NONE___'})"
   },
   "GravelPack|Well_22:VERTICAL COMPLETION 1:GravelPack": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'Well_22:VERTICAL COMPLETION 1:GravelPack', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_22', 'GravelPack': 'VERTICAL COMPLETION 1:GravelPack', 'Template': '___NONE___'})"
   },
   "IPRBackPressure|Well_11:VERTICAL COMPLETION 1:IPRBACKPRESSURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'Well_11:VERTICAL COMPLETION 1:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_11', 'IPRBackPressure': 'VERTICAL COMPLETION 1:IPRBACKPRESSURE', 'Template': '___NONE___'})"
   },
   "IPRBackPressure|Well_12:VERTICAL COMPLETION 1:IPRBACKPRESSURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'Well_12:VERTICAL COMPLETION 1:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_12', 'IPRBackPressure': 'VERTICAL COMPLETION 1:IPRBACKPRESSURE', 'Template': '___NONE___'})"
   },
   "IPRBackPressure|Well_21:VERTICAL COMPLETION 1:IPRBACKPRESSURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'Well_21:VERTICAL COMPLETION 1:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_21', 'IPRBackPressure': 'VERTICAL COMPLETION 1:IPRBACKPRESSURE', 'Template': '___NONE___'})"
   },
   "IPRBackPressure|Well_22:VERTICAL COMPLETION 1:IPRBACKPRESSURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'Well_22:VERTICAL COMPLETION 1:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_22', 'IPRBackPressure': 'VERTICAL COMPLETION 1:IPRBACKPRESSURE', 'Template': '___NONE___'})"
   },
   "IPRDarcy|Well_11:VERTICAL COMPLETION 1:IPRDARCY": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'Well_11:VERTICAL COMPLETION 1:IPRDARCY', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_11', 'IPRDarcy': 'VERTICAL COMPLETION 1:IPRDARCY', 'Template': '___NONE___'})"
   },
   "IPRDarcy|Well_12:VERTICAL COMPLETION 1:IPRDARCY": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'Well_12:VERTICAL COMPLETION 1:IPRDARCY', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_12', 'IPRDarcy': 'VERTICAL COMPLETION 1:IPRDARCY', 'Template': '___NONE___'})"
   },
   "IPRDarcy|Well_21:VERTICAL COMPLETION 1:IPRDARCY": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'Well_21:VERTICAL COMPLETION 1:IPRDARCY', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_21', 'IPRDarcy': 'VERTICAL COMPLETION 1:IPRDARCY', 'Template': '___NONE___'})"
   },
   "IPRDarcy|Well_22:VERTICAL COMPLETION 1:IPRDARCY": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'Well_22:VERTICAL COMPLETION 1:IPRDARCY', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_22', 'IPRDarcy': 'VERTICAL COMPLETION 1:IPRDARCY', 'Template': '___NONE___'})"
   },
   "IPRFetkovitch|Well_11:VERTICAL COMPLETION 1:IPRFETKOVITCH": null,
   "IPRFetkovitch|Well_12:VERTICAL COMPLETION 1:IPRFETKOVITCH": null,
   "IPRFetkovitch|Well_21:VERTICAL COMPLETION 1:IPRFETKOVITCH": null,
   "IPRFetkovitch|Well_22:VERTICAL COMPLETION 1:IPRFETKOVITCH": null,
   "IPRForchheimer|Well_11:VERTICAL COMPLETION 1:IPRFORCHHEIMER": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'Well_11:VERTICAL COMPLETION 1:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_11', 'IPRForchheimer': 'VERTICAL COMPLETION 1:IPRFORCHHEIMER', 'Template': '___NONE___'})"
   },
   "IPRForchheimer|Well_12:VERTICAL COMPLETION 1:IPRFORCHHEIMER": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'Well_12:VERTICAL COMPLETION 1:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_12', 'IPRForchheimer': 'VERTICAL COMPLETION 1:IPRFORCHHEIMER', 'Template': '___NONE___'})"
   },
   "IPRForchheimer|Well_21:VERTICAL COMPLETION 1:IPRFORCHHEIMER": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'Well_21:VERTICAL COMPLETION 1:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_21', 'IPRForchheimer': 'VERTICAL COMPLETION 1:IPRFORCHHEIMER', 'Template': '___NONE___'})"
   },
   "IPRForchheimer|Well_22:VERTICAL COMPLETION 1:IPRFORCHHEIMER": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'Well_22:VERTICAL COMPLETION 1:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_22', 'IPRForchheimer': 'VERTICAL COMPLETION 1:IPRFORCHHEIMER', 'Template': '___NONE___'})"
   },
   "IPRHorizontalPI|Well_11:VERTICAL COMPLETION 1:IPRHORIZONTALPI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'Well_11:VERTICAL COMPLETION 1:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_11', 'IPRHorizontalPI': 'VERTICAL COMPLETION 1:IPRHORIZONTALPI', 'Template': '___NONE___'})"
   },
   "IPRHorizontalPI|Well_12:VERTICAL COMPLETION 1:IPRHORIZONTALPI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'Well_12:VERTICAL COMPLETION 1:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_12', 'IPRHorizontalPI': 'VERTICAL COMPLETION 1:IPRHORIZONTALPI', 'Template': '___NONE___'})"
   },
   "IPRHorizontalPI|Well_21:VERTICAL COMPLETION 1:IPRHORIZONTALPI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'Well_21:VERTICAL COMPLETION 1:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_21', 'IPRHorizontalPI': 'VERTICAL COMPLETION 1:IPRHORIZONTALPI', 'Template': '___NONE___'})"
   },
   "IPRHorizontalPI|Well_22:VERTICAL COMPLETION 1:IPRHORIZONTALPI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'Well_22:VERTICAL COMPLETION 1:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_22', 'IPRHorizontalPI': 'VERTICAL COMPLETION 1:IPRHORIZONTALPI', 'Template': '___NONE___'})"
   },
   "IPRHydraulicFracture|Well_11:VERTICAL COMPLETION 1:IPRHYDRAULICFRACTURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'Well_11:VERTICAL COMPLETION 1:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_11', 'IPRHydraulicFracture': 'VERTICAL COMPLETION 1:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
   },
   "IPRHydraulicFracture|Well_12:VERTICAL COMPLETION 1:IPRHYDRAULICFRACTURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'Well_12:VERTICAL COMPLETION 1:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_12', 'IPRHydraulicFracture': 'VERTICAL COMPLETION 1:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
   },
   "IPRHydraulicFracture|Well_21:VERTICAL COMPLETION 1:IPRHYDRAULICFRACTURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'Well_21:VERTICAL COMPLETION 1:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_21', 'IPRHydraulicFracture': 'VERTICAL COMPLETION 1:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
   },
   "IPRHydraulicFracture|Well_22:VERTICAL COMPLETION 1:IPRHYDRAULICFRACTURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'Well_22:VERTICAL COMPLETION 1:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_22', 'IPRHydraulicFracture': 'VERTICAL COMPLETION 1:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
   },
   "IPRJones|Well_11:VERTICAL COMPLETION 1:IPRJONES": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'Well_11:VERTICAL COMPLETION 1:IPRJONES', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_11', 'IPRJones': 'VERTICAL COMPLETION 1:IPRJONES', 'Template': '___NONE___'})"
   },
   "IPRJones|Well_12:VERTICAL COMPLETION 1:IPRJONES": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'Well_12:VERTICAL COMPLETION 1:IPRJONES', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_12', 'IPRJones': 'VERTICAL COMPLETION 1:IPRJONES', 'Template': '___NONE___'})"
   },
   "IPRJones|Well_21:VERTICAL COMPLETION 1:IPRJONES": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'Well_21:VERTICAL COMPLETION 1:IPRJONES', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_21', 'IPRJones': 'VERTICAL COMPLETION 1:IPRJONES', 'Template': '___NONE___'})"
   },
   "IPRJones|Well_22:VERTICAL COMPLETION 1:IPRJONES": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'Well_22:VERTICAL COMPLETION 1:IPRJONES', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_22', 'IPRJones': 'VERTICAL COMPLETION 1:IPRJONES', 'Template': '___NONE___'})"
   },
   "IPRPIModel|Well_11:VERTICAL COMPLETION 1:IPRPIModel": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'Well_11:VERTICAL COMPLETION 1:IPRPIModel', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_11', 'IPRPIModel': 'VERTICAL COMPLETION 1:IPRPIModel', 'Template': '___NONE___'})"
   },
   "IPRPIModel|Well_12:VERTICAL COMPLETION 1:IPRPIModel": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'Well_12:VERTICAL COMPLETION 1:IPRPIModel', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_12', 'IPRPIModel': 'VERTICAL COMPLETION 1:IPRPIModel', 'Template': '___NONE___'})"
   },
   "IPRPIModel|Well_21:VERTICAL COMPLETION 1:IPRPIModel": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'Well_21:VERTICAL COMPLETION 1:IPRPIModel', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_21', 'IPRPIModel': 'VERTICAL COMPLETION 1:IPRPIModel', 'Template': '___NONE___'})"
   },
   "IPRPIModel|Well_22:VERTICAL COMPLETION 1:IPRPIModel": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'Well_22:VERTICAL COMPLETION 1:IPRPIModel', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_22', 'IPRPIModel': 'VERTICAL COMPLETION 1:IPRPIModel', 'Template': '___NONE___'})"
   },
   "IPRPSSBabuOdeh|Well_11:VERTICAL COMPLETION 1:IPRPSSBABUODEH": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'Well_11:VERTICAL COMPLETION 1:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_11', 'IPRPSSBabuOdeh': 'VERTICAL COMPLETION 1:IPRPSSBABUODEH', 'Template': '___NONE___'})"
   },
   "IPRPSSBabuOdeh|Well_12:VERTICAL COMPLETION 1:IPRPSSBABUODEH": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'Well_12:VERTICAL COMPLETION 1:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_12', 'IPRPSSBabuOdeh': 'VERTICAL COMPLETION 1:IPRPSSBABUODEH', 'Template': '___NONE___'})"
   },
   "IPRPSSBabuOdeh|Well_21:VERTICAL COMPLETION 1:IPRPSSBABUODEH": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'Well_21:VERTICAL COMPLETION 1:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_21', 'IPRPSSBabuOdeh': 'VERTICAL COMPLETION 1:IPRPSSBABUODEH', 'Template': '___NONE___'})"
   },
   "IPRPSSBabuOdeh|Well_22:VERTICAL COMPLETION 1:IPRPSSBABUODEH": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'Well_22:VERTICAL COMPLETION 1:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_22', 'IPRPSSBabuOdeh': 'VERTICAL COMPLETION 1:IPRPSSBABUODEH', 'Template': '___NONE___'})"
   },
   "IPRSSJoshi|Well_11:VERTICAL COMPLETION 1:IPRSSJOSHI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'Well_11:VERTICAL COMPLETION 1:IPRSSJOSHI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_11', 'IPRSSJoshi': 'VERTICAL COMPLETION 1:IPRSSJOSHI', 'Template': '___NONE___'})"
   },
   "IPRSSJoshi|Well_12:VERTICAL COMPLETION 1:IPRSSJOSHI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'Well_12:VERTICAL COMPLETION 1:IPRSSJOSHI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_12', 'IPRSSJoshi': 'VERTICAL COMPLETION 1:IPRSSJOSHI', 'Template': '___NONE___'})"
   },
   "IPRSSJoshi|Well_21:VERTICAL COMPLETION 1:IPRSSJOSHI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'Well_21:VERTICAL COMPLETION 1:IPRSSJOSHI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_21', 'IPRSSJoshi': 'VERTICAL COMPLETION 1:IPRSSJOSHI', 'Template': '___NONE___'})"
   },
   "IPRSSJoshi|Well_22:VERTICAL COMPLETION 1:IPRSSJOSHI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'Well_22:VERTICAL COMPLETION 1:IPRSSJOSHI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_22', 'IPRSSJoshi': 'VERTICAL COMPLETION 1:IPRSSJOSHI', 'Template': '___NONE___'})"
   },
   "IPRTriLinear|Well_11:VERTICAL COMPLETION 1:IPRTRILINEAR": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'Well_11:VERTICAL COMPLETION 1:IPRTRILINEAR', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_11', 'IPRTriLinear': 'VERTICAL COMPLETION 1:IPRTRILINEAR', 'Template': '___NONE___'})"
   },
   "IPRTriLinear|Well_12:VERTICAL COMPLETION 1:IPRTRILINEAR": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'Well_12:VERTICAL COMPLETION 1:IPRTRILINEAR', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_12', 'IPRTriLinear': 'VERTICAL COMPLETION 1:IPRTRILINEAR', 'Template': '___NONE___'})"
   },
   "IPRTriLinear|Well_21:VERTICAL COMPLETION 1:IPRTRILINEAR": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'Well_21:VERTICAL COMPLETION 1:IPRTRILINEAR', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_21', 'IPRTriLinear': 'VERTICAL COMPLETION 1:IPRTRILINEAR', 'Template': '___NONE___'})"
   },
   "IPRTriLinear|Well_22:VERTICAL COMPLETION 1:IPRTRILINEAR": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'Well_22:VERTICAL COMPLETION 1:IPRTRILINEAR', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_22', 'IPRTriLinear': 'VERTICAL COMPLETION 1:IPRTRILINEAR', 'Template': '___NONE___'})"
   },
   "Junction|Man3": {
    "Man3": {
@@ -927,16 +1247,28 @@
    }
   },
   "Packer|Well_11:Packer": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'Well_11:Packer', 'Template': '___NONE___'})"
+   "Well_11:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
   },
   "Packer|Well_12:Packer": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'Well_12:Packer', 'Template': '___NONE___'})"
+   "Well_12:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
   },
   "Packer|Well_21:Packer": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'Well_21:Packer', 'Template': '___NONE___'})"
+   "Well_21:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
   },
   "Packer|Well_22:Packer": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'Well_22:Packer', 'Template': '___NONE___'})"
+   "Well_22:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
   },
   "Sink|CPF": {
    "CPF": {
@@ -950,40 +1282,328 @@
    }
   },
   "Source|Well_11:Well Outlet 10518": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_11:Well Outlet 10518', 'Template': '___NONE___'})"
+   "Well_11:Well Outlet 10518": {
+    "Name": "Well Outlet 10518",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "Well_11.Fluid11",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well_11:WellString outlet10524": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_11:WellString outlet10524', 'Template': '___NONE___'})"
+   "Well_11:WellString outlet10524": {
+    "Name": "WellString outlet10524",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well_11:WellString outlet10526": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_11:WellString outlet10526', 'Template': '___NONE___'})"
+   "Well_11:WellString outlet10526": {
+    "Name": "WellString outlet10526",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well_12:Well Outlet 10254": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_12:Well Outlet 10254', 'Template': '___NONE___'})"
+   "Well_12:Well Outlet 10254": {
+    "Name": "Well Outlet 10254",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "Well_12.GOAL 1a",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well_12:WellString outlet10260": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_12:WellString outlet10260', 'Template': '___NONE___'})"
+   "Well_12:WellString outlet10260": {
+    "Name": "WellString outlet10260",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well_12:WellString outlet10262": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_12:WellString outlet10262', 'Template': '___NONE___'})"
+   "Well_12:WellString outlet10262": {
+    "Name": "WellString outlet10262",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well_21:Well Outlet 10430": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_21:Well Outlet 10430', 'Template': '___NONE___'})"
+   "Well_21:Well Outlet 10430": {
+    "Name": "Well Outlet 10430",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "Well_21.GOAL 1a",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well_21:WellString outlet10436": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_21:WellString outlet10436', 'Template': '___NONE___'})"
+   "Well_21:WellString outlet10436": {
+    "Name": "WellString outlet10436",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well_21:WellString outlet10438": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_21:WellString outlet10438', 'Template': '___NONE___'})"
+   "Well_21:WellString outlet10438": {
+    "Name": "WellString outlet10438",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well_22:Well Outlet 10342": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_22:Well Outlet 10342', 'Template': '___NONE___'})"
+   "Well_22:Well Outlet 10342": {
+    "Name": "Well Outlet 10342",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "Well_22.GOAL 1a",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well_22:WellString outlet10348": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_22:WellString outlet10348', 'Template': '___NONE___'})"
+   "Well_22:WellString outlet10348": {
+    "Name": "WellString outlet10348",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well_22:WellString outlet10350": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_22:WellString outlet10350', 'Template': '___NONE___'})"
+   "Well_22:WellString outlet10350": {
+    "Name": "WellString outlet10350",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Study|Study 1": {
    "Study 1": {
@@ -992,16 +1612,116 @@
    }
   },
   "Tubing|Well_11:Tubing #1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'Well_11:Tubing #1', 'Template': '___NONE___'})"
+   "Well_11:Tubing #1": {
+    "Name": "Tubing #1",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": null,
+    "CementTop": null,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 75.99680000000001,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 12.7,
+    "Length": 1524.0000000000002,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Tubing|Well_12:Tubing #1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'Well_12:Tubing #1', 'Template': '___NONE___'})"
+   "Well_12:Tubing #1": {
+    "Name": "Tubing #1",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": null,
+    "CementTop": null,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 75.99680000000001,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 12.7,
+    "Length": 1676.4,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Tubing|Well_21:Tubing #1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'Well_21:Tubing #1', 'Template': '___NONE___'})"
+   "Well_21:Tubing #1": {
+    "Name": "Tubing #1",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": null,
+    "CementTop": null,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 75.99680000000001,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 12.7,
+    "Length": 1432.5600000000002,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Tubing|Well_22:Tubing #1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'Well_22:Tubing #1', 'Template': '___NONE___'})"
+   "Well_22:Tubing #1": {
+    "Name": "Tubing #1",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": null,
+    "CementTop": null,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 75.99680000000001,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 12.7,
+    "Length": 1828.8000000000002,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Well|Well_11": {
    "Well_11": {
@@ -1162,7 +1882,7 @@
    "result": {
     "WebAPIVersion": "2023.1.615.0",
     "ToolkitVersion": "2023.1",
-    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_etvyywqc\\CSN_311_Gas Lift Optimization.pips",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_4kb3qwv8\\CSN_311_Gas Lift Optimization.pips",
     "UnitSystem": "PIPESIM_METRIC",
     "UiUnitSystem": ""
    }
@@ -1545,7 +2265,7 @@
  "about": {
   "WebAPIVersion": "2023.1.615.0",
   "ToolkitVersion": "2023.1",
-  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_etvyywqc\\CSN_311_Gas Lift Optimization.pips",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_4kb3qwv8\\CSN_311_Gas Lift Optimization.pips",
   "UnitSystem": "PIPESIM_METRIC",
   "UiUnitSystem": ""
  },
@@ -1553,149 +2273,149 @@
   "state": "Completed",
   "summary": {
    "Info": [
-    "2026-11-04T06:34:13.479Z    Beginning simulation...",
-    "2026-11-04T06:34:13.477Z    Running with 8 cores",
-    "2026-11-04T06:34:14.740Z    Solver converged to a solution.",
-    "2026-11-04T06:34:14.764Z    Finished simulation"
+    "2026-11-04T07:55:45.857Z    Beginning simulation...",
+    "2026-11-04T07:55:45.856Z    Running with 8 cores",
+    "2026-11-04T07:55:47.148Z    Solver converged to a solution.",
+    "2026-11-04T07:55:47.176Z    Finished simulation"
    ],
    "Error": [],
    "Warning": []
   },
   "messages": [
-   "2026-11-04T06:34:13.583Z    Service starting...",
-   "2026-11-04T06:34:13.625Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
-   "2026-11-04T06:34:13.863Z    Service listening at 'net.pipe://localhost/pipe/cf0348458cd74bcfa65ccbfd876dafdf'...",
-   "2026-11-04T06:34:13.974Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\12872",
-   "2026-11-04T06:34:13.974Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\12872\\CSN_311_Gas Lift Optimization.tnt (8)",
-   "2026-11-04T06:34:14.047Z    .......................................................................................................................................................................... ",
-   "2026-11-04T06:34:14.049Z    Processing branch Well_11.. ",
-   "2026-11-04T06:34:14.050Z    Processing branch Well_21.. ",
-   "2026-11-04T06:34:14.051Z    Processing branch Well_22.. ",
-   "2026-11-04T06:34:14.052Z    Processing branch Manifold_2_Man3.. ",
-   "2026-11-04T06:34:14.053Z    Processing branch Well_12.. ",
-   "2026-11-04T06:34:14.054Z    Processing branch CPF.. ",
-   "2026-11-04T06:34:14.055Z    Processing branch Manifold_1_Man3.",
-   "2026-11-04T06:34:14.055Z    Processing branch geometry (.PSM/.PST) files",
-   "2026-11-04T06:34:14.123Z    ",
-   "2026-11-04T06:34:14.138Z     Iteration   1 P error :  99.01 %, F error :  24.76 %, L error :   0.00 %",
-   "2026-11-04T06:34:14.175Z     Iteration   2 P error :   5.26 %, F error :  24.21 %, L error :   0.00 %",
-   "2026-11-04T06:34:14.198Z     Iteration   3 P error :  56.29 %, F error :   5.40 %, L error :   0.00 %",
-   "2026-11-04T06:34:14.233Z     Iteration   4 P error :  50.70 %, F error :  14.11 %, L error :   0.00 %",
-   "2026-11-04T06:34:14.245Z     Iteration   5 P error :  16.87 %, F error :   7.53 %, L error :   0.00 %",
-   "2026-11-04T06:34:14.260Z     Iteration   6 P error :   2.62 %, F error :   2.79 %, L error :   0.00 %",
-   "2026-11-04T06:34:14.285Z     Iteration   7 P error :   4.84 %, F error :   2.23 %, L error :   0.00 %",
-   "2026-11-04T06:34:14.300Z     Iteration   8 P error :   3.45 %, F error :   1.86 %, L error :   0.00 %",
-   "2026-11-04T06:34:14.317Z     Iteration   9 P error :   1.32 %, F error :   0.39 %, L error :   0.00 %",
-   "2026-11-04T06:34:14.333Z     Iteration  10 P error :   0.89 %, F error :   0.08 %, L error :   0.00 %",
-   "2026-11-04T06:34:14.334Z    ",
-   "2026-11-04T06:34:14.334Z    ",
-   "2026-11-04T06:34:14.334Z     Converged.                                                                     ",
-   "2026-11-04T06:34:14.334Z     ... network converged at iteration  10, final rms error :   0.886441E-02",
-   "2026-11-04T06:34:14.334Z      Start Post-Processing results",
-   "2026-11-04T06:34:14.369Z    ",
-   "2026-11-04T06:34:14.369Z       Elapsed time:",
-   "2026-11-04T06:34:14.369Z    ",
-   "2026-11-04T06:34:14.369Z       Network Executive      0.39",
-   "2026-11-04T06:34:14.369Z       PIPESIM sub-tasks      0.00",
-   "2026-11-04T06:34:14.369Z                         ---------",
-   "2026-11-04T06:34:14.369Z                 Total        0.39",
-   "2026-11-04T06:34:14.369Z    ",
-   "2026-11-04T06:34:14.369Z       CPU time:",
-   "2026-11-04T06:34:14.369Z    ",
-   "2026-11-04T06:34:14.369Z               User task      0.47",
-   "2026-11-04T06:34:14.369Z               System         0.20",
-   "2026-11-04T06:34:14.369Z                         ---------",
-   "2026-11-04T06:34:14.369Z                 Total        0.67",
-   "2026-11-04T06:34:14.375Z     Disposing communication agent.",
-   "2026-11-04T06:34:14.375Z     Disposing communication agent.",
-   "2026-11-04T06:34:14.375Z     Disposing communication agent.",
-   "2026-11-04T06:34:14.376Z     Disposing communication agent.",
-   "2026-11-04T06:34:14.376Z     Disposing communication agent.",
-   "2026-11-04T06:34:14.384Z     Disposing communication agent.",
-   "2026-11-04T06:34:14.408Z     Disposing communication agent.",
-   "2026-11-04T06:34:14.743Z     Disposing communication agent."
+   "2026-11-04T07:55:46.028Z    Service starting...",
+   "2026-11-04T07:55:46.066Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T07:55:46.292Z    Service listening at 'net.pipe://localhost/pipe/c47edd8ee22e49c9883752cf3eb6c206'...",
+   "2026-11-04T07:55:46.426Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\4512",
+   "2026-11-04T07:55:46.426Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\4512\\CSN_311_Gas Lift Optimization.tnt (8)",
+   "2026-11-04T07:55:46.472Z    .......................................................................................................................................................................... ",
+   "2026-11-04T07:55:46.474Z    Processing branch Well_11.. ",
+   "2026-11-04T07:55:46.476Z    Processing branch Well_21.. ",
+   "2026-11-04T07:55:46.478Z    Processing branch Well_22.. ",
+   "2026-11-04T07:55:46.479Z    Processing branch Manifold_2_Man3.. ",
+   "2026-11-04T07:55:46.482Z    Processing branch Well_12.. ",
+   "2026-11-04T07:55:46.483Z    Processing branch CPF.. ",
+   "2026-11-04T07:55:46.485Z    Processing branch Manifold_1_Man3.",
+   "2026-11-04T07:55:46.485Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T07:55:46.552Z    ",
+   "2026-11-04T07:55:46.562Z     Iteration   1 P error :  99.01 %, F error :  24.76 %, L error :   0.00 %",
+   "2026-11-04T07:55:46.611Z     Iteration   2 P error :   5.26 %, F error :  24.21 %, L error :   0.00 %",
+   "2026-11-04T07:55:46.634Z     Iteration   3 P error :  56.29 %, F error :   5.40 %, L error :   0.00 %",
+   "2026-11-04T07:55:46.669Z     Iteration   4 P error :  50.70 %, F error :  14.11 %, L error :   0.00 %",
+   "2026-11-04T07:55:46.691Z     Iteration   5 P error :  16.87 %, F error :   7.53 %, L error :   0.00 %",
+   "2026-11-04T07:55:46.704Z     Iteration   6 P error :   2.62 %, F error :   2.79 %, L error :   0.00 %",
+   "2026-11-04T07:55:46.721Z     Iteration   7 P error :   4.84 %, F error :   2.23 %, L error :   0.00 %",
+   "2026-11-04T07:55:46.729Z     Iteration   8 P error :   3.45 %, F error :   1.86 %, L error :   0.00 %",
+   "2026-11-04T07:55:46.750Z     Iteration   9 P error :   1.32 %, F error :   0.39 %, L error :   0.00 %",
+   "2026-11-04T07:55:46.761Z     Iteration  10 P error :   0.89 %, F error :   0.08 %, L error :   0.00 %",
+   "2026-11-04T07:55:46.762Z    ",
+   "2026-11-04T07:55:46.762Z    ",
+   "2026-11-04T07:55:46.762Z     Converged.                                                                     ",
+   "2026-11-04T07:55:46.762Z     ... network converged at iteration  10, final rms error :   0.886441E-02",
+   "2026-11-04T07:55:46.762Z      Start Post-Processing results",
+   "2026-11-04T07:55:46.793Z    ",
+   "2026-11-04T07:55:46.793Z       Elapsed time:",
+   "2026-11-04T07:55:46.793Z    ",
+   "2026-11-04T07:55:46.793Z       Network Executive      0.37",
+   "2026-11-04T07:55:46.793Z       PIPESIM sub-tasks      0.00",
+   "2026-11-04T07:55:46.793Z                         ---------",
+   "2026-11-04T07:55:46.793Z                 Total        0.37",
+   "2026-11-04T07:55:46.793Z    ",
+   "2026-11-04T07:55:46.793Z       CPU time:",
+   "2026-11-04T07:55:46.793Z    ",
+   "2026-11-04T07:55:46.793Z               User task      0.38",
+   "2026-11-04T07:55:46.793Z               System         0.25",
+   "2026-11-04T07:55:46.793Z                         ---------",
+   "2026-11-04T07:55:46.793Z                 Total        0.62",
+   "2026-11-04T07:55:46.799Z     Disposing communication agent.",
+   "2026-11-04T07:55:46.799Z     Disposing communication agent.",
+   "2026-11-04T07:55:46.799Z     Disposing communication agent.",
+   "2026-11-04T07:55:46.799Z     Disposing communication agent.",
+   "2026-11-04T07:55:46.799Z     Disposing communication agent.",
+   "2026-11-04T07:55:46.800Z     Disposing communication agent.",
+   "2026-11-04T07:55:46.810Z     Disposing communication agent.",
+   "2026-11-04T07:55:47.151Z     Disposing communication agent."
   ],
   "system": {},
   "node": {
    "Pressure": {
     "Unit": "bara",
+    "VERTICAL COMPLETION 1": 86.88629863916316,
+    "Manifold_2": 27.15607620361727,
     "Man3": 27.14301326538186,
     "Tubing_Gas lift injection": 81.92293437599518,
-    "Well_12": 28.692683974827283,
-    "Well_21": 27.786243486894694,
-    "Well_11": 28.020453306427076,
-    "VERTICAL COMPLETION 1": 101.24503691888617,
-    "Well_22": 27.782646852904232,
-    "Manifold_2": 27.15607620361727,
     "CPF": 24.999700476593095,
-    "Manifold_1": 27.804853916551078
+    "Well_22": 27.782646852904232,
+    "Well_12": 28.692683974827283,
+    "Well_11": 28.020453306427076,
+    "Manifold_1": 27.804853916551078,
+    "Well_21": 27.786243486894694
    },
    "Temperature": {
     "Unit": "degC",
+    "VERTICAL COMPLETION 1": 88.53639728663575,
+    "Manifold_2": 49.010847842206374,
     "Man3": 44.60489115262044,
     "Tubing_Gas lift injection": 86.05330188887007,
-    "Well_12": 46.081521168100835,
-    "Well_21": 48.26201365112871,
-    "Well_11": 30.76370023799882,
-    "VERTICAL COMPLETION 1": 87.845948759728,
-    "Well_22": 51.55750196457376,
-    "Manifold_2": 49.010847842206374,
     "CPF": 43.96034144403069,
-    "Manifold_1": 39.767453226496
+    "Well_22": 51.55750196457376,
+    "Well_12": 46.081521168100835,
+    "Well_11": 30.76370023799882,
+    "Manifold_1": 39.767453226496,
+    "Well_21": 48.26201365112871
    },
    "VolumeFlowrateLiquidStockTank": {
     "Unit": "sm3/d",
+    "VERTICAL COMPLETION 1": 108.05437988106935,
+    "Manifold_2": 195.88882364520933,
     "Man3": 329.27849095688987,
     "Tubing_Gas lift injection": 112.17738711387825,
-    "Well_12": 108.05439463510781,
-    "Well_21": 83.71141434084812,
-    "Well_11": 25.092088212145853,
-    "VERTICAL COMPLETION 1": 25.092083017181466,
-    "Well_22": 112.17738711387825,
-    "Manifold_2": 195.88882364520933,
     "CPF": 329.27849095684076,
-    "Manifold_1": 133.1465031061724
+    "Well_22": 112.17738711387825,
+    "Well_12": 108.05439463510781,
+    "Well_11": 25.092088212145853,
+    "Manifold_1": 133.1465031061724,
+    "Well_21": 83.71141434084812
    },
    "VolumeFlowrateOilStockTank": {
     "Unit": "sm3/d",
+    "VERTICAL COMPLETION 1": 86.44350390485548,
+    "Manifold_2": 95.0978142228362,
     "Man3": 190.4576418119919,
     "Tubing_Gas lift injection": 44.870954845551296,
-    "Well_12": 86.44351570808625,
-    "Well_21": 50.226848604508874,
-    "Well_11": 8.782230874251043,
-    "VERTICAL COMPLETION 1": 8.782229056013511,
-    "Well_22": 44.870954845551296,
-    "Manifold_2": 95.0978142228362,
     "CPF": 190.4576418119635,
-    "Manifold_1": 95.22576107142193
+    "Well_22": 44.870954845551296,
+    "Well_12": 86.44351570808625,
+    "Well_11": 8.782230874251043,
+    "Manifold_1": 95.22576107142193,
+    "Well_21": 50.226848604508874
    },
    "VolumeFlowrateGasStockTank": {
     "Unit": "mmsm3/d",
+    "VERTICAL COMPLETION 1": 0.0030792489318283937,
+    "Manifold_2": 0.04475511646532982,
     "Man3": 0.08790611323537588,
     "Tubing_Gas lift injection": 0.022011009885776683,
-    "Well_12": 0.03006688728409173,
-    "Well_21": 0.02274413063419702,
-    "Well_11": 0.013021997650048555,
-    "VERTICAL COMPLETION 1": 0.00031283634071064973,
-    "Well_22": 0.022011009885776683,
-    "Manifold_2": 0.04475511646532982,
     "CPF": 0.08790611323536279,
-    "Manifold_1": 0.043088863450102904
+    "Well_22": 0.022011009885776683,
+    "Well_12": 0.03006688728409173,
+    "Well_11": 0.013021997650048555,
+    "Manifold_1": 0.043088863450102904,
+    "Well_21": 0.02274413063419702
    },
    "VolumeFlowrateWaterStockTank": {
     "Unit": "sm3/d",
+    "VERTICAL COMPLETION 1": 21.610875976213872,
+    "Manifold_2": 100.79100942237312,
     "Man3": 138.82084914489795,
     "Tubing_Gas lift injection": 67.30643226832694,
-    "Well_12": 21.610878927021563,
-    "Well_21": 33.484565736339256,
-    "Well_11": 16.309857337894808,
-    "VERTICAL COMPLETION 1": 16.309853961167953,
-    "Well_22": 67.30643226832694,
-    "Manifold_2": 100.79100942237312,
     "CPF": 138.82084914487726,
-    "Manifold_1": 37.92074203475046
+    "Well_22": 67.30643226832694,
+    "Well_12": 21.610878927021563,
+    "Well_11": 16.309857337894808,
+    "Manifold_1": 37.92074203475046,
+    "Well_21": 33.484565736339256
    }
   }
  },
- "seconds": 8.4
+ "seconds": 8.5
 }

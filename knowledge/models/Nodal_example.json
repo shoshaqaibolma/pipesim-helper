@@ -274,16 +274,116 @@
    }
   },
   "Casing|Well 1 - oil:Casing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'Well 1 - oil:Casing', 'Template': '___NONE___'})"
+   "Well 1 - oil:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": 8042.938073662906,
+    "Grade": "N80",
+    "InnerDiameter": 144.14499999999995,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 12.065,
+    "Length": 2743.2000000000003,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Casing|Well 2 - ESP:Casing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'Well 2 - ESP:Casing', 'Template': '___NONE___'})"
+   "Well 2 - ESP:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": 254.0,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 177.0126,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 8.3312,
+    "Length": 3048.0,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Casing|Well 3 - gas:Casing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'Well 3 - gas:Casing', 'Template': '___NONE___'})"
+   "Well 3 - gas:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": 7871.6660691669995,
+    "Grade": "L80",
+    "InnerDiameter": 108.6104,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 9.194799999999999,
+    "Length": 3840.48,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Casing|Well 4 - Horizontal Gas well:Casing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'Well 4 - Horizontal Gas well:Casing', 'Template': '___NONE___'})"
+   "Well 4 - Horizontal Gas well:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": 7915.487146957164,
+    "Grade": "C90",
+    "InnerDiameter": 121.36119999999998,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 9.1694,
+    "Length": 7620.0,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Choke|choke_1": {
    "choke_1": {
@@ -410,22 +510,244 @@
    }
   },
   "Completion|Well 1 - oil:Completion": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'Well 1 - oil:Completion', 'Template': '___NONE___'})"
+   "Well 1 - oil:Completion": {
+    "Name": "Completion",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "oil",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 248.211262554061,
+    "ReservoirTemperature": 93.33333333333343,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRPIModel"
+   }
   },
   "Completion|Well 2 - ESP:Completion": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'Well 2 - ESP:Completion', 'Template': '___NONE___'})"
+   "Well 2 - ESP:Completion": {
+    "Name": "Completion",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "oil",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 149.47833176,
+    "ReservoirTemperature": 102.22222222222223,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRHydraulicFracture"
+   }
   },
   "Completion|Well 3 - gas:lower": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'Well 3 - gas:lower', 'Template': '___NONE___'})"
+   "Well 3 - gas:lower": {
+    "Name": "lower",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": 56.1458365370799,
+    "UseGasRatio": "OGR",
+    "UseWaterRatio": "WGR",
+    "WaterCut": 0.0,
+    "WGR": 28.07291826853995,
+    "AssociatedBlackOilFluid": "wet gas",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 275.79029172673415,
+    "ReservoirTemperature": 110.00000000000006,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": true,
+    "UseConingData": false,
+    "UseFluidOverrides": true,
+    "UseTestData": true,
+    "IPRModel": "IPRJones"
+   }
   },
   "Completion|Well 3 - gas:upper": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'Well 3 - gas:upper', 'Template': '___NONE___'})"
+   "Well 3 - gas:upper": {
+    "Name": "upper",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": 56.1458365370799,
+    "UseGasRatio": "OGR",
+    "UseWaterRatio": "WGR",
+    "WaterCut": 0.0,
+    "WGR": 0.0,
+    "AssociatedBlackOilFluid": "wet gas",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 262.0007771403974,
+    "ReservoirTemperature": 137.77777777777789,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": true,
+    "UseConingData": false,
+    "UseFluidOverrides": true,
+    "UseTestData": true,
+    "IPRModel": "IPRBackPressure"
+   }
   },
   "Completion|Well 4 - Horizontal Gas well:Completion": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'Well 4 - Horizontal Gas well:Completion', 'Template': '___NONE___'})"
+   "Well 4 - Horizontal Gas well:Completion": {
+    "Name": "Completion",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "wet gas",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "Distributed",
+    "GeometryProfileType": "Horizontal",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 317.1588354857446,
+    "ReservoirTemperature": 93.33333333333343,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRHorizontalPI"
+   }
   },
   "ESP|Well 2 - ESP:ESP": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'ESP': 'Well 2 - ESP:ESP', 'Template': '___NONE___'})"
+   "Well 2 - ESP:ESP": {
+    "Name": "ESP",
+    "Diameter": 130.302,
+    "HeadFactor": 1.0,
+    "Manufacturer": "Reda",
+    "Model": "G6200N",
+    "BaseFrequency": 59.99999999999986,
+    "CasingID": null,
+    "PermanentMagnetMotor": false,
+    "NumberOfPoles": 2,
+    "OverrideSlippageFactor": false,
+    "SlippageFactor": null,
+    "FlowrateFactor": 1.0,
+    "GasSeparatorEfficiency": 72.0,
+    "HasGasSeparator": true,
+    "MaxFlowRate": 1271.898432,
+    "MinFlowRate": 715.4428679999984,
+    "NumberStages": 197,
+    "OperatingFrequency": 59.999999999999865,
+    "OperatingProductionRate": null,
+    "Power": null,
+    "PowerFactor": 1.0,
+    "Series": "",
+    "UsePower": false,
+    "UseStageByStageCalc": false,
+    "UseViscosityCorrection": true,
+    "CoefficientA": 1.0,
+    "CoefficientB": 0.0,
+    "IsPowerCorrectionCalculated": false,
+    "PowerCorrection": false,
+    "CableLengthBelowPump": false,
+    "RecombineGas": 30.48,
+    "IsActive": true,
+    "CableName": "",
+    "VDrop": null,
+    "MaxAmps": null,
+    "MotorManufacturer": "",
+    "MotorName": "",
+    "NPPower": null,
+    "NPVoltage": null,
+    "NPAmperage": null,
+    "FloorEfficiency": null,
+    "FloorPowerFactor": null,
+    "AMPValues": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "EFFValues": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "PFValues": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   }
   },
   "FlowCorrelation|Default": {
    "Well 1 - oil:Default": {
@@ -480,34 +802,50 @@
    }
   },
   "FlowCorrelation|FL1:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL1:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|FL2:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL2:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL2', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|FL3:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL3:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL3', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|FL4:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL4:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL4', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|TL1:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'TL1:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|TL2:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'TL2:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL2', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|Well 1 - oil:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well 1 - oil:Default', 'Template': '___NONE___'})"
+   "Well 1 - oil:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   }
   },
   "FlowCorrelation|Well 2 - ESP:Correlation ESP_Lift_Simulation": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well 2 - ESP:Correlation ESP_Lift_Simulation', 'Template': '___NONE___'})"
+   "Well 2 - ESP:Correlation ESP_Lift_Simulation": {
+    "Name": "Correlation ESP_Lift_Simulation",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": true
+   }
   },
   "FlowCorrelation|Well 3 - gas:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well 3 - gas:Default', 'Template': '___NONE___'})"
+   "Well 3 - gas:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   }
   },
   "FlowCorrelation|Well 4 - Horizontal Gas well:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well 4 - Horizontal Gas well:Default', 'Template': '___NONE___'})"
+   "Well 4 - Horizontal Gas well:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   }
   },
   "Flowline|FL1": {
    "FL1": {
@@ -768,7 +1106,27 @@
    }
   },
   "GasLiftInjection|Well 1 - oil:Gas lift injection": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GasLiftInjection': 'Well 1 - oil:Gas lift injection', 'Template': '___NONE___'})"
+   "Well 1 - oil:Gas lift injection": {
+    "Name": "Gas lift injection",
+    "GLR": null,
+    "DischargeCoefficient": null,
+    "Manufacturer": "",
+    "Series": "",
+    "IsActive": true,
+    "BellowArea": null,
+    "DischargeToFullyOpen": null,
+    "GasLiftType": "InjectionGasRate",
+    "GasRate": 0.056633693184019944,
+    "GLRIncrease": null,
+    "PortArea": null,
+    "PortSize": null,
+    "Ptro": null,
+    "SpringPressure": null,
+    "ValveChoke": null,
+    "ValveDiameter": null,
+    "ValveSize": null,
+    "ValveType": ""
+   }
   },
   "GlobalCatalog|CustomPlotVariables": {
    "CustomPlotVariables": {
@@ -783,49 +1141,49 @@
    }
   },
   "GravelPack|Well 1 - oil:Completion:GravelPack": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'Well 1 - oil:Completion:GravelPack', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'GravelPack': 'Completion:GravelPack', 'Template': '___NONE___'})"
   },
   "GravelPack|Well 2 - ESP:Completion:GravelPack": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'Well 2 - ESP:Completion:GravelPack', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'GravelPack': 'Completion:GravelPack', 'Template': '___NONE___'})"
   },
   "GravelPack|Well 3 - gas:lower:GravelPack": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'Well 3 - gas:lower:GravelPack', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'GravelPack': 'lower:GravelPack', 'Template': '___NONE___'})"
   },
   "GravelPack|Well 3 - gas:upper:GravelPack": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'Well 3 - gas:upper:GravelPack', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'GravelPack': 'upper:GravelPack', 'Template': '___NONE___'})"
   },
   "GravelPack|Well 4 - Horizontal Gas well:Completion:GravelPack": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'Well 4 - Horizontal Gas well:Completion:GravelPack', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'GravelPack': 'Completion:GravelPack', 'Template': '___NONE___'})"
   },
   "IPRBackPressure|Well 1 - oil:Completion:IPRBACKPRESSURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'Well 1 - oil:Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRBackPressure': 'Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
   },
   "IPRBackPressure|Well 2 - ESP:Completion:IPRBACKPRESSURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'Well 2 - ESP:Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRBackPressure': 'Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
   },
   "IPRBackPressure|Well 3 - gas:lower:IPRBACKPRESSURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'Well 3 - gas:lower:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRBackPressure': 'lower:IPRBACKPRESSURE', 'Template': '___NONE___'})"
   },
   "IPRBackPressure|Well 3 - gas:upper:IPRBACKPRESSURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'Well 3 - gas:upper:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRBackPressure': 'upper:IPRBACKPRESSURE', 'Template': '___NONE___'})"
   },
   "IPRBackPressure|Well 4 - Horizontal Gas well:Completion:IPRBACKPRESSURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'Well 4 - Horizontal Gas well:Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRBackPressure': 'Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
   },
   "IPRDarcy|Well 1 - oil:Completion:IPRDARCY": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'Well 1 - oil:Completion:IPRDARCY', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRDarcy': 'Completion:IPRDARCY', 'Template': '___NONE___'})"
   },
   "IPRDarcy|Well 2 - ESP:Completion:IPRDARCY": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'Well 2 - ESP:Completion:IPRDARCY', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRDarcy': 'Completion:IPRDARCY', 'Template': '___NONE___'})"
   },
   "IPRDarcy|Well 3 - gas:lower:IPRDARCY": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'Well 3 - gas:lower:IPRDARCY', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRDarcy': 'lower:IPRDARCY', 'Template': '___NONE___'})"
   },
   "IPRDarcy|Well 3 - gas:upper:IPRDARCY": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'Well 3 - gas:upper:IPRDARCY', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRDarcy': 'upper:IPRDARCY', 'Template': '___NONE___'})"
   },
   "IPRDarcy|Well 4 - Horizontal Gas well:Completion:IPRDARCY": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'Well 4 - Horizontal Gas well:Completion:IPRDARCY', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRDarcy': 'Completion:IPRDARCY', 'Template': '___NONE___'})"
   },
   "IPRFetkovitch|Well 1 - oil:Completion:IPRFETKOVITCH": null,
   "IPRFetkovitch|Well 2 - ESP:Completion:IPRFETKOVITCH": null,
@@ -833,124 +1191,124 @@
   "IPRFetkovitch|Well 3 - gas:upper:IPRFETKOVITCH": null,
   "IPRFetkovitch|Well 4 - Horizontal Gas well:Completion:IPRFETKOVITCH": null,
   "IPRForchheimer|Well 1 - oil:Completion:IPRFORCHHEIMER": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'Well 1 - oil:Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRForchheimer': 'Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
   },
   "IPRForchheimer|Well 2 - ESP:Completion:IPRFORCHHEIMER": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'Well 2 - ESP:Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRForchheimer': 'Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
   },
   "IPRForchheimer|Well 3 - gas:lower:IPRFORCHHEIMER": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'Well 3 - gas:lower:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRForchheimer': 'lower:IPRFORCHHEIMER', 'Template': '___NONE___'})"
   },
   "IPRForchheimer|Well 3 - gas:upper:IPRFORCHHEIMER": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'Well 3 - gas:upper:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRForchheimer': 'upper:IPRFORCHHEIMER', 'Template': '___NONE___'})"
   },
   "IPRForchheimer|Well 4 - Horizontal Gas well:Completion:IPRFORCHHEIMER": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'Well 4 - Horizontal Gas well:Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRForchheimer': 'Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
   },
   "IPRHorizontalPI|Well 1 - oil:Completion:IPRHORIZONTALPI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'Well 1 - oil:Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRHorizontalPI': 'Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
   },
   "IPRHorizontalPI|Well 2 - ESP:Completion:IPRHORIZONTALPI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'Well 2 - ESP:Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRHorizontalPI': 'Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
   },
   "IPRHorizontalPI|Well 3 - gas:lower:IPRHORIZONTALPI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'Well 3 - gas:lower:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRHorizontalPI': 'lower:IPRHORIZONTALPI', 'Template': '___NONE___'})"
   },
   "IPRHorizontalPI|Well 3 - gas:upper:IPRHORIZONTALPI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'Well 3 - gas:upper:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRHorizontalPI': 'upper:IPRHORIZONTALPI', 'Template': '___NONE___'})"
   },
   "IPRHorizontalPI|Well 4 - Horizontal Gas well:Completion:IPRHORIZONTALPI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'Well 4 - Horizontal Gas well:Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRHorizontalPI': 'Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
   },
   "IPRHydraulicFracture|Well 1 - oil:Completion:IPRHYDRAULICFRACTURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'Well 1 - oil:Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRHydraulicFracture': 'Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
   },
   "IPRHydraulicFracture|Well 2 - ESP:Completion:IPRHYDRAULICFRACTURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'Well 2 - ESP:Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRHydraulicFracture': 'Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
   },
   "IPRHydraulicFracture|Well 3 - gas:lower:IPRHYDRAULICFRACTURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'Well 3 - gas:lower:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRHydraulicFracture': 'lower:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
   },
   "IPRHydraulicFracture|Well 3 - gas:upper:IPRHYDRAULICFRACTURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'Well 3 - gas:upper:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRHydraulicFracture': 'upper:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
   },
   "IPRHydraulicFracture|Well 4 - Horizontal Gas well:Completion:IPRHYDRAULICFRACTURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'Well 4 - Horizontal Gas well:Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRHydraulicFracture': 'Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
   },
   "IPRJones|Well 1 - oil:Completion:IPRJONES": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'Well 1 - oil:Completion:IPRJONES', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRJones': 'Completion:IPRJONES', 'Template': '___NONE___'})"
   },
   "IPRJones|Well 2 - ESP:Completion:IPRJONES": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'Well 2 - ESP:Completion:IPRJONES', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRJones': 'Completion:IPRJONES', 'Template': '___NONE___'})"
   },
   "IPRJones|Well 3 - gas:lower:IPRJONES": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'Well 3 - gas:lower:IPRJONES', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRJones': 'lower:IPRJONES', 'Template': '___NONE___'})"
   },
   "IPRJones|Well 3 - gas:upper:IPRJONES": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'Well 3 - gas:upper:IPRJONES', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRJones': 'upper:IPRJONES', 'Template': '___NONE___'})"
   },
   "IPRJones|Well 4 - Horizontal Gas well:Completion:IPRJONES": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'Well 4 - Horizontal Gas well:Completion:IPRJONES', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRJones': 'Completion:IPRJONES', 'Template': '___NONE___'})"
   },
   "IPRPIModel|Well 1 - oil:Completion:IPRPIModel": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'Well 1 - oil:Completion:IPRPIModel', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRPIModel': 'Completion:IPRPIModel', 'Template': '___NONE___'})"
   },
   "IPRPIModel|Well 2 - ESP:Completion:IPRPIModel": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'Well 2 - ESP:Completion:IPRPIModel', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRPIModel': 'Completion:IPRPIModel', 'Template': '___NONE___'})"
   },
   "IPRPIModel|Well 3 - gas:lower:IPRPIModel": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'Well 3 - gas:lower:IPRPIModel', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRPIModel': 'lower:IPRPIModel', 'Template': '___NONE___'})"
   },
   "IPRPIModel|Well 3 - gas:upper:IPRPIModel": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'Well 3 - gas:upper:IPRPIModel', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRPIModel': 'upper:IPRPIModel', 'Template': '___NONE___'})"
   },
   "IPRPIModel|Well 4 - Horizontal Gas well:Completion:IPRPIModel": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'Well 4 - Horizontal Gas well:Completion:IPRPIModel', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRPIModel': 'Completion:IPRPIModel', 'Template': '___NONE___'})"
   },
   "IPRPSSBabuOdeh|Well 1 - oil:Completion:IPRPSSBABUODEH": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'Well 1 - oil:Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRPSSBabuOdeh': 'Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
   },
   "IPRPSSBabuOdeh|Well 2 - ESP:Completion:IPRPSSBABUODEH": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'Well 2 - ESP:Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRPSSBabuOdeh': 'Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
   },
   "IPRPSSBabuOdeh|Well 3 - gas:lower:IPRPSSBABUODEH": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'Well 3 - gas:lower:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRPSSBabuOdeh': 'lower:IPRPSSBABUODEH', 'Template': '___NONE___'})"
   },
   "IPRPSSBabuOdeh|Well 3 - gas:upper:IPRPSSBABUODEH": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'Well 3 - gas:upper:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRPSSBabuOdeh': 'upper:IPRPSSBABUODEH', 'Template': '___NONE___'})"
   },
   "IPRPSSBabuOdeh|Well 4 - Horizontal Gas well:Completion:IPRPSSBABUODEH": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'Well 4 - Horizontal Gas well:Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRPSSBabuOdeh': 'Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
   },
   "IPRSSJoshi|Well 1 - oil:Completion:IPRSSJOSHI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'Well 1 - oil:Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRSSJoshi': 'Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
   },
   "IPRSSJoshi|Well 2 - ESP:Completion:IPRSSJOSHI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'Well 2 - ESP:Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRSSJoshi': 'Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
   },
   "IPRSSJoshi|Well 3 - gas:lower:IPRSSJOSHI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'Well 3 - gas:lower:IPRSSJOSHI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRSSJoshi': 'lower:IPRSSJOSHI', 'Template': '___NONE___'})"
   },
   "IPRSSJoshi|Well 3 - gas:upper:IPRSSJOSHI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'Well 3 - gas:upper:IPRSSJOSHI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRSSJoshi': 'upper:IPRSSJOSHI', 'Template': '___NONE___'})"
   },
   "IPRSSJoshi|Well 4 - Horizontal Gas well:Completion:IPRSSJOSHI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'Well 4 - Horizontal Gas well:Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRSSJoshi': 'Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
   },
   "IPRTriLinear|Well 1 - oil:Completion:IPRTRILINEAR": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'Well 1 - oil:Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRTriLinear': 'Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
   },
   "IPRTriLinear|Well 2 - ESP:Completion:IPRTRILINEAR": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'Well 2 - ESP:Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRTriLinear': 'Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
   },
   "IPRTriLinear|Well 3 - gas:lower:IPRTRILINEAR": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'Well 3 - gas:lower:IPRTRILINEAR', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRTriLinear': 'lower:IPRTRILINEAR', 'Template': '___NONE___'})"
   },
   "IPRTriLinear|Well 3 - gas:upper:IPRTRILINEAR": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'Well 3 - gas:upper:IPRTRILINEAR', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRTriLinear': 'upper:IPRTRILINEAR', 'Template': '___NONE___'})"
   },
   "IPRTriLinear|Well 4 - Horizontal Gas well:Completion:IPRTRILINEAR": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'Well 4 - Horizontal Gas well:Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRTriLinear': 'Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
   },
   "Junction|J": {
    "J": {
@@ -967,16 +1325,28 @@
    }
   },
   "Packer|Well 1 - oil:Packer": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'Well 1 - oil:Packer', 'Template': '___NONE___'})"
+   "Well 1 - oil:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
   },
   "Packer|Well 2 - ESP:Packer": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'Well 2 - ESP:Packer', 'Template': '___NONE___'})"
+   "Well 2 - ESP:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
   },
   "Packer|Well 3 - gas:Packer": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'Well 3 - gas:Packer', 'Template': '___NONE___'})"
+   "Well 3 - gas:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
   },
   "Packer|Well 4 - Horizontal Gas well:Packer": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'Well 4 - Horizontal Gas well:Packer', 'Template': '___NONE___'})"
+   "Well 4 - Horizontal Gas well:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
   },
   "Sink|sink": {
    "sink": {
@@ -990,40 +1360,328 @@
    }
   },
   "Source|Well 1 - oil:Source 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well 1 - oil:Source 1', 'Template': '___NONE___'})"
+   "Well 1 - oil:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well 1 - oil:WellString outlet10128": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well 1 - oil:WellString outlet10128', 'Template': '___NONE___'})"
+   "Well 1 - oil:WellString outlet10128": {
+    "Name": "WellString outlet10128",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well 1 - oil:WellString outlet10141": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well 1 - oil:WellString outlet10141', 'Template': '___NONE___'})"
+   "Well 1 - oil:WellString outlet10141": {
+    "Name": "WellString outlet10141",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well 2 - ESP:Source 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well 2 - ESP:Source 1', 'Template': '___NONE___'})"
+   "Well 2 - ESP:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 24.8211262554061,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well 2 - ESP:WellString outlet10255": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well 2 - ESP:WellString outlet10255', 'Template': '___NONE___'})"
+   "Well 2 - ESP:WellString outlet10255": {
+    "Name": "WellString outlet10255",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well 2 - ESP:WellString outlet10266": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well 2 - ESP:WellString outlet10266', 'Template': '___NONE___'})"
+   "Well 2 - ESP:WellString outlet10266": {
+    "Name": "WellString outlet10266",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well 3 - gas:Source 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well 3 - gas:Source 1', 'Template': '___NONE___'})"
+   "Well 3 - gas:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well 3 - gas:WellString outlet10172": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well 3 - gas:WellString outlet10172', 'Template': '___NONE___'})"
+   "Well 3 - gas:WellString outlet10172": {
+    "Name": "WellString outlet10172",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well 3 - gas:WellString outlet10186": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well 3 - gas:WellString outlet10186', 'Template': '___NONE___'})"
+   "Well 3 - gas:WellString outlet10186": {
+    "Name": "WellString outlet10186",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well 4 - Horizontal Gas well:Source 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well 4 - Horizontal Gas well:Source 1', 'Template': '___NONE___'})"
+   "Well 4 - Horizontal Gas well:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well 4 - Horizontal Gas well:WellString outlet10212": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well 4 - Horizontal Gas well:WellString outlet10212', 'Template': '___NONE___'})"
+   "Well 4 - Horizontal Gas well:WellString outlet10212": {
+    "Name": "WellString outlet10212",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well 4 - Horizontal Gas well:WellString outlet10225": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well 4 - Horizontal Gas well:WellString outlet10225', 'Template': '___NONE___'})"
+   "Well 4 - Horizontal Gas well:WellString outlet10225": {
+    "Name": "WellString outlet10225",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Study|Study 1": {
    "Study 1": {
@@ -1032,16 +1690,116 @@
    }
   },
   "Tubing|Well 1 - oil:Tubing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'Well 1 - oil:Tubing', 'Template': '___NONE___'})"
+   "Well 1 - oil:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": 7986.478705518193,
+    "Grade": "N80",
+    "InnerDiameter": 57.37859999999999,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 7.823199999999999,
+    "Length": 2621.28,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Tubing|Well 2 - ESP:Tubing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'Well 2 - ESP:Tubing', 'Template': '___NONE___'})"
+   "Well 2 - ESP:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 90.11919999999999,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 5.740399999999999,
+    "Length": 2551.7856,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Tubing|Well 3 - gas:Tubing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'Well 3 - gas:Tubing', 'Template': '___NONE___'})"
+   "Well 3 - gas:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": 8312.3972046348,
+    "Grade": "N80",
+    "InnerDiameter": 50.672999999999995,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 4.826,
+    "Length": 3337.56,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Tubing|Well 4 - Horizontal Gas well:Tubing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'Well 4 - Horizontal Gas well:Tubing', 'Template': '___NONE___'})"
+   "Well 4 - Horizontal Gas well:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 75.99680000000001,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 6.4516,
+    "Length": 3048.0,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Well|Well 1 - oil": {
    "Well 1 - oil": {
@@ -1202,7 +1960,7 @@
    "result": {
     "WebAPIVersion": "2023.1.615.0",
     "ToolkitVersion": "2023.1",
-    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_jeycwj_2\\Nodal_example.pips",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_vtidvc8b\\Nodal_example.pips",
     "UnitSystem": "PIPESIM_METRIC",
     "UiUnitSystem": "PIPESIM_FIELD"
    }
@@ -1576,7 +2334,7 @@
  "about": {
   "WebAPIVersion": "2023.1.615.0",
   "ToolkitVersion": "2023.1",
-  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_jeycwj_2\\Nodal_example.pips",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_vtidvc8b\\Nodal_example.pips",
   "UnitSystem": "PIPESIM_METRIC",
   "UiUnitSystem": "PIPESIM_FIELD"
  },
@@ -1584,333 +2342,333 @@
   "state": "Completed",
   "summary": {
    "Info": [
-    "2026-11-04T06:35:02.520Z    Beginning simulation...",
-    "2026-11-04T06:35:02.518Z    Running with 7 cores",
-    "2026-11-04T06:35:10.585Z    Solver converged to a solution.",
-    "2026-11-04T06:35:10.609Z    Finished simulation"
+    "2026-11-04T07:56:36.148Z    Beginning simulation...",
+    "2026-11-04T07:56:36.147Z    Running with 7 cores",
+    "2026-11-04T07:56:44.131Z    Solver converged to a solution.",
+    "2026-11-04T07:56:44.176Z    Finished simulation"
    ],
    "Error": [],
    "Warning": []
   },
   "messages": [
-   "2026-11-04T06:35:02.632Z    Service starting...",
-   "2026-11-04T06:35:02.660Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
-   "2026-11-04T06:35:02.889Z    Service listening at 'net.pipe://localhost/pipe/971dea4b52e1435397dbd11645782ca1'...",
-   "2026-11-04T06:35:02.995Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\13572",
-   "2026-11-04T06:35:02.995Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\13572\\Nodal_example.tnt (7)",
-   "2026-11-04T06:35:03.047Z    .......................................................................................................................... ",
-   "2026-11-04T06:35:03.051Z    Processing branch Well 1 - oil.. ",
-   "2026-11-04T06:35:03.055Z    Processing branch Well 2 - ESP.. ",
-   "2026-11-04T06:35:03.057Z    Processing branch Well 4 - Horizontal Gas well.. ",
-   "2026-11-04T06:35:03.059Z    Processing branch J_J 1.. ",
-   "2026-11-04T06:35:03.061Z    Processing branch Well 3 - gas.. ",
-   "2026-11-04T06:35:03.063Z    Processing branch sink.",
-   "2026-11-04T06:35:03.063Z    Processing branch geometry (.PSM/.PST) files",
-   "2026-11-04T06:35:03.408Z    ",
-   "2026-11-04T06:35:03.830Z     Iteration   1 P error :  46.24 %, F error :   2.55 %, L error :   0.00 %",
-   "2026-11-04T06:35:03.932Z    ",
-   "2026-11-04T06:35:03.932Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:03.940Z     Iteration   2 P error :  19.26 %, F error :  20.28 %, L error :   0.00 %",
-   "2026-11-04T06:35:04.040Z    ",
-   "2026-11-04T06:35:04.040Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:04.166Z     Iteration   3 P error :  73.74 %, F error :   0.16 %, L error :   0.00 %",
-   "2026-11-04T06:35:04.214Z     Iteration   4 P error : 100.81 %, F error :   0.03 %, L error :   0.00 %",
-   "2026-11-04T06:35:04.295Z    ",
-   "2026-11-04T06:35:04.295Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:04.302Z     Iteration   5 P error :  16.07 %, F error :  22.33 %, L error :   0.00 %",
-   "2026-11-04T06:35:04.413Z    ",
-   "2026-11-04T06:35:04.413Z     Warning 29003127  from PSIM :  No solution possible after 9 iterations on branch Well 3 - gas.",
-   "2026-11-04T06:35:04.413Z    ",
-   "2026-11-04T06:35:04.413Z     Warning 29003126  from PSIM :  Simplex too far from required outlet pressure.",
-   "2026-11-04T06:35:04.416Z     Iteration   6 P error : 138.53 %, F error : 179.55 %, L error :   0.00 %",
-   "2026-11-04T06:35:04.533Z    ",
-   "2026-11-04T06:35:04.533Z     Warning 29003127  from PSIM :  No solution possible after 10 iterations on branch Well 3 - gas.",
-   "2026-11-04T06:35:04.533Z    ",
-   "2026-11-04T06:35:04.533Z     Warning 29003126  from PSIM :  Simplex too far from required outlet pressure.",
-   "2026-11-04T06:35:04.541Z     Iteration   7 P error :  62.81 %, F error : 178.96 %, L error :   0.00 %",
-   "2026-11-04T06:35:04.666Z    ",
-   "2026-11-04T06:35:04.666Z     Warning 29003127  from PSIM :  No solution possible after 11 iterations on branch Well 3 - gas.",
-   "2026-11-04T06:35:04.666Z    ",
-   "2026-11-04T06:35:04.666Z     Warning 29003126  from PSIM :  Simplex too far from required outlet pressure.",
-   "2026-11-04T06:35:04.675Z     Iteration   8 P error : 138.53 %, F error : 178.96 %, L error :   0.00 %",
-   "2026-11-04T06:35:04.828Z    ",
-   "2026-11-04T06:35:04.828Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
-   "2026-11-04T06:35:05.042Z     Iteration   9 P error :  20.65 %, F error : 178.96 %, L error :   0.00 %",
-   "2026-11-04T06:35:05.217Z    ",
-   "2026-11-04T06:35:05.217Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
-   "2026-11-04T06:35:05.281Z     Iteration  10 P error : 142.49 %, F error : 178.96 %, L error :   0.00 %",
-   "2026-11-04T06:35:05.344Z    ",
-   "2026-11-04T06:35:05.344Z    ",
-   "2026-11-04T06:35:05.344Z     WARNING:",
-   "2026-11-04T06:35:05.344Z    ",
-   "2026-11-04T06:35:05.344Z         The iterative solution for this case (if one exists)",
-   "2026-11-04T06:35:05.344Z         cannot be found without violating the user-specified",
-   "2026-11-04T06:35:05.344Z         lower limit. The iterative procedure is terminated.",
-   "2026-11-04T06:35:05.344Z    ",
-   "2026-11-04T06:35:05.425Z     Iteration  11 P error :  61.28 %, F error :  19.58 %, L error :   0.00 %",
-   "2026-11-04T06:35:05.470Z     Iteration  12 P error :  50.89 %, F error :   0.17 %, L error :   0.00 %",
-   "2026-11-04T06:35:05.552Z    ",
-   "2026-11-04T06:35:05.552Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:05.560Z     Iteration  13 P error :  48.44 %, F error : 185.05 %, L error :   0.00 %",
-   "2026-11-04T06:35:05.646Z    ",
-   "2026-11-04T06:35:05.646Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
-   "2026-11-04T06:35:05.653Z     Iteration  14 P error : 107.31 %, F error : 186.85 %, L error :   0.00 %",
-   "2026-11-04T06:35:05.860Z    ",
-   "2026-11-04T06:35:05.860Z    ",
-   "2026-11-04T06:35:05.860Z     WARNING:",
-   "2026-11-04T06:35:05.860Z    ",
-   "2026-11-04T06:35:05.860Z         The iterative solution for this case (if one exists)",
-   "2026-11-04T06:35:05.860Z         cannot be found without violating the user-specified",
-   "2026-11-04T06:35:05.860Z         lower limit. The iterative procedure is terminated.",
-   "2026-11-04T06:35:05.860Z    ",
-   "2026-11-04T06:35:06.139Z     Iteration  15 P error :  63.43 %, F error :   0.06 %, L error :   0.00 %",
-   "2026-11-04T06:35:06.233Z    ",
-   "2026-11-04T06:35:06.233Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
-   "2026-11-04T06:35:06.241Z     Iteration  16 P error :  47.34 %, F error : 187.22 %, L error :   0.00 %",
-   "2026-11-04T06:35:06.327Z    ",
-   "2026-11-04T06:35:06.327Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:06.504Z     Iteration  17 P error :  14.09 %, F error : 187.32 %, L error :   0.00 %",
-   "2026-11-04T06:35:06.554Z    ",
-   "2026-11-04T06:35:06.555Z    ",
-   "2026-11-04T06:35:06.555Z     WARNING:",
-   "2026-11-04T06:35:06.555Z    ",
-   "2026-11-04T06:35:06.555Z         The iterative solution for this case (if one exists)",
-   "2026-11-04T06:35:06.555Z         cannot be found without violating the user-specified",
-   "2026-11-04T06:35:06.555Z         lower limit. The iterative procedure is terminated.",
-   "2026-11-04T06:35:06.555Z    ",
-   "2026-11-04T06:35:06.794Z     Iteration  18 P error :  65.16 %, F error :   0.43 %, L error :   0.00 %",
-   "2026-11-04T06:35:06.876Z    ",
-   "2026-11-04T06:35:06.876Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:07.028Z     Iteration  19 P error :  13.86 %, F error : 187.35 %, L error :   0.00 %",
-   "2026-11-04T06:35:07.227Z     Iteration  20 P error :   8.43 %, F error :   0.01 %, L error :   0.00 %",
-   "2026-11-04T06:35:07.329Z    ",
-   "2026-11-04T06:35:07.329Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:07.337Z     Iteration  21 P error :  13.59 %, F error : 187.27 %, L error :   0.00 %",
-   "2026-11-04T06:35:07.420Z    ",
-   "2026-11-04T06:35:07.420Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:07.428Z     Iteration  22 P error :  13.37 %, F error : 187.25 %, L error :   0.00 %",
-   "2026-11-04T06:35:07.484Z    ",
-   "2026-11-04T06:35:07.484Z    ",
-   "2026-11-04T06:35:07.484Z     WARNING:",
-   "2026-11-04T06:35:07.484Z    ",
-   "2026-11-04T06:35:07.484Z         The iterative solution for this case (if one exists)",
-   "2026-11-04T06:35:07.484Z         cannot be found without violating the user-specified",
-   "2026-11-04T06:35:07.484Z         lower limit. The iterative procedure is terminated.",
-   "2026-11-04T06:35:07.484Z    ",
-   "2026-11-04T06:35:07.741Z     Iteration  23 P error :  63.29 %, F error :   0.34 %, L error :   0.00 %",
-   "2026-11-04T06:35:07.777Z     Iteration  24 P error :  20.61 %, F error :   0.42 %, L error :   0.00 %",
-   "2026-11-04T06:35:07.863Z    ",
-   "2026-11-04T06:35:07.863Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:07.870Z     Iteration  25 P error :  14.63 %, F error : 187.30 %, L error :   0.00 %",
-   "2026-11-04T06:35:07.952Z    ",
-   "2026-11-04T06:35:07.952Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:07.960Z     Iteration  26 P error :  38.10 %, F error : 188.38 %, L error :   0.00 %",
-   "2026-11-04T06:35:08.016Z    ",
-   "2026-11-04T06:35:08.016Z    ",
-   "2026-11-04T06:35:08.016Z     WARNING:",
-   "2026-11-04T06:35:08.016Z    ",
-   "2026-11-04T06:35:08.016Z         The iterative solution for this case (if one exists)",
-   "2026-11-04T06:35:08.016Z         cannot be found without violating the user-specified",
-   "2026-11-04T06:35:08.016Z         lower limit. The iterative procedure is terminated.",
-   "2026-11-04T06:35:08.016Z    ",
-   "2026-11-04T06:35:08.271Z     Iteration  27 P error :  63.24 %, F error :   1.06 %, L error :   0.00 %",
-   "2026-11-04T06:35:08.375Z    ",
-   "2026-11-04T06:35:08.375Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:08.383Z     Iteration  28 P error :  19.65 %, F error : 187.60 %, L error :   0.00 %",
-   "2026-11-04T06:35:08.421Z     Iteration  29 P error :   9.13 %, F error :   0.07 %, L error :   0.00 %",
-   "2026-11-04T06:35:08.465Z     Iteration  30 P error :  30.89 %, F error :   0.20 %, L error :   0.00 %",
-   "2026-11-04T06:35:08.600Z    ",
-   "2026-11-04T06:35:08.600Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
-   "2026-11-04T06:35:08.608Z     Iteration  31 P error :  33.29 %, F error : 182.10 %, L error :   0.00 %",
-   "2026-11-04T06:35:08.692Z    ",
-   "2026-11-04T06:35:08.692Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:08.699Z     Iteration  32 P error :  60.84 %, F error : 187.86 %, L error :   0.00 %",
-   "2026-11-04T06:35:08.754Z    ",
-   "2026-11-04T06:35:08.754Z    ",
-   "2026-11-04T06:35:08.754Z     WARNING:",
-   "2026-11-04T06:35:08.754Z    ",
-   "2026-11-04T06:35:08.754Z         The iterative solution for this case (if one exists)",
-   "2026-11-04T06:35:08.754Z         cannot be found without violating the user-specified",
-   "2026-11-04T06:35:08.754Z         lower limit. The iterative procedure is terminated.",
-   "2026-11-04T06:35:08.754Z    ",
-   "2026-11-04T06:35:08.972Z     Iteration  33 P error :  62.97 %, F error :   0.85 %, L error :   0.00 %",
-   "2026-11-04T06:35:09.053Z    ",
-   "2026-11-04T06:35:09.053Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:09.061Z     Iteration  34 P error :  24.14 %, F error : 187.47 %, L error :   0.00 %",
-   "2026-11-04T06:35:09.144Z    ",
-   "2026-11-04T06:35:09.144Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:09.151Z     Iteration  35 P error :  17.32 %, F error : 187.42 %, L error :   0.00 %",
-   "2026-11-04T06:35:09.206Z    ",
-   "2026-11-04T06:35:09.206Z    ",
-   "2026-11-04T06:35:09.206Z     WARNING:",
-   "2026-11-04T06:35:09.206Z    ",
-   "2026-11-04T06:35:09.206Z         The iterative solution for this case (if one exists)",
-   "2026-11-04T06:35:09.206Z         cannot be found without violating the user-specified",
-   "2026-11-04T06:35:09.206Z         lower limit. The iterative procedure is terminated.",
-   "2026-11-04T06:35:09.206Z    ",
-   "2026-11-04T06:35:09.483Z     Iteration  36 P error :  63.38 %, F error :   0.48 %, L error :   0.00 %",
-   "2026-11-04T06:35:09.519Z     Iteration  37 P error :   5.99 %, F error :   0.53 %, L error :   0.00 %",
-   "2026-11-04T06:35:09.602Z    ",
-   "2026-11-04T06:35:09.602Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
-   "2026-11-04T06:35:09.610Z     Iteration  38 P error :  22.37 %, F error : 187.67 %, L error :   0.00 %",
-   "2026-11-04T06:35:09.631Z     Iteration  39 P error :  10.09 %, F error :   0.14 %, L error :   0.00 %",
-   "2026-11-04T06:35:09.668Z     Iteration  40 P error :  16.83 %, F error :   0.03 %, L error :   0.00 %",
-   "2026-11-04T06:35:09.710Z     Iteration  41 P error :  36.56 %, F error :   0.14 %, L error :   0.00 %",
-   "2026-11-04T06:35:09.754Z     Iteration  42 P error :  48.51 %, F error :   0.04 %, L error :   0.00 %",
-   "2026-11-04T06:35:09.796Z     Iteration  43 P error :  14.08 %, F error :   0.06 %, L error :   0.00 %",
-   "2026-11-04T06:35:09.839Z     Iteration  44 P error :   6.12 %, F error :   0.09 %, L error :   0.00 %",
-   "2026-11-04T06:35:09.883Z     Iteration  45 P error :   5.98 %, F error :   0.01 %, L error :   0.00 %",
-   "2026-11-04T06:35:09.929Z     Iteration  46 P error :  11.54 %, F error :   0.00 %, L error :   0.00 %",
-   "2026-11-04T06:35:09.966Z     Iteration  47 P error :   8.09 %, F error :   0.01 %, L error :   0.00 %",
-   "2026-11-04T06:35:10.001Z     Iteration  48 P error :   3.48 %, F error :   0.01 %, L error :   0.00 %",
-   "2026-11-04T06:35:10.049Z     Iteration  49 P error :   3.85 %, F error :   0.00 %, L error :   0.00 %",
-   "2026-11-04T06:35:10.083Z     Iteration  50 P error :   4.28 %, F error :   0.03 %, L error :   0.00 %",
-   "2026-11-04T06:35:10.098Z     Iteration  51 P error :   2.21 %, F error :   0.03 %, L error :   0.00 %",
-   "2026-11-04T06:35:10.141Z     Iteration  52 P error :   0.76 %, F error :   0.00 %, L error :   0.00 %",
-   "2026-11-04T06:35:10.141Z    ",
-   "2026-11-04T06:35:10.142Z    ",
-   "2026-11-04T06:35:10.142Z     Converged.                                                                     ",
-   "2026-11-04T06:35:10.142Z     ... network converged at iteration  52, final rms error :   0.756701E-02",
-   "2026-11-04T06:35:10.142Z      Start Post-Processing results",
-   "2026-11-04T06:35:10.175Z    ",
-   "2026-11-04T06:35:10.175Z       Elapsed time:",
-   "2026-11-04T06:35:10.175Z    ",
-   "2026-11-04T06:35:10.175Z       Network Executive      7.18",
-   "2026-11-04T06:35:10.175Z       PIPESIM sub-tasks      0.00",
-   "2026-11-04T06:35:10.175Z                         ---------",
-   "2026-11-04T06:35:10.175Z                 Total        7.18",
-   "2026-11-04T06:35:10.175Z    ",
-   "2026-11-04T06:35:10.175Z       CPU time:",
-   "2026-11-04T06:35:10.175Z    ",
-   "2026-11-04T06:35:10.175Z               User task      6.53",
-   "2026-11-04T06:35:10.175Z               System         0.94",
-   "2026-11-04T06:35:10.175Z                         ---------",
-   "2026-11-04T06:35:10.175Z                 Total        7.47",
-   "2026-11-04T06:35:10.179Z     Disposing communication agent.",
-   "2026-11-04T06:35:10.179Z     Disposing communication agent.",
-   "2026-11-04T06:35:10.180Z     Disposing communication agent.",
-   "2026-11-04T06:35:10.180Z     Disposing communication agent.",
-   "2026-11-04T06:35:10.180Z     Disposing communication agent.",
-   "2026-11-04T06:35:10.210Z     Disposing communication agent.",
-   "2026-11-04T06:35:10.589Z     Disposing communication agent."
+   "2026-11-04T07:56:36.240Z    Service starting...",
+   "2026-11-04T07:56:36.282Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T07:56:36.518Z    Service listening at 'net.pipe://localhost/pipe/e55da509a185484faff0a91db3de7ea7'...",
+   "2026-11-04T07:56:36.597Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\8504",
+   "2026-11-04T07:56:36.597Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\8504\\Nodal_example.tnt (7)",
+   "2026-11-04T07:56:36.647Z    .......................................................................................................................... ",
+   "2026-11-04T07:56:36.651Z    Processing branch Well 1 - oil.. ",
+   "2026-11-04T07:56:36.654Z    Processing branch Well 2 - ESP.. ",
+   "2026-11-04T07:56:36.657Z    Processing branch Well 4 - Horizontal Gas well.. ",
+   "2026-11-04T07:56:36.658Z    Processing branch J_J 1.. ",
+   "2026-11-04T07:56:36.661Z    Processing branch Well 3 - gas.. ",
+   "2026-11-04T07:56:36.663Z    Processing branch sink.",
+   "2026-11-04T07:56:36.663Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T07:56:36.992Z    ",
+   "2026-11-04T07:56:37.407Z     Iteration   1 P error :  46.24 %, F error :   2.55 %, L error :   0.00 %",
+   "2026-11-04T07:56:37.496Z    ",
+   "2026-11-04T07:56:37.496Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:37.503Z     Iteration   2 P error :  19.26 %, F error :  20.28 %, L error :   0.00 %",
+   "2026-11-04T07:56:37.596Z    ",
+   "2026-11-04T07:56:37.596Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:37.704Z     Iteration   3 P error :  73.74 %, F error :   0.16 %, L error :   0.00 %",
+   "2026-11-04T07:56:37.755Z     Iteration   4 P error : 100.81 %, F error :   0.03 %, L error :   0.00 %",
+   "2026-11-04T07:56:37.838Z    ",
+   "2026-11-04T07:56:37.838Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:37.847Z     Iteration   5 P error :  16.07 %, F error :  22.33 %, L error :   0.00 %",
+   "2026-11-04T07:56:37.954Z    ",
+   "2026-11-04T07:56:37.954Z     Warning 29003127  from PSIM :  No solution possible after 9 iterations on branch Well 3 - gas.",
+   "2026-11-04T07:56:37.954Z    ",
+   "2026-11-04T07:56:37.954Z     Warning 29003126  from PSIM :  Simplex too far from required outlet pressure.",
+   "2026-11-04T07:56:37.957Z     Iteration   6 P error : 138.53 %, F error : 179.55 %, L error :   0.00 %",
+   "2026-11-04T07:56:38.074Z    ",
+   "2026-11-04T07:56:38.074Z     Warning 29003127  from PSIM :  No solution possible after 10 iterations on branch Well 3 - gas.",
+   "2026-11-04T07:56:38.074Z    ",
+   "2026-11-04T07:56:38.074Z     Warning 29003126  from PSIM :  Simplex too far from required outlet pressure.",
+   "2026-11-04T07:56:38.082Z     Iteration   7 P error :  62.81 %, F error : 178.96 %, L error :   0.00 %",
+   "2026-11-04T07:56:38.205Z    ",
+   "2026-11-04T07:56:38.205Z     Warning 29003127  from PSIM :  No solution possible after 11 iterations on branch Well 3 - gas.",
+   "2026-11-04T07:56:38.205Z    ",
+   "2026-11-04T07:56:38.205Z     Warning 29003126  from PSIM :  Simplex too far from required outlet pressure.",
+   "2026-11-04T07:56:38.214Z     Iteration   8 P error : 138.53 %, F error : 178.96 %, L error :   0.00 %",
+   "2026-11-04T07:56:38.372Z    ",
+   "2026-11-04T07:56:38.372Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
+   "2026-11-04T07:56:38.582Z     Iteration   9 P error :  20.65 %, F error : 178.96 %, L error :   0.00 %",
+   "2026-11-04T07:56:38.759Z    ",
+   "2026-11-04T07:56:38.759Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
+   "2026-11-04T07:56:38.813Z     Iteration  10 P error : 142.49 %, F error : 178.96 %, L error :   0.00 %",
+   "2026-11-04T07:56:38.876Z    ",
+   "2026-11-04T07:56:38.876Z    ",
+   "2026-11-04T07:56:38.876Z     WARNING:",
+   "2026-11-04T07:56:38.876Z    ",
+   "2026-11-04T07:56:38.876Z         The iterative solution for this case (if one exists)",
+   "2026-11-04T07:56:38.876Z         cannot be found without violating the user-specified",
+   "2026-11-04T07:56:38.876Z         lower limit. The iterative procedure is terminated.",
+   "2026-11-04T07:56:38.876Z    ",
+   "2026-11-04T07:56:38.960Z     Iteration  11 P error :  61.28 %, F error :  19.58 %, L error :   0.00 %",
+   "2026-11-04T07:56:39.005Z     Iteration  12 P error :  50.89 %, F error :   0.17 %, L error :   0.00 %",
+   "2026-11-04T07:56:39.086Z    ",
+   "2026-11-04T07:56:39.087Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:39.095Z     Iteration  13 P error :  48.44 %, F error : 185.05 %, L error :   0.00 %",
+   "2026-11-04T07:56:39.181Z    ",
+   "2026-11-04T07:56:39.181Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
+   "2026-11-04T07:56:39.189Z     Iteration  14 P error : 107.31 %, F error : 186.85 %, L error :   0.00 %",
+   "2026-11-04T07:56:39.399Z    ",
+   "2026-11-04T07:56:39.399Z    ",
+   "2026-11-04T07:56:39.399Z     WARNING:",
+   "2026-11-04T07:56:39.399Z    ",
+   "2026-11-04T07:56:39.399Z         The iterative solution for this case (if one exists)",
+   "2026-11-04T07:56:39.399Z         cannot be found without violating the user-specified",
+   "2026-11-04T07:56:39.399Z         lower limit. The iterative procedure is terminated.",
+   "2026-11-04T07:56:39.399Z    ",
+   "2026-11-04T07:56:39.686Z     Iteration  15 P error :  63.43 %, F error :   0.06 %, L error :   0.00 %",
+   "2026-11-04T07:56:39.778Z    ",
+   "2026-11-04T07:56:39.778Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
+   "2026-11-04T07:56:39.785Z     Iteration  16 P error :  47.34 %, F error : 187.22 %, L error :   0.00 %",
+   "2026-11-04T07:56:39.876Z    ",
+   "2026-11-04T07:56:39.876Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:40.055Z     Iteration  17 P error :  14.09 %, F error : 187.32 %, L error :   0.00 %",
+   "2026-11-04T07:56:40.104Z    ",
+   "2026-11-04T07:56:40.105Z    ",
+   "2026-11-04T07:56:40.105Z     WARNING:",
+   "2026-11-04T07:56:40.105Z    ",
+   "2026-11-04T07:56:40.105Z         The iterative solution for this case (if one exists)",
+   "2026-11-04T07:56:40.105Z         cannot be found without violating the user-specified",
+   "2026-11-04T07:56:40.105Z         lower limit. The iterative procedure is terminated.",
+   "2026-11-04T07:56:40.105Z    ",
+   "2026-11-04T07:56:40.352Z     Iteration  18 P error :  65.16 %, F error :   0.43 %, L error :   0.00 %",
+   "2026-11-04T07:56:40.436Z    ",
+   "2026-11-04T07:56:40.436Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:40.586Z     Iteration  19 P error :  13.86 %, F error : 187.35 %, L error :   0.00 %",
+   "2026-11-04T07:56:40.789Z     Iteration  20 P error :   8.43 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:56:40.884Z    ",
+   "2026-11-04T07:56:40.884Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:40.892Z     Iteration  21 P error :  13.59 %, F error : 187.27 %, L error :   0.00 %",
+   "2026-11-04T07:56:40.977Z    ",
+   "2026-11-04T07:56:40.977Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:40.985Z     Iteration  22 P error :  13.37 %, F error : 187.25 %, L error :   0.00 %",
+   "2026-11-04T07:56:41.040Z    ",
+   "2026-11-04T07:56:41.041Z    ",
+   "2026-11-04T07:56:41.041Z     WARNING:",
+   "2026-11-04T07:56:41.041Z    ",
+   "2026-11-04T07:56:41.041Z         The iterative solution for this case (if one exists)",
+   "2026-11-04T07:56:41.041Z         cannot be found without violating the user-specified",
+   "2026-11-04T07:56:41.041Z         lower limit. The iterative procedure is terminated.",
+   "2026-11-04T07:56:41.041Z    ",
+   "2026-11-04T07:56:41.305Z     Iteration  23 P error :  63.29 %, F error :   0.34 %, L error :   0.00 %",
+   "2026-11-04T07:56:41.340Z     Iteration  24 P error :  20.61 %, F error :   0.42 %, L error :   0.00 %",
+   "2026-11-04T07:56:41.424Z    ",
+   "2026-11-04T07:56:41.424Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:41.432Z     Iteration  25 P error :  14.63 %, F error : 187.30 %, L error :   0.00 %",
+   "2026-11-04T07:56:41.520Z    ",
+   "2026-11-04T07:56:41.520Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:41.528Z     Iteration  26 P error :  38.10 %, F error : 188.38 %, L error :   0.00 %",
+   "2026-11-04T07:56:41.583Z    ",
+   "2026-11-04T07:56:41.584Z    ",
+   "2026-11-04T07:56:41.584Z     WARNING:",
+   "2026-11-04T07:56:41.584Z    ",
+   "2026-11-04T07:56:41.584Z         The iterative solution for this case (if one exists)",
+   "2026-11-04T07:56:41.584Z         cannot be found without violating the user-specified",
+   "2026-11-04T07:56:41.584Z         lower limit. The iterative procedure is terminated.",
+   "2026-11-04T07:56:41.584Z    ",
+   "2026-11-04T07:56:41.849Z     Iteration  27 P error :  63.24 %, F error :   1.06 %, L error :   0.00 %",
+   "2026-11-04T07:56:41.938Z    ",
+   "2026-11-04T07:56:41.938Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:41.947Z     Iteration  28 P error :  19.65 %, F error : 187.60 %, L error :   0.00 %",
+   "2026-11-04T07:56:41.985Z     Iteration  29 P error :   9.13 %, F error :   0.07 %, L error :   0.00 %",
+   "2026-11-04T07:56:42.032Z     Iteration  30 P error :  30.89 %, F error :   0.20 %, L error :   0.00 %",
+   "2026-11-04T07:56:42.172Z    ",
+   "2026-11-04T07:56:42.172Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
+   "2026-11-04T07:56:42.180Z     Iteration  31 P error :  33.29 %, F error : 182.10 %, L error :   0.00 %",
+   "2026-11-04T07:56:42.262Z    ",
+   "2026-11-04T07:56:42.262Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:42.270Z     Iteration  32 P error :  60.84 %, F error : 187.86 %, L error :   0.00 %",
+   "2026-11-04T07:56:42.324Z    ",
+   "2026-11-04T07:56:42.324Z    ",
+   "2026-11-04T07:56:42.324Z     WARNING:",
+   "2026-11-04T07:56:42.324Z    ",
+   "2026-11-04T07:56:42.324Z         The iterative solution for this case (if one exists)",
+   "2026-11-04T07:56:42.324Z         cannot be found without violating the user-specified",
+   "2026-11-04T07:56:42.324Z         lower limit. The iterative procedure is terminated.",
+   "2026-11-04T07:56:42.324Z    ",
+   "2026-11-04T07:56:42.546Z     Iteration  33 P error :  62.97 %, F error :   0.85 %, L error :   0.00 %",
+   "2026-11-04T07:56:42.629Z    ",
+   "2026-11-04T07:56:42.629Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:42.636Z     Iteration  34 P error :  24.14 %, F error : 187.47 %, L error :   0.00 %",
+   "2026-11-04T07:56:42.720Z    ",
+   "2026-11-04T07:56:42.720Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:42.728Z     Iteration  35 P error :  17.32 %, F error : 187.42 %, L error :   0.00 %",
+   "2026-11-04T07:56:42.783Z    ",
+   "2026-11-04T07:56:42.783Z    ",
+   "2026-11-04T07:56:42.783Z     WARNING:",
+   "2026-11-04T07:56:42.783Z    ",
+   "2026-11-04T07:56:42.783Z         The iterative solution for this case (if one exists)",
+   "2026-11-04T07:56:42.783Z         cannot be found without violating the user-specified",
+   "2026-11-04T07:56:42.783Z         lower limit. The iterative procedure is terminated.",
+   "2026-11-04T07:56:42.783Z    ",
+   "2026-11-04T07:56:43.061Z     Iteration  36 P error :  63.38 %, F error :   0.48 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.096Z     Iteration  37 P error :   5.99 %, F error :   0.53 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.183Z    ",
+   "2026-11-04T07:56:43.183Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:43.190Z     Iteration  38 P error :  22.37 %, F error : 187.67 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.212Z     Iteration  39 P error :  10.09 %, F error :   0.14 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.249Z     Iteration  40 P error :  16.83 %, F error :   0.03 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.291Z     Iteration  41 P error :  36.56 %, F error :   0.14 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.335Z     Iteration  42 P error :  48.51 %, F error :   0.04 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.377Z     Iteration  43 P error :  14.08 %, F error :   0.06 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.418Z     Iteration  44 P error :   6.12 %, F error :   0.09 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.463Z     Iteration  45 P error :   5.98 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.508Z     Iteration  46 P error :  11.54 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.546Z     Iteration  47 P error :   8.09 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.581Z     Iteration  48 P error :   3.48 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.626Z     Iteration  49 P error :   3.85 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.661Z     Iteration  50 P error :   4.28 %, F error :   0.03 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.675Z     Iteration  51 P error :   2.21 %, F error :   0.03 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.714Z     Iteration  52 P error :   0.76 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.714Z    ",
+   "2026-11-04T07:56:43.715Z    ",
+   "2026-11-04T07:56:43.715Z     Converged.                                                                     ",
+   "2026-11-04T07:56:43.715Z     ... network converged at iteration  52, final rms error :   0.756701E-02",
+   "2026-11-04T07:56:43.715Z      Start Post-Processing results",
+   "2026-11-04T07:56:43.747Z    ",
+   "2026-11-04T07:56:43.747Z       Elapsed time:",
+   "2026-11-04T07:56:43.747Z    ",
+   "2026-11-04T07:56:43.747Z       Network Executive      7.15",
+   "2026-11-04T07:56:43.747Z       PIPESIM sub-tasks      0.00",
+   "2026-11-04T07:56:43.747Z                         ---------",
+   "2026-11-04T07:56:43.747Z                 Total        7.15",
+   "2026-11-04T07:56:43.747Z    ",
+   "2026-11-04T07:56:43.747Z       CPU time:",
+   "2026-11-04T07:56:43.747Z    ",
+   "2026-11-04T07:56:43.747Z               User task      6.64",
+   "2026-11-04T07:56:43.747Z               System         0.86",
+   "2026-11-04T07:56:43.747Z                         ---------",
+   "2026-11-04T07:56:43.747Z                 Total        7.50",
+   "2026-11-04T07:56:43.751Z     Disposing communication agent.",
+   "2026-11-04T07:56:43.753Z     Disposing communication agent.",
+   "2026-11-04T07:56:43.753Z     Disposing communication agent.",
+   "2026-11-04T07:56:43.753Z     Disposing communication agent.",
+   "2026-11-04T07:56:43.753Z     Disposing communication agent.",
+   "2026-11-04T07:56:43.753Z     Disposing communication agent.",
+   "2026-11-04T07:56:44.136Z     Disposing communication agent."
   ],
   "system": {},
   "node": {
    "Pressure": {
     "Unit": "bara",
-    "J 1": 41.113981835270565,
-    "Completion": 149.5745222004922,
     "J": 45.99525043367798,
-    "Gas lift injection": 159.77923869504542,
-    "choke_2": 45.68389281384815,
-    "choke_1": 50.00316887618435,
-    "upper": 155.2334096070589,
-    "Well 2 - ESP": 46.04330618690877,
-    "choke_4": 64.01697189911188,
     "Well 4 - Horizontal Gas well": 65.66473746030458,
-    "sink": 34.473786466612054,
-    "Well 1 - oil": 50.10860757081229,
+    "choke_1": 50.00316887618435,
+    "Completion": 177.7608088384792,
+    "Gas lift injection": 159.77923869504542,
     "choke_3": 48.928419677239106,
-    "lower": 160.41793438422533,
+    "choke_2": 45.68389281384815,
+    "sink": 34.473786466612054,
     "ESP": 232.07623924050085,
-    "Well 3 - gas": 49.003784132937206
+    "upper": 155.2334096070589,
+    "lower": 160.41793438422533,
+    "Well 2 - ESP": 46.04330618690877,
+    "Well 3 - gas": 49.003784132937206,
+    "choke_4": 64.01697189911188,
+    "Well 1 - oil": 50.10860757081229,
+    "J 1": 41.113981835270565
    },
    "Temperature": {
     "Unit": "degC",
-    "J 1": 118.42544537939312,
-    "Completion": 95.18877367188452,
     "J": 95.12732431803767,
-    "Gas lift injection": 93.24610899220596,
-    "choke_2": 77.00302314879332,
-    "choke_1": 40.17614776669387,
-    "upper": 128.80732356367827,
-    "Well 2 - ESP": 76.9936965151727,
-    "choke_4": 61.02201431609558,
     "Well 4 - Horizontal Gas well": 61.15067640620555,
-    "sink": 116.66784563040267,
-    "Well 1 - oil": 40.179650021969906,
+    "choke_1": 40.17614776669387,
+    "Completion": 95.3768717292545,
+    "Gas lift injection": 93.24610899220596,
     "choke_3": 55.83252730711388,
-    "lower": 111.95094650868037,
+    "choke_2": 77.00302314879332,
+    "sink": 116.66784563040267,
     "ESP": 105.54195891446142,
-    "Well 3 - gas": 55.839089289380524
+    "upper": 128.80732356367827,
+    "lower": 111.95094650868037,
+    "Well 2 - ESP": 76.9936965151727,
+    "Well 3 - gas": 55.839089289380524,
+    "choke_4": 61.02201431609558,
+    "Well 1 - oil": 40.179650021969906,
+    "J 1": 118.42544537939312
    },
    "VolumeFlowrateLiquidStockTank": {
     "Unit": "sm3/d",
-    "J 1": 1123.2894424026933,
-    "Completion": 46.83486865622124,
     "J": 338.5024975483716,
-    "Gas lift injection": 324.9056832675297,
-    "choke_2": 737.9469041549215,
-    "choke_1": 324.9056832675297,
-    "upper": 13.596716606550096,
-    "Well 2 - ESP": 737.9469041549215,
-    "choke_4": 46.83486865622124,
     "Well 4 - Horizontal Gas well": 46.83486865622124,
-    "sink": 1123.2708702305954,
-    "Well 1 - oil": 324.9056832675297,
+    "choke_1": 324.9056832675297,
+    "Completion": 324.90564253783754,
+    "Gas lift injection": 324.9056832675297,
     "choke_3": 13.596716606550096,
-    "lower": 6.697505306634883,
+    "choke_2": 737.9469041549215,
+    "sink": 1123.2708702305954,
     "ESP": 737.9469041549215,
-    "Well 3 - gas": 13.596716606550096
+    "upper": 13.596716606550096,
+    "lower": 6.697505306634883,
+    "Well 2 - ESP": 737.9469041549215,
+    "Well 3 - gas": 13.596716606550096,
+    "choke_4": 46.83486865622124,
+    "Well 1 - oil": 324.9056832675297,
+    "J 1": 1123.2894424026933
    },
    "VolumeFlowrateOilStockTank": {
     "Unit": "sm3/d",
-    "J 1": 999.1595146060787,
-    "Completion": 31.22324577081416,
     "J": 303.7794160739357,
-    "Gas lift injection": 292.41511494077673,
-    "choke_2": 664.1522137394294,
-    "choke_1": 292.41511494077673,
-    "upper": 11.364213478150345,
-    "Well 2 - ESP": 664.1522137394294,
-    "choke_4": 31.22324577081416,
     "Well 4 - Horizontal Gas well": 31.22324577081416,
-    "sink": 999.142994765548,
-    "Well 1 - oil": 292.41511494077673,
+    "choke_1": 292.41511494077673,
+    "Completion": 292.41507828405383,
+    "Gas lift injection": 292.41511494077673,
     "choke_3": 11.364213478150345,
-    "lower": 4.46500353775659,
+    "choke_2": 664.1522137394294,
+    "sink": 999.142994765548,
     "ESP": 664.1522137394294,
-    "Well 3 - gas": 11.364213478150345
+    "upper": 11.364213478150345,
+    "lower": 4.46500353775659,
+    "Well 2 - ESP": 664.1522137394294,
+    "Well 3 - gas": 11.364213478150345,
+    "choke_4": 31.22324577081416,
+    "Well 1 - oil": 292.41511494077673,
+    "J 1": 999.1595146060787
    },
    "VolumeFlowrateGasStockTank": {
     "Unit": "mmsm3/d",
-    "J 1": 0.8806705805438165,
-    "Completion": 0.5561097253100243,
     "J": 0.28507936271879336,
-    "Gas lift injection": 0.08267432304211811,
-    "choke_2": 0.03947772803667067,
-    "choke_1": 0.08267432304211811,
-    "upper": 0.20240514293389297,
-    "Well 2 - ESP": 0.03947772803667067,
-    "choke_4": 0.5561097253100243,
     "Well 4 - Horizontal Gas well": 0.5561097253100243,
-    "sink": 0.8806560197681467,
-    "Well 1 - oil": 0.08267432304211811,
+    "choke_1": 0.08267432304211811,
+    "Completion": 0.02604067329477234,
+    "Gas lift injection": 0.08267432304211811,
     "choke_3": 0.20240514293389297,
-    "lower": 0.0795251047606047,
+    "choke_2": 0.03947772803667067,
+    "sink": 0.8806560197681467,
     "ESP": 0.03947772803667067,
-    "Well 3 - gas": 0.20240514293389297
+    "upper": 0.20240514293389297,
+    "lower": 0.0795251047606047,
+    "Well 2 - ESP": 0.03947772803667067,
+    "Well 3 - gas": 0.20240514293389297,
+    "choke_4": 0.5561097253100243,
+    "Well 1 - oil": 0.08267432304211811,
+    "J 1": 0.8806705805438165
    },
    "VolumeFlowrateWaterStockTank": {
     "Unit": "sm3/d",
-    "J 1": 124.12992779661454,
-    "Completion": 15.611622885407074,
     "J": 34.72308147443594,
-    "Gas lift injection": 32.49056832675295,
-    "choke_2": 73.79469041549211,
-    "choke_1": 32.49056832675295,
-    "upper": 2.2325031283997503,
-    "Well 2 - ESP": 73.79469041549211,
-    "choke_4": 15.611622885407074,
     "Well 4 - Horizontal Gas well": 15.611622885407074,
-    "sink": 124.12787546504747,
-    "Well 1 - oil": 32.49056832675295,
+    "choke_1": 32.49056832675295,
+    "Completion": 32.49056425378374,
+    "Gas lift injection": 32.49056832675295,
     "choke_3": 2.2325031283997503,
-    "lower": 2.2325017688782935,
+    "choke_2": 73.79469041549211,
+    "sink": 124.12787546504747,
     "ESP": 73.79469041549211,
-    "Well 3 - gas": 2.2325031283997503
+    "upper": 2.2325031283997503,
+    "lower": 2.2325017688782935,
+    "Well 2 - ESP": 73.79469041549211,
+    "Well 3 - gas": 2.2325031283997503,
+    "choke_4": 15.611622885407074,
+    "Well 1 - oil": 32.49056832675295,
+    "J 1": 124.12992779661454
    }
   }
  },
- "seconds": 16.1
+ "seconds": 16.9
 }

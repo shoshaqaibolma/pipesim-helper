@@ -156,7 +156,32 @@
    }
   },
   "Casing|Well_1:Casing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'Well_1:Casing', 'Template': '___NONE___'})"
+   "Well_1:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": 215.9,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": 8002.43681950247,
+    "Grade": "N80",
+    "InnerDiameter": 118.618,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 10.540999999999999,
+    "Length": 3048.0,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Choke|Ck": {
    "Ck": {
@@ -190,7 +215,38 @@
    }
   },
   "Completion|Well_1:Completion": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'Well_1:Completion', 'Template': '___NONE___'})"
+   "Well_1:Completion": {
+    "Name": "Completion",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "oil",
+    "AssociatedCompositionalFluid": "Heavy_Oil",
+    "AssociatedMFLFluid": null,
+    "Diameter": 17.779999999999998,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": 304.8,
+    "PhaseAngle": null,
+    "ReservoirPressure": 344.73785,
+    "ReservoirTemperature": 121.11111111111109,
+    "ShotDensity": 13.123359580052492,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRPIModel"
+   }
   },
   "CompositionalFluid|Heavy_Oil": {
    "Heavy_Oil": {
@@ -277,7 +333,11 @@
    }
   },
   "FlowCorrelation|Well_1:Correlation Oil_Well_Nodal_Analysis": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well_1:Correlation Oil_Well_Nodal_Analysis', 'Template': '___NONE___'})"
+   "Well_1:Correlation Oil_Well_Nodal_Analysis": {
+    "Name": "Correlation Oil_Well_Nodal_Analysis",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   }
   },
   "FluidComponent|Butane": {
    "Butane": {
@@ -1170,38 +1230,38 @@
    }
   },
   "GravelPack|Well_1:Completion:GravelPack": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'Well_1:Completion:GravelPack', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'GravelPack': 'Completion:GravelPack', 'Template': '___NONE___'})"
   },
   "IPRBackPressure|Well_1:Completion:IPRBACKPRESSURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'Well_1:Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRBackPressure': 'Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
   },
   "IPRDarcy|Well_1:Completion:IPRDARCY": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'Well_1:Completion:IPRDARCY', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRDarcy': 'Completion:IPRDARCY', 'Template': '___NONE___'})"
   },
   "IPRFetkovitch|Well_1:Completion:IPRFETKOVITCH": null,
   "IPRForchheimer|Well_1:Completion:IPRFORCHHEIMER": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'Well_1:Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRForchheimer': 'Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
   },
   "IPRHorizontalPI|Well_1:Completion:IPRHORIZONTALPI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'Well_1:Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRHorizontalPI': 'Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
   },
   "IPRHydraulicFracture|Well_1:Completion:IPRHYDRAULICFRACTURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'Well_1:Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRHydraulicFracture': 'Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
   },
   "IPRJones|Well_1:Completion:IPRJONES": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'Well_1:Completion:IPRJONES', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRJones': 'Completion:IPRJONES', 'Template': '___NONE___'})"
   },
   "IPRPIModel|Well_1:Completion:IPRPIModel": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'Well_1:Completion:IPRPIModel', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRPIModel': 'Completion:IPRPIModel', 'Template': '___NONE___'})"
   },
   "IPRPSSBabuOdeh|Well_1:Completion:IPRPSSBABUODEH": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'Well_1:Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRPSSBabuOdeh': 'Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
   },
   "IPRSSJoshi|Well_1:Completion:IPRSSJOSHI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'Well_1:Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRSSJoshi': 'Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
   },
   "IPRTriLinear|Well_1:Completion:IPRTRILINEAR": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'Well_1:Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRTriLinear': 'Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
   },
   "Junction|J1": {
    "J1": {
@@ -1211,16 +1271,91 @@
    }
   },
   "Packer|Well_1:Packer": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'Well_1:Packer', 'Template': '___NONE___'})"
+   "Well_1:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
   },
   "Source|Well_1:Source 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_1:Source 1', 'Template': '___NONE___'})"
+   "Well_1:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 13.789514586336722,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": "Heavy_Oil",
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well_1:WellString outlet10350": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_1:WellString outlet10350', 'Template': '___NONE___'})"
+   "Well_1:WellString outlet10350": {
+    "Name": "WellString outlet10350",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well_1:WellString outlet10352": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well_1:WellString outlet10352', 'Template': '___NONE___'})"
+   "Well_1:WellString outlet10352": {
+    "Name": "WellString outlet10352",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Study|Study 1": {
    "Study 1": {
@@ -1229,7 +1364,32 @@
    }
   },
   "Tubing|Well_1:Tubing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'Well_1:Tubing', 'Template': '___NONE___'})"
+   "Well_1:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": 7964.855902219927,
+    "Grade": "L80",
+    "InnerDiameter": 51.84139999999999,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 4.2418000000000005,
+    "Length": 2941.32,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Well|Well_1": {
    "Well_1": {
@@ -1276,7 +1436,7 @@
    "result": {
     "WebAPIVersion": "2023.1.615.0",
     "ToolkitVersion": "2023.1",
-    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_uso_a7ht\\WellTemplate3.pips",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_g2iaaopi\\WellTemplate3.pips",
     "UnitSystem": "PIPESIM_METRIC",
     "UiUnitSystem": "PIPESIM_FIELD"
    }
@@ -1351,7 +1511,7 @@
  "about": {
   "WebAPIVersion": "2023.1.615.0",
   "ToolkitVersion": "2023.1",
-  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_uso_a7ht\\WellTemplate3.pips",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_g2iaaopi\\WellTemplate3.pips",
   "UnitSystem": "PIPESIM_METRIC",
   "UiUnitSystem": "PIPESIM_FIELD"
  },
@@ -1359,29 +1519,29 @@
   "state": "Failed",
   "summary": {
    "Info": [
-    "2026-11-04T06:33:47.438Z    Beginning simulation...",
-    "2026-11-04T06:33:47.436Z    Running with 1 core",
-    "2026-11-04T06:33:47.949Z    Solver converged to a solution.",
-    "2026-11-04T06:33:47.976Z    Finished simulation"
+    "2026-11-04T07:55:19.511Z    Beginning simulation...",
+    "2026-11-04T07:55:19.509Z    Running with 1 core",
+    "2026-11-04T07:55:20.031Z    Solver converged to a solution.",
+    "2026-11-04T07:55:20.059Z    Finished simulation"
    ],
    "Error": [
-    "2026-11-04T06:33:47.817Z    [PSENGINE] Error 26001803   from PNET_3 : Junction J1 connects to only one branch: Well_1."
+    "2026-11-04T07:55:19.899Z    [PSENGINE] Error 26001803   from PNET_3 : Junction J1 connects to only one branch: Well_1."
    ],
    "Warning": []
   },
   "messages": [
-   "2026-11-04T06:33:47.489Z    Service starting...",
-   "2026-11-04T06:33:47.506Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
-   "2026-11-04T06:33:47.680Z    Service listening at 'net.pipe://localhost/pipe/b90a30512be74aef8d4dfec1c534b272'...",
-   "2026-11-04T06:33:47.757Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\18980",
-   "2026-11-04T06:33:47.757Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\18980\\WellTemplate3.tnt (1)",
-   "2026-11-04T06:33:47.795Z    .......................................................................... ",
-   "2026-11-04T06:33:47.797Z    Processing branch Well_1.",
-   "2026-11-04T06:33:47.797Z     Error 26001803  from PNET_3 :  Junction J1 connects to only one branch: Well_1.",
-   "2026-11-04T06:33:47.953Z     Disposing communication agent."
+   "2026-11-04T07:55:19.560Z    Service starting...",
+   "2026-11-04T07:55:19.576Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T07:55:19.762Z    Service listening at 'net.pipe://localhost/pipe/dc94fbf6075342418e1044405151a707'...",
+   "2026-11-04T07:55:19.842Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\24180",
+   "2026-11-04T07:55:19.842Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\24180\\WellTemplate3.tnt (1)",
+   "2026-11-04T07:55:19.876Z    .......................................................................... ",
+   "2026-11-04T07:55:19.878Z    Processing branch Well_1.",
+   "2026-11-04T07:55:19.878Z     Error 26001803  from PNET_3 :  Junction J1 connects to only one branch: Well_1.",
+   "2026-11-04T07:55:20.036Z     Disposing communication agent."
   ],
   "system": {},
   "node": {}
  },
- "seconds": 8.8
+ "seconds": 7.7
 }

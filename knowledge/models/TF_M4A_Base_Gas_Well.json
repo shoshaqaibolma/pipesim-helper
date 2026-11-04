@@ -82,10 +82,66 @@
  },
  "values": {
   "Casing|Well-1:Casing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'Well-1:Casing', 'Template': '___NONE___'})"
+   "Well-1:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 220.49740000000003,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 11.9888,
+    "Length": 3413.76,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Completion|Well-1:Completion": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'Well-1:Completion', 'Template': '___NONE___'})"
+   "Well-1:Completion": {
+    "Name": "Completion",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": "CFluid",
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 317.1588354857446,
+    "ReservoirTemperature": 137.77777777777789,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRPIModel"
+   }
   },
   "CompositionalFluid|CFluid": {
    "CFluid": {
@@ -136,7 +192,11 @@
    }
   },
   "FlowCorrelation|Well-1:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well-1:Default', 'Template': '___NONE___'})"
+   "Well-1:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   }
   },
   "FluidComponent|Butane": {
    "Butane": {
@@ -479,50 +539,125 @@
    }
   },
   "GravelPack|Well-1:Completion:GravelPack": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'Well-1:Completion:GravelPack', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well-1', 'GravelPack': 'Completion:GravelPack', 'Template': '___NONE___'})"
   },
   "IPRBackPressure|Well-1:Completion:IPRBACKPRESSURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'Well-1:Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well-1', 'IPRBackPressure': 'Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
   },
   "IPRDarcy|Well-1:Completion:IPRDARCY": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'Well-1:Completion:IPRDARCY', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well-1', 'IPRDarcy': 'Completion:IPRDARCY', 'Template': '___NONE___'})"
   },
   "IPRFetkovitch|Well-1:Completion:IPRFETKOVITCH": null,
   "IPRForchheimer|Well-1:Completion:IPRFORCHHEIMER": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'Well-1:Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well-1', 'IPRForchheimer': 'Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
   },
   "IPRHorizontalPI|Well-1:Completion:IPRHORIZONTALPI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'Well-1:Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well-1', 'IPRHorizontalPI': 'Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
   },
   "IPRHydraulicFracture|Well-1:Completion:IPRHYDRAULICFRACTURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'Well-1:Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well-1', 'IPRHydraulicFracture': 'Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
   },
   "IPRJones|Well-1:Completion:IPRJONES": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'Well-1:Completion:IPRJONES', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well-1', 'IPRJones': 'Completion:IPRJONES', 'Template': '___NONE___'})"
   },
   "IPRPIModel|Well-1:Completion:IPRPIModel": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'Well-1:Completion:IPRPIModel', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well-1', 'IPRPIModel': 'Completion:IPRPIModel', 'Template': '___NONE___'})"
   },
   "IPRPSSBabuOdeh|Well-1:Completion:IPRPSSBABUODEH": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'Well-1:Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well-1', 'IPRPSSBabuOdeh': 'Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
   },
   "IPRSSJoshi|Well-1:Completion:IPRSSJOSHI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'Well-1:Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well-1', 'IPRSSJoshi': 'Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
   },
   "IPRTriLinear|Well-1:Completion:IPRTRILINEAR": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'Well-1:Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well-1', 'IPRTriLinear': 'Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
   },
   "Packer|Well-1:Packer": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'Well-1:Packer', 'Template': '___NONE___'})"
+   "Well-1:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
   },
   "Source|Well-1:Source 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well-1:Source 1', 'Template': '___NONE___'})"
+   "Well-1:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well-1:WellString outlet10165": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well-1:WellString outlet10165', 'Template': '___NONE___'})"
+   "Well-1:WellString outlet10165": {
+    "Name": "WellString outlet10165",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well-1:WellString outlet10167": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well-1:WellString outlet10167', 'Template': '___NONE___'})"
+   "Well-1:WellString outlet10167": {
+    "Name": "WellString outlet10167",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Study|Study 1": {
    "Study 1": {
@@ -531,7 +666,32 @@
    }
   },
   "Tubing|Well-1:Tubing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'Well-1:Tubing', 'Template': '___NONE___'})"
+   "Well-1:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 88.29039999999999,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 6.654800000000001,
+    "Length": 3337.56,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Well|Well-1": {
    "Well-1": {
@@ -578,7 +738,7 @@
    "result": {
     "WebAPIVersion": "2023.1.615.0",
     "ToolkitVersion": "2023.1",
-    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_uwcig0w6\\TF_M4A_Base Gas Well.pips",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_jh7ln9s7\\TF_M4A_Base Gas Well.pips",
     "UnitSystem": "PIPESIM_METRIC",
     "UiUnitSystem": ""
    }
@@ -625,7 +785,7 @@
  "about": {
   "WebAPIVersion": "2023.1.615.0",
   "ToolkitVersion": "2023.1",
-  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_uwcig0w6\\TF_M4A_Base Gas Well.pips",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_jh7ln9s7\\TF_M4A_Base Gas Well.pips",
   "UnitSystem": "PIPESIM_METRIC",
   "UiUnitSystem": ""
  },
@@ -633,32 +793,32 @@
   "state": "Completed",
   "summary": {
    "Info": [
-    "2026-11-04T06:37:14.182Z    Beginning simulation...",
-    "2026-11-04T06:37:14.180Z    Running with 1 core",
-    "2026-11-04T06:37:14.593Z    Error: General engine error, code UnknownEngineError",
-    "2026-11-04T06:37:14.616Z    Finished simulation"
+    "2026-11-04T07:58:52.719Z    Beginning simulation...",
+    "2026-11-04T07:58:52.718Z    Running with 1 core",
+    "2026-11-04T07:58:53.144Z    Error: General engine error, code UnknownEngineError",
+    "2026-11-04T07:58:53.167Z    Finished simulation"
    ],
    "Error": [],
    "Warning": [
-    "2026-11-04T06:37:14.566Z    [PSENGINE] Warning 26001103   from PNET_3 : After switching off watered out wells and redundant branches there was no network to solve!"
+    "2026-11-04T07:58:53.117Z    [PSENGINE] Warning 26001103   from PNET_3 : After switching off watered out wells and redundant branches there was no network to solve!"
    ]
   },
   "messages": [
-   "2026-11-04T06:37:14.231Z    Service starting...",
-   "2026-11-04T06:37:14.249Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
-   "2026-11-04T06:37:14.432Z    Service listening at 'net.pipe://localhost/pipe/87066c390528439997475765b6af078b'...",
-   "2026-11-04T06:37:14.507Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\8520",
-   "2026-11-04T06:37:14.507Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\8520\\TF_M4A_Base Gas Well.tnt (1)",
-   "2026-11-04T06:37:14.545Z    ....................................",
-   "2026-11-04T06:37:14.545Z    Processing branch geometry (.PSM/.PST) files",
-   "2026-11-04T06:37:14.545Z    ",
-   "2026-11-04T06:37:14.545Z     Warning 26001103  from PNET_3 :  After switching off watered out wells and redundant branches there was no network to solve!",
-   "2026-11-04T06:37:14.568Z     PNET API Ducks out of line: \"Set TNTfile\" call required before \"Validate\" call.",
-   "2026-11-04T06:37:14.568Z      pnet_do: error from called routine for name FULLSOLVE",
-   "2026-11-04T06:37:14.596Z     Disposing communication agent."
+   "2026-11-04T07:58:52.768Z    Service starting...",
+   "2026-11-04T07:58:52.784Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T07:58:52.959Z    Service listening at 'net.pipe://localhost/pipe/a0c39e2a708f4a4eaebaf93602dec293'...",
+   "2026-11-04T07:58:53.040Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\8136",
+   "2026-11-04T07:58:53.040Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\8136\\TF_M4A_Base Gas Well.tnt (1)",
+   "2026-11-04T07:58:53.097Z    ....................................",
+   "2026-11-04T07:58:53.097Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T07:58:53.097Z    ",
+   "2026-11-04T07:58:53.097Z     Warning 26001103  from PNET_3 :  After switching off watered out wells and redundant branches there was no network to solve!",
+   "2026-11-04T07:58:53.119Z     PNET API Ducks out of line: \"Set TNTfile\" call required before \"Validate\" call.",
+   "2026-11-04T07:58:53.119Z      pnet_do: error from called routine for name FULLSOLVE",
+   "2026-11-04T07:58:53.148Z     Disposing communication agent."
   ],
   "system": {},
   "node": {}
  },
- "seconds": 7.9
+ "seconds": 8.8
 }

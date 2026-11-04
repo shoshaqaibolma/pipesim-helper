@@ -173,7 +173,32 @@
    }
   },
   "Casing|Well:Casing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Casing': 'Well:Casing', 'Template': '___NONE___'})"
+   "Well:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 150.3934,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 15.039340000000001,
+    "Length": 1402.0800000000002,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "Choke|Choke": {
    "Choke": {
@@ -207,7 +232,38 @@
    }
   },
   "Completion|Well:VertComp": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Completion': 'Well:VertComp', 'Template': '___NONE___'})"
+   "Well:VertComp": {
+    "Name": "VertComp",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "B-Fluid",
+    "AssociatedCompositionalFluid": "C-Fluid",
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 173.3341983502526,
+    "ReservoirTemperature": 54.44444444444446,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": true,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRPIModel"
+   }
   },
   "CompositionalFluid|C-Fluid": {
    "C-Fluid": {
@@ -313,31 +369,35 @@
    }
   },
   "FlowCorrelation|FL-1:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL-1:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL-1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|FL-2:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL-2:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL-2', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|FL-3:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL-3:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL-3', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|FL-4:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL-4:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL-4', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|GL-1:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'GL-1:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'GL-1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|GL-2:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'GL-2:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'GL-2', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|LL-1:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'LL-1:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'LL-1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|LL-2:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'LL-2:Default', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'LL-2', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
   },
   "FlowCorrelation|Well:Default": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'Well:Default', 'Template': '___NONE___'})"
+   "Well:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999997,
+    "IsActive": false
+   }
   },
   "Flowline|FL-1": {
    "FL-1": {
@@ -1098,38 +1158,38 @@
    }
   },
   "GravelPack|Well:VertComp:GravelPack": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'GravelPack': 'Well:VertComp:GravelPack', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'GravelPack': 'VertComp:GravelPack', 'Template': '___NONE___'})"
   },
   "IPRBackPressure|Well:VertComp:IPRBACKPRESSURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRBackPressure': 'Well:VertComp:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRBackPressure': 'VertComp:IPRBACKPRESSURE', 'Template': '___NONE___'})"
   },
   "IPRDarcy|Well:VertComp:IPRDARCY": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRDarcy': 'Well:VertComp:IPRDARCY', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRDarcy': 'VertComp:IPRDARCY', 'Template': '___NONE___'})"
   },
   "IPRFetkovitch|Well:VertComp:IPRFETKOVITCH": null,
   "IPRForchheimer|Well:VertComp:IPRFORCHHEIMER": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRForchheimer': 'Well:VertComp:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRForchheimer': 'VertComp:IPRFORCHHEIMER', 'Template': '___NONE___'})"
   },
   "IPRHorizontalPI|Well:VertComp:IPRHORIZONTALPI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHorizontalPI': 'Well:VertComp:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRHorizontalPI': 'VertComp:IPRHORIZONTALPI', 'Template': '___NONE___'})"
   },
   "IPRHydraulicFracture|Well:VertComp:IPRHYDRAULICFRACTURE": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRHydraulicFracture': 'Well:VertComp:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRHydraulicFracture': 'VertComp:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
   },
   "IPRJones|Well:VertComp:IPRJONES": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRJones': 'Well:VertComp:IPRJONES', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRJones': 'VertComp:IPRJONES', 'Template': '___NONE___'})"
   },
   "IPRPIModel|Well:VertComp:IPRPIModel": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPIModel': 'Well:VertComp:IPRPIModel', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRPIModel': 'VertComp:IPRPIModel', 'Template': '___NONE___'})"
   },
   "IPRPSSBabuOdeh|Well:VertComp:IPRPSSBABUODEH": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRPSSBabuOdeh': 'Well:VertComp:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRPSSBabuOdeh': 'VertComp:IPRPSSBABUODEH', 'Template': '___NONE___'})"
   },
   "IPRSSJoshi|Well:VertComp:IPRSSJOSHI": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRSSJoshi': 'Well:VertComp:IPRSSJOSHI', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRSSJoshi': 'VertComp:IPRSSJOSHI', 'Template': '___NONE___'})"
   },
   "IPRTriLinear|Well:VertComp:IPRTRILINEAR": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'IPRTriLinear': 'Well:VertComp:IPRTRILINEAR', 'Template': '___NONE___'})"
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRTriLinear': 'VertComp:IPRTRILINEAR', 'Template': '___NONE___'})"
   },
   "Junction|Manifold": {
    "Manifold": {
@@ -1139,7 +1199,10 @@
    }
   },
   "Packer|Well:Packer": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Packer': 'Well:Packer', 'Template': '___NONE___'})"
+   "Well:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
   },
   "Pump|Pmp": {
    "Pmp": {
@@ -1204,13 +1267,85 @@
    }
   },
   "Source|Well:Source 1": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well:Source 1', 'Template': '___NONE___'})"
+   "Well:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "B-Fluid",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well:WellString outlet10269": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well:WellString outlet10269', 'Template': '___NONE___'})"
+   "Well:WellString outlet10269": {
+    "Name": "WellString outlet10269",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Source|Well:WellString outlet10271": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Source': 'Well:WellString outlet10271', 'Template': '___NONE___'})"
+   "Well:WellString outlet10271": {
+    "Name": "WellString outlet10271",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
   },
   "Study|Study 1": {
    "Study 1": {
@@ -1219,7 +1354,32 @@
    }
   },
   "Tubing|Well:Tubing": {
-   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Tubing': 'Well:Tubing', 'Template': '___NONE___'})"
+   "Well:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 100.53320000000001,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 6.8834,
+    "Length": 1341.1200000000001,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
   },
   "TwoPhaseSeparator|Separator": {
    "Separator": {
@@ -1276,7 +1436,7 @@
    "result": {
     "WebAPIVersion": "2023.1.615.0",
     "ToolkitVersion": "2023.1",
-    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_iuh__t9i\\CSN_301_Small Network.pips",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_w4nfo2vw\\CSN_301_Small Network.pips",
     "UnitSystem": "PIPESIM_METRIC",
     "UiUnitSystem": "PIPESIM_FIELD"
    }
@@ -1600,7 +1760,7 @@
  "about": {
   "WebAPIVersion": "2023.1.615.0",
   "ToolkitVersion": "2023.1",
-  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_iuh__t9i\\CSN_301_Small Network.pips",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_w4nfo2vw\\CSN_301_Small Network.pips",
   "UnitSystem": "PIPESIM_METRIC",
   "UiUnitSystem": "PIPESIM_FIELD"
  },
@@ -1608,68 +1768,68 @@
   "state": "Completed",
   "summary": {
    "Info": [
-    "2026-11-04T06:35:18.329Z    Beginning simulation...",
-    "2026-11-04T06:35:18.327Z    Running with 6 cores",
-    "2026-11-04T06:35:23.332Z    Solver converged to a solution.",
-    "2026-11-04T06:35:23.368Z    Finished simulation"
+    "2026-11-04T07:56:52.369Z    Beginning simulation...",
+    "2026-11-04T07:56:52.366Z    Running with 6 cores",
+    "2026-11-04T07:56:57.366Z    Solver converged to a solution.",
+    "2026-11-04T07:56:57.400Z    Finished simulation"
    ],
    "Error": [],
    "Warning": []
   },
   "messages": [
-   "2026-11-04T06:35:18.443Z    Service starting...",
-   "2026-11-04T06:35:18.471Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
-   "2026-11-04T06:35:18.714Z    Service listening at 'net.pipe://localhost/pipe/203aa7252b35427ba099b0d67314682c'...",
-   "2026-11-04T06:35:18.841Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\23124",
-   "2026-11-04T06:35:18.841Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\23124\\CSN_301_Small Network.tnt (6)",
-   "2026-11-04T06:35:19.791Z    .......................................................................... ",
-   "2026-11-04T06:35:19.793Z    Processing branch Oil-Facility.. ",
-   "2026-11-04T06:35:19.793Z    Processing branch Separator_LL-1.. ",
-   "2026-11-04T06:35:19.794Z    Processing branch Source.. ",
-   "2026-11-04T06:35:19.796Z    Processing branch Well.. ",
-   "2026-11-04T06:35:19.797Z    Processing branch Manifold_Separator.. ",
-   "2026-11-04T06:35:19.797Z    Processing branch Separator_GL-1.. ",
-   "2026-11-04T06:35:19.799Z    Processing branch Gas-Sales.",
-   "2026-11-04T06:35:19.799Z    Processing branch geometry (.PSM/.PST) files",
-   "2026-11-04T06:35:20.023Z    ",
-   "2026-11-04T06:35:20.333Z     Iteration   1 P error :  76.23 %, F error : 183.89 %, L error :   0.00 %",
-   "2026-11-04T06:35:20.614Z     Iteration   2 P error :  47.99 %, F error :  41.05 %, L error :   0.00 %",
-   "2026-11-04T06:35:20.883Z     Iteration   3 P error :  40.60 %, F error :  11.52 %, L error :   0.00 %",
-   "2026-11-04T06:35:21.144Z     Iteration   4 P error :  19.31 %, F error :  16.38 %, L error :   0.00 %",
-   "2026-11-04T06:35:21.387Z     Iteration   5 P error :  16.73 %, F error :  34.79 %, L error :   0.00 %",
-   "2026-11-04T06:35:21.609Z     Iteration   6 P error :   5.73 %, F error :  11.98 %, L error :   0.00 %",
-   "2026-11-04T06:35:21.810Z     Iteration   7 P error :   7.20 %, F error :   0.86 %, L error :   0.00 %",
-   "2026-11-04T06:35:22.011Z     Iteration   8 P error :   5.52 %, F error :   1.18 %, L error :   0.00 %",
-   "2026-11-04T06:35:22.188Z     Iteration   9 P error :   1.73 %, F error :   2.06 %, L error :   0.00 %",
-   "2026-11-04T06:35:22.364Z     Iteration  10 P error :   0.86 %, F error :   1.99 %, L error :   0.00 %",
-   "2026-11-04T06:35:22.539Z     Iteration  11 P error :   1.08 %, F error :   3.08 %, L error :   0.00 %",
-   "2026-11-04T06:35:22.710Z     Iteration  12 P error :   0.95 %, F error :   3.06 %, L error :   0.00 %",
-   "2026-11-04T06:35:22.877Z     Iteration  13 P error :   0.67 %, F error :   0.09 %, L error :   0.00 %",
-   "2026-11-04T06:35:22.878Z    ",
-   "2026-11-04T06:35:22.878Z    ",
-   "2026-11-04T06:35:22.878Z     Converged.                                                                     ",
-   "2026-11-04T06:35:22.878Z     ... network converged at iteration  13, final rms error :   0.671870E-02",
-   "2026-11-04T06:35:22.878Z      Start Post-Processing results",
-   "2026-11-04T06:35:22.978Z    ",
-   "2026-11-04T06:35:22.978Z       Elapsed time:",
-   "2026-11-04T06:35:22.979Z    ",
-   "2026-11-04T06:35:22.979Z       Network Executive      4.14",
-   "2026-11-04T06:35:22.979Z       PIPESIM sub-tasks      0.00",
-   "2026-11-04T06:35:22.979Z                         ---------",
-   "2026-11-04T06:35:22.979Z                 Total        4.14",
-   "2026-11-04T06:35:22.979Z    ",
-   "2026-11-04T06:35:22.979Z       CPU time:",
-   "2026-11-04T06:35:22.979Z    ",
-   "2026-11-04T06:35:22.979Z               User task      3.97",
-   "2026-11-04T06:35:22.979Z               System         0.47",
-   "2026-11-04T06:35:22.979Z                         ---------",
-   "2026-11-04T06:35:22.979Z                 Total        4.44",
-   "2026-11-04T06:35:22.983Z     Disposing communication agent.",
-   "2026-11-04T06:35:22.983Z     Disposing communication agent.",
-   "2026-11-04T06:35:22.983Z     Disposing communication agent.",
-   "2026-11-04T06:35:22.984Z     Disposing communication agent.",
-   "2026-11-04T06:35:22.984Z     Disposing communication agent.",
-   "2026-11-04T06:35:23.344Z     Disposing communication agent."
+   "2026-11-04T07:56:52.457Z    Service starting...",
+   "2026-11-04T07:56:52.487Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T07:56:52.718Z    Service listening at 'net.pipe://localhost/pipe/7d014ca2868d4a49bb5912afcb5f03ff'...",
+   "2026-11-04T07:56:52.836Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\21372",
+   "2026-11-04T07:56:52.836Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\21372\\CSN_301_Small Network.tnt (6)",
+   "2026-11-04T07:56:53.747Z    .......................................................................... ",
+   "2026-11-04T07:56:53.749Z    Processing branch Oil-Facility.. ",
+   "2026-11-04T07:56:53.749Z    Processing branch Separator_LL-1.. ",
+   "2026-11-04T07:56:53.750Z    Processing branch Source.. ",
+   "2026-11-04T07:56:53.752Z    Processing branch Well.. ",
+   "2026-11-04T07:56:53.753Z    Processing branch Manifold_Separator.. ",
+   "2026-11-04T07:56:53.754Z    Processing branch Separator_GL-1.. ",
+   "2026-11-04T07:56:53.756Z    Processing branch Gas-Sales.",
+   "2026-11-04T07:56:53.756Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T07:56:53.970Z    ",
+   "2026-11-04T07:56:54.373Z     Iteration   1 P error :  76.23 %, F error : 183.89 %, L error :   0.00 %",
+   "2026-11-04T07:56:54.659Z     Iteration   2 P error :  47.99 %, F error :  41.05 %, L error :   0.00 %",
+   "2026-11-04T07:56:54.929Z     Iteration   3 P error :  40.60 %, F error :  11.52 %, L error :   0.00 %",
+   "2026-11-04T07:56:55.187Z     Iteration   4 P error :  19.31 %, F error :  16.38 %, L error :   0.00 %",
+   "2026-11-04T07:56:55.439Z     Iteration   5 P error :  16.73 %, F error :  34.79 %, L error :   0.00 %",
+   "2026-11-04T07:56:55.656Z     Iteration   6 P error :   5.73 %, F error :  11.98 %, L error :   0.00 %",
+   "2026-11-04T07:56:55.854Z     Iteration   7 P error :   7.20 %, F error :   0.86 %, L error :   0.00 %",
+   "2026-11-04T07:56:56.044Z     Iteration   8 P error :   5.52 %, F error :   1.18 %, L error :   0.00 %",
+   "2026-11-04T07:56:56.222Z     Iteration   9 P error :   1.73 %, F error :   2.06 %, L error :   0.00 %",
+   "2026-11-04T07:56:56.409Z     Iteration  10 P error :   0.86 %, F error :   1.99 %, L error :   0.00 %",
+   "2026-11-04T07:56:56.580Z     Iteration  11 P error :   1.08 %, F error :   3.08 %, L error :   0.00 %",
+   "2026-11-04T07:56:56.750Z     Iteration  12 P error :   0.95 %, F error :   3.06 %, L error :   0.00 %",
+   "2026-11-04T07:56:56.910Z     Iteration  13 P error :   0.67 %, F error :   0.09 %, L error :   0.00 %",
+   "2026-11-04T07:56:56.911Z    ",
+   "2026-11-04T07:56:56.911Z    ",
+   "2026-11-04T07:56:56.911Z     Converged.                                                                     ",
+   "2026-11-04T07:56:56.911Z     ... network converged at iteration  13, final rms error :   0.671870E-02",
+   "2026-11-04T07:56:56.911Z      Start Post-Processing results",
+   "2026-11-04T07:56:57.007Z    ",
+   "2026-11-04T07:56:57.007Z       Elapsed time:",
+   "2026-11-04T07:56:57.007Z    ",
+   "2026-11-04T07:56:57.007Z       Network Executive      4.17",
+   "2026-11-04T07:56:57.007Z       PIPESIM sub-tasks      0.00",
+   "2026-11-04T07:56:57.007Z                         ---------",
+   "2026-11-04T07:56:57.007Z                 Total        4.17",
+   "2026-11-04T07:56:57.007Z    ",
+   "2026-11-04T07:56:57.007Z       CPU time:",
+   "2026-11-04T07:56:57.007Z    ",
+   "2026-11-04T07:56:57.007Z               User task      3.98",
+   "2026-11-04T07:56:57.007Z               System         0.44",
+   "2026-11-04T07:56:57.007Z                         ---------",
+   "2026-11-04T07:56:57.007Z                 Total        4.42",
+   "2026-11-04T07:56:57.013Z     Disposing communication agent.",
+   "2026-11-04T07:56:57.013Z     Disposing communication agent.",
+   "2026-11-04T07:56:57.014Z     Disposing communication agent.",
+   "2026-11-04T07:56:57.014Z     Disposing communication agent.",
+   "2026-11-04T07:56:57.015Z     Disposing communication agent.",
+   "2026-11-04T07:56:57.377Z     Disposing communication agent."
   ],
   "system": {},
   "node": {
@@ -1677,81 +1837,81 @@
     "Unit": "bara",
     "Compressor": 84.66709202224133,
     "Oil-Facility": 20.684271819744264,
+    "Separator": 46.107692531244886,
     "Source": 46.704869591999675,
     "Pmp": 26.337494838370606,
-    "Separator": 46.107692531244886,
-    "VertComp": 166.44818832115945,
+    "Choke": 47.52175163680994,
     "Gas-Sales": 41.36854365102284,
     "Well": 67.05023561463324,
     "Manifold": 46.59376501945589,
-    "Choke": 47.52175163680994
+    "VertComp": 166.44818832115945
    },
    "Temperature": {
     "Unit": "degC",
     "Compressor": 66.96800188742327,
     "Oil-Facility": 24.264547543068034,
+    "Separator": 26.394040005138777,
     "Source": 60.00000000000006,
     "Pmp": 26.743025564540005,
-    "Separator": 26.394040005138777,
-    "VertComp": 53.812098639940416,
+    "Choke": 25.849719337262,
     "Gas-Sales": 41.55761891091771,
     "Well": 32.16762484641481,
     "Manifold": 26.59390990004715,
-    "Choke": 25.849719337262
+    "VertComp": 53.812098639940416
    },
    "VolumeFlowrateLiquidStockTank": {
     "Unit": "sm3/d",
     "Compressor": 0.5656430416366756,
     "Oil-Facility": 1186.6173462241604,
+    "Separator": 0.5662142516901058,
     "Source": 32.69522495834796,
     "Pmp": 1186.6173462241604,
-    "Separator": 0.5662142516901058,
-    "VertComp": 804.6089921425155,
+    "Choke": 804.6089921425155,
     "Gas-Sales": 0.5656430416366756,
     "Well": 804.6089921425155,
     "Manifold": 837.3042171008635,
-    "Choke": 804.6089921425155
+    "VertComp": 804.6089921425155
    },
    "VolumeFlowrateOilStockTank": {
     "Unit": "sm3/d",
     "Compressor": 0.5656430416366756,
     "Oil-Facility": 1186.6173462241604,
+    "Separator": 0.5662142516901058,
     "Source": 32.69522495834796,
     "Pmp": 1186.6173462241604,
-    "Separator": 0.5662142516901058,
-    "VertComp": 804.6089921425155,
+    "Choke": 804.6089921425155,
     "Gas-Sales": 0.5656430416366756,
     "Well": 804.6089921425155,
     "Manifold": 837.3042171008635,
-    "Choke": 804.6089921425155
+    "VertComp": 804.6089921425155
    },
    "VolumeFlowrateGasStockTank": {
     "Unit": "mmsm3/d",
     "Compressor": 1.1272775707031673,
     "Oil-Facility": 0.2575508115395249,
+    "Separator": 1.1284159428460099,
     "Source": 0.056633693184019944,
     "Pmp": 0.2575508115395249,
-    "Separator": 1.1284159428460099,
-    "VertComp": 1.3937196900206072,
+    "Choke": 1.3937196900206072,
     "Gas-Sales": 1.1272775707031673,
     "Well": 1.3937196900206072,
     "Manifold": 1.4503533832046271,
-    "Choke": 1.3937196900206072
+    "VertComp": 1.3937196900206072
    },
    "VolumeFlowrateWaterStockTank": {
     "Unit": "sm3/d",
     "Compressor": 0.0,
     "Oil-Facility": 0.0,
+    "Separator": 0.0,
     "Source": 0.0,
     "Pmp": 0.0,
-    "Separator": 0.0,
-    "VertComp": 0.0,
+    "Choke": 0.0,
     "Gas-Sales": 0.0,
     "Well": 0.0,
     "Manifold": 0.0,
-    "Choke": 0.0
+    "VertComp": 0.0
    }
   }
  },
- "seconds": 12.1
+ "seconds": 12.5
 }
