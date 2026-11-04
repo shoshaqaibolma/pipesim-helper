@@ -1,64 +1,46 @@
-JOB jobs/24_eval_choke_recipe.txt started 2026-11-04 20:42:52
+JOB jobs/25_check_setup.txt started 2026-11-05 01:08:16
 
-$ "D:\Program\Pipesim toolkit\python.exe" tests\real_eval.py
+$ "D:\Program\Pipesim toolkit\python.exe" tools\check_setup.py
 [exit 0]
-before field_project        done=True correct=True tools=9 invented=[] 78s :: most oil at separator 10.0 bara (expected the lowest, 10)
-before gaslift_nodal        done=True correct=True tools=10 invented=['0.075'] 116s :: best lift rate 0.08 mmsm3/d (expected about 0.1)
-before gaslift_allocation   done=True correct=True tools=7 invented=['0.11'] 109s :: best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)
-before uncertainty          done=True correct=True tools=8 invented=[] 72s :: ranking ['BO.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)
-before debottleneck         done=True correct=True tools=9 invented=[] 89s :: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
-before pipeline_sizing      done=True correct=True tools=33 invented=['36', '2.9', '66', '27.1', '11.9'] 142s :: smallest diameter with inlet <= 90 bara: 254.0 (expected 254)
-before choke_sizing         done=True correct=True tools=10 invented=[] 75s :: most oil at 32.0 mm (expected the largest choke, 32 mm)
-before water_rise           done=True correct=True tools=7 invented=[] 73s :: least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)
-knowledge field_project        done=True correct=True tools=9 invented=[] 114s :: most oil at separator 10.0 bara (expected the lowest, 10)
-knowledge gaslift_nodal        done=True correct=True tools=10 invented=[] 113s :: best lift rate 0.08 mmsm3/d (expected about 0.1)
-knowledge gaslift_allocation   done=True correct=True tools=7 invented=[] 106s :: best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)
-knowledge uncertainty          done=True correct=True tools=6 invented=[] 66s :: ranking ['BO.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)
-knowledge debottleneck         done=True correct=True tools=9 invented=['375'] 100s :: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
-knowledge pipeline_sizing      done=True correct=True tools=8 invented=[] 52s :: smallest diameter with inlet <= 90 bara: 254.0 (expected 254)
-knowledge choke_sizing         done=True correct=True tools=6 invented=[] 62s :: most oil at 32.0 mm (expected the largest choke, 32 mm)
-knowledge water_rise           done=True correct=True tools=7 invented=[] 71s :: least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)
+Python 3.11.4 at D:\Program\Pipesim toolkit\python.exe
 
-| scenario | condition | study done | correct answer | tool calls | checker errors | JSON retries | invented numbers (first reply) | still flagged | time s |
-|---|---|---|---|---|---|---|---|---|---|
-| field_project | before | yes | yes | 9 | 0 | 0 | 0 | - | 78 |
-| field_project | knowledge | yes | yes | 9 | 0 | 0 | 0 | 0 | 114 |
-| gaslift_nodal | before | yes | yes | 10 | 0 | 0 | 1 | - | 116 |
-| gaslift_nodal | knowledge | yes | yes | 10 | 0 | 0 | 0 | 0 | 113 |
-| gaslift_allocation | before | yes | yes | 7 | 0 | 0 | 1 | - | 109 |
-| gaslift_allocation | knowledge | yes | yes | 7 | 0 | 0 | 0 | 0 | 106 |
-| uncertainty | before | yes | yes | 8 | 0 | 0 | 0 | - | 72 |
-| uncertainty | knowledge | yes | yes | 6 | 0 | 0 | 0 | 0 | 66 |
-| debottleneck | before | yes | yes | 9 | 0 | 0 | 0 | - | 89 |
-| debottleneck | knowledge | yes | yes | 9 | 0 | 0 | 1 | 0 | 100 |
-| pipeline_sizing | before | yes | yes | 33 | 11 | 0 | 5 | - | 142 |
-| pipeline_sizing | knowledge | yes | yes | 8 | 0 | 0 | 0 | 0 | 52 |
-| choke_sizing | before | yes | yes | 10 | 2 | 0 | 0 | - | 75 |
-| choke_sizing | knowledge | yes | yes | 6 | 0 | 0 | 0 | 0 | 62 |
-| water_rise (held out) | before | yes | yes | 7 | 0 | 0 | 0 | - | 73 |
-| water_rise (held out) | knowledge | yes | yes | 7 | 0 | 0 | 0 | 0 | 71 |
+[OK] package openai
+[OK] package matplotlib
+[OK] PIPESIM Python Toolkit (sixgill): D:\Program\Pipesim toolkit\Lib\site-packages\sixgill
+[OK] PIPESIM simulation (licence + engine): test well flows 832 sm3/d
 
-**before**: studies done 8/8, correct answers 8/8, invented numbers in replies 7, checker errors 13, time 12 min
-**knowledge**: studies done 8/8, correct answers 8/8, invented numbers in replies 1 (left after rewrite: 0), checker errors 0, time 11 min
+Settings from config.example.bat
+[OK] llama-server.exe: D:\llama.cpp\b12081\llama-server.exe
+[OK] model file: D:\models\Qwen3.5-9B-Q4_K_M.gguf (5.7 GB)
+[OK] NVIDIA GPU: NVIDIA GeForce RTX 3060 Ti, 8192 MiB
+[WARN] model server: not running now (normal: agent_ui.bat starts it)
 
-- before / field_project: most oil at separator 10.0 bara (expected the lowest, 10)
-- before / gaslift_nodal: best lift rate 0.08 mmsm3/d (expected about 0.1)
-- before / gaslift_allocation: best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)
-- before / uncertainty: ranking ['BO.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)
-- before / debottleneck: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
-- before / pipeline_sizing: smallest diameter with inlet <= 90 bara: 254.0 (expected 254)
-- before / choke_sizing: most oil at 32.0 mm (expected the largest choke, 32 mm)
-- before / water_rise: least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)
-- knowledge / field_project: most oil at separator 10.0 bara (expected the lowest, 10)
-- knowledge / gaslift_nodal: best lift rate 0.08 mmsm3/d (expected about 0.1)
-- knowledge / gaslift_allocation: best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)
-- knowledge / uncertainty: ranking ['BO.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)
-- knowledge / debottleneck: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
-- knowledge / pipeline_sizing: smallest diameter with inlet <= 90 bara: 254.0 (expected 254)
-- knowledge / choke_sizing: most oil at 32.0 mm (expected the largest choke, 32 mm)
-- knowledge / water_rise: least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)
-
-(llama-server stopped)
+All set. Double-click agent_ui.bat to open the assistant in your browser.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 33584
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 
 
-JOB finished 2026-11-04 21:07:57
+$ "D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\uncertainty.txt
+[exit 0]
+starting llama-server ...
+LLAMA-SERVER DID NOT START. Last log lines:
+"config.example.bat" ­Ґ пў«пҐвбп ў­гваҐ­­Ґ© Ё«Ё ў­Ґи­Ґ©
+Є®¬ ­¤®©, ЁбЇ®«­пҐ¬®© Їа®Ја ¬¬®© Ё«Ё Ї ЄҐв­л¬ д ©«®¬.
+llama-server.exe not found in "". Fix LLAMA_DIR in config.bat.
+„«п Їа®¤®«¦Ґ­Ёп ­ ¦¬ЁвҐ «оЎго Є« ўЁиг . . . 
+
+
+
+JOB finished 2026-11-05 01:09:03
