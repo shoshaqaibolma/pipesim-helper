@@ -1,0 +1,3 @@
+# Setup checker on the real PC (no config.bat yet: it reads config.example.bat), then the model starts via start_llm.bat.
+"D:\Program\Pipesim toolkit\python.exe" tools\check_setup.py
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\uncertainty.txt

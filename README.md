@@ -14,6 +14,8 @@ No model data leaves the machine.
   mcp_server.py (optional) ──► same tools for Claude Desktop / LM Studio / other MCP clients
 ```
 
+**New PC? Follow [`INSTALL.md`](INSTALL.md)** (setup.bat creates `config.bat` with your paths and checks everything).
+
 ## Quick start (already set up on this PC)
 Double-click **`agent_ui.bat`** for the browser chat window (or `agent.bat` for the terminal).
 Validation against the official case studies and engineering scenarios: [`docs/VALIDATION.md`](docs/VALIDATION.md).
@@ -50,7 +52,8 @@ Adjust `pipesim_tools.py` using PIPESIM's Python Toolkit help, which has the exa
 1. Download a CUDA build of llama.cpp: https://github.com/ggml-org/llama.cpp/releases
 2. Download the Qwen 3.5 9B Q4_K_M GGUF (about 6 GB) from Unsloth's or Qwen's Hugging Face page.
    Fallback if tool calls come out malformed: Gemma 4 E4B (about 5 GB).
-3. Set `MODEL_PATH` in `start_llm.bat` and run it. `--jinja` is required for tool calling.
+3. Set `LLAMA_DIR` and `MODEL_PATH` in `config.bat` (created by `setup.bat`) and run `start_llm.bat`.
+   `--jinja` is required for tool calling.
 
 ## 4. Run
 ```bat

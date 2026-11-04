@@ -1,14 +1,20 @@
 @echo off
-REM Starts llama.cpp's OpenAI-compatible server with Qwen 3.5 9B (sized for an 8 GB GPU such as an RTX 3060 Ti).
-REM 1. Download a recent llama.cpp CUDA build: https://github.com/ggml-org/llama.cpp/releases
-REM 2. Download the Qwen 3.5 9B Q4_K_M GGUF (about 6 GB) from Unsloth's or Qwen's Hugging Face page.
-REM 3. Set MODEL_PATH below.
-REM Alternative if tool calls come out malformed: Gemma 4 E4B (about 5 GB). Swap MODEL_PATH only.
-set MODEL_PATH=D:\models\Qwen3.5-9B-Q4_K_M.gguf
-set LLAMA_DIR=D:\llama.cpp\b12081
-"%LLAMA_DIR%\llama-server.exe" -m "%MODEL_PATH%" --jinja -c 16384 -ngl 99 -fa on --reasoning-budget 0 --host 127.0.0.1 --port 8080 --temp 0
+REM Starts llama.cpp's OpenAI-compatible server with the model set in config.bat.
+cd /d "%~dp0"
+if exist config.bat (call config.bat) else (call config.example.bat)
+if not exist "%LLAMA_DIR%\llama-server.exe" (
+    echo llama-server.exe not found in "%LLAMA_DIR%". Fix LLAMA_DIR in config.bat.
+    pause
+    exit /b 1
+)
+if not exist "%MODEL_PATH%" (
+    echo Model file not found: "%MODEL_PATH%". Fix MODEL_PATH in config.bat.
+    pause
+    exit /b 1
+)
+"%LLAMA_DIR%\llama-server.exe" -m "%MODEL_PATH%" --jinja -c %LLM_CTX% -ngl %LLM_GPU_LAYERS% -fa on --reasoning-budget 0 --host 127.0.0.1 --port 8080 --temp 0
 REM --jinja   : required for tool calling (uses the model's own chat template)
-REM -c 16384  : context size; drop to 8192 if you get out-of-memory errors
-REM -ngl 99   : keep the whole model on the GPU (it fits in 8 GB at Q4)
+REM -c        : context size (LLM_CTX in config.bat)
+REM -ngl      : layers on the GPU (LLM_GPU_LAYERS in config.bat)
 REM -fa on    : flash attention, which saves VRAM (older builds use plain -fa)
 REM --reasoning-budget 0 : thinking off; Qwen 3.5 otherwise thinks until the context is full

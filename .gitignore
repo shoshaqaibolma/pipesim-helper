@@ -6,3 +6,4 @@ projects/
 /*.pips
 /*.pipr
 /*.project.json
+/config.bat
