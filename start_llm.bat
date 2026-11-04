@@ -1,7 +1,9 @@
 @echo off
 REM Starts llama.cpp's OpenAI-compatible server with the model set in config.bat.
 cd /d "%~dp0"
-if exist config.bat (call config.bat) else (call config.example.bat)
+set "CFG=%~dp0config.bat"
+if not exist "%CFG%" set "CFG=%~dp0config.example.bat"
+call "%CFG%"
 if not exist "%LLAMA_DIR%\llama-server.exe" (
     echo llama-server.exe not found in "%LLAMA_DIR%". Fix LLAMA_DIR in config.bat.
     pause

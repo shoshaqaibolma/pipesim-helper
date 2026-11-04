@@ -9,7 +9,7 @@ if not exist config.bat (
     echo.
     notepad config.bat
 )
-call config.bat
+call "%~dp0config.bat"
 if not exist "%PIPESIM_PY%" (
     echo.
     echo  PIPESIM Python not found: "%PIPESIM_PY%"

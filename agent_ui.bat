@@ -1,7 +1,9 @@
 @echo off
 REM One-click start of the browser chat: launches the local model server (if not running), then the web window.
 cd /d "%~dp0"
-if exist config.bat (call config.bat) else (call config.example.bat)
+set "CFG=%~dp0config.bat"
+if not exist "%CFG%" set "CFG=%~dp0config.example.bat"
+call "%CFG%"
 powershell -NoProfile -Command "try { Invoke-WebRequest -UseBasicParsing http://127.0.0.1:8080/health -TimeoutSec 2 | Out-Null; exit 0 } catch { exit 1 }"
 if errorlevel 1 (
     echo Starting the local model server in its own window...
