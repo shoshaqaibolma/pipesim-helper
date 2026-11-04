@@ -1,14 +1,204 @@
 {
  "TF_M2A_Water_Pipeline": {
-  "error": "Traceback (most recent call last):\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 249, in main\n    r = (pipeline_case if stem in PIPELINES else well_case)(path, tmp)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 115, in pipeline_case\n    notes, out = [], {\"type\": \"pipeline\", \"notes\": notes}\n                                                   ^^^^^\nUnboundLocalError: cannot access local variable 'notes' where it is not associated with a value\n"
+  "error": "es\\sixgill\\pipesim.py\", line 2786, in add\n    _add(self, component, name, context, parameters)\n  File \"D:\\Program\\Pipesim toolkit\\Lib\\site-packages\\sixgill\\core\\add.py\", line 645, in _add\n    newNode = _add_fluid_or_surface_object(model, component, name, parameters)\n              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Program\\Pipesim toolkit\\Lib\\site-packages\\sixgill\\core\\add.py\", line 56, in _add_fluid_or_surface_object\n    _set_node_parameters(model, node, parameters)\n  File \"D:\\Program\\Pipesim toolkit\\Lib\\site-packages\\sixgill\\core\\add.py\", line 466, in _set_node_parameters\n    model.set_value(parameter=parameter, value=value, **context)\n  File \"D:\\Program\\Pipesim toolkit\\Lib\\site-packages\\sixgill\\pipesim.py\", line 938, in set_value\n    self._set_value_internal(parameter, value, merged_context, component)\n  File \"D:\\Program\\Pipesim toolkit\\Lib\\site-packages\\sixgill\\pipesim.py\", line 2343, in _set_value_internal\n    entry = getset.set_value(self._almanac,\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Program\\Pipesim toolkit\\Lib\\site-packages\\sixgill\\core\\getset.py\", line 200, in set_value\n    class_to_mapping_dict[entry.class_id].set_parameter_value(entry, value, session)\n  File \"D:\\Program\\Pipesim toolkit\\Lib\\site-packages\\sixgill\\core\\mapping.py\", line 154, in set_parameter_value\n    raise ValueError('Context %r maps to more than one possible object' % (value))\nValueError: Context 'Water' maps to more than one possible object\n"
  },
  "TF_M2B_Gas_Pipeline": {
-  "error": "Traceback (most recent call last):\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 249, in main\n    r = (pipeline_case if stem in PIPELINES else well_case)(path, tmp)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 115, in pipeline_case\n    notes, out = [], {\"type\": \"pipeline\", \"notes\": notes}\n                                                   ^^^^^\nUnboundLocalError: cannot access local variable 'notes' where it is not associated with a value\n"
+  "type": "pipeline",
+  "notes": [],
+  "original_state": "Completed",
+  "original": {},
+  "project": {
+   "name": "TF_M2B_Gas Pipeline.pips",
+   "fluids": [
+    {
+     "name": "Gas",
+     "type": "gas",
+     "gas_sg": 0.64,
+     "ogr": 0,
+     "wgr": 0,
+     "api": 30.0
+    }
+   ],
+   "sources": [
+    {
+     "name": "MySource",
+     "fluid": "Gas",
+     "temperature": 15.555555555555657,
+     "liquid_rate": null
+    }
+   ],
+   "sinks": [
+    {
+     "name": "MySink",
+     "pressure": null
+    }
+   ],
+   "junctions": [],
+   "flowlines": [
+    {
+     "name": "FL",
+     "from": "MySource",
+     "to": "MySink",
+     "length": 6096.0,
+     "id": 77.9272,
+     "elevation_change": 304.8
+    }
+   ],
+   "ambient_temperature": 15.555555600000048
+  },
+  "build": {
+   "boundary_conditions": {
+    "MySink": "ok",
+    "MySource": "ok"
+   },
+   "validation": []
+  },
+  "rebuilt_state": "Completed",
+  "level1": [],
+  "copied_details": 36,
+  "rebuilt2_state": "Completed",
+  "level2": []
  },
  "TF_M2C_Multiphase_Pipeline": {
-  "error": "Traceback (most recent call last):\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 249, in main\n    r = (pipeline_case if stem in PIPELINES else well_case)(path, tmp)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 115, in pipeline_case\n    notes, out = [], {\"type\": \"pipeline\", \"notes\": notes}\n                                                   ^^^^^\nUnboundLocalError: cannot access local variable 'notes' where it is not associated with a value\n"
+  "type": "pipeline",
+  "notes": [],
+  "original_state": "Completed",
+  "original": {},
+  "project": {
+   "name": "TF_M2C_Multiphase Pipeline.pips",
+   "fluids": [
+    {
+     "name": "Multiphase",
+     "type": "black_oil",
+     "api": 30.0,
+     "gor": 142.4860772128069,
+     "water_cut": 0,
+     "gas_sg": 0.64
+    }
+   ],
+   "sources": [
+    {
+     "name": "MySource",
+     "fluid": "Multiphase",
+     "temperature": 15.555555555555657,
+     "liquid_rate": null
+    }
+   ],
+   "sinks": [
+    {
+     "name": "MySink",
+     "pressure": null
+    }
+   ],
+   "junctions": [],
+   "flowlines": [
+    {
+     "name": "FL",
+     "from": "MySource",
+     "to": "MySink",
+     "length": 6096.0,
+     "id": 77.9272,
+     "elevation_change": 304.8
+    }
+   ],
+   "ambient_temperature": 15.555555600000048
+  },
+  "build": {
+   "boundary_conditions": {
+    "MySink": "ok",
+    "MySource": "ok"
+   },
+   "validation": []
+  },
+  "rebuilt_state": "Completed",
+  "level1": [],
+  "copied_details": 35,
+  "rebuilt2_state": "Completed",
+  "level2": []
  },
  "TF_M3A_Base_Oil_Well": {
-  "error": "Traceback (most recent call last):\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 249, in main\n    r = (pipeline_case if stem in PIPELINES else well_case)(path, tmp)\n        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\github reps\\pipesim helper\\tools\\rebuild_compare.py\", line 175, in well_case\n    notes, out = [], {\"type\": \"well (nodal analysis)\", \"notes\": notes}\n                                                                ^^^^^\nUnboundLocalError: cannot access local variable 'notes' where it is not associated with a value\n"
+  "type": "well (nodal analysis)",
+  "notes": [
+   "original well has a deviation survey; rebuilt well is vertical"
+  ],
+  "completion": {
+   "ReservoirPressure": 248.211262554061,
+   "ReservoirTemperature": 93.33333333333343,
+   "IPRModel": "IPRPIModel",
+   "AssociatedBlackOilFluid": "BOFluid",
+   "FluidEntryType": "SinglePoint",
+   "GeometryProfileType": "Vertical"
+  },
+  "trajectory_rows": 6,
+  "project": {
+   "name": "TF_M3A_Base Oil Well.pips",
+   "fluids": [
+    {
+     "name": "BOFluid",
+     "type": "black_oil",
+     "api": 36.0,
+     "gor": 89.0537982580043,
+     "water_cut": 10.0,
+     "gas_sg": 0.8
+    }
+   ],
+   "wells": [
+    {
+     "name": "W",
+     "fluid": "BOFluid",
+     "reservoir_pressure": 248.211262554061,
+     "reservoir_temperature": 93.33333333333343,
+     "depth": 2682.2400000000002,
+     "tubing_id": 100.53320000000001,
+     "tubing_wall": 6.8834,
+     "ipr": {
+      "model": "pi",
+      "liquid_pi": 18.447326655867215
+     },
+     "casing_id": 190.7794,
+     "casing_wall": 14.147800000000002
+    }
+   ],
+   "sinks": [
+    {
+     "name": "S",
+     "pressure": 20.0
+    }
+   ],
+   "flowlines": [
+    {
+     "name": "F",
+     "from": "W",
+     "to": "S",
+     "length": 10,
+     "id": 150,
+     "elevation_change": 0
+    }
+   ]
+  },
+  "original": {
+   "liquid_rate": 1424.1355220917235,
+   "oil_rate": 1281.721969882551,
+   "reservoir_gas_rate": 0.11414220931528371,
+   "water_rate": 142.41355220917228,
+   "bottomhole_pressure": 171.01116154923264,
+   "outlet_pressure": 20.0
+  },
+  "rebuilt": {
+   "liquid_rate": 1811.051543262489,
+   "oil_rate": 1629.94638893624,
+   "reservoir_gas_rate": 0.145152916365863,
+   "water_rate": 181.1051543262488,
+   "bottomhole_pressure": 150.03706501739603,
+   "outlet_pressure": 20.0
+  },
+  "rebuilt2": {
+   "liquid_rate": 1801.350609835449,
+   "oil_rate": 1621.2155488519043,
+   "reservoir_gas_rate": 0.14437540189718626,
+   "water_rate": 180.13506098354478,
+   "bottomhole_pressure": 150.5629370490891,
+   "outlet_pressure": 20.0
+  }
  }
 }
