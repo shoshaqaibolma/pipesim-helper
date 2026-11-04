@@ -1,59 +1,74 @@
-JOB jobs/02_verify_builder.txt started 2026-11-04 11:45:02
+JOB jobs/03_build_and_study.txt started 2026-11-04 11:47:32
 
 $ "D:\Program\Pipesim toolkit\python.exe" tests\real_build_test.py
 [exit 0]
 
 == build the 2-well field
-   FAILED ValueError: Casing section requires both TopMeasuredDepth and Length input parameters. Please specify them in parameters dictionary.
-   Traceback (most recent call last):
-     File "D:\github reps\pipesim helper\tests\real_build_test.py", line 28, in step
-       r = fn()
-           ^^^^
-     File "D:\github reps\pipesim helper\tests\real_build_test.py", line 41, in <lambda>
-       built = step("build the 2-well field", lambda: netbuilder.build(FIELD, path))
-                                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-     File "D:\github reps\pipesim helper\netbuilder.py", line 66, in build
-       _well(m, w, ambient)
-   ValueError: Casing section requires both TopMeasuredDepth and Length input parameters. Please specify them in parameters dictionary.
-   
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 16996
+   OK ["<sixgill.pipesim.Model object at 0x000001E36AB8FDD0>", {"file": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_buildtest_3mokxzux\\smoke.pips", "components": 9, "connections": 7, "boundaries_synced": false, "boundary_conditions": {"Sep.Pressure": "ok", "W1:Completion.Pressure": "ok", "W1:Completion.Temperature": "ok", "W2:Completion.Pressure": "ok", "W2:Completion.Temperature": "ok"}, "validation": ["Well: W2\\Tubulars\\Casing\\Wall thickness WallThickness: The value of the property must be specified", "Well: W2\\Tubulars\\Tubing\\Wall thickness WallThickness: The value of the property must be specified", "Well: W1\\Tubulars\\Casing\\Wall thickness WallThickness: The value of the property must be specified", "Well: W1\\Tubulars\\Tubing\\Wall thickness WallThickness: The value of the property must be specified"]}]
+   build report: {"file": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_buildtest_3mokxzux\\smoke.pips", "components": 9, "connections": 7, "boundaries_synced": false, "boundary_conditions": {"Sep.Pressure": "ok", "W1:Completion.Pressure": "ok", "W1:Completion.Temperature": "ok", "W2:Completion.Pressure": "ok", "W2:Completion.Temperature": "ok"}, "validation": ["Well: W2\\Tubulars\\Casing\\Wall thickness WallThickness: The value of the property must be specified", "Well: W2\\Tubulars\\Tubing\\Wall thickness WallThickness: The value of the property must be specified", "Well: W1\\Tubulars\\Casing\\Wall thickness WallThickness: The value of the property must be specified", "Well: W1\\Tubulars\\Tubing\\Wall thickness WallThickness: The value of the property must be specified"]}
+
+== components the model reports
+   OK {"Well": ["W1", "W2"], "Junction": ["J1"], "Sink": ["Sep"], "Flowline": ["FL1", "FL2", "FL3"], "Choke": ["CK1"], "Completion": ["W1:Completion", "W2:Completion"], "Tubing": ["W1:Tubing", "W2:Tubing"]}
+
+== read back key values
+   OK {"W1 reservoir pressure": 250.0, "W1 liquid PI (expect 10)": 10.0, "W1 IPR model": "IPRPIModel", "W1 fluid": "BO", "W1 tubing length": 2500.0, "FL3 inner diameter": 152.0, "Sep pressure (boundary)": 15.0}
+
+== network boundary conditions
+   OK {"W1:Completion": {"BoundaryNodeType": "Completion", "WellName": "W1", "BoundaryNodeName": "Completion", "IsActive": true, "UsePQCurve": false, "IsSurfaceCondition": false, "Temperature": 90.0, "Pressure": 250.0, "FlowRateType": "LiquidFlowRate", "GasFlowRate": null, "LiquidFlowRate": null, "MassFlowRate": null, "UseGasRatio": "GOR", "GOR": 100.0, "OGR": null, "GLR": null, "LGR": null, "UseWaterRatio": "WaterCut", "WaterCut": 20.0, "GWR": null, "WGR": null, "CompletionName": "Completion", "IsBottomCompletion": false}, "W2:Completion": {"BoundaryNodeType": "Completion", "WellName": "W2", "BoundaryNodeName": "Completion", "IsActive": true, "UsePQCurve": false, "IsSurfaceCondition": false, "Temperature": 90.0, "Pressure": 230.0, "FlowRateType": "LiquidFlowRate", "GasFlowRate": null, "LiquidFlowRate": null, "MassFlowRate": null, "UseGasRatio": "GOR", "GOR": 100.0, "OGR": null, "GLR": null, "LGR": null, "UseWaterRatio": "WaterCut", "WaterCut": 20.0, "GWR": null, "WGR": null, "CompletionName": "Completion", "IsBottomCompletion": false}, "Sep": {"BoundaryNodeType": "Sink", "WellName": null, "BoundaryNodeName": "Sep", "IsActive": true, "UsePQCurve": false, "IsSurfaceCondition": false, "Temperature": null, "Pressure": 15.0, "FlowRateType": "LiquidFlowRate", "GasFlowRate": null, "LiquidFlowRate": null, "MassFlowRate": null, "UseGasRatio": "GLR", "GOR": null, "OGR": null, "GLR": null, "LGR": null, "UseWaterRatio": "WaterCut", "WaterCut": null, "GWR": null, "WGR": null, "CompletionName":
+
+== network simulation at Sep = 15 bara
+   OK {"state": "Completed", "messages": "['2026-11-04T06:47:40.576Z    Service starting...', '2026-11-04T06:47:40.599Z    Loading engine from D:\\\\Program\\\\Pipesim2023.1\\\\Programs', \"2026-11-04T06:47:40.801Z    Service listening at 'net.pipe://localhost/pipe/f7e8a2a72e7a4bf1b93aefa602e63e3d'...\", '2026-11-04T06:47:40.889Z     CWD is now C:\\\\Users\\\\Home\\\\AppData\\\\Local\\\\Temp\\\\PIPESIM\\\\19252', '2026-11-04T06:47:40.889Z    Processing C:\\\\Users\\\\Home\\\\AppData\\\\Local\\\\Temp\\\\PIPESIM\\\\19252\\\\New workspace.tnt (4)', '2026-11-04T06:47:40.928Z    .......................................................................... ', '2026-11-04T06:47:40.929Z    Processing branch W1.. ', '2026-11-04T06:47:40.930Z    Processing branch Sep.. ', '2026-11-04T06:47:40.931Z    Processing branch W2.', '2026-11-04T06:47:40.931Z    Processing branch geometry (", "node": {"Pressure": {"Unit": "bara", "W2": 36.42986741398327, "W1": 38.81241485091248, "J1": 29.966700886547248, "Sep": 15.000233967097437, "CK1": 37.34383762388982, "Completion": 173.87931292705863}, "VolumeFlowrateLiquidStockTank": {"Unit": "sm3/d", "W2": 837.4241086659538, "W1": 699.866148728454, "J1": 1537.2902573944077, "Sep": 1537.2902573944075, "CK1": 699.866148728454, "Completion": 837.4241086659538}, "VolumeFlowrateOilStockTank": {"Unit": "sm3/d", "W2": 669.9392869327631, "W1": 559.8929189827633, "J1": 1229.8322059155262, "Sep": 1229.8322059155262, "CK1": 559.8929189827633, "Completion": 669.9392869327631}
+
+== set Sep = 30 bara through the adapter
+   OK 30.0
+
+== network simulation at Sep = 30 bara
+   OK {"state": "Completed", "messages": "['2026-11-04T06:47:43.180Z    Service starting...', '2026-11-04T06:47:43.200Z    Loading engine from D:\\\\Program\\\\Pipesim2023.1\\\\Programs', \"2026-11-04T06:47:43.391Z    Service listening at 'net.pipe://localhost/pipe/06a068c0e8454f1b884bbf9fdf6d2014'...\", '2026-11-04T06:47:43.431Z     CWD is now C:\\\\Users\\\\Home\\\\AppData\\\\Local\\\\Temp\\\\PIPESIM\\\\19252', '2026-11-04T06:47:43.431Z    Processing C:\\\\Users\\\\Home\\\\AppData\\\\Local\\\\Temp\\\\PIPESIM\\\\19252\\\\New workspace.tnt (4)', '2026-11-04T06:47:43.506Z    .......................................................................... ', '2026-11-04T06:47:43.508Z    Processing branch W1.. ', '2026-11-04T06:47:43.509Z    Processing branch Sep.. ', '2026-11-04T06:47:43.510Z    Processing branch W2.', '2026-11-04T06:47:43.510Z    Processing branch geometry (", "node": {"Pressure": {"Unit": "bara", "Completion": 187.06504909260724, "W2": 41.52002020605911, "Sep": 29.99977844813566, "CK1": 42.326204517940354, "W1": 43.23565520319526, "J1": 37.31396662264055}, "VolumeFlowrateLiquidStockTank": {"Unit": "sm3/d", "Completion": 644.0566583340494, "W2": 644.0566583340494, "Sep": 1224.8652981294929, "CK1": 580.8086397954446, "W1": 580.8086397954446, "J1": 1224.8652981294938}, "VolumeFlowrateOilStockTank": {"Unit": "sm3/d", "Completion": 515.2453266672395, "W2": 515.2453266672395, "Sep": 979.8922385035945, "CK1": 464.6469118363557, "W1": 464.6469118363557, "J1": 979.8922385035951}}
+
+== verdict: results CHANGED when the separator pressure changed
+
+(model left at C:\Users\Home\AppData\Local\Temp\pipesim_buildtest_3mokxzux\smoke.pips; open it in PIPESIM to inspect)
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 5252
 INFO:manta.server.manager:Python toolkit license is checked out successfully
 INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 
 
-$ "D:\Program\Pipesim toolkit\python.exe" tools\probe_context.py "D:\Program\Pipesim2023.1\Case Studies\Network Models\CSN_301_Small Network.pips"
+$ "D:\Program\Pipesim toolkit\python.exe" tests\real_project_study.py
 [exit 0]
-keyword form ReservoirPressure: OK 173.3341983502526
-context form ReservoirPressure: OK 173.3341983502526
-keyword form LiquidPI (IPR param via completion): OK null
-keyword form IPRModel: OK "IPRPIModel"
-completion: all values: OK {"Well:VertComp": {"Name": "VertComp", "GLR": null, "GOR": null, "GWR": null, "LGR": null, "OGR": null, "UseGasRatio": "GLR", "UseWaterRatio": "WaterCut", "WaterCut": null, "WGR": null, "AssociatedBlackOilFluid": "B-Fluid", "AssociatedCompositionalFluid": "C-Fluid", "AssociatedMFLFluid": null, "Diameter": null, "FluidEntryType": "SinglePoint", "GeometryProfileType": "Vertical", "Length": null, "Pe
-tubing: all values: OK {"Well:Tubing": {"Name": "Tubing", "AnnulusMaterialDensity": 1200.0, "AnnulusMaterialType": "Mud", "BoreholeDiameter": null, "CementDensity": 1900.0, "CementTop": 0.0, "Density": null, "Grade": "", "InnerDiameter": 100.53320000000001, "IsFlowPresentInside": true, "Roughness": 0.0254, "TopMeasuredDepth": 0.0, "WallThickness": 6.8834, "Length": 1341.1200000000001, "CatalogLabel": "", "CatalogName": 
-adapter get_value: OK 173.3341983502526
-well liquid rate, base: OK 804.6089921425155
-adapter set_param ReservoirPressure x1.2: OK 208.0010380203031
-well liquid rate, reservoir pressure x1.2: OK 988.1806684635164
-set_value only (no boundary) then reset_conditions syncs?: OK [173.3341983502526, true, 156.00077851522732]
-adapter sink pressure round trip: OK 33.0
-validate(): OK []
-verdict, reservoir pressure through the adapter: CHANGED
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 16216
+check: {"ready": true, "next_step": "Call propose_plan and show the plan to the user word for word.", "missing": [], "errors": [], "n_cases": 4}
+Building the model...
+  case 1/4: base
+  case 2/4: Sep.Pressure=10
+  case 3/4: Sep.Pressure=20
+  case 4/4: Sep.Pressure=30
+case | Sep.Pressure | Sep liquid rate [sm3/d] | Sep oil rate [sm3/d] | Sep gas rate [mmsm3/d] | W1 liquid rate [sm3/d] | W1 pressure [bara] | W2 liquid rate [sm3/d] | W2 pressure [bara] | _status
+base | 15 | 1537 | 1230 | 0.123 | 699.9 | 38.81 | 837.4 | 36.43 | Completed
+Sep.Pressure=10 | 10 | 1595 | 1276 | 0.1276 | 721.5 | 37.95 | 873.5 | 35.49 | Completed
+Sep.Pressure=20 | 20 | 1459 | 1167 | 0.1167 | 670.7 | 40 | 787.8 | 37.76 | Completed
+Sep.Pressure=30 | 30 | 1225 | 979.9 | 0.09799 | 580.8 | 43.24 | 644.1 | 41.52 | Completed
+warnings: [] | failed cases: []
+outputs: D:\github reps\pipesim helper\runs\20261104-114745-739 ['model.pipr', 'model.pips', 'project.json', 'report.md', 'results.csv', 'spec.json', 'sweep_gas_rate.png', 'sweep_liquid_rate.png', 'sweep_oil_rate.png', 'sweep_pressure.png']
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 18572
 INFO:manta.server.manager:Python toolkit license is checked out successfully
 INFO:manta.server.manager:Waiting for PIPESIM server to start.
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 
 
-JOB finished 2026-11-04 11:45:28
+JOB finished 2026-11-04 11:48:16
