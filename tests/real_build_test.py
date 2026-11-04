@@ -8,7 +8,6 @@ Prints each step, so the first failure shows exactly which sixgill name or call 
 import io, json, os, sys, tempfile, traceback
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace", line_buffering=True)
 
 FIELD = {"name": "Smoke test field", "ambient_temperature": 15,
          "fluids": [{"name": "BO", "type": "black_oil", "api": 35, "gor": 100, "water_cut": 20, "gas_sg": 0.7}],
@@ -42,7 +41,7 @@ def main():
     if not built:
         return
     m, report = built
-    print("   build report:", report)
+    print("   build report:", json.dumps(report, default=str))
     sv = [getattr(d.SystemVariables, n) for n in ("PRESSURE", "VOLUME_FLOWRATE_LIQUID_STOCKTANK",
                                                   "VOLUME_FLOWRATE_OIL_STOCKTANK") if hasattr(d.SystemVariables, n)]
 
@@ -56,6 +55,10 @@ def main():
                                                  ("Well", "Junction", "Sink", "Flowline", "Choke", "Completion", "Tubing")})
     step("read back key values", lambda: {
         "W1 reservoir pressure": sa.get_param(m, "Completion", "W1:Completion", sa.P("Completion", "RESERVOIRPRESSURE")),
+        "W1 liquid PI (expect 10)": sa.get_value(m, "Completion", "W1:Completion", sa.P("IPRPIModel", "LIQUIDPI")),
+        "W1 IPR model": sa.get_value(m, "Completion", "W1:Completion", sa.P("Completion", "IPRMODEL")),
+        "W1 fluid": sa.get_value(m, "Completion", "W1:Completion", sa.P("Completion", "ASSOCIATEDBLACKOILFLUID")),
+        "W1 tubing length": sa.get_value(m, "Tubing", "W1:Tubing", sa.P("Tubing", "LENGTH")),
         "FL3 inner diameter": m.get_value(Flowline="FL3", parameter=sa.P("Flowline", "INNERDIAMETER")),
         "Sep pressure (boundary)": sa.get_param(m, "Sink", "Sep", sa.P("Sink", "PRESSURE"))})
     step("network boundary conditions", lambda: sa.get_boundaries(m))
@@ -72,4 +75,5 @@ def main():
 
 
 if __name__ == "__main__":
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace", line_buffering=True)
     main()

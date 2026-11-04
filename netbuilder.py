@@ -29,11 +29,12 @@ def _fluid(m, f):
 
 def _well(m, w, ambient):
     sa.add(m, MC("WELL"), w["name"], parameters={P("Well", "AMBIENTTEMPERATURE"): ambient})
+    # VERIFIED (2023.1): casing/tubing sections need TopMeasuredDepth AND Length (not BottomMeasuredDepth)
     sa.add(m, MC("CASING"), "Casing", context=w["name"], parameters={
-        P("Casing", "TOPMEASUREDDEPTH"): 0.0, P("Casing", "BOTTOMMEASUREDDEPTH"): w["depth"],
+        P("Casing", "TOPMEASUREDDEPTH"): 0.0, P("Casing", "LENGTH"): w["depth"],
         P("Casing", "INNERDIAMETER"): w.get("casing_id", CASING_ID_MM)})
     sa.add(m, MC("TUBING"), "Tubing", context=w["name"], parameters={
-        P("Tubing", "TOPMEASUREDDEPTH"): 0.0, P("Tubing", "BOTTOMMEASUREDDEPTH"): w["depth"],
+        P("Tubing", "TOPMEASUREDDEPTH"): 0.0, P("Tubing", "LENGTH"): w["depth"],
         P("Tubing", "INNERDIAMETER"): w["tubing_id"]})
     ipr_const, fields = IPR[w["ipr"]["model"]]
     params = {P("Completion", "TOPMEASUREDDEPTH"): w["depth"],
