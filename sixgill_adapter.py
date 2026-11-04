@@ -14,6 +14,7 @@ from sixgill import definitions as d
 #   - parameters are plain strings such as "Pressure"; find() returns in-well items as "<well>:<item>";
 #   - separators are TwoPhaseSeparator/ThreePhaseSeparator (no "Separator" type);
 #   - Units.METRIC = "PIPESIM_METRIC": bara, degC, m, mm (pipe and choke diameters), sm3/d, mmsm3/d (gas);
+#     OGR/WGR in sm3/mmsm3, GOR in sm3/sm3, back-pressure IPR C in mmsm3/d/bar2n (describe() on the install);
 #   - results come as node[variable] = {"Unit": "<unit>", <component>: value, ...};
 #   - connect(source, destination, source_port=None) takes {type: name} dicts or context strings.
 

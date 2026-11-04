@@ -34,7 +34,8 @@ FIELDS = {
         "fluid":                 ("Which fluid does this well produce?", "", None),
         "reservoir_pressure":    ("Reservoir pressure?", "bara", None),
         "reservoir_temperature": ("Reservoir temperature?", "degC", 90.0),
-        "ipr":                   ("Inflow (IPR): productivity index (liquid_pi), Vogel (aof), or gas back-pressure (c, n)?",
+        "ipr":                   ("Inflow (IPR): productivity index (liquid_pi, sm3/d/bar), Vogel (aof, sm3/d), or gas "
+                                  "back-pressure q = C (Pr^2 - Pwf^2)^n (c in mmsm3/d/bar^2n, n 0.5-1)?",
                                   "", {"model": "pi", "liquid_pi": 10.0}),
         "depth":                 ("Depth to mid-perforation (vertical)?", "m", None),
         "tubing_id":             ("Tubing inner diameter?", "mm", 76.0),
@@ -114,7 +115,7 @@ def check_project(p):
                     for f in IPR_FIELDS[model]:
                         if f not in e["ipr"]:
                             ask(f"wells.{n}.ipr.{f}", f"{n}: IPR parameter {f}?",
-                                {"liquid_pi": "sm3/d/bar", "aof": "sm3/d", "c": "sm3/d/bar^2n", "n": ""}[f])
+                                {"liquid_pi": "sm3/d/bar", "aof": "sm3/d", "c": "mmsm3/d/bar^2n", "n": ""}[f])
             if kind == "fluids":
                 ftype = e.get("type", "black_oil")
                 if ftype not in FLUID_FIELDS:

@@ -54,10 +54,10 @@ def main():
     step("components the model reports", lambda: {t: m.find(**{t: d.ALL}) for t in
                                                  ("Well", "Junction", "Sink", "Flowline", "Choke", "Completion", "Tubing")})
     step("read back key values", lambda: {
-        "W1 reservoir pressure": sa.get_param(m, "Completion", "W1:Completion", sa.P("Completion", "RESERVOIRPRESSURE")),
-        "W1 liquid PI (expect 10)": sa.get_value(m, "Completion", "W1:Completion", sa.P("IPRPIModel", "LIQUIDPI")),
-        "W1 IPR model": sa.get_value(m, "Completion", "W1:Completion", sa.P("Completion", "IPRMODEL")),
-        "W1 fluid": sa.get_value(m, "Completion", "W1:Completion", sa.P("Completion", "ASSOCIATEDBLACKOILFLUID")),
+        "W1 reservoir pressure": sa.get_param(m, "Completion", "W1:W1_Comp", sa.P("Completion", "RESERVOIRPRESSURE")),
+        "W1 liquid PI (expect 10)": sa.get_value(m, "Completion", "W1:W1_Comp", sa.P("IPRPIModel", "LIQUIDPI")),
+        "W1 IPR model": sa.get_value(m, "Completion", "W1:W1_Comp", sa.P("Completion", "IPRMODEL")),
+        "W1 fluid": sa.get_value(m, "Completion", "W1:W1_Comp", sa.P("Completion", "ASSOCIATEDBLACKOILFLUID")),
         "W1 tubing length": sa.get_value(m, "Tubing", "W1:Tubing", sa.P("Tubing", "LENGTH")),
         "FL3 inner diameter": m.get_value(Flowline="FL3", parameter=sa.P("Flowline", "INNERDIAMETER")),
         "Sep pressure (boundary)": sa.get_param(m, "Sink", "Sep", sa.P("Sink", "PRESSURE"))})
