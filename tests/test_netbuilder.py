@@ -114,6 +114,13 @@ r = executor.run(spec_n, progress=lambda s: None, project=FIELD)
 opp = r["summary"]["operating_point"]
 assert opp["liquid_rate [sm3/d]"] > 0 and opp["bottomhole_pressure [bara]"] < 260, opp
 assert any(c.endswith("nodal.png") for c in r["charts"]) and not r["warnings"], r
+import sixgill_adapter as _sa
+m2, _ = netbuilder.build(FIELD, os.path.join(tmp, "nodal2.pips"))
+res = _sa.nodal(m2, "W1", 20, completion="W1_Comp")
+q, p = res["curves"]["inflow_0"]["rate"], res["curves"]["inflow_0"]["pressure"]
+assert q == sorted(q) and all(x == x for x in q + p) and max(q) > 100, q[:5]   # liquid basis, sorted, no NaN
+assert p[0] > p[-1]                                                              # IPR falls with rate
+m2.close()
 assert any("Ask" in m["question"] or "pressure" in m["question"] for m in
            study.check(dict(spec, analysis={"type": "nodal", "producer": "W1"}), project=FIELD)["missing"])
 assert any("No well named" in e for e in

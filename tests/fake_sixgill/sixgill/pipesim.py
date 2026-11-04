@@ -118,8 +118,20 @@ class _Net:
         return None
 
 
-class _Curve:
-    def __init__(s, q, p): s.FlowRate, s.Pressure = q, p
+class _Curve:  # layout recorded on PIPESIM 2023.1: unsorted points with NaN gaps in curve_data
+    def __init__(s, case, q, p):
+        order = sorted(range(len(q)), key=lambda i: (i * 7) % len(q))
+        s.case = case
+        s.curve_data = {"NodalPointVolumeFlowrateGasStockTank": [q[i] * 1e-4 for i in order],
+                        "NodalPointVolumeFlowrateLiquidStockTank": [q[i] for i in order] + [float("nan")],
+                        "NodalPointPressure": [p[i] for i in order] + [float("nan")]}
+
+
+class _OpPoint:
+    def __init__(s, q, p):
+        s.case = "Operating Point"
+        s.point_data = {"NodalPointVolumeFlowrateLiquidStockTank": q, "NodalPointPressure": p}
+        s.units = {"NodalPointVolumeFlowrateLiquidStockTank": "sm3/d", "NodalPointPressure": "bara"}
 
 
 class _Nodal:
@@ -142,8 +154,9 @@ class _Nodal:
         case = f"Operating Point: Flowrate={q_op * 6.29:.3f} sbbl/day"
         r = _R({case: {"VolumeFlowrateLiquidStockTank": {"Unit": "sm3/d", short: q_op},
                        "Pressure": {"Unit": "bara", short: pr - q_op / pi}}})
-        r.cases, r.inflow_curves, r.outflow_curves = [case], [_Curve(qs, ipr)], [_Curve(qs, vlp)]
-        r.operating_points, r.summary = [], {"Error": [], "Warning": []}
+        r.cases, r.fluid_base = [case], "Liquid"
+        r.inflow_curves, r.outflow_curves = [_Curve("OperatingPointInflow:", qs, ipr)], [_Curve("OperatingPointOutflow:", qs, vlp)]
+        r.operating_points, r.summary = [_OpPoint(q_op, pr - q_op / pi)], {"Error": [], "Warning": []}
         return r
 
 

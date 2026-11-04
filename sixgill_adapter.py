@@ -260,20 +260,33 @@ def _series(d, prefix=""):
     return found
 
 
-def curve_xy(curve):
-    """(rates, pressures, raw) of a nodal Curve, found by attribute name (rate/flow vs pressure)."""
+def _num(x):
+    return isinstance(x, (int, float)) and not isinstance(x, bool) and x == x  # x == x is False for NaN
+
+
+RATE_KEYS = {"liquid": "NodalPointVolumeFlowrateLiquidStockTank", "gas": "NodalPointVolumeFlowrateGasStockTank"}
+
+
+def curve_xy(curve, base="liquid"):
+    """(rates, pressures, raw) of a nodal curve. VERIFIED layout (2023.1): curve.curve_data holds unsorted
+    NodalPointVolumeFlowrate*StockTank / NodalPointPressure lists, with NaN gaps."""
     raw = _plain(curve)
-    s = _series(raw)
-    x = next((v for k, v in s.items() if any(w in k.lower() for w in ("flow", "rate"))), None)
-    y = next((v for k, v in s.items() if "press" in k.lower()), None)
-    return x, y, raw
+    data = raw.get("curve_data") if isinstance(raw, dict) else None
+    data = data if isinstance(data, dict) else _series(raw)
+    q = data.get(RATE_KEYS[base]) or next((v for k, v in data.items() if base in k.lower() and "rate" in k.lower()), None)
+    p = data.get("NodalPointPressure") or next((v for k, v in data.items() if "press" in k.lower()), None)
+    if not q or not p:
+        return None, None, raw
+    pts = sorted((a, b) for a, b in zip(q, p) if _num(a) and _num(b))
+    return [a for a, _ in pts], [b for _, b in pts], raw
 
 
 def nodal(model, producer, outlet_pressure, completion=None):
-    """Run nodal analysis at a given outlet pressure (VERIFIED call). Returns the operating point (rates and
-    flowing bottom-hole pressure at the completion), the inflow/outflow curves, and raw data for inspection."""
+    """Run nodal analysis at a given outlet pressure (VERIFIED on 2023.1). Returns the operating point (rates and
+    pressure at the nodal point, which is the bottom hole by default), the inflow/outflow curves, and raw data."""
     r = model.tasks.nodalanalysis.run(producer, parameters={P("NodalAnalysisSimulation", "OUTLETPRESSURE"): outlet_pressure})
-    out = {"state": str(getattr(r, "state", "")), "cases": list(getattr(r, "cases", []) or [])}
+    base = "gas" if str(getattr(r, "fluid_base", "Liquid")).lower().startswith("gas") else "liquid"
+    out = {"state": str(getattr(r, "state", "")), "cases": list(getattr(r, "cases", []) or []), "rate_basis": base}
     case = out["cases"][0] if out["cases"] else None
     node = (getattr(r, "node", {}) or {}).get(case, {}) if case else {}
     comp = completion
@@ -282,27 +295,27 @@ def nodal(model, producer, outlet_pressure, completion=None):
         comp = comps[0] if comps else None
     op = {}
     for key, var in (("liquid_rate", "VolumeFlowrateLiquidStockTank"), ("oil_rate", "VolumeFlowrateOilStockTank"),
-                     ("gas_rate", "VolumeFlowrateGasStockTank"), ("water_rate", "VolumeFlowrateWaterStockTank"),
-                     ("bottomhole_pressure", "Pressure")):
+                     ("gas_rate", "VolumeFlowrateGasStockTank"), ("water_rate", "VolumeFlowrateWaterStockTank")):
         row = node.get(var) or {}
-        if comp in row:
+        if comp in row and _num(row[comp]):
             op[key] = {"value": row[comp], "unit": row.get("Unit")}
-    prof = (getattr(r, "profile", {}) or {}).get(case, {}) if case else {}
-    if "bottomhole_pressure" not in op and prof.get("BranchEquipment") and prof.get("Pressure"):
-        for eq, p in zip(prof["BranchEquipment"], prof["Pressure"]):
-            if eq == comp:
-                op["bottomhole_pressure"] = {"value": p, "unit": "bara"}
-                break
+    pts = _plain(getattr(r, "operating_points", None)) or []
+    if pts and isinstance(pts[0], dict):   # PIPESIM's own operating point
+        pd, units = pts[0].get("point_data") or {}, pts[0].get("units") or {}
+        for key, var in (("liquid_rate", RATE_KEYS["liquid"]), ("gas_rate", RATE_KEYS["gas"]),
+                         ("bottomhole_pressure", "NodalPointPressure")):
+            if _num(pd.get(var)):
+                op[key] = {"value": pd[var], "unit": units.get(var)}
     op["outlet_pressure"] = {"value": outlet_pressure, "unit": "bara"}
     out["operating_point"] = op
     curves, raw = {}, {}
     for kind in ("inflow", "outflow"):
         for i, c in enumerate(getattr(r, f"{kind}_curves", []) or []):
-            x, y, rc = curve_xy(c)
+            x, y, rc = curve_xy(c, base)
             raw[f"{kind}_{i}"] = rc
             if x and y:
                 curves[f"{kind}_{i}"] = {"rate": x, "pressure": y}
-    raw["operating_points"] = _plain(getattr(r, "operating_points", None))
+    raw["operating_points"] = pts
     out["curves"], out["raw"] = curves, raw
     out["summary_messages"] = _plain(getattr(r, "summary", None))
     return out

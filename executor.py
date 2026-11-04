@@ -182,7 +182,7 @@ def _chart(path, x, ys, xlabel, title):
     return path
 
 
-def _nodal_chart(path, curves, op, well):
+def _nodal_chart(path, curves, op, well, base="liquid"):
     if not curves:
         return None
     try:
@@ -196,12 +196,13 @@ def _nodal_chart(path, curves, op, well):
         pts = [(q, p) for q, p in zip(cv["rate"], cv["pressure"]) if q is not None and p is not None]
         if pts:
             ax.plot(*zip(*pts), label=("Inflow (IPR)" if name.startswith("inflow") else "Outflow (VLP)"))
-    q = (op.get("liquid_rate") or op.get("gas_rate") or {}).get("value")
+    rate = op.get("liquid_rate") if base == "liquid" else op.get("gas_rate")
+    q = (rate or {}).get("value")
     p = (op.get("bottomhole_pressure") or {}).get("value")
     if q is not None and p is not None:
-        ax.plot([q], [p], "ko", label=f"Operating point ({q:.0f}, {p:.1f} bara)")
-    unit = (op.get("liquid_rate") or op.get("gas_rate") or {}).get("unit") or ""
-    ax.set_xlabel(f"{'Liquid' if op.get('liquid_rate') else 'Gas'} rate{f' [{unit}]' if unit else ''}")
+        ax.plot([q], [p], "ko", label=f"Operating point ({q:.4g}, {p:.1f} bara)")
+    unit = (rate or {}).get("unit") or ""
+    ax.set_xlabel(f"{base.title()} rate{f' [{unit}]' if unit else ''}")
     ax.set_ylabel("Pressure at nodal point [bara]")
     ax.set_title(f"Nodal analysis: {well}"); ax.grid(alpha=.3); ax.legend(fontsize=8)
     fig.tight_layout(); fig.savefig(path, dpi=130); plt.close(fig)
@@ -282,7 +283,7 @@ def run(spec, progress=print, project=None):
             for name, cv in res["curves"].items():
                 for q, p in zip(cv["rate"], cv["pressure"]):
                     rows.append({"case": name, "curve rate": q, "curve pressure [bara]": p})
-            charts.append(_nodal_chart(os.path.join(out, "nodal.png"), res["curves"], op, a["producer"]))
+            charts.append(_nodal_chart(os.path.join(out, "nodal.png"), res["curves"], op, a["producer"], res["rate_basis"]))
             if not res["curves"]:
                 charts.append(None)
                 warnings_extra = ["Inflow/outflow curve points could not be read from this PIPESIM version; "
