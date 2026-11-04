@@ -25,6 +25,10 @@ if __name__ == "__main__":
         r = executor.run(spec, progress=lambda s: None, project=proj)
         print("operating point:", json.dumps(r["summary"]["operating_point"]))
         print("charts:", [os.path.basename(c) for c in r["charts"]], "| warnings:", r["warnings"])
+        import shutil
+        os.makedirs(os.path.join(ROOT, "runner", "artifacts"), exist_ok=True)
+        for c in r["charts"]:   # bring the plot back with the results
+            shutil.copy2(c, os.path.join(ROOT, "runner", "artifacts", f"nodal_{label.split()[0]}.png"))
         raw = json.load(open(os.path.join(r["output_dir"], "nodal_raw.json")))
         for k, v in raw.items():
-            print(f"raw {k}:", json.dumps(v)[:700])
+            print(f"raw {k}:", json.dumps(v)[:300])

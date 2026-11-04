@@ -128,7 +128,44 @@ assert any("No well named" in e for e in
 print("nodal: operating point", round(opp["liquid_rate [sm3/d]"]), "sm3/d at Pwf", round(opp["bottomhole_pressure [bara]"], 1),
       "bara; IPR/VLP chart written; missing outlet pressure asked; unknown well caught")
 
-# 8. checker: unknown component in a project study, incomplete project, non-metric units
+# 8. a CSN_301-like facility: choke fed by a flowline, separator with gas and liquid outlets, compressor, pump
+FAC = {"name": "Facility", "fluids": FIELD["fluids"], "wells": [FIELD["wells"][0]],
+       "chokes": [{"name": "CK", "bean_size": 50.8}], "junctions": [{"name": "MAN"}],
+       "separators": [{"name": "SEP1", "efficiency": 99.9}],
+       "compressors": [{"name": "C1", "efficiency": 70, "power": 1000}],
+       "pumps": [{"name": "P1", "efficiency": 70, "pressure_rise": 10}],
+       "sinks": [{"name": "GasSales", "pressure": 41}, {"name": "OilFacility", "pressure": 20}],
+       "flowlines": [{"name": "FL-1", "from": "W1", "to": "CK", "length": 60, "id": 154, "elevation_change": 3},
+                     {"name": "FL-2", "from": "CK", "to": "MAN", "length": 60, "id": 154, "elevation_change": 3},
+                     {"name": "FL-4", "from": "MAN", "to": "SEP1", "length": 30, "id": 154, "elevation_change": 0},
+                     {"name": "GL-1", "from": "SEP1", "port": "gas", "to": "C1", "length": 7, "id": 154, "elevation_change": 3},
+                     {"name": "GL-2", "from": "C1", "to": "GasSales", "length": 6096, "id": 154, "elevation_change": 0},
+                     {"name": "LL-1", "from": "SEP1", "port": "liquid", "to": "P1", "length": 61, "id": 154, "elevation_change": 3},
+                     {"name": "LL-2", "from": "P1", "to": "OilFacility", "length": 3109, "id": 154, "elevation_change": 0}]}
+c = prj.check_project(FAC)
+assert c["ready"], c
+m, rep = netbuilder.build(FAC, os.path.join(tmp, "fac.pips"))
+assert m.ports == {("SEP1", "GL-1"): "Top Port", ("SEP1", "LL-1"): "Bottom Port"}, m.ports
+assert m.v[("Compressor", "C1", "POWER")] == 1000 and m.v[("Pump", "P1", "PRESSUREDIFFERENTIAL")] == 10
+assert m.v[("TwoPhaseSeparator", "SEP1", "PRODUCTIONSTREAM")] == "GAS" and rep["validation"] == []
+m.close()
+def errs(p): return prj.check_project(p)
+bad = dict(FAC, flowlines=[dict(f, port=None) if f["name"] == "GL-1" else f for f in FAC["flowlines"]])
+bad["flowlines"] = [{k: v for k, v in f.items() if v is not None} for f in bad["flowlines"]]
+assert any(x["field"] == "flowlines.GL-1.port" for x in errs(bad)["missing"])
+bad = dict(FAC, flowlines=[dict(f, port="gas") if f["name"] == "FL-1" else f for f in FAC["flowlines"]])
+assert any("only for flowlines leaving a separator" in e for e in errs(bad)["errors"])
+bad = dict(FAC, pumps=[{"name": "P1", "efficiency": 70, "power": 50, "pressure_rise": 10}])
+assert any("give only one" in e for e in errs(bad)["errors"])
+bad = dict(FAC, chokes=[{"name": "CK", "bean_size": 50.8, "from": "W1"}])     # 2 inlets: "from" and FL-1
+assert any("2 inlets" in e for e in errs(bad)["errors"]), errs(bad)
+bad = dict(FAC, flowlines=FAC["flowlines"] + [{"name": "GL-3", "from": "SEP1", "port": "gas", "to": "GasSales",
+                                               "length": 1, "id": 1, "elevation_change": 0}])
+assert any("at most one flowline per outlet" in e for e in errs(bad)["errors"]), errs(bad)
+print("facility: choke fed by a flowline, separator gas/liquid ports, compressor (power) and pump (pressure rise) built;")
+print("          missing port asked; misplaced port, double spec, 2 inlets, duplicate outlet caught")
+
+# 9. checker: unknown component in a project study, incomplete project, non-metric units
 bad = dict(spec, analysis={"type": "sweep", "variables": [{"component_type": "Sink", "name": "Nope",
                                                            "parameter": "Pressure", "values": [1, 2]}]})
 assert any("Available Sink: ['Sep']" in e for e in study.check(bad, project=FIELD)["errors"])

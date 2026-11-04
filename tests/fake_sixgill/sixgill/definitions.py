@@ -6,6 +6,10 @@ class Units: METRIC = "METRIC"; FIELD = "FIELD"; SI = "SI"
 class ModelComponents:
     WELL="Well"; TUBING="Tubing"; COMPLETION="Completion"; FLOWLINE="Flowline"; SINK="Sink"; BLACKOILFLUID="BlackOilFluid"
     SOURCE="Source"; JUNCTION="Junction"; CHOKE="Choke"; CASING="Casing"; GASLIFTINJECTION="GasLiftInjection"
+    TWOPHASESEPARATOR="TwoPhaseSeparator"; PUMP="Pump"; COMPRESSOR="Compressor"
+class Connection:  # values recorded from PIPESIM 2023.1
+    class Separator:
+        TOP="Top Port"; BOTTOM="Bottom Port"; BOOT="Boot Port"
 class _Params:
     def __getattr__(self, g):
         return type("G", (), {"__getattr__": lambda s, n: {"WATERCUT":"WaterCut","GOR":"GOR","RESERVOIRPRESSURE":"ReservoirPressure",

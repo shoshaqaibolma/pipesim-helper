@@ -52,10 +52,15 @@ FIELDS = {
         "id": ("Flowline inner diameter?", "mm", 150.0),
         "elevation_change": ("Elevation change, positive uphill?", "m", 0.0),
     },
-    "chokes": {"from": ("Which well, source or junction is the choke installed right after?", "", None),
-               "bean_size": ("Choke bean size (diameter)?", "mm", 12.7)},
+    "chokes": {"bean_size": ("Choke bean size (diameter)?", "mm", 12.7)},   # inlet: "from" or a flowline ending here
     "junctions": {},
+    "separators": {"efficiency": ("Separation efficiency?", "%", 100.0)},   # outlets: flowlines with port gas/liquid
+    "pumps": {"efficiency": ("Pump efficiency?", "%", 70.0)},               # plus exactly one of EQUIP_SPEC
+    "compressors": {"efficiency": ("Compressor efficiency?", "%", 70.0)},   # plus exactly one of EQUIP_SPEC
 }
+INLINE = ("chokes", "pumps", "compressors")   # one inlet ("from" or a flowline ending here), one outlet
+EQUIP_SPEC = {"pressure": "bara (discharge)", "pressure_rise": "bar", "pressure_ratio": "-", "power": "kW"}
+PORTS = ("gas", "liquid")
 IPR_FIELDS = {"pi": ["liquid_pi"], "vogel": ["aof"], "backpressure": ["c", "n"]}
 FLUID_FIELDS = {
     "black_oil": {"api":       ("Oil gravity?", "API", 35.0),
@@ -73,7 +78,7 @@ SOURCE_BC = {"pressure": "bara", "liquid_rate": "sm3/d", "gas_rate": "mmsm3/d"}
 def completion_name(well):
     """Completions get unique names: PIPESIM reports results by short name, so two "Completion"s would collide."""
     return f"{well}_Comp"
-NODE_KINDS = ("wells", "sources", "junctions", "sinks", "chokes")
+NODE_KINDS = ("wells", "sources", "junctions", "sinks", "chokes", "separators", "pumps", "compressors")
 
 
 def check_project(p):
@@ -142,6 +147,13 @@ def check_project(p):
                     if isinstance(gl.get("rate"), (int, float)) and gl["rate"] > 2:
                         errors.append(f"{n}: gas lift rate {gl['rate']} mmsm3/d is very high; the unit is mmsm3/d "
                                       "(0.05 = 50,000 sm3/d)")
+            if kind in ("pumps", "compressors"):
+                given = [k for k in EQUIP_SPEC if k in e]
+                if not given:
+                    ask(f"{kind}.{n}.pressure", f"{n}: how is it specified? Give exactly one of: discharge pressure "
+                        "(bara), pressure_rise (bar), pressure_ratio, or power (kW).", "", None)
+                elif len(given) > 1:
+                    errors.append(f"{n}: give only one of {list(EQUIP_SPEC)} (got {given})")
             if kind == "sources":
                 given = [k for k in SOURCE_BC if k in e]
                 if not given:
@@ -156,9 +168,20 @@ def check_project(p):
             if e.get("fluid") and e["fluid"] not in fluids:
                 errors.append(f"{e.get('name')}: fluid '{e['fluid']}' is not defined in fluids {sorted(fluids)}")
 
-    # topology: edges are flowlines and chokes; every well/source must reach a sink, no cycles, no dead ends
+    # topology: edges are flowlines plus direct "from" links of in-line equipment (chokes, pumps, compressors);
+    # every well/source must reach a sink, no cycles, no dead ends, separators leave through named ports
     edges = [(e.get("from"), e.get("to"), e.get("name")) for e in p.get("flowlines") or []]
-    edges += [(e.get("from"), e.get("name"), e.get("name")) for e in p.get("chokes") or []]
+    edges += [(e.get("from"), e.get("name"), e.get("name")) for k in INLINE for e in p.get(k) or [] if e.get("from")]
+    for e in p.get("flowlines") or []:
+        port, src = e.get("port"), e.get("from")
+        if names.get(src) == "separators":
+            if port is None:
+                ask(f"flowlines.{e.get('name')}.port", f"{e.get('name')}: which outlet of separator {src} does it "
+                    "leave from: gas (top) or liquid (bottom)?", "", None)
+            elif port not in PORTS:
+                errors.append(f"{e.get('name')}: port must be one of {list(PORTS)}")
+        elif port is not None:
+            errors.append(f"{e.get('name')}: 'port' is only for flowlines leaving a separator")
     for e in p.get("flowlines") or []:
         for end in ("from", "to"):
             if names.get(e.get(end)) == "flowlines":
@@ -192,12 +215,31 @@ def check_project(p):
                 n = e.get("name")
                 if n and not reaches_sink(n):
                     errors.append(f"{n} is not connected to any sink. Add a flowline from {n} towards a sink.")
-        for kind in ("junctions", "chokes"):
+        inlets = {}
+        for a, b, n in edges:
+            inlets[b] = inlets.get(b, 0) + 1
+        for kind in ("junctions", "separators", *INLINE):
             for j in p.get(kind) or []:
                 n = j.get("name")
                 if n and n not in out:
                     errors.append(f"{kind[:-1].title()} {n} has no outgoing flowline")
-        for kind in ("wells", "sources", "chokes"):
+        for kind in INLINE:
+            for j in p.get(kind) or []:
+                n = j.get("name")
+                if n and inlets.get(n, 0) == 0:
+                    errors.append(f"{kind[:-1].title()} {n} has no inlet: set its \"from\" (installed right after "
+                                  "that node) or end a flowline at it")
+                elif n and inlets.get(n, 0) > 1:
+                    errors.append(f"{kind[:-1].title()} {n} has {inlets[n]} inlets; it can have only one (either "
+                                  "\"from\" or one flowline ending at it)")
+        for j in p.get("separators") or []:
+            n = j.get("name")
+            if n and inlets.get(n, 0) == 0:
+                errors.append(f"Separator {n} has no inlet flowline")
+            ports = [e.get("port") for e in p.get("flowlines") or [] if e.get("from") == n]
+            if len(ports) > 2 or len([x for x in ports if x]) != len(set(x for x in ports if x)):
+                errors.append(f"Separator {n}: at most one flowline per outlet (gas, liquid); got {ports}")
+        for kind in ("wells", "sources", *INLINE):
             for e in p.get(kind) or []:
                 n = e.get("name")
                 if n and len(out.get(n, [])) > 1:
@@ -214,7 +256,9 @@ def check_project(p):
     return {"ready": not missing and not errors, "next_step": nxt, "missing": missing, "errors": errors}
 
 
-EXTRA_KEYS = {"wells": {"casing_id", "casing_wall", "tubing_wall", "gas_lift"}, "sources": set(SOURCE_BC)}
+EXTRA_KEYS = {"wells": {"casing_id", "casing_wall", "tubing_wall", "gas_lift"}, "sources": set(SOURCE_BC),
+              "chokes": {"from"}, "pumps": {"from", *EQUIP_SPEC}, "compressors": {"from", *EQUIP_SPEC},
+              "flowlines": {"port"}}
 
 
 def gas_lift_name(well):
@@ -247,6 +291,11 @@ SYNONYMS = {
                   "source": "from", "destination": "to"},
     "chokes": {"bean": "bean_size", "bean_size_mm": "bean_size", "size": "bean_size", "upstream": "from", "after": "from"},
     "junctions": {},
+    "separators": {},
+    "pumps": {"upstream": "from", "after": "from", "discharge_pressure": "pressure", "delta_p": "pressure_rise",
+              "dp": "pressure_rise", "pressure_differential": "pressure_rise", "ratio": "pressure_ratio"},
+    "compressors": {"upstream": "from", "after": "from", "discharge_pressure": "pressure", "delta_p": "pressure_rise",
+                    "dp": "pressure_rise", "pressure_differential": "pressure_rise", "ratio": "pressure_ratio"},
 }
 IGNORED_KEYS = {"type", "kind", "description", "comment"}   # harmless extras, dropped with a note (fluids keep "type")
 FLUID_TYPES = {"black_oil": "black_oil", "blackoil": "black_oil", "black oil": "black_oil", "black-oil": "black_oil",
@@ -357,6 +406,9 @@ def known_components(p):
                                  if w.get("name") and w.get("gas_lift")],
             "Source": [e["name"] for e in p.get("sources") or []], "Sink": [e["name"] for e in p.get("sinks") or []],
             "Junction": [e["name"] for e in p.get("junctions") or []], "Choke": [e["name"] for e in p.get("chokes") or []],
+            "TwoPhaseSeparator": [e["name"] for e in p.get("separators") or []],
+            "Pump": [e["name"] for e in p.get("pumps") or []],
+            "Compressor": [e["name"] for e in p.get("compressors") or []],
             "Flowline": [e["name"] for e in p.get("flowlines") or []],
             "BlackOilFluid": [e["name"] for e in p.get("fluids") or []]}
 

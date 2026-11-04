@@ -192,7 +192,11 @@ class Model:
         for t, n in ((ta, na), (tb, nb)):
             if n not in s.comps.get(t, []):
                 raise ValueError(f"connect: no {t} named {n}")
+        if ta in ("TwoPhaseSeparator", "ThreePhaseSeparator") and source_port not in ("Top Port", "Bottom Port", "Boot Port"):
+            raise ValueError("connect: a separator outlet needs source_port")
         s.edges.setdefault(na, []).append(nb)
+        if source_port:
+            s.ports = getattr(s, "ports", {}); s.ports[(na, nb)] = source_port
 
     def _resolve(s, kw):
         if "context" in kw:
@@ -204,6 +208,11 @@ class Model:
         if t in IN_WELL and ":" in n:
             raise LookupError(f"No such context: ModelContext({{'{t}': '{n}'}})")
         return t, n
+
+    def connections(s):  # layout recorded on 2023.1
+        ports = getattr(s, "ports", {})
+        return [{"Source": a, "Source Port": ports.get((a, b), ""), "Destination": b}
+                for a, bs in s.edges.items() for b in bs]
 
     def find(s, **kw):
         (t, _), = kw.items()

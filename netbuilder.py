@@ -8,7 +8,12 @@ import sixgill_adapter as sa
 from sixgill_adapter import P, C, MC
 
 KIND_TYPE = {"wells": lambda: MC("WELL"), "sources": lambda: MC("SOURCE"), "junctions": lambda: MC("JUNCTION"),
-             "sinks": lambda: MC("SINK"), "chokes": lambda: MC("CHOKE"), "flowlines": lambda: MC("FLOWLINE")}
+             "sinks": lambda: MC("SINK"), "chokes": lambda: MC("CHOKE"), "flowlines": lambda: MC("FLOWLINE"),
+             "separators": lambda: MC("TWOPHASESEPARATOR"), "pumps": lambda: MC("PUMP"),
+             "compressors": lambda: MC("COMPRESSOR")}
+EQUIP = {"pumps": ("Pump", "PUMP"), "compressors": ("Compressor", "COMPRESSOR")}
+EQUIP_PARAM = {"pressure": "PRESSURE", "pressure_rise": "PRESSUREDIFFERENTIAL", "pressure_ratio": "PRESSURERATIO",
+               "power": "POWER"}
 
 IPR = {  # ipr.model -> (IPR model constant, {project field: sixgill parameter})
     "pi": (lambda: C("IPRModels", "IPRPIMODEL"), {"liquid_pi": lambda: P("IPRPIModel", "LIQUIDPI")}),
@@ -100,16 +105,35 @@ def build(project, path, units="METRIC"):
         for c in project.get("chokes") or []:
             sa.add(m, MC("CHOKE"), c["name"], parameters={P("Choke", "BEANSIZE"): c["bean_size"]})
             kind_of[c["name"]] = "chokes"
+        for sep in project.get("separators") or []:
+            ports = {f.get("port") for f in project.get("flowlines") or [] if f.get("from") == sep["name"]}
+            prod, disc = ("liquid", "gas") if ports == {"liquid"} else ("gas", "liquid")  # as in CSN_301
+            sa.add(m, MC("TWOPHASESEPARATOR"), sep["name"], parameters={
+                P("TwoPhaseSeparator", "EFFICIENCY"): sep["efficiency"],
+                P("TwoPhaseSeparator", "PRODUCTIONSTREAM"): C("SeparatorProductFluid", prod.upper()),
+                P("TwoPhaseSeparator", "DISCARDEDSTREAM"): C("SeparatorProductFluid", disc.upper())})
+            kind_of[sep["name"]] = "separators"
+        for kind, (group, const) in EQUIP.items():   # pumps and compressors: efficiency + one specification
+            for e in project.get(kind) or []:
+                params = {P(group, "EFFICIENCY"): e["efficiency"]}
+                for f, pconst in EQUIP_PARAM.items():
+                    if f in e:
+                        params[P(group, pconst)] = e[f]
+                sa.add(m, MC(const), e["name"], parameters=params)
+                kind_of[e["name"]] = kind
         for fl in project.get("flowlines") or []:
             sa.add(m, MC("FLOWLINE"), fl["name"], parameters={
                 P("Flowline", "HORIZONTALDISTANCE"): fl["length"], P("Flowline", "ELEVATIONDIFFERENCE"): fl["elevation_change"],
                 P("Flowline", "INNERDIAMETER"): fl["id"], P("Flowline", "AMBIENTTEMPERATURE"): ambient})
         links = 0
-        for c in project.get("chokes") or []:
-            sa.connect(m, KIND_TYPE[kind_of[c["from"]]](), c["from"], MC("CHOKE"), c["name"])
-            links += 1
+        for kind in prj.INLINE:   # equipment installed right after its "from" node (no flowline in between)
+            for c in project.get(kind) or []:
+                if c.get("from"):
+                    sa.connect(m, KIND_TYPE[kind_of[c["from"]]](), c["from"], KIND_TYPE[kind](), c["name"])
+                    links += 1
         for fl in project.get("flowlines") or []:
-            sa.connect(m, KIND_TYPE[kind_of[fl["from"]]](), fl["from"], MC("FLOWLINE"), fl["name"])
+            sa.connect(m, KIND_TYPE[kind_of[fl["from"]]](), fl["from"], MC("FLOWLINE"), fl["name"],
+                       source_port=fl.get("port") if kind_of[fl["from"]] == "separators" else None)
             sa.connect(m, MC("FLOWLINE"), fl["name"], KIND_TYPE[kind_of[fl["to"]]](), fl["to"])
             links += 2
         # the network task keeps its own boundary conditions: sync them with the components, then verify each node

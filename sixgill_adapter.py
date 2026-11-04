@@ -93,16 +93,25 @@ def add(model, ctype, name, context=None, parameters=None):
 _connect_style = {}
 
 
-def connect(model, a_type, a, b_type, b):
-    """Connect a -> b (flow direction): model.connect({type: name}, {type: name}) (documented form)."""
+SEPARATOR_PORTS = {"gas": "TOP", "liquid": "BOTTOM"}  # VERIFIED: Connection.Separator TOP/BOTTOM/BOOT = "... Port"
+
+
+def port(name):
+    return getattr(d.Connection.Separator, SEPARATOR_PORTS[name])
+
+
+def connect(model, a_type, a, b_type, b, source_port=None):
+    """Connect a -> b (flow direction): model.connect({type: name}, {type: name}, source_port) (documented form).
+    source_port is required when a is a separator ("gas" or "liquid")."""
+    kw = {"source_port": port(source_port)} if source_port else {}
     styles = [_connect_style["ok"]] if "ok" in _connect_style else ["dict", "names"]
     last = None
     for s in styles:
         try:
             if s == "dict":
-                model.connect({a_type: a}, {b_type: b})
+                model.connect({a_type: a}, {b_type: b}, **kw)
             else:
-                model.connect(a, b)
+                model.connect(a, b, **kw)
             _connect_style["ok"] = s
             return
         except TypeError as e:  # wrong call style for this version: try the next one

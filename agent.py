@@ -48,8 +48,11 @@ PROJECT SCHEMA (every list item needs a unique "name"; units in brackets):
              Sources are pipeline inlets or external streams, NOT wells.
   junctions: {{"name"}}  (manifolds, tie-in points)
   sinks:     {{"name","pressure"[bara]}}  (separator, delivery point)
-  chokes:    {{"name","from","bean_size"[mm]}}  (installed right after its "from" node)
-  flowlines: {{"name","from","to","length"[m],"id"[mm],"elevation_change"[m, + uphill]}}  (connect nodes by name)
+  chokes:    {{"name","bean_size"[mm]}}  plus EITHER "from" (installed right after that node) OR a flowline ending at it
+  separators:{{"name","efficiency"[%]}}  (two-phase; flowlines leaving it need "port":"gas" or "liquid")
+  pumps / compressors: {{"name","efficiency"[%]}} plus ONE of "pressure"[bara discharge], "pressure_rise"[bar],
+             "pressure_ratio", "power"[kW]; inlet like a choke ("from" or a flowline ending at it)
+  flowlines: {{"name","from","to","length"[m],"id"[mm],"elevation_change"[m, + uphill]}} (+ "port" after a separator)
 EXAMPLE update_project patch for "2 wells into a manifold, 5 km trunkline to a separator at 15 bara":
   {{"name":"Field A","fluids":[{{"name":"BO","type":"black_oil","api":35,"gor":100,"water_cut":20,"gas_sg":0.7}}],
    "wells":[{{"name":"W1","fluid":"BO","reservoir_pressure":250,"depth":2500,"ipr":{{"model":"pi","liquid_pi":10}}}},
@@ -62,6 +65,7 @@ STUDY VARIABLES on a project (component_type / name / parameter):
   separator or sink pressure: Sink / <sink> / Pressure;  reservoir pressure: Completion / <well>:<well>_Comp / ReservoirPressure
   choke size: Choke / <choke> / BeanSize;  flowline diameter: Flowline / <flowline> / InnerDiameter
   gas lift rate: GasLiftInjection / <well>:<well>_GL / GasRate  (the well needs "gas_lift" in the project)
+  compressor or pump: Compressor|Pump / <name> / Power | PressureDifferential | Pressure  (whichever it was specified by)
 
 Analysis types: {json.dumps(study.ANALYSES)}
 Model templates for new models: { {k: v['description'] for k, v in TEMPLATES.items()} }
