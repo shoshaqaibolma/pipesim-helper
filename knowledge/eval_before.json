@@ -2,7 +2,7 @@
  "field_project": {
   "scenario": "field_project",
   "held_out": false,
-  "seconds": 77,
+  "seconds": 81,
   "exit": 0,
   "runs": 1,
   "tool_calls": 9,
@@ -15,21 +15,21 @@
    "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
    "agent> I need to ask you about the missing values:\n\n**Missing inputs (with suggested defaults):**\n\n1. **W1:**\n   - Reservoir temperature: 90.0 degC\n   - Tubing inner diameter: 76.0 mm\n\n2. **W2:**\n   - Reservoir temperature: 90.0 degC\n   - Tubing inner diameter: 76.0 mm\n\nPlease provide these values, or reply \"use defaults\" to accept the suggested defaults.",
    "agent> Here's the study plan:\n\n**STUDY PLAN: Study how field oil rate changes with separator pressure**\nUnits: METRIC\n1. Build this network as a new PIPESIM model:\n   PROJECT: Field A (METRIC)\n     fluid      BO: black oil, 35 API, GOR 100 sm3/sm3, water cut 20 %, gas SG 0.7\n     well       W1: reservoir 250 bara / 90 degC, depth 2500 m, tubing 76 mm, PI 10 sm3/d/bar, fluid BO\n     well       W2: reservoir 230 bara / 90 degC, depth 2400 m, tubing 76 mm, PI 15 sm3/d/bar, fluid BO\n     junction   J1: \n     flowline   FL-W1: W1 -> J1, 1500 m, ID 100 mm, elevation +0 m\n     flowline   FL-W2: W2 -> J1, 900 m, ID 100 mm, elevation +0 m\n     flowline   Trunk: J1 -> SEP, 5000 m, ID 152 mm, elevation +10 m\n     sink       SEP: 15 bara\n2. Analysis: sweep (vary ONE variable over a range, everything else at base)\n     Sink:SEP.Pressure: [10, 15, 20, 25, 30]\n3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source\n4. Total simulation runs: 6. Outputs: CSV, charts, report.md in runs/<timestamp>/\n\nPlease approve this plan or suggest changes.",
-   "agent> ## Study Results: Field Oil Rate vs Separator Pressure\n\nThe study is complete. Here's the analysis:\n\n### Key Findings\n\n**Field Oil Rate (SEP oil rate) vs Separator Pressure:**\n\n| Separator Pressure | Oil Rate (sm\u00b3/d) | Change vs Base (15 bara) |\n|-------------------|------------------|--------------------------|\n| 10 bara           | 1,259            | +3.47%                   |\n| 15 bara (base)    | 1,217            | 0%                       |\n| 20 bara           | 1,162            | -4.52%                   |\n| 25 bara           | 1,093            | -10.16%                  |\n| 30 bara           | 1,011            | -16.9%                   |\n\n### Trends and Insights\n\n1. **Lower separator pressure = higher production**: Reducing separator pressure from 15 to 10 bara increases oil rate by **3.47%** (1217 \u2192 1259 sm\u00b3/d).\n\n2. **Higher separator pressure = significant production loss**: Increasing to 30 bara reduces oil rate by **16.9%** (1217 \u2192 1011 sm\u00b3/d).\n\n3. **Well pressures respond inversely**: \n   - At 10 bara separator: Well pressures drop (W1: 38.51 \u2192 39.44 bara, W2: 37.94 \u2192 38.87 bara)\n   - At 30 bara separator: Well pressures rise significantly (W1: 43.97 bara, W2: 4",
-   "agent> The study is complete. The report is at `D:\\github reps\\pipesim helper\\runs\\20261104-184154-077\\report.md`. What would you like to do next?"
+   "agent> ## Study Results: Field Oil Rate vs Separator Pressure\n\nThe study is complete! Here's what the results show:\n\n### Key Findings:\n\n**Field Oil Rate (at separator) changes with separator pressure:**\n- **Base case (15 bara):** 1,217 sm\u00b3/d\n- **At 10 bara:** 1,259 sm\u00b3/d (+3.47%)\n- **At 30 bara:** 1,011 sm\u00b3/d (-16.9%)\n\n### Trends:\n\n1. **Lower separator pressure = Higher production**\n   - Reducing separator pressure from 15 to 10 bara increases oil rate by **3.47%** (1,217 \u2192 1,259 sm\u00b3/d)\n   - Increasing to 30 bara reduces oil rate by **16.9%** (1,217 \u2192 1,011 sm\u00b3/d)\n\n2. **Well responses:**\n   - **W1:** Liquid rate drops from 677 to 571 sm\u00b3/d (-15.7%) as separator pressure increases\n   - **W2:** Liquid rate drops from 844 to 693 sm\u00b3/d (-17.8%) as separator pressure increases\n   - Well pressures increase with higher separator pressure (backpressure effect)\n\n3. **Gas handling:**\n   - Gas rate follows the same trend: 0.126 mmsm\u00b3/d at 10 bara vs 0.101 mmsm\u00b3/d at 30 bara\n\n### Physical Interpretation:\n\nLower separator pressure creates a stronger pressure drawdown across the flowlines, which:\n- Increases the pressure differential driving flow from reservoir to surface\n- Improves well deliver",
+   "agent> The study is complete. The report is at `D:\\github reps\\pipesim helper\\runs\\20261104-191453-568\\report.md`. What would you like to do next?"
   ],
   "completed": true,
   "correct": true,
   "note": "most oil at separator 10.0 bara (expected the lowest, 10)",
   "run_dirs": [
-   "D:\\github reps\\pipesim helper\\runs\\20261104-184154-077"
+   "D:\\github reps\\pipesim helper\\runs\\20261104-191453-568"
   ],
   "attempt": 1
  },
  "gaslift_nodal": {
   "scenario": "gaslift_nodal",
   "held_out": false,
-  "seconds": 120,
+  "seconds": 111,
   "exit": 0,
   "runs": 2,
   "tool_calls": 10,
@@ -42,48 +42,44 @@
    "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
    "agent> Here's the study plan:\n\n**STUDY PLAN: Nodal analysis of W1**\nUnits: METRIC\n1. Build this network as a new PIPESIM model:\n   PROJECT: Gas Lift Study (METRIC)\n     fluid      BO: black oil, 35 API, GOR 100 sm3/sm3, water cut 20 %, gas SG 0.7\n     well       W1: reservoir 250 bara / 90 degC, depth 2500 m, tubing 76 mm, PI 10 sm3/d/bar, fluid BO, gas lift 0.05 mmsm3/d at 2000 m\n     flowline   FL-W1: W1 -> SEP, 2000 m, ID 100 mm, elevation +0 m\n     sink       SEP: 15 bara\n2. Analysis: nodal (nodal analysis of one well: inflow (IPR) vs outflow (VLP) curves and the operating point)\n     well: W1, outlet pressure: 20 bara\n3. Results: operating point (liquid, oil, gas rate; flowing bottom-hole pressure), inflow and outflow curves, nodal plot\n4. Total simulation runs: 1. Outputs: CSV, charts, report.md in runs/<timestamp>/\n\nPlease approve this plan or let me know if you'd like any changes.",
    "agent> The plan is already complete with all the information you provided. There are no missing items to fill with defaults - everything has been specified. \n\nPlease confirm you want to proceed with running this study, and I'll execute it.",
-   "agent> ## Nodal Analysis Results for Well W1\n\nThe nodal analysis has been completed successfully. Here are the key findings:\n\n### Operating Point (at 20 bara wellhead pressure):\n- **Liquid rate**: 1,224 sm\u00b3/d\n- **Oil rate**: 979.1 sm\u00b3/d\n- **Gas rate**: 0.098 mmsm\u00b3/d (from reservoir)\n- **Water rate**: 244.8 sm\u00b3/d\n- **Flowing bottom-hole pressure (FBHP)**: 116.3 bara\n\n### IPR (Inflow Performance Relationship) Curve:\nThe inflow curve shows the well's ability to produce at different bottom-hole pressures. At the operating point (116.3 bara FBHP), the well produces 1,224 sm\u00b3/d of liquid. The IPR curve extends from 248.3 bara (16.75 sm\u00b3/d) down to 2.4 bara (1,675 sm\u00b3/d), showing the well's potential production range.\n\n### VLP (Vertical Lift Performance) Curve:\nThe outflow curve represents the flowline's ability to deliver fluid to the separator at 20 bara. The VLP curve shows that at 116.3 bara FBHP, the flowline can deliver 1,224 sm\u00b3/d to the 20 bara outlet.\n\n### Analysis:\n1. **Operating point**: The well is producing at 1,224 sm\u00b3/d with a FBHP of 116.3 bara. This is the intersection of the IPR and VLP curves.\n\n2. **Gas lift impact**: The gas lift injection of 0.05 mmsm\u00b3/d at 2,000 m de",
-   "agent> Here's the study plan:\n\n**STUDY PLAN: Sweep of W1:W1_GL.GasRate**\nUnits: METRIC\n1. Build this network as a new PIPESIM model:\n   PROJECT: Gas Lift Study (METRIC)\n     fluid      BO: black oil, 35 API, GOR 100 sm3/sm3, water cut 20 %, gas SG 0.7\n     well       W1: reservoir 250 bara / 90 degC, depth 2500 m, tubing 76 mm, PI 10 sm3/d/bar, fluid BO, gas lift 0.05 mmsm3/d at 2000 m\n     flowline   FL-W1: W1 -> SEP, 2000 m, ID 100 mm, elevation +0 m\n     sink       SEP: 15 bara\n2. Analysis: sweep (vary ONE variable over a range, everything else at base)\n     GasLiftInjection:W1:W1_GL.GasRate: [0, 0.04, 0.08, 0.12, 0.16, 0.2]\n3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source\n4. Total simulation runs: 7. Outputs: CSV, charts, report.md in runs/<timestamp>/\n\nPlease approve this plan or let me know if you'd like any changes.",
-   "agent> ## Gas Lift Rate Sweep Results\n\nThe sweep analysis has been completed. Here are the key findings:\n\n### Optimum Gas Lift Rate for Maximum Oil Production:\n\n**Best result: 0.08 MMsm\u00b3/d**\n- **Oil rate**: 751.5 sm\u00b3/d (highest in the sweep)\n- **Liquid rate**: 939.4 sm\u00b3/d\n- **Wellhead pressure**: 48.66 bara\n\n### Complete Results Table:\n\n| Gas Lift Rate (MMsm\u00b3/d) | Oil Rate (sm\u00b3/d) | Liquid Rate (sm\u00b3/d) | Wellhead Pressure (bara) | Oil Change vs Base [%] |\n|------------------------|------------------|---------------------|--------------------------|------------------------|\n| 0.00 (no lift)         | 665.3            | 831.6               | 32.92                    | -10.41%                |\n| 0.04                   | 735.9            | 919.8               | 42.05                    | -0.91%                 |\n| **0.08 (OPTIMUM)**     | **751.5**        | **939.4**           | **48.66**                | **+1.2%**              |\n| 0.12                   | 748.9            | 936.1               | 54.1                     | +0.84%                 |\n| 0.16                   | 737.4            | 921.8               | 58.79                    | -0.7%                  |\n| 0.20              ",
-   "agent> The gas lift rate sweep study is complete. The report is available at `D:\\github reps\\pipesim helper\\runs\\20261104-184401-655\\report.md`. Would you like to analyze other parameters or run a different type of study?"
+   "agent> ## Nodal Analysis Results for Well W1\n\nThe nodal analysis has been completed successfully. Here are the key findings:\n\n### Operating Point (at 20 bara wellhead pressure):\n- **Liquid rate**: 1,224 sm\u00b3/d\n- **Oil rate**: 979.1 sm\u00b3/d\n- **Gas rate**: 0.098 mmsm\u00b3/d (from reservoir)\n- **Water rate**: 244.8 sm\u00b3/d\n- **Flowing bottom-hole pressure (FBHP)**: 116.3 bara\n\n### Analysis of the IPR vs VLP Curves:\n\n**Inflow Performance Relationship (IPR):**\n- The well's IPR curve shows that as bottom-hole pressure decreases, liquid production increases\n- At 116.3 bara FBHP, the well produces 1,224 sm\u00b3/d total liquid\n- The PI of 10 sm\u00b3/d/bar is working as expected (production \u2248 PI \u00d7 pressure drop from reservoir)\n\n**Outflow Performance Relationship (VLP):**\n- The VLP curve shows the flowline's ability to deliver fluids to the 20 bara separator\n- At 116.3 bara FBHP, the flowline can deliver 1,224 sm\u00b3/d to the separator\n- The operating point is where IPR = VLP (the intersection point)\n\n### Key Observations:\n1. **Gas lift is contributing**: The well has 0.05 mmsm\u00b3/d of injected gas at 2000 m depth, which is helping maintain production\n2. **Good operating point**: The well is producing at a reason",
+   "agent> Here's the study plan:\n\n**STUDY PLAN: Sweep of W1:W1_GL.GasRate**\nUnits: METRIC\n1. Build this network as a new PIPESIM model:\n   PROJECT: Gas Lift Study (METRIC)\n     fluid      BO: black oil, 35 API, GOR 100 sm3/sm3, water cut 20 %, gas SG 0.7\n     well       W1: reservoir 250 bara / 90 degC, depth 2500 m, tubing 76 mm, PI 10 sm3/d/bar, fluid BO, gas lift 0.05 mmsm3/d at 2000 m\n     flowline   FL-W1: W1 -> SEP, 2000 m, ID 100 mm, elevation +0 m\n     sink       SEP: 15 bara\n2. Analysis: sweep (vary ONE variable over a range, everything else at base)\n     GasLiftInjection:W1:W1_GL.GasRate: [0, 0.05, 0.1, 0.15, 0.2]\n3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source\n4. Total simulation runs: 6. Outputs: CSV, charts, report.md in runs/<timestamp>/\n\nPlease approve this plan or let me know if you'd like any changes.",
+   "agent> ## Gas Lift Rate Sweep Results\n\nThe sweep analysis is complete. Here are the key findings:\n\n### **Optimum Gas Lift Rate: 0.1 MMsm\u00b3/d**\n\nThis rate gives the **highest oil production** at **751.6 sm\u00b3/d** (1.21% higher than the base case of 742.6 sm\u00b3/d).\n\n### Complete Results Table:\n\n| Gas Lift Rate (MMsm\u00b3/d) | Oil Rate (sm\u00b3/d) | Liquid Rate (sm\u00b3/d) | Well Pressure (bara) | Change vs Base [%] |\n|------------------------|------------------|---------------------|---------------------|-------------------|\n| 0.00 | 665.3 | 831.6 | 32.9 | **-10.41%** |\n| 0.05 (base) | 742.6 | 928.3 | 43.8 | 0% |\n| **0.10** | **751.6** | **939.5** | **51.5** | **+1.21%** |\n| 0.15 | 740.9 | 926.1 | 57.7 | -0.24% |\n| 0.20 | 720.6 | 900.8 | 63.0 | -2.96% |\n\n### Key Observations:\n\n1. **Optimum found at 0.1 MMsm\u00b3/d**: This is the sweet spot where oil production is maximized\n2. **No gas lift (0 MMsm\u00b3/d)**: Production drops significantly by 10.41% - gas lift is essential for this well\n3. **Diminishing returns**: Beyond 0.1 MMsm\u00b3/d, oil production starts to decline due to:\n   - Excessive gas slippage (gas bypassing the oil)\n   - Higher wellhead pressure reducing the pressure differential\n4. **Pressure trend*",
+   "agent> The gas lift rate sweep study is complete. The report is available at `D:\\github reps\\pipesim helper\\runs\\20261104-191701-597\\report.md`. Would you like to analyze other variables or perform a different type of study?"
   ],
   "completed": true,
   "correct": true,
-  "note": "best lift rate 0.08 mmsm3/d (expected about 0.1)",
+  "note": "best lift rate 0.1 mmsm3/d (expected about 0.1)",
   "run_dirs": [
-   "D:\\github reps\\pipesim helper\\runs\\20261104-184307-024",
-   "D:\\github reps\\pipesim helper\\runs\\20261104-184401-655"
+   "D:\\github reps\\pipesim helper\\runs\\20261104-191610-337",
+   "D:\\github reps\\pipesim helper\\runs\\20261104-191701-597"
   ],
   "attempt": 1
  },
  "gaslift_allocation": {
   "scenario": "gaslift_allocation",
   "held_out": false,
-  "seconds": 107,
+  "seconds": 108,
   "exit": 0,
   "runs": 1,
   "tool_calls": 7,
   "checker_errors": 0,
   "json_retries": 0,
   "model_unreachable": false,
-  "unverified_numbers": [
-   "0.11"
-  ],
-  "numbers_flagged_after_rewrite": [
-   "0.11"
-  ],
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
   "replies": [
    "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
    "agent> I need to ask you about the missing values:\n\n**Missing inputs:**\n1. W1: Reservoir temperature? (suggested: 90.0 degC)\n2. W1: Tubing inner diameter? (suggested: 76.0 mm)\n3. W2: Reservoir temperature? (suggested: 90.0 degC)\n4. W2: Tubing inner diameter? (suggested: 76.0 mm)\n\nPlease provide these values, or say \"use defaults\" to accept the suggested values.",
    "agent> Here's the study plan:\n\n**STUDY PLAN: Find the best W1:W1_GL.GasRate, W2:W2_GL.GasRate**\nUnits: METRIC\n1. Build this network as a new PIPESIM model:\n   PROJECT: Field A (METRIC)\n     fluid      BO: black oil, 30 API, GOR 80 sm3/sm3, water cut 40 %, gas SG 0.7\n     well       W1: reservoir 220 bara / 90 degC, depth 2500 m, tubing 76 mm, PI 8 sm3/d/bar, fluid BO, gas lift 0.05 mmsm3/d at 2200 m\n     well       W2: reservoir 200 bara / 90 degC, depth 2400 m, tubing 76 mm, PI 12 sm3/d/bar, fluid BO, gas lift 0.05 mmsm3/d at 2100 m\n     junction   J1: \n     flowline   FL-W1: W1 -> J1, 1000 m, ID 100 mm, elevation +0 m\n     flowline   FL-W2: W2 -> J1, 1000 m, ID 100 mm, elevation +0 m\n     flowline   Trunk: J1 -> SEP, 4000 m, ID 152 mm, elevation +0 m\n     sink       SEP: 15 bara\n2. Analysis: optimize (try every combination of 1-3 variables (e.g. each well's gas lift rate) and pick the one that maximizes the main result (total oil by default); optional max_total limits the sum of the variables (e.g. the lift gas available))\n     GasLiftInjection:W1:W1_GL.GasRate: [0, 0.05, 0.1, 0.15]\n     GasLiftInjection:W2:W2_GL.GasRate: [0, 0.05, 0.1, 0.15]\n     maximize: total oil rate (or the",
-   "agent> ## Study Results: Optimal Gas Lift Allocation\n\n**Best Result:**\n- **Optimal allocation:** W1 = 0.05 MMsm\u00b3/d, W2 = 0.10 MMsm\u00b3/d\n- **Maximum oil rate:** 767.2 sm\u00b3/d (1.81% improvement over base case)\n- **Total lift gas used:** 0.15 MMsm\u00b3/d (full allocation)\n\n**Key Findings:**\n\n1. **W2 is more responsive to gas lift:** W2 has a higher PI (12 vs 8 sm\u00b3/d/bar) and lower reservoir pressure (200 vs 220 bara), making it more sensitive to gas lift assistance.\n\n2. **Optimal split favors W2:** The best result comes from giving W2 more lift gas (0.10) while keeping W1 at its base rate (0.05). This allocation produces 767.2 sm\u00b3/d vs 753.5 sm\u00b3/d at base.\n\n3. **Alternative near-optimal:** W1=0.10, W2=0.05 gives 760.9 sm\u00b3/d (0.97% improvement), but this is worse than the optimal split.\n\n4. **Single-well cases are poor:** Running only one well with all the gas lift gives much lower production (400-465 sm\u00b3/d) because the other well stops flowing entirely.\n\n5. **Both wells flowing is essential:** The optimal cases both have both wells flowing, which maximizes total field production.\n\n**Physical Observations:**\n- When one well receives no lift gas, it stops flowing entirely (not_flowing wells in",
-   "agent> The study is complete. The report is at `D:\\github reps\\pipesim helper\\runs\\20261104-184524-156\\report.md`. What would you like to do next?"
+   "agent> ## Study Results: Optimal Gas Lift Allocation\n\n**Best Result:**\n- **Optimal allocation:** W1 = 0.05 MMsm\u00b3/d, W2 = 0.10 MMsm\u00b3/d\n- **Maximum oil rate:** 767.2 sm\u00b3/d (1.81% improvement over base case)\n- **Total lift gas used:** 0.15 MMsm\u00b3/d (full allocation)\n\n**Key Findings:**\n\n1. **W2 is more responsive to gas lift:** W2 has a higher PI (12 vs 8 sm\u00b3/d/bar) and lower reservoir pressure (200 vs 220 bara), making it more sensitive to gas lift assistance.\n\n2. **Optimal split favors W2:** The best result comes from giving W2 more lift gas (0.10) while keeping W1 at its base rate (0.05). This allocation produces 767.2 sm\u00b3/d vs 753.5 sm\u00b3/d at base.\n\n3. **Alternative near-optimal:** W1=0.10, W2=0.05 gives 760.9 sm\u00b3/d (0.97% improvement), but this is worse than the optimal split.\n\n4. **Single-well cases are poor:** Giving all lift gas to one well (0.15 to either W1 or W2) results in only 412-466 sm\u00b3/d because the other well stops flowing entirely.\n\n5. **Both wells flowing is essential:** The optimal cases both have wells flowing (no \"not_flowing\" wells), which maximizes total field production.\n\n**Recommendation:** Allocate **0.05 MMsm\u00b3/d to W1** and **0.10 MMsm\u00b3/d to W2** for maximum f",
+   "agent> The study is complete. The report is at `D:\\github reps\\pipesim helper\\runs\\20261104-191817-711\\report.md`. What would you like to do next?"
   ],
   "completed": true,
   "correct": true,
   "note": "best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)",
   "run_dirs": [
-   "D:\\github reps\\pipesim helper\\runs\\20261104-184524-156"
+   "D:\\github reps\\pipesim helper\\runs\\20261104-191817-711"
   ],
   "attempt": 1
  },
@@ -102,22 +98,22 @@
   "replies": [
    "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
    "agent> Here is the study plan:\n\n---\n\n**STUDY PLAN: Rank the impact of reservoir pressure, productivity index, and water cut on W1 oil rate**\n\n**Units: METRIC**\n\n1. Build this network as a new PIPESIM model:\n   - PROJECT: W1 Study (METRIC)\n     - fluid: BO: black oil, 32 API, GOR 90 sm\u00b3/sm\u00b3, water cut 30%, gas SG 0.7\n     - well: W1: reservoir 230 bara / 85\u00b0C, depth 2400 m, tubing 76 mm, PI 10 sm\u00b3/d/bar, fluid BO\n     - flowline: FL-W1: W1 \u2192 SEP, 3000 m, ID 100 mm, elevation +0 m\n     - sink: SEP: 15 bara\n\n2. Analysis: tornado (vary each variable to its low and high value one at a time, then rank the impacts)\n   - Completion:W1:W1_Comp.ReservoirPressure: [200, 250]\n   - Completion:W1:W1_Comp.LiquidPI: [6, 14]\n   - BlackOilFluid:BO.WaterCut: [20, 50]\n\n3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source\n\n4. Total simulation runs: 7. Outputs: CSV, charts, report.md in runs/<timestamp>/\n\n---\n\n**Please approve this plan or let me know if you want to change anything.**",
-   "agent> ## Tornado Study Results - Uncertainty Ranking for W1 Oil Rate\n\n**Base case:** 417.2 sm\u00b3/d oil rate at 596.0 sm\u00b3/d total liquid rate\n\n### **RANKING for SEP OIL RATE (your main objective):**\n\n1. **\ud83e\udd47 Water Cut (20-50%)** - **MOST SENSITIVE**\n   - Swing: **265.8 sm\u00b3/d** (21.7% increase to 507.7 sm\u00b3/d at 20%, down to 241.8 sm\u00b3/d at 50%)\n   - Low water cut (20%) gives the **highest oil rate** (507.7 sm\u00b3/d)\n   - High water cut (50%) gives the **lowest oil rate** (241.8 sm\u00b3/d) - **42% below base**\n\n2. **\ud83e\udd48 Reservoir Pressure (200-250 bara)**\n   - Swing: 193.3 sm\u00b3/d\n   - High pressure (250 bara): 493.8 sm\u00b3/d (+18.4%)\n   - Low pressure (200 bara): 300.5 sm\u00b3/d (-28.0%)\n\n3. **\ud83e\udd49 Productivity Index (6-14 sm\u00b3/d/bar)**\n   - Swing: 189.5 sm\u00b3/d\n   - High PI (14): 493.2 sm\u00b3/d (+18.2%)\n   - Low PI (6): 303.6 sm\u00b3/d (-27.2%)\n\n### **Key Insights:**\n\n- **Water cut is the dominant uncertainty** - it has the largest impact on oil rate because it directly affects the oil fraction in the produced fluid. Higher water cut means more water relative to oil, reducing oil rate even if total liquid rate is similar.\n\n- **Reservoir pressure and PI have similar impacts** - both show ~18% improvement at their hig",
-   "agent> The study is complete. The report is at `D:\\github reps\\pipesim helper\\runs\\20261104-184708-683\\report.md`. What would you like to do next?",
-   "agent> The study is complete. The report is at `D:\\github reps\\pipesim helper\\runs\\20261104-184708-683\\report.md`. What would you like to do next?"
+   "agent> ## Tornado Study Results - Uncertainty Ranking\n\nThe study ran successfully. Here's the analysis of which uncertainty affects W1's oil rate most:\n\n### **Key Finding: Water Cut Has the Largest Impact on Oil Rate**\n\nFor **SEP oil rate** (the main production metric):\n\n| Rank | Variable | Low Case | High Case | Swing (sm\u00b3/d) | % Change vs Base |\n|------|----------|----------|-----------|---------------|------------------|\n| **1** | **Water Cut** | 507.7 | 241.8 | **265.8** | -42.04% (high) to +21.68% (low) |\n| 2 | Reservoir Pressure | 300.5 | 493.8 | 193.3 | -27.96% to +18.36% |\n| 3 | Productivity Index | 303.6 | 493.2 | 189.5 | -27.23% to +18.2% |\n\n### **Ranking (Most to Least Impactful):**\n\n1. **Water Cut (20-50%)** - **MOST IMPORTANT**\n   - Reduces oil rate by **42%** when water cut increases from 30% to 50%\n   - Increases oil rate by **22%** when water cut decreases to 20%\n   - This is because higher water cut means more water production for the same total liquid rate, reducing the oil fraction\n\n2. **Reservoir Pressure (200-250 bara)**\n   - Increases oil rate by **18%** at 250 bara vs base\n   - Decreases oil rate by **28%** at 200 bara vs base\n\n3. **Productivity Index (6-14 s",
+   "agent> The study is complete. The report is at `D:\\github reps\\pipesim helper\\runs\\20261104-192002-720\\report.md`. What would you like to do next?",
+   "agent> The study is complete. The report is at `D:\\github reps\\pipesim helper\\runs\\20261104-192002-720\\report.md`. What would you like to do next?"
   ],
   "completed": true,
   "correct": true,
   "note": "ranking ['BO.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)",
   "run_dirs": [
-   "D:\\github reps\\pipesim helper\\runs\\20261104-184708-683"
+   "D:\\github reps\\pipesim helper\\runs\\20261104-192002-720"
   ],
   "attempt": 1
  },
  "debottleneck": {
   "scenario": "debottleneck",
   "held_out": false,
-  "seconds": 86,
+  "seconds": 87,
   "exit": 0,
   "runs": 1,
   "tool_calls": 9,
@@ -130,56 +126,48 @@
    "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
    "agent> I need to ask the user about the missing well parameters:\n\n**Missing inputs (grouped by component):**\n\n**Wells (W1, W2, W3):**\n1. Reservoir temperature: 90.0 degC (suggested default)\n2. Tubing inner diameter: 76.0 mm (suggested default)\n\nPlease provide values for these, or say \"use defaults\" to accept the suggested defaults.",
    "agent> Here's the study plan:\n\n**STUDY PLAN: Compare field oil production for four combinations: trunkline 152/203 mm \u00d7 separator 12/8 bara**\nUnits: METRIC\n1. Build this network as a new PIPESIM model:\n   PROJECT: Field A (METRIC)\n     fluid      BO: black oil, 33 API, GOR 120 sm3/sm3, water cut 30 %, gas SG 0.7\n     well       W1: reservoir 240 bara / 90 degC, depth 2600 m, tubing 76 mm, PI 9 sm3/d/bar, fluid BO\n     well       W2: reservoir 220 bara / 90 degC, depth 2500 m, tubing 76 mm, PI 14 sm3/d/bar, fluid BO\n     well       W3: reservoir 210 bara / 90 degC, depth 2450 m, tubing 76 mm, PI 6 sm3/d/bar, fluid BO, gas lift 0.05 mmsm3/d at 2200 m\n     junction   M: \n     flowline   FL-W1: W1 -> M, 1000 m, ID 100 mm, elevation +0 m\n     flowline   FL-W2: W2 -> M, 1000 m, ID 100 mm, elevation +0 m\n     flowline   FL-W3: W3 -> M, 1000 m, ID 100 mm, elevation +0 m\n     flowline   Trunk: M -> SEP, 6000 m, ID 152 mm, elevation +15 m\n     sink       SEP: 12 bara\n2. Analysis: grid (full-factorial combination of 2-3 variables)\n     Flowline:Trunk.InnerDiameter: [152, 203]\n     Sink:SEP.Pressure: [12, 8]\n3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure a",
-   "agent> ## Study Results Analysis\n\n**Best Case: Trunkline 203 mm + Separator 8 bara**\n- **Field oil rate: 1,344 sm\u00b3/d** (37.55% increase vs base)\n- Total liquid: 1,920 sm\u00b3/d\n\n**Comparison Summary:**\n\n| Case | Oil Rate [sm\u00b3/d] | Change vs Base |\n|------|------------------|----------------|\n| 152 mm / 12 bara (base) | 976.9 | 0% |\n| 152 mm / 8 bara | 997.1 | +2.07% |\n| 203 mm / 12 bara | 1,312 | +34.27% |\n| **203 mm / 8 bara** | **1,344** | **+37.55%** |\n\n**Key Findings:**\n\n1. **Trunkline diameter is the dominant factor**: Upgrading from 152 mm to 203 mm increases oil by **34-37%** (vs only 2% from lowering separator pressure alone)\n\n2. **Separator pressure has secondary effect**: Lowering from 12 to 8 bara adds only **2-3%** improvement on top of the diameter change\n\n3. **Well responses**:\n   - W1: +44.77% rate increase (203/8) vs +2.29% (152/8)\n   - W2: +50.96% rate increase (203/8) vs +2.89% (152/8)  \n   - W3: +14.46% rate increase (203/8) vs +0.93% (152/8) - gas lift helps more with larger diameter\n\n4. **Wellbore pressures drop significantly** with larger diameter + lower separator (W1: 40.4\u219229.3 bara, W2: 40.9\u219231.1 bara, W3: 42.4\u219230.2 bara) - still well above bubble point, so no ",
-   "agent> The study is complete. The report is at `D:\\github reps\\pipesim helper\\runs\\20261104-184830-243\\report.md`. What would you like to do next?"
+   "agent> ## Study Results Analysis\n\n**Best Case: Trunkline 203 mm + Separator 8 bara**\n- **Field oil rate: 1,344 sm\u00b3/d** (37.6% increase vs base)\n- This combination gives the maximum oil production\n\n**Comparison of the four cases:**\n\n| Case | Trunk ID | Sep Pressure | Oil Rate (sm\u00b3/d) | Change vs Base |\n|------|----------|--------------|------------------|----------------|\n| Base | 152 mm | 12 bara | 977 | 0% |\n| Case 2 | 152 mm | 8 bara | 997 | +2.1% |\n| Case 3 | 203 mm | 12 bara | 1,312 | +34.3% |\n| **Best** | **203 mm** | **8 bara** | **1,344** | **+37.6%** |\n\n**Key observations:**\n\n1. **Trunkline diameter is the dominant factor**: Increasing from 152 to 203 mm gives +34.3% oil rate (vs only +2.1% from lowering separator pressure alone)\n\n2. **Separator pressure has secondary benefit**: Lowering to 8 bara adds another +3.3% on top of the larger pipe (37.6% total vs 34.3%)\n\n3. **Well responses**:\n   - W1: 44.8% rate increase (203/8 bara) vs 40.9% (203/12 bara)\n   - W2: 51.0% rate increase (203/8 bara) vs 46.6% (203/12 bara)  \n   - W3: 14.5% rate increase (203/8 bara) vs 13.1% (203/12 bara) - gas lift helps maintain flow\n\n4. **Well pressures drop significantly** with larger pipe + lo",
+   "agent> The study is complete. The report is at `D:\\github reps\\pipesim helper\\runs\\20261104-192125-413\\report.md`. What would you like to do next?"
   ],
   "completed": true,
   "correct": true,
   "note": "203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)",
   "run_dirs": [
-   "D:\\github reps\\pipesim helper\\runs\\20261104-184830-243"
+   "D:\\github reps\\pipesim helper\\runs\\20261104-192125-413"
   ],
   "attempt": 1
  },
  "pipeline_sizing": {
   "scenario": "pipeline_sizing",
   "held_out": false,
-  "seconds": 130,
+  "seconds": 137,
   "exit": 0,
   "runs": 1,
   "tool_calls": 33,
   "checker_errors": 11,
   "json_retries": 0,
   "model_unreachable": false,
-  "unverified_numbers": [
-   "66",
-   "27.1",
-   "11.9"
-  ],
-  "numbers_flagged_after_rewrite": [
-   "66",
-   "27.1",
-   "11.9"
-  ],
+  "unverified_numbers": [],
+  "numbers_flagged_after_rewrite": [],
   "replies": [
    "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
    "agent> I've exceeded the edit limit. Let me stop and explain the situation to the user.\n\n---\n\nI've set up the gas export pipeline project with the following components:\n- **Fluid**: Dry gas (SG 0.62, OGR=0, WGR=0)\n- **Source**: Plant delivering 3 MMsm\u00b3/d at 40\u00b0C\n- **Sink**: Terminal at 60 bara\n- **Flowlines**: Three parallel flowlines with IDs 203, 254, and 305 mm\n\nHowever, I've hit the edit limit. The current network has three flowlines from Plant to Terminal, but PIPESIM requires a junction when a source feeds multiple lines.\n\n**To proceed, I need to:**\n1. Create a proper network layout with a junction (J1) after the Plant to split the flow to the three parallel flowlines, then one line from J1 to Terminal\n2. Set up a study to test all three diameters and find which is the smallest that works (inlet pressure \u2264 90 bara)\n\n**Questions for you:**\n1. Should I create a junction-based network where all three flowlines (203, 254, 305 mm) go from Plant to J1, then one line from J1 to Terminal?\n2. Or would you prefer three separate single-run studies, each with one flowline diameter?\n\nPlease confirm how you'd like to proceed, and I'll continue with the analysis.",
    "agent> I've hit the edit limit again. Let me explain the situation to the user.\n\n---\n\nI've encountered a fundamental limitation: **PIPESIM doesn't allow a source to connect to multiple flowlines directly**. The current project has three flowlines (203, 254, and 305 mm) all trying to connect from \"Plant\" to \"J1\", but a source can only have one outgoing connection.\n\n**To solve this, I have two options:**\n\n1. **Create three separate simple networks** - Each with one flowline (source \u2192 flowline \u2192 sink), and run them as three separate single-run cases. This would require creating three separate .pips files or using a different approach.\n\n2. **Use a single flowline and vary its diameter in the study** - Create one flowline in the project and use the study to sweep the diameter through 203, 254, and 305 mm. However, this requires the project to have only one flowline.\n\n**My recommendation:** Let me create a simple project with one flowline (203 mm initially), then use the study to vary the diameter. This is the cleanest approach.\n\n**Questions for you:**\n1. Should I create a simple project with one flowline and use a sweep study to test all three diameters (203, 254, 305 mm)?\n2. Or would y",
-   "agent> ---\n\n**STUDY PLAN:**\n\n**Objective:** Find the smallest flowline diameter (203, 254, or 305 mm) that allows gas to flow from Plant to Terminal at 60 bara with inlet pressure \u2264 90 bara\n\n**Units:** METRIC\n\n**Network:**\n- Fluid: DryGas (gas, SG 0.62, OGR=0, WGR=0)\n- Source: Plant (gas rate 3 mmsm\u00b3/d, 40\u00b0C)\n- Flowline: FL-1 (Plant \u2192 Terminal, 25,000 m, diameter varies)\n- Sink: Terminal (60 bara)\n\n**Analysis:** Sweep (vary ONE variable over a range)\n- Flowline FL-1 InnerDiameter: [203, 254, 305] mm\n\n**Results recorded:** Liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source\n\n**Total simulation runs:** 4 (1 base case + 3 sweep cases)\n\n**Outputs:** CSV, charts, report.md in runs/<timestamp>/\n\n---\n\n**Please approve this plan or request changes.** Once approved, I'll run the study and show you the inlet pressure for each diameter to determine which is the smallest that works (\u2264 90 bara).",
-   "agent> ---\n\n## **STUDY RESULTS: Gas Export Pipeline Diameter Analysis**\n\nThe study has completed successfully. Here are the results for each flowline diameter:\n\n### **Inlet Pressure (Plant) for Each Diameter:**\n\n| Diameter (mm) | Plant Pressure (bara) | Status |\n|---------------|----------------------|--------|\n| **203**       | **126.0**            | \u274c Too high (> 90 bara) |\n| **254**       | **87.1**             | \u2705 Works (\u2264 90 bara) |\n| **305**       | **71.9**             | \u2705 Works (\u2264 90 bara) |\n\n### **Answer: The smallest working diameter is 254 mm**\n\n- **203 mm**: Requires 126 bara inlet pressure - **exceeds the 90 bara limit**\n- **254 mm**: Requires 87.1 bara inlet pressure - **works and meets the constraint**\n- **305 mm**: Requires 71.9 bara inlet pressure - also works but is larger than necessary\n\n### **Key Observations:**\n\n1. **Gas rate**: All cases deliver the full 3.0 MMsm\u00b3/d to the terminal (no loss)\n2. **Pressure drop**: \n   - 203 mm: 126 - 60 = 66 bara pressure drop\n   - 254 mm: 87.1 - 60 = 27.1 bara pressure drop\n   - 305 mm: 71.9 - 60 = 11.9 bara pressure drop\n3. **Economic implication**: 254 mm is the most economical choice that meets the constraint\n\n### **Outputs"
+   "agent> ---\n\n**STUDY PLAN:**\n\nFind the smallest flowline diameter (203, 254, or 305 mm) that allows gas to flow from Plant to Terminal at 60 bara with inlet pressure \u2264 90 bara\n\n**Units:** METRIC\n\n1. **Build this network as a new PIPESIM model:**\n   - PROJECT: Gas Export Pipeline (METRIC)\n     - fluid: DryGas: gas, SG 0.62, OGR 0 sm\u00b3/mmsm\u00b3, WGR 0 sm\u00b3/mmsm\u00b3\n     - source: Plant: gas rate 3 mmsm\u00b3/d, 40\u00b0C, fluid DryGas\n     - flowline: FL-1: Plant \u2192 Terminal, 25,000 m, ID 203 mm, elevation +0 m\n     - sink: Terminal: 60 bara\n\n2. **Analysis:** sweep (vary ONE variable over a range, everything else at base)\n   - Flowline:FL-1.InnerDiameter: [203, 254, 305]\n\n3. **Results recorded:** liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source\n\n4. **Total simulation runs:** 4. Outputs: CSV, charts, report.md in runs/<timestamp>/\n\n---\n\n**Please approve this plan or suggest changes.** Once approved, I'll run the study and show you the results including the inlet pressure for each diameter.",
+   "agent> ---\n\n## **STUDY RESULTS: Gas Export Pipeline**\n\nThe study ran successfully with 4 cases (1 base + 3 diameter variations). Here are the key findings:\n\n### **Inlet Pressure for Each Diameter:**\n\n| Diameter (mm) | Plant Inlet Pressure (bara) | Status |\n|---------------|----------------------------|--------|\n| **203**       | **126.0**                  | \u274c Too high (> 90 bara limit) |\n| **254**       | **87.1**                   | \u2705 Works (\u2264 90 bara) |\n| **305**       | **71.9**                   | \u2705 Works (\u2264 90 bara) |\n\n### **Answer: The smallest working diameter is 254 mm**\n\n- **203 mm**: Requires 126 bara inlet pressure - **exceeds the 90 bara limit**\n- **254 mm**: Requires 87.1 bara inlet pressure - **meets the requirement** \u2713\n- **305 mm**: Requires 71.9 bara inlet pressure - **also works but larger than needed**\n\n### **Additional Observations:**\n\n- All cases successfully delivered the full 3 MMsm\u00b3/d gas rate to the terminal at 60 bara\n- The pressure drop decreases as diameter increases (expected behavior)\n- No liquid or oil production (dry gas as specified)\n- Gas rate remained constant at ~3.0 MMsm\u00b3/d across all cases\n\n### **Recommendation:**\n\n**Use 254 mm (10-inch) pipe** "
   ],
   "completed": true,
   "correct": true,
   "note": "smallest diameter with inlet <= 90 bara: 254.0 (expected 254)",
   "run_dirs": [
-   "D:\\github reps\\pipesim helper\\runs\\20261104-185103-574"
+   "D:\\github reps\\pipesim helper\\runs\\20261104-192403-880"
   ],
   "attempt": 1
  },
  "choke_sizing": {
   "scenario": "choke_sizing",
   "held_out": true,
-  "seconds": 74,
+  "seconds": 72,
   "exit": 0,
   "runs": 1,
   "tool_calls": 10,
@@ -192,21 +180,21 @@
    "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
    "agent> Here's the study plan:\n\n**STUDY PLAN: Sweep of CK1.BeanSize**\nUnits: METRIC\n1. Build this network as a new PIPESIM model:\n   PROJECT: Well Study (METRIC)\n     fluid      BO: black oil, 38 API, GOR 150 sm3/sm3, water cut 10 %, gas SG 0.72\n     well       P1: reservoir 280 bara / 95 degC, depth 3000 m, tubing 89 mm, PI 6 sm3/d/bar, fluid BO\n     choke      CK1: bean 20 mm\n     flowline   FL-1: P1 -> CK1, 4000 m, ID 127 mm, elevation +0 m\n     flowline   FL-2: CK1 -> SEP, 10 m, ID 127 mm, elevation +0 m\n     sink       SEP: 20 bara\n2. Analysis: sweep (vary ONE variable over a range, everything else at base)\n     Choke:CK1.BeanSize: [12, 16, 20, 24, 28, 32]\n3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source\n4. Total simulation runs: 7. Outputs: CSV, charts, report.md in runs/<timestamp>/\n\nPlease approve this plan or let me know if you'd like any changes.",
    "agent> The plan is already set up with all the values you specified. The only thing to confirm is that you want to proceed with running the study as described.\n\nPlease confirm: **Do you approve this plan and want me to run the study?** (Reply \"yes\" or \"approve\" to proceed)",
-   "agent> ## Study Results: Choke Size Sweep (12-32 mm)\n\nAll 7 cases completed successfully. Here's how oil rate changes with choke size:\n\n### Key Findings:\n\n**Oil Rate Trend (sm\u00b3/d):**\n- **12 mm choke:** 240.3 (-47.77% vs base)\n- **16 mm choke:** 362.4 (-21.24% vs base)\n- **20 mm choke (base):** 460.1 (0%)\n- **24 mm choke:** 533.4 (+15.93%)\n- **28 mm choke:** 574.9 (+24.94%)\n- **32 mm choke:** 602.0 (+30.82%)\n\n**Maximum oil rate:** 602.0 sm\u00b3/d at **32 mm choke** (30.82% increase from base)\n**Minimum oil rate:** 240.3 sm\u00b3/d at **12 mm choke** (47.77% decrease from base)\n\n### Pressure Behavior:\n- Wellhead pressure (P1) drops as choke size increases: 64.85 bara (12 mm) \u2192 36.28 bara (32 mm)\n- This is expected: larger choke = less restriction = lower backpressure at wellhead\n\n### Gas Rate:\n- Follows oil rate trend: 0.036 mmsm\u00b3/d (12 mm) \u2192 0.090 mmsm\u00b3/d (32 mm)\n\n### Physical Observations:\n- The relationship is monotonic: larger choke = higher production\n- No flow restrictions or two-phase issues detected\n- All wells producing (no non-flowing wells)\n\n### Report & Data:\n- **Report:** `D:\\github reps\\pipesim helper\\runs\\20261104-185210-191\\report.md`\n- **CSV:** `D:\\github reps\\pipesim helper\\",
-   "agent> The study is complete. The report is at `D:\\github reps\\pipesim helper\\runs\\20261104-185210-191\\report.md`. What would you like to do next?"
+   "agent> ## Study Results: Choke Size Sweep (12-32 mm)\n\nAll 7 cases completed successfully. Here's how oil rate changes with choke size:\n\n### Key Findings:\n\n**Oil Rate Trend (sm\u00b3/d):**\n- **12 mm choke:** 240.3 (-47.77% vs base)\n- **16 mm choke:** 362.4 (-21.24% vs base)\n- **20 mm choke (base):** 460.1 (0%)\n- **24 mm choke:** 533.4 (+15.93%)\n- **28 mm choke:** 574.9 (+24.94%)\n- **32 mm choke:** 602.0 (+30.82%)\n\n**Pressure at Well P1 (bara):**\n- **12 mm:** 64.85 (highest - choke restriction)\n- **32 mm:** 36.28 (lowest - less restriction)\n\n### Analysis:\n\n1. **Strong positive correlation:** Larger choke sizes = higher oil rates. The 32 mm choke produces **30.8% more oil** than the 20 mm base case.\n\n2. **Non-linear response:** The benefit diminishes at larger sizes:\n   - 12\u219216 mm: +122.1 sm\u00b3/d\n   - 16\u219220 mm: +108.7 sm\u00b3/d  \n   - 20\u219224 mm: +73.3 sm\u00b3/d\n   - 24\u219228 mm: +41.5 sm\u00b3/d\n   - 28\u219232 mm: +27.1 sm\u00b3/d\n\n3. **Wellbore pressure drops** as choke size increases (from 64.85 to 36.28 bara), indicating less backpressure on the well.\n\n4. **Gas rate follows oil rate** (0.036 to 0.090 mmsm\u00b3/d), showing dissolved gas comes out of solution as production increases.\n\n### Recommendations:\n\n- **32 mm cho",
+   "agent> The study is complete. The report is at `D:\\github reps\\pipesim helper\\runs\\20261104-192512-290\\report.md`. What would you like to do next?"
   ],
   "completed": true,
   "correct": true,
   "note": "most oil at 32.0 mm (expected the largest choke, 32 mm)",
   "run_dirs": [
-   "D:\\github reps\\pipesim helper\\runs\\20261104-185210-191"
+   "D:\\github reps\\pipesim helper\\runs\\20261104-192512-290"
   ],
   "attempt": 1
  },
  "water_rise": {
   "scenario": "water_rise",
   "held_out": true,
-  "seconds": 70,
+  "seconds": 72,
   "exit": 0,
   "runs": 1,
   "tool_calls": 7,
@@ -219,14 +207,14 @@
    "PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.",
    "agent> I need a few missing values to complete the project:\n\n1. **W-A reservoir temperature**: 90.0 degC (suggested)\n2. **W-A tubing ID**: 76.0 mm (suggested)\n3. **W-B reservoir temperature**: 90.0 degC (suggested)\n4. **W-B tubing ID**: 76.0 mm (suggested)\n\nReply \"use defaults\" to accept these suggested values, or provide your own.",
    "agent> Here's the study plan:\n\n**STUDY PLAN: Sweep of BO.WaterCut**\nUnits: METRIC\n1. Build this network as a new PIPESIM model:\n   PROJECT: Field A (METRIC)\n     fluid      BO: black oil, 31 API, GOR 110 sm3/sm3, water cut 30 %, gas SG 0.7\n     well       W-A: reservoir 210 bara / 90 degC, depth 2300 m, tubing 76 mm, PI 7 sm3/d/bar, fluid BO\n     well       W-B: reservoir 190 bara / 90 degC, depth 2200 m, tubing 76 mm, PI 11 sm3/d/bar, fluid BO\n     junction   M: \n     flowline   FL-WA: W-A -> M, 2000 m, ID 100 mm, elevation +0 m\n     flowline   FL-WB: W-B -> M, 2000 m, ID 100 mm, elevation +0 m\n     flowline   FL-M-SEP: M -> SEP, 3000 m, ID 152 mm, elevation +0 m\n     sink       SEP: 18 bara\n2. Analysis: sweep (vary ONE variable over a range, everything else at base)\n     BlackOilFluid:BO.WaterCut: [10, 30, 50, 70]\n3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source\n4. Total simulation runs: 5. Outputs: CSV, charts, report.md in runs/<timestamp>/\n\nPlease approve this plan or suggest changes.",
-   "agent> ## Study Results: Water Cut Impact on Field Performance\n\n**Key Finding: At 70% water cut, BOTH wells stop flowing completely.**\n\n### Results Summary (from table):\n\n| Water Cut | SEP Liquid (sm\u00b3/d) | SEP Oil (sm\u00b3/d) | W-A Rate (sm\u00b3/d) | W-B Rate (sm\u00b3/d) | Status |\n|-----------|-------------------|-----------------|------------------|------------------|--------|\n| 10%       | 1,011             | 910             | 456              | 555              | Both flowing |\n| 30% (base)| 906               | 634             | 411              | 495              | Both flowing |\n| 50%       | 714               | 357             | 321              | 393              | Both flowing |\n| 70%       | \u2014                 | \u2014               | \u2014                | \u2014                | **NO FLOW** |\n\n### Critical Observations:\n\n1. **Well B (higher PI = 11) is more sensitive to water cut** - it drops from 495 to 393 sm\u00b3/d (-20%) at 50% water cut, while Well A (PI=7) drops from 411 to 321 sm\u00b3/d (-22%).\n\n2. **At 70% water cut, the system cannot flow** - both wells produce zero. This is a severe constraint. The high water cut creates excessive liquid loading that the 152 mm flowline and 18 bara separator pr",
-   "agent> The study is complete. Report and results are at `D:\\github reps\\pipesim helper\\runs\\20261104-185326-452\\report.md`. What would you like to do next?"
+   "agent> ## Study Results: Water Cut Impact on Field Performance\n\n**Key Finding: At 70% water cut, BOTH wells stop flowing completely.**\n\n### Results Summary (from table):\n\n| Water Cut | SEP Liquid (sm\u00b3/d) | SEP Oil (sm\u00b3/d) | W-A Rate (sm\u00b3/d) | W-B Rate (sm\u00b3/d) | Status |\n|-----------|-------------------|-----------------|------------------|------------------|--------|\n| 10%       | 1,011             | 910             | 456              | 555              | Both flowing |\n| 30% (base)| 906               | 634             | 411              | 495              | Both flowing |\n| 50%       | 714               | 357             | 321              | 393              | Both flowing |\n| 70%       | \u2014                 | \u2014               | \u2014                | \u2014                | **NO FLOW** |\n\n### Critical Observations:\n\n1. **Well Belling at 70% Water Cut**: Both wells (W-A and W-B) produce **zero liquid** at 70% water cut. The system cannot flow at these conditions.\n\n2. **Oil Rate Decline**:\n   - At 10% water cut: Oil rate **increases by 43.6%** (910 vs 634 sm\u00b3/d base)\n   - At 50% water cut: Oil rate **drops by 43.7%** (357 vs 634 sm\u00b3/d base)\n   - At 70% water cut: **Zero production**\n\n3. **Liqu",
+   "agent> The study is complete. Report and results are at `D:\\github reps\\pipesim helper\\runs\\20261104-192625-063\\report.md`. What would you like to do next?"
   ],
   "completed": true,
   "correct": true,
   "note": "least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)",
   "run_dirs": [
-   "D:\\github reps\\pipesim helper\\runs\\20261104-185326-452"
+   "D:\\github reps\\pipesim helper\\runs\\20261104-192625-063"
   ],
   "attempt": 1
  }
