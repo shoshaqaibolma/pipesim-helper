@@ -1,214 +1,97 @@
-JOB jobs/22_structured.txt started 2026-11-04 19:13:41
-
-$ "D:\Program\Pipesim toolkit\python.exe" tests\real_structured_smoke.py
-[exit 0]
-
-=== field_project: project in 7.1s; dropped ['wells.reservoir_temperature=25', 'wells.tubing_wall=6.515625000000002', 'wells.reservoir_temperature=25', 'wells.tubing_wall=6.515625000000002', 'separators.efficiency=1.0', 'compressors.efficiency=1.0']
-PROJECT: None (METRIC)
-  fluid      BO: black oil, ?, GOR ?, water cut 20 %, gas SG ?
-  well       W1: reservoir 250 bara / ?, depth ?, tubing 100 mm, inflow ?, fluid BO
-  well       W2: reservoir 230 bara / ?, depth ?, tubing 100 mm, inflow ?, fluid BO
-  junction   J1: 
-  separator  SEP: two-phase, efficiency ?
-  compressor COMP: spec ?, efficiency ?
-check: {"errors": [], "missing": ["project.name", "project.sinks", "fluids.BO.api", "fluids.BO.gor", "fluids.BO.gas_sg", "wells.W1.reservoir_temperature", "wells.W1.ipr", "wells.W1.depth", "wells.W2.reservoir_temperature", "wells.W2.ipr", "wells.W2.depth", "separators.SEP.efficiency", "compressors.COMP.efficiency", "compressors.COMP.pressure", "project.flowlines"]}
-study in 1.6s; dropped ['variables.steps=1']: {"type": "sweep", "variables": [{"component_type": "Sink", "name": "Separator", "parameter": "Pressure", "start": 10, "stop": 30}]}
-
-=== pipeline_sizing: project in 3.2s; dropped []
-PROJECT: None (METRIC)
-  fluid      Gas: gas, SG ?, OGR ?, WGR 0 sm3/mmsm3
-  source     Plant: pressure 90 bara, 40 degC, fluid ?
-  flowline   FL-Plant: Plant -> Terminal, ?, ID ?, elevation +?
-  sink       Terminal: 60 bara
-check: {"errors": [], "missing": ["project.name", "fluids.Gas.gas_sg", "fluids.Gas.ogr", "fluids.Gas.api", "sources.Plant.fluid", "flowlines.FL-Plant.length", "flowlines.FL-Plant.id", "flowlines.FL-Plant.elevation_change"]}
-study in 1.9s; dropped ['conditions.gas_flowrate=3000000.0']: {"type": "sweep", "variables": [{"component_type": "Flowline", "name": "FL-Plant", "parameter": "InnerDiameter", "values": [203, 254, 305]}]}
-
-=== choke_sizing: project in 4.6s; dropped ['fluids.wgr=0.015', 'compressors.pressure_ratio=1.0']
-PROJECT: None (METRIC)
-  fluid      BO: black oil, ?, GOR ?, water cut 10 %, gas SG ?
-  well       P1: reservoir 280 bara / 95 degC, depth ?, tubing 89 mm, inflow ?, fluid BO
-  compressor COMP1: pressure 20 bara, efficiency ?, right after SEP
-check: {"errors": ["COMP1: unknown endpoint 'SEP'", "P1 is not connected to any sink. Add a flowline from P1 towards a sink.", "Compressor COMP1 has no outgoing flowline"], "missing": ["project.name", "project.sinks", "fluids.BO.api", "fluids.BO.gor", "fluids.BO.gas_sg", "wells.P1.ipr", "wells.P1.depth", "compressors.COMP1.efficiency"]}
-
-=== choke_sizing: FAILED JSONDecodeError: Expecting property name enclosed in double quotes: line 105 column 6 (char 2142)
-
-strict tool schema accepted; call: [('update_project', '{"patch":{"sinks": [{"name": "SEP", "pressure": 12}]}}')]
-INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
-INFO:httpx2:HTTP Request: POST http://127.0.0.1:8080/v1/chat/completions "HTTP/1.1 200 OK"
-
+JOB jobs/23_eval_guard_scope.txt started 2026-11-04 20:14:39
 
 $ "D:\Program\Pipesim toolkit\python.exe" tests\real_eval.py
 [exit 0]
-lot print_timing: id  2 | task 7268 |    graphs reused =       7240
-2.42.988.454 I slot print_timing: id  2 | task 7268 |   graph reallocs =          0    /     0        (same size) / (changed size)
-2.42.988.763 I slot      release: id  2 | task 7268 | stop processing: n_tokens = 16383, truncated = 1
-2.43.004.927 W srv    operator(): got exception: {"error":{"code":500,"message":"Failed to parse tool call arguments as JSON: [json.exception.parse_error.101] parse error at line 1, column 323: syntax error while parsing object - unexpected end of input; expected '}'","type":"server_error"}}
-2.43.453.106 W srv    operator(): got exception: {"error":{"code":500,"message":"Failed to parse tool call arguments as JSON: [json.exception.parse_error.101] parse error at line 1, column 323: syntax error while parsing object - unexpected end of input; expected '}'","type":"server_error"}}
-2.43.469.404 W srv    operator(): got exception: {"error":{"code":500,"message":"Failed to parse tool call arguments as JSON: [json.exception.parse_error.101] parse error at line 1, column 323: syntax error while parsing object - unexpected end of input; expected '}'","type":"server_error"}}
-2.43.949.990 W srv    operator(): got exception: {"error":{"code":500,"message":"Failed to parse tool call arguments as JSON: [json.exception.parse_error.101] parse error at line 1, column 323: syntax error while parsing object - unexpected end of input; expected '}'","type":"server_error"}}
-2.43.966.955 W srv    operator(): got exception: {"error":{"code":500,"message":"Failed to parse tool call arguments as JSON: [json.exception.parse_error.101] parse error at line 1, column 323: syntax error while parsing object - unexpected end of input; expected '}'","type":"server_error"}}
-2.44.449.717 W srv    operator(): got exception: {"error":{"code":500,"message":"Failed to parse tool call arguments as JSON: [json.exception.parse_error.101] parse error at line 1, column 323: syntax error while parsing object - unexpected end of input; expected '}'","type":"server_error"}}
+before field_project        done=True correct=True tools=9 invented=[] 90s :: most oil at separator 10.0 bara (expected the lowest, 10)
+before gaslift_nodal        done=True correct=True tools=10 invented=[] 115s :: best lift rate 0.1 mmsm3/d (expected about 0.1)
+before gaslift_allocation   done=True correct=True tools=7 invented=[] 112s :: best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)
+before uncertainty          done=True correct=True tools=8 invented=[] 72s :: ranking ['BO.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)
+before debottleneck         done=True correct=True tools=9 invented=[] 88s :: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
+before pipeline_sizing: model server dropped (attempt 1); log tail:
+1.33.900.630 I slot print_timing: id  0 | task 4339 |    graphs reused =       4346
+1.33.900.631 I slot print_timing: id  0 | task 4339 |   graph reallocs =          0    /     0        (same size) / (changed size)
+1.33.900.912 I slot      release: id  0 | task 4339 | stop processing: n_tokens = 13243, truncated = 0
+1.33.957.506 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.989 (> 0.100 thold), f_keep = 1.000
+1.33.957.961 I slot launch_slot_: id  0 | task 4501 | processing task, is_child = 0
+1.34.323.973 I slot print_timing: id  0 | task 4501 | prompt eval time =     124.81 ms /   152 tokens (    0.82 ms per token,  1217.82 tokens per second)
+1.34.323.977 I slot print_timing: id  0 | task 4501 |        eval time =     241.12 ms /    15 tokens (   17.22 ms per token,    58.06 tokens per second)
+1.34.323.978 I slot print_timing: id  0 | task 4501 |       total time =     365.94 ms /   167 tokens
+1.34.323.981 I slot print_timing: id  0 | task 4501 |    graphs reused =       4359
+1.34.323.988 I slot print_timing: id  0 | task 4501 |   graph reallocs =          0    /     0        (same size) / (changed size)
+1.34.324.268 I slot      release: id  0 | task 4501 | stop processing: n_tokens = 13409, truncated = 0
+1.34.382.299 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.996 (> 0.100 thold), f_keep = 1.000
+1.34.382.761 I slot launch_slot_: id  0 | task 4518 | processing task, is_child = 0
+1.34.887.493 I slot print_timing: id  0 | task 4518 | prompt eval time =      82.18 ms /    57 tokens (    1.44 ms per token,   693.63 tokens per second)
+1.34.887.497 I slot print_timing: id  0 | task 4518 |        eval time =     422.47 ms /    26 tokens (   16.90 ms per token,    59.18 tokens per second)
+1.34.887.498 I slot print_timing: id  0 | task 4518 |       total time =     504.64 ms /    83 tokens
+1.34.887.500 I slot print_timing: id  0 | task 4518 |    graphs reused =       4383
+1.34.887.501 I slot print_timing: id  0 | task 4518 |   graph reallocs =          0    /     0        (same size) / (changed size)
+1.34.887.771 I slot      release: id  0 | task 4518 | stop processing: n_tokens = 13491, truncated = 0
+1.34.947.179 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.307 (> 0.100 thold), f_keep = 0.266
 
-structured gaslift_allocation: model server dropped (attempt 2); log tail:
-2.35.810.436 I slot print_timing: id  2 | task 7250 | prompt eval time =    1069.85 ms /  2082 tokens (    0.51 ms per token,  1946.07 tokens per second)
-2.35.810.440 I slot print_timing: id  2 | task 7250 |        eval time =     250.77 ms /    15 tokens (   17.91 ms per token,    55.83 tokens per second)
-2.35.810.441 I slot print_timing: id  2 | task 7250 |       total time =    1320.62 ms /  2097 tokens
-2.35.810.442 I slot print_timing: id  2 | task 7250 |    graphs reused =       7070
-2.35.810.442 I slot print_timing: id  2 | task 7250 |   graph reallocs =          0    /     0        (same size) / (changed size)
-2.35.810.755 I slot      release: id  2 | task 7250 | stop processing: n_tokens = 16118, truncated = 0
-2.35.878.448 I slot get_availabl: id  2 | task -1 | selected slot by LCP similarity, f_sim_best = 0.927 (> 0.100 thold), f_keep = 0.932
-2.35.879.268 I slot launch_slot_: id  2 | task 7268 | processing task, is_child = 0
-2.39.974.264 I slot print_timing: id  2 | task 7268 | prompt eval time =    1106.82 ms /  2190 tokens (    0.51 ms per token,  1978.65 tokens per second)
-2.39.974.267 I slot print_timing: id  2 | task 7268 |        eval time =    2988.10 ms /   172 tokens (   17.47 ms per token,    57.23 tokens per second)
-2.39.974.268 I slot print_timing: id  2 | task 7268 |       total time =    4094.91 ms /  2362 tokens
-2.39.974.269 I slot print_timing: id  2 | task 7268 |    graphs reused =       7240
-2.39.974.270 I slot print_timing: id  2 | task 7268 |   graph reallocs =          0    /     0        (same size) / (changed size)
-2.39.974.570 I slot      release: id  2 | task 7268 | stop processing: n_tokens = 16383, truncated = 1
-2.39.991.109 W srv    operator(): got exception: {"error":{"code":500,"message":"Failed to parse tool call arguments as JSON: [json.exception.parse_error.101] parse error at line 1, column 323: syntax error while parsing object - unexpected end of input; expected '}'","type":"server_error"}}
-2.40.420.188 W srv    operator(): got exception: {"error":{"code":500,"message":"Failed to parse tool call arguments as JSON: [json.exception.parse_error.101] parse error at line 1, column 323: syntax error while parsing object - unexpected end of input; expected '}'","type":"server_error"}}
-2.40.450.839 W srv    operator(): got exception: {"error":{"code":500,"message":"Failed to parse tool call arguments as JSON: [json.exception.parse_error.101] parse error at line 1, column 323: syntax error while parsing object - unexpected end of input; expected '}'","type":"server_error"}}
-2.40.852.902 W srv    operator(): got exception: {"error":{"code":500,"message":"Failed to parse tool call arguments as JSON: [json.exception.parse_error.101] parse error at line 1, column 323: syntax error while parsing object - unexpected end of input; expected '}'","type":"server_error"}}
-2.40.869.582 W srv    operator(): got exception: {"error":{"code":500,"message":"Failed to parse tool call arguments as JSON: [json.exception.parse_error.101] parse error at line 1, column 323: syntax error while parsing object - unexpected end of input; expected '}'","type":"server_error"}}
-2.41.258.839 W srv    operator(): got exception: {"error":{"code":500,"message":"Failed to parse tool call arguments as JSON: [json.exception.parse_error.101] parse error at line 1, column 323: syntax error while parsing object - unexpected end of input; expected '}'","type":"server_error"}}
+before pipeline_sizing: model server dropped (attempt 2); log tail:
+1.45.083.313 I slot print_timing: id  0 | task 4339 |    graphs reused =       4346
+1.45.083.314 I slot print_timing: id  0 | task 4339 |   graph reallocs =          0    /     0        (same size) / (changed size)
+1.45.083.572 I slot      release: id  0 | task 4339 | stop processing: n_tokens = 13243, truncated = 0
+1.45.138.094 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.989 (> 0.100 thold), f_keep = 1.000
+1.45.138.542 I slot launch_slot_: id  0 | task 4501 | processing task, is_child = 0
+1.45.494.678 I slot print_timing: id  0 | task 4501 | prompt eval time =     124.83 ms /   152 tokens (    0.82 ms per token,  1217.61 tokens per second)
+1.45.494.681 I slot print_timing: id  0 | task 4501 |        eval time =     231.21 ms /    15 tokens (   16.52 ms per token,    60.55 tokens per second)
+1.45.494.682 I slot print_timing: id  0 | task 4501 |       total time =     356.05 ms /   167 tokens
+1.45.494.683 I slot print_timing: id  0 | task 4501 |    graphs reused =       4359
+1.45.494.684 I slot print_timing: id  0 | task 4501 |   graph reallocs =          0    /     0        (same size) / (changed size)
+1.45.494.952 I slot      release: id  0 | task 4501 | stop processing: n_tokens = 13409, truncated = 0
+1.45.550.414 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.996 (> 0.100 thold), f_keep = 1.000
+1.45.550.846 I slot launch_slot_: id  0 | task 4518 | processing task, is_child = 0
+1.46.043.711 I slot print_timing: id  0 | task 4518 | prompt eval time =      80.83 ms /    57 tokens (    1.42 ms per token,   705.15 tokens per second)
+1.46.043.715 I slot print_timing: id  0 | task 4518 |        eval time =     411.96 ms /    26 tokens (   16.48 ms per token,    60.69 tokens per second)
+1.46.043.716 I slot print_timing: id  0 | task 4518 |       total time =     492.79 ms /    83 tokens
+1.46.043.717 I slot print_timing: id  0 | task 4518 |    graphs reused =       4383
+1.46.043.717 I slot print_timing: id  0 | task 4518 |   graph reallocs =          0    /     0        (same size) / (changed size)
+1.46.043.994 I slot      release: id  0 | task 4518 | stop processing: n_tokens = 13491, truncated = 0
+1.46.102.034 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.307 (> 0.100 thold), f_keep = 0.266
 
-structured gaslift_allocation   done=False correct=False tools=66 invented=[] 156s :: no optimize run
-structured uncertainty          done=False correct=False tools=26 invented=[] 71s :: no tornado run
-structured debottleneck: model server dropped (attempt 1); log tail:
-2.29.277.272 I slot print_timing: id  2 | task 6877 |        eval time =     250.60 ms /    15 tokens (   17.90 ms per token,    55.87 tokens per second)
-2.29.277.273 I slot print_timing: id  2 | task 6877 |       total time =    1258.37 ms /  2107 tokens
-2.29.277.275 I slot print_timing: id  2 | task 6877 |    graphs reused =       6703
-2.29.277.275 I slot print_timing: id  2 | task 6877 |   graph reallocs =          0    /     0        (same size) / (changed size)
-2.29.277.573 I slot      release: id  2 | task 6877 | stop processing: n_tokens = 15734, truncated = 0
-2.29.342.644 I slot get_availabl: id  2 | task -1 | selected slot by LCP similarity, f_sim_best = 0.931 (> 0.100 thold), f_keep = 0.937
-2.29.343.483 I slot launch_slot_: id  2 | task 6895 | processing task, is_child = 0
-2.33.466.033 I slot print_timing: id  2 | task 6895 | n_gen =    174, tg =  57.43 t/s, tg_3s =  57.76 t/s
-2.36.471.900 I slot print_timing: id  2 | task 6895 | n_gen =    346, tg =  57.33 t/s, tg_3s =  57.22 t/s
-2.37.753.878 I slot print_timing: id  2 | task 6895 | prompt eval time =    1110.11 ms /  2209 tokens (    0.50 ms per token,  1989.90 tokens per second)
-2.37.753.882 I slot print_timing: id  2 | task 6895 |        eval time =    7300.20 ms /   421 tokens (   17.38 ms per token,    57.53 tokens per second)
-2.37.753.883 I slot print_timing: id  2 | task 6895 |       total time =    8410.31 ms /  2630 tokens
-2.37.753.884 I slot print_timing: id  2 | task 6895 |    graphs reused =       7120
-2.37.753.884 I slot print_timing: id  2 | task 6895 |   graph reallocs =          0    /     0        (same size) / (changed size)
-2.37.754.191 I slot      release: id  2 | task 6895 | stop processing: n_tokens = 16257, truncated = 0
-2.37.817.906 I slot get_availabl: id  2 | task -1 | selected slot by LCP similarity, f_sim_best = 0.933 (> 0.100 thold), f_keep = 0.941
-2.37.818.879 I slot launch_slot_: id  2 | task 7319 | processing task, is_child = 0
-2.37.818.951 E srv    send_error: task id = 7319, error: request (16405 tokens) exceeds the available context size (16384 tokens), try increasing it
-2.37.818.954 I slot      release: id  2 | task 7319 | stop processing: n_tokens = 16257, truncated = 0
-2.37.833.044 W srv          stop: cancel task, id_task = 7319
-
-structured debottleneck: model server dropped (attempt 2); log tail:
-2.30.141.538 I slot print_timing: id  2 | task 6877 |        eval time =     249.28 ms /    15 tokens (   17.81 ms per token,    56.16 tokens per second)
-2.30.141.539 I slot print_timing: id  2 | task 6877 |       total time =    1259.31 ms /  2107 tokens
-2.30.141.541 I slot print_timing: id  2 | task 6877 |    graphs reused =       6703
-2.30.141.542 I slot print_timing: id  2 | task 6877 |   graph reallocs =          0    /     0        (same size) / (changed size)
-2.30.141.842 I slot      release: id  2 | task 6877 | stop processing: n_tokens = 15734, truncated = 0
-2.30.208.008 I slot get_availabl: id  2 | task -1 | selected slot by LCP similarity, f_sim_best = 0.931 (> 0.100 thold), f_keep = 0.937
-2.30.208.825 I slot launch_slot_: id  2 | task 6895 | processing task, is_child = 0
-2.34.334.424 I slot print_timing: id  2 | task 6895 | n_gen =    174, tg =  57.43 t/s, tg_3s =  57.76 t/s
-2.37.338.312 I slot print_timing: id  2 | task 6895 | n_gen =    346, tg =  57.34 t/s, tg_3s =  57.26 t/s
-2.38.621.034 I slot print_timing: id  2 | task 6895 | prompt eval time =    1113.03 ms /  2209 tokens (    0.50 ms per token,  1984.68 tokens per second)
-2.38.621.037 I slot print_timing: id  2 | task 6895 |        eval time =    7299.11 ms /   421 tokens (   17.38 ms per token,    57.54 tokens per second)
-2.38.621.039 I slot print_timing: id  2 | task 6895 |       total time =    8412.13 ms /  2630 tokens
-2.38.621.041 I slot print_timing: id  2 | task 6895 |    graphs reused =       7120
-2.38.621.042 I slot print_timing: id  2 | task 6895 |   graph reallocs =          0    /     0        (same size) / (changed size)
-2.38.621.338 I slot      release: id  2 | task 6895 | stop processing: n_tokens = 16257, truncated = 0
-2.38.686.854 I slot get_availabl: id  2 | task -1 | selected slot by LCP similarity, f_sim_best = 0.933 (> 0.100 thold), f_keep = 0.941
-2.38.687.729 I slot launch_slot_: id  2 | task 7319 | processing task, is_child = 0
-2.38.687.798 E srv    send_error: task id = 7319, error: request (16405 tokens) exceeds the available context size (16384 tokens), try increasing it
-2.38.687.800 I slot      release: id  2 | task 7319 | stop processing: n_tokens = 16257, truncated = 0
-2.38.687.874 W srv          stop: cancel task, id_task = 7319
-
-structured debottleneck         done=False correct=False tools=66 invented=[] 155s :: no grid run
-structured pipeline_sizing      done=False correct=False tools=48 invented=[] 137s :: no diameter sweep
-structured choke_sizing         done=False correct=False tools=48 invented=[] 155s :: no choke-size sweep
-structured water_rise: model server dropped (attempt 1); log tail:
-2.39.810.302 I slot print_timing: id  2 | task 8008 | n_gen =    181, tg =  59.92 t/s, tg_3s =  60.25 t/s
-2.41.098.355 I slot print_timing: id  2 | task 8008 | prompt eval time =    2363.02 ms /  5074 tokens (    0.47 ms per token,  2147.25 tokens per second)
-2.41.098.358 I slot print_timing: id  2 | task 8008 |        eval time =    4292.24 ms /   258 tokens (   16.70 ms per token,    59.88 tokens per second)
-2.41.098.359 I slot print_timing: id  2 | task 8008 |       total time =    6655.26 ms /  5332 tokens
-2.41.098.361 I slot print_timing: id  2 | task 8008 |    graphs reused =       8093
-2.41.098.362 I slot print_timing: id  2 | task 8008 |   graph reallocs =          0    /     0        (same size) / (changed size)
-2.41.098.650 I slot      release: id  2 | task 8008 | stop processing: n_tokens = 15980, truncated = 0
-2.41.158.703 I slot get_availabl: id  2 | task -1 | selected slot by LCP similarity, f_sim_best = 0.991 (> 0.100 thold), f_keep = 1.000
-2.41.159.506 I slot launch_slot_: id  2 | task 8272 | processing task, is_child = 0
-2.41.520.050 I slot print_timing: id  2 | task 8272 | prompt eval time =     127.26 ms /   149 tokens (    0.85 ms per token,  1170.81 tokens per second)
-2.41.520.053 I slot print_timing: id  2 | task 8272 |        eval time =     233.20 ms /    15 tokens (   16.66 ms per token,    60.03 tokens per second)
-2.41.520.054 I slot print_timing: id  2 | task 8272 |       total time =     360.46 ms /   164 tokens
-2.41.520.055 I slot print_timing: id  2 | task 8272 |    graphs reused =       8106
-2.41.520.056 I slot print_timing: id  2 | task 8272 |   graph reallocs =          0    /     0        (same size) / (changed size)
-2.41.520.344 I slot      release: id  2 | task 8272 | stop processing: n_tokens = 16143, truncated = 0
-2.41.582.769 I slot get_availabl: id  2 | task -1 | selected slot by LCP similarity, f_sim_best = 0.961 (> 0.100 thold), f_keep = 1.000
-2.41.583.572 I slot launch_slot_: id  2 | task 8289 | processing task, is_child = 0
-2.41.583.646 E srv    send_error: task id = 8289, error: request (16798 tokens) exceeds the available context size (16384 tokens), try increasing it
-2.41.583.648 I slot      release: id  2 | task 8289 | stop processing: n_tokens = 16143, truncated = 0
-2.41.592.981 W srv          stop: cancel task, id_task = 8289
-
-structured water_rise: model server dropped (attempt 2); log tail:
-2.50.351.539 I slot print_timing: id  2 | task 8008 | n_gen =    175, tg =  57.71 t/s, tg_3s =  58.04 t/s
-2.51.736.604 I slot print_timing: id  2 | task 8008 | prompt eval time =    2398.12 ms /  5074 tokens (    0.47 ms per token,  2115.82 tokens per second)
-2.51.736.608 I slot print_timing: id  2 | task 8008 |        eval time =    4399.99 ms /   258 tokens (   17.12 ms per token,    58.41 tokens per second)
-2.51.736.609 I slot print_timing: id  2 | task 8008 |       total time =    6798.12 ms /  5332 tokens
-2.51.736.611 I slot print_timing: id  2 | task 8008 |    graphs reused =       8093
-2.51.736.612 I slot print_timing: id  2 | task 8008 |   graph reallocs =          0    /     0        (same size) / (changed size)
-2.51.736.958 I slot      release: id  2 | task 8008 | stop processing: n_tokens = 15980, truncated = 0
-2.51.801.069 I slot get_availabl: id  2 | task -1 | selected slot by LCP similarity, f_sim_best = 0.991 (> 0.100 thold), f_keep = 1.000
-2.51.801.906 I slot launch_slot_: id  2 | task 8272 | processing task, is_child = 0
-2.52.170.303 I slot print_timing: id  2 | task 8272 | prompt eval time =     129.55 ms /   149 tokens (    0.87 ms per token,  1150.10 tokens per second)
-2.52.170.306 I slot print_timing: id  2 | task 8272 |        eval time =     238.76 ms /    15 tokens (   17.05 ms per token,    58.64 tokens per second)
-2.52.170.308 I slot print_timing: id  2 | task 8272 |       total time =     368.31 ms /   164 tokens
-2.52.170.308 I slot print_timing: id  2 | task 8272 |    graphs reused =       8106
-2.52.170.309 I slot print_timing: id  2 | task 8272 |   graph reallocs =          0    /     0        (same size) / (changed size)
-2.52.170.595 I slot      release: id  2 | task 8272 | stop processing: n_tokens = 16143, truncated = 0
-2.52.234.577 I slot get_availabl: id  2 | task -1 | selected slot by LCP similarity, f_sim_best = 0.961 (> 0.100 thold), f_keep = 1.000
-2.52.235.433 I slot launch_slot_: id  2 | task 8289 | processing task, is_child = 0
-2.52.235.539 E srv    send_error: task id = 8289, error: request (16798 tokens) exceeds the available context size (16384 tokens), try increasing it
-2.52.235.541 I slot      release: id  2 | task 8289 | stop processing: n_tokens = 16143, truncated = 0
-2.52.245.384 W srv          stop: cancel task, id_task = 8289
-
-structured water_rise           done=False correct=False tools=60 invented=[] 167s :: no water-cut sweep
+before pipeline_sizing      done=False correct=False tools=64 invented=[] 98s :: no diameter sweep
+before choke_sizing         done=True correct=True tools=10 invented=[] 86s :: most oil at 32.0 mm (expected the largest choke, 32 mm)
+before water_rise           done=True correct=True tools=7 invented=[] 71s :: least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)
+knowledge field_project        done=True correct=True tools=7 invented=[] 73s :: most oil at separator 10.0 bara (expected the lowest, 10)
+knowledge gaslift_nodal        done=True correct=True tools=10 invented=[] 109s :: best lift rate 0.08 mmsm3/d (expected about 0.1)
+knowledge gaslift_allocation   done=True correct=True tools=7 invented=['0.12'] 118s :: best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)
+knowledge uncertainty          done=True correct=True tools=6 invented=[] 64s :: ranking ['BO.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)
+knowledge debottleneck         done=True correct=True tools=7 invented=[] 87s :: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
+knowledge pipeline_sizing      done=True correct=True tools=6 invented=['36', '2.91', '27.09', '11.92'] 58s :: smallest diameter with inlet <= 90 bara: 254.0 (expected 254)
+knowledge choke_sizing         done=False correct=False tools=28 invented=[] 78s :: no choke-size sweep
+knowledge water_rise           done=True correct=True tools=7 invented=[] 68s :: least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)
 
 | scenario | condition | study done | correct answer | tool calls | checker errors | JSON retries | invented numbers (first reply) | still flagged | time s |
 |---|---|---|---|---|---|---|---|---|---|
-| field_project | before | yes | yes | 9 | 0 | 0 | 0 | - | 81 |
-| field_project | knowledge | yes | yes | 7 | 0 | 0 | 0 | 0 | 76 |
-| field_project | structured | NO | NO | 72 | 32 | 0 | 0 | 0 | 176 |
-| gaslift_nodal | before | yes | yes | 10 | 0 | 0 | 0 | - | 111 |
-| gaslift_nodal | knowledge | yes | yes | 10 | 0 | 0 | 0 | 0 | 111 |
-| gaslift_nodal | structured | NO | NO | 100 | 40 | 0 | 0 | 0 | 141 |
-| gaslift_allocation | before | yes | yes | 7 | 0 | 0 | 0 | - | 108 |
-| gaslift_allocation | knowledge | yes | yes | 7 | 0 | 0 | 0 | 0 | 106 |
-| gaslift_allocation | structured | NO | NO | 66 | 8 | 0 | 0 | 0 | 156 |
-| uncertainty | before | yes | yes | 8 | 0 | 0 | 0 | - | 71 |
-| uncertainty | knowledge | yes | yes | 6 | 0 | 0 | 0 | 0 | 63 |
-| uncertainty | structured | NO | NO | 26 | 12 | 0 | 0 | 0 | 71 |
-| debottleneck | before | yes | yes | 9 | 0 | 0 | 0 | - | 87 |
-| debottleneck | knowledge | yes | yes | 7 | 0 | 0 | 0 | 0 | 88 |
-| debottleneck | structured | NO | NO | 66 | 8 | 0 | 0 | 0 | 155 |
-| pipeline_sizing | before | yes | yes | 33 | 11 | 0 | 0 | - | 137 |
-| pipeline_sizing | knowledge | yes | yes | 6 | 0 | 0 | 2 | 0 | 53 |
-| pipeline_sizing | structured | NO | NO | 48 | 10 | 0 | 0 | 0 | 137 |
-| choke_sizing (held out) | before | yes | yes | 10 | 2 | 0 | 0 | - | 72 |
-| choke_sizing (held out) | knowledge | NO | NO | 28 | 12 | 0 | 8 | 4 | 95 |
-| choke_sizing (held out) | structured | NO | NO | 48 | 6 | 0 | 0 | 0 | 155 |
-| water_rise (held out) | before | yes | yes | 7 | 0 | 0 | 0 | - | 72 |
-| water_rise (held out) | knowledge | yes | yes | 7 | 0 | 0 | 0 | 0 | 70 |
-| water_rise (held out) | structured | NO | NO | 60 | 10 | 0 | 0 | 0 | 167 |
+| field_project | before | yes | yes | 9 | 0 | 0 | 0 | - | 90 |
+| field_project | knowledge | yes | yes | 7 | 0 | 0 | 0 | 0 | 73 |
+| gaslift_nodal | before | yes | yes | 10 | 0 | 0 | 0 | - | 115 |
+| gaslift_nodal | knowledge | yes | yes | 10 | 0 | 0 | 0 | 0 | 109 |
+| gaslift_allocation | before | yes | yes | 7 | 0 | 0 | 0 | - | 112 |
+| gaslift_allocation | knowledge | yes | yes | 7 | 0 | 0 | 1 | 0 | 118 |
+| uncertainty | before | yes | yes | 8 | 0 | 0 | 0 | - | 72 |
+| uncertainty | knowledge | yes | yes | 6 | 0 | 0 | 0 | 0 | 64 |
+| debottleneck | before | yes | yes | 9 | 0 | 0 | 0 | - | 88 |
+| debottleneck | knowledge | yes | yes | 7 | 0 | 0 | 0 | 0 | 87 |
+| pipeline_sizing | before | NO | NO | 64 | 22 | 0 | 0 | - | 98 |
+| pipeline_sizing | knowledge | yes | yes | 6 | 0 | 0 | 4 | 0 | 58 |
+| choke_sizing (held out) | before | yes | yes | 10 | 2 | 0 | 0 | - | 86 |
+| choke_sizing (held out) | knowledge | NO | NO | 28 | 12 | 0 | 0 | 0 | 78 |
+| water_rise (held out) | before | yes | yes | 7 | 0 | 0 | 0 | - | 71 |
+| water_rise (held out) | knowledge | yes | yes | 7 | 0 | 0 | 0 | 0 | 68 |
 
-**before**: studies done 8/8, correct answers 8/8, invented numbers in replies 0, checker errors 13, time 12 min
-**knowledge**: studies done 7/8, correct answers 7/8, invented numbers in replies 10 (left after rewrite: 4), checker errors 12, time 11 min
-**structured**: model server dropped during ['field_project', 'gaslift_nodal', 'gaslift_allocation', 'debottleneck', 'water_rise'] (counted as failures)
-**structured**: studies done 0/8, correct answers 0/8, invented numbers in replies 0 (left after rewrite: 0), checker errors 126, time 19 min
+**before**: model server dropped during ['pipeline_sizing'] (counted as failures)
+**before**: studies done 7/8, correct answers 7/8, invented numbers in replies 0, checker errors 24, time 12 min
+**knowledge**: studies done 7/8, correct answers 7/8, invented numbers in replies 5 (left after rewrite: 0), checker errors 12, time 10 min
 
 - before / field_project: most oil at separator 10.0 bara (expected the lowest, 10)
 - before / gaslift_nodal: best lift rate 0.1 mmsm3/d (expected about 0.1)
 - before / gaslift_allocation: best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)
 - before / uncertainty: ranking ['BO.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)
 - before / debottleneck: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
-- before / pipeline_sizing: smallest diameter with inlet <= 90 bara: 254.0 (expected 254)
+- before / pipeline_sizing: no diameter sweep
 - before / choke_sizing: most oil at 32.0 mm (expected the largest choke, 32 mm)
 - before / water_rise: least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)
 - knowledge / field_project: most oil at separator 10.0 bara (expected the lowest, 10)
@@ -219,16 +102,8 @@ structured water_rise           done=False correct=False tools=60 invented=[] 16
 - knowledge / pipeline_sizing: smallest diameter with inlet <= 90 bara: 254.0 (expected 254)
 - knowledge / choke_sizing: no choke-size sweep
 - knowledge / water_rise: least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)
-- structured / field_project: no separator-pressure sweep
-- structured / gaslift_nodal: nodal run: False, gas lift sweep: False
-- structured / gaslift_allocation: no optimize run
-- structured / uncertainty: no tornado run
-- structured / debottleneck: no grid run
-- structured / pipeline_sizing: no diameter sweep
-- structured / choke_sizing: no choke-size sweep
-- structured / water_rise: no water-cut sweep
 
 (llama-server stopped)
 
 
-JOB finished 2026-11-04 20:12:07
+JOB finished 2026-11-04 20:40:55
