@@ -14,7 +14,8 @@ SCRIPTS = os.path.join(HERE, "scripts")
 want = {"field_project": ["wells into a manifold and a trunkline"], "gaslift_nodal": ["nodal analysis", "gas lift"],
         "gaslift_allocation": ["wells into a manifold and a trunkline", "gas lift"],
         "uncertainty": ["one well to a separator", "uncertainty ranking"],
-        "pipeline_sizing": ["pipeline from a fixed-rate source"]}
+        "pipeline_sizing": ["pipeline from a fixed-rate source"],
+        "choke_sizing": ["one well to a separator", "choke after the wellhead"]}
 for name, names in want.items():
     first = open(os.path.join(SCRIPTS, name + ".txt"), encoding="utf-8").readline()
     got = sorted(r["name"] for r in recipes.select(first))

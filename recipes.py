@@ -17,16 +17,25 @@ STUDY_TYPES = """CHOOSING THE STUDY TYPE:
 - best split / best setting under a limit ("share", "allocate", "split", "maximize ... with only X") -> optimize
 - operating point of one well, inflow vs outflow ("nodal") -> nodal
 - pressure/temperature along one well or line ("profile", "holdup along") -> pt_profile
-- just run it once -> single_run"""
+- just run it once -> single_run
+"from A to B in N steps" -> {"start":A,"stop":B,"steps":N} (N values, both ends included). Do not ask the user how
+to split a range: start/stop/steps does it."""
 
 RECIPES = [
     {"name": "one well to a separator",
      "keys": r"\bone (oil |gas )?well\b|\bsingle well\b|\bwell W1\b",
-     "text": """RECIPE one well -> separator (no manifold needed):
+     "text": """RECIPE one well -> separator (no manifold needed; with a choke, see the choke recipe):
 update_project {"name":"Well study","fluids":[{"name":"OilA","type":"black_oil","api":28,"gor":60,"water_cut":10,"gas_sg":0.75}],
  "wells":[{"name":"P-1","fluid":"OilA","reservoir_pressure":180,"depth":1900,"ipr":{"model":"pi","liquid_pi":4}}],
  "sinks":[{"name":"Sep","pressure":20}],
  "flowlines":[{"name":"FL-P1","from":"P-1","to":"Sep","length":1200,"id":80,"elevation_change":0}]}"""},
+    {"name": "choke after the wellhead",
+     "keys": r"\bchoke|bean",
+     "text": """RECIPE surface choke right after the wellhead: the choke takes "from": <well>, and the flowline STARTS AT
+THE CHOKE (not at the well). No junction is needed:
+"chokes":[{"name":"CHK","from":"P-1","bean_size":16}],
+"flowlines":[{"name":"FL-1","from":"CHK","to":"Sep","length":1200,"id":80,"elevation_change":0}]
+Choke size study: {"component_type":"Choke","name":"CHK","parameter":"BeanSize","start":10,"stop":30,"steps":3}."""},
     {"name": "wells into a manifold and a trunkline",
      "keys": r"manifold|trunk ?line|gathering|\b(two|three|four|2|3|4) (oil |gas )?wells\b",
      "text": """RECIPE N wells -> manifold -> trunkline -> separator. Wells A and B here; a sink accepts ONE inlet, so every well line ends at the

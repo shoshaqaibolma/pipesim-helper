@@ -16,7 +16,7 @@ from real_agent_test import healthy  # noqa: E402
 
 SCENARIOS = ["field_project", "gaslift_nodal", "gaslift_allocation", "uncertainty", "debottleneck",
              "pipeline_sizing", "choke_sizing", "water_rise"]
-HELD_OUT = {"choke_sizing", "water_rise"}   # no study recipe written for these
+HELD_OUT = {"water_rise"}   # no recipe written for it (a choke recipe was added after job 23)
 CONDITIONS = {   # before: plain agent; knowledge: + recipes and number check; structured: + constrained extraction
     "before": {"PIPESIM_AGENT_KNOWLEDGE": "0", "PIPESIM_NUMBER_GUARD": "0", "PIPESIM_AGENT_STRUCTURED": "0"},
     "knowledge": {"PIPESIM_AGENT_KNOWLEDGE": "1", "PIPESIM_NUMBER_GUARD": "1", "PIPESIM_AGENT_STRUCTURED": "0"}}

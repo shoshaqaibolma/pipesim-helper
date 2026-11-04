@@ -104,3 +104,13 @@ check stops made-up values from reaching the user.
 re-scoring job 20); the knowledge layer cuts tool calls and errors where the layout is unusual (pipeline sizing
 33 -> 6 calls) and stops invented numbers in result explanations, but each change has to be checked on the real
 model: two of the three "improvements" tried in jobs 21-22 made things worse and were reverted or switched off.
+
+## 5. Job 23: plain vs knowledge after the number-check scope fix
+
+Both 7/8. Plain failed pipeline sizing (64 tool calls, 22 checker errors, then the context overflowed: it keeps
+guessing the source/pipeline layout, as in jobs 20-22 with 33-35 calls); knowledge solved it in 6 calls. Knowledge
+failed choke sizing for the second time in a row, so it is systematic: the "one well" recipe shows the well
+connected straight to the separator, the model copied that and added the choke beside it, used up its edit budget
+on layout errors and then asked how to split "12 to 32 mm in 5 steps". Fix: a choke recipe (choke "from" the well,
+flowline starts at the choke) and the rule "from A to B in N steps -> start/stop/steps, do not ask". The choke
+scenario is therefore no longer held out; water_rise still is.
