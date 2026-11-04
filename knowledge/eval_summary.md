@@ -1,38 +1,38 @@
 | scenario | condition | study done | correct answer | tool calls | checker errors | JSON retries | invented numbers (first reply) | still flagged | time s |
 |---|---|---|---|---|---|---|---|---|---|
-| field_project | before | yes | yes | 14 | 1 | 0 | 0 | - | 110 |
-| field_project | after | NO | NO | 0 | 0 | 0 | 0 | 0 | 6 |
-| gaslift_nodal | before | NO | NO | 6 | 0 | 0 | 0 | - | 67 |
-| gaslift_nodal | after | NO | NO | 0 | 0 | 0 | 0 | 0 | 6 |
-| gaslift_allocation | before | NO | NO | 0 | 0 | 0 | 0 | - | 14 |
-| gaslift_allocation | after | NO | NO | 0 | 0 | 0 | 0 | 0 | 6 |
-| uncertainty | before | NO | NO | 0 | 0 | 0 | 0 | - | 6 |
-| uncertainty | after | NO | NO | 0 | 0 | 0 | 0 | 0 | 6 |
-| debottleneck | before | NO | NO | 0 | 0 | 0 | 0 | - | 6 |
-| debottleneck | after | NO | NO | 0 | 0 | 0 | 0 | 0 | 6 |
-| pipeline_sizing | before | NO | NO | 0 | 0 | 0 | 0 | - | 6 |
-| pipeline_sizing | after | NO | NO | 0 | 0 | 0 | 0 | 0 | 6 |
-| choke_sizing (held out) | before | NO | NO | 0 | 0 | 0 | 0 | - | 6 |
-| choke_sizing (held out) | after | NO | NO | 0 | 0 | 0 | 0 | 0 | 6 |
-| water_rise (held out) | before | NO | NO | 0 | 0 | 0 | 0 | - | 6 |
-| water_rise (held out) | after | NO | NO | 0 | 0 | 0 | 0 | 0 | 6 |
+| field_project | before | yes | yes | 14 | 1 | 0 | 0 | - | 102 |
+| field_project | after | yes | yes | 7 | 0 | 0 | 1 | 0 | 96 |
+| gaslift_nodal | before | yes | NO | 10 | 0 | 0 | 4 | - | 146 |
+| gaslift_nodal | after | yes | NO | 10 | 0 | 0 | 0 | 0 | 115 |
+| gaslift_allocation | before | yes | yes | 7 | 0 | 0 | 0 | - | 124 |
+| gaslift_allocation | after | yes | yes | 7 | 0 | 0 | 0 | 0 | 111 |
+| uncertainty | before | yes | yes | 9 | 0 | 0 | 0 | - | 119 |
+| uncertainty | after | yes | yes | 7 | 0 | 0 | 0 | 0 | 113 |
+| debottleneck | before | yes | yes | 9 | 0 | 0 | 0 | - | 90 |
+| debottleneck | after | yes | yes | 7 | 0 | 0 | 0 | 0 | 113 |
+| pipeline_sizing | before | yes | yes | 35 | 14 | 0 | 1 | - | 131 |
+| pipeline_sizing | after | yes | yes | 8 | 0 | 0 | 0 | 0 | 90 |
+| choke_sizing (held out) | before | yes | yes | 12 | 2 | 0 | 0 | - | 171 |
+| choke_sizing (held out) | after | yes | yes | 10 | 2 | 0 | 2 | 0 | 89 |
+| water_rise (held out) | before | yes | NO | 7 | 0 | 0 | 0 | - | 72 |
+| water_rise (held out) | after | yes | NO | 7 | 0 | 0 | 0 | 0 | 74 |
 
-**before**: studies done 1/8, correct answers 1/8, invented numbers in replies 0, checker errors 1, time 3 min
-**after**: studies done 0/8, correct answers 0/8, invented numbers in replies 0 (left after rewrite: 0), checker errors 0, time 0 min
+**before**: studies done 8/8, correct answers 6/8, invented numbers in replies 5, checker errors 17, time 15 min
+**after**: studies done 8/8, correct answers 6/8, invented numbers in replies 3 (left after rewrite: 0), checker errors 2, time 13 min
 
 - before / field_project: most oil at separator 10.0 bara (expected the lowest, 10)
-- before / gaslift_nodal: nodal run: True, gas lift sweep: False
-- before / gaslift_allocation: no optimize run
-- before / uncertainty: no tornado run
-- before / debottleneck: no grid run
-- before / pipeline_sizing: no diameter sweep
-- before / choke_sizing: no choke-size sweep
-- before / water_rise: no water-cut sweep
-- after / field_project: no separator-pressure sweep
-- after / gaslift_nodal: nodal run: False, gas lift sweep: False
-- after / gaslift_allocation: no optimize run
-- after / uncertainty: no tornado run
-- after / debottleneck: no grid run
-- after / pipeline_sizing: no diameter sweep
-- after / choke_sizing: no choke-size sweep
-- after / water_rise: no water-cut sweep
+- before / gaslift_nodal: best lift rate 0.08 mmsm3/d (expected 0.1)
+- before / gaslift_allocation: best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)
+- before / uncertainty: ranking ['BO.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)
+- before / debottleneck: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
+- before / pipeline_sizing: smallest diameter with inlet <= 90 bara: 254.0 (expected 254)
+- before / choke_sizing: most oil at 32.0 mm (expected the largest choke, 32 mm)
+- before / water_rise: least oil at water cut 50.0 % (expected 70)
+- after / field_project: most oil at separator 10.0 bara (expected the lowest, 10)
+- after / gaslift_nodal: best lift rate 0.08 mmsm3/d (expected 0.1)
+- after / gaslift_allocation: best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)
+- after / uncertainty: ranking ['OilA.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)
+- after / debottleneck: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
+- after / pipeline_sizing: smallest diameter with inlet <= 90 bara: 254.0 (expected 254)
+- after / choke_sizing: most oil at 32.0 mm (expected the largest choke, 32 mm)
+- after / water_rise: least oil at water cut 50.0 % (expected 70)
