@@ -1,97 +1,52 @@
-JOB jobs/23_eval_guard_scope.txt started 2026-11-04 20:14:39
+JOB jobs/24_eval_choke_recipe.txt started 2026-11-04 20:42:52
 
 $ "D:\Program\Pipesim toolkit\python.exe" tests\real_eval.py
 [exit 0]
-before field_project        done=True correct=True tools=9 invented=[] 90s :: most oil at separator 10.0 bara (expected the lowest, 10)
-before gaslift_nodal        done=True correct=True tools=10 invented=[] 115s :: best lift rate 0.1 mmsm3/d (expected about 0.1)
-before gaslift_allocation   done=True correct=True tools=7 invented=[] 112s :: best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)
+before field_project        done=True correct=True tools=9 invented=[] 78s :: most oil at separator 10.0 bara (expected the lowest, 10)
+before gaslift_nodal        done=True correct=True tools=10 invented=['0.075'] 116s :: best lift rate 0.08 mmsm3/d (expected about 0.1)
+before gaslift_allocation   done=True correct=True tools=7 invented=['0.11'] 109s :: best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)
 before uncertainty          done=True correct=True tools=8 invented=[] 72s :: ranking ['BO.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)
-before debottleneck         done=True correct=True tools=9 invented=[] 88s :: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
-before pipeline_sizing: model server dropped (attempt 1); log tail:
-1.33.900.630 I slot print_timing: id  0 | task 4339 |    graphs reused =       4346
-1.33.900.631 I slot print_timing: id  0 | task 4339 |   graph reallocs =          0    /     0        (same size) / (changed size)
-1.33.900.912 I slot      release: id  0 | task 4339 | stop processing: n_tokens = 13243, truncated = 0
-1.33.957.506 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.989 (> 0.100 thold), f_keep = 1.000
-1.33.957.961 I slot launch_slot_: id  0 | task 4501 | processing task, is_child = 0
-1.34.323.973 I slot print_timing: id  0 | task 4501 | prompt eval time =     124.81 ms /   152 tokens (    0.82 ms per token,  1217.82 tokens per second)
-1.34.323.977 I slot print_timing: id  0 | task 4501 |        eval time =     241.12 ms /    15 tokens (   17.22 ms per token,    58.06 tokens per second)
-1.34.323.978 I slot print_timing: id  0 | task 4501 |       total time =     365.94 ms /   167 tokens
-1.34.323.981 I slot print_timing: id  0 | task 4501 |    graphs reused =       4359
-1.34.323.988 I slot print_timing: id  0 | task 4501 |   graph reallocs =          0    /     0        (same size) / (changed size)
-1.34.324.268 I slot      release: id  0 | task 4501 | stop processing: n_tokens = 13409, truncated = 0
-1.34.382.299 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.996 (> 0.100 thold), f_keep = 1.000
-1.34.382.761 I slot launch_slot_: id  0 | task 4518 | processing task, is_child = 0
-1.34.887.493 I slot print_timing: id  0 | task 4518 | prompt eval time =      82.18 ms /    57 tokens (    1.44 ms per token,   693.63 tokens per second)
-1.34.887.497 I slot print_timing: id  0 | task 4518 |        eval time =     422.47 ms /    26 tokens (   16.90 ms per token,    59.18 tokens per second)
-1.34.887.498 I slot print_timing: id  0 | task 4518 |       total time =     504.64 ms /    83 tokens
-1.34.887.500 I slot print_timing: id  0 | task 4518 |    graphs reused =       4383
-1.34.887.501 I slot print_timing: id  0 | task 4518 |   graph reallocs =          0    /     0        (same size) / (changed size)
-1.34.887.771 I slot      release: id  0 | task 4518 | stop processing: n_tokens = 13491, truncated = 0
-1.34.947.179 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.307 (> 0.100 thold), f_keep = 0.266
-
-before pipeline_sizing: model server dropped (attempt 2); log tail:
-1.45.083.313 I slot print_timing: id  0 | task 4339 |    graphs reused =       4346
-1.45.083.314 I slot print_timing: id  0 | task 4339 |   graph reallocs =          0    /     0        (same size) / (changed size)
-1.45.083.572 I slot      release: id  0 | task 4339 | stop processing: n_tokens = 13243, truncated = 0
-1.45.138.094 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.989 (> 0.100 thold), f_keep = 1.000
-1.45.138.542 I slot launch_slot_: id  0 | task 4501 | processing task, is_child = 0
-1.45.494.678 I slot print_timing: id  0 | task 4501 | prompt eval time =     124.83 ms /   152 tokens (    0.82 ms per token,  1217.61 tokens per second)
-1.45.494.681 I slot print_timing: id  0 | task 4501 |        eval time =     231.21 ms /    15 tokens (   16.52 ms per token,    60.55 tokens per second)
-1.45.494.682 I slot print_timing: id  0 | task 4501 |       total time =     356.05 ms /   167 tokens
-1.45.494.683 I slot print_timing: id  0 | task 4501 |    graphs reused =       4359
-1.45.494.684 I slot print_timing: id  0 | task 4501 |   graph reallocs =          0    /     0        (same size) / (changed size)
-1.45.494.952 I slot      release: id  0 | task 4501 | stop processing: n_tokens = 13409, truncated = 0
-1.45.550.414 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.996 (> 0.100 thold), f_keep = 1.000
-1.45.550.846 I slot launch_slot_: id  0 | task 4518 | processing task, is_child = 0
-1.46.043.711 I slot print_timing: id  0 | task 4518 | prompt eval time =      80.83 ms /    57 tokens (    1.42 ms per token,   705.15 tokens per second)
-1.46.043.715 I slot print_timing: id  0 | task 4518 |        eval time =     411.96 ms /    26 tokens (   16.48 ms per token,    60.69 tokens per second)
-1.46.043.716 I slot print_timing: id  0 | task 4518 |       total time =     492.79 ms /    83 tokens
-1.46.043.717 I slot print_timing: id  0 | task 4518 |    graphs reused =       4383
-1.46.043.717 I slot print_timing: id  0 | task 4518 |   graph reallocs =          0    /     0        (same size) / (changed size)
-1.46.043.994 I slot      release: id  0 | task 4518 | stop processing: n_tokens = 13491, truncated = 0
-1.46.102.034 I slot get_availabl: id  0 | task -1 | selected slot by LCP similarity, f_sim_best = 0.307 (> 0.100 thold), f_keep = 0.266
-
-before pipeline_sizing      done=False correct=False tools=64 invented=[] 98s :: no diameter sweep
-before choke_sizing         done=True correct=True tools=10 invented=[] 86s :: most oil at 32.0 mm (expected the largest choke, 32 mm)
-before water_rise           done=True correct=True tools=7 invented=[] 71s :: least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)
-knowledge field_project        done=True correct=True tools=7 invented=[] 73s :: most oil at separator 10.0 bara (expected the lowest, 10)
-knowledge gaslift_nodal        done=True correct=True tools=10 invented=[] 109s :: best lift rate 0.08 mmsm3/d (expected about 0.1)
-knowledge gaslift_allocation   done=True correct=True tools=7 invented=['0.12'] 118s :: best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)
-knowledge uncertainty          done=True correct=True tools=6 invented=[] 64s :: ranking ['BO.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)
-knowledge debottleneck         done=True correct=True tools=7 invented=[] 87s :: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
-knowledge pipeline_sizing      done=True correct=True tools=6 invented=['36', '2.91', '27.09', '11.92'] 58s :: smallest diameter with inlet <= 90 bara: 254.0 (expected 254)
-knowledge choke_sizing         done=False correct=False tools=28 invented=[] 78s :: no choke-size sweep
-knowledge water_rise           done=True correct=True tools=7 invented=[] 68s :: least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)
+before debottleneck         done=True correct=True tools=9 invented=[] 89s :: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
+before pipeline_sizing      done=True correct=True tools=33 invented=['36', '2.9', '66', '27.1', '11.9'] 142s :: smallest diameter with inlet <= 90 bara: 254.0 (expected 254)
+before choke_sizing         done=True correct=True tools=10 invented=[] 75s :: most oil at 32.0 mm (expected the largest choke, 32 mm)
+before water_rise           done=True correct=True tools=7 invented=[] 73s :: least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)
+knowledge field_project        done=True correct=True tools=9 invented=[] 114s :: most oil at separator 10.0 bara (expected the lowest, 10)
+knowledge gaslift_nodal        done=True correct=True tools=10 invented=[] 113s :: best lift rate 0.08 mmsm3/d (expected about 0.1)
+knowledge gaslift_allocation   done=True correct=True tools=7 invented=[] 106s :: best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)
+knowledge uncertainty          done=True correct=True tools=6 invented=[] 66s :: ranking ['BO.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)
+knowledge debottleneck         done=True correct=True tools=9 invented=['375'] 100s :: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
+knowledge pipeline_sizing      done=True correct=True tools=8 invented=[] 52s :: smallest diameter with inlet <= 90 bara: 254.0 (expected 254)
+knowledge choke_sizing         done=True correct=True tools=6 invented=[] 62s :: most oil at 32.0 mm (expected the largest choke, 32 mm)
+knowledge water_rise           done=True correct=True tools=7 invented=[] 71s :: least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)
 
 | scenario | condition | study done | correct answer | tool calls | checker errors | JSON retries | invented numbers (first reply) | still flagged | time s |
 |---|---|---|---|---|---|---|---|---|---|
-| field_project | before | yes | yes | 9 | 0 | 0 | 0 | - | 90 |
-| field_project | knowledge | yes | yes | 7 | 0 | 0 | 0 | 0 | 73 |
-| gaslift_nodal | before | yes | yes | 10 | 0 | 0 | 0 | - | 115 |
-| gaslift_nodal | knowledge | yes | yes | 10 | 0 | 0 | 0 | 0 | 109 |
-| gaslift_allocation | before | yes | yes | 7 | 0 | 0 | 0 | - | 112 |
-| gaslift_allocation | knowledge | yes | yes | 7 | 0 | 0 | 1 | 0 | 118 |
+| field_project | before | yes | yes | 9 | 0 | 0 | 0 | - | 78 |
+| field_project | knowledge | yes | yes | 9 | 0 | 0 | 0 | 0 | 114 |
+| gaslift_nodal | before | yes | yes | 10 | 0 | 0 | 1 | - | 116 |
+| gaslift_nodal | knowledge | yes | yes | 10 | 0 | 0 | 0 | 0 | 113 |
+| gaslift_allocation | before | yes | yes | 7 | 0 | 0 | 1 | - | 109 |
+| gaslift_allocation | knowledge | yes | yes | 7 | 0 | 0 | 0 | 0 | 106 |
 | uncertainty | before | yes | yes | 8 | 0 | 0 | 0 | - | 72 |
-| uncertainty | knowledge | yes | yes | 6 | 0 | 0 | 0 | 0 | 64 |
-| debottleneck | before | yes | yes | 9 | 0 | 0 | 0 | - | 88 |
-| debottleneck | knowledge | yes | yes | 7 | 0 | 0 | 0 | 0 | 87 |
-| pipeline_sizing | before | NO | NO | 64 | 22 | 0 | 0 | - | 98 |
-| pipeline_sizing | knowledge | yes | yes | 6 | 0 | 0 | 4 | 0 | 58 |
-| choke_sizing (held out) | before | yes | yes | 10 | 2 | 0 | 0 | - | 86 |
-| choke_sizing (held out) | knowledge | NO | NO | 28 | 12 | 0 | 0 | 0 | 78 |
-| water_rise (held out) | before | yes | yes | 7 | 0 | 0 | 0 | - | 71 |
-| water_rise (held out) | knowledge | yes | yes | 7 | 0 | 0 | 0 | 0 | 68 |
+| uncertainty | knowledge | yes | yes | 6 | 0 | 0 | 0 | 0 | 66 |
+| debottleneck | before | yes | yes | 9 | 0 | 0 | 0 | - | 89 |
+| debottleneck | knowledge | yes | yes | 9 | 0 | 0 | 1 | 0 | 100 |
+| pipeline_sizing | before | yes | yes | 33 | 11 | 0 | 5 | - | 142 |
+| pipeline_sizing | knowledge | yes | yes | 8 | 0 | 0 | 0 | 0 | 52 |
+| choke_sizing | before | yes | yes | 10 | 2 | 0 | 0 | - | 75 |
+| choke_sizing | knowledge | yes | yes | 6 | 0 | 0 | 0 | 0 | 62 |
+| water_rise (held out) | before | yes | yes | 7 | 0 | 0 | 0 | - | 73 |
+| water_rise (held out) | knowledge | yes | yes | 7 | 0 | 0 | 0 | 0 | 71 |
 
-**before**: model server dropped during ['pipeline_sizing'] (counted as failures)
-**before**: studies done 7/8, correct answers 7/8, invented numbers in replies 0, checker errors 24, time 12 min
-**knowledge**: studies done 7/8, correct answers 7/8, invented numbers in replies 5 (left after rewrite: 0), checker errors 12, time 10 min
+**before**: studies done 8/8, correct answers 8/8, invented numbers in replies 7, checker errors 13, time 12 min
+**knowledge**: studies done 8/8, correct answers 8/8, invented numbers in replies 1 (left after rewrite: 0), checker errors 0, time 11 min
 
 - before / field_project: most oil at separator 10.0 bara (expected the lowest, 10)
-- before / gaslift_nodal: best lift rate 0.1 mmsm3/d (expected about 0.1)
+- before / gaslift_nodal: best lift rate 0.08 mmsm3/d (expected about 0.1)
 - before / gaslift_allocation: best split {'W1': 0.05, 'W2': 0.1} (expected W1 0.05, W2 0.1)
 - before / uncertainty: ranking ['BO.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)
 - before / debottleneck: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
-- before / pipeline_sizing: no diameter sweep
+- before / pipeline_sizing: smallest diameter with inlet <= 90 bara: 254.0 (expected 254)
 - before / choke_sizing: most oil at 32.0 mm (expected the largest choke, 32 mm)
 - before / water_rise: least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)
 - knowledge / field_project: most oil at separator 10.0 bara (expected the lowest, 10)
@@ -100,10 +55,10 @@ knowledge water_rise           done=True correct=True tools=7 invented=[] 68s ::
 - knowledge / uncertainty: ranking ['BO.WaterCut', 'W1:W1_Comp.ReservoirPressure', 'W1:W1_Comp.LiquidPI'] (expected water cut first)
 - knowledge / debottleneck: 203 mm @12 bara: 34.27 %, 152 mm @8 bara: 2.07 % (expected 203 mm better)
 - knowledge / pipeline_sizing: smallest diameter with inlet <= 90 bara: 254.0 (expected 254)
-- knowledge / choke_sizing: no choke-size sweep
+- knowledge / choke_sizing: most oil at 32.0 mm (expected the largest choke, 32 mm)
 - knowledge / water_rise: least oil at water cut 50.0 %, wells not flowing at [70.0] % (expected the least at 70)
 
 (llama-server stopped)
 
 
-JOB finished 2026-11-04 20:40:55
+JOB finished 2026-11-04 21:07:57
