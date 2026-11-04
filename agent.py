@@ -17,7 +17,9 @@ MAX_STEPS = 25
 KNOWLEDGE = os.getenv("PIPESIM_AGENT_KNOWLEDGE", "1") != "0"
 NUMBER_GUARD = os.getenv("PIPESIM_NUMBER_GUARD", "1") != "0"
 # narrow schema-constrained extraction calls + only the tools that fit the current stage of the workflow
-STRUCTURED = os.getenv("PIPESIM_AGENT_STRUCTURED", "1") != "0"
+# Experimental, OFF by default: in job 22 the 9B lost stated values under the grammar and the strict tool schema
+# overflowed the 16k context (0/8 studies). Kept for larger models / future work: PIPESIM_AGENT_STRUCTURED=1.
+STRUCTURED = os.getenv("PIPESIM_AGENT_STRUCTURED", "0") == "1"
 NUMBER_RULE = ("\nNUMBERS: every number you write must be in a tool result or in the user's message. Do not estimate, "
                "add up or convert results yourself; if a number is not in the results, say it was not calculated. "
                "Replies are checked automatically.") if NUMBER_GUARD else ""
@@ -431,7 +433,7 @@ def run_turn(client, msgs, user, emit):
     msgs.append({"role": "user", "content": content})
     if STRUCTURED:
         pre_steps(client, msgs, user, emit)
-    spec_calls, bad_json = 0, 0
+    spec_calls, bad_json, ran = 0, 0, False
     try:
         for _ in range(MAX_STEPS):
             try:
@@ -447,9 +449,11 @@ def run_turn(client, msgs, user, emit):
             msgs.append(msg.model_dump(exclude_none=True))
             if not msg.tool_calls:
                 text = msg.content or "(empty reply: try rephrasing, or start a new chat)"
-                if NUMBER_GUARD:
+                # only replies that explain simulation results are checked: while planning, the model rightly
+                # proposes values of its own (sweep steps 16, 24, 28 between the user's 12 and 32, job 22)
+                if NUMBER_GUARD and ran:
                     text = check_numbers(client, msgs, text, emit)
-                elif LEDGER.unverified(text):   # guard off: only record it (for the before/after evaluation)
+                elif ran and LEDGER.unverified(text):   # guard off: only record it (for the before/after evaluation)
                     emit({"type": "tool", "name": "(number audit)", "args": {}})
                     emit({"type": "result", "name": "(number audit)", "result": {"unverified": LEDGER.unverified(text)}})
                 emit({"type": "assistant", "text": text})
@@ -470,6 +474,8 @@ def run_turn(client, msgs, user, emit):
                     result = {"error": f"{type(e).__name__}: {e}"}
                 emit({"type": "result", "name": name, "result": result})
                 LEDGER.add_result(name, result)
+                if name == "run_study" and isinstance(result, dict) and "error" not in result:
+                    ran = True
                 text = json.dumps(result, default=str)
                 if len(text) > 12000:
                     text = text[:12000] + "...[truncated]"

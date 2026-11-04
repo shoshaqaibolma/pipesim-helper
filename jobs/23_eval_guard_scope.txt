@@ -1,0 +1,2 @@
+# Plain vs knowledge after the number-check scope fix (structured mode off), about 40 minutes.
+"D:\Program\Pipesim toolkit\python.exe" tests\real_eval.py

@@ -90,6 +90,11 @@ class Msg:
         return d
 
 
+def call(name, args, i=[0]):
+    i[0] += 1
+    return types.SimpleNamespace(id=f"k{i[0]}", function=types.SimpleNamespace(name=name, arguments=json.dumps(args)))
+
+
 def scripted(replies):
     seen = []
     def fake(client, msgs):
@@ -98,19 +103,31 @@ def scripted(replies):
     return fake, seen
 
 
+TORNADO = json.load(open(os.path.join(DATA, "job16_tornado.json")))
+real_run = agent.FUNCS["run_study"]
+agent.FUNCS["run_study"] = lambda: TORNADO          # a finished study whose results the reply explains
 for rewrite, expect_flag in (("Oil rate is 417.2 sm3/d.", False), ("Oil rate is about 470 sm3/d.", True)):
     msgs = agent.new_conversation()
-    agent.LEDGER.add_result("run_study", json.load(open(os.path.join(DATA, "job16_tornado.json"))))
-    fake, seen = scripted([Msg("Oil rate is 417.2 sm3/d, about 64 sm3/d above plan."), Msg(rewrite)])
+    fake, seen = scripted([Msg(tool_calls=[call("run_study", {})]),
+                           Msg("Oil rate is 417.2 sm3/d, about 64 sm3/d above plan."), Msg(rewrite)])
     agent.chat = fake
     events = []
-    agent.run_turn(None, msgs, "What is the oil rate?", events.append)
+    agent.run_turn(None, msgs, "Yes, approved. Run it.", events.append)
     final = [e for e in events if e["type"] == "assistant"][-1]["text"]
-    assert "rewrite" in seen[1][-1]["content"].lower() and "64" in seen[1][-1]["content"]
+    assert "rewrite" in seen[2][-1]["content"].lower() and "64" in seen[2][-1]["content"]
     assert final.startswith(rewrite) and ("Number check" in final) == expect_flag, final
-    assert msgs[-1] == {"role": "assistant", "content": final} and msgs[-2]["role"] == "user"
+    assert msgs[-1] == {"role": "assistant", "content": final} and msgs[-2]["role"] == "tool"
     assert any(e["type"] == "tool" and e["name"] == "(number check)" for e in events)
-print("agent: invented number -> one rewrite; still invented -> flagged under the reply; history stays clean")
+# while planning (no study run in this turn) the model may propose its own values: not checked (job 22)
+msgs = agent.new_conversation()
+fake, seen = scripted([Msg("I will sweep the choke over 12, 16, 20, 24, 28 and 32 mm.")])
+agent.chat = fake
+events = []
+agent.run_turn(None, msgs, "How does oil change with choke size from 12 to 32 mm in 5 steps?", events.append)
+assert not any(e.get("name") == "(number check)" for e in events) and len(seen) == 1
+agent.FUNCS["run_study"] = real_run
+print("agent: invented number in a results reply -> one rewrite; still invented -> flagged; planning replies "
+      "(own sweep values) not checked")
 
 # recipes are added once per conversation, and the switches turn both features off
 msgs = agent.new_conversation()

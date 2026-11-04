@@ -80,3 +80,27 @@ conversation.
 **Verdict:** on these tasks, the 9B already got the engineering answers right when the workflow succeeded; the
 knowledge layer mainly makes it reach them reliably (8x fewer checker errors, 40 % fewer tool calls), and the number
 check stops made-up values from reaching the user.
+
+## 4. Jobs 21-22: name/approval fixes, and constrained ("structured") mode
+
+| | plain (job 21) | knowledge (job 21) | plain (job 22) | knowledge (job 22) | structured (job 22) |
+|---|---|---|---|---|---|
+| correct answers | 8/8 | 6/8 | 8/8 | 7/8 | 0/8 |
+| checker errors | 13 | 56 | 13 | 12 | 126 |
+
+- Job 21: the fix for copied example names also renamed flowlines built from the user's names (FL-A for well A)
+  and gave two of them the same name; the model looped until the 16k context overflowed. Fixed (only copied
+  *fluid* names are renamed; renames can no longer collide; long single turns are compacted). The approval fix
+  worked: no new study proposed after "Approved." in the completed scenarios.
+- Job 22, knowledge: the choke study failed because the number check flagged the model's own proposed sweep
+  values (16, 24, 28 mm between the user's 12 and 32) and the model then mangled the plan. The check now only
+  runs on replies that explain simulation results.
+- Job 22, structured mode (schema-constrained extraction + stage-based tool masking + strict tool schema):
+  0/8. Under the grammar the 9B dropped stated values (API, depth, PI, all flowlines), invented a separator and a
+  compressor, and the long strict tool schema pushed conversations over the 16k context. **Switched off by
+  default** (`PIPESIM_AGENT_STRUCTURED=1` to try it, e.g. with a larger model).
+
+**Conclusion so far:** with the plain agent the 9B reached 8/8 correct answers in three of three runs (after
+re-scoring job 20); the knowledge layer cuts tool calls and errors where the layout is unusual (pipeline sizing
+33 -> 6 calls) and stops invented numbers in result explanations, but each change has to be checked on the real
+model: two of the three "improvements" tried in jobs 21-22 made things worse and were reverted or switched off.

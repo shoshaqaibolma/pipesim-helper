@@ -19,8 +19,8 @@ SCENARIOS = ["field_project", "gaslift_nodal", "gaslift_allocation", "uncertaint
 HELD_OUT = {"choke_sizing", "water_rise"}   # no study recipe written for these
 CONDITIONS = {   # before: plain agent; knowledge: + recipes and number check; structured: + constrained extraction
     "before": {"PIPESIM_AGENT_KNOWLEDGE": "0", "PIPESIM_NUMBER_GUARD": "0", "PIPESIM_AGENT_STRUCTURED": "0"},
-    "knowledge": {"PIPESIM_AGENT_KNOWLEDGE": "1", "PIPESIM_NUMBER_GUARD": "1", "PIPESIM_AGENT_STRUCTURED": "0"},
-    "structured": {"PIPESIM_AGENT_KNOWLEDGE": "1", "PIPESIM_NUMBER_GUARD": "1", "PIPESIM_AGENT_STRUCTURED": "1"}}
+    "knowledge": {"PIPESIM_AGENT_KNOWLEDGE": "1", "PIPESIM_NUMBER_GUARD": "1", "PIPESIM_AGENT_STRUCTURED": "0"}}
+# add {"structured": {..., "PIPESIM_AGENT_STRUCTURED": "1"}} to test the experimental mode (0/8 in job 22)
 
 
 # ---------- reading a study output folder

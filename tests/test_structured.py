@@ -6,6 +6,7 @@ if "openai" not in sys.modules:
     sys.modules["openai"] = types.SimpleNamespace(OpenAI=lambda **k: None)
 import agent, structured
 import project as prj
+agent.STRUCTURED = True     # experimental mode (off by default)
 
 FIELD = open(os.path.join(HERE, "scripts", "field_project.txt"), encoding="utf-8").readline().strip()
 
