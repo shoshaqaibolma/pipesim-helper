@@ -11,7 +11,7 @@ Mirrors behaviour VERIFIED on PIPESIM 2023.1 where it matters for the code under
 import copy
 
 DEFAULT_COMPS = {"Well": ["Well"], "Sink": ["Sink"], "Flowline": ["FL"]}  # what Model.open() "finds"
-IN_WELL = {"Completion", "Tubing", "Casing", "Packer", "GasLiftInjection"}
+IN_WELL = {"Completion", "Tubing", "Casing", "Packer", "GasLiftInjection"}  # need Well=..., <type>=...
 UNITS = {"Pressure": "bara", "VolumeFlowrateLiquidStockTank": "sm3/d", "VolumeFlowrateOilStockTank": "sm3/d",
          "VolumeFlowrateGasStockTank": "mmsm3/d"}
 
@@ -91,7 +91,8 @@ class _Net:
             dest = s._sink_of(w) or (sinks[0] if sinks else None)
             psink = (bcs.get(dest) or {}).get("Pressure")
             psink = 15 if psink is None else psink
-            liq = max(0.0, pi * (pr - psink - 120 - 0.6 * wc))
+            glr = m.v.get(("GasLiftInjection", f"{w}:{w}_GL", "GasRate"), 0.0) or 0.0
+            liq = max(0.0, pi * (pr - psink - 120 - 0.6 * wc + 400 * glr - 1500 * glr * glr))  # toy gas lift curve
             oil, gas = liq * (1 - wc / 100), liq * (1 - wc / 100) * gor / 1e6
             for k, val in (("VolumeFlowrateLiquidStockTank", liq), ("VolumeFlowrateOilStockTank", oil),
                            ("VolumeFlowrateGasStockTank", gas), ("Pressure", psink + 0.002 * liq)):

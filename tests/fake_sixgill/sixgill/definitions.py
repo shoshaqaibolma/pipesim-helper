@@ -5,7 +5,7 @@ class _NS:
 class Units: METRIC = "METRIC"; FIELD = "FIELD"; SI = "SI"
 class ModelComponents:
     WELL="Well"; TUBING="Tubing"; COMPLETION="Completion"; FLOWLINE="Flowline"; SINK="Sink"; BLACKOILFLUID="BlackOilFluid"
-    SOURCE="Source"; JUNCTION="Junction"; CHOKE="Choke"; CASING="Casing"
+    SOURCE="Source"; JUNCTION="Junction"; CHOKE="Choke"; CASING="Casing"; GASLIFTINJECTION="GasLiftInjection"
 class _Params:
     def __getattr__(self, g):
         return type("G", (), {"__getattr__": lambda s, n: {"WATERCUT":"WaterCut","GOR":"GOR","RESERVOIRPRESSURE":"ReservoirPressure",
@@ -13,7 +13,8 @@ class _Params:
             "TEMPERATURE":"Temperature","BEANSIZE":"BeanSize","ASSOCIATEDBLACKOILFLUID":"AssociatedBlackOilFluid",
             "RESERVOIRTEMPERATURE":"ReservoirTemperature","CONSTANTC":"ConstantC","SLOPEN":"SlopeN",
             "SELECTEDRATETYPE":"SelectedRateType","LIQUIDFLOWRATE":"LiquidFlowRate","GASFLOWRATE":"GasFlowRate",
-            "OGR":"OGR","WGR":"WGR","USEGASRATIO":"UseGasRatio","USEWATERRATIO":"UseWaterRatio"}.get(n, n)})()
+            "OGR":"OGR","WGR":"WGR","USEGASRATIO":"UseGasRatio","USEWATERRATIO":"UseWaterRatio",
+            "GASRATE":"GasRate","GASLIFTTYPE":"GasLiftType"}.get(n, n)})()
 Parameters = _Params(); Constants = _Params()
 class SystemVariables:  # values as recorded from PIPESIM 2023.1
     PRESSURE="Pressure"; VOLUME_FLOWRATE_LIQUID_STOCKTANK="VolumeFlowrateLiquidStockTank"

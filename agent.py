@@ -43,7 +43,7 @@ PROJECT SCHEMA (every list item needs a unique "name"; units in brackets):
              or {{"name","type":"gas","gas_sg","ogr"[sm3/mmsm3],"wgr"[sm3/mmsm3],"api"}}
   wells:     {{"name","fluid","reservoir_pressure"[bara],"reservoir_temperature"[degC],"depth"[m],"tubing_id"[mm],
               "ipr":{{"model":"pi","liquid_pi"[sm3/d/bar]}}}}  (or {{"model":"vogel","aof"[sm3/d]}} or
-              {{"model":"backpressure","c"[mmsm3/d/bar^2n],"n"}})
+              {{"model":"backpressure","c"[mmsm3/d/bar^2n],"n"}}); optional "gas_lift":{{"depth"[m],"rate"[mmsm3/d]}}
   sources:   {{"name","fluid","temperature"[degC]}} plus ONE of "pressure"[bara], "liquid_rate"[sm3/d], "gas_rate"[mmsm3/d].
              Sources are pipeline inlets or external streams, NOT wells.
   junctions: {{"name"}}  (manifolds, tie-in points)
@@ -61,6 +61,7 @@ EXAMPLE update_project patch for "2 wells into a manifold, 5 km trunkline to a s
 STUDY VARIABLES on a project (component_type / name / parameter):
   separator or sink pressure: Sink / <sink> / Pressure;  reservoir pressure: Completion / <well>:<well>_Comp / ReservoirPressure
   choke size: Choke / <choke> / BeanSize;  flowline diameter: Flowline / <flowline> / InnerDiameter
+  gas lift rate: GasLiftInjection / <well>:<well>_GL / GasRate  (the well needs "gas_lift" in the project)
 
 Analysis types: {json.dumps(study.ANALYSES)}
 Model templates for new models: { {k: v['description'] for k, v in TEMPLATES.items()} }

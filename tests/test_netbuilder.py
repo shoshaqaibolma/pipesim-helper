@@ -90,7 +90,23 @@ assert r["VolumeFlowrateGasStockTank"]["Terminal"] == 2.0 and r["Pressure"]["Pla
 m.close()
 print("gas pipeline: rate-specified source, OGR/WGR gas fluid, boundary conditions verified")
 
-# 6. checker: unknown component in a project study, incomplete project, non-metric units
+# 6. gas lift: injection point inside the well; a gas-lift-rate sweep through the adapter changes the well rate
+GL = dict(FIELD, wells=[dict(FIELD["wells"][0], gas_lift={"depth": 2000, "rate": 0.05}), FIELD["wells"][1]])
+assert prj.check_project(GL)["ready"], prj.check_project(GL)
+m, rep = netbuilder.build(GL, os.path.join(tmp, "gl.pips"))
+assert m.comps["GasLiftInjection"] == ["W1:W1_GL"] and m.v[("GasLiftInjection", "W1:W1_GL", "GasRate")] == 0.05
+m.close()
+spec_gl = dict(spec, analysis={"type": "sweep", "variables": [{"component_type": "GasLiftInjection", "name": "W1:W1_GL",
+                                                               "parameter": "GasRate", "values": [0.0, 0.05, 0.1]}]})
+assert study.check(spec_gl, project=GL)["ready"], study.check(spec_gl, project=GL)
+r = executor.run(spec_gl, progress=lambda s: None, project=GL)
+assert not r["warnings"] and r["summary"]["W1 liquid rate"]["highest"]["case"] != "W1_GL.GasRate=0.0", r["summary"]
+bad = dict(FIELD, wells=[dict(FIELD["wells"][0], gas_lift={"depth": 3000, "rate": 5}), FIELD["wells"][1]])
+errs = prj.check_project(bad)["errors"]
+assert any("above the completion" in e for e in errs) and any("very high" in e for e in errs), errs
+print("gas lift: injection point built in the well; gas-lift-rate sweep changes the well rate; bad depth/rate caught")
+
+# 7. checker: unknown component in a project study, incomplete project, non-metric units
 bad = dict(spec, analysis={"type": "sweep", "variables": [{"component_type": "Sink", "name": "Nope",
                                                            "parameter": "Pressure", "values": [1, 2]}]})
 assert any("Available Sink: ['Sep']" in e for e in study.check(bad, project=FIELD)["errors"])

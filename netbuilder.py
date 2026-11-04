@@ -55,6 +55,11 @@ def _well(m, w, ambient):
     for field, param in fields.items():
         params[param()] = w["ipr"][field]
     sa.add(m, MC("COMPLETION"), prj.completion_name(w["name"]), context=w["name"], parameters=params)
+    if w.get("gas_lift"):  # as in TF_M3B / Nodal_example: injection-gas-rate gas lift at a given depth
+        sa.add(m, MC("GASLIFTINJECTION"), prj.gas_lift_name(w["name"]), context=w["name"], parameters={
+            P("GasLiftInjection", "TOPMEASUREDDEPTH"): w["gas_lift"]["depth"],
+            P("GasLiftInjection", "GASLIFTTYPE"): C("GasLiftType", "INJECTIONGASRATE"),
+            P("GasLiftInjection", "GASRATE"): w["gas_lift"]["rate"]})
 
 
 def build(project, path, units="METRIC"):

@@ -127,6 +127,21 @@ def check_project(p):
                     for f, (q, unit, dflt) in FLUID_FIELDS[ftype].items():
                         if f not in e:
                             ask(f"fluids.{n}.{f}", f"{n}: {q}", unit, dflt)
+            if kind == "wells" and "gas_lift" in e:
+                gl = e["gas_lift"]
+                if not isinstance(gl, dict):
+                    errors.append(f"{n}: gas_lift must be {{\"depth\": m, \"rate\": mmsm3/d}}")
+                else:
+                    for f, q, unit in (("depth", "gas lift injection depth (measured)?", "m"),
+                                       ("rate", "gas lift injection rate?", "mmsm3/d")):
+                        if f not in gl:
+                            ask(f"wells.{n}.gas_lift.{f}", f"{n}: {q}", unit, None)
+                    if isinstance(gl.get("depth"), (int, float)) and isinstance(e.get("depth"), (int, float)) \
+                            and gl["depth"] >= e["depth"]:
+                        errors.append(f"{n}: gas lift depth {gl['depth']} m must be above the completion ({e['depth']} m)")
+                    if isinstance(gl.get("rate"), (int, float)) and gl["rate"] > 2:
+                        errors.append(f"{n}: gas lift rate {gl['rate']} mmsm3/d is very high; the unit is mmsm3/d "
+                                      "(0.05 = 50,000 sm3/d)")
             if kind == "sources":
                 given = [k for k in SOURCE_BC if k in e]
                 if not given:
@@ -199,7 +214,11 @@ def check_project(p):
     return {"ready": not missing and not errors, "next_step": nxt, "missing": missing, "errors": errors}
 
 
-EXTRA_KEYS = {"wells": {"casing_id", "casing_wall", "tubing_wall"}, "sources": set(SOURCE_BC)}
+EXTRA_KEYS = {"wells": {"casing_id", "casing_wall", "tubing_wall", "gas_lift"}, "sources": set(SOURCE_BC)}
+
+
+def gas_lift_name(well):
+    return f"{well}_GL"
 
 
 def allowed_keys(kind):
@@ -217,7 +236,8 @@ SYNONYMS = {
                "model": "type", "condensate_gas_ratio": "ogr", "water_gas_ratio": "wgr"},
     "wells": {"reservoir_temp": "reservoir_temperature", "res_pressure": "reservoir_pressure",
               "reservoir_pressure_bara": "reservoir_pressure", "well_depth": "depth", "tvd": "depth", "depth_m": "depth",
-              "tubing_diameter": "tubing_id", "tubing_inner_diameter": "tubing_id", "fluid_name": "fluid"},
+              "tubing_diameter": "tubing_id", "tubing_inner_diameter": "tubing_id", "fluid_name": "fluid",
+              "gaslift": "gas_lift", "gas_lift_injection": "gas_lift"},
     "sources": {"fluid_name": "fluid", "temp": "temperature", "liquid_flowrate": "liquid_rate",
                 "gas_flowrate": "gas_rate", "oil_rate": "liquid_rate", "flow_rate": "liquid_rate"},
     "sinks": {"pressure_bara": "pressure", "separator_pressure": "pressure"},
@@ -333,6 +353,8 @@ def known_components(p):
     wells = [w["name"] for w in p.get("wells") or [] if w.get("name")]
     return {"Well": wells, "Completion": [f"{w}:{completion_name(w)}" for w in wells],
             "Tubing": [f"{w}:Tubing" for w in wells],
+            "GasLiftInjection": [f"{w['name']}:{gas_lift_name(w['name'])}" for w in p.get("wells") or []
+                                 if w.get("name") and w.get("gas_lift")],
             "Source": [e["name"] for e in p.get("sources") or []], "Sink": [e["name"] for e in p.get("sinks") or []],
             "Junction": [e["name"] for e in p.get("junctions") or []], "Choke": [e["name"] for e in p.get("chokes") or []],
             "Flowline": [e["name"] for e in p.get("flowlines") or []],
