@@ -14,6 +14,20 @@ No model data leaves the machine.
   mcp_server.py (optional) ──► same tools for Claude Desktop / LM Studio / other MCP clients
 ```
 
+## Quick start (already set up on this PC)
+Double-click **`agent.bat`**. It starts the local model (Qwen 3.5 9B on the GPU) if needed, then the agent.
+Describe what you want; answer its questions (or say "use defaults"); approve the plan; read the results.
+Results, charts and a report go to `runs\<timestamp>\`; new models to `projects\`.
+
+Example requests (all verified end to end on PIPESIM 2023.1 with the local model):
+- "Build a field: two oil wells W1 and W2 into manifold J1, then a 5 km, 152 mm trunkline to a separator at
+  15 bara. Black oil 35 API, GOR 100, 20% water cut. W1: 250 bara, 2500 m, PI 10. W2: 230 bara, 2400 m, PI 15.
+  How does field oil change if the separator pressure goes from 10 to 30 bara?"
+- "Build one gas-lifted well (..., gas lift at 2000 m with 0.05 MMsm3/d) and run a nodal analysis at 20 bara
+  wellhead pressure. Then sweep the gas lift rate from 0 to 0.2 MMsm3/d and tell me the best rate."
+- "We only have 0.15 MMsm3/d of lift gas: how should we split it between W1 and W2 to get the most oil?"
+- "Open C:\...\my_model.pips and sweep the sink pressure from 10 to 40 bara." (works on a copy)
+
 ## 1. Prerequisites (Windows PC with PIPESIM)
 - PIPESIM 2017.1 or later with a core license. The Python Toolkit is included with that license.
 - An NVIDIA GPU with 8 GB of VRAM or more. Qwen 3.5 9B at Q4_K_M is about 6 GB and fits entirely on an 8 GB card.
