@@ -138,7 +138,7 @@ def clean(spec):
 
 def check(spec, known_components=None, project=None):
     """Return what is missing or wrong. known_components: {type: [names]} from the open model, if any."""
-    missing, errors = [], []
+    missing, errors, warnings = [], [], []
 
     def ask(field, question, unit="", default=None):
         missing.append({"field": field, "question": question, "unit": unit, "suggested_default": default})
@@ -257,6 +257,9 @@ def check(spec, known_components=None, project=None):
                 ask(f"analysis.variables[{i}]", f"Range for variable {i}: a list of values, or start/stop/steps?")
         if n_cases(spec) > MAX_CASES:
             errors.append(f"{n_cases(spec)} cases is too many (max {MAX_CASES}). Use fewer steps.")
+        w, e = _value_sanity(vs, project if src == "project" else None)
+        warnings += w
+        errors += e
     if errors:
         nxt = "Fix every item in 'errors' with ONE update_spec call (exact keys/values as stated), then check_spec once."
     elif missing:
@@ -264,8 +267,48 @@ def check(spec, known_components=None, project=None):
                "with the suggested defaults. Wait for the answer.")
     else:
         nxt = "Call propose_plan and show the plan to the user word for word."
-    return {"ready": not missing and not errors, "next_step": nxt, "missing": missing, "errors": errors,
-            "n_cases": n_cases(spec) if t in ANALYSES else None}
+        if warnings:
+            nxt += " Also tell the user about each item in 'warnings' (likely unit mistakes) and ask if it is intended."
+    out = {"ready": not missing and not errors, "next_step": nxt, "missing": missing, "errors": errors,
+           "n_cases": n_cases(spec) if t in ANALYSES else None}
+    if warnings:
+        out["warnings"] = warnings
+    return out
+
+
+# parameter -> (low, high, unit, hint) for study values; outside: warning, except where physically impossible
+VALUE_RANGES = {
+    "WaterCut": (0, 100, "%", None),
+    "GasRate": (0, 2, "mmsm3/d", "0.05 mmsm3/d = 50,000 sm3/d; sm3/d entered as mmsm3/d?"),
+    "InnerDiameter": (25, 1500, "mm", "inches entered as mm?"),
+    "BeanSize": (2, 150, "mm", "1/64 inch entered as mm?"),
+    "ReservoirPressure": (20, 1200, "bara", "psi entered as bara?"),
+    "LiquidPI": (0.05, 100, "sm3/d/bar", None),
+    "GOR": (1, 2500, "sm3/sm3", "scf/stb entered as sm3/sm3?"),
+}
+
+
+def _value_sanity(variables, project=None):
+    warn, err = [], []
+    res = [w["reservoir_pressure"] for w in (project or {}).get("wells") or []
+           if isinstance(w.get("reservoir_pressure"), (int, float))]
+    for i, v in enumerate(variables):
+        vals = [x for x in (values_of(v) or []) + [v.get("low"), v.get("high")] if isinstance(x, (int, float))]
+        par = v.get("parameter")
+        if not vals:
+            continue
+        if par in VALUE_RANGES:
+            lo, hi, unit, hint = VALUE_RANGES[par]
+            bad = [x for x in vals if not lo <= x <= hi]
+            if bad and par == "WaterCut":
+                err.append(f"Variable {i}: water cut must be 0-100 % (got {bad})")
+            elif bad:
+                warn.append(f"Variable {i} ({par}): {bad} {unit} outside the usual {lo}-{hi} {unit}"
+                            + (f" ({hint})" if hint else ""))
+        if par == "Pressure" and v.get("component_type") == "Sink" and res and max(vals) >= max(res):
+            warn.append(f"Variable {i}: sink pressure {max(vals)} bara is at or above every reservoir pressure "
+                        f"(max {max(res)} bara); no well flows in that case")
+    return warn, err
 
 
 def describe(spec):

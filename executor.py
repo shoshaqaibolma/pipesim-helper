@@ -469,6 +469,9 @@ def run(spec, progress=print, project=None):
             for c in charts:
                 f.write(f"\n![]({os.path.basename(c)})\n")
         failed = [r["case"] for r in rows if str(r.get("_status", "")).startswith("FAILED")]
+        primary = _primary(kpi_cols, rows[0]) if a["type"] in ("sweep", "grid", "tornado", "optimize") else None
+        json.dump({"type": a["type"], "primary": primary, "summary": summary, "failed_cases": failed},
+                  open(os.path.join(out, "summary.json"), "w", encoding="utf-8"), indent=1, default=str)
         return {"output_dir": out, "report": report, "csv": csv_path, "charts": charts, "warnings": warnings,
                 "n_rows": len(rows), "failed_cases": failed, "table": _compact(rows, cols), "summary": summary}
     finally:

@@ -261,7 +261,8 @@ def check_project(p):
                 if n and len(out.get(n, [])) > 1:
                     errors.append(f"{n} has {len(out[n])} outgoing connections; a {kind[:-1]} can feed only one. "
                                   "Put a junction after it to split the flow.")
-    errors = list(dict.fromkeys(errors))
+    warn, hard = sanity(p)
+    errors = list(dict.fromkeys(errors + hard))
     if errors:
         nxt = "Fix every item in 'errors' with ONE update call, then check again."
     elif missing:
@@ -269,7 +270,83 @@ def check_project(p):
                "(group by component), with the suggested defaults. Wait for the answer.")
     else:
         nxt = "Project complete. Continue with the study spec (model.source = \"project\")."
-    return {"ready": not missing and not errors, "next_step": nxt, "missing": missing, "errors": errors}
+        if warn:
+            nxt += (" Tell the user about every item in 'warnings' (likely unit or typing mistakes) in one short line "
+                    "each when you show the plan; do not change the values unless the user says so.")
+    out = {"ready": not missing and not errors, "next_step": nxt, "missing": missing, "errors": errors}
+    if warn:
+        out["warnings"] = warn
+    return out
+
+
+# Engineering sanity ranges (METRIC). Outside them a value is usually a unit mistake (psi for bara, inch for mm,
+# ft for m) or a typing error; the check warns but does not block, except for physically impossible values.
+RANGES = {
+    ("wells", "reservoir_pressure"): (20, 1200, "bara", "psi entered as bara?"),
+    ("wells", "reservoir_temperature"): (5, 220, "degC", "degF entered as degC?"),
+    ("wells", "depth"): (150, 7500, "m", "ft entered as m?"),
+    ("wells", "tubing_id"): (30, 180, "mm", "inches entered as mm?"),
+    ("sinks", "pressure"): (1, 250, "bara", "psi entered as bara?"),
+    ("sources", "pressure"): (1, 400, "bara", "psi entered as bara?"),
+    ("sources", "temperature"): (-20, 200, "degC", "degF entered as degC?"),
+    ("sources", "gas_rate"): (0.001, 60, "mmsm3/d", "sm3/d entered as mmsm3/d?"),
+    ("sources", "liquid_rate"): (1, 50000, "sm3/d", ""),
+    ("flowlines", "id"): (25, 1500, "mm", "inches entered as mm?"),
+    ("flowlines", "length"): (10, 300000, "m", "km entered as m?"),
+    ("chokes", "bean_size"): (2, 150, "mm", "1/64 inch entered as mm?"),
+}
+FLUID_RANGES = {
+    "api": (8, 65, "", "check the oil gravity"),
+    "gas_sg": (0.55, 1.6, "", "gas SG is relative to air (0.55-1.6)"),
+    "gor": (1, 2500, "sm3/sm3", "scf/stb entered as sm3/sm3? Above about 2500 sm3/sm3 a gas-condensate (type gas) fluid fits better"),
+    "ogr": (0, 1000, "sm3/mmsm3", "stb/mmscf entered as sm3/mmsm3?"),
+    "wgr": (0, 1000, "sm3/mmsm3", ""),
+}
+PI_RANGE = (0.05, 100, "sm3/d/bar")
+
+
+def _num(v):
+    return isinstance(v, (int, float)) and not isinstance(v, bool)
+
+
+def sanity(p):
+    """(warnings, errors) from engineering ranges and simple physics."""
+    warn, err = [], []
+    for (kind, f), (lo, hi, unit, hint) in RANGES.items():
+        for e in p.get(kind) or []:
+            v = e.get(f)
+            if _num(v) and not lo <= v <= hi:
+                warn.append(f"{e.get('name')}: {f.replace('_', ' ')} {v} {unit} is outside the usual {lo}-{hi} {unit}"
+                            + (f" ({hint})" if hint else ""))
+    for e in p.get("fluids") or []:
+        n = e.get("name")
+        for f, (lo, hi, unit, hint) in FLUID_RANGES.items():
+            v = e.get(f)
+            if _num(v) and not lo <= v <= hi:
+                warn.append(f"Fluid {n}: {f.upper()} {v} {unit} is outside the usual {lo}-{hi} {unit} ({hint})".replace("  ", " "))
+        wc = e.get("water_cut")
+        if _num(wc) and not 0 <= wc <= 100:
+            err.append(f"Fluid {n}: water cut must be 0-100 % (got {wc})")
+        elif _num(wc) and 0 < wc < 1:
+            warn.append(f"Fluid {n}: water cut {wc} % is very low; if a fraction was meant, {wc} = {wc * 100:g} %")
+    for e in p.get("wells") or []:
+        ipr = e.get("ipr") if isinstance(e.get("ipr"), dict) else {}
+        pi = ipr.get("liquid_pi")
+        if _num(pi) and not PI_RANGE[0] <= pi <= PI_RANGE[1]:
+            warn.append(f"{e.get('name')}: PI {pi} sm3/d/bar is outside the usual {PI_RANGE[0]}-{PI_RANGE[1]} "
+                        "sm3/d/bar (stb/d/psi is about 2.3 times smaller in these units)")
+    for f in p.get("flowlines") or []:
+        L, dz = f.get("length"), f.get("elevation_change")
+        if _num(L) and _num(dz) and L > 0 and abs(dz) > L:
+            err.append(f"{f.get('name')}: elevation change {dz} m is larger than the length {L} m")
+    res = [e["reservoir_pressure"] for e in p.get("wells") or [] if _num(e.get("reservoir_pressure"))]
+    boosted = p.get("pumps") or p.get("compressors") or [w for w in p.get("wells") or [] if w.get("gas_lift")]
+    for s in p.get("sinks") or []:
+        ps = s.get("pressure")
+        if res and _num(ps) and ps >= max(res) and not p.get("sources") and not boosted:
+            warn.append(f"Sink {s.get('name')} at {ps} bara is at or above every reservoir pressure (max {max(res)} "
+                        "bara): no well can flow")
+    return warn, err
 
 
 EXTRA_KEYS = {"wells": {"casing_id", "casing_wall", "tubing_wall", "gas_lift"}, "sources": set(SOURCE_BC),

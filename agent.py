@@ -6,13 +6,19 @@ Usage:  python agent.py         (llama-server must be running, see start_llm.bat
 import json, os, sys
 from openai import OpenAI
 import pipesim_tools as pt
-import study, executor, netbuilder
+import study, executor, netbuilder, recipes, numguard
 import project as prj
 from builder import TEMPLATES
 
 BASE_URL = os.getenv("LLM_URL", "http://127.0.0.1:8080/v1")
 MODEL = os.getenv("LLM_MODEL", "local")
 MAX_STEPS = 25
+# A/B switches (both on by default): worked recipes + study-type table, and the invented-number check
+KNOWLEDGE = os.getenv("PIPESIM_AGENT_KNOWLEDGE", "1") != "0"
+NUMBER_GUARD = os.getenv("PIPESIM_NUMBER_GUARD", "1") != "0"
+NUMBER_RULE = ("\nNUMBERS: every number you write must be in a tool result or in the user's message. Do not estimate, "
+               "add up or convert results yourself; if a number is not in the results, say it was not calculated. "
+               "Replies are checked automatically.") if NUMBER_GUARD else ""
 
 SYSTEM = f"""You are a petroleum production engineer who runs SLB PIPESIM studies for the user through tools.
 
@@ -73,6 +79,7 @@ STUDY VARIABLES on a project (component_type / name / parameter):
   gas lift rate: GasLiftInjection / <well>:<well>_GL / GasRate  (the well needs "gas_lift" in the project)
   compressor or pump: Compressor|Pump / <name> / Power | PressureDifferential | Pressure  (whichever it was specified by)
 
+{recipes.STUDY_TYPES if KNOWLEDGE else ""}
 Analysis types: {json.dumps(study.ANALYSES)}
 Model templates for new models: { {k: v['description'] for k, v in TEMPLATES.items()} }
 Template sweep aliases: { {k: list(v['aliases']) for k, v in TEMPLATES.items()} }
@@ -84,14 +91,15 @@ P/T profiles need ONE boundary condition in analysis.conditions: {{"outlet_press
 For existing models, refer to variables as component_type + name + parameter (e.g. Sink / "Sink-1" / "Pressure").
 Use model units (METRIC unless the user says FIELD). Never invent results: every number comes from a tool.
 Every check_spec and check_project result has a "next_step" field: always do exactly what it says.
-Keep messages short."""
+Keep messages short.{NUMBER_RULE}"""
 
 SPEC = {}
 PROJECT = {}
 # Front-end hooks: the terminal asks with input(); the web window (webui.py) uses its Approve button.
 HOOKS = {"confirm": lambda question: input(f"\n  {question} [y/N] ").strip().lower() == "y",
          "progress": lambda text: print("   " + text)}
-STATE = {"plan_ok_for": None, "components": None}
+STATE = {"plan_ok_for": None, "components": None, "recipes_given": set()}
+LEDGER = numguard.Ledger()   # numbers that really came from tools or the user in this conversation
 
 
 def _plan_key():
@@ -260,10 +268,32 @@ def chat(client, msgs):
 
 
 def new_conversation():
-    global SPEC, PROJECT
+    global SPEC, PROJECT, LEDGER
     SPEC, PROJECT = {}, {}
-    STATE.update(plan_ok_for=None, components=None)
+    STATE.update(plan_ok_for=None, components=None, recipes_given=set())
+    LEDGER = numguard.Ledger()
     return [{"role": "system", "content": SYSTEM}]
+
+
+def check_numbers(client, msgs, text, emit):
+    """Numbers in the final reply must come from tool results or the user. Ask for one rewrite without the
+    unverified numbers; if some remain, flag them under the reply. msgs[-1] is the reply being checked."""
+    bad = LEDGER.unverified(text)
+    if not bad:
+        return text
+    emit({"type": "tool", "name": "(number check)", "args": {"unverified": bad}})
+    reply = msgs.pop()
+    try:
+        fix = chat(client, msgs + [reply, {"role": "user", "content": numguard.rewrite_note(bad)}])
+        new = fix.content if fix and not fix.tool_calls else None
+    except Exception:
+        new = None
+    still = LEDGER.unverified(new) if new else bad
+    final = (new or text) if not still else (new or text) + numguard.flag_line(still)
+    msgs.append({"role": "assistant", "content": final})
+    emit({"type": "result", "name": "(number check)",
+          "result": {"unverified": bad, "rewritten": bool(new), "still_unverified": still}})
+    return final
 
 
 def run_turn(client, msgs, user, emit):
@@ -271,7 +301,14 @@ def run_turn(client, msgs, user, emit):
     {"type": "tool", "name", "args"}, {"type": "result", "name", "result"}, {"type": "assistant", "text"},
     {"type": "error", "text"}. msgs is updated in place."""
     turn_start = len(msgs)
-    msgs.append({"role": "user", "content": user})
+    LEDGER.add_user(user)
+    content = user
+    if KNOWLEDGE:   # recipes matching this message, each one only once per conversation
+        hits = [r for r in recipes.select(user) if r["name"] not in STATE["recipes_given"]]
+        if hits:
+            STATE["recipes_given"].update(r["name"] for r in hits)
+            content = user + recipes.GUIDANCE + "\n\n".join(r["text"] for r in hits)
+    msgs.append({"role": "user", "content": content})
     spec_calls, bad_json = 0, 0
     try:
         for _ in range(MAX_STEPS):
@@ -287,7 +324,13 @@ def run_turn(client, msgs, user, emit):
                 continue
             msgs.append(msg.model_dump(exclude_none=True))
             if not msg.tool_calls:
-                emit({"type": "assistant", "text": msg.content or "(empty reply: try rephrasing, or start a new chat)"})
+                text = msg.content or "(empty reply: try rephrasing, or start a new chat)"
+                if NUMBER_GUARD:
+                    text = check_numbers(client, msgs, text, emit)
+                elif LEDGER.unverified(text):   # guard off: only record it (for the before/after evaluation)
+                    emit({"type": "tool", "name": "(number audit)", "args": {}})
+                    emit({"type": "result", "name": "(number audit)", "result": {"unverified": LEDGER.unverified(text)}})
+                emit({"type": "assistant", "text": text})
                 return
             for tc in msg.tool_calls:
                 name = tc.function.name
@@ -304,6 +347,7 @@ def run_turn(client, msgs, user, emit):
                 except Exception as e:
                     result = {"error": f"{type(e).__name__}: {e}"}
                 emit({"type": "result", "name": name, "result": result})
+                LEDGER.add_result(name, result)
                 text = json.dumps(result, default=str)
                 if len(text) > 12000:
                     text = text[:12000] + "...[truncated]"
