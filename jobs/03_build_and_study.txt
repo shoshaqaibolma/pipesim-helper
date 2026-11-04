@@ -1,0 +1,4 @@
+# Re-run the builder smoke test after the casing/tubing fix, then a 3-case study on the built field.
+# Everything is created in %TEMP% or the repo's runs\ folder; no existing model is touched.
+"D:\Program\Pipesim toolkit\python.exe" tests\real_build_test.py
+"D:\Program\Pipesim toolkit\python.exe" tests\real_project_study.py
