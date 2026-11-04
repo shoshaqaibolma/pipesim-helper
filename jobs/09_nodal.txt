@@ -1,0 +1,2 @@
+# Nodal analysis on built test wells (natural flow and gas lift), in %TEMP% / runs\.
+"D:\Program\Pipesim toolkit\python.exe" tests\real_nodal_test.py
