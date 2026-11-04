@@ -27,23 +27,45 @@ def _lookup(table, var, comp):
     return None
 
 
+SHORT = {"VOLUME_FLOWRATE_LIQUID_STOCKTANK": "liquid rate", "VOLUME_FLOWRATE_OIL_STOCKTANK": "oil rate",
+         "VOLUME_FLOWRATE_GAS_STOCKTANK": "gas rate", "VOLUME_FLOWRATE_WATER_STOCKTANK": "water rate",
+         "PRESSURE": "pressure", "TEMPERATURE": "temperature"}
+
+
+def _find(model, t):
+    try:
+        # top-level components only: "Well:Source 1" etc. are internal parts of a well
+        return [n for n in (model.find(**{t: d.ALL}) or []) if ":" not in n]
+    except Exception:
+        return []
+
+
 def _producers(model, spec):
     if spec["model"]["source"] == "new":
         return TEMPLATES[spec["model"]["template"]]["producers"]
-    names = []
-    for t in ("Well", "Source"):
-        try:
-            names += list(model.find(**{t: d.ALL}) or [])
-        except Exception:
-            pass
-    return names
+    return _find(model, "Well") + _find(model, "Source")
 
 
 def _kpis(model, spec):
+    """Default results: rates delivered to each sink, plus rate and wellhead pressure of each producer."""
     if spec.get("kpis"):
         return spec["kpis"]
-    return [{"component": p, "variable": v, "label": f"{p} {v}"} for p in _producers(model, spec)
-            for v in study.DEFAULT_KPI_VARS]
+    rates = ["VOLUME_FLOWRATE_LIQUID_STOCKTANK", "VOLUME_FLOWRATE_OIL_STOCKTANK", "VOLUME_FLOWRATE_GAS_STOCKTANK"]
+    sinks = ["Sink"] if spec["model"]["source"] == "new" else _find(model, "Sink")
+    out = [{"component": s, "variable": v, "label": f"{s} {SHORT[v]}"} for s in sinks for v in rates]
+    out += [{"component": p, "variable": v, "label": f"{p} {SHORT[v]}"} for p in _producers(model, spec)
+            for v in ("VOLUME_FLOWRATE_LIQUID_STOCKTANK", "PRESSURE")]
+    return out
+
+
+def _by_variable(kpis, cols):
+    """Group result columns by variable, so one chart shows e.g. every liquid rate together."""
+    groups = {}
+    for k in kpis:
+        lab = k.get("label") or f"{k['component']} {k['variable']}"
+        if lab in cols:
+            groups.setdefault(SHORT.get(k["variable"], k["variable"]), []).append(lab)
+    return groups
 
 
 def _run_case(model, kpis):
@@ -199,10 +221,10 @@ def run(spec, progress=print):
                 for v in study.values_of(a["variables"][0]):
                     case(f"{labels[0]}={v}", [(refs[0], v)])
                 sw = rows[1:]
-                for k in kpi_cols:
-                    charts.append(_chart(os.path.join(out, f"sweep_{len(charts)}.png"),
-                                         [r[labels[0]] for r in sw], {k: [r.get(k) for r in sw]},
-                                         labels[0], f"{k} vs {labels[0]}"))
+                for var, ks in _by_variable(kpis, kpi_cols).items():
+                    charts.append(_chart(os.path.join(out, f"sweep_{var.replace(' ', '_')}.png"),
+                                         [r[labels[0]] for r in sw], {k: [r.get(k) for r in sw] for k in ks},
+                                         labels[0], f"{var} vs {labels[0]}"))
             elif a["type"] == "grid":
                 for combo in itertools.product(*[study.values_of(v) for v in a["variables"]]):
                     case(", ".join(f"{l}={c}" for l, c in zip(labels, combo)), list(zip(refs, combo)))

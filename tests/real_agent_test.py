@@ -6,7 +6,7 @@ scripted conversation on a TEMP COPY of a model, and prints a compact transcript
 
 The script file has one user message per line; {MODEL} is replaced with the temp copy's path.
 """
-import json, os, shutil, subprocess, sys, tempfile, time, urllib.request
+import io, json, os, shutil, subprocess, sys, tempfile, time, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_SCRIPT = [
@@ -25,6 +25,7 @@ def healthy():
 
 
 def main():
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace", line_buffering=True)
     model = sys.argv[1]
     lines = open(sys.argv[2], encoding="utf-8").read().splitlines() if len(sys.argv) > 2 else DEFAULT_SCRIPT
     tmp = tempfile.mkdtemp(prefix="pipesim_agenttest_")
@@ -48,8 +49,9 @@ def main():
             print("".join(open(os.path.join(tmp, "llama.log"), errors="replace").readlines()[-25:]))
             return
     t0 = time.time()
+    env = dict(os.environ, PYTHONIOENCODING="utf-8")
     p = subprocess.run([sys.executable, os.path.join(ROOT, "agent.py"), "--script", script, "--log", log],
-                       cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace")
+                       cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace", env=env)
     dt = time.time() - t0
     print(f"=== agent finished in {dt:.0f}s, exit code {p.returncode}")
     if p.returncode:

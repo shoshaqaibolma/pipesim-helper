@@ -3,7 +3,7 @@ PIPESIM study agent. Describe a study in plain language and it will:
   understand -> ask about missing parameters -> propose a plan -> (you approve) -> run -> analyze.
 Usage:  python agent.py         (llama-server must be running, see start_llm.bat)
 """
-import json, os
+import json, os, sys
 from openai import OpenAI
 import pipesim_tools as pt
 import study, executor
@@ -115,6 +115,11 @@ def chat(client, msgs):
 
 def main():
     import argparse
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
     ap = argparse.ArgumentParser()
     ap.add_argument("--script", help="text file with one user message per line (for unattended tests); "
                                      "terminal approvals are answered 'y' automatically")
@@ -136,7 +141,10 @@ def main():
     log = open(args.log, "a", encoding="utf-8") if args.log else None
 
     def show(text):
-        print(text)
+        try:
+            print(text)
+        except UnicodeEncodeError:
+            print(text.encode("ascii", "replace").decode())
         if log:
             log.write(json.dumps({"agent": text}) + "\n"); log.flush()
 
