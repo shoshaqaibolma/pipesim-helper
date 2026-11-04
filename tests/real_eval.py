@@ -198,6 +198,9 @@ def table(results):
     lines.append("")
     for cond, res in results.items():
         n = len(res)
+        drops = [n for n, m in res.items() if m.get("model_unreachable")]
+        if drops:
+            lines.append(f"**{cond}**: model server dropped during {drops} (counted as failures)")
         lines.append(f"**{cond}**: studies done {sum(m['completed'] for m in res.values())}/{n}, correct answers "
                      f"{sum(m['correct'] for m in res.values())}/{n}, invented numbers in replies "
                      f"{sum(len(m['unverified_numbers']) for m in res.values())}"
@@ -212,42 +215,73 @@ def table(results):
     return "\n".join(lines)
 
 
+class Server:
+    """llama-server, started fresh for every conversation (as real_agent_test.py does: in job 19 one long-lived
+    server vanished after about 3 minutes without an error in its log)."""
+
+    def __init__(self, tmp):
+        self.tmp, self.proc, self.n, self.log = tmp, None, 0, None
+
+    def start(self):
+        self.stop()
+        self.n += 1
+        self.log = os.path.join(self.tmp, f"llama_{self.n}.log")
+        self.proc = subprocess.Popen(["cmd", "/c", os.path.join(ROOT, "start_llm.bat")], cwd=ROOT,
+                                     stdout=open(self.log, "w"), stderr=subprocess.STDOUT)
+        for _ in range(180):
+            if healthy() or self.proc.poll() is not None:
+                break
+            time.sleep(1)
+        return healthy()
+
+    def tail(self, n=20):
+        return "".join(open(self.log, errors="replace").readlines()[-n:]) if self.log and os.path.exists(self.log) else ""
+
+    def stop(self):
+        if self.proc is not None:
+            subprocess.run(["taskkill", "/F", "/T", "/PID", str(self.proc.pid)], capture_output=True)
+            self.proc = None
+            for _ in range(30):
+                if not healthy():
+                    break
+                time.sleep(1)
+
+
 def main():
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace", line_buffering=True)
     names = sys.argv[1:] or SCENARIOS
     tmp = tempfile.mkdtemp(prefix="pipesim_eval_")
-    server = None
-    if not healthy():
-        print("starting llama-server ...")
-        server = subprocess.Popen(["cmd", "/c", os.path.join(ROOT, "start_llm.bat")], cwd=ROOT,
-                                  stdout=open(os.path.join(tmp, "llama.log"), "w"), stderr=subprocess.STDOUT)
-        for _ in range(180):
-            if healthy() or server.poll() is not None:
-                break
-            time.sleep(1)
-        if not healthy():
-            print("LLAMA-SERVER DID NOT START")
-            print("".join(open(os.path.join(tmp, "llama.log"), errors="replace").readlines()[-25:]))
-            return
+    if healthy():
+        print("a llama-server is already running on port 8080; using it (it is not restarted between scenarios)")
+        server = None
+    else:
+        server = Server(tmp)
     results = {}
     try:
         for cond, env in CONDITIONS.items():
             results[cond] = {}
             for name in names:
-                m = run_one(name, env, tmp)
+                for attempt in (1, 2):
+                    if server is not None and not server.start():
+                        print("LLAMA-SERVER DID NOT START\n" + server.tail(25))
+                        return
+                    m = run_one(name, env, tmp)
+                    m["attempt"] = attempt
+                    if not m["model_unreachable"]:
+                        break
+                    m["llama_log_tail"] = server.tail() if server else ""
+                    print(f"{cond} {name}: model server dropped (attempt {attempt}); log tail:\n{m['llama_log_tail']}")
                 results[cond][name] = m
                 print(f"{cond:6s} {name:20s} done={m['completed']} correct={m['correct']} tools={m['tool_calls']} "
                       f"invented={m['unverified_numbers']} {m['seconds']}s :: {m['note']}")
                 json.dump(results[cond], open(os.path.join(ROOT, "knowledge", f"eval_{cond}.json"), "w",
                                               encoding="utf-8"), indent=1, default=str)
-                if m["model_unreachable"] and os.path.exists(os.path.join(tmp, "llama.log")):
-                    print("".join(open(os.path.join(tmp, "llama.log"), errors="replace").readlines()[-20:]))
     finally:
         md = table(results)
         open(os.path.join(ROOT, "knowledge", "eval_summary.md"), "w", encoding="utf-8").write(md + "\n")
         print("\n" + md)
         if server is not None:
-            subprocess.run(["taskkill", "/F", "/T", "/PID", str(server.pid)], capture_output=True)
+            server.stop()
             print("\n(llama-server stopped)")
 
 

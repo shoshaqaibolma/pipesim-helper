@@ -1,0 +1,2 @@
+# Job 19 again: llama-server is now restarted for every conversation (job 19 lost it after 3 minutes).
+"D:\Program\Pipesim toolkit\python.exe" tests\real_eval.py
