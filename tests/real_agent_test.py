@@ -5,6 +5,7 @@ scripted conversation on a TEMP COPY of a model, and prints a compact transcript
   "D:\\Program\\Pipesim toolkit\\python.exe" tests\\real_agent_test.py "C:\\path\\to\\model.pips" [script.txt]
 
 The script file has one user message per line; {MODEL} is replaced with the temp copy's path.
+Pass "-" instead of a model path for conversations that build a new model (e.g. tests\\scripts\\field_project.txt).
 """
 import io, json, os, shutil, subprocess, sys, tempfile, time, urllib.request
 
@@ -29,8 +30,10 @@ def main():
     model = sys.argv[1]
     lines = open(sys.argv[2], encoding="utf-8").read().splitlines() if len(sys.argv) > 2 else DEFAULT_SCRIPT
     tmp = tempfile.mkdtemp(prefix="pipesim_agenttest_")
-    copy = os.path.join(tmp, os.path.basename(model))
-    shutil.copy2(model, copy)
+    copy = ""
+    if model != "-":
+        copy = os.path.join(tmp, os.path.basename(model))
+        shutil.copy2(model, copy)
     script = os.path.join(tmp, "script.txt")
     open(script, "w", encoding="utf-8").write("\n".join(l.replace("{MODEL}", copy) for l in lines))
     log = os.path.join(tmp, "log.jsonl")
