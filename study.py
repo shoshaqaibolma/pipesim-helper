@@ -7,7 +7,8 @@ Spec shape (all keys optional until check() says ready):
   "objective": "Find how water cut affects oil rate",
   "units": "METRIC",                       # METRIC | FIELD | SI
   "model": {"source": "existing", "path": "C:/m.pips"}
-         | {"source": "new", "template": "single_well", "params": {...}},
+         | {"source": "new", "template": "single_well", "params": {...}}
+         | {"source": "project"},              # the network described with update_project (project.py)
   "base_changes": [{"component_type": "Sink", "name": "Sink", "parameter": "Pressure", "value": 12}],
   "analysis": {
      "type": "single_run" | "sweep" | "grid" | "tornado" | "pt_profile",
@@ -92,7 +93,10 @@ def n_cases(spec):
     return 1
 
 
-def check(spec, known_components=None):
+SOURCES = ("existing", "new", "project")
+
+
+def check(spec, known_components=None, project=None):
     """Return what is missing or wrong. known_components: {type: [names]} from the open model, if any."""
     missing, errors = [], []
 
@@ -111,13 +115,28 @@ def check(spec, known_components=None):
         ask("objective", "What question should this study answer?")
     model = spec.get("model", {})
     src = model.get("source")
-    if src is not None and src not in ("existing", "new"):
-        errors.append(f"model.source is '{src}' but must be exactly \"existing\" or \"new\". "
+    if src is not None and src not in SOURCES:
+        errors.append(f"model.source is '{src}' but must be exactly one of {list(SOURCES)}. "
                       + ("The file path belongs in model.path, e.g. {\"model\": {\"source\": \"existing\", "
                          "\"path\": \"...\"}}." if (".pips" in str(src).lower() or "\\" in str(src) or "/" in str(src)) else ""))
     elif src is None:
         ask("model.source", "Use an existing .pips model (then give its path), or build a new one from a description? "
-            "[spec: model.source = \"existing\" + model.path, or model.source = \"new\" + model.template]")
+            "[spec: model.source = \"existing\" + model.path; \"new\" + model.template for one well; "
+            "\"project\" for a network described with update_project]")
+    elif src == "project":
+        import project as prj
+        if not project:
+            errors.append("model.source is \"project\" but no project is described yet. Describe it with "
+                          "update_project, then check_project until it is ready.")
+        else:
+            pc = prj.check_project(project)
+            if not pc["ready"]:
+                errors.append("The project is not complete yet. Call check_project and resolve its missing items "
+                              "and errors first.")
+            if known_components is None:
+                known_components = prj.known_components(project)
+        if spec.get("units", "METRIC") != "METRIC":
+            errors.append("Studies on a described project use METRIC units; set units to METRIC.")
     elif src == "existing":
         if not model.get("path"):
             ask("model.path", "Full path to the .pips model?")
@@ -192,11 +211,15 @@ def check(spec, known_components=None):
             "n_cases": n_cases(spec) if t in ANALYSES else None}
 
 
-def plan_text(spec):
+def plan_text(spec, project=None):
     m, a = spec["model"], spec["analysis"]
     lines = [f"STUDY PLAN: {spec['objective']}", f"Units: {spec.get('units', 'METRIC')}"]
     if m["source"] == "existing":
         lines.append(f"1. Open a COPY of {m['path']} (the original is not modified)")
+    elif m["source"] == "project":
+        import project as prj
+        lines.append("1. Build this network as a new PIPESIM model:")
+        lines += ["   " + l for l in prj.summary(project or {}).splitlines()]
     else:
         lines.append(f"1. Build a new '{m['template']}' model with:")
         lines += [f"     {k} = {v}" for k, v in m["params"].items()]
@@ -211,7 +234,11 @@ def plan_text(spec):
         for k, v in (a.get("conditions") or {}).items():
             lines.append(f"     fixed {k} = {v} -> PIPESIM calculates "
                          + ("the flow rate" if k == "outlet_pressure" else "the outlet pressure"))
-    kpis = spec.get("kpis") or [{"variable": k, "component": "(each producer)"} for k in DEFAULT_KPI_VARS]
-    lines.append("3. Results recorded: " + ", ".join(f"{k.get('label') or k['variable']} @ {k['component']}" for k in kpis))
+    if spec.get("kpis"):
+        lines.append("3. Results recorded: " + ", ".join(f"{k.get('label') or k['variable']} @ {k['component']}"
+                                                         for k in spec["kpis"]))
+    else:
+        lines.append("3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure at each "
+                     "well and source")
     lines.append(f"4. Total simulation runs: {n_cases(spec)}. Outputs: CSV, charts, report.md in runs/<timestamp>/")
     return "\n".join(lines)

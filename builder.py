@@ -1,12 +1,10 @@
 """
-Build a new PIPESIM model from a template, so a study can start from a plain-language description.
+Model templates: quick starting points that become a full project description (project.py) and are
+built by netbuilder.py, so there is a single build path to verify on real PIPESIM.
 
-Template "single_well": vertical oil well (PI IPR) -> tubing -> wellhead -> flowline -> sink (separator).
-VERIFY on first use: the sixgill Parameters/Constants names below follow the Python Toolkit docs, but they
-differ slightly between PIPESIM versions. A missing name raises a clear error that says which one to fix.
+Template "single_well": vertical oil well (PI IPR) -> flowline -> sink (separator).
 """
-from sixgill.pipesim import Model
-from sixgill import definitions as d
+from sixgill_adapter import P
 
 # Field -> (question, unit, suggested default in METRIC). Missing fields are asked of the user.
 SINGLE_WELL_FIELDS = {
@@ -26,71 +24,38 @@ SINGLE_WELL_FIELDS = {
     "ambient_temperature":   ("Ambient / surface temperature?", "degC", 15.0),
 }
 
-# Friendly names the LLM and the user can use for sweep variables on template models.
+# Friendly sweep-variable names -> (component type, component name, (Parameters group, constant)).
 SINGLE_WELL_ALIASES = {
-    "reservoir_pressure": ("Completion", "Well:Completion", "Completion.RESERVOIRPRESSURE"),
-    "productivity_index": ("Completion", "Well:Completion", "IPRPIModel.LIQUIDPI"),
-    "water_cut":          ("BlackOilFluid", "BO", "BlackOilFluid.WATERCUT"),
-    "gor":                ("BlackOilFluid", "BO", "BlackOilFluid.GOR"),
-    "separator_pressure": ("Sink", "Sink", "Sink.PRESSURE"),
-    "tubing_id":          ("Tubing", "Well:Tubing", "Tubing.INNERDIAMETER"),
-    "flowline_id":        ("Flowline", "FL", "Flowline.INNERDIAMETER"),
-    "flowline_length":    ("Flowline", "FL", "Flowline.HORIZONTALDISTANCE"),
+    "reservoir_pressure": ("Completion", "Well:Completion", ("Completion", "RESERVOIRPRESSURE")),
+    "productivity_index": ("Completion", "Well:Completion", ("IPRPIModel", "LIQUIDPI")),
+    "water_cut":          ("BlackOilFluid", "BO", ("BlackOilFluid", "WATERCUT")),
+    "gor":                ("BlackOilFluid", "BO", ("BlackOilFluid", "GOR")),
+    "separator_pressure": ("Sink", "Sink", ("Sink", "PRESSURE")),
+    "tubing_id":          ("Tubing", "Well:Tubing", ("Tubing", "INNERDIAMETER")),
+    "flowline_id":        ("Flowline", "FL", ("Flowline", "INNERDIAMETER")),
+    "flowline_length":    ("Flowline", "FL", ("Flowline", "HORIZONTALDISTANCE")),
 }
+
+
+def single_well_project(p):
+    return {"name": "Single well", "units": "METRIC", "ambient_temperature": p["ambient_temperature"],
+            "fluids": [{"name": "BO", "type": "black_oil", "api": p["oil_api"], "gor": p["gor"],
+                        "water_cut": p["water_cut"], "gas_sg": p["gas_sg"]}],
+            "wells": [{"name": "Well", "fluid": "BO", "reservoir_pressure": p["reservoir_pressure"],
+                       "reservoir_temperature": p["reservoir_temperature"],
+                       "ipr": {"model": "pi", "liquid_pi": p["productivity_index"]},
+                       "depth": p["well_depth"], "tubing_id": p["tubing_id"]}],
+            "sinks": [{"name": "Sink", "pressure": p["separator_pressure"]}],
+            "flowlines": [{"name": "FL", "from": "Well", "to": "Sink", "length": p["flowline_length"],
+                           "id": p["flowline_id"], "elevation_change": p["flowline_elevation"]}]}
+
+
+TEMPLATES = {"single_well": {"fields": SINGLE_WELL_FIELDS, "aliases": SINGLE_WELL_ALIASES,
+                             "to_project": single_well_project,
+                             "description": "One vertical oil well, flowline, separator"}}
 
 
 def alias_ref(template, alias):
     """Resolve a friendly alias to (component_type, name, sixgill parameter string)."""
-    ctype, name, const = TEMPLATES[template]["aliases"][alias]
-    return ctype, name, _p(*const.split("."))
-
-
-TEMPLATES = {"single_well": {"fields": SINGLE_WELL_FIELDS, "aliases": SINGLE_WELL_ALIASES,
-                             "producers": ["Well"], "description": "One vertical oil well, flowline, separator"}}
-
-
-def _p(group, name):
-    try:
-        return getattr(getattr(d.Parameters, group), name)
-    except AttributeError:
-        raise AttributeError(f"sixgill has no Parameters.{group}.{name} in this PIPESIM version. Fix builder.py")
-
-
-def _c(group, name):
-    try:
-        return getattr(getattr(d.Constants, group), name)
-    except AttributeError:
-        raise AttributeError(f"sixgill has no Constants.{group}.{name} in this PIPESIM version. Fix builder.py")
-
-
-def build_single_well(path, p, units="METRIC"):
-    m = Model.new(path, units=getattr(d.Units, units), overwrite=True)
-    mc = d.ModelComponents
-    m.add(mc.BLACKOILFLUID, "BO", parameters={
-        _p("BlackOilFluid", "API"): p["oil_api"], _p("BlackOilFluid", "GOR"): p["gor"],
-        _p("BlackOilFluid", "WATERCUT"): p["water_cut"], _p("BlackOilFluid", "GASSPECIFICGRAVITY"): p["gas_sg"]})
-    m.add(mc.WELL, "Well", parameters={_p("Well", "AMBIENTTEMPERATURE"): p["ambient_temperature"]})
-    m.add(mc.TUBING, "Tubing", context="Well", parameters={
-        _p("Tubing", "TOPMEASUREDDEPTH"): 0.0, _p("Tubing", "LENGTH"): p["well_depth"],
-        _p("Tubing", "INNERDIAMETER"): p["tubing_id"]})
-    m.add(mc.COMPLETION, "Completion", context="Well", parameters={
-        _p("Completion", "TOPMEASUREDDEPTH"): p["well_depth"],
-        _p("Completion", "FLUIDENTRYTYPE"): _c("CompletionFluidEntry", "SINGLEPOINT"),
-        _p("Completion", "IPRMODEL"): _c("IPRModels", "IPRPIMODEL"),
-        _p("Completion", "RESERVOIRPRESSURE"): p["reservoir_pressure"],
-        _p("Completion", "RESERVOIRTEMPERATURE"): p["reservoir_temperature"],
-        _p("Completion", "FLUIDNAME"): "BO",
-        _p("IPRPIModel", "LIQUIDPI"): p["productivity_index"]})
-    m.add(mc.FLOWLINE, "FL", parameters={
-        _p("Flowline", "HORIZONTALDISTANCE"): p["flowline_length"],
-        _p("Flowline", "ELEVATIONDIFFERENCE"): p["flowline_elevation"],
-        _p("Flowline", "INNERDIAMETER"): p["flowline_id"],
-        _p("Flowline", "AMBIENTTEMPERATURE"): p["ambient_temperature"]})
-    m.add(mc.SINK, "Sink", parameters={_p("Sink", "PRESSURE"): p["separator_pressure"]})
-    m.connect({mc.WELL: "Well"}, {mc.FLOWLINE: "FL"})
-    m.connect({mc.FLOWLINE: "FL"}, {mc.SINK: "Sink"})
-    m.save()
-    return m
-
-
-BUILDERS = {"single_well": build_single_well}
+    ctype, name, (group, const) = TEMPLATES[template]["aliases"][alias]
+    return ctype, name, P(group, const)

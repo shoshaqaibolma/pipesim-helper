@@ -1,7 +1,7 @@
 """Offline tests for the project description checker."""
 import os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from project import check_project, apply_defaults, summary
+from project import check_project, apply_defaults, summary, merge_project, known_components
 
 # a vague two-well request: lots to ask, nothing invented
 p = {"name": "Field A", "wells": [{"name": "W1"}, {"name": "W2"}], "sinks": [{"name": "Sep"}]}
@@ -32,6 +32,26 @@ bad = dict(full, wells=[dict(full["wells"][0], fluid="NOPE"), full["wells"][1]])
 assert any("not defined in fluids" in e for e in check_project(bad)["errors"])
 bad = dict(full, wells=[dict(full["wells"][0], ipr={"model": "vogel"}), full["wells"][1]])
 assert any(m["field"] == "wells.W1.ipr.aof" for m in check_project(bad)["missing"])
+
+# chokes sit right after their upstream node; flowlines cannot connect to flowlines; one outlet per well
+ck = dict(full, chokes=[{"name": "CK1", "from": "W1", "bean_size": 32}],
+          flowlines=[dict(full["flowlines"][0], **{"from": "CK1"})] + full["flowlines"][1:])
+assert check_project(ck)["ready"], check_project(ck)
+bad = dict(ck, flowlines=ck["flowlines"] + [{"name": "X", "from": "FL3", "to": "Sep", "length": 1, "id": 1, "elevation_change": 0}])
+assert any("is a flowline" in e for e in check_project(bad)["errors"])
+bad = dict(full, flowlines=full["flowlines"] + [{"name": "FL4", "from": "W1", "to": "Sep", "length": 1, "id": 1, "elevation_change": 0}])
+assert any("can feed only one" in e for e in check_project(bad)["errors"]), check_project(bad)
+bad = dict(ck, flowlines=full["flowlines"][1:])               # CK1 leads nowhere
+assert any("Choke CK1 has no outgoing" in e for e in check_project(bad)["errors"])
+
+# merge by name: change one well, add one, delete one; nested ipr merges
+m = merge_project(full, {"wells": [{"name": "W1", "depth": 3000, "ipr": {"liquid_pi": 12}}, {"name": "W3"}]})
+w = {x["name"]: x for x in m["wells"]}
+assert w["W1"]["depth"] == 3000 and w["W1"]["ipr"] == {"model": "pi", "liquid_pi": 12} and w["W2"]["depth"] == 2500
+assert [x["name"] for x in m["wells"]] == ["W1", "W2", "W3"]
+m = merge_project(m, {"wells": [{"name": "W3", "_delete": True}]})
+assert [x["name"] for x in m["wells"]] == ["W1", "W2"]
+assert known_components(full)["Completion"] == ["W1:Completion", "W2:Completion"]
 
 # "use defaults" fills only fields that have a default; required ones stay missing
 d = apply_defaults(p, {m["field"] for m in check_project(p)["missing"]})

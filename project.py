@@ -7,14 +7,17 @@ and validates the topology, the same way study.check() does for studies. netbuil
   "name": "Field A gathering", "units": "METRIC",
   "fluids":    [{"name": "BO-1", "type": "black_oil", "api": 35, "gor": 120, "water_cut": 10, "gas_sg": 0.7}],
   "wells":     [{"name": "W1", "fluid": "BO-1", "reservoir_pressure": 260, "reservoir_temperature": 95,
-                 "ipr": {"model": "pi", "liquid_pi": 8}, "depth": 2600, "tubing_id": 76,
-                 "gas_lift": {"injection_depth": 2000, "rate": 0.05}}],          # gas_lift optional
+                 "ipr": {"model": "pi", "liquid_pi": 8}, "depth": 2600, "tubing_id": 76}],
   "sources":   [{"name": "S1", "fluid": "BO-1", "pressure": 40, "temperature": 60, "liquid_rate": 500}],
   "junctions": [{"name": "J1"}],
   "sinks":     [{"name": "Separator", "pressure": 15}],
-  "flowlines": [{"name": "FL-1", "from": "W1", "to": "J1", "length": 2000, "id": 150, "elevation_change": 0}],
-  "chokes":    [{"name": "CK-1", "from": "J1", "to": "FL-2", "bean_size": 32}]   # optional, in-line
+  "chokes":    [{"name": "CK-1", "from": "W1", "bean_size": 32}],   # optional: sits right after its "from" node
+  "flowlines": [{"name": "FL-1", "from": "CK-1", "to": "J1", "length": 2000, "id": 150, "elevation_change": 0},
+                {"name": "FL-2", "from": "J1", "to": "Separator", "length": 5000, "id": 200, "elevation_change": 10}]
 }
+Topology: nodes are wells, sources, chokes, junctions and sinks; flowlines connect two nodes; a choke is
+connected directly to its upstream node. Every well/source must reach a sink. Lists merge by "name"
+(see merge_project), so the agent can change one well without resending the others.
 """
 import copy
 
@@ -52,7 +55,7 @@ FIELDS = {
         "id": ("Flowline inner diameter?", "mm", 150.0),
         "elevation_change": ("Elevation change, positive uphill?", "m", 0.0),
     },
-    "chokes": {"from": ("Upstream end?", "", None), "to": ("Downstream end?", "", None),
+    "chokes": {"from": ("Which well, source or junction is the choke installed right after?", "", None),
                "bean_size": ("Choke bean size?", "1/64 in", 32.0)},
     "junctions": {},
 }
@@ -69,8 +72,10 @@ def check_project(p):
     if not p.get("name"):
         ask("project.name", "Project name?", "", "New project")
     for k in p:
-        if k not in ("name", "units", *FIELDS):
-            errors.append(f"Remove project key '{k}'. Allowed: {['name', 'units', *FIELDS]}")
+        if k not in ("name", "units", "ambient_temperature", *FIELDS):
+            errors.append(f"Remove project key '{k}'. Allowed: {['name', 'units', 'ambient_temperature', *FIELDS]}")
+    if p.get("units", "METRIC") != "METRIC":
+        errors.append("Projects are described in METRIC units (bara, degC, m, mm, sm3/d); set units to METRIC.")
     if not p.get("wells") and not p.get("sources"):
         ask("project.wells", "How many wells (or sources), and their names?")
     if not p.get("sinks"):
@@ -107,7 +112,13 @@ def check_project(p):
                 errors.append(f"{e.get('name')}: fluid '{e['fluid']}' is not defined in fluids {sorted(fluids)}")
 
     # topology: edges are flowlines and chokes; every well/source must reach a sink, no cycles, no dead ends
-    edges = [(e.get("from"), e.get("to"), e.get("name")) for k in ("flowlines", "chokes") for e in p.get(k) or []]
+    edges = [(e.get("from"), e.get("to"), e.get("name")) for e in p.get("flowlines") or []]
+    edges += [(e.get("from"), e.get("name"), e.get("name")) for e in p.get("chokes") or []]
+    for e in p.get("flowlines") or []:
+        for end in ("from", "to"):
+            if names.get(e.get(end)) == "flowlines":
+                errors.append(f"{e.get('name')}: '{e[end]}' is a flowline. Flowlines connect nodes "
+                              "(wells, sources, chokes, junctions, sinks); add a junction between two flowlines.")
     for a, b, n in edges:
         for end in (a, b):
             if end is not None and end not in names:
@@ -136,10 +147,17 @@ def check_project(p):
                 n = e.get("name")
                 if n and not reaches_sink(n):
                     errors.append(f"{n} is not connected to any sink. Add a flowline from {n} towards a sink.")
-        for j in p.get("junctions") or []:
-            n = j.get("name")
-            if n and n not in out:
-                errors.append(f"Junction {n} has no outgoing flowline")
+        for kind in ("junctions", "chokes"):
+            for j in p.get(kind) or []:
+                n = j.get("name")
+                if n and n not in out:
+                    errors.append(f"{kind[:-1].title()} {n} has no outgoing flowline")
+        for kind in ("wells", "sources", "chokes"):
+            for e in p.get(kind) or []:
+                n = e.get("name")
+                if n and len(out.get(n, [])) > 1:
+                    errors.append(f"{n} has {len(out[n])} outgoing connections; a {kind[:-1]} can feed only one. "
+                                  "Put a junction after it to split the flow.")
     errors = list(dict.fromkeys(errors))
     if errors:
         nxt = "Fix every item in 'errors' with ONE update call, then check again."
@@ -149,6 +167,43 @@ def check_project(p):
     else:
         nxt = "Project complete. Continue with the study spec (model.source = \"project\")."
     return {"ready": not missing and not errors, "next_step": nxt, "missing": missing, "errors": errors}
+
+
+def merge_project(base, patch):
+    """Merge a partial project into the current one. Lists merge by name; {"name": x, "_delete": true} removes x."""
+    out = copy.deepcopy(base or {})
+    for k, v in (patch or {}).items():
+        if isinstance(v, list) and k in FIELDS:
+            cur = {e.get("name"): e for e in out.get(k, [])}
+            order = [e.get("name") for e in out.get(k, [])]
+            for e in v:
+                n = e.get("name")
+                if e.get("_delete"):
+                    cur.pop(n, None)
+                    order = [o for o in order if o != n]
+                elif n in cur:
+                    merged = copy.deepcopy(cur[n])
+                    for kk, vv in e.items():
+                        merged[kk] = (dict(merged[kk], **vv) if isinstance(vv, dict) and isinstance(merged.get(kk), dict)
+                                      else copy.deepcopy(vv))
+                    cur[n] = merged
+                else:
+                    cur[n] = copy.deepcopy(e)
+                    order.append(n)
+            out[k] = [cur[n] for n in order if n in cur]
+        else:
+            out[k] = copy.deepcopy(v)
+    return out
+
+
+def known_components(p):
+    """Component names the built model will have, by sixgill component type (for validating study variables)."""
+    wells = [w["name"] for w in p.get("wells") or [] if w.get("name")]
+    return {"Well": wells, "Completion": [f"{w}:Completion" for w in wells], "Tubing": [f"{w}:Tubing" for w in wells],
+            "Source": [e["name"] for e in p.get("sources") or []], "Sink": [e["name"] for e in p.get("sinks") or []],
+            "Junction": [e["name"] for e in p.get("junctions") or []], "Choke": [e["name"] for e in p.get("chokes") or []],
+            "Flowline": [e["name"] for e in p.get("flowlines") or []],
+            "BlackOilFluid": [e["name"] for e in p.get("fluids") or []]}
 
 
 def apply_defaults(p, fields):

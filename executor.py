@@ -3,10 +3,11 @@ Deterministic study executor: takes an approved spec, runs every case in PIPESIM
 CSV, charts and a report. The LLM never drives individual runs, so a 300-case grid is as reliable as one run.
 """
 import csv, datetime, itertools, json, os, shutil
-from sixgill.pipesim import Model
 from sixgill import definitions as d
 import study
-from builder import BUILDERS, TEMPLATES
+import netbuilder
+import sixgill_adapter as sa
+from builder import TEMPLATES
 
 RUNS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "runs")
 
@@ -40,20 +41,27 @@ def _find(model, t):
         return []
 
 
-def _producers(model, spec):
-    if spec["model"]["source"] == "new":
-        return TEMPLATES[spec["model"]["template"]]["producers"]
+def _project_for(spec, project):
+    src = spec["model"]["source"]
+    if src == "new":
+        return TEMPLATES[spec["model"]["template"]]["to_project"](spec["model"]["params"])
+    return project if src == "project" else None
+
+
+def _producers(model, proj):
+    if proj:
+        return [w["name"] for w in proj.get("wells") or []] + [s["name"] for s in proj.get("sources") or []]
     return _find(model, "Well") + _find(model, "Source")
 
 
-def _kpis(model, spec):
+def _kpis(model, spec, proj=None):
     """Default results: rates delivered to each sink, plus rate and wellhead pressure of each producer."""
     if spec.get("kpis"):
         return spec["kpis"]
     rates = ["VOLUME_FLOWRATE_LIQUID_STOCKTANK", "VOLUME_FLOWRATE_OIL_STOCKTANK", "VOLUME_FLOWRATE_GAS_STOCKTANK"]
-    sinks = ["Sink"] if spec["model"]["source"] == "new" else _find(model, "Sink")
+    sinks = [k["name"] for k in proj.get("sinks") or []] if proj else _find(model, "Sink")
     out = [{"component": s, "variable": v, "label": f"{s} {SHORT[v]}"} for s in sinks for v in rates]
-    out += [{"component": p, "variable": v, "label": f"{p} {SHORT[v]}"} for p in _producers(model, spec)
+    out += [{"component": p, "variable": v, "label": f"{p} {SHORT[v]}"} for p in _producers(model, proj)
             for v in ("VOLUME_FLOWRATE_LIQUID_STOCKTANK", "PRESSURE")]
     return out
 
@@ -102,13 +110,22 @@ def _pt_parameters(conditions):
 
 
 def _set(model, ref, value):
-    ctype, name, param = ref
-    model.set_value(**{ctype: name}, parameter=param, value=value)
+    sa.set_param(model, *ref, value)
 
 
 def _get(model, ref):
-    ctype, name, param = ref
-    return model.get_value(**{ctype: name}, parameter=param)
+    return sa.get_param(model, *ref)
+
+
+def _flat_warning(rows, kpi_cols):
+    """Warn when no recorded result changed across the cases: the varied input had no effect on these outputs."""
+    vals = {k: [r.get(k) for r in rows if isinstance(r.get(k), (int, float))] for k in kpi_cols}
+    vals = {k: v for k, v in vals.items() if len(v) >= 2}
+    if vals and all(max(v) - min(v) <= 1e-9 * max(1.0, abs(max(v))) for v in vals.values()):
+        return ("No recorded result changed across the cases. Either the varied input does not reach these "
+                "outputs (for example a pump, compressor or a fixed-pressure node isolates it), or the change did "
+                "not take effect in the simulation. Check the network layout before drawing conclusions.")
+    return None
 
 
 def _chart(path, x, ys, xlabel, title):
@@ -145,7 +162,7 @@ def _tornado_chart(path, bars, kpi):
     return path
 
 
-def run(spec, progress=print):
+def run(spec, progress=print, project=None):
     stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f")[:-3]
     out = os.path.join(RUNS_DIR, stamp)
     os.makedirs(out, exist_ok=True)
@@ -154,16 +171,18 @@ def run(spec, progress=print):
     work = os.path.join(out, "model.pips")
 
     # 1. model: always a copy, never the user's original
+    proj = _project_for(spec, project)
     if spec["model"]["source"] == "existing":
         shutil.copy2(spec["model"]["path"], work)
-        model = Model.open(work, units=getattr(d.Units, units))
+        model = sa.open_model(work, units)
     else:
-        progress("Building model from template...")
-        model = BUILDERS[spec["model"]["template"]](work, spec["model"]["params"], units)
+        progress("Building the model...")
+        json.dump(proj, open(os.path.join(out, "project.json"), "w"), indent=2)
+        model, _ = netbuilder.build(proj, work, "METRIC")
     try:
         for c in spec.get("base_changes", []):
             _set(model, (c["component_type"], c["name"], c["parameter"]), c["value"])
-        a, kpis = spec["analysis"], _kpis(model, spec)
+        a, kpis = spec["analysis"], _kpis(model, spec, proj)
         refs = [study.resolve_var(v, spec) for v in a.get("variables", [])]
         labels = [v.get("alias") or f"{r[1]}.{r[2]}" for v, r in zip(a.get("variables", []), refs)]
         base_vals = [_get(model, r) for r in refs]
@@ -251,6 +270,11 @@ def run(spec, progress=print):
                             bars.append({"var": l, "low": lo, "high": hi, "base": base[k]})
                     charts.append(_tornado_chart(os.path.join(out, f"tornado_{len(charts)}.png"), bars, k))
 
+        warnings = []
+        if a["type"] in ("sweep", "grid", "tornado"):
+            w = _flat_warning(rows, kpi_cols)
+            if w:
+                warnings.append(w)
         # write outputs
         csv_path = os.path.join(out, "results.csv")
         cols = list(dict.fromkeys(c for r in rows for c in r))
@@ -260,14 +284,16 @@ def run(spec, progress=print):
         model.save()
         report = os.path.join(out, "report.md")
         with open(report, "w") as f:
-            f.write(study.plan_text(spec) + "\n\n## Results\n\n")
+            f.write(study.plan_text(spec, proj) + "\n\n## Results\n\n")
+            for w in warnings:
+                f.write(f"> **Warning:** {w}\n\n")
             f.write("| " + " | ".join(cols) + " |\n|" + "---|" * len(cols) + "\n")
             for r in rows[:60]:
                 f.write("| " + " | ".join(_fmt(r.get(c)) for c in cols) + " |\n")
             for c in charts:
                 f.write(f"\n![]({os.path.basename(c)})\n")
         failed = [r["case"] for r in rows if str(r.get("_status", "")).startswith("FAILED")]
-        return {"output_dir": out, "report": report, "csv": csv_path, "charts": charts,
+        return {"output_dir": out, "report": report, "csv": csv_path, "charts": charts, "warnings": warnings,
                 "n_rows": len(rows), "failed_cases": failed, "table": _compact(rows, cols)}
     finally:
         model.close()

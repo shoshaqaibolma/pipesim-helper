@@ -37,9 +37,11 @@ Adjust `pipesim_tools.py` using PIPESIM's Python Toolkit help, which has the exa
 
 ## 4. Run
 ```bat
-python agent.py
+"D:\Program\Pipesim toolkit\python.exe" agent.py
 ```
-Describe the study in plain language. The agent works through it with you:
+Describe what you want in plain language. Two kinds of request:
+
+**Studies** on an existing `.pips` model, or on a quick single-well model:
 
 | Step | What happens | Who decides |
 |---|---|---|
@@ -50,26 +52,31 @@ Describe the study in plain language. The agent works through it with you:
 | Analyze | CSV, charts and `report.md` in `runs/<timestamp>/`. The LLM explains the trends | LLM |
 
 Analysis types: `single_run`, `sweep` (1 variable), `grid` (2-3 variables, full factorial),
-`tornado` (low/high per variable, ranked), `pt_profile`.
-Models: an **existing .pips** (always run on a copy), or **built from a description** (template `single_well`).
+`tornado` (low/high per variable, ranked), `pt_profile`. If no result changes across the cases, the report
+says so (the varied input may be isolated by a pump or fixed-pressure node, or did not take effect).
 
-Example:
-> *"New single-well oil model, reservoir at 260 bar. How does water cut from 0 to 80% affect oil rate?"*
-> → the agent asks for the 13 missing inputs (temperature, PI, depths, IDs, fluid...) with defaults
-> → you reply "use defaults, but tubing ID 62 mm" → plan → approve → 6 runs → chart and explanation.
+**New networks** ("a field with 3 wells into a manifold and a 6 km trunkline to the separator"):
+the agent describes the network as a project (`project.py`: fluids, wells with IPR, sources, chokes,
+junctions, sinks, flowlines), the checker asks for every missing input per component and validates the
+layout (every well reaches a sink, no loops, one outlet per well), then it either writes a new `.pips`
+file you can open in PIPESIM (`build_project`, never overwrites) or runs studies on it.
+Project units: bara, degC, m, mm (diameters), sm3/d.
 
-Terminal commands: `spec` shows the current spec, `reset` starts a new study.
+Terminal commands: `spec` shows the current spec and project, `reset` starts over.
+
+## How the code is organised
+- `agent.py`: chat loop and tools. `study.py` / `project.py`: what to ask, plan text.
+- `executor.py`: runs studies. `netbuilder.py`: builds `.pips` models from a project. `builder.py`: templates.
+- `sixgill_adapter.py`: **every PIPESIM-version-specific detail** (sixgill names, boundary conditions,
+  connections). `tests/test_api_names.py` checks all names against `knowledge/api.json`, which
+  `tools/introspect.py` records from the real install.
 
 ## Tests
-- `python tests/test_workflow.py` and `python tests/test_agent_loop.py`: offline, with a fake `sixgill` and a
-  scripted fake LLM. They only check the plumbing. The numbers they produce mean nothing.
+- Offline (fake `sixgill`, scripted fake LLM; numbers mean nothing): `tests/test_workflow.py`,
+  `tests/test_agent_loop.py`, `tests/test_project.py`, `tests/test_netbuilder.py`, `tests/test_agent_project.py`,
+  `tests/test_api_names.py`.
 - Real end-to-end test on the PC (PIPESIM, llama-server and the agent together; works on a temp copy of the model):
   `"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py "path\to\model.pips"`
-- Unattended runs: `agent.py --script lines.txt --log log.jsonl` (one user message per line; approvals answered y).
-
-## Adding templates and analyses
-- New model template: add a field table, aliases and a build function in `builder.py`.
-- New analysis: add it to `study.ANALYSES` and to `check()`, then add a branch in `executor.run()`.
 
 ## Tuning for a small local model
 - Temperature is 0 and thinking is off for tool calls. Low-bit quantizations reason less well, so the

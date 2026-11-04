@@ -6,7 +6,8 @@ Usage:  python agent.py         (llama-server must be running, see start_llm.bat
 import json, os, sys
 from openai import OpenAI
 import pipesim_tools as pt
-import study, executor
+import study, executor, netbuilder
+import project as prj
 from builder import TEMPLATES
 
 BASE_URL = os.getenv("LLM_URL", "http://127.0.0.1:8080/v1")
@@ -27,17 +28,31 @@ WORKFLOW (follow it strictly):
 5. ANALYZE: explain the results from the returned table: trends, optimum, sensitivities, constraints,
    and anything that looks physically odd. Give the report path. Suggest a sensible follow-up study.
 
+NEW NETWORKS (the user wants to build/create a field, network or project with wells, flowlines, a separator...):
+A. Describe it with update_project. Lists merge by "name": send only the components you add or change.
+B. Call check_project. Ask the user about every "missing" item in ONE numbered message, grouped by
+   component, with the suggested defaults. Never invent missing values. Fix every "error".
+C. When check_project is ready: if the user wants a PIPESIM file, call build_project(path). For a study on it,
+   call update_spec with model.source = "project" and continue with steps 2-5 above.
+Project units: bara, degC, m (lengths and depths), mm (diameters), sm3/d, sm3/sm3, % (water cut).
+Chokes sit right after their "from" node; flowlines connect nodes (wells, sources, chokes, junctions, sinks).
+
 Analysis types: {json.dumps(study.ANALYSES)}
 Model templates for new models: { {k: v['description'] for k, v in TEMPLATES.items()} }
 Template sweep aliases: { {k: list(v['aliases']) for k, v in TEMPLATES.items()} }
 P/T profiles need ONE boundary condition in analysis.conditions: {{"outlet_pressure": x}} OR {{"liquid_flowrate": x}} OR {{"gas_flowrate": x}}.
 For existing models, refer to variables as component_type + name + parameter (e.g. Sink / "Sink-1" / "Pressure").
 Use model units (METRIC unless the user says FIELD). Never invent results: every number comes from a tool.
-Every check_spec result has a "next_step" field: always do exactly what it says.
+Every check_spec and check_project result has a "next_step" field: always do exactly what it says.
 Keep messages short."""
 
 SPEC = {}
+PROJECT = {}
 STATE = {"plan_ok_for": None, "components": None}
+
+
+def _plan_key():
+    return json.dumps([SPEC, PROJECT if SPEC.get("model", {}).get("source") == "project" else None], sort_keys=True)
 
 
 def update_spec(patch: dict):
@@ -50,7 +65,8 @@ def update_spec(patch: dict):
 
 def check_spec():
     """Validate the spec. Returns missing items (ask the user about these), errors, and the number of cases."""
-    return study.check(SPEC, STATE["components"])
+    src = SPEC.get("model", {}).get("source")
+    return study.check(SPEC, None if src == "project" else STATE["components"], PROJECT or None)
 
 
 def propose_plan():
@@ -58,19 +74,55 @@ def propose_plan():
     c = check_spec()
     if not c["ready"]:
         return {"error": "Spec not ready", **c}
-    STATE["plan_ok_for"] = json.dumps(SPEC, sort_keys=True)
-    return {"plan": study.plan_text(SPEC)}
+    STATE["plan_ok_for"] = _plan_key()
+    return {"plan": study.plan_text(SPEC, PROJECT)}
 
 
 def run_study():
     """Execute the approved plan: runs every case and writes CSV, charts and report.md."""
-    if STATE["plan_ok_for"] != json.dumps(SPEC, sort_keys=True):
-        return {"error": "The spec changed or was never planned. Call propose_plan and get user approval first."}
-    print("\n" + study.plan_text(SPEC))
+    if STATE["plan_ok_for"] != _plan_key():
+        return {"error": "The spec or project changed, or was never planned. Call propose_plan and get user "
+                         "approval first."}
+    print("\n" + study.plan_text(SPEC, PROJECT))
     if input("\n  Run this study now? [y/N] ").strip().lower() != "y":
         return {"error": "User did not approve the run in the terminal."}
     pt.close_model() if pt._state["model"] else None
-    return executor.run(SPEC, progress=lambda s: print("   " + s))
+    return executor.run(SPEC, progress=lambda s: print("   " + s), project=PROJECT or None)
+
+
+def update_project(patch: dict):
+    """Add or change parts of the network being described. Lists (wells, flowlines, ...) merge by "name";
+    {"name": "X", "_delete": true} removes X."""
+    global PROJECT
+    PROJECT = prj.merge_project(PROJECT, patch)
+    STATE["plan_ok_for"] = None
+    return {"project": prj.summary(PROJECT)}
+
+
+def check_project():
+    """Validate the described network: missing inputs per component (ask the user) and layout errors."""
+    c = prj.check_project(PROJECT)
+    if c["ready"]:
+        c["next_step"] = ("Project complete. If the user wants a PIPESIM file, call build_project(path). For a study, "
+                          "call update_spec with model.source = \"project\" and continue the study workflow.")
+    return c
+
+
+def build_project(path: str):
+    """Build the described network as a new PIPESIM .pips file the user can open. Never overwrites a file."""
+    c = prj.check_project(PROJECT)
+    if not c["ready"]:
+        return {"error": "Project not complete. Call check_project first.", **c}
+    path = os.path.abspath(path if path.lower().endswith(".pips") else path + ".pips")
+    if os.path.exists(path):
+        return {"error": f"{path} already exists. Ask the user for a new file name."}
+    print("\n" + prj.summary(PROJECT) + f"\n\n  -> {path}")
+    if input("\n  Build this PIPESIM model now? [y/N] ").strip().lower() != "y":
+        return {"error": "User did not approve the build in the terminal."}
+    rep = netbuilder.build_file(PROJECT, path)
+    with open(os.path.splitext(path)[0] + ".project.json", "w", encoding="utf-8") as f:
+        json.dump(PROJECT, f, indent=2)
+    return rep
 
 
 def inspect_model(path: str, units: str = "METRIC"):
@@ -87,22 +139,29 @@ def get_values(component_type: str, parameters: list, name: str = ""):
     return pt.get_values(component_type=component_type, parameters=parameters, name=name)
 
 
-FUNCS = {f.__name__: f for f in (update_spec, check_spec, propose_plan, run_study, inspect_model, get_values)}
+FUNCS = {f.__name__: f for f in (update_spec, check_spec, propose_plan, run_study, inspect_model, get_values,
+                                  update_project, check_project, build_project)}
 _S = {"type": "string"}
 PARAMS = {
     "update_spec": ({"patch": {"type": "object", "description": "Partial spec to merge. Keys: objective, units, "
-                               "model{source,path|template,params}, base_changes[], analysis{type,variables[],producer,conditions}, kpis[]"}},
+                               "model{source: existing|new|project, path|template,params}, base_changes[], "
+                               "analysis{type,variables[],producer,conditions}, kpis[]"}},
                     ["patch"]),
     "check_spec": ({}, []), "propose_plan": ({}, []), "run_study": ({}, []),
     "inspect_model": ({"path": _S, "units": {"type": "string", "enum": ["METRIC", "FIELD", "SI"]}}, ["path"]),
     "get_values": ({"component_type": _S, "name": _S, "parameters": {"type": "array", "items": _S}},
                    ["component_type", "parameters"]),
+    "update_project": ({"patch": {"type": "object", "description": "Partial project: name, ambient_temperature, "
+                                  "fluids[], wells[], sources[], junctions[], sinks[], chokes[], flowlines[] "
+                                  "(each item has a unique name)"}}, ["patch"]),
+    "check_project": ({}, []),
+    "build_project": ({"path": {"type": "string", "description": "Where to save the new .pips file"}}, ["path"]),
 }
 TOOLS = [{"type": "function", "function": {"name": n, "description": FUNCS[n].__doc__,
           "parameters": {"type": "object", "properties": p, "required": r}}} for n, (p, r) in PARAMS.items()]
 
 
-MAX_SPEC_CALLS = 6     # update_spec/check_spec calls allowed per user turn before the agent must ask the user
+MAX_SPEC_CALLS = 8     # spec/project edit+check calls allowed per user turn before the agent must ask the user
 MAX_REPLY_TOKENS = 1500
 
 
@@ -125,7 +184,7 @@ def main():
                                      "terminal approvals are answered 'y' automatically")
     ap.add_argument("--log", help="write the full conversation as JSONL to this file")
     args = ap.parse_args()
-    global SPEC, input
+    global SPEC, PROJECT, input
     script = [l.rstrip("\n") for l in open(args.script, encoding="utf-8") if l.strip()] if args.script else None
     if script is not None:
         import builtins
@@ -161,9 +220,9 @@ def main():
         if user.lower() in {"exit", "quit"}:
             break
         if user.lower() == "spec":
-            show(json.dumps(SPEC, indent=2)); continue
+            show(json.dumps(SPEC, indent=2) + ("\n" + prj.summary(PROJECT) if PROJECT else "")); continue
         if user.lower() == "reset":
-            SPEC = {}; STATE.update(plan_ok_for=None, components=None)
+            SPEC = {}; PROJECT = {}; STATE.update(plan_ok_for=None, components=None)
             msgs = msgs[:1]; show("(new study)\n"); continue
         if not user:
             continue
@@ -181,7 +240,7 @@ def main():
                     try:
                         targs = json.loads(tc.function.arguments or "{}")
                         print(f"  [{name}] {json.dumps(targs)[:160]}")
-                        if name in ("update_spec", "check_spec"):
+                        if name in ("update_spec", "check_spec", "update_project", "check_project"):
                             spec_calls += 1
                         if spec_calls > MAX_SPEC_CALLS:
                             result = {"error": "Too many spec edits this turn. STOP calling tools and ask the user "
