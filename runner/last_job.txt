@@ -1,4 +1,4 @@
-JOB jobs/09_nodal.txt started 2026-11-04 13:07:47
+JOB jobs/10_nodal_and_facility.txt started 2026-11-04 13:13:37
 
 $ "D:\Program\Pipesim toolkit\python.exe" tests\real_nodal_test.py
 [exit 0]
@@ -6,29 +6,70 @@ $ "D:\Program\Pipesim toolkit\python.exe" tests\real_nodal_test.py
 == natural flow: check True
 operating point: {"case": "operating point", "liquid_rate [sm3/d]": 1089.9112203919644, "oil_rate [sm3/d]": 871.9289763135715, "gas_rate [mmsm3/d]": 0.08719315116878924, "water_rate [sm3/d]": 217.9822440783928, "bottomhole_pressure [bara]": 135.01423173286105, "outlet_pressure [bara]": 20, "_status": "Completed"}
 charts: ['nodal.png'] | warnings: []
-raw inflow_0: {"case": "OperatingPointInflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [0.13400252975087065, 0.0013400252975087066, 0.08719315116878924, 0.04426658823314898, 0.022803306765328844, 0.11059784045982995, 0.12230018510535033, 0.01207166603141878, 0.06572986970096911, 0.12815135742811049, 0.03353494749923891, 0.006705845664463741, 0.13107694358949054, 0.09889549581430959, 0.054998228967059054, 0.017437486398373808, 0.07646151043487918, 0.028169127132283884, 0.11644901278259011, 0.13253973667018062, 0.004022935480986225, 0.03890076786619395, 0.009388755847941258, 0.10474666813706979, 0.12522577126673035, 0.04963240860010402, 0.09304432349154945, 0.06036404933401408, 0.01475457621
-raw outflow_0: {"case": "OperatingPointOutflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [NaN, 0.13400252975087065, 0.00013400252975087065, 0.08719315116878924, 0.03495766198536623, 0.014063466311997013, 0.005705788042649328, 0.05585185765873545, 0.10591690260162183, 0.009048859350388403, 0.06838837506275698, 0.022421144581344702, 0.11715115346132138, 0.04331534025471392, 0.0023627167349102537, 0.007043016565744958, 0.0759102855051699, 0.0946826517419223, 0.01105470213503185, 0.027435751542953316, 0.12389170397714108, 0.0036999452580058836, 0.017406537619736092, 0.048329947216322534, 0.06086646462034408, 0.007845353679602336, 0.08042343177061764, 0.09917635208580207, 0.11041060294550165, 0.
-raw operating_points: [{"case": "Operating Point: Flowrate=6855.335 sbbl/day", "point_data": {"NodalPointVolumeFlowrateLiquidStockTank": 1089.9112203919644, "NodalPointPressure": 135.01423173286105, "NodalPointMassFlowrateFluid": 12.014536970300629, "NodalPointVolumeFlowrateGasStockTank": 0.08719315116878924}, "units": {"NodalPointVolumeFlowrateLiquidStockTank": "sm3/d", "NodalPointPressure": "bara", "NodalPointMassFlowrateFluid": "kg/s", "NodalPointVolumeFlowrateGasStockTank": "mmsm3/d"}}]
+raw inflow_0: {"case": "OperatingPointInflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [0.13400252975087065, 0.0013400252975087066, 0.08719315116878924, 0.04426658823314898, 0.022803306765328844, 0.11059784045982995, 0.12230018510535033, 0.01207166603141878, 0.06572986970096911, 0.1281513574281104
+raw outflow_0: {"case": "OperatingPointOutflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [NaN, 0.13400252975087065, 0.00013400252975087065, 0.08719315116878924, 0.03495766198536623, 0.014063466311997013, 0.005705788042649328, 0.05585185765873545, 0.10591690260162183, 0.009048859350388403, 0.0683883
+raw operating_points: [{"case": "Operating Point: Flowrate=6855.335 sbbl/day", "point_data": {"NodalPointVolumeFlowrateLiquidStockTank": 1089.9112203919644, "NodalPointPressure": 135.01423173286105, "NodalPointMassFlowrateFluid": 12.014536970300629, "NodalPointVolumeFlowrateGasStockTank": 0.08719315116878924}, "units": {
 
 == gas lift 0.05 mmsm3/d: check True
 operating point: {"case": "operating point", "liquid_rate [sm3/d]": 1223.8251214780896, "oil_rate [sm3/d]": 979.0600971824718, "gas_rate [mmsm3/d]": 0.0979062944070116, "water_rate [sm3/d]": 244.76502429561785, "bottomhole_pressure [bara]": 116.28497005193042, "outlet_pressure [bara]": 20, "_status": "Completed"}
 charts: ['nodal.png'] | warnings: []
-raw inflow_0: {"case": "OperatingPointInflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [0.13401248236511798, 0.0013401248236511799, 0.0979062944070116, 0.049623209615331385, 0.025481667219491286, 0.11595938838606479, 0.013410896021571231, 0.0737647520111715, 0.12498593537559137, 0.037552438417411335, 0.12949920887035468, 0.0073755104226112065, 0.06169398081325144, 0.08583552320909155, 0.019446281620531258, 0.13175584561773632, 0.10693284139653819, 0.031517052818451304, 0.004357817623131192, 0.04358782401637135, 0.12047266188082807, 0.010393203222091219, 0.1328841639914271, 0.055658595214291395, 0.06772936641221147, 0.01642858882105125, 0.0918709088080516, 0.07980013761013152, 0.12724257212
-raw outflow_0: {"case": "OperatingPointOutflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [NaN, 0.13401248236511798, 0.00013401248236511799, 0.0979062944070116, 0.03924292525222372, 0.06270827291413887, 0.015777577590308556, 0.07678748151128796, 0.11234876959025415, 0.025163716655074615, 0.04862906431698977, 0.006391438525542495, 0.08523500666957742, 0.12101425470019966, 0.0026369828996360683, 0.030795400093934257, 0.05426074775584941, 0.06833995635299851, 0.010145894151448918, 0.10368328448030863, 0.01953203321621498, 0.09030352176455109, 0.126213545766167, 0.0041387651499986385, 0.04299738087813014, 0.03417441015725004, 0.057639757819165194, 0.012398567526992775, 0.0717189664163143, 0.0801
-raw operating_points: [{"case": "Operating Point: Flowrate=7697.628 sbbl/day", "point_data": {"NodalPointVolumeFlowrateLiquidStockTank": 1223.8251214780896, "NodalPointPressure": 116.28497005193042, "NodalPointMassFlowrateFluid": 13.490724649933673, "NodalPointVolumeFlowrateGasStockTank": 0.0979062944070116}, "units": {"NodalPointVolumeFlowrateLiquidStockTank": "sm3/d", "NodalPointPressure": "bara", "NodalPointMassFlowrateFluid": "kg/s", "NodalPointVolumeFlowrateGasStockTank": "mmsm3/d"}}]
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 8444
+raw inflow_0: {"case": "OperatingPointInflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [0.13401248236511798, 0.0013401248236511799, 0.0979062944070116, 0.049623209615331385, 0.025481667219491286, 0.11595938838606479, 0.013410896021571231, 0.0737647520111715, 0.12498593537559137, 0.0375524384174113
+raw outflow_0: {"case": "OperatingPointOutflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [NaN, 0.13401248236511798, 0.00013401248236511799, 0.0979062944070116, 0.03924292525222372, 0.06270827291413887, 0.015777577590308556, 0.07678748151128796, 0.11234876959025415, 0.025163716655074615, 0.048629064
+raw operating_points: [{"case": "Operating Point: Flowrate=7697.628 sbbl/day", "point_data": {"NodalPointVolumeFlowrateLiquidStockTank": 1223.8251214780896, "NodalPointPressure": 116.28497005193042, "NodalPointMassFlowrateFluid": 13.490724649933673, "NodalPointVolumeFlowrateGasStockTank": 0.0979062944070116}, "units": {"
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 8856
 INFO:manta.server.manager:Python toolkit license is checked out successfully
 INFO:manta.server.manager:Waiting for PIPESIM server to start.
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 12972
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 19400
 INFO:manta.server.manager:Python toolkit license is checked out successfully
 INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:65259/api/metadata#'
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:49204/api/metadata#'
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 
 
-JOB finished 2026-11-04 13:08:39
+$ "D:\Program\Pipesim toolkit\python.exe" tests\real_facility_test.py
+[exit 0]
+check: {"ready": true, "next_step": "Project complete. Continue with the study spec (model.source = \"project\").", "missing": [], "errors": []}
+build: {"connections": 14, "boundary_conditions": {"GasSales": "ok", "OilFacility": "ok", "W1:W1_Comp": "ok"}, "validation": []}
+connections: [{"Source": "W1", "Source Port": "", "Destination": "FL-1"}, {"Source": "FL-1", "Source Port": "", "Destination": "CK"}, {"Source": "CK", "Source Port": "", "Destination": "FL-2"}, {"Source": "FL-2", "Source Port": "", "Destination": "MAN"}, {"Source": "MAN", "Source Port": "", "Destination": "FL-4"}, {"Source": "FL-4", "Source Port": "", "Destination": "SEP1"}, {"Source": "SEP1", "Source Port": "Top Port", "Destination": "GL-1"}, {"Source": "GL-1", "Source Port": "", "Destination": "C1"}, {"Source": "C1", "Source Port": "", "Destination": "GL-2"}, {"Source": "GL-2", "Source Port": "", "Destination": "GasSales"}, {"Source": "SEP1", "Source Port": "Bottom Port", "Destination": "LL-1"}, {"Source": "LL-1", "Source Port": "", "Destination": "P1"}, {"Source": "P1", "Source Port": "", "Destination": "LL-2"}, {"Source": "LL-2", "Source Port": "", "Destination": "OilFacility"}]
+network: Completed {"Pressure": {"Unit": "bara", "P1": 21.48153397788781, "W1": 32.84697954453689, "C1": 57.36749316165279, "W1_Comp": 61.72725421972798, "CK": 23.627833216285218, "GasSales": 41.400259635651366, "OilFacility": 20.70012984767086, "SEP1": 22.926771914937245}, "VolumeFlowrateLiquidStockTank": {"Unit": "sm3/d", "P1": 478.44076358342517, "W1": 478.92789977742177, "C1": 0.4789100550440286, "W1_Comp": 478.92789977742177, "CK": 478.92789977742177, "GasSales": 0.4789100550440286, "OilFacility": 478.44076358342517, "SEP1": 0.4789147492772953}, "VolumeFlowrateGasStockTank": {"Unit": "mmsm3/d", "P1": 0.0042483237865049844, "W1": 0.5747151508710814, "C1": 0.5704454987507922, "W1_Comp": 0.5747151508710814, "CK": 0.5747151508710814, "GasSales": 0.5704454987507922, "OilFacility": 0.0042483237865049844, "SEP1": 0.5704510902062416}}
+summary: {"Info": ["2026-11-04T08:14:37.569Z    Beginning simulation...", "2026-11-04T08:14:37.567Z    Running with 4 cores", "2026-11-04T08:14:38.878Z    Solver converged to a solution.", "2026-11-04T08:14:38.895Z    Finished simulation"], "Error": [], "Warning": []}
+study check: True []
+case | C1.Power | GasSales liquid rate [sm3/d] | GasSales oil rate [sm3/d] | GasSales gas rate [mmsm3/d] | OilFacility liquid rate [sm3/d] | OilFacility oil rate [sm3/d] | OilFacility gas rate [mmsm3/d] | W1 liquid rate [sm3/d] | W1 pressure [bara] | _status | GasSales oil rate change vs base [%]
+base | 1000 | 0.4789 | 0.3831 | 0.5704 | 478.4 | 382.8 | 0.004248 | 478.9 | 32.85 | Completed | 0
+C1.Power=600 | 600 | 0.4676 | 0.374 | 0.5555 | 467.1 | 373.7 | 0.00555 | 467.6 | 38 | Completed | -2.37
+C1.Power=1000 | 1000 | 0.4789 | 0.3831 | 0.5704 | 478.4 | 382.8 | 0.004248 | 478.9 | 32.85 | Completed | 0
+C1.Power=1400 | 1400 | 0.4836 | 0.3869 | 0.5771 | 483 | 386.4 | 0.003256 | 485.3 | 29.81 | Completed | 0.99
+warnings: []
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 24492
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 25584
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:49588/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+
+
+JOB finished 2026-11-04 13:15:20
