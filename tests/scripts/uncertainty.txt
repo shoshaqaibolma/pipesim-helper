@@ -1,0 +1,5 @@
+Build one oil well W1: reservoir 230 bara and 85 degC, depth 2400 m, PI 10 sm3/d/bar, 76 mm tubing. Black oil: 32 API, GOR 90 sm3/sm3, 30% water cut, gas SG 0.7. A flat 3 km, 100 mm flowline goes to a separator SEP at 15 bara. We are unsure about three inputs: reservoir pressure (200 to 250 bara), productivity index (6 to 14 sm3/d/bar) and water cut (20 to 50%). Which uncertainty affects W1's oil rate most? Rank them.
+Use the suggested defaults for everything else.
+Yes, approved. Run it.
+Approved.
+exit

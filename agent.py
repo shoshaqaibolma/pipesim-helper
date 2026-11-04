@@ -66,6 +66,7 @@ EXAMPLE (only for "2 wells into a manifold, 5 km trunkline to a separator at 15 
                 {{"name":"Trunk","from":"J1","to":"SEP","length":5000,"id":152,"elevation_change":10}}]}}
 STUDY VARIABLES on a project (component_type / name / parameter):
   separator or sink pressure: Sink / <sink> / Pressure;  reservoir pressure: Completion / <well>:<well>_Comp / ReservoirPressure
+  productivity index: Completion / <well>:<well>_Comp / LiquidPI;  water cut or GOR: BlackOilFluid / <fluid> / WaterCut | GOR
   choke size: Choke / <choke> / BeanSize;  flowline diameter: Flowline / <flowline> / InnerDiameter
   gas lift rate: GasLiftInjection / <well>:<well>_GL / GasRate  (the well needs "gas_lift" in the project)
   compressor or pump: Compressor|Pump / <name> / Power | PressureDifferential | Pressure  (whichever it was specified by)

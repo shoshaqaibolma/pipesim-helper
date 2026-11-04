@@ -1,0 +1,5 @@
+# Engineering scenarios through the local LLM agent (starts/stops llama-server via start_llm.bat; models in %TEMP% / runs\):
+# debottlenecking (grid), uncertainty ranking (tornado), gas export pipeline sizing (sweep).
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\debottleneck.txt
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\uncertainty.txt
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\pipeline_sizing.txt

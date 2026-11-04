@@ -1,0 +1,5 @@
+Build a field: three oil wells W1, W2, W3 flow through 1 km, 100 mm flat flowlines into manifold M, then a 6 km, 152 mm trunkline, 15 m uphill, to a separator SEP at 12 bara. Black oil: 33 API, GOR 120 sm3/sm3, 30% water cut, gas SG 0.7. W1: reservoir 240 bara, depth 2600 m, PI 9 sm3/d/bar. W2: reservoir 220 bara, depth 2500 m, PI 14 sm3/d/bar. W3: reservoir 210 bara, depth 2450 m, PI 6 sm3/d/bar, gas lift at 2200 m with 0.05 MMsm3/d. The operator asks: which gives more field oil, replacing the trunkline with 203 mm pipe, or lowering the separator to 8 bara? Compare all four combinations of trunkline 152 or 203 mm and separator 12 or 8 bara.
+Use the suggested defaults for everything else.
+Yes, approved. Run it.
+Approved.
+exit

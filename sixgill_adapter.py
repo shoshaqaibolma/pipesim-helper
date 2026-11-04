@@ -189,12 +189,36 @@ def sync_boundaries(model):
         return False
 
 
+# VERIFIED (2023.1, job 03): completion boundary entries also hold the fluid's GOR / WaterCut (copied at sync), so a
+# change to the fluid alone may not reach the network simulation. Propagate it to every node that uses the fluid.
+FLUID_BC = {"WaterCut": "WaterCut", "GOR": "GOR", "OGR": "OGR", "WGR": "WGR", "GLR": "GLR"}
+
+
+def _fluid_nodes(model, fluid):
+    nodes = []
+    for node, b in (get_boundaries(model) or {}).items():
+        t = (b or {}).get("BoundaryNodeType")
+        if t not in ("Completion", "Source"):
+            continue
+        try:
+            if get_value(model, t, node, "AssociatedBlackOilFluid") == fluid:
+                nodes.append(node)
+        except Exception:
+            pass
+    return nodes
+
+
 def set_param(model, ctype, name, param, value):
     """Set a component parameter; for boundary parameters also set the network boundary condition."""
     set_value(model, ctype, name, param, value)
     key = BOUNDARY_MAP.get((ctype, param))
     if key:
         set_boundary(model, name, key, value)
+    if ctype == "BlackOilFluid" and param in FLUID_BC:
+        for node in _fluid_nodes(model, name):
+            entry = (get_boundaries(model) or {}).get(node) or {}
+            if entry.get(FLUID_BC[param]) is not None:
+                set_boundary(model, node, FLUID_BC[param], value)
 
 
 def get_param(model, ctype, name, param):
