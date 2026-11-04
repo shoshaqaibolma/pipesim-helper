@@ -1,75 +1,34 @@
-JOB jobs/08_gaslift_and_nodal_probe.txt started 2026-11-04 13:03:05
+JOB jobs/09_nodal.txt started 2026-11-04 13:07:47
 
-$ "D:\Program\Pipesim toolkit\python.exe" tests\real_gaslift_test.py
+$ "D:\Program\Pipesim toolkit\python.exe" tests\real_nodal_test.py
 [exit 0]
-check: {"ready": true, "next_step": "Call propose_plan and show the plan to the user word for word.", "missing": [], "errors": [], "n_cases": 6}
-Building the model...
-  case 1/6: base
-  case 2/6: W1:W1_GL.GasRate=0.0
-  case 3/6: W1:W1_GL.GasRate=0.02
-  case 4/6: W1:W1_GL.GasRate=0.05
-  case 5/6: W1:W1_GL.GasRate=0.1
-  case 6/6: W1:W1_GL.GasRate=0.2
-case | W1:W1_GL.GasRate | SEP liquid rate [sm3/d] | SEP oil rate [sm3/d] | SEP gas rate [mmsm3/d] | W1 liquid rate [sm3/d] | W1 pressure [bara] | _status | SEP oil rate change vs base [%]
-base | 0.05 | 541.9 | 271 | 0.06626 | 541.9 | 29.18 | Completed | 0
-W1:W1_GL.GasRate=0.0 | 0 |  |  |  |  |  | Completed | 
-W1:W1_GL.GasRate=0.02 | 0.02 | 440.9 | 220.5 | 0.03325 | 440.4 | 22.6 | Completed | -18.64
-W1:W1_GL.GasRate=0.05 | 0.05 | 541.9 | 271 | 0.06626 | 541.9 | 29.18 | Completed | 0
-W1:W1_GL.GasRate=0.1 | 0.1 | 570.5 | 285.3 | 0.1171 | 570.5 | 36.79 | Completed | 5.28
-W1:W1_GL.GasRate=0.2 | 0.2 | 535.5 | 267.8 | 0.2161 | 535.5 | 47.89 | Completed | -1.18
-warnings: [] | failed: []
-summary W1 liquid rate: {"unit": "sm3/d", "base": 541.9206, "highest": {"value": 570.5178, "case": "W1:W1_GL.GasRate=0.1"}, "lowest": {"value": 440.4204, "case": "W1:W1_GL.GasRate=0.02"}, "change_vs_base_pct": {"W1:W1_GL.GasRate=0.02": -18.73, "W1:W1_GL.GasRate=0.05": 0.0, "W1:W1_GL.GasRate=0.1": 5.28, "W1:W1_GL.GasRate=0.2": -1.18}}
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 5632
+
+== natural flow: check True
+operating point: {"case": "operating point", "liquid_rate [sm3/d]": 1089.9112203919644, "oil_rate [sm3/d]": 871.9289763135715, "gas_rate [mmsm3/d]": 0.08719315116878924, "water_rate [sm3/d]": 217.9822440783928, "bottomhole_pressure [bara]": 135.01423173286105, "outlet_pressure [bara]": 20, "_status": "Completed"}
+charts: ['nodal.png'] | warnings: []
+raw inflow_0: {"case": "OperatingPointInflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [0.13400252975087065, 0.0013400252975087066, 0.08719315116878924, 0.04426658823314898, 0.022803306765328844, 0.11059784045982995, 0.12230018510535033, 0.01207166603141878, 0.06572986970096911, 0.12815135742811049, 0.03353494749923891, 0.006705845664463741, 0.13107694358949054, 0.09889549581430959, 0.054998228967059054, 0.017437486398373808, 0.07646151043487918, 0.028169127132283884, 0.11644901278259011, 0.13253973667018062, 0.004022935480986225, 0.03890076786619395, 0.009388755847941258, 0.10474666813706979, 0.12522577126673035, 0.04963240860010402, 0.09304432349154945, 0.06036404933401408, 0.01475457621
+raw outflow_0: {"case": "OperatingPointOutflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [NaN, 0.13400252975087065, 0.00013400252975087065, 0.08719315116878924, 0.03495766198536623, 0.014063466311997013, 0.005705788042649328, 0.05585185765873545, 0.10591690260162183, 0.009048859350388403, 0.06838837506275698, 0.022421144581344702, 0.11715115346132138, 0.04331534025471392, 0.0023627167349102537, 0.007043016565744958, 0.0759102855051699, 0.0946826517419223, 0.01105470213503185, 0.027435751542953316, 0.12389170397714108, 0.0036999452580058836, 0.017406537619736092, 0.048329947216322534, 0.06086646462034408, 0.007845353679602336, 0.08042343177061764, 0.09917635208580207, 0.11041060294550165, 0.
+raw operating_points: [{"case": "Operating Point: Flowrate=6855.335 sbbl/day", "point_data": {"NodalPointVolumeFlowrateLiquidStockTank": 1089.9112203919644, "NodalPointPressure": 135.01423173286105, "NodalPointMassFlowrateFluid": 12.014536970300629, "NodalPointVolumeFlowrateGasStockTank": 0.08719315116878924}, "units": {"NodalPointVolumeFlowrateLiquidStockTank": "sm3/d", "NodalPointPressure": "bara", "NodalPointMassFlowrateFluid": "kg/s", "NodalPointVolumeFlowrateGasStockTank": "mmsm3/d"}}]
+
+== gas lift 0.05 mmsm3/d: check True
+operating point: {"case": "operating point", "liquid_rate [sm3/d]": 1223.8251214780896, "oil_rate [sm3/d]": 979.0600971824718, "gas_rate [mmsm3/d]": 0.0979062944070116, "water_rate [sm3/d]": 244.76502429561785, "bottomhole_pressure [bara]": 116.28497005193042, "outlet_pressure [bara]": 20, "_status": "Completed"}
+charts: ['nodal.png'] | warnings: []
+raw inflow_0: {"case": "OperatingPointInflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [0.13401248236511798, 0.0013401248236511799, 0.0979062944070116, 0.049623209615331385, 0.025481667219491286, 0.11595938838606479, 0.013410896021571231, 0.0737647520111715, 0.12498593537559137, 0.037552438417411335, 0.12949920887035468, 0.0073755104226112065, 0.06169398081325144, 0.08583552320909155, 0.019446281620531258, 0.13175584561773632, 0.10693284139653819, 0.031517052818451304, 0.004357817623131192, 0.04358782401637135, 0.12047266188082807, 0.010393203222091219, 0.1328841639914271, 0.055658595214291395, 0.06772936641221147, 0.01642858882105125, 0.0918709088080516, 0.07980013761013152, 0.12724257212
+raw outflow_0: {"case": "OperatingPointOutflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [NaN, 0.13401248236511798, 0.00013401248236511799, 0.0979062944070116, 0.03924292525222372, 0.06270827291413887, 0.015777577590308556, 0.07678748151128796, 0.11234876959025415, 0.025163716655074615, 0.04862906431698977, 0.006391438525542495, 0.08523500666957742, 0.12101425470019966, 0.0026369828996360683, 0.030795400093934257, 0.05426074775584941, 0.06833995635299851, 0.010145894151448918, 0.10368328448030863, 0.01953203321621498, 0.09030352176455109, 0.126213545766167, 0.0041387651499986385, 0.04299738087813014, 0.03417441015725004, 0.057639757819165194, 0.012398567526992775, 0.0717189664163143, 0.0801
+raw operating_points: [{"case": "Operating Point: Flowrate=7697.628 sbbl/day", "point_data": {"NodalPointVolumeFlowrateLiquidStockTank": 1223.8251214780896, "NodalPointPressure": 116.28497005193042, "NodalPointMassFlowrateFluid": 13.490724649933673, "NodalPointVolumeFlowrateGasStockTank": 0.0979062944070116}, "units": {"NodalPointVolumeFlowrateLiquidStockTank": "sm3/d", "NodalPointPressure": "bara", "NodalPointMassFlowrateFluid": "kg/s", "NodalPointVolumeFlowrateGasStockTank": "mmsm3/d"}}]
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 8444
 INFO:manta.server.manager:Python toolkit license is checked out successfully
 INFO:manta.server.manager:Waiting for PIPESIM server to start.
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-
-
-$ "D:\Program\Pipesim toolkit\python.exe" tools\probe_nodal.py "D:\Program\Pipesim2023.1\Case Studies"
-[exit 0]
-Connection.Separator values: OK {"BOOT": "Boot Port", "BOTTOM": "Bottom Port", "TOP": "Top Port"}
-units: pump power: OK "kilowatt"
-units: compressor power: OK "kilowatt"
-units: compressor pressure differential: OK "bar"
-units: separator efficiency: OK "percent"
-built well: nodalanalysis.get_conditions(W1): OK [{"Producer": "W1", "BranchTerminator": "W1", "Description": "", "NodalMeasurementPoint": "W1.NA", "OutletPressure": null, "MaxFlowRateType": "LiquidFlowRate", "MaxGasRate": null, "MaxLiquidRate": null, "MaxMassRate": null, "MaxOutflowPressure": null, "InflowPoints": 30.0, "OutflowPoints": 30.0, "LimitInflow": false, "LimitOutflow": true, "UsePhaseRatio": false, "SensitivityVariables": [{}, {}]}, {"W1:W1_Comp": {"BoundaryNodeType": "Completion", "WellName": "W1", "BoundaryNodeName": "W1_Comp", "IsActive": true, "UsePQCurve": false, "IsSurfaceCondition": false, "Temperature": 90.0, "Pressure": 
-built well: nodalanalysis.run(W1, OutletPressure=20): OK {"type": "NodalAnalysisResult", "cases": ["Operating Point: Flowrate=7697.628 sbbl/day"], "esp_curves": {}, "fluid_base": "Liquid", "inflow_cases": ["OperatingPointInflow:"], "inflow_curves": ["<sixgill.core.simulation_result_handler.Curve object at 0x000001DBAFE66610>"], "messages": ["2026-11-04T08:03:44.912Z    Service starting...", "2026-11-04T08:03:44.928Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs", "2026-11-04T08:03:45.103Z    Service listening at 'net.pipe://localhost/pipe/926d66043b854024b2a8759197da886e'...", "2026-11-04T08:03:45.178Z    ", "2026-11-04T08:03:45.178Z  
-Nodal_example: get_conditions(first well): OK [{"Producer": "Well 1 - oil", "BranchTerminator": "Well 1 - oil", "Description": "", "NodalMeasurementPoint": "Well 1 - oil.NA", "OutletPressure": 52.60699814687454, "MaxFlowRateType": "LiquidFlowRate", "MaxGasRate": null, "MaxLiquidRate": null, "MaxMassRate": null, "MaxOutflowPressure": null, "InflowPoints": 30.0, "OutflowPoints": 30.0, "LimitInflow": false, "LimitOutflow": true, "UsePhaseRatio": true, "SensitivityVariables": [{}, {}]}, {"Well 1 - oil:Completion": {"BoundaryNodeType": "Completion", "WellName": "Well 1 - oil", "BoundaryNodeName": "Completion", "IsActive": true, "UsePQCurve": f
-Nodal_example: run(first well) with its own settings: OK {"type": "NodalAnalysisResult", "cases": ["Operating Point: Flowrate=1982.008 sbbl/day"], "esp_curves": {}, "fluid_base": "Liquid", "inflow_cases": ["OperatingPointInflow:"], "inflow_curves": ["<sixgill.core.simulation_result_handler.Curve object at 0x000001DBA9FF9450>"], "messages": ["2026-11-04T08:04:10.726Z    Service starting...", "2026-11-04T08:04:10.742Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs", "2026-11-04T08:04:10.919Z    Service listening at 'net.pipe://localhost/pipe/c969c5a216204fbca442e81e10d7d0c2'...", "2026-11-04T08:04:10.986Z    ", "2026-11-04T08:04:10.986Z  
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 22920
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 12972
 INFO:manta.server.manager:Python toolkit license is checked out successfully
 INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 10156
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:64810/api/metadata#'
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 14940
-INFO:manta.server.manager:Python toolkit license is checked out successfully
-INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:64945/api/metadata#'
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:65259/api/metadata#'
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 
 
-JOB finished 2026-11-04 13:04:34
+JOB finished 2026-11-04 13:08:39
