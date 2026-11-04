@@ -283,7 +283,7 @@ def run(spec, progress=print, project=None):
     stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f")[:-3]
     out = os.path.join(RUNS_DIR, stamp)
     os.makedirs(out, exist_ok=True)
-    json.dump(spec, open(os.path.join(out, "spec.json"), "w"), indent=2)
+    json.dump(spec, open(os.path.join(out, "spec.json"), "w", encoding="utf-8"), indent=2)
     units = spec.get("units", "METRIC")
     work = os.path.join(out, "model.pips")
 
@@ -294,7 +294,7 @@ def run(spec, progress=print, project=None):
         model = sa.open_model(work, units)
     else:
         progress("Building the model...")
-        json.dump(proj, open(os.path.join(out, "project.json"), "w"), indent=2)
+        json.dump(proj, open(os.path.join(out, "project.json"), "w", encoding="utf-8"), indent=2)
         model, _ = netbuilder.build(proj, work, "METRIC")
     try:
         for c in spec.get("base_changes", []):
@@ -329,7 +329,7 @@ def run(spec, progress=print, project=None):
                 import project as prj
                 comp = prj.completion_name(a["producer"])
             res = sa.nodal(model, a["producer"], a["outlet_pressure"], completion=comp)
-            json.dump(res["raw"], open(os.path.join(out, "nodal_raw.json"), "w"), indent=1, default=str)
+            json.dump(res["raw"], open(os.path.join(out, "nodal_raw.json"), "w", encoding="utf-8"), indent=1, default=str)
             op = res["operating_point"]
             rows = [{"case": "operating point", **{f"{k} [{v.get('unit') or ''}]": v.get("value") for k, v in op.items()},
                      "_status": res["state"]}]
@@ -452,14 +452,14 @@ def run(spec, progress=print, project=None):
         # write outputs
         csv_path = os.path.join(out, "results.csv")
         cols = list(dict.fromkeys(c for r in rows for c in r))
-        with open(csv_path, "w", newline="") as f:
+        with open(csv_path, "w", newline="", encoding="utf-8-sig") as f:
             w = csv.writer(f)
             w.writerow([_head(c) for c in cols])
             w.writerows([[r.get(c) for c in cols] for r in rows])
         charts = [c for c in charts if c]
         model.save()
         report = os.path.join(out, "report.md")
-        with open(report, "w") as f:
+        with open(report, "w", encoding="utf-8") as f:
             f.write(study.plan_text(spec, proj) + "\n\n## Results\n\n")
             for w in warnings:
                 f.write(f"> **Warning:** {w}\n\n")

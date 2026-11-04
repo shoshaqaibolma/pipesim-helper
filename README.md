@@ -15,7 +15,10 @@ No model data leaves the machine.
 ```
 
 ## Quick start (already set up on this PC)
-Double-click **`agent.bat`**. It starts the local model (Qwen 3.5 9B on the GPU) if needed, then the agent.
+Double-click **`agent_ui.bat`** for the browser chat window (or `agent.bat` for the terminal).
+Validation against the official case studies and engineering scenarios: [`docs/VALIDATION.md`](docs/VALIDATION.md).
+
+In the terminal, `agent.bat` It starts the local model (Qwen 3.5 9B on the GPU) if needed, then the agent.
 Describe what you want; answer its questions (or say "use defaults"); approve the plan; read the results.
 Results, charts and a report go to `runs\<timestamp>\`; new models to `projects\`.
 
