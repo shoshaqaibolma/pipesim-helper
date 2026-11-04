@@ -114,3 +114,17 @@ connected straight to the separator, the model copied that and added the choke b
 on layout errors and then asked how to split "12 to 32 mm in 5 steps". Fix: a choke recipe (choke "from" the well,
 flowline starts at the choke) and the rule "from A to B in N steps -> start/stop/steps, do not ask". The choke
 scenario is therefore no longer held out; water_rise still is.
+
+## 6. Job 24: after the choke recipe - current state
+
+| | plain | knowledge (default) |
+|---|---|---|
+| correct answers | 8/8 | **8/8** |
+| checker errors | 13 | **0** |
+| tool calls | 93 | 62 |
+| invented numbers in result replies | 7, all reached the user | 1, removed by the rewrite |
+| time | 12 min | 11 min |
+
+Choke sizing now takes 6 calls with no errors (10 calls / 2 errors plain); pipeline sizing 8 calls (33 calls /
+11 errors plain); the held-out water-cut scenario is correct in both. This is the configuration shipped by
+default: recipes + sanity checks + number check on result replies; structured mode off.
