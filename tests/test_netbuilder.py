@@ -170,7 +170,24 @@ assert any("at most one flowline per outlet" in e for e in errs(bad)["errors"]),
 print("facility: choke fed by a flowline, separator gas/liquid ports, compressor (power) and pump (pressure rise) built;")
 print("          missing port asked; misplaced port, double spec, 2 inlets, duplicate outlet caught")
 
-# 9. checker: unknown component in a project study, incomplete project, non-metric units
+# 9. gas lift allocation: share 0.1 mmsm3/d between two gas-lifted wells to maximize oil
+GL2 = dict(FIELD, wells=[dict(w, gas_lift={"depth": 2000, "rate": 0.05}) for w in FIELD["wells"]])
+spec_o = dict(spec, analysis={"type": "optimize", "max_total": 0.1, "variables": [
+    {"component_type": "GasLiftInjection", "name": f"{w}:{w}_GL", "parameter": "GasRate", "values": [0, 0.05, 0.1]}
+    for w in ("W1", "W2")]})
+c = study.check(spec_o, project=GL2)
+assert c["ready"] and c["n_cases"] == 7, c                     # 6 feasible of 9 combinations + base
+assert "only combinations whose sum <= 0.1" in study.plan_text(spec_o, GL2)
+r = executor.run(spec_o, progress=lambda s: None, project=GL2)
+o = r["summary"]["optimum"]
+assert o["combinations_run"] == 6 and o["skipped_over_max_total"] == 3, o
+s_best = o["best"]["settings"]
+assert sum(s_best.values()) <= 0.1 + 1e-9 and o["best"]["value"] >= max(x["value"] for x in o["top"]), o
+bad = dict(spec_o, analysis=dict(spec_o["analysis"], max_total=-1))
+assert any("max_total must be" in e for e in study.check(bad, project=GL2)["errors"])
+print("optimize: 6 of 9 gas-lift combinations within 0.1 mmsm3/d run; best", o["best"]["case"], "->", o["best"]["value"])
+
+# 10. checker: unknown component in a project study, incomplete project, non-metric units
 bad = dict(spec, analysis={"type": "sweep", "variables": [{"component_type": "Sink", "name": "Nope",
                                                            "parameter": "Pressure", "values": [1, 2]}]})
 assert any("Available Sink: ['Sep']" in e for e in study.check(bad, project=FIELD)["errors"])

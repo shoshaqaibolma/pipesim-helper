@@ -120,7 +120,7 @@ def _get(model, ref):
 
 def _summary(a, rows, kpi_cols, labels):
     """Numbers the LLM should quote instead of computing: change vs base per case, best/worst case, tornado ranking."""
-    if a["type"] not in ("sweep", "grid", "tornado") or not rows:
+    if a["type"] not in ("sweep", "grid", "tornado", "optimize") or not rows:
         return {}
     base, cases = rows[0], rows[1:]
     out = {}
@@ -366,6 +366,9 @@ def run(spec, progress=print, project=None):
                             series[f"{labels[1]}={v2}"] = [p.get(k) for p in pts]
                         charts.append(_chart(os.path.join(out, f"grid_{len(charts)}.png"),
                                              study.values_of(a["variables"][0]), series, labels[0], k))
+            elif a["type"] == "optimize":
+                for combo in study.feasible_combos(a):
+                    case(", ".join(f"{l}={c}" for l, c in zip(labels, combo)), list(zip(refs, combo)))
             elif a["type"] == "tornado":
                 for v, r, l in zip(a["variables"], refs, labels):
                     case(f"{l} low={v['low']}", [(r, v["low"])])
@@ -383,12 +386,27 @@ def run(spec, progress=print, project=None):
         warnings, summary = (list(warnings_extra) if a["type"] == "nodal" else []), {}
         if a["type"] == "nodal":
             summary = {"operating_point": rows[0]}
-        if a["type"] in ("sweep", "grid", "tornado"):
+        if a["type"] in ("sweep", "grid", "tornado", "optimize"):
             w = _flat_warning(rows, kpi_cols)
             if w:
                 warnings.append(w)
             summary = _summary(a, rows, kpi_cols, labels)
             p = _primary(kpi_cols, rows[0])
+            if a["type"] == "optimize":
+                obj = a.get("maximize") if a.get("maximize") in kpi_cols else p
+                ok = sorted((r for r in rows[1:] if isinstance(r.get(obj), (int, float))), key=lambda r: -r[obj])
+                total = len(list(itertools.product(*[study.values_of(v) for v in a["variables"]])))
+                summary["optimum"] = {
+                    "maximized": obj, "unit": UNITS.get(obj, ""),
+                    "best": ({"case": ok[0]["case"], "value": round(ok[0][obj], 4),
+                              "settings": {l: ok[0][l] for l in labels}} if ok else None),
+                    "base_value": rows[0].get(obj),
+                    "top": [{"case": r["case"], "value": round(r[obj], 4)} for r in ok[:5]],
+                    "combinations_run": len(rows) - 1, "skipped_over_max_total": total - (len(rows) - 1)}
+                if len(refs) == 1:
+                    sw = rows[1:]
+                    charts.append(_chart(os.path.join(out, "optimize.png"), [r[labels[0]] for r in sw],
+                                         {obj: [r.get(obj) for r in sw]}, labels[0], f"{obj} (maximize)"))
             if p and summary.get(p, {}).get("change_vs_base_pct"):  # precomputed % change column for the main result
                 col = f"{p} change vs base [%]"
                 for r in rows[1:]:

@@ -22,7 +22,7 @@ Spec shape (all keys optional until check() says ready):
   "kpis": [{"component": "Well", "variable": "VOLUME_FLOWRATE_OIL_STOCKTANK", "label": "Oil rate"}]
 }
 """
-import copy, os
+import copy, itertools, os
 from builder import TEMPLATES, alias_ref
 
 ANALYSES = {
@@ -32,11 +32,14 @@ ANALYSES = {
     "tornado": "vary each variable to its low and high value one at a time, then rank the impacts",
     "pt_profile": "pressure/temperature/holdup profile along one well or flowline",
     "nodal": "nodal analysis of one well: inflow (IPR) vs outflow (VLP) curves and the operating point",
+    "optimize": "try every combination of 1-3 variables (e.g. each well's gas lift rate) and pick the one that "
+                "maximizes the main result (total oil by default); optional max_total limits the sum of the "
+                "variables (e.g. the lift gas available)",
 }
 MAX_CASES = 300
 SPEC_KEYS = {"objective", "units", "model", "base_changes", "analysis", "kpis"}
 MODEL_KEYS = {"source", "path", "template", "params"}
-ANALYSIS_KEYS = {"type", "variables", "producer", "conditions", "outlet_pressure"}
+ANALYSIS_KEYS = {"type", "variables", "producer", "conditions", "outlet_pressure", "max_total", "maximize"}
 # P/T profile boundary conditions: friendly key -> sixgill Parameters.PTProfileSimulation constant
 PT_CONDITIONS = {"outlet_pressure": "OUTLETPRESSURE", "liquid_flowrate": "LIQUIDFLOWRATE",
                  "gas_flowrate": "GASFLOWRATE"}
@@ -91,7 +94,19 @@ def n_cases(spec):
         return n + 1
     if t == "tornado":
         return 1 + 2 * len(vs)
+    if t == "optimize":
+        return 1 + len(feasible_combos(a))
     return 1
+
+
+def feasible_combos(a):
+    """Combinations of the optimize variables whose sum respects max_total (when given)."""
+    vals = [values_of(v) or [] for v in a.get("variables", [])]
+    limit = a.get("max_total")
+    combos = list(itertools.product(*vals)) if vals else []
+    if isinstance(limit, (int, float)):
+        combos = [c for c in combos if sum(c) <= limit + 1e-9]
+    return combos
 
 
 SOURCES = ("existing", "new", "project")
@@ -165,6 +180,15 @@ def check(spec, known_components=None, project=None):
             ask("analysis.variables", "Which ONE variable should be swept, and over what range?")
         if t == "grid" and not 2 <= len(vs) <= 3:
             ask("analysis.variables", "Which 2-3 variables should be combined, and the values for each?")
+        if t == "optimize":
+            if not 1 <= len(vs) <= 3:
+                ask("analysis.variables", "Which 1-3 variables should be optimized (e.g. each well's gas lift rate), "
+                    "and which values should be tried for each?")
+            lim = a.get("max_total")
+            if lim is not None and (not isinstance(lim, (int, float)) or lim <= 0):
+                errors.append("max_total must be a positive number (the limit on the sum of the variables)")
+            elif vs and all(values_of(v) for v in vs) and not feasible_combos(a):
+                errors.append("No combination satisfies max_total; widen the values or raise the limit.")
         if t == "tornado" and len(vs) < 2:
             ask("analysis.variables", "Which uncertain variables (at least 2), with a low and high value for each?")
         if t == "nodal":
@@ -199,14 +223,14 @@ def check(spec, known_components=None, project=None):
             except KeyError as e:
                 errors.append(f"Variable {i}: {e}. Use an alias, or give component_type, name and parameter.")
             keys = set(v)
-            if t in ("sweep", "grid") and keys & {"low", "high"}:
+            if t in ("sweep", "grid", "optimize") and keys & {"low", "high"}:
                 errors.append(f"Variable {i}: low/high are only for tornado. For a {t} use \"values\": [...] "
                               "or \"start\", \"stop\", \"steps\".")
             if t == "tornado" and keys & {"values", "start", "stop", "steps"}:
                 errors.append(f"Variable {i}: a tornado uses only \"low\" and \"high\", not values/start/stop/steps.")
             if t == "tornado" and not ("low" in v and "high" in v):
                 ask(f"analysis.variables[{i}]", f"Low and high value for variable {i}?")
-            elif t in ("sweep", "grid") and values_of(v) is None:
+            elif t in ("sweep", "grid", "optimize") and values_of(v) is None:
                 ask(f"analysis.variables[{i}]", f"Range for variable {i}: a list of values, or start/stop/steps?")
         if n_cases(spec) > MAX_CASES:
             errors.append(f"{n_cases(spec)} cases is too many (max {MAX_CASES}). Use fewer steps.")
@@ -241,6 +265,9 @@ def plan_text(spec, project=None):
         lines.append(f"     {label}: {values_of(v)}")
     if a["type"] == "nodal":
         lines.append(f"     well: {a['producer']}, outlet pressure: {a['outlet_pressure']} bara")
+    if a["type"] == "optimize":
+        lines.append(f"     maximize: {a.get('maximize') or 'total oil rate (or the main oil rate)'}"
+                     + (f"; only combinations whose sum <= {a['max_total']}" if a.get("max_total") else ""))
     if a["type"] == "pt_profile":
         lines.append(f"     producer: {a['producer']}")
         for k, v in (a.get("conditions") or {}).items():
