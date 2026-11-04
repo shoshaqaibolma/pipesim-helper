@@ -1,0 +1,4 @@
+# Browser chat backend with the real LLM + PIPESIM, then rebuild-and-compare of training case studies
+# (originals opened from temp copies; rebuilt models in %TEMP%). Writes knowledge\compare.json.
+"D:\Program\Pipesim toolkit\python.exe" tests\real_webui_test.py
+"D:\Program\Pipesim toolkit\python.exe" tools\rebuild_compare.py "D:\Program\Pipesim2023.1\Case Studies"
