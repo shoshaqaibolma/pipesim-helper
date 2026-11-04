@@ -1,0 +1,3 @@
+# The local LLM agent builds a gas-lifted well from a description, runs nodal analysis, then a gas-lift-rate
+# sweep (starts/stops llama-server via start_llm.bat; models in %TEMP% / runs\).
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\gaslift_nodal.txt
