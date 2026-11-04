@@ -42,7 +42,7 @@ agent.update_spec({"objective": "Trunkline size vs field rate", "model": {"sourc
 c = agent.check_spec()
 assert c["ready"], c
 plan = agent.propose_plan()["plan"]
-assert "Trunk: from=J1" in plan, plan
+assert "Trunk: J1 -> Sep, 6000 m" in plan, plan
 agent.update_project({"wells": [{"name": "W2", "reservoir_pressure": 250}]})
 assert "changed" in agent.run_study()["error"]
 agent.propose_plan()

@@ -437,10 +437,54 @@ def apply_defaults(p, fields):
     return p
 
 
+def _g(v):
+    return f"{v:g}" if isinstance(v, (int, float)) and not isinstance(v, bool) else str(v)
+
+
+def describe_item(kind, e):
+    """One engineer-readable line per component, with units."""
+    g = lambda k, unit="": (f"{_g(e[k])}{(' ' + unit) if unit else ''}" if k in e else "?")
+    if kind == "fluids":
+        if e.get("type") == "gas":
+            return f"gas, SG {g('gas_sg')}, OGR {g('ogr', 'sm3/mmsm3')}, WGR {g('wgr', 'sm3/mmsm3')}"
+        return f"black oil, {g('api', 'API')}, GOR {g('gor', 'sm3/sm3')}, water cut {g('water_cut', '%')}, gas SG {g('gas_sg')}"
+    if kind == "wells":
+        ipr = e.get("ipr") or {}
+        inflow = {"pi": lambda: f"PI {_g(ipr.get('liquid_pi'))} sm3/d/bar", "vogel": lambda: f"Vogel AOF {_g(ipr.get('aof'))} sm3/d",
+                  "backpressure": lambda: f"back-pressure C {_g(ipr.get('c'))} mmsm3/d/bar2n, n {_g(ipr.get('n'))}"}
+        parts = [f"reservoir {g('reservoir_pressure', 'bara')} / {g('reservoir_temperature', 'degC')}",
+                 f"depth {g('depth', 'm')}", f"tubing {g('tubing_id', 'mm')}",
+                 inflow.get(ipr.get("model"), lambda: "inflow ?")(), f"fluid {g('fluid')}"]
+        if e.get("gas_lift"):
+            gl = e["gas_lift"]
+            parts.append(f"gas lift {_g(gl.get('rate'))} mmsm3/d at {_g(gl.get('depth'))} m")
+        return ", ".join(parts)
+    if kind == "sources":
+        bc = next((f"{k.replace('_', ' ')} {_g(e[k])} {u}" for k, u in SOURCE_BC.items() if k in e), "boundary ?")
+        return f"{bc}, {g('temperature', 'degC')}, fluid {g('fluid')}"
+    if kind == "sinks":
+        return f"{g('pressure', 'bara')}"
+    if kind == "flowlines":
+        port = f" ({e['port']} outlet)" if e.get("port") else ""
+        return (f"{g('from')}{port} -> {g('to')}, {g('length', 'm')}, ID {g('id', 'mm')}, "
+                f"elevation {'+' if (e.get('elevation_change') or 0) >= 0 else ''}{g('elevation_change', 'm')}")
+    if kind == "chokes":
+        return f"bean {g('bean_size', 'mm')}" + (f", right after {e['from']}" if e.get("from") else "")
+    if kind == "separators":
+        return f"two-phase, efficiency {g('efficiency', '%')}"
+    if kind in ("pumps", "compressors"):
+        spec = next((f"{k.replace('_', ' ')} {_g(e[k])} {u.split(' ')[0]}" for k, u in EQUIP_SPEC.items() if k in e), "spec ?")
+        return f"{spec}, efficiency {g('efficiency', '%')}" + (f", right after {e['from']}" if e.get("from") else "")
+    return ""
+
+
+ORDER = ("fluids", "wells", "sources", "chokes", "junctions", "separators", "pumps", "compressors", "flowlines", "sinks")
+
+
 def summary(p):
     lines = [f"PROJECT: {p.get('name')} ({p.get('units', 'METRIC')})"]
-    for kind in FIELDS:
+    for kind in ORDER:
         for i, e in enumerate(p.get(kind) or []):
-            attrs = ", ".join(f"{k}={v}" for k, v in e.items() if k != "name")
-            lines.append(f"  {kind[:-1]:<9} {e.get('name', f'<unnamed {kind}[{i}]>')}: {attrs}")
+            name = e.get("name", f"<unnamed {kind}[{i}]>")
+            lines.append(f"  {kind[:-1]:<10} {name}: {describe_item(kind, e)}")
     return "\n".join(lines)

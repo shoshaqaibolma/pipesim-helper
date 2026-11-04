@@ -56,7 +56,7 @@ spec = {"objective": "Separator pressure vs field rate", "units": "METRIC", "mod
                                                       "values": [10, 20, 30]}]}}
 c = study.check(spec, project=FIELD)
 assert c["ready"], c
-assert "W1: fluid=BO" in study.plan_text(spec, FIELD)
+assert "W1: reservoir 260 bara" in study.plan_text(spec, FIELD)
 r = executor.run(spec, progress=lambda s: None, project=FIELD)
 assert "[sm3/d]" in r["table"][0], r["table"][0]          # units from the results go into the headers
 liq = [float(row.split(" | ")[2]) for row in r["table"][2:]]

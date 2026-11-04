@@ -85,6 +85,9 @@ Keep messages short."""
 
 SPEC = {}
 PROJECT = {}
+# Front-end hooks: the terminal asks with input(); the web window (webui.py) uses its Approve button.
+HOOKS = {"confirm": lambda question: input(f"\n  {question} [y/N] ").strip().lower() == "y",
+         "progress": lambda text: print("   " + text)}
 STATE = {"plan_ok_for": None, "components": None}
 
 
@@ -120,11 +123,11 @@ def run_study():
     if STATE["plan_ok_for"] != _plan_key():
         return {"error": "The spec or project changed, or was never planned. Call propose_plan and get user "
                          "approval first."}
-    print("\n" + study.plan_text(SPEC, PROJECT))
-    if input("\n  Run this study now? [y/N] ").strip().lower() != "y":
-        return {"error": "User did not approve the run in the terminal."}
+    if not HOOKS["confirm"]("Run this study now?"):
+        return {"error": "The user has not approved the run yet. Ask them to approve the plan (in the web window: "
+                         "the Approve button), then call run_study again."}
     pt.close_model() if pt._state["model"] else None
-    return executor.run(SPEC, progress=lambda s: print("   " + s), project=PROJECT or None)
+    return executor.run(SPEC, progress=HOOKS["progress"], project=PROJECT or None)
 
 
 def update_project(patch: dict):
@@ -173,9 +176,9 @@ def build_project(path: str):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     if os.path.exists(path):
         return {"error": f"{path} already exists. Ask the user for a new file name."}
-    print("\n" + prj.summary(PROJECT) + f"\n\n  -> {path}")
-    if input("\n  Build this PIPESIM model now? [y/N] ").strip().lower() != "y":
-        return {"error": "User did not approve the build in the terminal."}
+    if not HOOKS["confirm"](f"Build this PIPESIM model as {path}?"):
+        return {"error": "The user has not approved building the file yet. Ask them to approve (in the web window: "
+                         "the Approve button), then call build_project again."}
     rep = netbuilder.build_file(PROJECT, path)
     with open(os.path.splitext(path)[0] + ".project.json", "w", encoding="utf-8") as f:
         json.dump(PROJECT, f, indent=2)
@@ -249,6 +252,55 @@ def chat(client, msgs):
         extra_body={"chat_template_kwargs": {"enable_thinking": False}}).choices[0].message
 
 
+def new_conversation():
+    global SPEC, PROJECT
+    SPEC, PROJECT = {}, {}
+    STATE.update(plan_ok_for=None, components=None)
+    return [{"role": "system", "content": SYSTEM}]
+
+
+def run_turn(client, msgs, user, emit):
+    """One user turn: let the model call tools until it answers. emit(event) receives
+    {"type": "tool", "name", "args"}, {"type": "result", "name", "result"}, {"type": "assistant", "text"},
+    {"type": "error", "text"}. msgs is updated in place."""
+    turn_start = len(msgs)
+    msgs.append({"role": "user", "content": user})
+    spec_calls = 0
+    try:
+        for _ in range(MAX_STEPS):
+            msg = chat(client, msgs)
+            msgs.append(msg.model_dump(exclude_none=True))
+            if not msg.tool_calls:
+                emit({"type": "assistant", "text": msg.content or "(empty reply: try rephrasing, or start a new chat)"})
+                return
+            for tc in msg.tool_calls:
+                name = tc.function.name
+                try:
+                    targs = json.loads(tc.function.arguments or "{}")
+                    emit({"type": "tool", "name": name, "args": targs})
+                    if name in ("update_spec", "check_spec", "update_project", "check_project", "use_defaults"):
+                        spec_calls += 1
+                    if spec_calls > MAX_SPEC_CALLS:
+                        result = {"error": "Too many edits this turn. STOP calling tools and ask the user the open "
+                                           "questions from the last check_project/check_spec in one message."}
+                    else:
+                        result = FUNCS[name](**targs) if name in FUNCS else {"error": f"unknown tool {name}"}
+                except Exception as e:
+                    result = {"error": f"{type(e).__name__}: {e}"}
+                emit({"type": "result", "name": name, "result": result})
+                text = json.dumps(result, default=str)
+                if len(text) > 12000:
+                    text = text[:12000] + "...[truncated]"
+                msgs.append({"role": "tool", "tool_call_id": tc.id, "content": text})
+        emit({"type": "assistant", "text": "(stopped: step limit reached)"})
+    except Exception as e:  # server down, timeout, context overflow...
+        del msgs[turn_start:]  # drop the half-finished turn so the conversation stays valid
+        kind = type(e).__name__
+        hint = ("Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health"
+                if "Connection" in kind else "Try again, or start a new chat if the conversation got too long.")
+        emit({"type": "error", "text": f"could not reach the model: {kind}: {str(e)[:200]}. {hint}"})
+
+
 def main():
     import argparse
     for stream in (sys.stdout, sys.stderr):
@@ -258,23 +310,22 @@ def main():
             pass
     ap = argparse.ArgumentParser()
     ap.add_argument("--script", help="text file with one user message per line (for unattended tests); "
-                                     "terminal approvals are answered 'y' automatically")
+                                     "approvals are answered 'y' automatically")
     ap.add_argument("--log", help="write the full conversation as JSONL to this file")
     args = ap.parse_args()
-    global SPEC, PROJECT, input
     script = [l.rstrip("\n") for l in open(args.script, encoding="utf-8") if l.strip()] if args.script else None
-    if script is not None:
-        import builtins
-        _real_input = builtins.input
-
-        def input(prompt=""):
-            if "[y/N]" in prompt:
-                print(prompt + "y (auto, --script)"); return "y"
-            if not script:
-                raise EOFError
-            line = script.pop(0); print(prompt + line); return line
-        builtins.input = input  # run_study's approval prompt uses input() too
     log = open(args.log, "a", encoding="utf-8") if args.log else None
+
+    def ask(prompt):
+        if script is None:
+            return input(prompt)
+        if not script:
+            raise EOFError
+        line = script.pop(0)
+        print(prompt + line)
+        return line
+    if script is not None:
+        HOOKS["confirm"] = lambda q: (print(f"  {q} [y/N] y (auto, --script)"), True)[1]
 
     def show(text):
         try:
@@ -284,12 +335,23 @@ def main():
         if log:
             log.write(json.dumps({"agent": text}) + "\n"); log.flush()
 
+    def emit(ev):
+        if ev["type"] == "tool":
+            print(f"  [{ev['name']}] {json.dumps(ev['args'])[:160]}")
+        elif ev["type"] == "result":
+            if log:
+                log.write(json.dumps({"tool": ev["name"], "args": "", "result": json.dumps(ev["result"], default=str)[:3000]}) + "\n")
+        elif ev["type"] == "assistant":
+            show(f"\nagent> {ev['text']}\n")
+        else:
+            show(f"\nagent> ({ev['text']})\n")
+
     client = OpenAI(base_url=BASE_URL, api_key="sk-local", timeout=600, max_retries=1)
-    msgs = [{"role": "system", "content": SYSTEM}]
+    msgs = new_conversation()
     show("PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.\n")
     while True:
         try:
-            user = input("you> ").strip()
+            user = ask("you> ").strip()
         except (EOFError, KeyboardInterrupt):
             break
         if log:
@@ -299,49 +361,13 @@ def main():
         if user.lower() == "spec":
             show(json.dumps(SPEC, indent=2) + ("\n" + prj.summary(PROJECT) if PROJECT else "")); continue
         if user.lower() == "reset":
-            SPEC = {}; PROJECT = {}; STATE.update(plan_ok_for=None, components=None)
-            msgs = msgs[:1]; show("(new study)\n"); continue
+            msgs = new_conversation(); show("(new study)\n"); continue
         if not user:
             continue
-        turn_start = len(msgs)
-        msgs.append({"role": "user", "content": user})
-        spec_calls = 0
-        try:
-            for _ in range(MAX_STEPS):
-                msg = chat(client, msgs)
-                msgs.append(msg.model_dump(exclude_none=True))
-                if not msg.tool_calls:
-                    show(f"\nagent> {msg.content or '(empty reply: try rephrasing, or type reset)'}\n"); break
-                for tc in msg.tool_calls:
-                    name = tc.function.name
-                    try:
-                        targs = json.loads(tc.function.arguments or "{}")
-                        print(f"  [{name}] {json.dumps(targs)[:160]}")
-                        if name in ("update_spec", "check_spec", "update_project", "check_project", "use_defaults"):
-                            spec_calls += 1
-                        if spec_calls > MAX_SPEC_CALLS:
-                            result = {"error": "Too many edits this turn. STOP calling tools and ask the user the open "
-                                               "questions from the last check_project/check_spec in one message."}
-                        else:
-                            result = FUNCS[name](**targs) if name in FUNCS else {"error": f"unknown tool {name}"}
-                    except Exception as e:
-                        result = {"error": f"{type(e).__name__}: {e}"}
-                    text = json.dumps(result, default=str)
-                    if len(text) > 12000:
-                        text = text[:12000] + "...[truncated]"
-                    if log:
-                        log.write(json.dumps({"tool": name, "args": tc.function.arguments, "result": text[:3000]}) + "\n")
-                    msgs.append({"role": "tool", "tool_call_id": tc.id, "content": text})
-            else:
-                show("\nagent> (stopped: step limit reached)\n")
-        except Exception as e:  # server down, timeout, context overflow...
-            del msgs[turn_start:]  # drop the half-finished turn so the conversation stays valid
-            kind = type(e).__name__
-            hint = ("Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health"
-                    if "Connection" in kind else "Try again, or type reset if the conversation got too long.")
-            show(f"\nagent> (could not reach the model: {kind}: {str(e)[:200]}. {hint})\n")
-            if script is not None:
-                break
+        errors = []
+        run_turn(client, msgs, user, lambda ev: (errors.append(ev) if ev["type"] == "error" else None, emit(ev)))
+        if errors and script is not None:
+            break
     if log:
         log.write(json.dumps({"final_spec": SPEC}) + "\n"); log.close()
 
