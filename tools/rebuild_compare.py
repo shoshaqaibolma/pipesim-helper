@@ -112,7 +112,8 @@ def copy_details(orig, built, fluids, flowlines, notes):
 
 
 def pipeline_case(path, tmp):
-    notes, out = [], {"type": "pipeline", "notes": notes}
+    notes = []
+    out = {"type": "pipeline", "notes": notes}
     c = os.path.join(tmp, "orig.pips"); shutil.copy2(path, c)
     orig = sa.open_model(c)
     try:
@@ -172,7 +173,8 @@ def pipeline_case(path, tmp):
 
 
 def well_case(path, tmp, outlet_pressure=20.0):
-    notes, out = [], {"type": "well (nodal analysis)", "notes": notes}
+    notes = []
+    out = {"type": "well (nodal analysis)", "notes": notes}
     c = os.path.join(tmp, "orig.pips"); shutil.copy2(path, c)
     orig = sa.open_model(c)
     try:

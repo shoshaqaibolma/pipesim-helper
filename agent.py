@@ -38,8 +38,9 @@ A. Put EVERYTHING the user gave into ONE update_project call, using exactly the 
 B. Call check_project. If "missing" is not empty, ask the user about those items in ONE numbered message,
    grouped by component, with the suggested defaults. Never invent values that have no suggested default.
    If the user says "use defaults", call use_defaults(["all"]) and then check_project again.
-C. When check_project is ready: if the user wants a PIPESIM file, call build_project(path). For a study on it,
-   call update_spec with model.source = "project", then continue with steps 2-5 above.
+C. When check_project is ready: for a study, call update_spec with model.source = "project" and continue with
+   steps 2-5 above (the study builds its own model; do not call build_project for it). Call build_project(path)
+   only when the user asks to keep a PIPESIM file.
 
 PROJECT SCHEMA (every list item needs a unique "name"; units in brackets):
   fluids:    {{"name","type":"black_oil","api","gor"[sm3/sm3],"water_cut"[%, 20 means 20%],"gas_sg"}}
@@ -99,9 +100,12 @@ def _plan_key():
 def update_spec(patch: dict):
     """Merge fields into the study spec. To replace a list (e.g. analysis.variables), send the whole list."""
     global SPEC
-    SPEC = study.merge(SPEC, patch)
+    SPEC, notes = study.clean(study.merge(SPEC, patch))
     STATE["plan_ok_for"] = None
-    return {"spec": SPEC}
+    out = {"spec": SPEC, "next_step": "Call check_spec."}
+    if notes:
+        out["ignored"] = notes
+    return out
 
 
 def check_spec():
@@ -206,7 +210,8 @@ _S = {"type": "string"}
 PARAMS = {
     "update_spec": ({"patch": {"type": "object", "description": "Partial spec to merge. Keys: objective, units, "
                                "model{source: existing|new|project, path|template,params}, base_changes[], "
-                               "analysis{type,variables[],producer,conditions}, kpis[]"}},
+                               "analysis{type,variables[],producer,conditions,outlet_pressure,max_total}. "
+                               "A key set to null is removed."}},
                     ["patch"]),
     "check_spec": ({}, []), "propose_plan": ({}, []), "run_study": ({}, []),
     "inspect_model": ({"path": _S, "units": {"type": "string", "enum": ["METRIC", "FIELD", "SI"]}}, ["path"]),

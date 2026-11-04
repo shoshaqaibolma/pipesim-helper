@@ -48,9 +48,12 @@ DEFAULT_KPI_VARS = ["VOLUME_FLOWRATE_LIQUID_STOCKTANK", "VOLUME_FLOWRATE_OIL_STO
 
 
 def merge(base, patch):
+    """Deep-merge patch into base; a value of None deletes the key."""
     out = copy.deepcopy(base)
     for k, v in (patch or {}).items():
-        if isinstance(v, dict) and isinstance(out.get(k), dict):
+        if v is None:
+            out.pop(k, None)
+        elif isinstance(v, dict) and isinstance(out.get(k), dict):
             out[k] = merge(out[k], v)
         else:
             out[k] = copy.deepcopy(v)
@@ -110,6 +113,23 @@ def feasible_combos(a):
 
 
 SOURCES = ("existing", "new", "project")
+
+
+def clean(spec):
+    """Drop keys the spec does not use (a small model tends to add them and then cannot remove them).
+    Returns (spec, notes)."""
+    spec, notes = copy.deepcopy(spec), []
+    for k in list(spec):
+        if k not in SPEC_KEYS:
+            notes.append(f"ignored '{k}' (not a study setting)"); spec.pop(k)
+    for part, allowed in (("model", MODEL_KEYS), ("analysis", ANALYSIS_KEYS)):
+        for k in list(spec.get(part) or {}):
+            if k not in allowed:
+                notes.append(f"ignored '{part}.{k}'" + (" (results are chosen automatically)" if k == "kpis" else ""))
+                spec[part].pop(k)
+    if (spec.get("model") or {}).get("source") == "project" and "path" in spec["model"]:
+        spec["model"].pop("path")   # a project study builds its own model
+    return spec, notes
 
 
 def check(spec, known_components=None, project=None):

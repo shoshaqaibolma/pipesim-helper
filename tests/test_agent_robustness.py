@@ -51,4 +51,12 @@ assert {"wells.W9.reservoir_pressure", "wells.W9.depth", "sinks.S.pressure"} <= 
 
 # 5. summary never raises, whatever got in
 assert "unnamed" in prj.summary({"fluids": [{"api": 30}]})
+# 6. job 14 (web UI, real model): analysis.kpis kept coming back because merges cannot delete keys
+agent.SPEC = {}
+r = agent.update_spec({"objective": "x", "model": {"source": "project", "path": "Field.pips"},
+                       "analysis": {"type": "sweep", "kpis": [{"oil": 1}], "variables": []}})
+assert "kpis" not in agent.SPEC["analysis"] and "path" not in agent.SPEC["model"] and r["ignored"], r
+agent.update_spec({"analysis": {"producer": "W1"}}); agent.update_spec({"analysis": {"producer": None}})
+assert "producer" not in agent.SPEC["analysis"]
+print("spec: stray keys dropped with a note, null deletes a key")
 print("\nALL OK")
