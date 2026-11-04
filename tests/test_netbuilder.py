@@ -22,20 +22,34 @@ tmp = tempfile.mkdtemp()
 m, rep = netbuilder.build(FIELD, os.path.join(tmp, "field.pips"))
 assert m.comps["Well"] == ["W1", "W2"] and m.comps["Completion"] == ["W1:Completion", "W2:Completion"], m.comps
 assert m.edges == {"W1": ["CK1"], "CK1": ["FL1"], "FL1": ["J1"], "W2": ["FL2"], "FL2": ["J1"], "J1": ["FL3"], "FL3": ["Sep"]}, m.edges
-assert rep["connections"] == 7 and rep["boundary_conditions_verified"] == {"Sep.Pressure": True}, rep
+assert rep["connections"] == 7 and rep["boundaries_synced"] and not rep["validation"], rep
+assert rep["boundary_conditions"] == {"Sep.Pressure": "ok", "W1:Completion.Pressure": "ok", "W1:Completion.Temperature": "ok",
+                                      "W2:Completion.Pressure": "ok", "W2:Completion.Temperature": "ok"}, rep
+assert m.comps["Casing"] == ["W1:Casing", "W2:Casing"]
 m.close()
 assert os.path.exists(netbuilder.build_file(FIELD, os.path.join(tmp, "out.pips"))["file"])
 print("build: 2 wells, choke, junction, sink; 7 connections; sink boundary condition verified")
 
 # 2. the adapter is what makes a sink-pressure sweep work (a plain set_value does not move the boundary)
 m, _ = netbuilder.build(FIELD, os.path.join(tmp, "f2.pips"))
-r1 = m.tasks.networksimulation.run().node["StockTankLiquidFlowrate"]["Sep"]
+r1 = m.tasks.networksimulation.run().node["VolumeFlowrateLiquidStockTank"]["Sep"]
 m.set_value(Sink="Sep", parameter="Pressure", value=40)
-assert m.tasks.networksimulation.run().node["StockTankLiquidFlowrate"]["Sep"] == r1  # like CSN_301 on 2023.1
+assert m.tasks.networksimulation.run().node["VolumeFlowrateLiquidStockTank"]["Sep"] == r1  # like CSN_301 on 2023.1
 sa.set_param(m, "Sink", "Sep", "Pressure", 40)
-assert m.tasks.networksimulation.run().node["StockTankLiquidFlowrate"]["Sep"] < r1
+assert m.tasks.networksimulation.run().node["VolumeFlowrateLiquidStockTank"]["Sep"] < r1
 assert sa.get_param(m, "Sink", "Sep", "Pressure") == 40
-print("adapter: set_value alone leaves the network result unchanged; set_param moves the boundary condition")
+# in-well items: Completion="W1:Completion" is rejected (as on 2023.1); the adapter uses Well="W1", Completion="Completion"
+try:
+    m.get_value(Completion="W1:Completion", parameter="ReservoirPressure"); raise AssertionError("expected failure")
+except LookupError:
+    pass
+assert sa.get_value(m, "Completion", "W1:Completion", "ReservoirPressure") == 260
+r2 = m.tasks.networksimulation.run().node["VolumeFlowrateLiquidStockTank"]["W1"]
+sa.set_param(m, "Completion", "W1:Completion", "ReservoirPressure", 300)   # reservoir pressure is a boundary value too
+assert m.tasks.networksimulation.run().node["VolumeFlowrateLiquidStockTank"]["W1"] > r2
+assert sa.get_param(m, "Completion", "W1:Completion", "ReservoirPressure") == 300
+print("adapter: set_value alone leaves the network result unchanged; set_param moves the boundary condition "
+      "(sink pressure and well reservoir pressure); in-well items addressed as Well=..., Completion=...")
 
 # 3. a study on the described project: sweep the separator pressure, results must change, no warning
 spec = {"objective": "Separator pressure vs field rate", "units": "METRIC", "model": {"source": "project"},
@@ -45,6 +59,7 @@ c = study.check(spec, project=FIELD)
 assert c["ready"], c
 assert "W1: fluid=BO" in study.plan_text(spec, FIELD)
 r = executor.run(spec, progress=lambda s: None, project=FIELD)
+assert "[sm3/d]" in r["table"][0], r["table"][0]          # units from the results go into the headers
 liq = [float(row.split(" | ")[2]) for row in r["table"][2:]]
 assert liq == sorted(liq, reverse=True) and liq[0] > liq[-1] and not r["warnings"], r
 assert os.path.exists(os.path.join(r["output_dir"], "project.json"))

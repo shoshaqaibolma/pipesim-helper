@@ -11,7 +11,7 @@ and validates the topology, the same way study.check() does for studies. netbuil
   "sources":   [{"name": "S1", "fluid": "BO-1", "pressure": 40, "temperature": 60, "liquid_rate": 500}],
   "junctions": [{"name": "J1"}],
   "sinks":     [{"name": "Separator", "pressure": 15}],
-  "chokes":    [{"name": "CK-1", "from": "W1", "bean_size": 32}],   # optional: sits right after its "from" node
+  "chokes":    [{"name": "CK-1", "from": "W1", "bean_size": 12.7}],  # mm; optional: sits right after its "from" node
   "flowlines": [{"name": "FL-1", "from": "CK-1", "to": "J1", "length": 2000, "id": 150, "elevation_change": 0},
                 {"name": "FL-2", "from": "J1", "to": "Separator", "length": 5000, "id": 200, "elevation_change": 10}]
 }
@@ -21,7 +21,7 @@ connected directly to its upstream node. Every well/source must reach a sink. Li
 """
 import copy
 
-UNITS_METRIC = {"pressure": "bara", "temperature": "degC", "length": "m", "id": "mm", "rate": "sm3/d",
+UNITS_METRIC = {"pressure": "bara", "temperature": "degC", "length": "m", "id": "mm", "bean": "mm", "rate": "sm3/d",
                 "gas_rate": "mmsm3/d", "pi": "sm3/d/bar", "gor": "sm3/sm3", "pct": "%"}
 
 # entity -> field -> (question, unit, default). None default = must be asked, no sensible default.
@@ -56,7 +56,7 @@ FIELDS = {
         "elevation_change": ("Elevation change, positive uphill?", "m", 0.0),
     },
     "chokes": {"from": ("Which well, source or junction is the choke installed right after?", "", None),
-               "bean_size": ("Choke bean size?", "1/64 in", 32.0)},
+               "bean_size": ("Choke bean size (diameter)?", "mm", 12.7)},
     "junctions": {},
 }
 IPR_FIELDS = {"pi": ["liquid_pi"], "vogel": ["aof"], "backpressure": ["c", "n"]}

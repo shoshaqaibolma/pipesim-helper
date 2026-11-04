@@ -14,8 +14,9 @@ IPR = {  # ipr.model -> (IPR model constant, {project field: sixgill parameter})
     "pi": (lambda: C("IPRModels", "IPRPIMODEL"), {"liquid_pi": lambda: P("IPRPIModel", "LIQUIDPI")}),
     "vogel": (lambda: C("IPRModels", "IPRVOGEL"), {"aof": lambda: P("IPRVogel", "ABSOLUTEOPENFLOWPOTENTIAL")}),
     "backpressure": (lambda: C("IPRModels", "IPRBACKPRESSURE"),
-                     {"c": lambda: P("IPRBackPressure", "C"), "n": lambda: P("IPRBackPressure", "N")}),
+                     {"c": lambda: P("IPRBackPressure", "CONSTANTC"), "n": lambda: P("IPRBackPressure", "SLOPEN")}),
 }
+CASING_ID_MM = 159.4   # 7" 26 lb/ft production casing, used when the project gives none
 
 
 def _fluid(m, f):
@@ -28,16 +29,20 @@ def _fluid(m, f):
 
 def _well(m, w, ambient):
     sa.add(m, MC("WELL"), w["name"], parameters={P("Well", "AMBIENTTEMPERATURE"): ambient})
+    sa.add(m, MC("CASING"), "Casing", context=w["name"], parameters={
+        P("Casing", "TOPMEASUREDDEPTH"): 0.0, P("Casing", "BOTTOMMEASUREDDEPTH"): w["depth"],
+        P("Casing", "INNERDIAMETER"): w.get("casing_id", CASING_ID_MM)})
     sa.add(m, MC("TUBING"), "Tubing", context=w["name"], parameters={
-        P("Tubing", "TOPMEASUREDDEPTH"): 0.0, P("Tubing", "LENGTH"): w["depth"],
+        P("Tubing", "TOPMEASUREDDEPTH"): 0.0, P("Tubing", "BOTTOMMEASUREDDEPTH"): w["depth"],
         P("Tubing", "INNERDIAMETER"): w["tubing_id"]})
     ipr_const, fields = IPR[w["ipr"]["model"]]
     params = {P("Completion", "TOPMEASUREDDEPTH"): w["depth"],
               P("Completion", "FLUIDENTRYTYPE"): C("CompletionFluidEntry", "SINGLEPOINT"),
+              P("Completion", "GEOMETRYPROFILETYPE"): C("Orientation", "VERTICAL"),
               P("Completion", "IPRMODEL"): ipr_const(),
               P("Completion", "RESERVOIRPRESSURE"): w["reservoir_pressure"],
               P("Completion", "RESERVOIRTEMPERATURE"): w["reservoir_temperature"],
-              P("Completion", "FLUIDNAME"): w["fluid"]}
+              P("Completion", "ASSOCIATEDBLACKOILFLUID"): w["fluid"]}
     for field, param in fields.items():
         params[param()] = w["ipr"][field]
     sa.add(m, MC("COMPLETION"), "Completion", context=w["name"], parameters=params)
@@ -62,7 +67,7 @@ def build(project, path, units="METRIC"):
             kind_of[w["name"]] = "wells"
         for s in project.get("sources") or []:
             params = {P("Source", "PRESSURE"): s["pressure"], P("Source", "TEMPERATURE"): s["temperature"],
-                      P("Source", "FLUIDNAME"): s["fluid"]}
+                      P("Source", "ASSOCIATEDBLACKOILFLUID"): s["fluid"]}
             sa.add(m, MC("SOURCE"), s["name"], parameters=params)
             kind_of[s["name"]] = "sources"
         for j in project.get("junctions") or []:
@@ -86,11 +91,19 @@ def build(project, path, units="METRIC"):
             sa.connect(m, KIND_TYPE[kind_of[fl["from"]]](), fl["from"], MC("FLOWLINE"), fl["name"])
             sa.connect(m, MC("FLOWLINE"), fl["name"], KIND_TYPE[kind_of[fl["to"]]](), fl["to"])
             links += 2
+        # the network task keeps its own boundary conditions: sync them with the components, then verify each one
+        synced = sa.sync_boundaries(m)
         bcs = {}
-        for k in project.get("sinks") or []:
-            bcs[f"{k['name']}.Pressure"] = sa.set_boundary(m, k["name"], P("Sink", "PRESSURE"), k["pressure"])
-        for s in project.get("sources") or []:
-            bcs[f"{s['name']}.Pressure"] = sa.set_boundary(m, s["name"], P("Source", "PRESSURE"), s["pressure"])
+        targets = [(k["name"], "Pressure", k["pressure"]) for k in project.get("sinks") or []]
+        targets += [(s["name"], key, s[f]) for s in project.get("sources") or []
+                    for key, f in (("Pressure", "pressure"), ("Temperature", "temperature"))]
+        targets += [(f"{w['name']}:Completion", key, w[f]) for w in project.get("wells") or []
+                    for key, f in (("Pressure", "reservoir_pressure"), ("Temperature", "reservoir_temperature"))]
+        for node, key, value in targets:
+            cur = ((sa.get_boundaries(m) or {}).get(node) or {}).get(key)
+            bcs[f"{node}.{key}"] = ("ok" if cur is not None and sa._same(cur, value)
+                                    else "set" if sa.set_boundary(m, node, key, value) else "NOT SET")
+        issues = sa.validate(m)
         m.save()
     except Exception:
         try:
@@ -98,7 +111,8 @@ def build(project, path, units="METRIC"):
         finally:
             raise
     n = sum(len(project.get(k) or []) for k in prj.FIELDS)
-    return m, {"file": path, "components": n, "connections": links, "boundary_conditions_verified": bcs}
+    return m, {"file": path, "components": n, "connections": links, "boundaries_synced": synced,
+               "boundary_conditions": bcs, "validation": issues}
 
 
 def build_file(project, path):

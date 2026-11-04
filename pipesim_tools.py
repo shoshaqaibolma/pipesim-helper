@@ -12,6 +12,7 @@ import json, os, traceback
 
 from sixgill.pipesim import Model
 from sixgill import definitions as d
+import sixgill_adapter as sa
 
 ALL = getattr(d, "ALL", None)
 _state = {"model": None, "path": None}
@@ -82,10 +83,11 @@ def open_model(path: str, units: str = "METRIC"):
 def model_summary():
     """List the component names in the open model, grouped by component type."""
     m, out = _m(), {}
-    for t in ["Well", "Source", "Sink", "Junction", "Flowline", "Riser", "Choke", "Pump", "Compressor",
+    for t in ["Well", "Source", "Sink", "Junction", "Flowline", "Choke", "Pump", "Compressor",
               "TwoPhaseSeparator", "ThreePhaseSeparator", "HeatExchanger", "MultiplierAdder", "Completion", "Tubing", "Casing", "GasLiftInjection", "ESP"]:
         try:
-            names = m.find(**{t: ALL})
+            names = [n for n in m.find(**{t: ALL}) or []
+                     if not (t == "Source" and ":" in n)]  # "Well:Source 1" etc. are internal parts of a well
             if names:
                 out[t] = list(names)
         except Exception:
@@ -96,15 +98,18 @@ def model_summary():
 @_safe
 def get_values(component_type: str, parameters: list, name: str = ""):
     """Read parameters (e.g. ["WellheadPressure"]) for one component, or for all of that type when name is empty."""
-    return _m().get_values(**{component_type: name or ALL}, parameters=parameters)
+    m = _m()
+    if name and ":" in name:  # in-well item, e.g. "Well:VertComp"
+        return {name: {p: sa.get_value(m, component_type, name, p) for p in parameters}}
+    return m.get_values(**{component_type: name or ALL}, parameters=parameters)
 
 
 @_safe
 def set_value(component_type: str, name: str, parameter: str, value):
     """Change one parameter on one component in memory (not saved to disk)."""
     m = _m()
-    before = m.get_value(**{component_type: name}, parameter=parameter)
-    m.set_value(**{component_type: name}, parameter=parameter, value=value)
+    before = sa.get_param(m, component_type, name, parameter)
+    sa.set_param(m, component_type, name, parameter, value)
     return {"changed": f"{component_type}:{name}.{parameter}", "before": before, "after": value, "saved": False}
 
 

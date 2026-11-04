@@ -16,18 +16,6 @@ def _sv(name):
     return getattr(d.SystemVariables, name, name)
 
 
-def _lookup(table, var, comp):
-    """sixgill result tables are nested dicts. Accept either [var][comp] or [comp][var]."""
-    if not table:
-        return None
-    for a, b in ((var, comp), (comp, var)):
-        try:
-            return table[a][b]
-        except (KeyError, TypeError, IndexError):
-            pass
-    return None
-
-
 SHORT = {"VOLUME_FLOWRATE_LIQUID_STOCKTANK": "liquid rate", "VOLUME_FLOWRATE_OIL_STOCKTANK": "oil rate",
          "VOLUME_FLOWRATE_GAS_STOCKTANK": "gas rate", "VOLUME_FLOWRATE_WATER_STOCKTANK": "water rate",
          "PRESSURE": "pressure", "TEMPERATURE": "temperature"}
@@ -76,18 +64,29 @@ def _by_variable(kpis, cols):
     return groups
 
 
+UNITS = {}  # result column label -> unit reported by PIPESIM (e.g. "sm3/d")
+
+
 def _run_case(model, kpis):
     r = model.tasks.networksimulation.run(system_variables=[_sv(k["variable"]) for k in kpis])
     row = {}
     for k in kpis:
-        val = None
+        label = k.get("label") or f"{k['component']} {k['variable']}"
+        val = unit = None
         for tbl in (getattr(r, "node", None), getattr(r, "system", None)):
-            val = _lookup(tbl, _sv(k["variable"]), k["component"])
+            val, unit = sa.result(tbl, _sv(k["variable"]), k["component"])
             if val is not None:
                 break
-        row[k.get("label") or f"{k['component']} {k['variable']}"] = val
+        row[label] = val
+        if unit:
+            UNITS[label] = unit
     row["_status"] = str(getattr(r, "state", "ok"))
     return row
+
+
+def _head(col):
+    """Column header with its unit, e.g. 'Sep liquid rate [sm3/d]'."""
+    return f"{col} [{UNITS[col]}]" if col in UNITS else col
 
 
 def _pt_parameters(conditions):
@@ -163,6 +162,7 @@ def _tornado_chart(path, bars, kpi):
 
 
 def run(spec, progress=print, project=None):
+    UNITS.clear()
     stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f")[:-3]
     out = os.path.join(RUNS_DIR, stamp)
     os.makedirs(out, exist_ok=True)
@@ -241,9 +241,10 @@ def run(spec, progress=print, project=None):
                     case(f"{labels[0]}={v}", [(refs[0], v)])
                 sw = rows[1:]
                 for var, ks in _by_variable(kpis, kpi_cols).items():
+                    unit = next((UNITS[k] for k in ks if k in UNITS), "")
                     charts.append(_chart(os.path.join(out, f"sweep_{var.replace(' ', '_')}.png"),
                                          [r[labels[0]] for r in sw], {k: [r.get(k) for r in sw] for k in ks},
-                                         labels[0], f"{var} vs {labels[0]}"))
+                                         labels[0], f"{var}{f' [{unit}]' if unit else ''} vs {labels[0]}"))
             elif a["type"] == "grid":
                 for combo in itertools.product(*[study.values_of(v) for v in a["variables"]]):
                     case(", ".join(f"{l}={c}" for l, c in zip(labels, combo)), list(zip(refs, combo)))
@@ -279,7 +280,9 @@ def run(spec, progress=print, project=None):
         csv_path = os.path.join(out, "results.csv")
         cols = list(dict.fromkeys(c for r in rows for c in r))
         with open(csv_path, "w", newline="") as f:
-            w = csv.DictWriter(f, fieldnames=cols); w.writeheader(); w.writerows(rows)
+            w = csv.writer(f)
+            w.writerow([_head(c) for c in cols])
+            w.writerows([[r.get(c) for c in cols] for r in rows])
         charts = [c for c in charts if c]
         model.save()
         report = os.path.join(out, "report.md")
@@ -287,7 +290,7 @@ def run(spec, progress=print, project=None):
             f.write(study.plan_text(spec, proj) + "\n\n## Results\n\n")
             for w in warnings:
                 f.write(f"> **Warning:** {w}\n\n")
-            f.write("| " + " | ".join(cols) + " |\n|" + "---|" * len(cols) + "\n")
+            f.write("| " + " | ".join(_head(c) for c in cols) + " |\n|" + "---|" * len(cols) + "\n")
             for r in rows[:60]:
                 f.write("| " + " | ".join(_fmt(r.get(c)) for c in cols) + " |\n")
             for c in charts:
@@ -307,4 +310,4 @@ def _compact(rows, cols, limit=40):
     """Small text table for the LLM to interpret (long profiles are downsampled)."""
     step = max(1, len(rows) // limit)
     sel = rows[::step]
-    return [" | ".join(cols)] + [" | ".join(_fmt(r.get(c)) for c in cols) for r in sel]
+    return [" | ".join(_head(c) for c in cols)] + [" | ".join(_fmt(r.get(c)) for c in cols) for r in sel]

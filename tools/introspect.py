@@ -98,15 +98,17 @@ def dump_model(path, comp_types):
             for n in names:
                 key = f"{t}:{n}" if not n.startswith(t) else n
                 v = None
+                # in-well items ("Well:VertComp") must be addressed as Well="Well", Completion="VertComp"
+                kw = {"Well": n.split(":", 1)[0], t: n.split(":", 1)[1]} if ":" in n else {t: n}
                 try:
-                    v = m.get_values(**{t: n})
+                    v = m.get_values(**kw)
                 except Exception:
                     pass
                 if not v:
                     grp = getattr(d.Parameters, t, None)
                     params = list(consts(grp).values()) if grp else []
                     try:
-                        v = m.get_values(**{t: n}, parameters=params) if params else None
+                        v = m.get_values(**kw, parameters=params) if params else None
                     except Exception as e:
                         v = {"_error": str(e)}
                 info["values"][f"{t}|{n}"] = js(v)

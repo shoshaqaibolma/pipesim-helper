@@ -1,13 +1,19 @@
 """TEST-ONLY fake PIPESIM: toy physics, used only to exercise the plumbing. Numbers mean nothing.
 
-Mirrors behaviour seen on PIPESIM 2023.1 where it matters for the code under test:
-- a P/T profile run fails silently without a boundary condition, and its profile is keyed by case name;
-- the network task keeps its own boundary conditions: changing a Sink's "Pressure" component value alone
-  does NOT change the network result (set_conditions does).
+Mirrors behaviour VERIFIED on PIPESIM 2023.1 where it matters for the code under test:
+- in-well items are found as "<well>:<item>" but must be addressed as Well=<well>, <type>=<item>;
+  Completion="W1:Completion" raises "No such context";
+- the network task keeps its own boundary conditions (sinks, sources, and wells keyed by completion);
+  set_value on a component does not change them; set_conditions(boundaries=...) and reset_conditions() do;
+- results are node[variable] = {"Unit": ..., component: value};
+- a P/T profile run fails silently without a boundary condition, and its profile is keyed by case name.
 """
 import copy
 
 DEFAULT_COMPS = {"Well": ["Well"], "Sink": ["Sink"], "Flowline": ["FL"]}  # what Model.open() "finds"
+IN_WELL = {"Completion", "Tubing", "Casing", "Packer", "GasLiftInjection"}
+UNITS = {"Pressure": "bara", "VolumeFlowrateLiquidStockTank": "sm3/d", "VolumeFlowrateOilStockTank": "sm3/d",
+         "VolumeFlowrateGasStockTank": "mmsm3/d"}
 
 
 class _R:
@@ -19,8 +25,7 @@ class _PT:
     def __init__(s, m): s.m = m
     def get_conditions(s, producer=None): return {"OutletPressure": None}
     def run(s, producer=None, parameters=None, system_variables=None, profile_variables=None, **kw):
-        bc = {"OUTLETPRESSURE", "LIQUIDFLOWRATE", "GASFLOWRATE"}
-        if not bc & set(parameters or {}):
+        if not {"OUTLETPRESSURE", "LIQUIDFLOWRATE", "GASFLOWRATE", "OutletPressure"} & set(parameters or {}):
             return _R({}, {}, state="Failed")
         pr = s.m.v.get(("Completion", "Well:Completion", "ReservoirPressure"), 250)
         prof = {"Flowrate=1000 sm3/d": {"TotalDistance": [0, 1000, 2000], "Pressure": [pr - 50, pr - 120, 15],
@@ -32,46 +37,58 @@ class _Net:
     def __init__(s, m): s.m, s.bc = m, None
 
     def _bcs(s):
-        if s.bc is None:  # initialised from the component values the first time the task is used
-            s.bc = {n: {"Pressure": s.m.v.get((t, n, "Pressure")), "Temperature": s.m.v.get((t, n, "Temperature"))}
-                    for t in ("Sink", "Source") for n in s.m.comps.get(t, [])}
+        if s.bc is None:  # synchronised from the component values
+            v, s.bc = s.m.v, {}
+            for t in ("Sink", "Source"):
+                for n in s.m.comps.get(t, []):
+                    s.bc[n] = {"BoundaryNodeType": t, "Pressure": v.get((t, n, "Pressure")),
+                               "Temperature": v.get((t, n, "Temperature"))}
+            for c in s.m.comps.get("Completion", []):
+                s.bc[c] = {"BoundaryNodeType": "Completion", "Pressure": v.get(("Completion", c, "ReservoirPressure")),
+                           "Temperature": v.get(("Completion", c, "ReservoirTemperature"))}
         return s.bc
 
-    def get_conditions(s):
+    def get_conditions(s, use_surface_condition=None, study=None):
         return copy.deepcopy(s._bcs())
 
-    def set_conditions(s, boundaries=None, **kw):
-        if boundaries is None:
-            raise TypeError("set_conditions() needs boundaries=")
+    def set_conditions(s, boundaries=None, constraints=None, use_surface_condition=None, study=None):
         s._bcs()
-        for k, v in boundaries.items():
-            s.bc[k] = dict(v)
+        for k, val in (boundaries or {}).items():
+            if k not in s.bc:
+                raise KeyError(f"no boundary node {k}")
+            s.bc[k] = dict(val)
+
+    def reset_conditions(s, study=None):
+        s.bc = None
+        return True
 
     def run(s, system_variables=None, profile_variables=None, **kw):
         m, bcs = s.m, s._bcs()
         sinks = m.comps.get("Sink", [])
-        node = {k: {} for k in ("StockTankLiquidFlowrate", "StockTankOilFlowrate", "StockTankGasFlowrate", "Pressure")}
+        node = {k: {"Unit": u} for k, u in UNITS.items()}
         totals = {k: [0.0, 0.0, 0.0] for k in sinks}
         for w in m.comps.get("Well", []):
             c = f"{w}:Completion"
-            pr = m.v.get(("Completion", c, "ReservoirPressure"), 250)
+            pr = (bcs.get(c) or {}).get("Pressure")
+            pr = 250 if pr is None else pr
             pi = m.v.get(("Completion", c, "LiquidPI"), 10)
-            fl = m.v.get(("Completion", c, "FluidName"), "BO")
+            fl = m.v.get(("Completion", c, "AssociatedBlackOilFluid"), "BO")
             wc = m.v.get(("BlackOilFluid", fl, "WaterCut"), 20)
             gor = m.v.get(("BlackOilFluid", fl, "GOR"), 100)
             dest = s._sink_of(w) or (sinks[0] if sinks else None)
             psink = (bcs.get(dest) or {}).get("Pressure")
             psink = 15 if psink is None else psink
             liq = max(0.0, pi * (pr - psink - 120 - 0.6 * wc))
-            oil = liq * (1 - wc / 100)
-            node["StockTankLiquidFlowrate"][w], node["StockTankOilFlowrate"][w] = liq, oil
-            node["StockTankGasFlowrate"][w], node["Pressure"][w] = oil * gor, psink + 0.002 * liq
+            oil, gas = liq * (1 - wc / 100), liq * (1 - wc / 100) * gor / 1e6
+            for k, val in (("VolumeFlowrateLiquidStockTank", liq), ("VolumeFlowrateOilStockTank", oil),
+                           ("VolumeFlowrateGasStockTank", gas), ("Pressure", psink + 0.002 * liq)):
+                node[k][w] = val
             if dest in totals:
                 t = totals[dest]
-                t[0] += liq; t[1] += oil; t[2] += oil * gor
+                t[0] += liq; t[1] += oil; t[2] += gas
         for k, (l, o, g) in totals.items():
-            node["StockTankLiquidFlowrate"][k], node["StockTankOilFlowrate"][k] = l, o
-            node["StockTankGasFlowrate"][k] = g
+            node["VolumeFlowrateLiquidStockTank"][k], node["VolumeFlowrateOilStockTank"][k] = l, o
+            node["VolumeFlowrateGasStockTank"][k] = g
             node["Pressure"][k] = (bcs.get(k) or {}).get("Pressure")
         return _R(node)
 
@@ -114,26 +131,38 @@ class Model:
         for k, val in (parameters or {}).items():
             s.v[(t, full, k)] = val
 
-    def connect(s, a, b):
-        (ta, na), = a.items(); (tb, nb), = b.items()
+    def connect(s, source, destination, source_port=None):
+        (ta, na), = source.items(); (tb, nb), = destination.items()
         for t, n in ((ta, na), (tb, nb)):
             if n not in s.comps.get(t, []):
                 raise ValueError(f"connect: no {t} named {n}")
         s.edges.setdefault(na, []).append(nb)
 
+    def _resolve(s, kw):
+        if "context" in kw:
+            return kw.pop("component"), kw.pop("context")
+        well = kw.pop("Well", None)
+        (t, n), = kw.items()
+        if well is not None:
+            return t, f"{well}:{n}"
+        if t in IN_WELL and ":" in n:
+            raise LookupError(f"No such context: ModelContext({{'{t}': '{n}'}})")
+        return t, n
+
     def find(s, **kw):
         (t, _), = kw.items()
         return list(s.comps.get(t, []))
 
-    def get_value(s, **kw):
-        p = kw.pop("parameter"); (t, n), = kw.items()
-        return s.v.get((t, n, p), 0)
+    def get_value(s, parameter=None, **kw):
+        t, n = s._resolve(kw)
+        return s.v.get((t, n, parameter), 0)
 
-    def set_value(s, **kw):
-        p, val = kw.pop("parameter"), kw.pop("value"); (t, n), = kw.items()
-        s.v[(t, n, p)] = val
+    def set_value(s, parameter=None, value=None, **kw):
+        t, n = s._resolve(kw)
+        s.v[(t, n, parameter)] = value
 
     def get_values(s, **kw): return {}
+    def validate(s): return []
     def save(s, path=None): open(path or s.path, "w").write("fake")
     def close(s): pass
     def about(s): return "FAKE PIPESIM (tests only)"
