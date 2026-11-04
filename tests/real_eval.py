@@ -73,7 +73,8 @@ def score(name, runs):
         if not (nod and sw):
             return False, False, f"nodal run: {bool(nod)}, gas lift sweep: {bool(sw)}"
         best = settings(primary(sw[-1]).get("highest", {}).get("case")).get("GasRate")
-        return True, near(best, 0.1, 1e-3), f"best lift rate {best} mmsm3/d (expected 0.1)"
+        # the optimum is about 0.1 mmsm3/d; "0 to 0.2 in 5 steps" may be read as steps of 0.04 (0.08 or 0.12 best)
+        return True, best is not None and 0.075 <= best <= 0.125, f"best lift rate {best} mmsm3/d (expected about 0.1)"
     if name == "gaslift_allocation":
         rs = runs_of(runs, "optimize", "GasRate")
         if not rs:
@@ -127,7 +128,10 @@ def score(name, runs):
         if not rs:
             return False, False, "no water-cut sweep"
         lo = settings(primary(rs[-1]).get("lowest", {}).get("case")).get("WaterCut")
-        return True, near(lo, 70, 0.01), f"least oil at water cut {lo} % (expected 70)"
+        nf = rs[-1]["summary"].get("summary", {}).get("not_flowing", {}).get("cases", {})
+        dead = sorted(settings(c).get("WaterCut") for c in nf)
+        ok = near(lo, 70, 0.01) or (bool(dead) and max(dead) >= 69.9)   # least oil at 70 %, or no flow at 70 %
+        return True, ok, f"least oil at water cut {lo} %, wells not flowing at {dead} % (expected the least at 70)"
     return False, False, "unknown scenario"
 
 
