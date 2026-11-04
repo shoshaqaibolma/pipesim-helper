@@ -55,7 +55,7 @@ def run(script_lines, fake_chat):
 seen = []
 def looping(client, msgs):
     seen.append(msgs[-1])
-    if msgs[-1].get("role") == "tool" and "Too many spec edits" in msgs[-1]["content"]:
+    if msgs[-1].get("role") == "tool" and "Too many edits" in msgs[-1]["content"]:
         return Msg("1. Which model file? 2. Which analysis?")
     return Msg(tool_calls=[call("update_spec", {"patch": {"model": {"source": "C:/x.pips"}}})])
 out = run(["sweep sink pressure on my model"], looping)

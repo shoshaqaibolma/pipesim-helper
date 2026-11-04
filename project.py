@@ -104,6 +104,9 @@ def check_project(p):
             if n in names:
                 errors.append(f"Duplicate name '{n}' ({names[n]} and {kind}). Names must be unique.")
             names[n] = kind
+            unknown = sorted(k for k in e if k not in allowed_keys(kind))
+            if unknown:
+                errors.append(f"{n}: unknown field(s) {unknown} for {kind}. Allowed: {sorted(allowed_keys(kind) - {'_delete'})}")
             for f, (q, unit, dflt) in FIELDS[kind].items():
                 if f not in e:
                     ask(f"{kind}.{n}.{f}", f"{n}: {q}", unit, dflt)
@@ -196,6 +199,108 @@ def check_project(p):
     return {"ready": not missing and not errors, "next_step": nxt, "missing": missing, "errors": errors}
 
 
+EXTRA_KEYS = {"wells": {"casing_id", "casing_wall", "tubing_wall"}, "sources": set(SOURCE_BC)}
+
+
+def allowed_keys(kind):
+    keys = {"name", "_delete"} | set(FIELDS[kind]) | EXTRA_KEYS.get(kind, set())
+    if kind == "fluids":
+        keys |= {f for fields in FLUID_FIELDS.values() for f in fields}
+    return keys
+
+
+# Names a language model (or a person) tends to use -> the project's field names.
+SYNONYMS = {
+    "fluids": {"oil_api": "api", "api_gravity": "api", "oil_gravity": "api", "gas_oil_ratio": "gor",
+               "watercut": "water_cut", "wc": "water_cut", "water_cut_pct": "water_cut",
+               "gas_specific_gravity": "gas_sg", "gas_gravity": "gas_sg", "sg_gas": "gas_sg", "fluid_type": "type",
+               "model": "type", "condensate_gas_ratio": "ogr", "water_gas_ratio": "wgr"},
+    "wells": {"reservoir_temp": "reservoir_temperature", "res_pressure": "reservoir_pressure",
+              "reservoir_pressure_bara": "reservoir_pressure", "well_depth": "depth", "tvd": "depth", "depth_m": "depth",
+              "tubing_diameter": "tubing_id", "tubing_inner_diameter": "tubing_id", "fluid_name": "fluid"},
+    "sources": {"fluid_name": "fluid", "temp": "temperature", "liquid_flowrate": "liquid_rate",
+                "gas_flowrate": "gas_rate", "oil_rate": "liquid_rate", "flow_rate": "liquid_rate"},
+    "sinks": {"pressure_bara": "pressure", "separator_pressure": "pressure"},
+    "flowlines": {"inner_diameter": "id", "diameter": "id", "id_mm": "id", "length_m": "length",
+                  "elevation": "elevation_change", "elevation_difference": "elevation_change",
+                  "from_node": "from", "to_node": "to", "upstream": "from", "downstream": "to",
+                  "source": "from", "destination": "to"},
+    "chokes": {"bean": "bean_size", "bean_size_mm": "bean_size", "size": "bean_size", "upstream": "from", "after": "from"},
+    "junctions": {},
+}
+IGNORED_KEYS = {"type", "kind", "description", "comment"}   # harmless extras, dropped with a note (fluids keep "type")
+FLUID_TYPES = {"black_oil": "black_oil", "blackoil": "black_oil", "black oil": "black_oil", "black-oil": "black_oil",
+               "oil": "black_oil", "gas": "gas", "dry_gas": "gas", "drygas": "gas", "dry gas": "gas",
+               "condensate": "gas", "gas_condensate": "gas", "wet_gas": "gas"}
+PI_KEYS = ("liquid_pi", "productivity_index", "pi", "liquid_productivity_index")
+
+
+def normalize_item(kind, item):
+    """Map synonyms to field names. Returns (item, notes, errors); never raises."""
+    notes, errors = [], []
+    if not isinstance(item, dict):
+        return None, notes, [f"{kind}: every item must be an object with a name, got {item!r}"]
+    e, label = {}, item.get("name", f"{kind}[?]")
+    for k, v in item.items():
+        key = SYNONYMS.get(kind, {}).get(k, k)
+        if kind == "flowlines" and k == "length_km":
+            key, v = "length", v * 1000.0
+            notes.append(f"{label}: length_km {item[k]} -> length {v} m")
+        elif key != k:
+            notes.append(f"{label}: {k} -> {key}")
+        if kind == "wells" and key in PI_KEYS:
+            e["ipr"] = {"model": "pi", "liquid_pi": v}
+            notes.append(f"{label}: {k} -> ipr {{model: pi, liquid_pi: {v}}}")
+            continue
+        if kind == "wells" and key in ("aof", "c", "n"):
+            ipr = e.setdefault("ipr", {"model": "vogel" if key == "aof" else "backpressure"})
+            ipr[key] = v
+            continue
+        if key in IGNORED_KEYS and not (kind == "fluids" and key == "type"):
+            notes.append(f"{label}: ignored '{k}'")
+            continue
+        e[key] = v
+    if kind == "fluids" and isinstance(e.get("type"), str):
+        t = FLUID_TYPES.get(e["type"].strip().lower())
+        if t and t != e["type"]:
+            notes.append(f"{label}: type {e['type']} -> {t}")
+            e["type"] = t
+    if kind == "fluids" and isinstance(e.get("water_cut"), (int, float)) and 0 < e["water_cut"] < 1:
+        notes.append(f"{label}: water_cut {e['water_cut']} read as a fraction -> {e['water_cut'] * 100:g} %")
+        e["water_cut"] = e["water_cut"] * 100
+    if not e.get("name"):
+        errors.append(f"{kind}: an item has no \"name\" (every item needs a unique name): {item}")
+        return None, notes, errors
+    unknown = sorted(k for k in e if k not in allowed_keys(kind))
+    if unknown:
+        errors.append(f"{e['name']}: unknown field(s) {unknown} for {kind}. Allowed: {sorted(allowed_keys(kind) - {'_delete'})}")
+        e = {k: v for k, v in e.items() if k not in unknown}
+    return e, notes, errors
+
+
+def apply_patch(base, patch):
+    """Normalise a partial project, drop invalid items with a clear error, merge the rest by name.
+    Returns (project, notes, errors). The stored project never contains unnamed or unknown-field items."""
+    notes, errors, clean = [], [], {}
+    for k, v in (patch or {}).items():
+        if k in FIELDS:
+            if not isinstance(v, list):
+                v = [v] if isinstance(v, dict) else []
+            items = []
+            for item in v:
+                e, n, err = normalize_item(k, item)
+                notes += n
+                errors += err
+                if e is not None:
+                    items.append(e)
+            clean[k] = items
+        elif k in ("name", "units", "ambient_temperature"):
+            clean[k] = v
+        else:
+            errors.append(f"Unknown project key '{k}'. Allowed: name, units, ambient_temperature, {', '.join(FIELDS)}")
+    return merge_project(base, clean), notes, errors
+
+
 def merge_project(base, patch):
     """Merge a partial project into the current one. Lists merge by name; {"name": x, "_delete": true} removes x."""
     out = copy.deepcopy(base or {})
@@ -235,10 +340,11 @@ def known_components(p):
 
 
 def apply_defaults(p, fields):
-    """Fill the given missing fields (paths from check_project) with their suggested defaults."""
+    """Fill the given missing fields (paths from check_project, or "all") with their suggested defaults.
+    Fields without a sensible default stay missing and must be asked."""
     p = copy.deepcopy(p)
     for m in check_project(p)["missing"]:
-        if m["field"] in fields and m["suggested_default"] is not None:
+        if (fields == "all" or "all" in fields or m["field"] in fields) and m["suggested_default"] is not None:
             kind, name, *rest = m["field"].split(".")
             if kind == "project":
                 p[name] = copy.deepcopy(m["suggested_default"])
@@ -254,7 +360,7 @@ def apply_defaults(p, fields):
 def summary(p):
     lines = [f"PROJECT: {p.get('name')} ({p.get('units', 'METRIC')})"]
     for kind in FIELDS:
-        for e in p.get(kind) or []:
+        for i, e in enumerate(p.get(kind) or []):
             attrs = ", ".join(f"{k}={v}" for k, v in e.items() if k != "name")
-            lines.append(f"  {kind[:-1]:<9} {e['name']}: {attrs}")
+            lines.append(f"  {kind[:-1]:<9} {e.get('name', f'<unnamed {kind}[{i}]>')}: {attrs}")
     return "\n".join(lines)

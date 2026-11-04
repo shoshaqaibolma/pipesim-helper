@@ -28,14 +28,37 @@ WORKFLOW (follow it strictly):
 5. ANALYZE: explain the results from the returned table: trends, optimum, sensitivities, constraints,
    and anything that looks physically odd. Give the report path. Suggest a sensible follow-up study.
 
-NEW NETWORKS (the user wants to build/create a field, network or project with wells, flowlines, a separator...):
-A. Describe it with update_project. Lists merge by "name": send only the components you add or change.
-B. Call check_project. Ask the user about every "missing" item in ONE numbered message, grouped by
-   component, with the suggested defaults. Never invent missing values. Fix every "error".
+NEW NETWORKS (the user wants to build/create a field, network, pipeline or project):
+A. Put EVERYTHING the user gave into ONE update_project call, using exactly the field names below.
+B. Call check_project. If "missing" is not empty, ask the user about those items in ONE numbered message,
+   grouped by component, with the suggested defaults. Never invent values that have no suggested default.
+   If the user says "use defaults", call use_defaults(["all"]) and then check_project again.
 C. When check_project is ready: if the user wants a PIPESIM file, call build_project(path). For a study on it,
-   call update_spec with model.source = "project" and continue with steps 2-5 above.
-Project units: bara, degC, m (lengths and depths), mm (diameters), sm3/d, sm3/sm3, % (water cut).
-Chokes sit right after their "from" node; flowlines connect nodes (wells, sources, chokes, junctions, sinks).
+   call update_spec with model.source = "project", then continue with steps 2-5 above.
+
+PROJECT SCHEMA (every list item needs a unique "name"; units in brackets):
+  fluids:    {{"name","type":"black_oil","api","gor"[sm3/sm3],"water_cut"[%, 20 means 20%],"gas_sg"}}
+             or {{"name","type":"gas","gas_sg","ogr"[sm3/mmsm3],"wgr"[sm3/mmsm3],"api"}}
+  wells:     {{"name","fluid","reservoir_pressure"[bara],"reservoir_temperature"[degC],"depth"[m],"tubing_id"[mm],
+              "ipr":{{"model":"pi","liquid_pi"[sm3/d/bar]}}}}  (or {{"model":"vogel","aof"[sm3/d]}} or
+              {{"model":"backpressure","c"[mmsm3/d/bar^2n],"n"}})
+  sources:   {{"name","fluid","temperature"[degC]}} plus ONE of "pressure"[bara], "liquid_rate"[sm3/d], "gas_rate"[mmsm3/d].
+             Sources are pipeline inlets or external streams, NOT wells.
+  junctions: {{"name"}}  (manifolds, tie-in points)
+  sinks:     {{"name","pressure"[bara]}}  (separator, delivery point)
+  chokes:    {{"name","from","bean_size"[mm]}}  (installed right after its "from" node)
+  flowlines: {{"name","from","to","length"[m],"id"[mm],"elevation_change"[m, + uphill]}}  (connect nodes by name)
+EXAMPLE update_project patch for "2 wells into a manifold, 5 km trunkline to a separator at 15 bara":
+  {{"name":"Field A","fluids":[{{"name":"BO","type":"black_oil","api":35,"gor":100,"water_cut":20,"gas_sg":0.7}}],
+   "wells":[{{"name":"W1","fluid":"BO","reservoir_pressure":250,"depth":2500,"ipr":{{"model":"pi","liquid_pi":10}}}},
+            {{"name":"W2","fluid":"BO","reservoir_pressure":230,"depth":2400,"ipr":{{"model":"pi","liquid_pi":15}}}}],
+   "junctions":[{{"name":"J1"}}],"sinks":[{{"name":"SEP","pressure":15}}],
+   "flowlines":[{{"name":"FL-W1","from":"W1","to":"J1","length":1500,"id":100,"elevation_change":0}},
+                {{"name":"FL-W2","from":"W2","to":"J1","length":900,"id":100,"elevation_change":0}},
+                {{"name":"Trunk","from":"J1","to":"SEP","length":5000,"id":152,"elevation_change":10}}]}}
+STUDY VARIABLES on a project (component_type / name / parameter):
+  separator or sink pressure: Sink / <sink> / Pressure;  reservoir pressure: Completion / <well>:<well>_Comp / ReservoirPressure
+  choke size: Choke / <choke> / BeanSize;  flowline diameter: Flowline / <flowline> / InnerDiameter
 
 Analysis types: {json.dumps(study.ANALYSES)}
 Model templates for new models: { {k: v['description'] for k, v in TEMPLATES.items()} }
@@ -94,9 +117,26 @@ def update_project(patch: dict):
     """Add or change parts of the network being described. Lists (wells, flowlines, ...) merge by "name";
     {"name": "X", "_delete": true} removes X."""
     global PROJECT
-    PROJECT = prj.merge_project(PROJECT, patch)
+    PROJECT, notes, errors = prj.apply_patch(PROJECT, patch)
     STATE["plan_ok_for"] = None
-    return {"project": prj.summary(PROJECT)}
+    out = {"project": prj.summary(PROJECT), "next_step": "Call check_project."}
+    if notes:
+        out["normalized"] = notes
+    if errors:
+        out["rejected"] = errors
+        out["next_step"] = "Fix the rejected items with exactly the schema field names, then call check_project."
+    return out
+
+
+def use_defaults(fields: list):
+    """Fill missing project inputs with their suggested defaults. fields: ["all"] or field paths from check_project."""
+    global PROJECT
+    for _ in range(2):  # a filled field can reveal dependent ones (e.g. fluid type -> fluid properties)
+        PROJECT = prj.apply_defaults(PROJECT, fields)
+    STATE["plan_ok_for"] = None
+    c = check_project()
+    return {"project": prj.summary(PROJECT), "still_missing": c["missing"], "errors": c["errors"],
+            "next_step": c["next_step"]}
 
 
 def check_project():
@@ -140,7 +180,7 @@ def get_values(component_type: str, parameters: list, name: str = ""):
 
 
 FUNCS = {f.__name__: f for f in (update_spec, check_spec, propose_plan, run_study, inspect_model, get_values,
-                                  update_project, check_project, build_project)}
+                                  update_project, check_project, build_project, use_defaults)}
 _S = {"type": "string"}
 PARAMS = {
     "update_spec": ({"patch": {"type": "object", "description": "Partial spec to merge. Keys: objective, units, "
@@ -151,9 +191,11 @@ PARAMS = {
     "inspect_model": ({"path": _S, "units": {"type": "string", "enum": ["METRIC", "FIELD", "SI"]}}, ["path"]),
     "get_values": ({"component_type": _S, "name": _S, "parameters": {"type": "array", "items": _S}},
                    ["component_type", "parameters"]),
-    "update_project": ({"patch": {"type": "object", "description": "Partial project: name, ambient_temperature, "
-                                  "fluids[], wells[], sources[], junctions[], sinks[], chokes[], flowlines[] "
-                                  "(each item has a unique name)"}}, ["patch"]),
+    "update_project": ({"patch": {"type": "object", "description": "Partial project following the PROJECT SCHEMA in "
+                                  "the instructions: name, fluids[], wells[], sources[], junctions[], sinks[], chokes[], "
+                                  "flowlines[]; every item has a unique name"}}, ["patch"]),
+    "use_defaults": ({"fields": {"type": "array", "items": _S,
+                                 "description": "[\"all\"] or field paths from check_project's missing list"}}, ["fields"]),
     "check_project": ({}, []),
     "build_project": ({"path": {"type": "string", "description": "Where to save the new .pips file"}}, ["path"]),
 }
@@ -161,7 +203,7 @@ TOOLS = [{"type": "function", "function": {"name": n, "description": FUNCS[n].__
           "parameters": {"type": "object", "properties": p, "required": r}}} for n, (p, r) in PARAMS.items()]
 
 
-MAX_SPEC_CALLS = 8     # spec/project edit+check calls allowed per user turn before the agent must ask the user
+MAX_SPEC_CALLS = 10    # spec/project edit+check calls allowed per user turn before the agent must ask the user
 MAX_REPLY_TOKENS = 1500
 
 
@@ -240,11 +282,11 @@ def main():
                     try:
                         targs = json.loads(tc.function.arguments or "{}")
                         print(f"  [{name}] {json.dumps(targs)[:160]}")
-                        if name in ("update_spec", "check_spec", "update_project", "check_project"):
+                        if name in ("update_spec", "check_spec", "update_project", "check_project", "use_defaults"):
                             spec_calls += 1
                         if spec_calls > MAX_SPEC_CALLS:
-                            result = {"error": "Too many spec edits this turn. STOP calling tools and ask the user "
-                                               "the open questions from the last check_spec in one message."}
+                            result = {"error": "Too many edits this turn. STOP calling tools and ask the user the open "
+                                               "questions from the last check_project/check_spec in one message."}
                         else:
                             result = FUNCS[name](**targs) if name in FUNCS else {"error": f"unknown tool {name}"}
                     except Exception as e:
