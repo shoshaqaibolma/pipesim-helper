@@ -1,47 +1,265 @@
-JOB jobs\31_pips_question_again.txt started 2026-11-06 15:16:04
+JOB jobs\32_thermal_builder.txt started 2026-11-06 15:25:24
 
-$ "D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py "D:\Program\Pipesim2023.1\Case Studies\Training Exercises\Pipesim Fundamentals\TF_M2B_Gas Pipeline.pips" tests\scripts\pips_question.txt
+$ "D:\Program\Pipesim toolkit\python.exe" tools\thermal_check.py "D:\Program\Pipesim2023.1\Case Studies"
 [exit 0]
-starting llama-server ...
-=== agent finished in 14s, exit code 0
-=== transcript (tool results shortened)
-AGENT: PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.
 
-USER: What heat transfer settings does pipe FL use in C:\Users\Home\AppData\Local\Temp\pipesim_agenttest_2697r3oo\TF_M2B_Gas Pipeline.pips? Give the U-value, how it is set, and the pipe conductivity.
-  TOOL read_pips({"path": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_agenttest_2697r3oo\\TF_M2B_Gas Pipeline.pips", "component": "FL", "keyword": "u value"}) -> {"file": "TF_M2B_Gas Pipeline.pips", "units_note": "Converted from PIPESIM's stored SI units to METRIC (degC, bara, mm, sm3/d ...); 'SI (as stored)' marks values whose unit is not known beyond being SI.", "heat_transfer_in_use": {"surroundings": "Air", "u_value_set_as": "UserSupplied", "pipe_wall_conductivity": {"value": 60.549998, "unit": "W/m/K"}, "u_value": {"value": 0.0, "unit": "W/m2/K"}, "no
-  TOOL read_pips({"path": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_agenttest_2697r3oo\\TF_M2B_Gas Pipeline.pips", "component": "FL", "keyword": "heat capacity"}) -> {"file": "TF_M2B_Gas Pipeline.pips", "units_note": "Converted from PIPESIM's stored SI units to METRIC (degC, bara, mm, sm3/d ...); 'SI (as stored)' marks values whose unit is not known beyond being SI.", "heat_transfer_in_use": {"surroundings": "Air", "u_value_set_as": "UserSupplied", "pipe_wall_conductivity": {"value": 60.549998, "unit": "W/m/K"}, "u_value": {"value": 0.0, "unit": "W/m2/K"}, "no
-  TOOL read_pips({"path": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_agenttest_2697r3oo\\TF_M2B_Gas Pipeline.pips", "component": "FL", "keyword": "conductivity"}) -> {"file": "TF_M2B_Gas Pipeline.pips", "units_note": "Converted from PIPESIM's stored SI units to METRIC (degC, bara, mm, sm3/d ...); 'SI (as stored)' marks values whose unit is not known beyond being SI.", "heat_transfer_in_use": {"surroundings": "Air", "u_value_set_as": "UserSupplied", "pipe_wall_conductivity": {"value": 60.549998, "unit": "W/m/K"}, "u_value": {"value": 0.0, "unit": "W/m2/K"}, "no
-AGENT: agent> For pipe **FL** in `TF_M2B_Gas Pipeline.pips`, the heat transfer settings are:
+===== TF_M2A_Water_Pipeline
+ 1. builder, no thermal data              loss 72.654 (-3.37 %)  outlet T 16.5155 (+393.86 %)  liq 953.6599 (+0.32 %)  gas 0.0 (+0.00 %)
+      fluid Water_fluid: GLR 0 converted to GOR 0
+      builder thermal report: None
+ 2. + standard fluid thermal data         loss 72.6535 (-3.37 %)  outlet T 16.5229 (+393.99 %)  liq 953.6615 (+0.32 %)  gas 0.0 (+0.00 %)
+      fluid Water_fluid: GLR 0 converted to GOR 0
+      builder thermal report: {'fluids': ['Water_fluid'], 'pipes': [], 'skipped': []}
+ 3. + U-value read from the original      loss 72.6529 (-3.37 %)  outlet T 16.5427 (+394.34 %)  liq 953.6656 (+0.32 %)  gas 0.0 (+0.00 %)
+      fluid Water_fluid: GLR 0 converted to GOR 0
+      builder thermal report: {'fluids': ['Water_fluid'], 'pipes': ['FL: U = 0.0 W/m2/K (air side)'], 'skipped': []}
+ original                                 loss 75.1853  outlet T -5.6202  liq 950.5986  gas 0.0
 
-- **U-value**: 0.0 W/m²/K (user-supplied, but set to zero)
-- **How it is set**: `UserSupplied` (air-side)
-- **Pipe wall conductivity**: 60.55 W/m/K
+===== TF_M2B_Gas_Pipeline
+ 1. builder, no thermal data              loss 41.3661 (+0.04 %)  outlet T 12.39 (+2540.94 %)  liq 0.0 (+0.00 %)  gas 0.3032 (-1.58 %)
+      builder thermal report: None
+ 2. + standard fluid thermal data         loss 41.3498 (+0.00 %)  outlet T 1.431 (+381.92 %)  liq 0.0 (+0.00 %)  gas 0.3075 (-0.18 %)
+      builder thermal report: {'fluids': ['Gas'], 'pipes': [], 'skipped': []}
+ 3. + U-value read from the original      loss 41.3487 (+0.00 %)  outlet T -0.5076 (+0.00 %)  liq 0.0 (+0.00 %)  gas 0.308 (+0.00 %)
+      builder thermal report: {'fluids': ['Gas'], 'pipes': ['FL: U = 0.0 W/m2/K (air side)'], 'skipped': []}
+ original                                 loss 41.3487  outlet T -0.5076  liq 0.0  gas 0.308
 
-Additional thermal data stored in the file:
-- Cement thermal conductivity: 1.56 W/m/K
-- Fluid thermal conductivity: 1.00 W/m/K
-- Overall thermal conductivity: 48.01 W/m/K
-- Ground conductivity: 0.77 W/m/K
+===== TF_M2C_Multiphase_Pipeline
+ 1. builder, no thermal data              loss 259.5156 (-1.36 %)  outlet T 18.2218 (-9.84 %)  liq 1707.6071 (+0.23 %)  gas 0.1699 (-1.90 %)
+      builder thermal report: None
+ 2. + standard fluid thermal data         loss 263.5151 (+0.16 %)  outlet T 20.0611 (-0.74 %)  liq 1702.7691 (-0.05 %)  gas 0.1734 (+0.18 %)
+      builder thermal report: {'fluids': ['Multiphase'], 'pipes': [], 'skipped': []}
+ 3. + U-value read from the original      loss 263.1128 (+0.01 %)  outlet T 20.21 (+0.00 %)  liq 1703.6537 (-0.00 %)  gas 0.1732 (+0.01 %)
+      builder thermal report: {'fluids': ['Multiphase'], 'pipes': ['FL: U = 0.0 W/m2/K (air side)'], 'skipped': []}
+ original                                 loss 263.0962  outlet T 20.2099  liq 1703.6827  gas 0.1731
 
-The pipe is surrounded by air, so only the air-side settings apply. The U-value is user-supplied but currently zero, which would mean no heat transfer is modeled through the pipe wall.
+written knowledge/thermal_check.json
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 39216
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 11576
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:50353/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 31684
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:50488/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 37488
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:50624/api/metadata#'
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 37776
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:50694/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 6164
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:50828/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 39188
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:50962/api/metadata#'
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 31508
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51030/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 11124
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51164/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 26816
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51308/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 17560
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51446/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 22668
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51580/api/metadata#'
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 23448
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51650/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 29104
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51784/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 33848
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51919/api/metadata#'
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 25388
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51987/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 25904
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52126/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 37480
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52260/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 31252
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52394/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 28948
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52528/api/metadata#'
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 19236
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52596/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 32948
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52731/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 19080
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52867/api/metadata#'
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 34632
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52935/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 
-USER: What heat capacities does the fluid in that file have?
-AGENT: agent> From the file `TF_M2B_Gas Pipeline.pips`, the fluid thermal data (heat capacities) are:
 
-- **Gas heat capacity**: 2302.74 J/kg/K
-- **Oil heat capacity**: 1884.06 J/kg/K
-- **Water heat capacity**: 4186.8 J/kg/K
+$ "D:\Program\Pipesim toolkit\python.exe" tests\real_project_study.py
+[exit 0]
+check: {"ready": true, "next_step": "Call propose_plan and show the plan to the user word for word.", "missing": [], "errors": [], "n_cases": 4}
+Building the model...
+  case 1/4: base
+  case 2/4: Sep.Pressure=10
+  case 3/4: Sep.Pressure=20
+  case 4/4: Sep.Pressure=30
+case | Sep.Pressure | Sep liquid rate [sm3/d] | Sep oil rate [sm3/d] | Sep gas rate [mmsm3/d] | W1 liquid rate [sm3/d] | W1 pressure [bara] | W2 liquid rate [sm3/d] | W2 pressure [bara] | _status | Sep oil rate change vs base [%]
+base | 15 | 1521 | 1217 | 0.1217 | 693 | 38.89 | 828.5 | 36.32 | Completed | 0
+Sep.Pressure=10 | 10 | 1584 | 1267 | 0.1267 | 717.9 | 37.84 | 866.4 | 35.23 | Completed | 4.13
+Sep.Pressure=20 | 20 | 1448 | 1158 | 0.1158 | 665.8 | 40.01 | 782.1 | 37.63 | Completed | -4.84
+Sep.Pressure=30 | 30 | 1240 | 991.8 | 0.09918 | 588 | 43.32 | 651.8 | 41.28 | Completed | -18.51
+warnings: [] | failed cases: []
+outputs: D:\github reps\pipesim helper\runs\20261106-152947-669 ['model.pipr', 'model.pips', 'project.json', 'report.md', 'results.csv', 'spec.json', 'summary.json', 'sweep_gas_rate.png', 'sweep_liquid_rate.png', 'sweep_oil_rate.png', 'sweep_pressure.png']
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 39248
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 28016
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:53138/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 
-These values are stored in the `AV_BlackOilThermalData` table for components like "Dry Gas", "Light Oil + Gas", "Heavy Oil + Gas", "Dead Oil", "Water", and "Gas".
 
-USER: exit
+$ "D:\Program\Pipesim toolkit\python.exe" tests\real_nodal_test.py
+[exit 0]
 
-=== final spec
-{}
+== natural flow: check True
+operating point: {"case": "operating point", "liquid_rate [sm3/d]": 1093.192127924954, "oil_rate [sm3/d]": 874.5537023399633, "reservoir_gas_rate [mmsm3/d]": 0.08745562453464004, "water_rate [sm3/d]": 218.6384255849908, "bottomhole_pressure [bara]": 134.58194579323387, "outlet_pressure [bara]": 20, "_status": "Completed"}
+charts: ['nodal.png'] | warnings: []
+raw inflow_0: {"case": "OperatingPointInflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [0.1339983051360737, 0.001339983051360737, 0.08745562453464004, 0.04439780379300037, 0.022868893422180563, 0.11072696483535685, 0.12236263498571527, 0.012104438236770647, 0.0659267141638202, 0.12818047006089445,
+raw outflow_0: {"case": "OperatingPointOutflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [NaN, 0.1339983051360737, 0.0001339983051360737, 0.08745562453464004, 0.03506264879693765, 0.01410545850185671, 0.005722582383824329, 0.0560198390920186, 0.10607269677521347, 0.00907573283103728, 0.068594153269
+raw operating_points: [{"case": "Operating Point: Flowrate=6875.971 sbbl/day", "point_data": {"NodalPointVolumeFlowrateLiquidStockTank": 1093.192127924954, "NodalPointPressure": 134.58194579323387, "NodalPointMassFlowrateFluid": 12.050703755368744, "NodalPointVolumeFlowrateGasStockTank": 0.08745562453464004}, "units": {"
 
-(llama-server stopped)
+== gas lift 0.05 mmsm3/d: check True
+operating point: {"case": "operating point", "liquid_rate [sm3/d]": 1225.6865501707143, "oil_rate [sm3/d]": 980.5492401365715, "reservoir_gas_rate [mmsm3/d]": 0.098055209135431, "water_rate [sm3/d]": 245.13731003414279, "bottomhole_pressure [bara]": 116.00686365096871, "outlet_pressure [bara]": 20, "_status": "Completed"}
+charts: ['nodal.png'] | warnings: []
+raw inflow_0: {"case": "OperatingPointInflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [0.1340090588281962, 0.001340090588281962, 0.098055209135431, 0.049697649861856485, 0.02551887022506922, 0.11603213398181358, 0.013429480406675591, 0.07387642949864374, 0.12502059640500487, 0.03760826004346285, 
+raw outflow_0: {"case": "OperatingPointOutflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [NaN, 0.1340090588281962, 0.00013400905882819618, 0.098055209135431, 0.039302489089469324, 0.062803577107854, 0.015801401071084648, 0.07690422991888479, 0.11243674901253708, 0.025201836278438517, 0.048702924296
+raw operating_points: [{"case": "Operating Point: Flowrate=7709.336 sbbl/day", "point_data": {"NodalPointVolumeFlowrateLiquidStockTank": 1225.6865501707143, "NodalPointPressure": 116.00686365096871, "NodalPointMassFlowrateFluid": 13.511243939419538, "NodalPointVolumeFlowrateGasStockTank": 0.098055209135431}, "units": {"N
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 4972
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 31416
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:54004/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 39052
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:54138/api/metadata#'
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 18116
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:54206/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 
-(temp files in C:\Users\Home\AppData\Local\Temp\pipesim_agenttest_2697r3oo)
 
-
-JOB finished 2026-11-06 15:16:25
+JOB finished 2026-11-06 15:31:26
