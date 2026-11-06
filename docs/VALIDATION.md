@@ -98,7 +98,8 @@ check stops made-up values from reaching the user.
 - Job 22, structured mode (schema-constrained extraction + stage-based tool masking + strict tool schema):
   0/8. Under the grammar the 9B dropped stated values (API, depth, PI, all flowlines), invented a separator and a
   compressor, and the long strict tool schema pushed conversations over the 16k context. **Switched off by
-  default** (`PIPESIM_AGENT_STRUCTURED=1` to try it, e.g. with a larger model).
+  default** and later removed from the code (repository clean-up, Nov 6); the raw results are in
+  `knowledge/archive/eval_structured.json`.
 
 **Conclusion so far:** with the plain agent the 9B reached 8/8 correct answers in three of three runs (after
 re-scoring job 20); the knowledge layer cuts tool calls and errors where the layout is unusual (pipeline sizing
@@ -128,3 +129,39 @@ scenario is therefore no longer held out; water_rise still is.
 Choke sizing now takes 6 calls with no errors (10 calls / 2 errors plain); pipeline sizing 8 calls (33 calls /
 11 errors plain); the held-out water-cut scenario is correct in both. This is the configuration shipped by
 default: recipes + sanity checks + number check on result replies; structured mode off.
+
+## 7. Where the remaining 1-4 % came from (jobs 27-29)
+
+- Job 27 copied every setting the Python Toolkit can read from the case study into the rebuilt model (ambient,
+  soil, roughness, wall thickness, full fluid settings, global flow correlations). The gap did not move, and the
+  water line still cooled from 15.6 degC to -5.6 degC in a 15.6 degC environment in the original only.
+- Job 28 opened the `.pips` files (a zip with an SQLite database, see `docs/PIPS_FILE.md`) and found tables the
+  toolkit does not expose: pipe heat transfer (U-value type and value, pipe conductivity) and fluid thermal data
+  (heat capacities, conductivities). In our models these are "Insulated" with a calculated U-value and empty
+  thermal data; in the case studies "UserSupplied" U-values and explicit heat capacities.
+- Job 29 wrote the original's hidden values into temp copies of the rebuilt models and reran the P/T profile:
+
+| Pipeline | rebuilt (level 2) | + pipe heat transfer | + fluid thermal data |
+|---|---|---|---|
+| TF_M2B gas, gas rate | -1.58 % | -1.53 % | **0.00 %** (outlet -0.51 degC, exact) |
+| TF_M2C multiphase, pressure loss | -1.36 % | -1.58 % | **+0.01 %** (outlet 20.21 degC, exact) |
+| TF_M2A water, pressure loss | -3.37 % | -3.37 % | -3.37 % (not explained yet) |
+
+So for the gas and multiphase pipelines the remaining difference is fully explained by the hidden thermal inputs:
+with them, our model reproduces PIPESIM to 0.01 %. The water line's original uses PIPESIM's built-in "Water" fluid
+template; the remaining 3.4 % there is still open.
+
+## 8. Job 32: the builder now writes the thermal data itself
+
+`netbuilder.build` writes PIPESIM's standard black-oil thermal data into every new model (`pips_writer.py`), and a
+flowline may carry a `u_value` (W/m2/K). Rebuilt from the short description, compared with the original P/T profile:
+
+| Pipeline | old builder | + standard thermal data | + U-value read from the original (`read_pips`) |
+|---|---|---|---|
+| TF_M2B gas: gas rate / outlet T | -1.58 % / 12.4 degC | -0.18 % / 1.4 degC | **0.00 % / -0.51 degC (exact)** |
+| TF_M2C multiphase: pressure loss / outlet T | -1.36 % / 18.2 degC | +0.16 % / 20.1 degC | **+0.01 % / 20.21 degC (exact)** |
+| TF_M2A water: pressure loss / outlet T | -3.37 % / 16.5 degC | -3.37 % / 16.5 degC | -3.37 % / 16.5 degC (open) |
+
+Regression on real PIPESIM: the 2-well separator sweep and the nodal tests still run; their results moved by about
+0.5 % (e.g. oil at 10 bara 1259 -> 1267 sm3/d, nodal 1090 -> 1093 sm3/d), as expected now that the fluid has
+PIPESIM's standard heat capacities instead of none. `PIPESIM_THERMAL_DEFAULTS=0` restores the old behaviour.

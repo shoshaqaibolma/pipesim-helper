@@ -6,7 +6,7 @@ Usage:  python agent.py         (llama-server must be running, see start_llm.bat
 import json, os, re, sys
 from openai import OpenAI
 import pipesim_tools as pt
-import study, executor, netbuilder, recipes, numguard, structured
+import study, executor, netbuilder, recipes, numguard
 import project as prj
 from builder import TEMPLATES
 
@@ -16,10 +16,6 @@ MAX_STEPS = 25
 # A/B switches (both on by default): worked recipes + study-type table, and the invented-number check
 KNOWLEDGE = os.getenv("PIPESIM_AGENT_KNOWLEDGE", "1") != "0"
 NUMBER_GUARD = os.getenv("PIPESIM_NUMBER_GUARD", "1") != "0"
-# narrow schema-constrained extraction calls + only the tools that fit the current stage of the workflow
-# Experimental, OFF by default: in job 22 the 9B lost stated values under the grammar and the strict tool schema
-# overflowed the 16k context (0/8 studies). Kept for larger models / future work: PIPESIM_AGENT_STRUCTURED=1.
-STRUCTURED = os.getenv("PIPESIM_AGENT_STRUCTURED", "0") == "1"
 NUMBER_RULE = ("\nNUMBERS: every number you write must be in a tool result or in the user's message. Do not estimate, "
                "add up or convert results yourself; if a number is not in the results, say it was not calculated. "
                "Replies are checked automatically.") if NUMBER_GUARD else ""
@@ -67,7 +63,8 @@ PROJECT SCHEMA (every list item needs a unique "name"; units in brackets):
   separators:{{"name","efficiency"[%]}}  (two-phase; flowlines leaving it need "port":"gas" or "liquid")
   pumps / compressors: {{"name","efficiency"[%]}} plus ONE of "pressure"[bara discharge], "pressure_rise"[bar],
              "pressure_ratio", "power"[kW]; inlet like a choke ("from" or a flowline ending at it)
-  flowlines: {{"name","from","to","length"[m],"id"[mm],"elevation_change"[m, + uphill]}} (+ "port" after a separator)
+  flowlines: {{"name","from","to","length"[m],"id"[mm],"elevation_change"[m, + uphill]}} (+ "port" after a separator;
+             optional "u_value"[W/m2/K] only when the user gives a heat transfer coefficient, 0 = no heat loss)
 EXAMPLE (only for "2 wells into a manifold, 5 km trunkline to a separator at 15 bara"; copy the format, not the parts):
   {{"name":"Field A","fluids":[{{"name":"BO","type":"black_oil","api":35,"gor":100,"water_cut":20,"gas_sg":0.7}}],
    "wells":[{{"name":"W1","fluid":"BO","reservoir_pressure":250,"depth":2500,"ipr":{{"model":"pi","liquid_pi":10}}}},
@@ -94,6 +91,10 @@ Gas lift allocation ("share X mmsm3/d of lift gas between the wells to maximize 
 P/T profiles need ONE boundary condition in analysis.conditions: {{"outlet_pressure": x}} OR {{"liquid_flowrate": x}} OR {{"gas_flowrate": x}}.
 For existing models, refer to variables as component_type + name + parameter (e.g. Sink / "Sink-1" / "Pressure").
 Use model units (METRIC unless the user says FIELD). Never invent results: every number comes from a tool.
+VALUES INSIDE A MODEL FILE: for "what is the U-value / heat capacity / conductivity / insulation / correlation of X
+in <file>.pips" (anything get_values does not show), call read_pips(path, component, keyword). Quote only values it
+returns, with their unit. For a pipe's U-value report "heat_transfer_in_use" (the side that applies: air or water);
+the other side's values are unused. If it returns nothing, say so; never guess.
 Every check_spec and check_project result has a "next_step" field: always do exactly what it says.
 Keep messages short.{NUMBER_RULE}"""
 
@@ -224,12 +225,21 @@ def inspect_model(path: str, units: str = "METRIC"):
     return {"components": STATE["components"]}
 
 
+def read_pips(path: str, component: str = "", keyword: str = ""):
+    """Read values stored inside a .pips file that get_values cannot show: pipe heat transfer (U-value, insulation
+    type, conductivities), fluid thermal data (heat capacities, conductivities), per-pipe flow correlations, any
+    stored setting. component: an object name (e.g. "FL"); keyword: e.g. "u value", "heat capacity",
+    "conductivity", "correlation". Read-only, works on a copy."""
+    import pips_reader
+    return pips_reader.read_pips(path, component, keyword)
+
+
 def get_values(component_type: str, parameters: list, name: str = ""):
     """Read current parameter values from the inspected model (e.g. to find base-case values)."""
     return pt.get_values(component_type=component_type, parameters=parameters, name=name)
 
 
-FUNCS = {f.__name__: f for f in (update_spec, check_spec, propose_plan, run_study, inspect_model, get_values,
+FUNCS = {f.__name__: f for f in (update_spec, check_spec, propose_plan, run_study, inspect_model, get_values, read_pips,
                                   update_project, check_project, build_project, use_defaults)}
 _S = {"type": "string"}
 PARAMS = {
@@ -247,37 +257,12 @@ PARAMS = {
                                   "flowlines[]; every item has a unique name"}}, ["patch"]),
     "use_defaults": ({"fields": {"type": "array", "items": _S,
                                  "description": "[\"all\"] or field paths from check_project's missing list"}}, ["fields"]),
+    "read_pips": ({"path": _S, "component": _S, "keyword": _S}, ["path"]),
     "check_project": ({}, []),
     "build_project": ({"path": {"type": "string", "description": "Where to save the new .pips file"}}, ["path"]),
 }
-if STRUCTURED:   # exact field names in the tool schema: llama-server can constrain the call to them
-    PARAMS["update_project"] = ({"patch": dict(structured.project_schema(for_tool=True),
-                                               description=PARAMS["update_project"][0]["patch"]["description"])},
-                                ["patch"])
 TOOLS = [{"type": "function", "function": {"name": n, "description": FUNCS[n].__doc__,
           "parameters": {"type": "object", "properties": p, "required": r}}} for n, (p, r) in PARAMS.items()]
-
-
-def offered_tools():
-    """Only the tools that make sense now: no run_study before the user has seen and answered a plan, no
-    propose_plan before the spec is ready, no build_project/use_defaults when they cannot do anything."""
-    if not STRUCTURED:
-        return TOOLS
-    key, names = _plan_key(), set(FUNCS)
-    if not (STATE["plan_ok_for"] == key and STATE["plan_turn"] != STATE["turn"] and STATE["ran_plan"] != key):
-        names.discard("run_study")
-    try:
-        spec_ready = bool(SPEC) and check_spec()["ready"]
-    except Exception:
-        spec_ready = False
-    if not spec_ready or (STATE["plan_ok_for"] == key and STATE["ran_plan"] != key):
-        names.discard("propose_plan")
-    pc = prj.check_project(PROJECT) if PROJECT else None
-    if not pc or not pc["ready"]:
-        names.discard("build_project")
-    if not pc or not pc["missing"]:
-        names.discard("use_defaults")
-    return [t for t in TOOLS if t["function"]["name"] in names]
 
 
 MAX_SPEC_CALLS = 10    # spec/project edit+check calls allowed per user turn before the agent must ask the user
@@ -310,7 +295,7 @@ def compact(msgs, limit=MAX_HISTORY_CHARS):
 def chat(client, msgs):
     msgs[:] = compact(msgs)
     return client.chat.completions.create(
-        model=MODEL, messages=msgs, tools=offered_tools(), temperature=0.0, max_tokens=MAX_REPLY_TOKENS,
+        model=MODEL, messages=msgs, tools=TOOLS, temperature=0.0, max_tokens=MAX_REPLY_TOKENS,
         # Qwen 3.5 thinks by default; on a 16k context that can eat the whole window and return an empty reply.
         extra_body={"chat_template_kwargs": {"enable_thinking": False}}).choices[0].message
 
@@ -370,49 +355,6 @@ def check_numbers(client, msgs, text, emit):
     return final
 
 
-def _inject(msgs, emit, name, args):
-    """Run a tool on the model's behalf and record it in the conversation as if the model had called it."""
-    STATE["inject_n"] = STATE.get("inject_n", 0) + 1
-    cid = f"pre{STATE['inject_n']}"
-    emit({"type": "tool", "name": name, "args": args})
-    try:
-        result = FUNCS[name](**args)
-    except Exception as e:
-        result = {"error": f"{type(e).__name__}: {e}"}
-    emit({"type": "result", "name": name, "result": result})
-    LEDGER.add_result(name, result)
-    msgs.append({"role": "assistant", "content": None, "tool_calls": [
-        {"id": cid, "type": "function", "function": {"name": name, "arguments": json.dumps(args)}}]})
-    msgs.append({"role": "tool", "tool_call_id": cid, "content": json.dumps(result, default=str)[:12000]})
-    return result
-
-
-def pre_steps(client, msgs, user, emit):
-    """Narrow, schema-constrained extraction of the network and of the study before the free agent loop."""
-    if APPROVAL.match(user) and len(user) < 80:
-        return
-    try:
-        if structured.wants_project(user, PROJECT):
-            patch, dropped = structured.extract_project(client, MODEL, user)
-            if dropped:
-                emit({"type": "tool", "name": "(extraction)", "args": {}})
-                emit({"type": "result", "name": "(extraction)", "result": {"dropped_unstated": dropped}})
-            if patch:
-                _inject(msgs, emit, "update_project", {"patch": patch})
-                _inject(msgs, emit, "check_project", {})
-        new_study = not SPEC.get("analysis") or STATE["ran_plan"] == _plan_key()
-        if new_study and structured.wants_study(user, PROJECT):
-            a, dropped = structured.extract_study(client, MODEL, user, PROJECT)
-            if a and a.get("type") in study.ANALYSES and a["type"] != "single_run":
-                update_spec({"analysis": None})
-                _inject(msgs, emit, "update_spec", {"patch": {"model": {"source": "project"}, "analysis": a}})
-                _inject(msgs, emit, "check_spec", {})
-    except Exception as e:   # extraction is an aid: on any failure the normal loop does the work
-        reason = {"reason": f"{type(e).__name__}: {str(e)[:200]}"}
-        emit({"type": "tool", "name": "(extraction skipped)", "args": reason})
-        emit({"type": "result", "name": "(extraction skipped)", "result": reason})
-
-
 def run_turn(client, msgs, user, emit):
     """One user turn: let the model call tools until it answers. emit(event) receives
     {"type": "tool", "name", "args"}, {"type": "result", "name", "result"}, {"type": "assistant", "text"},
@@ -431,8 +373,6 @@ def run_turn(client, msgs, user, emit):
             STATE["recipes_given"].update(r["name"] for r in hits)
             content += recipes.GUIDANCE + "\n\n".join(r["text"] for r in hits)
     msgs.append({"role": "user", "content": content})
-    if STRUCTURED:
-        pre_steps(client, msgs, user, emit)
     spec_calls, bad_json, ran = 0, 0, False
     try:
         for _ in range(MAX_STEPS):

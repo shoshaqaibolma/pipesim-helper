@@ -1,0 +1,4 @@
+# Builder now writes the standard thermal data: reproduce the training pipelines, then regression on real studies.
+"D:\Program\Pipesim toolkit\python.exe" tools\thermal_check.py "D:\Program\Pipesim2023.1\Case Studies"
+"D:\Program\Pipesim toolkit\python.exe" tests\real_project_study.py
+"D:\Program\Pipesim toolkit\python.exe" tests\real_nodal_test.py

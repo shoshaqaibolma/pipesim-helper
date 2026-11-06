@@ -1,7 +1,7 @@
 """
 Before/after evaluation of the agent on the real PC (PIPESIM + llama-server).
 
-Runs every scenario in tests/scripts under each condition in CONDITIONS (plain / + knowledge / + structured), scores
+Runs every scenario in tests/scripts under each condition in CONDITIONS (plain / + knowledge), scores
 each conversation automatically from the study outputs it produced, and writes knowledge/eval_<condition>.json and
 knowledge/eval_summary.md.
 
@@ -17,10 +17,9 @@ from real_agent_test import healthy  # noqa: E402
 SCENARIOS = ["field_project", "gaslift_nodal", "gaslift_allocation", "uncertainty", "debottleneck",
              "pipeline_sizing", "choke_sizing", "water_rise"]
 HELD_OUT = {"water_rise"}   # no recipe written for it (a choke recipe was added after job 23)
-CONDITIONS = {   # before: plain agent; knowledge: + recipes and number check; structured: + constrained extraction
-    "before": {"PIPESIM_AGENT_KNOWLEDGE": "0", "PIPESIM_NUMBER_GUARD": "0", "PIPESIM_AGENT_STRUCTURED": "0"},
-    "knowledge": {"PIPESIM_AGENT_KNOWLEDGE": "1", "PIPESIM_NUMBER_GUARD": "1", "PIPESIM_AGENT_STRUCTURED": "0"}}
-# add {"structured": {..., "PIPESIM_AGENT_STRUCTURED": "1"}} to test the experimental mode (0/8 in job 22)
+CONDITIONS = {   # before: plain agent; knowledge: + recipes and number check
+    "before": {"PIPESIM_AGENT_KNOWLEDGE": "0", "PIPESIM_NUMBER_GUARD": "0"},
+    "knowledge": {"PIPESIM_AGENT_KNOWLEDGE": "1", "PIPESIM_NUMBER_GUARD": "1"}}
 
 
 # ---------- reading a study output folder
@@ -174,8 +173,6 @@ def run_one(name, env_extra, tmp):
                 m["numbers_flagged_after_rewrite"] += res.get("still_unverified", res.get("unverified", []))
                 continue
             if t.startswith("("):
-                if t == "(extraction skipped)":
-                    m["extraction_skipped"] = m.get("extraction_skipped", 0) + 1
                 continue
             m["tool_calls"] += 1
             try:

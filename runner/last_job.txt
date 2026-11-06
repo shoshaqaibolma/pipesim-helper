@@ -1,151 +1,265 @@
-JOB jobs/26_check_launchers.txt started 2026-11-05 01:10:23
+JOB jobs\32_thermal_builder.txt started 2026-11-06 15:25:24
 
-$ "D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\uncertainty.txt
+$ "D:\Program\Pipesim toolkit\python.exe" tools\thermal_check.py "D:\Program\Pipesim2023.1\Case Studies"
 [exit 0]
-starting llama-server ...
-=== agent finished in 72s, exit code 0
-=== transcript (tool results shortened)
-AGENT: PIPESIM study agent. Describe what you want to simulate. Commands: 'spec', 'reset', 'exit'.
 
-USER: Build one oil well W1: reservoir 230 bara and 85 degC, depth 2400 m, PI 10 sm3/d/bar, 76 mm tubing. Black oil: 32 API, GOR 90 sm3/sm3, 30% water cut, gas SG 0.7. A flat 3 km, 100 mm flowline goes to a separator SEP at 15 bara. We are unsure about three inputs: reservoir pressure (200 to 250 bara), productivity index (6 to 14 sm3/d/bar) and water cut (20 to 50%). Which uncertainty affects W1's oil rate most? Rank them.
-  TOOL update_project({"patch": {"name": "Well study", "fluids": [{"name": "OilA", "type": "black_oil", "api": 32, "gor": 90, "water_cut": 30, "gas_sg": 0.7}], "wells": [{"name": "W1", "fluid": "OilA", "reservoir_pressure": 230, "reservoir_temperature": 85, "depth": 2400, "ipr": {"model": "pi", "liquid_pi": 10}, "tubing_) -> {"project": "PROJECT: Well study (METRIC)\n  fluid      BO: black oil, 32 API, GOR 90 sm3/sm3, water cut 30 %, gas SG 0.7\n  well       W1: reservoir 230 bara / 85 degC, depth 2400 m, tubing 76 mm, PI 10 sm3/d/bar, fluid BO\n  flowline   FL-W1: W1 -> SEP, 3000 m, ID 100 mm, elevation +0 m\n  sink       SEP: 15 bara", "next_step": "Call check_project.", "renamed": ["OilA -> BO (example name, not th
-  TOOL check_project({}) -> {"ready": true, "next_step": "Project complete. If the user wants a PIPESIM file, call build_project(path). For a study, call update_spec with model.source = \"project\" and continue the study workflow.", "missing": [], "errors": []}
-  TOOL update_spec({"patch": {"model": {"source": "project"}, "analysis": {"type": "tornado", "variables": [{"component_type": "Completion", "name": "W1:W1_Comp", "parameter": "ReservoirPressure", "low": 200, "high": 250}, {"component_type": "Completion", "name": "W1:W1_Comp", "parameter": "LiquidPI", "low": 6, "high") -> {"spec": {"model": {"source": "project"}, "analysis": {"type": "tornado", "variables": [{"component_type": "Completion", "name": "W1:W1_Comp", "parameter": "ReservoirPressure", "low": 200, "high": 250}, {"component_type": "Completion", "name": "W1:W1_Comp", "parameter": "LiquidPI", "low": 6, "high": 14}, {"component_type": "BlackOilFluid", "name": "BO", "parameter": "WaterCut", "low": 20, "high": 
-  TOOL check_spec({}) -> {"ready": true, "next_step": "Call propose_plan and show the plan to the user word for word.", "missing": [], "errors": [], "n_cases": 7}
-  TOOL propose_plan({}) -> {"plan": "STUDY PLAN: Tornado of W1:W1_Comp.ReservoirPressure, W1:W1_Comp.LiquidPI, BO.WaterCut\nUnits: METRIC\n1. Build this network as a new PIPESIM model:\n   PROJECT: Well study (METRIC)\n     fluid      BO: black oil, 32 API, GOR 90 sm3/sm3, water cut 30 %, gas SG 0.7\n     well       W1: reservoir 230 bara / 85 degC, depth 2400 m, tubing 76 mm, PI 10 sm3/d/bar, fluid BO\n     flowline   FL-W
-AGENT: agent> Here is the plan:
+===== TF_M2A_Water_Pipeline
+ 1. builder, no thermal data              loss 72.654 (-3.37 %)  outlet T 16.5155 (+393.86 %)  liq 953.6599 (+0.32 %)  gas 0.0 (+0.00 %)
+      fluid Water_fluid: GLR 0 converted to GOR 0
+      builder thermal report: None
+ 2. + standard fluid thermal data         loss 72.6535 (-3.37 %)  outlet T 16.5229 (+393.99 %)  liq 953.6615 (+0.32 %)  gas 0.0 (+0.00 %)
+      fluid Water_fluid: GLR 0 converted to GOR 0
+      builder thermal report: {'fluids': ['Water_fluid'], 'pipes': [], 'skipped': []}
+ 3. + U-value read from the original      loss 72.6529 (-3.37 %)  outlet T 16.5427 (+394.34 %)  liq 953.6656 (+0.32 %)  gas 0.0 (+0.00 %)
+      fluid Water_fluid: GLR 0 converted to GOR 0
+      builder thermal report: {'fluids': ['Water_fluid'], 'pipes': ['FL: U = 0.0 W/m2/K (air side)'], 'skipped': []}
+ original                                 loss 75.1853  outlet T -5.6202  liq 950.5986  gas 0.0
 
-**STUDY PLAN: Tornado of W1:W1_Comp.ReservoirPressure, W1:W1_Comp.LiquidPI, BO.WaterCut**
-Units: METRIC
-1. Build this network as a new PIPESIM model:
-   PROJECT: Well study (METRIC)
-     fluid      BO: black oil, 32 API, GOR 90 sm3/sm3, water cut 30 %, gas SG 0.7
-     well       W1: reservoir 230 bara / 85 degC, depth 2400 m, tubing 76 mm, PI 10 sm3/d/bar, fluid BO
-     flowline   FL-W1: W1 -> SEP, 3000 m, ID 100 mm, elevation +0 m
-     sink       SEP: 15 bara
-2. Analysis: tornado (vary each variable to its low and high value one at a time, then rank the impacts)
-     Completion:W1:W1_Comp.ReservoirPressure: [200, 250]
-     Completion:W1:W1_Comp.LiquidPI: [6, 14]
-     BlackOilFluid:BO.WaterCut: [20, 50]
-3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source
-4. Total simulation runs: 7. Outputs: CSV, charts, report.md in runs/<timestamp>/
+===== TF_M2B_Gas_Pipeline
+ 1. builder, no thermal data              loss 41.3661 (+0.04 %)  outlet T 12.39 (+2540.94 %)  liq 0.0 (+0.00 %)  gas 0.3032 (-1.58 %)
+      builder thermal report: None
+ 2. + standard fluid thermal data         loss 41.3498 (+0.00 %)  outlet T 1.431 (+381.92 %)  liq 0.0 (+0.00 %)  gas 0.3075 (-0.18 %)
+      builder thermal report: {'fluids': ['Gas'], 'pipes': [], 'skipped': []}
+ 3. + U-value read from the original      loss 41.3487 (+0.00 %)  outlet T -0.5076 (+0.00 %)  liq 0.0 (+0.00 %)  gas 0.308 (+0.00 %)
+      builder thermal report: {'fluids': ['Gas'], 'pipes': ['FL: U = 0.0 W/m2/K (air side)'], 'skipped': []}
+ original                                 loss 41.3487  outlet T -0.5076  liq 0.0  gas 0.308
 
-**Please approve this plan or let me know if you want to change it.**
+===== TF_M2C_Multiphase_Pipeline
+ 1. builder, no thermal data              loss 259.5156 (-1.36 %)  outlet T 18.2218 (-9.84 %)  liq 1707.6071 (+0.23 %)  gas 0.1699 (-1.90 %)
+      builder thermal report: None
+ 2. + standard fluid thermal data         loss 263.5151 (+0.16 %)  outlet T 20.0611 (-0.74 %)  liq 1702.7691 (-0.05 %)  gas 0.1734 (+0.18 %)
+      builder thermal report: {'fluids': ['Multiphase'], 'pipes': [], 'skipped': []}
+ 3. + U-value read from the original      loss 263.1128 (+0.01 %)  outlet T 20.21 (+0.00 %)  liq 1703.6537 (-0.00 %)  gas 0.1732 (+0.01 %)
+      builder thermal report: {'fluids': ['Multiphase'], 'pipes': ['FL: U = 0.0 W/m2/K (air side)'], 'skipped': []}
+ original                                 loss 263.0962  outlet T 20.2099  liq 1703.6827  gas 0.1731
 
-USER: Use the suggested defaults for everything else.
-AGENT: agent> The plan is already set up with your specified values. The "suggested defaults" for everything else are already applied (base case values: reservoir pressure 230 bara, PI 10 sm3/d/bar, water cut 30%).
+written knowledge/thermal_check.json
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 39216
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 11576
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:50353/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 31684
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:50488/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 37488
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:50624/api/metadata#'
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 37776
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:50694/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 6164
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:50828/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 39188
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:50962/api/metadata#'
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 31508
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51030/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 11124
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51164/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 26816
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51308/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 17560
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51446/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 22668
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51580/api/metadata#'
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 23448
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51650/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 29104
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51784/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 33848
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51919/api/metadata#'
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 25388
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:51987/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 25904
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52126/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 37480
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52260/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 31252
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52394/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 28948
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52528/api/metadata#'
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 19236
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52596/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 32948
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52731/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 19080
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52867/api/metadata#'
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 34632
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:52935/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 
-The tornado will vary each of your three uncertain inputs to their low/high ranges while keeping everything else at base case.
 
-**Do you approve this plan?** Reply "approve" or "yes" to run the study.
-
-USER: Yes, approved. Run it.
-  TOOL run_study({}) -> {"output_dir": "D:\\github reps\\pipesim helper\\runs\\20261105-011127-074", "report": "D:\\github reps\\pipesim helper\\runs\\20261105-011127-074\\report.md", "csv": "D:\\github reps\\pipesim helper\\runs\\20261105-011127-074\\results.csv", "charts": ["D:\\github reps\\pipesim helper\\runs\\20261105-011127-074\\tornado_0.png", "D:\\github reps\\pipesim helper\\runs\\20261105-011127-074\\tornado_1
-AGENT: agent> ## Tornado Results: Uncertainty Ranking for W1's Oil Rate
-
-The tornado study ranked the three uncertainties by their impact on **SEP oil rate** (the main result):
-
-### **Ranking (most to least sensitive):**
-1. **Water cut** (BO.WaterCut) - swing of **265.8 sm³/d** (21.7% to -42.0% vs base)
-2. **Reservoir pressure** (W1:W1_Comp.ReservoirPressure) - swing of **193.3 sm³/d** (-28.0% to +18.4% vs base)
-3. **Productivity index** (W1:W1_Comp.LiquidPI) - swing of **189.5 sm³/d** (-27.2% to +18.2% vs base)
-
-### Key observations:
-- **Water cut is the most critical uncertainty**: Reducing water cut from 50% to 20% increases oil rate by 21.7% (to 507.7 sm³/d), while increasing it to 50% cuts oil rate by 42.0% (to 241.8 sm³/d).
-- **Reservoir pressure and PI have similar impacts**: Both show roughly ±28% swing from base, with reservoir pressure having a slightly larger range (276.1 vs 270.8 sm³/d swing).
-- **All three variables significantly affect production**: The worst case (water cut 50%) gives only 241.8 sm³/d oil, while the best case (water cut 20%) gives 507.7 sm³/d.
-
-### Physical check:
-- All wells are flowing (no non-flowing cases)
-- Wellbore pressure ranges from 23.5 to 32.8 bara (reasonable for this setup)
-- Gas rates increase as water cut decreases (more gas in the oil)
-
-### Report:
-`D:\github reps\pipesim helper\runs\20261105-011127-074\report.md`
-
-### Recommendation:
-Focus on **water cut control** as the primary uncertainty to reduce. Consider water handling options o
-
-USER: Approved.
-AGENT: agent> The study is complete. The report is at `D:\github reps\pipesim helper\runs\20261105-011127-074\report.md`. What would you like to do next?
-
-USER: exit
-
-=== final spec
-{
- "model": {
-  "source": "project"
- },
- "analysis": {
-  "type": "tornado",
-  "variables": [
-   {
-    "component_type": "Completion",
-    "name": "W1:W1_Comp",
-    "parameter": "ReservoirPressure",
-    "low": 200,
-    "high": 250
-   },
-   {
-    "component_type": "Completion",
-    "name": "W1:W1_Comp",
-    "parameter": "LiquidPI",
-    "low": 6,
-    "high": 14
-   },
-   {
-    "component_type": "BlackOilFluid",
-    "name": "BO",
-    "parameter": "WaterCut",
-    "low": 20,
-    "high": 50
-   }
-  ]
- }
-}
-
-=== study output D:\github reps\pipesim helper\runs\20261105-011127-074: ['model.pipr', 'model.pips', 'project.json', 'report.md', 'results.csv', 'spec.json', 'summary.json', 'tornado_0.png', 'tornado_1.png', 'tornado_2.png', 'tornado_3.png', 'tornado_4.png']
-STUDY PLAN: Tornado of W1:W1_Comp.ReservoirPressure, W1:W1_Comp.LiquidPI, BO.WaterCut
-Units: METRIC
-1. Build this network as a new PIPESIM model:
-   PROJECT: Well study (METRIC)
-     fluid      BO: black oil, 32 API, GOR 90 sm3/sm3, water cut 30 %, gas SG 0.7
-     well       W1: reservoir 230 bara / 85 degC, depth 2400 m, tubing 76 mm, PI 10 sm3/d/bar, fluid BO
-     flowline   FL-W1: W1 -> SEP, 3000 m, ID 100 mm, elevation +0 m
-     sink       SEP: 15 bara
-2. Analysis: tornado (vary each variable to its low and high value one at a time, then rank the impacts)
-     Completion:W1:W1_Comp.ReservoirPressure: [200, 250]
-     Completion:W1:W1_Comp.LiquidPI: [6, 14]
-     BlackOilFluid:BO.WaterCut: [20, 50]
-3. Results recorded: liquid, oil and gas rate at each sink; liquid rate and pressure at each well and source
-4. Total simulation runs: 7. Outputs: CSV, charts, report.md in runs/<timestamp>/
-
-## Results
-
-| case | W1:W1_Comp.ReservoirPressure | W1:W1_Comp.LiquidPI | BO.WaterCut | SEP liquid rate [sm3/d] | SEP oil rate [sm3/d] | SEP gas rate [mmsm3/d] | W1 liquid rate [sm3/d] | W1 pressure [bara] | _status | SEP oil rate change vs base [%] |
-|---|---|---|---|---|---|---|---|---|---|---|
-| base | 230 | 10 | 30 | 596 | 417.2 | 0.03755 | 596 | 28.98 | Completed | 0 |
-| W1:W1_Comp.ReservoirPressure low=200 | 200 | 10 | 30 | 429.4 | 300.5 | 0.02705 | 429.4 | 23.53 | Completed | -27.96 |
-| W1:W1_Comp.ReservoirPressure high=250 | 250 | 10 | 30 | 705.5 | 493.8 | 0.04444 | 705.5 | 32.76 | Completed | 18.36 |
-| W1:W1_Comp.LiquidPI low=6 | 230 | 6 | 30 | 433.7 | 303.6 | 0.02733 | 433.7 | 23.91 | Completed | -27.23 |
-| W1:W1_Comp.LiquidPI high=14 | 230 | 14 | 30 | 704.5 | 493.2 | 0.04438 | 704.5 | 32.74 | Completed | 18.2 |
-| BO.WaterCut low=20 | 230 | 10 | 20 | 634.6 | 507.7 | 0.04569 | 634.6 | 31.44 | Completed | 21.68 |
-| BO.WaterCut high=50 | 230 | 10 | 50 | 483.7 | 241.8 | 0.02176 | 483.7 | 23.76 | Completed | -42.04 |
-
-![](tornado_0.png)
-
-![](tornado_1.png)
-
-![](tornado_2.png)
-
-![](tornado_3.png)
-
-![](tornado_4.png)
+$ "D:\Program\Pipesim toolkit\python.exe" tests\real_project_study.py
+[exit 0]
+check: {"ready": true, "next_step": "Call propose_plan and show the plan to the user word for word.", "missing": [], "errors": [], "n_cases": 4}
+Building the model...
+  case 1/4: base
+  case 2/4: Sep.Pressure=10
+  case 3/4: Sep.Pressure=20
+  case 4/4: Sep.Pressure=30
+case | Sep.Pressure | Sep liquid rate [sm3/d] | Sep oil rate [sm3/d] | Sep gas rate [mmsm3/d] | W1 liquid rate [sm3/d] | W1 pressure [bara] | W2 liquid rate [sm3/d] | W2 pressure [bara] | _status | Sep oil rate change vs base [%]
+base | 15 | 1521 | 1217 | 0.1217 | 693 | 38.89 | 828.5 | 36.32 | Completed | 0
+Sep.Pressure=10 | 10 | 1584 | 1267 | 0.1267 | 717.9 | 37.84 | 866.4 | 35.23 | Completed | 4.13
+Sep.Pressure=20 | 20 | 1448 | 1158 | 0.1158 | 665.8 | 40.01 | 782.1 | 37.63 | Completed | -4.84
+Sep.Pressure=30 | 30 | 1240 | 991.8 | 0.09918 | 588 | 43.32 | 651.8 | 41.28 | Completed | -18.51
+warnings: [] | failed cases: []
+outputs: D:\github reps\pipesim helper\runs\20261106-152947-669 ['model.pipr', 'model.pips', 'project.json', 'report.md', 'results.csv', 'spec.json', 'summary.json', 'sweep_gas_rate.png', 'sweep_liquid_rate.png', 'sweep_oil_rate.png', 'sweep_pressure.png']
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 39248
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 28016
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:53138/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 
 
-(llama-server stopped)
+$ "D:\Program\Pipesim toolkit\python.exe" tests\real_nodal_test.py
+[exit 0]
 
-(temp files in C:\Users\Home\AppData\Local\Temp\pipesim_agenttest_jqvbjx4p)
+== natural flow: check True
+operating point: {"case": "operating point", "liquid_rate [sm3/d]": 1093.192127924954, "oil_rate [sm3/d]": 874.5537023399633, "reservoir_gas_rate [mmsm3/d]": 0.08745562453464004, "water_rate [sm3/d]": 218.6384255849908, "bottomhole_pressure [bara]": 134.58194579323387, "outlet_pressure [bara]": 20, "_status": "Completed"}
+charts: ['nodal.png'] | warnings: []
+raw inflow_0: {"case": "OperatingPointInflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [0.1339983051360737, 0.001339983051360737, 0.08745562453464004, 0.04439780379300037, 0.022868893422180563, 0.11072696483535685, 0.12236263498571527, 0.012104438236770647, 0.0659267141638202, 0.12818047006089445,
+raw outflow_0: {"case": "OperatingPointOutflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [NaN, 0.1339983051360737, 0.0001339983051360737, 0.08745562453464004, 0.03506264879693765, 0.01410545850185671, 0.005722582383824329, 0.0560198390920186, 0.10607269677521347, 0.00907573283103728, 0.068594153269
+raw operating_points: [{"case": "Operating Point: Flowrate=6875.971 sbbl/day", "point_data": {"NodalPointVolumeFlowrateLiquidStockTank": 1093.192127924954, "NodalPointPressure": 134.58194579323387, "NodalPointMassFlowrateFluid": 12.050703755368744, "NodalPointVolumeFlowrateGasStockTank": 0.08745562453464004}, "units": {"
+
+== gas lift 0.05 mmsm3/d: check True
+operating point: {"case": "operating point", "liquid_rate [sm3/d]": 1225.6865501707143, "oil_rate [sm3/d]": 980.5492401365715, "reservoir_gas_rate [mmsm3/d]": 0.098055209135431, "water_rate [sm3/d]": 245.13731003414279, "bottomhole_pressure [bara]": 116.00686365096871, "outlet_pressure [bara]": 20, "_status": "Completed"}
+charts: ['nodal.png'] | warnings: []
+raw inflow_0: {"case": "OperatingPointInflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [0.1340090588281962, 0.001340090588281962, 0.098055209135431, 0.049697649861856485, 0.02551887022506922, 0.11603213398181358, 0.013429480406675591, 0.07387642949864374, 0.12502059640500487, 0.03760826004346285, 
+raw outflow_0: {"case": "OperatingPointOutflow:", "curve_data": {"NodalPointVolumeFlowrateGasStockTank": [NaN, 0.1340090588281962, 0.00013400905882819618, 0.098055209135431, 0.039302489089469324, 0.062803577107854, 0.015801401071084648, 0.07690422991888479, 0.11243674901253708, 0.025201836278438517, 0.048702924296
+raw operating_points: [{"case": "Operating Point: Flowrate=7709.336 sbbl/day", "point_data": {"NodalPointVolumeFlowrateLiquidStockTank": 1225.6865501707143, "NodalPointPressure": 116.00686365096871, "NodalPointMassFlowrateFluid": 13.511243939419538, "NodalPointVolumeFlowrateGasStockTank": 0.098055209135431}, "units": {"N
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 4972
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 31416
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:54004/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 39052
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:54138/api/metadata#'
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 18116
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:54206/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 
 
-JOB finished 2026-11-05 01:12:15
+JOB finished 2026-11-06 15:31:26

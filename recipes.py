@@ -70,6 +70,12 @@ gas: SEP1 -(GL-1, port gas)-> C1 -(GL-2)-> GasSales sink; liquid: SEP1 -(LL-1, p
      "text": """RECIPE nodal analysis of one well: analysis {"type":"nodal","producer":"P-1","outlet_pressure":25}
 (outlet_pressure = the wellhead pressure the user gives, bara). The answer is the operating point (liquid rate and
 bottomhole pressure). A follow-up study on the same well: update_spec with ONLY the new "analysis"; the project stays."""},
+    {"name": "values stored in a model file",
+     "keys": r"u.?value|heat transfer|heat capacity|conductiv|insulat|thermal|what is the value|which value|stored in",
+     "text": """RECIPE question about a value in a .pips file: read_pips(path, component, keyword), e.g.
+read_pips("C:/models/Line.pips", "FL", "u value") or read_pips(path, "", "heat capacity"). Answer with the values and
+units it returns (UTypeAir = how the U-value is set: UserSupplied / Insulated / BareInAir ...; UCoeffUserAir = the
+user U-value, W/m2/K; PipeConductivity = pipe wall, W/m/K; *HeatCapacity J/kg/K). Nothing returned -> not stored."""},
     {"name": "uncertainty ranking",
      "keys": r"uncertain|unsure|rank|most (sensitive|important)|tornado|matters most",
      "text": """RECIPE uncertainty ranking -> tornado with low/high per input, e.g.

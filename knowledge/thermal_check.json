@@ -1,0 +1,659 @@
+{
+ "TF_M2A_Water_Pipeline": [
+  {
+   "variant": "1. builder, no thermal data",
+   "compare": [
+    {
+     "node": "system",
+     "variable": "SystemInletPressure",
+     "unit": "bara",
+     "original": 82.7371,
+     "rebuilt": 82.7371,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletPressure",
+     "unit": "bara",
+     "original": 7.5518,
+     "rebuilt": 10.0831,
+     "diff_pct": 33.52
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletTemperature",
+     "unit": "degC",
+     "original": -5.6202,
+     "rebuilt": 16.5155,
+     "diff_pct": 393.86
+    },
+    {
+     "node": "system",
+     "variable": "InletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 947.0594,
+     "rebuilt": 950.1119,
+     "diff_pct": 0.32
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 950.5986,
+     "rebuilt": 953.6599,
+     "diff_pct": 0.32
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateGas",
+     "unit": "mmsm3/d",
+     "original": 0.0,
+     "rebuilt": 0.0,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemPressureLoss",
+     "unit": "bar",
+     "original": 75.1853,
+     "rebuilt": 72.654,
+     "diff_pct": -3.37
+    },
+    {
+     "node": "system",
+     "variable": "TotalLiquidHoldup",
+     "unit": "sm3",
+     "original": 29.1109,
+     "rebuilt": 29.1109,
+     "diff_pct": 0.0
+    }
+   ],
+   "notes": [
+    "fluid Water_fluid: GLR 0 converted to GOR 0",
+    "builder thermal report: None"
+   ]
+  },
+  {
+   "variant": "2. + standard fluid thermal data",
+   "compare": [
+    {
+     "node": "system",
+     "variable": "SystemInletPressure",
+     "unit": "bara",
+     "original": 82.7371,
+     "rebuilt": 82.7371,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletPressure",
+     "unit": "bara",
+     "original": 7.5518,
+     "rebuilt": 10.0836,
+     "diff_pct": 33.53
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletTemperature",
+     "unit": "degC",
+     "original": -5.6202,
+     "rebuilt": 16.5229,
+     "diff_pct": 393.99
+    },
+    {
+     "node": "system",
+     "variable": "InletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 947.0594,
+     "rebuilt": 950.1119,
+     "diff_pct": 0.32
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 950.5986,
+     "rebuilt": 953.6615,
+     "diff_pct": 0.32
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateGas",
+     "unit": "mmsm3/d",
+     "original": 0.0,
+     "rebuilt": 0.0,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemPressureLoss",
+     "unit": "bar",
+     "original": 75.1853,
+     "rebuilt": 72.6535,
+     "diff_pct": -3.37
+    },
+    {
+     "node": "system",
+     "variable": "TotalLiquidHoldup",
+     "unit": "sm3",
+     "original": 29.1109,
+     "rebuilt": 29.1109,
+     "diff_pct": 0.0
+    }
+   ],
+   "notes": [
+    "fluid Water_fluid: GLR 0 converted to GOR 0",
+    "builder thermal report: {'fluids': ['Water_fluid'], 'pipes': [], 'skipped': []}"
+   ]
+  },
+  {
+   "variant": "3. + U-value read from the original",
+   "compare": [
+    {
+     "node": "system",
+     "variable": "SystemInletPressure",
+     "unit": "bara",
+     "original": 82.7371,
+     "rebuilt": 82.7371,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletPressure",
+     "unit": "bara",
+     "original": 7.5518,
+     "rebuilt": 10.0841,
+     "diff_pct": 33.53
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletTemperature",
+     "unit": "degC",
+     "original": -5.6202,
+     "rebuilt": 16.5427,
+     "diff_pct": 394.34
+    },
+    {
+     "node": "system",
+     "variable": "InletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 947.0594,
+     "rebuilt": 950.1119,
+     "diff_pct": 0.32
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 950.5986,
+     "rebuilt": 953.6656,
+     "diff_pct": 0.32
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateGas",
+     "unit": "mmsm3/d",
+     "original": 0.0,
+     "rebuilt": 0.0,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemPressureLoss",
+     "unit": "bar",
+     "original": 75.1853,
+     "rebuilt": 72.6529,
+     "diff_pct": -3.37
+    },
+    {
+     "node": "system",
+     "variable": "TotalLiquidHoldup",
+     "unit": "sm3",
+     "original": 29.1109,
+     "rebuilt": 29.1109,
+     "diff_pct": 0.0
+    }
+   ],
+   "notes": [
+    "fluid Water_fluid: GLR 0 converted to GOR 0",
+    "builder thermal report: {'fluids': ['Water_fluid'], 'pipes': ['FL: U = 0.0 W/m2/K (air side)'], 'skipped': []}"
+   ]
+  }
+ ],
+ "TF_M2B_Gas_Pipeline": [
+  {
+   "variant": "1. builder, no thermal data",
+   "compare": [
+    {
+     "node": "system",
+     "variable": "SystemInletPressure",
+     "unit": "bara",
+     "original": 82.7371,
+     "rebuilt": 82.7371,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletPressure",
+     "unit": "bara",
+     "original": 41.3884,
+     "rebuilt": 41.371,
+     "diff_pct": -0.04
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletTemperature",
+     "unit": "degC",
+     "original": -0.5076,
+     "rebuilt": 12.39,
+     "diff_pct": 2540.94
+    },
+    {
+     "node": "system",
+     "variable": "InletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 0.0,
+     "rebuilt": 0.0,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 0.0,
+     "rebuilt": 0.0,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateGas",
+     "unit": "mmsm3/d",
+     "original": 0.308,
+     "rebuilt": 0.3032,
+     "diff_pct": -1.58
+    },
+    {
+     "node": "system",
+     "variable": "SystemPressureLoss",
+     "unit": "bar",
+     "original": 41.3487,
+     "rebuilt": 41.3661,
+     "diff_pct": 0.04
+    },
+    {
+     "node": "system",
+     "variable": "TotalLiquidHoldup",
+     "unit": "sm3",
+     "original": 0.0,
+     "rebuilt": 0.0,
+     "diff_pct": 0.0
+    }
+   ],
+   "notes": [
+    "builder thermal report: None"
+   ]
+  },
+  {
+   "variant": "2. + standard fluid thermal data",
+   "compare": [
+    {
+     "node": "system",
+     "variable": "SystemInletPressure",
+     "unit": "bara",
+     "original": 82.7371,
+     "rebuilt": 82.7371,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletPressure",
+     "unit": "bara",
+     "original": 41.3884,
+     "rebuilt": 41.3873,
+     "diff_pct": -0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletTemperature",
+     "unit": "degC",
+     "original": -0.5076,
+     "rebuilt": 1.431,
+     "diff_pct": 381.92
+    },
+    {
+     "node": "system",
+     "variable": "InletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 0.0,
+     "rebuilt": 0.0,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 0.0,
+     "rebuilt": 0.0,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateGas",
+     "unit": "mmsm3/d",
+     "original": 0.308,
+     "rebuilt": 0.3075,
+     "diff_pct": -0.18
+    },
+    {
+     "node": "system",
+     "variable": "SystemPressureLoss",
+     "unit": "bar",
+     "original": 41.3487,
+     "rebuilt": 41.3498,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "TotalLiquidHoldup",
+     "unit": "sm3",
+     "original": 0.0,
+     "rebuilt": 0.0,
+     "diff_pct": 0.0
+    }
+   ],
+   "notes": [
+    "builder thermal report: {'fluids': ['Gas'], 'pipes': [], 'skipped': []}"
+   ]
+  },
+  {
+   "variant": "3. + U-value read from the original",
+   "compare": [
+    {
+     "node": "system",
+     "variable": "SystemInletPressure",
+     "unit": "bara",
+     "original": 82.7371,
+     "rebuilt": 82.7371,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletPressure",
+     "unit": "bara",
+     "original": 41.3884,
+     "rebuilt": 41.3884,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletTemperature",
+     "unit": "degC",
+     "original": -0.5076,
+     "rebuilt": -0.5076,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "InletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 0.0,
+     "rebuilt": 0.0,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 0.0,
+     "rebuilt": 0.0,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateGas",
+     "unit": "mmsm3/d",
+     "original": 0.308,
+     "rebuilt": 0.308,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemPressureLoss",
+     "unit": "bar",
+     "original": 41.3487,
+     "rebuilt": 41.3487,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "TotalLiquidHoldup",
+     "unit": "sm3",
+     "original": 0.0,
+     "rebuilt": 0.0,
+     "diff_pct": 0.0
+    }
+   ],
+   "notes": [
+    "builder thermal report: {'fluids': ['Gas'], 'pipes': ['FL: U = 0.0 W/m2/K (air side)'], 'skipped': []}"
+   ]
+  }
+ ],
+ "TF_M2C_Multiphase_Pipeline": [
+  {
+   "variant": "1. builder, no thermal data",
+   "compare": [
+    {
+     "node": "system",
+     "variable": "SystemInletPressure",
+     "unit": "bara",
+     "original": 330.9484,
+     "rebuilt": 330.9484,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletPressure",
+     "unit": "bara",
+     "original": 67.8522,
+     "rebuilt": 71.4328,
+     "diff_pct": 5.28
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletTemperature",
+     "unit": "degC",
+     "original": 20.2099,
+     "rebuilt": 18.2218,
+     "diff_pct": -9.84
+    },
+    {
+     "node": "system",
+     "variable": "InletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 2097.9097,
+     "rebuilt": 2097.9097,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 1703.6827,
+     "rebuilt": 1707.6071,
+     "diff_pct": 0.23
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateGas",
+     "unit": "mmsm3/d",
+     "original": 0.1731,
+     "rebuilt": 0.1699,
+     "diff_pct": -1.9
+    },
+    {
+     "node": "system",
+     "variable": "SystemPressureLoss",
+     "unit": "bar",
+     "original": 263.0962,
+     "rebuilt": 259.5156,
+     "diff_pct": -1.36
+    },
+    {
+     "node": "system",
+     "variable": "TotalLiquidHoldup",
+     "unit": "sm3",
+     "original": 26.2172,
+     "rebuilt": 26.3405,
+     "diff_pct": 0.47
+    }
+   ],
+   "notes": [
+    "builder thermal report: None"
+   ]
+  },
+  {
+   "variant": "2. + standard fluid thermal data",
+   "compare": [
+    {
+     "node": "system",
+     "variable": "SystemInletPressure",
+     "unit": "bara",
+     "original": 330.9484,
+     "rebuilt": 330.9484,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletPressure",
+     "unit": "bara",
+     "original": 67.8522,
+     "rebuilt": 67.4332,
+     "diff_pct": -0.62
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletTemperature",
+     "unit": "degC",
+     "original": 20.2099,
+     "rebuilt": 20.0611,
+     "diff_pct": -0.74
+    },
+    {
+     "node": "system",
+     "variable": "InletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 2097.9097,
+     "rebuilt": 2097.9097,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 1703.6827,
+     "rebuilt": 1702.7691,
+     "diff_pct": -0.05
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateGas",
+     "unit": "mmsm3/d",
+     "original": 0.1731,
+     "rebuilt": 0.1734,
+     "diff_pct": 0.18
+    },
+    {
+     "node": "system",
+     "variable": "SystemPressureLoss",
+     "unit": "bar",
+     "original": 263.0962,
+     "rebuilt": 263.5151,
+     "diff_pct": 0.16
+    },
+    {
+     "node": "system",
+     "variable": "TotalLiquidHoldup",
+     "unit": "sm3",
+     "original": 26.2172,
+     "rebuilt": 26.2123,
+     "diff_pct": -0.02
+    }
+   ],
+   "notes": [
+    "builder thermal report: {'fluids': ['Multiphase'], 'pipes': [], 'skipped': []}"
+   ]
+  },
+  {
+   "variant": "3. + U-value read from the original",
+   "compare": [
+    {
+     "node": "system",
+     "variable": "SystemInletPressure",
+     "unit": "bara",
+     "original": 330.9484,
+     "rebuilt": 330.9484,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletPressure",
+     "unit": "bara",
+     "original": 67.8522,
+     "rebuilt": 67.8356,
+     "diff_pct": -0.02
+    },
+    {
+     "node": "system",
+     "variable": "SystemOutletTemperature",
+     "unit": "degC",
+     "original": 20.2099,
+     "rebuilt": 20.21,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "InletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 2097.9097,
+     "rebuilt": 2097.9097,
+     "diff_pct": 0.0
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateLiquid",
+     "unit": "sm3/d",
+     "original": 1703.6827,
+     "rebuilt": 1703.6537,
+     "diff_pct": -0.0
+    },
+    {
+     "node": "system",
+     "variable": "OutletVolumeFlowrateGas",
+     "unit": "mmsm3/d",
+     "original": 0.1731,
+     "rebuilt": 0.1732,
+     "diff_pct": 0.01
+    },
+    {
+     "node": "system",
+     "variable": "SystemPressureLoss",
+     "unit": "bar",
+     "original": 263.0962,
+     "rebuilt": 263.1128,
+     "diff_pct": 0.01
+    },
+    {
+     "node": "system",
+     "variable": "TotalLiquidHoldup",
+     "unit": "sm3",
+     "original": 26.2172,
+     "rebuilt": 26.2154,
+     "diff_pct": -0.01
+    }
+   ],
+   "notes": [
+    "builder thermal report: {'fluids': ['Multiphase'], 'pipes': ['FL: U = 0.0 W/m2/K (air side)'], 'skipped': []}"
+   ]
+  }
+ ]
+}

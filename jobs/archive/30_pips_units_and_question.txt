@@ -1,0 +1,4 @@
+# Verify the stored units against the toolkit, read hidden values from a case study, ask the assistant about them.
+"D:\Program\Pipesim toolkit\python.exe" tools\pips_units.py "D:\Program\Pipesim2023.1\Case Studies"
+"D:\Program\Pipesim toolkit\python.exe" tools\read_pips.py "D:\Program\Pipesim2023.1\Case Studies\Training Exercises\Pipesim Fundamentals\TF_M2B_Gas Pipeline.pips" FL
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py "D:\Program\Pipesim2023.1\Case Studies\Training Exercises\Pipesim Fundamentals\TF_M2B_Gas Pipeline.pips" tests\scripts\pips_question.txt
