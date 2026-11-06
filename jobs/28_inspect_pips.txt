@@ -1,0 +1,2 @@
+# Read the .pips files (temp copies) for heat-transfer / thermal settings the Python Toolkit does not expose.
+"D:\Program\Pipesim toolkit\python.exe" tools\inspect_pips.py "D:\Program\Pipesim2023.1\Case Studies"
