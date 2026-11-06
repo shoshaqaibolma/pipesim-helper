@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PIPESIM Assistant</title>
+<style>
+:root{--bg:#f6f7f9;--panel:#fff;--text:#1d2330;--muted:#667085;--line:#e3e6eb;--accent:#0b6bcb;--accent-2:#e8f1fb;
+  --user:#0b6bcb;--user-text:#fff;--ok:#1f8a4c;--warn:#b54708;--warn-bg:#fff6ed;--err:#c0362c;--code:#f1f3f6}
+@media (prefers-color-scheme: dark){:root{--bg:#12151b;--panel:#1a1f27;--text:#e6e9ef;--muted:#98a2b3;--line:#2a313c;
+  --accent:#5aa7f2;--accent-2:#1d2a3a;--user:#2f6fb3;--user-text:#fff;--ok:#4cc17a;--warn:#f0a35e;--warn-bg:#2b2116;
+  --err:#ff7a6e;--code:#232a35}}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--bg);color:var(--text);
+  font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+header{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;padding:10px 20px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+header h1{font-size:17px;margin:0;font-weight:650}
+header .sub{color:var(--muted);font-size:13px}
+header .spacer{flex:1}
+.status{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--muted)}
+.dot.ok{background:var(--ok)} .dot.bad{background:var(--err)}
+button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--line);background:var(--panel);
+  color:var(--text);padding:6px 12px}
+button:hover{border-color:var(--accent)}
+button.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+button:disabled{opacity:.5;cursor:not-allowed}
+main{max-width:980px;margin:0 auto;padding:18px 16px 170px}
+.msg{margin:14px 0;display:flex}
+.msg.user{justify-content:flex-end}
+.bubble{max-width:82%;padding:10px 14px;border-radius:12px;background:var(--panel);border:1px solid var(--line);
+  overflow-wrap:anywhere}
+.msg.user .bubble{background:var(--user);color:var(--user-text);border-color:var(--user);white-space:pre-wrap}
+.bubble h2,.bubble h3,.bubble h4{margin:.6em 0 .3em;font-size:16px}
+.bubble p{margin:.4em 0} .bubble ul,.bubble ol{margin:.3em 0 .3em 1.3em;padding:0}
+.bubble code{background:var(--code);padding:1px 4px;border-radius:4px;font-size:13px}
+.bubble pre{background:var(--code);padding:10px;border-radius:8px;overflow:auto;font-size:13px}
+table{border-collapse:collapse;margin:.5em 0;font-size:13.5px;display:block;overflow:auto;max-width:100%}
+th,td{border:1px solid var(--line);padding:4px 8px;text-align:left;white-space:nowrap}
+th{background:var(--accent-2)}
+.work{margin:8px 0 8px 0;max-width:82%;border:1px dashed var(--line);border-radius:10px;padding:6px 10px;
+  color:var(--muted);font-size:13px;background:transparent}
+.work summary{cursor:pointer;list-style:none}
+.work summary::-webkit-details-marker{display:none}
+.work .step{padding:2px 0;font-family:ui-monospace,Consolas,monospace;font-size:12.5px}
+.work .step.err{color:var(--err)}
+.card{margin:10px 0;max-width:92%;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.card h3{margin:0 0 8px;font-size:15px}
+.card pre{white-space:pre-wrap;font:12.5px/1.45 ui-monospace,Consolas,monospace;background:var(--code);
+  padding:10px;border-radius:8px;margin:0 0 10px;max-height:340px;overflow:auto}
+.card .actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.card .hint{color:var(--muted);font-size:13px}
+.charts{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px;margin:8px 0}
+.charts img{width:100%;border:1px solid var(--line);border-radius:8px;background:#fff;cursor:zoom-in}
+.warn{background:var(--warn-bg);color:var(--warn);border-radius:8px;padding:8px 10px;margin:6px 0;font-size:13.5px}
+.links a{color:var(--accent);margin-right:14px;font-size:14px}
+.ok{color:var(--ok)} .error{color:var(--err)}
+.welcome{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-top:10px}
+.welcome h2{margin:0 0 6px;font-size:18px}
+.welcome p{color:var(--muted);margin:0 0 12px}
+.examples{display:grid;gap:8px}
+.examples button{text-align:left;white-space:normal;padding:10px 12px;line-height:1.4}
+.composer{position:fixed;left:0;right:0;bottom:0;background:linear-gradient(transparent,var(--bg) 22%);padding:22px 16px 16px}
+.composer .box{max-width:980px;margin:0 auto;display:flex;gap:8px;align-items:flex-end;background:var(--panel);
+  border:1px solid var(--line);border-radius:14px;padding:8px;box-shadow:0 4px 18px rgba(0,0,0,.06)}
+textarea{flex:1;resize:none;border:0;outline:0;background:transparent;color:var(--text);font:inherit;
+  min-height:44px;max-height:180px;padding:6px 8px}
+.typing{color:var(--muted);font-size:13px;margin:6px 0 0 4px;display:none}
+.typing.on{display:block}
+.spin{display:inline-block;width:10px;height:10px;border:2px solid var(--muted);border-right-color:transparent;
+  border-radius:50%;animation:s .8s linear infinite;margin-right:6px;vertical-align:-1px}
+@keyframes s{to{transform:rotate(360deg)}}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:20}
+.lightbox.on{display:flex} .lightbox img{max-width:94vw;max-height:92vh;background:#fff;border-radius:8px}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>PIPESIM Assistant</h1><div class="sub">Local LLM + PIPESIM 2023.1 &middot; describe a study or a field in plain language</div></div>
+  <div class="spacer"></div>
+  <div class="status"><span class="dot" id="dot"></span><span id="model">checking model…</span></div>
+  <button id="reset" title="Start a new conversation">New chat</button>
+</header>
+<main id="chat">
+  <div class="welcome" id="welcome">
+    <h2>What should we simulate?</h2>
+    <p>The assistant asks for anything missing, shows a plan for you to approve, runs PIPESIM, and explains the results.</p>
+    <div class="examples">
+      <button class="ex">Build a field: two oil wells W1 and W2 flow through 1.5 km and 0.9 km, 100 mm flowlines into manifold J1, then a 5 km, 152 mm trunkline (10 m uphill) to a separator at 15 bara. Black oil 35 API, GOR 100 sm3/sm3, 20% water cut. W1: reservoir 250 bara, depth 2500 m, PI 10 sm3/d/bar. W2: 230 bara, 2400 m, PI 15. How does field oil change if the separator pressure goes from 10 to 30 bara?</button>
+      <button class="ex">Build one gas-lifted oil well W1: reservoir 250 bara, 90 degC, depth 2500 m, PI 10 sm3/d/bar, 76 mm tubing, gas lift at 2000 m with 0.05 MMsm3/d. Black oil 35 API, GOR 100, 20% water cut. A flat 2 km, 100 mm flowline goes to a separator at 15 bara. Run a nodal analysis of W1 at 20 bara wellhead pressure.</button>
+      <button class="ex">Two gas-lifted wells W1 (220 bara, 2500 m, PI 8, gas lift at 2200 m) and W2 (200 bara, 2400 m, PI 12, gas lift at 2100 m), each through a 1 km, 100 mm flowline into J1, then 4 km, 152 mm to a separator at 15 bara. Black oil 30 API, GOR 80, 40% water cut. We only have 0.15 MMsm3/d of lift gas: how should we split it between W1 and W2 for the most oil? Try 0, 0.05, 0.1 and 0.15 for each well.</button>
+    </div>
+  </div>
+</main>
+<div class="composer"><div class="box">
+  <textarea id="input" rows="1" placeholder="Describe a field or a study…  (Enter to send, Shift+Enter for a new line)"></textarea>
+  <button class="primary" id="send">Send</button>
+</div><div class="typing" id="typing" style="max-width:980px;margin:0 auto"><span class="spin"></span><span id="typingText">Working…</span></div></div>
+<div class="lightbox" id="lightbox"><img id="lightboxImg" alt=""></div>
+<script>
+const $ = s => document.querySelector(s);
+const chat = $("#chat"), input = $("#input"), sendBtn = $("#send");
+let since = 0, busy = false, workBox = null, lastPlanCard = null;
+
+const LABELS = {"(extraction)": "Reading the description", "(extraction skipped)": "Reading the description (fallback)", "(number check)": "Checking every number against the results", "(retry)": "Retrying (invalid tool call)", update_project: "Describing the project", check_project: "Checking the project inputs",
+  use_defaults: "Filling in suggested defaults", build_project: "Building the PIPESIM model",
+  update_spec: "Setting up the study", check_spec: "Checking the study", propose_plan: "Preparing the plan",
+  run_study: "Running PIPESIM", inspect_model: "Opening the model", get_values: "Reading model values"};
+
+function esc(s){return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function inline(s){return s.replace(/`([^`]+)`/g,"<code>$1</code>").replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>")
+  .replace(/(^|[^*])\*([^*\s][^*]*)\*/g,"$1<em>$2</em>");}
+function md(src){
+  const lines = esc(src).split("\n"); let html = "", i = 0;
+  while (i < lines.length){
+    const l = lines[i];
+    if (/^```/.test(l)){ let b=[]; i++; while(i<lines.length && !/^```/.test(lines[i])) b.push(lines[i++]); i++;
+      html += `<pre>${b.join("\n")}</pre>`; continue; }
+    if (/^\s*\|.*\|\s*$/.test(l) && i+1<lines.length && /^\s*\|?\s*:?-{2,}/.test(lines[i+1])){
+      const cells = r => r.trim().replace(/^\||\|$/g,"").split("|").map(c => inline(c.trim()));
+      let t = "<table><tr>" + cells(l).map(c=>`<th>${c}</th>`).join("") + "</tr>"; i += 2;
+      while (i<lines.length && /^\s*\|.*\|\s*$/.test(lines[i])) t += "<tr>" + cells(lines[i++]).map(c=>`<td>${c}</td>`).join("") + "</tr>";
+      html += t + "</table>"; continue; }
+    const h = l.match(/^(#{1,4})\s+(.*)/);
+    if (h){ html += `<h${Math.min(h[1].length+1,4)}>${inline(h[2])}</h${Math.min(h[1].length+1,4)}>`; i++; continue; }
+    if (/^\s*([-*]|\d+\.)\s+/.test(l)){ const ord = /^\s*\d+\./.test(l); let items = [];
+      while (i<lines.length && /^\s*([-*]|\d+\.)\s+/.test(lines[i])) items.push(lines[i++].replace(/^\s*([-*]|\d+\.)\s+/,""));
+      html += (ord?"<ol>":"<ul>") + items.map(x=>`<li>${inline(x)}</li>`).join("") + (ord?"</ol>":"</ul>"); continue; }
+    if (/^\s*(---|\*\*\*)\s*$/.test(l)){ i++; continue; }
+    if (l.trim()===""){ i++; continue; }
+    let p = [l]; i++;
+    while (i<lines.length && lines[i].trim()!=="" && !/^(#|```|\s*\||\s*([-*]|\d+\.)\s)/.test(lines[i])) p.push(lines[i++]);
+    html += `<p>${inline(p.join("<br>"))}</p>`;
+  }
+  return html;
+}
+function add(el){ $("#welcome")?.remove(); chat.appendChild(el); window.scrollTo({top: document.body.scrollHeight, behavior: "smooth"}); return el; }
+function div(cls, html){ const d = document.createElement("div"); d.className = cls; if (html!==undefined) d.innerHTML = html; return d; }
+function work(){ if (!workBox){ workBox = document.createElement("details"); workBox.className = "work";
+  workBox.innerHTML = '<summary>Working…</summary>'; add(workBox); } return workBox; }
+function step(text, cls){ const w = work(); const s = div("step" + (cls ? " "+cls : ""), esc(text)); w.appendChild(s);
+  w.querySelector("summary").textContent = text.length > 90 ? text.slice(0,90)+"…" : text; }
+
+function render(ev){
+  if (ev.type === "user"){ workBox = null; const m = div("msg user"); m.appendChild(div("bubble", esc(ev.text))); add(m); return; }
+  if (ev.type === "tool"){ step("▸ " + (LABELS[ev.name] || ev.name)); return; }
+  if (ev.type === "progress"){ step("   " + ev.text); $("#typingText").textContent = "PIPESIM: " + ev.text.trim(); return; }
+  if (ev.type === "result"){
+    const r = ev.result || {};
+    if (r.error) step("  ! " + r.error, "err");
+    if (r.rejected) r.rejected.forEach(x => step("  ! " + x, "err"));
+    if (ev.name === "propose_plan" && r.plan){
+      const c = div("card"); c.innerHTML = `<h3>Plan: review before anything runs</h3><pre>${esc(r.plan)}</pre>
+        <div class="actions"><button class="primary approve">Approve &amp; run</button>
+        <span class="hint">or type a change in the box below</span></div>`;
+      c.querySelector(".approve").onclick = approve; lastPlanCard = c; add(c); }
+    if (ev.name === "build_project" && r.file){
+      const c = div("card"); const v = (r.summary && r.summary.validation) || [];
+      c.innerHTML = `<h3 class="ok">PIPESIM model created</h3><div>${esc(r.file)}</div>`; add(c); }
+    if (ev.name === "run_study" && !r.error){
+      const c = div("card"); let h = `<h3 class="ok">Study finished</h3>`;
+      (r.warnings || []).forEach(w => h += `<div class="warn">${esc(w)}</div>`);
+      if (r.charts && r.charts.length) h += `<div class="charts">${r.charts.map(u => `<img src="${u}" alt="chart">`).join("")}</div>`;
+      h += `<div class="links">${r.report_url ? `<a href="${r.report_url}" target="_blank">Report</a>` : ""}${r.csv_url ? `<a href="${r.csv_url}" target="_blank">Results CSV</a>` : ""}</div>`;
+      c.innerHTML = h; c.querySelectorAll("img").forEach(i => i.onclick = () => { $("#lightboxImg").src = i.src; $("#lightbox").classList.add("on"); });
+      add(c); }
+    return; }
+  if (ev.type === "assistant"){ workBox = null; const m = div("msg"); m.appendChild(div("bubble", md(ev.text))); add(m); return; }
+  if (ev.type === "error"){ workBox = null; const m = div("msg"); m.appendChild(div("bubble error", esc(ev.text))); add(m); }
+}
+
+function setBusy(b){ busy = b; sendBtn.disabled = b; $("#reset").disabled = b; $("#typing").classList.toggle("on", b);
+  if (!b) $("#typingText").textContent = "Working…";
+  document.querySelectorAll(".approve").forEach(x => x.disabled = b || x.closest(".card") !== lastPlanCard); }
+
+async function poll(){
+  try { const r = await fetch(`/api/events?since=${since}`); const j = await r.json();
+    j.events.forEach(render); since = j.n; setBusy(j.busy); } catch(e) {}
+  setTimeout(poll, busy ? 600 : 1500);
+}
+async function health(){
+  try { const j = await (await fetch("/api/health")).json();
+    $("#dot").className = "dot " + (j.model ? "ok" : "bad");
+    $("#model").textContent = j.model ? "model ready" : "model not running (start_llm.bat)"; } catch(e) {
+    $("#dot").className = "dot bad"; $("#model").textContent = "assistant stopped"; }
+  setTimeout(health, 5000);
+}
+async function send(text){
+  text = (text ?? input.value).trim(); if (!text || busy) return;
+  input.value = ""; autosize();
+  const r = await (await fetch("/api/send", {method: "POST", headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({text})})).json();
+  if (r.ok) setBusy(true);
+}
+async function approve(){ if (busy) return; const r = await (await fetch("/api/approve", {method: "POST"})).json();
+  if (r.ok){ const b = lastPlanCard && lastPlanCard.querySelector(".approve"); if (b){ b.textContent = "Approved"; b.classList.remove("approve"); b.disabled = true; } lastPlanCard = null; setBusy(true); } }
+function autosize(){ input.style.height = "auto"; input.style.height = Math.min(input.scrollHeight, 180) + "px"; }
+input.addEventListener("input", autosize);
+input.addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey){ e.preventDefault(); send(); } });
+sendBtn.onclick = () => send();
+document.querySelectorAll(".ex").forEach(b => b.onclick = () => { input.value = b.textContent.trim(); autosize(); input.focus(); });
+$("#reset").onclick = async () => { const r = await fetch("/api/reset", {method: "POST"}); if (r.ok) location.reload(); };
+$("#lightbox").onclick = () => $("#lightbox").classList.remove("on");
+poll(); health();
+</script>
+</body>
+</html>

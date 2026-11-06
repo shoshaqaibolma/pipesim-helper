@@ -1,0 +1,5 @@
+Set up one oil well P1: reservoir 280 bara and 95 degC, depth 3000 m, PI 6 sm3/d/bar, 89 mm tubing. Black oil: 38 API, GOR 150 sm3/sm3, 10% water cut, gas SG 0.72. A surface choke CK1 sits right after the wellhead, then a flat 4 km, 127 mm flowline goes to a separator at 20 bara. The choke is 20 mm now. How does the oil rate change with choke size from 12 to 32 mm in 5 steps?
+Use the suggested defaults for everything else.
+Yes, approved. Run it.
+Approved.
+exit

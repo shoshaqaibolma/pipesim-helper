@@ -1,0 +1,417 @@
+{
+ "tests": {
+  "get_conditions()": {
+   "ok": true,
+   "result": {
+    "Well:VertComp": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "Well",
+     "BoundaryNodeName": "VertComp",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 54.44444444444446,
+     "Pressure": 173.3341983502526,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "VertComp",
+     "IsBottomCompletion": false
+    },
+    "Source": {
+     "BoundaryNodeType": "Source",
+     "WellName": null,
+     "BoundaryNodeName": "Source",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 60.0,
+     "Pressure": null,
+     "FlowRateType": "GasFlowRate",
+     "GasFlowRate": 0.05663369318640717,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    },
+    "Gas-Sales": {
+     "BoundaryNodeType": "Sink",
+     "WellName": null,
+     "BoundaryNodeName": "Gas-Sales",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": null,
+     "Pressure": 41.368542,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    },
+    "Oil-Facility": {
+     "BoundaryNodeType": "Sink",
+     "WellName": null,
+     "BoundaryNodeName": "Oil-Facility",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": null,
+     "Pressure": 20.684271879505083,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    }
+   }
+  },
+  "baseline": {
+   "ok": true,
+   "result": {
+    "state": "Completed",
+    "node": {
+     "Pressure": {
+      "Unit": "bara",
+      "Compressor": 84.66709202224133,
+      "Oil-Facility": 20.684271819744264,
+      "Well": 67.05023561463324,
+      "Gas-Sales": 41.36854365102284,
+      "VertComp": 166.44818832115945,
+      "Source": 46.704869591999675,
+      "Choke": 47.52175163680994,
+      "Separator": 46.107692531244886,
+      "Manifold": 46.59376501945589,
+      "Pmp": 26.337494838370606
+     },
+     "VolumeFlowrateLiquidStockTank": {
+      "Unit": "sm3/d",
+      "Compressor": 0.5656430416366756,
+      "Oil-Facility": 1186.6173462241604,
+      "Well": 804.6089921425155,
+      "Gas-Sales": 0.5656430416366756,
+      "VertComp": 804.6089921425155,
+      "Source": 32.69522495834796,
+      "Choke": 804.6089921425155,
+      "Separator": 0.5662142516901058,
+      "Manifold": 837.3042171008635,
+      "Pmp": 1186.6173462241604
+     },
+     "VolumeFlowrateGasStockTank": {
+      "Unit": "mmsm3/d",
+      "Compressor": 1.1272775707031673,
+      "Oil-Facility": 0.2575508115395249,
+      "Well": 1.3937196900206072,
+      "Gas-Sales": 1.1272775707031673,
+      "VertComp": 1.3937196900206072,
+      "Source": 0.056633693184019944,
+      "Choke": 1.3937196900206072,
+      "Separator": 1.1284159428460099,
+      "Manifold": 1.4503533832046271,
+      "Pmp": 0.2575508115395249
+     }
+    }
+   }
+  },
+  "sink_get_value": {
+   "ok": true,
+   "result": 20.684271879505083
+  },
+  "A_set_value_sink_pressure": {
+   "ok": true,
+   "result": {
+    "set_to": 51.368543759010166,
+    "result": {
+     "state": "Completed",
+     "node": {
+      "Pressure": {
+       "Unit": "bara",
+       "Compressor": 84.66709202224133,
+       "Oil-Facility": 20.684271819744264,
+       "Choke": 47.52175163680994,
+       "Separator": 46.107692531244886,
+       "Source": 46.704869591999675,
+       "Pmp": 26.337494838370606,
+       "VertComp": 166.44818832115945,
+       "Manifold": 46.59376501945589,
+       "Gas-Sales": 41.36854365102284,
+       "Well": 67.05023561463324
+      },
+      "VolumeFlowrateLiquidStockTank": {
+       "Unit": "sm3/d",
+       "Compressor": 0.5656430416366756,
+       "Oil-Facility": 1186.6173462241604,
+       "Choke": 804.6089921425155,
+       "Separator": 0.5662142516901058,
+       "Source": 32.69522495834796,
+       "Pmp": 1186.6173462241604,
+       "VertComp": 804.6089921425155,
+       "Manifold": 837.3042171008635,
+       "Gas-Sales": 0.5656430416366756,
+       "Well": 804.6089921425155
+      },
+      "VolumeFlowrateGasStockTank": {
+       "Unit": "mmsm3/d",
+       "Compressor": 1.1272775707031673,
+       "Oil-Facility": 0.2575508115395249,
+       "Choke": 1.3937196900206072,
+       "Separator": 1.1284159428460099,
+       "Source": 0.056633693184019944,
+       "Pmp": 0.2575508115395249,
+       "VertComp": 1.3937196900206072,
+       "Manifold": 1.4503533832046271,
+       "Gas-Sales": 1.1272775707031673,
+       "Well": 1.3937196900206072
+      }
+     }
+    }
+   }
+  },
+  "B_set_conditions_sink_pressure": {
+   "ok": true,
+   "result": {
+    "method": "set_conditions(boundaries=...)",
+    "key": "Pressure",
+    "set_to": 51.368543759010166,
+    "after": {
+     "BoundaryNodeType": "Sink",
+     "WellName": null,
+     "BoundaryNodeName": "Oil-Facility",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": null,
+     "Pressure": 51.368543759010166,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    },
+    "result": {
+     "state": "Completed",
+     "node": {
+      "Pressure": {
+       "Unit": "bara",
+       "Pmp": 53.144860049645025,
+       "Gas-Sales": 41.36854375917815,
+       "VertComp": 166.4410808822964,
+       "Separator": 45.772614554052204,
+       "Manifold": 46.259070493120944,
+       "Well": 66.86278132732059,
+       "Source": 46.37008583828123,
+       "Oil-Facility": 51.36869971142307,
+       "Choke": 47.19537124204327,
+       "Compressor": 84.52692090353057
+      },
+      "VolumeFlowrateLiquidStockTank": {
+       "Unit": "sm3/d",
+       "Pmp": 1182.4338315724958,
+       "Gas-Sales": 0.5637872048325773,
+       "VertComp": 805.4226265327311,
+       "Separator": 0.5639073356507781,
+       "Manifold": 838.1178514910793,
+       "Well": 805.4226265327311,
+       "Source": 32.69522495834796,
+       "Oil-Facility": 1182.4338315724958,
+       "Choke": 805.4226265327311,
+       "Compressor": 0.5637872048325773
+      },
+      "VolumeFlowrateGasStockTank": {
+       "Unit": "mmsm3/d",
+       "Pmp": 0.25513034364392667,
+       "Gas-Sales": 1.1247793713159535,
+       "VertComp": 1.39512904323589,
+       "Separator": 1.1250190373903401,
+       "Manifold": 1.4517627364199102,
+       "Well": 1.39512904323589,
+       "Source": 0.056633693184019944,
+       "Oil-Facility": 0.25513034364392667,
+       "Choke": 1.39512904323589,
+       "Compressor": 1.1247793713159535
+      }
+     }
+    },
+    "failed_before": []
+   }
+  },
+  "C_reservoir_pressure": {
+   "ok": false,
+   "error": "ContextError: No nodes of class dict_keys(['metadata#Perforation_2017.1', 'metadata#FluidLink_2017.1']) in context ModelContext({'Study': '___NONE___', 'Completion': 'Well:VertComp', 'Template': '___NONE___'})",
+   "trace": "\n    return getset.get_value(self._almanac,\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Program\\Pipesim toolkit\\Lib\\site-packages\\sixgill\\core\\getset.py\", line 126, in get_value\n    entry = _find_entry(catalog, class_to_mapping_dict.keys(), context, component, parameter)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"D:\\Program\\Pipesim toolkit\\Lib\\site-packages\\sixgill\\core\\getset.py\", line 531, in _find_entry\n    raise ContextError(\"No nodes of class %r in context %r\" % (class_ids, context))\nsixgill.core.model_context.ContextError: No nodes of class dict_keys(['metadata#Perforation_2017.1', 'metadata#FluidLink_2017.1']) in context ModelContext({'Study': '___NONE___', 'Completion': 'Well:VertComp', 'Template': '___NONE___'})\n"
+  }
+ },
+ "networksimulation_api": {
+  "delete_constraints": {
+   "sig": "(study: Optional[str] = None)",
+   "doc": "Deletes the study constraints.\n\nParameters\n----------\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nbool\n    Whether the reset succeeded (True) or not (False).\n\nExamples\n--------\n>>> model.tasks.networksimulation.delete_constraints()\n>>> model.tasks.networksimulation.delete_constraints(study = \"Study 1\")"
+  },
+  "delete_results": {
+   "sig": "(simulation_id)",
+   "doc": "Delete a simulation.\n\nDelete a simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nbool\n    Whether the simulation is deleted or not.\n\nExamples\n--------\n>>> model.tasks.networksimulation.delete_results(simulation_id)"
+  },
+  "generate_engine_files": {
+   "sig": "(folder_path: Optional[str] = None, study: Optional[str] = None) -> List[str]",
+   "doc": "Create engine files for the specified study.\n\nGenerate the engine file(s) for the requested study. The files are written\nto the specified folder, or to the current model folder if one is not given.\n\nParameters\n----------\nfolder_path : str\n    Optional. The folder location where the generated files are written to.\n    If not specified, the files will be written to current pipesim model file folder.\nstudy : str\n    Optional. The study name.\n\nReturns\n-------\nList[str]\n    The list of engine files generated.\n\nExamples\n--------\n>>> engine_files = model.tasks.networksimulation.generate_engine_files()\n>>> engine_files = model.tasks.networksimulation.generate_engine_files(\n                           study='Study 1')\n>>> engine_files = model.tasks.networksimulation.generate_engine_files(\n                           folder_path=\"D:\\Temp\", study='Study 1')"
+  },
+  "get_conditions": {
+   "sig": "(use_surface_condition: Optional[bool] = None, study: Optional[str] = None) -> Dict",
+   "doc": "Returns the study conditions.\n\nReturns the network simulation conditions for the specified study.\nIf the network simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nuse_surface_condition : bool\n    Optional. get surface conditions or reservoir conditions. If not provided,\n    default is the conditions used in the model.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndict\n    The study conditions.\n\nExamples\n--------\n>>> studynetsim1 = model.tasks.networksimulation.get_conditions()\n>>> studynetsim1 = model.tasks.networksimulation.get_conditions(\"Study 1\")\n>>> studynetsim1 = model.tasks.networksimulation.get_conditions(\n                        use_surface_condition=True, study=\"Study 1\")"
+  },
+  "get_constraints": {
+   "sig": "(study: Optional[str] = None) -> Dict",
+   "doc": "Returns the study constraints.\n\nReturns the network simulation conditions for the specified study.\nIf the network simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndict\n    The study conditions.\n\nExamples\n--------\n>>> studynetsim1 = model.tasks.networksimulation.get_constraints()\n>>> studynetsim1 = model.tasks.networksimulation.get_constraints(\"Study 1\")"
+  },
+  "get_messages": {
+   "sig": "(simulation_id)",
+   "doc": "Returns the simulation progress message of the simulation\n\nReturns the simulation progress message from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nmessages: list\n    The simulation messages returned by the simulator.\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_messages(simulation_id)"
+  },
+  "get_results": {
+   "sig": "(simulation_id)",
+   "doc": "Returns the results from the simulation.\n\nReturns the results from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n>>> sim_results = model.tasks.networksimulation.get_results(simulation_id)"
+  },
+  "get_state": {
+   "sig": "(simulation_id)",
+   "doc": "Returns the state of the simulation\n\nReturns the state from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nSimulationState:\n    The state of the simulation. sim_status indicates whether the simulation is still running.\n    messages contains the simulation messages returned by the simulator.\n\nExamples\n--------\n>>> sim_state = model.tasks.networksimulation.get_state(simulation_id)"
+  },
+  "get_summary": {
+   "sig": "(simulation_id)",
+   "doc": "Returns the warning, info and error messages of the simulation\n\nReturns the warning, info and error messages from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nsummary: dictionary\n    The keys of the dictionary are \"Error\", \"Info\" and \"Warning\" and their\n    values are a list of corresponding messages as shown in Stingray UI\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_summary(simulation_id)"
+  },
+  "get_use_surface_conditions": {
+   "sig": "(study: Optional[str] = None)",
+   "doc": "Returns the value of use surface conditions.\n\nReturns the value of use surface conditions for the specified study.\nIf the network simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nbool\n    The value of use surface conditions.\n\nExamples\n--------\n>>> use_surface = model.tasks.networksimulation.get_use_surface_conditions()\n>>> use_surface = model.tasks.networksimulation.get_use_surface_conditions(\"Study 1\")"
+  },
+  "reset_conditions": {
+   "sig": "(study: Optional[str] = None)",
+   "doc": "Resets the study conditions to be synchronized with the model.\n\nResets the study conditions to be synchronized with the model for the specified study.\n\nParameters\n----------\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nbool\n    Whether the reset succeeded (True) or not (False).\n\nExamples\n--------\n>>> model.tasks.networksimulation.reset_conditions()\n>>> model.tasks.networksimulation.reset_conditions(study = \"Study 1\")"
+  },
+  "run": {
+   "sig": "(profile_variables: Optional[list] = None, system_variables: Optional[list] = None, boundaries: Optional[dict] = {}, constraints: Optional[dict] = {}, use_surface_condition: Optional[bool] = None, study: Optional[str] = None, options: Optional[dict] = {})",
+   "doc": "Runs a network simulation.\n\nRuns a network simulation. Optionally the\nboundaries, constraints, and variables may be set at the same time\navoiding the need to use set_conditions().\nIf the network simulation task does not exist in the study, a new one will be created.\nThe method waits until the simulation has finished before returning, and then returns\nthe results.\n\nParameters\n----------\nuse_surface_condition : bool\n    Optional. use surface conditions or reservoir conditions. If not provided,\n    default is the conditions used in the model.\nboundaries : dict\n    Optional. The boundary conditions to be set on the study.\nconstraints : dict\n    Optional. The constraints to be set on the study.\nprofile_variables : list\n    Optional. The list of profile variables to be returned with the\n    simulation profile results. If omitted then all the possible\n    profile variables are returned.\nsystem_variables : list\n    Optional. The list of system variables to be returned with the\n    simulation system results. If omitted then all the possible\n    system variables are returned.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\noptions : dict\n    Optional. simulations options like generating ouput files and using Restart\n\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n\n>>> sim_results = model.tasks.networksimula"
+  },
+  "set_conditions": {
+   "sig": "(boundaries: Optional[dict] = {}, constraints: Optional[dict] = {}, use_surface_condition: Optional[bool] = None, study: Optional[str] = None)",
+   "doc": "Sets the study conditions.\n\nSets the study conditions for the specified study.\nIf the network simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nuse_surface_condition : bool\n    Optional. set surface conditions or reservoir conditions. If not provided,\n    default is the conditions used in the model.\nboundaries : dict\n    Optional. The boundary conditions to be set on the study.\nconstraints : dict\n    Optional. The rate constraints to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nNetwork simulation operation\n    The existing or created network simulation operation.\n\nExamples\n--------\n>>> model.tasks.networksimulation.set_conditions(\n            boundaries={\"Well:VertComp\":{\n                Parameters.Boundary.PRESSURE:NAN,\n                Parameters.Boundary.TEMPERATURE:150,\n                Parameters.Boundary.FLOWRATETYPE:Constants.FlowRateType.GASFLOWRATE,\n                Parameters.Boundary.GASFLOWRATE:5}},\n            constraints={\"Well\":{Parameters.RateConstraint.LIQUIDFLOWRATE:200.0}})\n>>> model.tasks.networksimulation.set_conditions(use_surface_condition=False,\n            boundaries={\"Well:VertComp\":{\n                            Parameters.Boundary.PRESSURE:NAN,\n                            Parameters.Boundary.TEMPERATURE:150,\n "
+  },
+  "set_constraints": {
+   "sig": "(constraints, study: Optional[str] = None)",
+   "doc": "Sets the study constraints.\n\nSets the study constraints for the specified study.\nIf the network simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nconstraints : dict\n    The constraints to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nNetwork simulation operation\n    The existing or created network simulation operation.\n\nExamples\n--------\n>>> model.tasks.networksimulation.set_constraints(constraints={\"Well\":{Parameters.RateConstraint.LIQUIDFLOWRATE:200.0}})\n>>> model.tasks.networksimulation.set_constraints({\"Well\":{Parameters.RateConstraint.LIQUIDFLOWRATE:200.0}})\n>>> model.tasks.networksimulation.set_constraints(\n            constraints={\"Well\":{Parameters.RateConstraint.LIQUIDFLOWRATE:200.0}},\n            study = \"Study 1\")"
+  },
+  "set_use_surface_conditions": {
+   "sig": "(value: bool, study: Optional[str] = None)",
+   "doc": "Sets the value of use surface conditions.\n\nSets the the value of use surface conditions for the specified study.\nIf the network simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nvalue : bool\n    The value of use surface conditions. If true, set to use surface conditions.\n    If false, set to use reservoir conditions.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nExamples\n--------\n>>> model.tasks.networksimulation.set_use_surface_conditions(True)\n>>> model.tasks.networksimulation.set_use_surface_conditions(False, study = \"Study 1\")"
+  },
+  "start": {
+   "sig": "(profile_variables: Optional[list] = None, system_variables: Optional[list] = None, boundaries: Optional[dict] = {}, constraints: Optional[dict] = {}, use_surface_condition: Optional[bool] = None, options: Optional[dict] = {}, study: Optional[str] = None) -> str",
+   "doc": "Starts running a simulation of the specified type, returning the simulation id\nimmediately which can be used later to check the status and get the results.\nIf the network simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nuse_surface_condition : bool\n    Optional. use surface conditions or reservoir conditions. If not provided,\n    default is the conditions used in the model.\nparameters : dict\n    Optional. The parameters and respective values to set.\n    For PT Profile, it must contain the name of the StartNode (Well or Source)\nboundaries : dict\n    Optional. The boundary conditions to be set on the study.\nconstraints : dict\n    Optional. The constraints to be set on the study.\nsensitivities : dict\n    Optional. For PT Profile simulations, the sensitivities.\nprofile_variables : list\n    Optional. The list of profile variables to be returned with the\n    simulation profile results. If omitted then all the possible\n    profile variables are returned.\nsystem_variables : list\n    Optional. The list of system variables to be returned with the\n    simulation system results. If omitted then all the possible\n    system variables are returned.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\noptions : dict\n    Optional. simulations options like generating ouput files and using Restar"
+  },
+  "validate": {
+   "sig": "(study: Optional[str] = None, validate_model=True) -> List[sixgill.validation.ValidationIssue]",
+   "doc": "Validates the task\n\nParameters\n----------\nstudy : str\n   Optional. The name of the study. If no name is specified and there is one default study,\n   the default study will be used. If there are multiple studies in the model, study name is required.\nvalidate_model: Boolean\n    True by default.\n    If True, it validates the whole model plus the task\nReturns\n-------\nlist\n    a list of ValidationIssue instances.\n\nExamples\n--------\n>>> issues = model.tasks.networksimulation.validate()\n>>> for issue in issues:\n        print(issue.message)\n        print(issue.path)\n        print(issue.property_name)"
+  }
+ },
+ "parameters_boundary": {
+  "Boundary": {
+   "COMPLETIONNAME": "CompletionName",
+   "FLOWRATETYPE": "FlowRateType",
+   "GASFLOWRATE": "GasFlowRate",
+   "GLR": "GLR",
+   "GOR": "GOR",
+   "GWR": "GWR",
+   "ISBOTTOMCOMPLETION": "IsBottomCompletion",
+   "ISSURFACECONDITION": "IsSurfaceCondition",
+   "LGR": "LGR",
+   "LIQUIDFLOWRATE": "LiquidFlowRate",
+   "MASSFLOWRATE": "MassFlowRate",
+   "OGR": "OGR",
+   "PRESSURE": "Pressure",
+   "TEMPERATURE": "Temperature",
+   "USEGASRATIO": "UseGasRatio",
+   "USEPQCURVE": "UsePQCurve",
+   "USEWATERRATIO": "UseWaterRatio",
+   "WATERCUT": "WaterCut",
+   "WGR": "WGR"
+  },
+  "NetworkOptimizerSimulation": {
+   "ControlTypes": "<class 'sixgill.definitions.Parameters.NetworkOptimizerSimulation.ControlTypes'>",
+   "DESCRIPTION": "Description",
+   "FLOWRATECONDITION": "FlowRateCondition",
+   "FLOWRATECONDITIONPRESSURE": "FlowRateConditionPressure",
+   "FLOWRATECONDITIONTEMPERATURE": "FlowRateConditionTemperature",
+   "GenerateCurvesTypes": "<class 'sixgill.definitions.Parameters.NetworkOptimizerSimulation.GenerateCurvesTypes'>",
+   "InjectionGasrateTypes": "<class 'sixgill.definitions.Parameters.NetworkOptimizerSimulation.InjectionGasrateTypes'>",
+   "ObjectiveFunctionTypes": "<class 'sixgill.definitions.Parameters.NetworkOptimizerSimulation.ObjectiveFunctionTypes'>",
+   "OptimizationControl": "<class 'sixgill.definitions.Parameters.NetworkOptimizerSimulation.OptimizationControl'>",
+   "Options": "<class 'sixgill.definitions.Parameters.NetworkOptimizerSimulation.Options'>",
+   "PowerTypes": "<class 'sixgill.definitions.Parameters.NetworkOptimizerSimulation.PowerTypes'>",
+   "RateTypes": "<class 'sixgill.definitions.Parameters.NetworkOptimizerSimulation.RateTypes'>",
+   "STUDY": "Study",
+   "TASKNAME": "Name",
+   "USEPHASERATIO": "UsePhaseRatio"
+  },
+  "NetworkSimulation": {
+   "DESCRIPTION": "Description",
+   "FLOWRATECONDITION": "FlowRateCondition",
+   "FLOWRATECONDITIONPRESSURE": "FlowRateConditionPressure",
+   "FLOWRATECONDITIONTEMPERATURE": "FlowRateConditionTemperature",
+   "STUDY": "Study",
+   "TASKNAME": "Name",
+   "USEPHASERATIO": "UsePhaseRatio",
+   "USESURFACEBOUNDARYCONDITIONS": "UseSurfaceBoundaryConditions"
+  }
+ },
+ "sinks": [
+  "Gas-Sales",
+  "Oil-Facility"
+ ]
+}

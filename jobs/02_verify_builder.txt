@@ -1,0 +1,4 @@
+# Verify the network builder and the in-well addressing / boundary-condition fixes on real PIPESIM 2023.1.
+# Both scripts only work in temp folders (the case study is copied, never modified) and write knowledge\probe_context.json.
+"D:\Program\Pipesim toolkit\python.exe" tests\real_build_test.py
+"D:\Program\Pipesim toolkit\python.exe" tools\probe_context.py "D:\Program\Pipesim2023.1\Case Studies\Network Models\CSN_301_Small Network.pips"

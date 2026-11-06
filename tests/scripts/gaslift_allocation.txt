@@ -1,0 +1,5 @@
+Build a field with two gas-lifted oil wells, W1 and W2, each flowing through a 1 km, 100 mm flat flowline into manifold J1, then a 4 km, 152 mm flat trunkline to a separator SEP at 15 bara. Black oil: 30 API, GOR 80 sm3/sm3, 40% water cut, gas SG 0.7. W1: reservoir 220 bara, depth 2500 m, PI 8 sm3/d/bar, gas lift injected at 2200 m. W2: reservoir 200 bara, depth 2400 m, PI 12 sm3/d/bar, gas lift injected at 2100 m. Both wells currently get 0.05 MMsm3/d of lift gas. We only have 0.15 MMsm3/d of lift gas in total: how should we split it between W1 and W2 to get the most field oil? Try 0, 0.05, 0.1 and 0.15 MMsm3/d for each well.
+Use the suggested defaults for everything else.
+Yes, approved. Run it.
+Approved.
+exit

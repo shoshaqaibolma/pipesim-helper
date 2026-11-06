@@ -1,0 +1,709 @@
+{
+ "file": "D:\\Program\\Pipesim2023.1\\Case Studies\\Pipeline Models\\CSP_234_Frigg.pips",
+ "components": {
+  "BlackOilFluid": [
+   "BOFluid"
+  ],
+  "CompositionalFluid": [
+   "Frigg"
+  ],
+  "FlowCorrelation": [
+   "Default",
+   "FL-GIS_TI=1:Default",
+   "FL2-GIS_TI=1:Default"
+  ],
+  "Flowline": [
+   "FL-GIS_TI=1",
+   "FL2-GIS_TI=1"
+  ],
+  "FluidComponent": [
+   "Butane",
+   "C7+",
+   "Carbon Dioxide",
+   "Ethane",
+   "Hexane",
+   "Methane",
+   "Nitrogen",
+   "Pentane",
+   "Propane"
+  ],
+  "GlobalCatalog": [
+   "CustomPlotVariables",
+   "PIPESIM_FIELD"
+  ],
+  "Junction": [
+   "MCP 01"
+  ],
+  "Sink": [
+   "St. Fergus"
+  ],
+  "Source": [
+   "Frigg",
+   "MCP 01:MCP 01_SimpleSource"
+  ],
+  "Study": [
+   "General data plus Datapoint 8",
+   "burial match "
+  ]
+ },
+ "values": {
+  "BlackOilFluid|BOFluid": {
+   "BOFluid": {
+    "Name": "BOFluid",
+    "API": 30.0,
+    "DeadOilDensity": 876.1699662920959,
+    "DeadOilTemperature1": 93.3333333333,
+    "DeadOilTemperature2": 15.555560000000014,
+    "DeadOilViscosity1": 0.0026439104305754587,
+    "DeadOilViscosity2": 0.07915488781229667,
+    "DeadOilViscosityCorr": "BeggsAndRobinson",
+    "COFraction": 0.0,
+    "CO2Fraction": 0.0,
+    "H2Fraction": 0.0,
+    "H2SFraction": 0.0,
+    "N2Fraction": 0.0,
+    "GasSpecificGravity": 0.64,
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "LiveOilViscosityCorr": "ChewandConnaly",
+    "OGR": null,
+    "Richardsonkoiw": 3.8,
+    "Richardsonkwio": 6.6,
+    "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+    "UndersaturatedOilViscosityParA": 0.0239,
+    "UndersaturatedOilViscosityParB": 0.01638,
+    "UseBraunerUllmanEquation": false,
+    "UseDeadOilDensity": false,
+    "UseGasRatio": "GOR",
+    "UserWatercutCutOff": 60.0,
+    "UseWaterRatio": "WaterCut",
+    "VandUserk1": 2.5,
+    "VandUserk2": 0.609,
+    "WaterCut": 0.0,
+    "WaterSpecificGravity": 1.02,
+    "WGR": null,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "CompositionalFluid|Frigg": {
+   "Frigg": {
+    "Name": "Frigg",
+    "LiquidViscosityCalc": "OilWaterVolumeRatio",
+    "Richardsonkoiw": null,
+    "Richardsonkwio": null,
+    "UseBraunerUllmanEquation": false,
+    "UserWatercutCutOff": 60.0,
+    "VandUserk1": null,
+    "VandUserk2": null,
+    "ComponentFractionType": "Mole",
+    "SaltWaterDensity": null,
+    "SaltWaterDensityType": "DefaultDensity",
+    "SaltWaterSalinity": null,
+    "SaltWaterTemperature": null,
+    "ShowAllComponents": false,
+    "SodiumIon": null,
+    "CalciumIon": null,
+    "MagnesiumIon": null,
+    "PotassiumIon": null,
+    "StrontiumIon": null,
+    "BariumIon": null,
+    "IronIon": null,
+    "ChlorideIon": null,
+    "SulphateIon": null,
+    "BicarbonateIon": null,
+    "BromideIon": null,
+    "TotalDissolvedSolids": null,
+    "UseTunedFractions": false,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "FlowCorrelation|Default": {
+   "Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   },
+   "FL-GIS_TI=1:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL2-GIS_TI=1:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   }
+  },
+  "FlowCorrelation|FL-GIS_TI=1:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL-GIS_TI=1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL2-GIS_TI=1:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL2-GIS_TI=1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "Flowline|FL-GIS_TI=1": {
+   "FL-GIS_TI=1": {
+    "Name": "FL-GIS_TI=1",
+    "AmbientAirTemperature": 4.444444444444514,
+    "AmbientFluidType": "Water",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": 0.0,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": true,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 774.6999999999999,
+    "Roughness": 0.056,
+    "WallThickness": 19.05,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": true,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL2-GIS_TI=1": {
+   "FL2-GIS_TI=1": {
+    "Name": "FL2-GIS_TI=1",
+    "AmbientAirTemperature": 4.444444444444514,
+    "AmbientFluidType": "Water",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": 0.0,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": true,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 774.6999999999999,
+    "Roughness": 0.04572,
+    "WallThickness": 19.05,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "FluidComponent|Butane": {
+   "Butane": {
+    "Name": "Butane",
+    "Acf": null,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 58.12220001220703,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": null,
+    "Pcrit": null,
+    "ReferenceDensity": null,
+    "SpecificGravity": null,
+    "Tboil": null,
+    "Tcrit": null,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": null,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": null
+   }
+  },
+  "FluidComponent|C7+": {
+   "C7+": {
+    "Name": "C7+",
+    "Acf": null,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": true,
+    "MolecularWeight": 121.0,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": null,
+    "Pcrit": null,
+    "ReferenceDensity": null,
+    "SpecificGravity": null,
+    "Tboil": 184.0,
+    "Tcrit": null,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": null,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": null
+   }
+  },
+  "FluidComponent|Carbon Dioxide": {
+   "Carbon Dioxide": {
+    "Name": "Carbon Dioxide",
+    "Acf": null,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "NonHydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 44.00979995727539,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": null,
+    "Pcrit": null,
+    "ReferenceDensity": null,
+    "SpecificGravity": null,
+    "Tboil": null,
+    "Tcrit": null,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": null,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": null
+   }
+  },
+  "FluidComponent|Ethane": {
+   "Ethane": {
+    "Name": "Ethane",
+    "Acf": null,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 30.06999969482422,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": null,
+    "Pcrit": null,
+    "ReferenceDensity": null,
+    "SpecificGravity": null,
+    "Tboil": null,
+    "Tcrit": null,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": null,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": null
+   }
+  },
+  "FluidComponent|Hexane": {
+   "Hexane": {
+    "Name": "Hexane",
+    "Acf": null,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 86.17536163330078,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": null,
+    "Pcrit": null,
+    "ReferenceDensity": null,
+    "SpecificGravity": null,
+    "Tboil": null,
+    "Tcrit": null,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": null,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": null
+   }
+  },
+  "FluidComponent|Methane": {
+   "Methane": {
+    "Name": "Methane",
+    "Acf": null,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 16.042800903320312,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": null,
+    "Pcrit": null,
+    "ReferenceDensity": null,
+    "SpecificGravity": null,
+    "Tboil": null,
+    "Tcrit": null,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": null,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": null
+   }
+  },
+  "FluidComponent|Nitrogen": {
+   "Nitrogen": {
+    "Name": "Nitrogen",
+    "Acf": null,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "NonHydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 28.013479232788086,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": null,
+    "Pcrit": null,
+    "ReferenceDensity": null,
+    "SpecificGravity": null,
+    "Tboil": null,
+    "Tcrit": null,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": null,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": null
+   }
+  },
+  "FluidComponent|Pentane": {
+   "Pentane": {
+    "Name": "Pentane",
+    "Acf": null,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 72.1487808227539,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": null,
+    "Pcrit": null,
+    "ReferenceDensity": null,
+    "SpecificGravity": null,
+    "Tboil": null,
+    "Tcrit": null,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": null,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": null
+   }
+  },
+  "FluidComponent|Propane": {
+   "Propane": {
+    "Name": "Propane",
+    "Acf": null,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 44.09560012817383,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": null,
+    "Pcrit": null,
+    "ReferenceDensity": null,
+    "SpecificGravity": null,
+    "Tboil": null,
+    "Tcrit": null,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": null,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": null
+   }
+  },
+  "GlobalCatalog|CustomPlotVariables": {
+   "CustomPlotVariables": {
+    "Name": "CustomPlotVariables",
+    "CatalogType": "PlotVariableSettings"
+   }
+  },
+  "GlobalCatalog|PIPESIM_FIELD": {
+   "PIPESIM_FIELD": {
+    "Name": "PIPESIM_FIELD",
+    "CatalogType": "CustomUnitSystem"
+   }
+  },
+  "Junction|MCP 01": {
+   "MCP 01": {
+    "Name": "MCP 01",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Sink|St. Fergus": {
+   "St. Fergus": {
+    "Name": "St. Fergus",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 50.0,
+    "IsActive": true,
+    "FlowrateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Frigg": {
+   "Frigg": {
+    "Name": "Frigg",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": 32.40013587057781,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": 40.00000000000006,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "BOFluid",
+    "AssociatedCompositionalFluid": "Frigg",
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "GasFlowRate"
+   }
+  },
+  "Source|MCP 01:MCP 01_SimpleSource": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'MCP 01', 'Source': 'MCP 01_SimpleSource', 'Template': '___NONE___'})"
+  },
+  "Study|General data plus Datapoint 8": {
+   "General data plus Datapoint 8": {
+    "Name": "General data plus Datapoint 8",
+    "Description": "Data comparison is configured for Datapoint 8"
+   }
+  },
+  "Study|burial match ": {
+   "burial match ": {
+    "Name": "burial match ",
+    "Description": "burial match using datapoints 11 & 12"
+   }
+  }
+ },
+ "probe": {
+  "about": {
+   "ok": true,
+   "result": {
+    "WebAPIVersion": "2023.1.615.0",
+    "ToolkitVersion": "2023.1",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_now5n1x0\\CSP_234_Frigg.pips",
+    "UnitSystem": "PIPESIM_METRIC",
+    "UiUnitSystem": "PIPESIM_FIELD"
+   }
+  },
+  "connections": {
+   "ok": true,
+   "result": [
+    {
+     "Source": "Frigg",
+     "Source Port": "",
+     "Destination": "FL-GIS_TI=1"
+    },
+    {
+     "Source": "FL-GIS_TI=1",
+     "Source Port": "",
+     "Destination": "MCP 01"
+    },
+    {
+     "Source": "MCP 01",
+     "Source Port": "",
+     "Destination": "FL2-GIS_TI=1"
+    },
+    {
+     "Source": "FL2-GIS_TI=1",
+     "Source Port": "",
+     "Destination": "St. Fergus"
+    }
+   ]
+  },
+  "get_connections": {
+   "ok": true,
+   "result": {
+    "Frigg": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL-GIS_TI=1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL-GIS_TI=1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "MCP 01",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "MCP 01": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL2-GIS_TI=1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL2-GIS_TI=1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "St. Fergus",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    }
+   }
+  },
+  "networksimulation.get_conditions": {
+   "ok": false,
+   "error": "RuntimeError: Multiple studies exist in the model. Please specify a study."
+  },
+  "networksimulation.run": {
+   "ok": false,
+   "error": "RuntimeError: Multiple studies exist in the model. Please specify a study."
+  }
+ },
+ "about": {
+  "WebAPIVersion": "2023.1.615.0",
+  "ToolkitVersion": "2023.1",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_now5n1x0\\CSP_234_Frigg.pips",
+  "UnitSystem": "PIPESIM_METRIC",
+  "UiUnitSystem": "PIPESIM_FIELD"
+ },
+ "seconds": 6.3
+}

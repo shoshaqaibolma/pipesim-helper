@@ -1,0 +1,2927 @@
+{
+ "file": "D:\\Program\\Pipesim2023.1\\Case Studies\\Python Toolkit\\GIS Model Conversion\\elmore_from_shapefile.pips",
+ "components": {
+  "FlowCorrelation": [
+   "Default",
+   "FL10:Default",
+   "FL11:Default",
+   "FL12:Default",
+   "FL13:Default",
+   "FL14:Default",
+   "FL15:Default",
+   "FL16:Default",
+   "FL17:Default",
+   "FL18:Default",
+   "FL19:Default",
+   "FL1:Default",
+   "FL20:Default",
+   "FL2:Default",
+   "FL3:Default",
+   "FL4:Default",
+   "FL5:Default",
+   "FL6:Default",
+   "FL7:Default",
+   "FL8:Default",
+   "FL9:Default",
+   "PL1:Default",
+   "TL10:Default",
+   "TL1:Default",
+   "TL2:Default",
+   "TL3:Default",
+   "TL4:Default",
+   "TL5a:Default",
+   "TL5b:Default",
+   "TL5c:Default",
+   "TL6:Default",
+   "TL7:Default",
+   "TL8:Default",
+   "TL9:Default"
+  ],
+  "Flowline": [
+   "FL1",
+   "FL10",
+   "FL11",
+   "FL12",
+   "FL13",
+   "FL14",
+   "FL15",
+   "FL16",
+   "FL17",
+   "FL18",
+   "FL19",
+   "FL2",
+   "FL20",
+   "FL3",
+   "FL4",
+   "FL5",
+   "FL6",
+   "FL7",
+   "FL8",
+   "FL9",
+   "PL1",
+   "TL1",
+   "TL10",
+   "TL2",
+   "TL3",
+   "TL4",
+   "TL5a",
+   "TL5b",
+   "TL5c",
+   "TL6",
+   "TL7",
+   "TL8",
+   "TL9"
+  ],
+  "GlobalCatalog": [
+   "PIPESIM_FIELD"
+  ],
+  "Junction": [
+   "J",
+   "J 1",
+   "J 10",
+   "J 11",
+   "J 12",
+   "J 13",
+   "J 14",
+   "J 15",
+   "J 16",
+   "J 17",
+   "J 18",
+   "J 19",
+   "J 2",
+   "J 20",
+   "J 21",
+   "J 22",
+   "J 23",
+   "J 24",
+   "J 25",
+   "J 26",
+   "J 27",
+   "J 28",
+   "J 29",
+   "J 3",
+   "J 30",
+   "J 31",
+   "J 32",
+   "J 33",
+   "J 4",
+   "J 5",
+   "J 6",
+   "J 7",
+   "J 8",
+   "J 9"
+  ],
+  "Study": [
+   "Study 1"
+  ]
+ },
+ "values": {
+  "FlowCorrelation|Default": {
+   "FL17:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL18:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL7:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "TL7:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL13:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL12:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL14:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL15:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "TL5b:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   },
+   "PL1:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "TL4:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL9:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL8:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "TL5c:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "TL5a:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL11:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL10:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "TL3:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL6:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL5:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "TL2:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "TL1:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL3:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL4:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL1:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL2:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "TL6:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL20:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "TL8:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "TL9:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL16:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL19:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "TL10:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   }
+  },
+  "FlowCorrelation|FL10:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL10', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL11:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL11', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL12:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL12', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL13:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL13', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL14:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL14', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL15:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL15', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL16:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL16', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL17:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL17', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL18:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL18', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL19:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL19', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL1:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL20:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL20', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL2:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL2', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL3:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL3', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL4:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL4', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL5:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL5', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL6:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL6', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL7:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL7', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL8:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL8', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL9:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL9', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|PL1:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'PL1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|TL10:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL10', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|TL1:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|TL2:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL2', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|TL3:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL3', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|TL4:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL4', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|TL5a:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL5a', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|TL5b:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL5b', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|TL5c:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL5c', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|TL6:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL6', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|TL7:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL7', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|TL8:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL8', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|TL9:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL9', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "Flowline|FL1": {
+   "FL1": {
+    "Name": "FL1",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL10": {
+   "FL10": {
+    "Name": "FL10",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL11": {
+   "FL11": {
+    "Name": "FL11",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL12": {
+   "FL12": {
+    "Name": "FL12",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL13": {
+   "FL13": {
+    "Name": "FL13",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL14": {
+   "FL14": {
+    "Name": "FL14",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL15": {
+   "FL15": {
+    "Name": "FL15",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL16": {
+   "FL16": {
+    "Name": "FL16",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL17": {
+   "FL17": {
+    "Name": "FL17",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL18": {
+   "FL18": {
+    "Name": "FL18",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL19": {
+   "FL19": {
+    "Name": "FL19",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL2": {
+   "FL2": {
+    "Name": "FL2",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL20": {
+   "FL20": {
+    "Name": "FL20",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL3": {
+   "FL3": {
+    "Name": "FL3",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL4": {
+   "FL4": {
+    "Name": "FL4",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL5": {
+   "FL5": {
+    "Name": "FL5",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL6": {
+   "FL6": {
+    "Name": "FL6",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL7": {
+   "FL7": {
+    "Name": "FL7",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL8": {
+   "FL8": {
+    "Name": "FL8",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL9": {
+   "FL9": {
+    "Name": "FL9",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 63.5,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|PL1": {
+   "PL1": {
+    "Name": "PL1",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 203.2,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|TL1": {
+   "TL1": {
+    "Name": "TL1",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 88.89999999999999,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|TL10": {
+   "TL10": {
+    "Name": "TL10",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 88.89999999999999,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|TL2": {
+   "TL2": {
+    "Name": "TL2",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 88.89999999999999,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|TL3": {
+   "TL3": {
+    "Name": "TL3",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 88.89999999999999,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|TL4": {
+   "TL4": {
+    "Name": "TL4",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 88.89999999999999,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|TL5a": {
+   "TL5a": {
+    "Name": "TL5a",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 88.89999999999999,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|TL5b": {
+   "TL5b": {
+    "Name": "TL5b",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 88.89999999999999,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|TL5c": {
+   "TL5c": {
+    "Name": "TL5c",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 88.89999999999999,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|TL6": {
+   "TL6": {
+    "Name": "TL6",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 88.89999999999999,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|TL7": {
+   "TL7": {
+    "Name": "TL7",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 88.89999999999999,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|TL8": {
+   "TL8": {
+    "Name": "TL8",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 88.89999999999999,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|TL9": {
+   "TL9": {
+    "Name": "TL9",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 88.89999999999999,
+    "Roughness": 0.0254,
+    "WallThickness": 12.7,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "GlobalCatalog|PIPESIM_FIELD": {
+   "PIPESIM_FIELD": {
+    "Name": "PIPESIM_FIELD",
+    "CatalogType": "CustomUnitSystem"
+   }
+  },
+  "Junction|J": {
+   "J": {
+    "Name": "J",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 1": {
+   "J 1": {
+    "Name": "J 1",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 10": {
+   "J 10": {
+    "Name": "J 10",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 11": {
+   "J 11": {
+    "Name": "J 11",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 12": {
+   "J 12": {
+    "Name": "J 12",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 13": {
+   "J 13": {
+    "Name": "J 13",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 14": {
+   "J 14": {
+    "Name": "J 14",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 15": {
+   "J 15": {
+    "Name": "J 15",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 16": {
+   "J 16": {
+    "Name": "J 16",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 17": {
+   "J 17": {
+    "Name": "J 17",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 18": {
+   "J 18": {
+    "Name": "J 18",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 19": {
+   "J 19": {
+    "Name": "J 19",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 2": {
+   "J 2": {
+    "Name": "J 2",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 20": {
+   "J 20": {
+    "Name": "J 20",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 21": {
+   "J 21": {
+    "Name": "J 21",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 22": {
+   "J 22": {
+    "Name": "J 22",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 23": {
+   "J 23": {
+    "Name": "J 23",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 24": {
+   "J 24": {
+    "Name": "J 24",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 25": {
+   "J 25": {
+    "Name": "J 25",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 26": {
+   "J 26": {
+    "Name": "J 26",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 27": {
+   "J 27": {
+    "Name": "J 27",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 28": {
+   "J 28": {
+    "Name": "J 28",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 29": {
+   "J 29": {
+    "Name": "J 29",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 3": {
+   "J 3": {
+    "Name": "J 3",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 30": {
+   "J 30": {
+    "Name": "J 30",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 31": {
+   "J 31": {
+    "Name": "J 31",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 32": {
+   "J 32": {
+    "Name": "J 32",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 33": {
+   "J 33": {
+    "Name": "J 33",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 4": {
+   "J 4": {
+    "Name": "J 4",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 5": {
+   "J 5": {
+    "Name": "J 5",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 6": {
+   "J 6": {
+    "Name": "J 6",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 7": {
+   "J 7": {
+    "Name": "J 7",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 8": {
+   "J 8": {
+    "Name": "J 8",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 9": {
+   "J 9": {
+    "Name": "J 9",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Study|Study 1": {
+   "Study 1": {
+    "Name": "Study 1",
+    "Description": ""
+   }
+  }
+ },
+ "probe": {
+  "about": {
+   "ok": true,
+   "result": {
+    "WebAPIVersion": "2023.1.615.0",
+    "ToolkitVersion": "2023.1",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_enl3nsht\\elmore_from_shapefile.pips",
+    "UnitSystem": "PIPESIM_METRIC",
+    "UiUnitSystem": "PIPESIM_FIELD"
+   }
+  },
+  "connections": {
+   "ok": true,
+   "result": [
+    {
+     "Source": "J",
+     "Source Port": "",
+     "Destination": "PL1"
+    },
+    {
+     "Source": "PL1",
+     "Source Port": "",
+     "Destination": "J 1"
+    },
+    {
+     "Source": "J 2",
+     "Source Port": "",
+     "Destination": "TL4"
+    },
+    {
+     "Source": "TL4",
+     "Source Port": "",
+     "Destination": "J"
+    },
+    {
+     "Source": "J 3",
+     "Source Port": "",
+     "Destination": "FL9"
+    },
+    {
+     "Source": "FL9",
+     "Source Port": "",
+     "Destination": "J"
+    },
+    {
+     "Source": "J 4",
+     "Source Port": "",
+     "Destination": "FL8"
+    },
+    {
+     "Source": "FL8",
+     "Source Port": "",
+     "Destination": "J"
+    },
+    {
+     "Source": "J 5",
+     "Source Port": "",
+     "Destination": "TL5c"
+    },
+    {
+     "Source": "TL5c",
+     "Source Port": "",
+     "Destination": "J"
+    },
+    {
+     "Source": "J 6",
+     "Source Port": "",
+     "Destination": "TL5a"
+    },
+    {
+     "Source": "TL5a",
+     "Source Port": "",
+     "Destination": "J 7"
+    },
+    {
+     "Source": "J 6",
+     "Source Port": "",
+     "Destination": "FL11"
+    },
+    {
+     "Source": "FL11",
+     "Source Port": "",
+     "Destination": "J 8"
+    },
+    {
+     "Source": "J 9",
+     "Source Port": "",
+     "Destination": "FL10"
+    },
+    {
+     "Source": "FL10",
+     "Source Port": "",
+     "Destination": "J 6"
+    },
+    {
+     "Source": "J 10",
+     "Source Port": "",
+     "Destination": "TL3"
+    },
+    {
+     "Source": "TL3",
+     "Source Port": "",
+     "Destination": "J 2"
+    },
+    {
+     "Source": "J 11",
+     "Source Port": "",
+     "Destination": "FL6"
+    },
+    {
+     "Source": "FL6",
+     "Source Port": "",
+     "Destination": "J 10"
+    },
+    {
+     "Source": "J 10",
+     "Source Port": "",
+     "Destination": "FL5"
+    },
+    {
+     "Source": "FL5",
+     "Source Port": "",
+     "Destination": "J 12"
+    },
+    {
+     "Source": "J 13",
+     "Source Port": "",
+     "Destination": "TL2"
+    },
+    {
+     "Source": "TL2",
+     "Source Port": "",
+     "Destination": "J 10"
+    },
+    {
+     "Source": "J 14",
+     "Source Port": "",
+     "Destination": "TL1"
+    },
+    {
+     "Source": "TL1",
+     "Source Port": "",
+     "Destination": "J 13"
+    },
+    {
+     "Source": "J 15",
+     "Source Port": "",
+     "Destination": "FL3"
+    },
+    {
+     "Source": "FL3",
+     "Source Port": "",
+     "Destination": "J 14"
+    },
+    {
+     "Source": "J 16",
+     "Source Port": "",
+     "Destination": "FL4"
+    },
+    {
+     "Source": "FL4",
+     "Source Port": "",
+     "Destination": "J 14"
+    },
+    {
+     "Source": "J 17",
+     "Source Port": "",
+     "Destination": "FL1"
+    },
+    {
+     "Source": "FL1",
+     "Source Port": "",
+     "Destination": "J 13"
+    },
+    {
+     "Source": "J 18",
+     "Source Port": "",
+     "Destination": "FL2"
+    },
+    {
+     "Source": "FL2",
+     "Source Port": "",
+     "Destination": "J 13"
+    },
+    {
+     "Source": "J 7",
+     "Source Port": "",
+     "Destination": "TL6"
+    },
+    {
+     "Source": "TL6",
+     "Source Port": "",
+     "Destination": "J 19"
+    },
+    {
+     "Source": "J 20",
+     "Source Port": "",
+     "Destination": "FL20"
+    },
+    {
+     "Source": "FL20",
+     "Source Port": "",
+     "Destination": "J 19"
+    },
+    {
+     "Source": "J 19",
+     "Source Port": "",
+     "Destination": "TL8"
+    },
+    {
+     "Source": "TL8",
+     "Source Port": "",
+     "Destination": "J 21"
+    },
+    {
+     "Source": "J 21",
+     "Source Port": "",
+     "Destination": "TL9"
+    },
+    {
+     "Source": "TL9",
+     "Source Port": "",
+     "Destination": "J 22"
+    },
+    {
+     "Source": "J 22",
+     "Source Port": "",
+     "Destination": "FL16"
+    },
+    {
+     "Source": "FL16",
+     "Source Port": "",
+     "Destination": "J 23"
+    },
+    {
+     "Source": "J 21",
+     "Source Port": "",
+     "Destination": "FL19"
+    },
+    {
+     "Source": "FL19",
+     "Source Port": "",
+     "Destination": "J 24"
+    },
+    {
+     "Source": "J 22",
+     "Source Port": "",
+     "Destination": "TL10"
+    },
+    {
+     "Source": "TL10",
+     "Source Port": "",
+     "Destination": "J 25"
+    },
+    {
+     "Source": "J 25",
+     "Source Port": "",
+     "Destination": "FL17"
+    },
+    {
+     "Source": "FL17",
+     "Source Port": "",
+     "Destination": "J 26"
+    },
+    {
+     "Source": "J 25",
+     "Source Port": "",
+     "Destination": "FL18"
+    },
+    {
+     "Source": "FL18",
+     "Source Port": "",
+     "Destination": "J 27"
+    },
+    {
+     "Source": "J 2",
+     "Source Port": "",
+     "Destination": "FL7"
+    },
+    {
+     "Source": "FL7",
+     "Source Port": "",
+     "Destination": "J 28"
+    },
+    {
+     "Source": "J 29",
+     "Source Port": "",
+     "Destination": "TL7"
+    },
+    {
+     "Source": "TL7",
+     "Source Port": "",
+     "Destination": "J 19"
+    },
+    {
+     "Source": "J 30",
+     "Source Port": "",
+     "Destination": "FL13"
+    },
+    {
+     "Source": "FL13",
+     "Source Port": "",
+     "Destination": "J 29"
+    },
+    {
+     "Source": "J 31",
+     "Source Port": "",
+     "Destination": "FL12"
+    },
+    {
+     "Source": "FL12",
+     "Source Port": "",
+     "Destination": "J 29"
+    },
+    {
+     "Source": "J 32",
+     "Source Port": "",
+     "Destination": "FL14"
+    },
+    {
+     "Source": "FL14",
+     "Source Port": "",
+     "Destination": "J 29"
+    },
+    {
+     "Source": "J 33",
+     "Source Port": "",
+     "Destination": "FL15"
+    },
+    {
+     "Source": "FL15",
+     "Source Port": "",
+     "Destination": "J 29"
+    },
+    {
+     "Source": "J 7",
+     "Source Port": "",
+     "Destination": "TL5b"
+    },
+    {
+     "Source": "TL5b",
+     "Source Port": "",
+     "Destination": "J 5"
+    }
+   ]
+  },
+  "get_connections": {
+   "ok": true,
+   "result": {
+    "J": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "PL1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "PL1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 2": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL7",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "TL4": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 3": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL9",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL9": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 4": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL8",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL8": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 5": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "TL5c",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "TL5c": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 6": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL11",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "TL5a": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 7",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL11": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 8",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 9": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL10",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL10": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 6",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 10": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL5",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "TL3": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 2",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 11": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL6",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL6": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 10",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL5": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 12",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 13": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "TL2",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "TL2": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 10",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 14": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "TL1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "TL1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 13",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 15": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL3",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL3": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 14",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 16": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL4",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL4": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 14",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 17": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 13",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 18": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL2",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL2": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 13",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 7": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "TL5b",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "TL6": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 19",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 20": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL20",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL20": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 19",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 19": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "TL8",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "TL8": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 21",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 21": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL19",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "TL9": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 22",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 22": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "TL10",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL16": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 23",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL19": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 24",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "TL10": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 25",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 25": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL18",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL17": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 26",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL18": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 27",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL7": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 28",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 29": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "TL7",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "TL7": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 19",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 30": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL13",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL13": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 29",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 31": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL12",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL12": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 29",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 32": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL14",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL14": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 29",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 33": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL15",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL15": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 29",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "TL5b": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 5",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    }
+   }
+  },
+  "networksimulation.get_conditions": {
+   "ok": true,
+   "result": {}
+  }
+ },
+ "about": {
+  "WebAPIVersion": "2023.1.615.0",
+  "ToolkitVersion": "2023.1",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_enl3nsht\\elmore_from_shapefile.pips",
+  "UnitSystem": "PIPESIM_METRIC",
+  "UiUnitSystem": "PIPESIM_FIELD"
+ },
+ "baseline": {
+  "state": "Completed",
+  "summary": {
+   "Info": [
+    "2026-11-04T07:55:28.936Z    Beginning simulation...",
+    "2026-11-04T07:55:28.934Z    Running with 1 core",
+    "2026-11-04T07:55:29.341Z    Error: General engine error, code UnknownEngineError",
+    "2026-11-04T07:55:29.371Z    Finished simulation"
+   ],
+   "Error": [],
+   "Warning": [
+    "2026-11-04T07:55:29.313Z    [PSENGINE] Warning 26001103   from PNET_3 : After switching off watered out wells and redundant branches there was no network to solve!"
+   ]
+  },
+  "messages": [
+   "2026-11-04T07:55:28.984Z    Service starting...",
+   "2026-11-04T07:55:29.001Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T07:55:29.177Z    Service listening at 'net.pipe://localhost/pipe/3f72511b44b849718c5bfa0fb20585d1'...",
+   "2026-11-04T07:55:29.256Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\10656",
+   "2026-11-04T07:55:29.256Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\10656\\elmore_from_shapefile.tnt (1)",
+   "2026-11-04T07:55:29.292Z    ....................................",
+   "2026-11-04T07:55:29.293Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T07:55:29.293Z    ",
+   "2026-11-04T07:55:29.293Z     Warning 26001103  from PNET_3 :  After switching off watered out wells and redundant branches there was no network to solve!",
+   "2026-11-04T07:55:29.315Z     PNET API Ducks out of line: \"Set TNTfile\" call required before \"Validate\" call.",
+   "2026-11-04T07:55:29.315Z      pnet_do: error from called routine for name FULLSOLVE",
+   "2026-11-04T07:55:29.344Z     Disposing communication agent."
+  ],
+  "system": {},
+  "node": {}
+ },
+ "seconds": 9.6
+}

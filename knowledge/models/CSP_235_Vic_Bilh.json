@@ -1,0 +1,329 @@
+{
+ "file": "D:\\Program\\Pipesim2023.1\\Case Studies\\Pipeline Models\\CSP_235_Vic Bilh.pips",
+ "components": {
+  "BlackOilFluid": [
+   "Vic Bilh crude"
+  ],
+  "FlowCorrelation": [
+   "Default",
+   "Flowline - surveyed:Default"
+  ],
+  "Flowline": [
+   "Flowline - surveyed"
+  ],
+  "GlobalCatalog": [
+   "PIPESIM_FIELD"
+  ],
+  "Sink": [
+   "Lacq Plant"
+  ],
+  "Source": [
+   "Vic Bilh Source"
+  ],
+  "Study": [
+   "Study 1"
+  ]
+ },
+ "values": {
+  "BlackOilFluid|Vic Bilh crude": {
+   "Vic Bilh crude": {
+    "Name": "Vic Bilh crude",
+    "API": 21.3078,
+    "DeadOilDensity": 926.0093369328889,
+    "DeadOilTemperature1": 26.0,
+    "DeadOilTemperature2": 10.019999999999982,
+    "DeadOilViscosity1": 0.02658,
+    "DeadOilViscosity2": 0.12612,
+    "DeadOilViscosityCorr": "UserTable",
+    "COFraction": 0.0,
+    "CO2Fraction": 0.0,
+    "H2Fraction": 0.0,
+    "H2SFraction": 0.0,
+    "N2Fraction": 0.0,
+    "GasSpecificGravity": 0.89,
+    "GLR": null,
+    "GOR": 60.0,
+    "GWR": null,
+    "LGR": null,
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "LiveOilViscosityCorr": "ChewandConnaly",
+    "OGR": null,
+    "Richardsonkoiw": 3.8,
+    "Richardsonkwio": 6.6,
+    "UndersaturatedOilViscosityCorr": "Khan",
+    "UndersaturatedOilViscosityParA": 0.0239,
+    "UndersaturatedOilViscosityParB": 0.01638,
+    "UseBraunerUllmanEquation": false,
+    "UseDeadOilDensity": false,
+    "UseGasRatio": "GOR",
+    "UserWatercutCutOff": 60.0,
+    "UseWaterRatio": "WaterCut",
+    "VandUserk1": 2.5,
+    "VandUserk2": 0.609,
+    "WaterCut": 0.0,
+    "WaterSpecificGravity": 1.02,
+    "WGR": null,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "FlowCorrelation|Default": {
+   "Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   },
+   "Flowline - surveyed:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   }
+  },
+  "FlowCorrelation|Flowline - surveyed:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Flowline - surveyed', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "Flowline|Flowline - surveyed": {
+   "Flowline - surveyed": {
+    "Name": "Flowline - surveyed",
+    "AmbientAirTemperature": 12.0,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": 0.0,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 250.8,
+    "Roughness": 0.03,
+    "WallThickness": 11.1,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "GlobalCatalog|PIPESIM_FIELD": {
+   "PIPESIM_FIELD": {
+    "Name": "PIPESIM_FIELD",
+    "CatalogType": "CustomUnitSystem"
+   }
+  },
+  "Sink|Lacq Plant": {
+   "Lacq Plant": {
+    "Name": "Lacq Plant",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 17.0,
+    "IsActive": true,
+    "FlowrateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Vic Bilh Source": {
+   "Vic Bilh Source": {
+    "Name": "Vic Bilh Source",
+    "GLR": null,
+    "GOR": 60.0,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GOR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": 0.0,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": 700.0,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": 26.0,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "Vic Bilh crude",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": true,
+    "UseFluidOverrides": true,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Study|Study 1": {
+   "Study 1": {
+    "Name": "Study 1",
+    "Description": ""
+   }
+  }
+ },
+ "probe": {
+  "about": {
+   "ok": true,
+   "result": {
+    "WebAPIVersion": "2023.1.615.0",
+    "ToolkitVersion": "2023.1",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_licqqsiv\\CSP_235_Vic Bilh.pips",
+    "UnitSystem": "PIPESIM_METRIC",
+    "UiUnitSystem": "PIPESIM_FIELD"
+   }
+  },
+  "connections": {
+   "ok": true,
+   "result": [
+    {
+     "Source": "Flowline - surveyed",
+     "Source Port": "",
+     "Destination": "Lacq Plant"
+    },
+    {
+     "Source": "Vic Bilh Source",
+     "Source Port": "",
+     "Destination": "Flowline - surveyed"
+    }
+   ]
+  },
+  "get_connections": {
+   "ok": true,
+   "result": {
+    "Flowline - surveyed": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Lacq Plant",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Vic Bilh Source": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Flowline - surveyed",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    }
+   }
+  },
+  "networksimulation.get_conditions": {
+   "ok": true,
+   "result": {
+    "Vic Bilh Source": {
+     "BoundaryNodeType": "Source",
+     "WellName": null,
+     "BoundaryNodeName": "Vic Bilh Source",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": true,
+     "Temperature": 26.0,
+     "Pressure": null,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": 700.0,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 60.0,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 0.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    },
+    "Lacq Plant": {
+     "BoundaryNodeType": "Sink",
+     "WellName": null,
+     "BoundaryNodeName": "Lacq Plant",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": true,
+     "Temperature": null,
+     "Pressure": 17.0,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    }
+   }
+  }
+ },
+ "about": {
+  "WebAPIVersion": "2023.1.615.0",
+  "ToolkitVersion": "2023.1",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_licqqsiv\\CSP_235_Vic Bilh.pips",
+  "UnitSystem": "PIPESIM_METRIC",
+  "UiUnitSystem": "PIPESIM_FIELD"
+ },
+ "baseline": {
+  "state": "Failed",
+  "summary": {
+   "Info": [
+    "2026-11-04T07:54:12.543Z    Beginning simulation...",
+    "2026-11-04T07:54:12.541Z    Running with 1 core",
+    "2026-11-04T07:54:12.997Z    Finished simulation"
+   ],
+   "Error": [
+    "2026-11-04T07:54:12.978Z    Stopping engine..."
+   ],
+   "Warning": []
+  },
+  "messages": [
+   "2026-11-04T07:54:12.592Z    Service starting...",
+   "2026-11-04T07:54:12.611Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T07:54:12.796Z    Service listening at 'net.pipe://localhost/pipe/d6dbd76733ba4efaac4bf974743a7690'...",
+   "2026-11-04T07:54:12.881Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\19832",
+   "2026-11-04T07:54:12.881Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\19832\\CSP_235_Vic Bilh.tnt (1)",
+   "2026-11-04T07:54:12.923Z    ........................................................................ ",
+   "2026-11-04T07:54:12.934Z    Processing branch Vic Bilh Source.. ",
+   "2026-11-04T07:54:12.934Z    Processing branch Lacq Plant.",
+   "2026-11-04T07:54:12.934Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T07:54:12.957Z    ",
+   "2026-11-04T07:54:12.957Z     Fatal Error     1914  Job Aborted,  : ",
+   "2026-11-04T07:54:12.957Z              User DLL error: OLGAS v. 7.2 2-Phase",
+   "2026-11-04T07:54:12.957Z                olga_ error no. 9999:",
+   "2026-11-04T07:54:12.957Z               License checkout failed (olgas_2p, olgas_3p, pipesim_olgas_2p, pipesim_olgas_2p)",
+   "2026-11-04T07:54:12.957Z               error number is 9999",
+   "2026-11-04T07:54:12.957Z               Branch name is Vic Bilh Source",
+   "2026-11-04T07:54:12.957Z    ",
+   "2026-11-04T07:54:12.986Z    "
+  ],
+  "system": {},
+  "node": {}
+ },
+ "seconds": 8.1
+}

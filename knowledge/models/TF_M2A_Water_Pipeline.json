@@ -1,0 +1,333 @@
+{
+ "file": "D:\\Program\\Pipesim2023.1\\Case Studies\\Training Exercises\\Pipesim Fundamentals\\TF_M2A_Water Pipeline.pips",
+ "components": {
+  "BlackOilFluid": [
+   "Water"
+  ],
+  "FlowCorrelation": [
+   "Default",
+   "FL:Default"
+  ],
+  "Flowline": [
+   "FL"
+  ],
+  "Sink": [
+   "MySink"
+  ],
+  "Source": [
+   "MySource"
+  ],
+  "Study": [
+   "Study 1"
+  ]
+ },
+ "values": {
+  "BlackOilFluid|Water": {
+   "Water": {
+    "Name": "Water",
+    "API": 7.2254902,
+    "DeadOilDensity": 1020.0104490686708,
+    "DeadOilTemperature1": 93.3333333333,
+    "DeadOilTemperature2": 15.555560000000014,
+    "DeadOilViscosity1": 0.01096763473975516,
+    "DeadOilViscosity2": 4.5161235117923875,
+    "DeadOilViscosityCorr": "BeggsAndRobinson",
+    "COFraction": 0.0,
+    "CO2Fraction": 0.0,
+    "H2Fraction": 0.0,
+    "H2SFraction": 0.0,
+    "N2Fraction": 0.0,
+    "GasSpecificGravity": 0.6636,
+    "GLR": 0.0,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "LiveOilViscosityCorr": "ChewandConnaly",
+    "OGR": null,
+    "Richardsonkoiw": 3.8,
+    "Richardsonkwio": 6.6,
+    "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+    "UndersaturatedOilViscosityParA": 0.0239,
+    "UndersaturatedOilViscosityParB": 0.01638,
+    "UseBraunerUllmanEquation": false,
+    "UseDeadOilDensity": false,
+    "UseGasRatio": "GLR",
+    "UserWatercutCutOff": 60.0,
+    "UseWaterRatio": "WaterCut",
+    "VandUserk1": 2.5,
+    "VandUserk2": 0.609,
+    "WaterCut": 100.0,
+    "WaterSpecificGravity": 1.02,
+    "WGR": null,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "FlowCorrelation|Default": {
+   "Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   },
+   "FL:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   }
+  },
+  "FlowCorrelation|FL:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "Flowline|FL": {
+   "FL": {
+    "Name": "FL",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": 0.0,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 304.8,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 6096.0,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": 6103.615243443839,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 77.9272,
+    "Roughness": 0.04572,
+    "WallThickness": 5.4864,
+    "Length": 6103.615243443838,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Sink|MySink": {
+   "MySink": {
+    "Name": "MySink",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "IsActive": true,
+    "FlowrateType": "LiquidFlowRate"
+   }
+  },
+  "Source|MySource": {
+   "MySource": {
+    "Name": "MySource",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": 15.555555555555657,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "Water",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Study|Study 1": {
+   "Study 1": {
+    "Name": "Study 1",
+    "Description": ""
+   }
+  }
+ },
+ "probe": {
+  "about": {
+   "ok": true,
+   "result": {
+    "WebAPIVersion": "2023.1.615.0",
+    "ToolkitVersion": "2023.1",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_t_d8j0dv\\TF_M2A_Water Pipeline.pips",
+    "UnitSystem": "PIPESIM_METRIC",
+    "UiUnitSystem": ""
+   }
+  },
+  "connections": {
+   "ok": true,
+   "result": [
+    {
+     "Source": "MySource",
+     "Source Port": "",
+     "Destination": "FL"
+    },
+    {
+     "Source": "FL",
+     "Source Port": "",
+     "Destination": "MySink"
+    }
+   ]
+  },
+  "get_connections": {
+   "ok": true,
+   "result": {
+    "MySource": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "MySink",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    }
+   }
+  },
+  "networksimulation.get_conditions": {
+   "ok": true,
+   "result": {
+    "MySource": {
+     "BoundaryNodeType": "Source",
+     "WellName": null,
+     "BoundaryNodeName": "MySource",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 15.555555555555657,
+     "Pressure": null,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": 0.0,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 100.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    },
+    "MySink": {
+     "BoundaryNodeType": "Sink",
+     "WellName": null,
+     "BoundaryNodeName": "MySink",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": null,
+     "Pressure": null,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    }
+   }
+  }
+ },
+ "about": {
+  "WebAPIVersion": "2023.1.615.0",
+  "ToolkitVersion": "2023.1",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_t_d8j0dv\\TF_M2A_Water Pipeline.pips",
+  "UnitSystem": "PIPESIM_METRIC",
+  "UiUnitSystem": ""
+ },
+ "baseline": {
+  "state": "Completed",
+  "summary": {
+   "Info": [
+    "2026-11-04T07:58:03.420Z    Beginning simulation...",
+    "2026-11-04T07:58:03.418Z    Running with 1 core",
+    "2026-11-04T07:58:03.876Z    Error: General engine error, code UnknownEngineError",
+    "2026-11-04T07:58:03.907Z    Finished simulation"
+   ],
+   "Error": [
+    "2026-11-04T07:58:03.813Z    [PSENGINE] Error 26001810   from PNET_3 : Total number of pressure, flow and curve specifications must equal total number of sources and sinks. Number of pressure specifications = 0. Number of flowrate specifications = 0. Number of PQ curve specifications = 0. Total number of specifications = 0. Total number of sources/sinks = 2. For a complete specification these totals must agree.",
+    "2026-11-04T07:58:03.814Z    [PSENGINE] Error 26001811   from PNET_3 : At least one source/sink pressure or one pressure-flowrate curve must be specified."
+   ],
+   "Warning": []
+  },
+  "messages": [
+   "2026-11-04T07:58:03.467Z    Service starting...",
+   "2026-11-04T07:58:03.483Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T07:58:03.662Z    Service listening at 'net.pipe://localhost/pipe/5f4c1a92b6f34a469114ffdba5878337'...",
+   "2026-11-04T07:58:03.744Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\16212",
+   "2026-11-04T07:58:03.744Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\16212\\TF_M2A_Water Pipeline.tnt (1)",
+   "2026-11-04T07:58:03.781Z    .................................................................... ",
+   "2026-11-04T07:58:03.791Z    Processing branch MySource.. ",
+   "2026-11-04T07:58:03.792Z    Processing branch MySink.",
+   "2026-11-04T07:58:03.792Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T07:58:03.792Z    ",
+   "2026-11-04T07:58:03.792Z     Error 26001810  from PNET_3 : ",
+   "2026-11-04T07:58:03.792Z              Total number of pressure, flow and curve specifications must equal total number of sources and sinks.",
+   "2026-11-04T07:58:03.792Z              Number of pressure specifications = 0.",
+   "2026-11-04T07:58:03.792Z              Number of flowrate specifications = 0.",
+   "2026-11-04T07:58:03.792Z              Number of PQ curve specifications = 0.",
+   "2026-11-04T07:58:03.792Z              Total number of specifications = 0.",
+   "2026-11-04T07:58:03.792Z              Total number of sources/sinks = 2.",
+   "2026-11-04T07:58:03.792Z              For a complete specification these totals must agree.",
+   "2026-11-04T07:58:03.792Z              ",
+   "2026-11-04T07:58:03.792Z    ",
+   "2026-11-04T07:58:03.813Z    ",
+   "2026-11-04T07:58:03.813Z     Error 26001811  from PNET_3 :  At least one source/sink pressure or one pressure-flowrate curve must be specified.",
+   "2026-11-04T07:58:03.815Z     PNET API Ducks out of line: \"Set TNTfile\" call required before \"Validate\" call.",
+   "2026-11-04T07:58:03.815Z      pnet_do: error from called routine for name FULLSOLVE",
+   "2026-11-04T07:58:03.846Z     PNET API Ducks out of line: \"Set TNTfile\" call required before \"Create Branch Outputs\" call.",
+   "2026-11-04T07:58:03.846Z      ",
+   "2026-11-04T07:58:03.846Z     pnet_return_pointer_to_stream: network SOLVE is required before results can be ",
+   "2026-11-04T07:58:03.846Z     queried.",
+   "2026-11-04T07:58:03.880Z     Disposing communication agent."
+  ],
+  "system": {},
+  "node": {}
+ },
+ "seconds": 7.9
+}

@@ -1,0 +1,1460 @@
+{
+ "definitions": {
+  "Connection": {
+   "DESTINATION": "Destination",
+   "SOURCE": "Source",
+   "SOURCEPORT": "Source Port",
+   "Separator": {
+    "signature": "()",
+    "doc": ""
+   }
+  },
+  "Tasks": {
+   "GLDIAGNOSTICSOPERATION": "GLDiagnosticsOp",
+   "NETWORKOPTIMIZERSIMULATION": "NetworkOptSim",
+   "NETWORKSIMULATION": "NetworkSim",
+   "NODALANALYSISOPERATION": "NodalAnalysisOp",
+   "PTPROFILESIMULATION": "PTProfileSim",
+   "SYSTEMANALYSISOPERATION": "SystemAnalysisOp",
+   "VFPTABLESSOPERATION": "VfpTablesOp",
+   "WELLPERFORMANCECURVESOPERATION": "WellPerformanceCurvesSim"
+  },
+  "SimulationOptions": {
+   "GENERATEOUTPUTFILE": "GenerateOutputFile",
+   "PARALLELISM": "Parallelism",
+   "RESTART": "Restart"
+  },
+  "OutputVariables": {
+   "Profile": {
+    "signature": "()",
+    "doc": ""
+   },
+   "System": {
+    "signature": "()",
+    "doc": ""
+   }
+  },
+  "OptimizerVariables": {
+   "BEAN_SIZE": "OptimizerBean_size",
+   "BUBBLE_POINT_MARGIN_": "OptimizerBubble_point_margin_",
+   "CASING_HEAD_PRESSURE": "OptimizerCasing_head_pressure",
+   "DRAWDOWN_PRESSURE_DROP": "OptimizerDrawdown_pressure_drop",
+   "EFFICIENCY": "OptimizerEfficiency",
+   "FREQUENCY": "OptimizerFrequency",
+   "GAS_LIFT_RATE": "OptimizerGas_lift_rate",
+   "LIQUID_RATE": "OptimizerLiquid_rate",
+   "MAXIMUM_CO2": "OptimizerMaximum_CO2",
+   "MAXIMUM_EROSIONAL_VELOCITY_RATIO": "OptimizerMaximum_Erosional_velocity_ratio",
+   "MAXIMUM_GOR": "OptimizerMaximum_GOR",
+   "MAXIMUM_H2S": "OptimizerMaximum_H2S",
+   "OIL_RATE": "OptimizerOil_rate",
+   "OUTLET_PRESSURE": "OptimizerOutlet_pressure",
+   "OUTLET_TEMPERATURE": "OptimizerOutlet_temperature",
+   "PERCENT_CHANGE_IN_GAS_RATE": "OptimizerPercent_change_in_gas_rate",
+   "PERCENT_CHANGE_IN_OIL_RATE": "OptimizerPercent_change_in_oil_rate",
+   "PERCENT_CHANGE_IN_WATER_RATE": "OptimizerPercent_change_in_water_rate",
+   "POWER": "OptimizerPower",
+   "SPEED": "OptimizerSpeed",
+   "TOTAL_ALLOCATED_GAS_INJECTED": "OptimizerTotal_allocated_gas_injected",
+   "TOTAL_ALLOCATED_POWER_USED": "OptimizerTotal_allocated_power_used",
+   "TOTAL_GAS_RATE": "OptimizerTotal_gas_rate",
+   "TOTAL_OIL_RATE": "OptimizerTotal_oil_rate",
+   "TOTAL_WATER_RATE": "OptimizerTotal_water_rate",
+   "WATER_RATE": "OptimizerWater_rate",
+   "WELL_IS_SHUT_OFF": "OptimizerWell_is_shut_off"
+  },
+  "SimulationState": {
+   "COMPLETED": "Completed",
+   "FAILED": "Failed",
+   "RUNNING": "Running"
+  },
+  "EspCurvesVariables": {
+   "BEPCURVE": [
+    "BepCurve"
+   ],
+   "EFFICIENCY": [
+    "Efficiency"
+   ],
+   "FLOWRATE": [
+    "Flowrate"
+   ],
+   "FREQUENCIES": [
+    "Frequencies"
+   ],
+   "FREQUENCY": [
+    "Frequency"
+   ],
+   "HEAD": [
+    "Head"
+   ],
+   "INPUTS": [
+    "Inputs"
+   ],
+   "MANUFACTURER": [
+    "Manufacturer"
+   ],
+   "MAXCURVE": [
+    "MaxCurve"
+   ],
+   "MAXFLOWRATE": [
+    "MaxFlowrate"
+   ],
+   "MINCURVE": [
+    "MinCurve"
+   ],
+   "MINFLOWRATE": [
+    "MinFlowrate"
+   ],
+   "MODEL": [
+    "Model"
+   ],
+   "OPERATINGENVELOPE": [
+    "OperatingEnvelope"
+   ],
+   "OPERATINGPOINT": [
+    "OperatingPoint"
+   ],
+   "POWER": [
+    "Power"
+   ],
+   "SPEED": [
+    "Speed"
+   ],
+   "STAGES": [
+    "BaseStages"
+   ],
+   "UNIT": [
+    "Unit"
+   ],
+   "VALUE": [
+    "Value"
+   ],
+   "VALUES": [
+    "Values"
+   ],
+   "VARIABLEPERFORMANCECURVE": "Performance",
+   "VARIABLESPEEDCURVE": [
+    "Speed"
+   ]
+  },
+  "Parameters.NodalAnalysisSimulation": {
+   "BRANCHTERMINATOR": "BranchTerminator",
+   "DESCRIPTION": "Description",
+   "FLOWRATECONDITION": "FlowRateCondition",
+   "FLOWRATECONDITIONPRESSURE": "FlowRateConditionPressure",
+   "FLOWRATECONDITIONTEMPERATURE": "FlowRateConditionTemperature",
+   "INFLOWPOINTS": "InflowPoints",
+   "LIMITINFLOW": "LimitInflow",
+   "LIMITOUTFLOW": "LimitOutflow",
+   "MAXFLOWRATETYPE": "MaxFlowRateType",
+   "MAXGASRATE": "MaxGasRate",
+   "MAXLIQUIDRATE": "MaxLiquidRate",
+   "MAXMASSRATE": "MaxMassRate",
+   "MAXOUTFLOWPRESSURE": "MaxOutflowPressure",
+   "NODALMEASUREMENTPOINT": "NodalMeasurementPoint",
+   "OUTFLOWPOINTS": "OutflowPoints",
+   "OUTLETPRESSURE": "OutletPressure",
+   "PRODUCER": "Producer",
+   "SENSITIVITYVARIABLE": "SensitivityVariable",
+   "SENSITIVITYVARIABLES": "SensitivityVariables",
+   "STUDY": "Study",
+   "SensitivityVariable": {
+    "signature": "()",
+    "doc": ""
+   },
+   "TASKNAME": "Name",
+   "USEPHASERATIO": "UsePhaseRatio"
+  },
+  "Parameters.SystemAnalysisSimulation": {
+   "BRANCHTERMINATOR": "BranchTerminator",
+   "CALCULATEDVARIABLE": "CalculationVariableType",
+   "CUSTOMVARIABLE": "CalculationVariable",
+   "CustomVariable": {
+    "signature": "()",
+    "doc": ""
+   },
+   "DESCRIPTION": "Description",
+   "FLOWRATECONDITION": "FlowRateCondition",
+   "FLOWRATECONDITIONPRESSURE": "FlowRateConditionPressure",
+   "FLOWRATECONDITIONTEMPERATURE": "FlowRateConditionTemperature",
+   "FLOWRATETYPE": "FlowRateType",
+   "GASFLOWRATE": "GasFlowRate",
+   "INLETPRESSURE": "InletPressure",
+   "LIQUIDFLOWRATE": "LiquidFlowRate",
+   "MASSFLOWRATE": "MassFlowRate",
+   "OUTLETPRESSURE": "OutletPressure",
+   "PRODUCER": "Producer",
+   "SENSITIVITYMETHOD": "SensitivityMethod",
+   "SENSITIVITYVARIABLE": "SensitivityVariable",
+   "SENSITIVITYVARIABLES": "SensitivityVariables",
+   "STUDY": "Study",
+   "SensitivityVariable": {
+    "signature": "()",
+    "doc": ""
+   },
+   "TASKNAME": "Name",
+   "USEPHASERATIO": "UsePhaseRatio"
+  },
+  "Parameters.PTProfileSimulation": {
+   "BRANCHTERMINATOR": "BranchTerminator",
+   "CALCULATEDVARIABLE": "CalculationVariableType",
+   "CUSTOMVARIABLE": "CalculationVariable",
+   "CustomVariable": {
+    "signature": "()",
+    "doc": ""
+   },
+   "DESCRIPTION": "Description",
+   "FLOWRATECONDITION": "FlowRateCondition",
+   "FLOWRATECONDITIONPRESSURE": "FlowRateConditionPressure",
+   "FLOWRATECONDITIONTEMPERATURE": "FlowRateConditionTemperature",
+   "FLOWRATETYPE": "FlowRateType",
+   "GASFLOWRATE": "GasFlowRate",
+   "INLETPRESSURE": "InletPressure",
+   "LIQUIDFLOWRATE": "LiquidFlowRate",
+   "MASSFLOWRATE": "MassFlowRate",
+   "OUTLETPRESSURE": "OutletPressure",
+   "PRODUCER": "Producer",
+   "SENSITIVITYVARIABLE": "SensitivityVariable",
+   "SENSITIVITYVARIABLES": "SensitivityVariables",
+   "STUDY": "Study",
+   "SensitivityVariable": {
+    "signature": "()",
+    "doc": ""
+   },
+   "TASKNAME": "Name",
+   "USEPHASERATIO": "UsePhaseRatio"
+  },
+  "Parameters.NetworkOptimizerSimulation": {
+   "ControlTypes": {
+    "signature": "()",
+    "doc": ""
+   },
+   "DESCRIPTION": "Description",
+   "FLOWRATECONDITION": "FlowRateCondition",
+   "FLOWRATECONDITIONPRESSURE": "FlowRateConditionPressure",
+   "FLOWRATECONDITIONTEMPERATURE": "FlowRateConditionTemperature",
+   "GenerateCurvesTypes": {
+    "signature": "()",
+    "doc": ""
+   },
+   "InjectionGasrateTypes": {
+    "signature": "()",
+    "doc": ""
+   },
+   "ObjectiveFunctionTypes": {
+    "signature": "()",
+    "doc": ""
+   },
+   "OptimizationControl": {
+    "signature": "()",
+    "doc": ""
+   },
+   "Options": {
+    "signature": "()",
+    "doc": ""
+   },
+   "PowerTypes": {
+    "signature": "()",
+    "doc": ""
+   },
+   "RateTypes": {
+    "signature": "()",
+    "doc": ""
+   },
+   "STUDY": "Study",
+   "TASKNAME": "Name",
+   "USEPHASERATIO": "UsePhaseRatio"
+  },
+  "Parameters.WellPerformanceCurvesSimulation": {
+   "BRANCHTERMINATOR": "BranchTerminator",
+   "DESCRIPTION": "Description",
+   "FLOWRATECONDITION": "FlowRateCondition",
+   "FLOWRATECONDITIONPRESSURE": "FlowRateConditionPressure",
+   "FLOWRATECONDITIONTEMPERATURE": "FlowRateConditionTemperature",
+   "FLOWRATEPOINTS": "FlowratePoints",
+   "PRODUCER": "Producer",
+   "SENSITIVITYVARIABLE": {
+    "signature": "()",
+    "doc": ""
+   },
+   "SENSITIVITYVARIABLES": "SensitivityVariables",
+   "STUDY": "Study",
+   "SensitivityVariable": {
+    "signature": "()",
+    "doc": ""
+   },
+   "TASKNAME": "Name",
+   "USEPHASERATIO": "UsePhaseRatio"
+  },
+  "Parameters.GasLiftInjection": {
+   "BELLOWAREA": "BellowArea",
+   "BOTTOMMEASUREDDEPTH": "BottomMeasuredDepth",
+   "DISCHARGECOEFFICIENT": "DischargeCoefficient",
+   "DISCHARGETOFULLYOPEN": "DischargeToFullyOpen",
+   "GASLIFTTYPE": "GasLiftType",
+   "GASRATE": "GasRate",
+   "GLR": "GLR",
+   "GLRINCREASE": "GLRIncrease",
+   "ISACTIVE": "IsActive",
+   "MANUFACTURER": "Manufacturer",
+   "NAME": "Name",
+   "PORTAREA": "PortArea",
+   "PORTSIZE": "PortSize",
+   "PTRO": "Ptro",
+   "SERIES": "Series",
+   "SPRINGPRESSURE": "SpringPressure",
+   "TOPMEASUREDDEPTH": "TopMeasuredDepth",
+   "VALVECHOKE": "ValveChoke",
+   "VALVEDIAMETER": "ValveDiameter",
+   "VALVESIZE": "ValveSize",
+   "VALVETYPE": "ValveType"
+  },
+  "Parameters.ESP": {
+   "BASEFREQUENCY": "BaseFrequency",
+   "BOTTOMMEASUREDDEPTH": "BottomMeasuredDepth",
+   "CABLELENGTHBELOWPUMP": "CableLengthBelowPump",
+   "CASINGID": "CasingID",
+   "COEFFICIENTA": "CoefficientA",
+   "COEFFICIENTB": "CoefficientB",
+   "CableCatalogData": {
+    "signature": "()",
+    "doc": ""
+   },
+   "DIAMETER": "Diameter",
+   "FLOWRATEFACTOR": "FlowrateFactor",
+   "GASSEPARATOREFFICIENCY": "GasSeparatorEfficiency",
+   "HASGASSEPARATOR": "HasGasSeparator",
+   "HEADFACTOR": "HeadFactor",
+   "ISACTIVE": "IsActive",
+   "ISPOWERCORRECTIONCALCULATED": "IsPowerCorrectionCalculated",
+   "MANUFACTURER": "Manufacturer",
+   "MAXFLOWRATE": "MaxFlowRate",
+   "MINFLOWRATE": "MinFlowRate",
+   "MODEL": "Model",
+   "MotorCatalogData": {
+    "signature": "()",
+    "doc": ""
+   },
+   "MotorCoefficients": {
+    "signature": "()",
+    "doc": ""
+   },
+   "NAME": "Name",
+   "NUMBEROFPOLES": "NumberOfPoles",
+   "NUMBERSTAGES": "NumberStages",
+   "OPERATINGFREQUENCY": "OperatingFrequency",
+   "OPERATINGPRODUCTIONRATE": "OperatingProductionRate",
+   "OVERRIDESLIPPAGEFACTOR": "OverrideSlippageFactor",
+   "PERMANENTMAGNETMOTOR": "PermanentMagnetMotor",
+   "POWER": "Power",
+   "POWERCORRECTION": "PowerCorrection",
+   "POWERFACTOR": "PowerFactor",
+   "RECOMBINEGAS": "RecombineGas",
+   "SERIES": "Series",
+   "SLIPPAGEFACTOR": "SlippageFactor",
+   "TOPMEASUREDDEPTH": "TopMeasuredDepth",
+   "USEPOWER": "UsePower",
+   "USESTAGEBYSTAGECALC": "UseStageByStageCalc",
+   "USEVISCOSITYCORRECTION": "UseViscosityCorrection"
+  },
+  "Parameters.Pump": {
+   "BASESPEED": "BaseSpeed",
+   "BASESTAGES": "BaseStages",
+   "DESIGNPRODUCTIONRATE": "DesignProductionRate",
+   "EFFICIENCY": "Efficiency",
+   "ELEVATION": "Elevation",
+   "HEADFACTOR": "HeadFactor",
+   "ISACTIVE": "IsActive",
+   "LATITUDE": "Latitude",
+   "LONGITUDE": "Longitude",
+   "MANUFACTURER": "Manufacturer",
+   "MAXFLOWRATE": "MaxFlowRate",
+   "MINFLOWRATE": "MinFlowRate",
+   "MODEL": "Model",
+   "NAME": "Name",
+   "NONCLUSTEREDLATITUDE": "SchematicLatitude",
+   "NONCLUSTEREDLONGITUDE": "SchematicLongitude",
+   "NUMBERSTAGES": "NumberStages",
+   "OPERATINGSPEED": "OperatingSpeed",
+   "POWER": "Power",
+   "PRESSURE": "Pressure",
+   "PRESSUREDIFFERENTIAL": "PressureDifferential",
+   "PRESSURERATIO": "PressureRatio",
+   "ROUTE": "Route",
+   "SHOWPOWER": "ShowPower",
+   "USECURVES": "UseCurves",
+   "USEVISCOSITYCORRECTION": "UseViscosityCorrection",
+   "X_COORD": "X",
+   "Y_COORD": "Y"
+  },
+  "Parameters.Compressor": {
+   "BASESPEED": "BaseSpeed",
+   "EFFICIENCY": "Efficiency",
+   "ELEVATION": "Elevation",
+   "HEADFACTOR": "HeadFactor",
+   "HONOURSTONEWALLLIMIT": "HonourStonewallLimit",
+   "ISACTIVE": "IsActive",
+   "ISRECIPROCATING": "IsReciprocating",
+   "LATITUDE": "Latitude",
+   "LONGITUDE": "Longitude",
+   "MANUFACTURER": "Manufacturer",
+   "MODEL": "Model",
+   "NAME": "Name",
+   "NONCLUSTEREDLATITUDE": "SchematicLatitude",
+   "NONCLUSTEREDLONGITUDE": "SchematicLongitude",
+   "OPERATINGSPEED": "OperatingSpeed",
+   "POWER": "Power",
+   "PRESSURE": "Pressure",
+   "PRESSUREDIFFERENTIAL": "PressureDifferential",
+   "PRESSURERATIO": "PressureRatio",
+   "ROUTE": "Route",
+   "SHOWPOWER": "ShowPower",
+   "USECURVES": "UseCurves",
+   "X_COORD": "X",
+   "Y_COORD": "Y"
+  },
+  "Parameters.TwoPhaseSeparator": {
+   "DISCARDEDSTREAM": "DiscardedStream",
+   "EFFICIENCY": "Efficiency",
+   "ELEVATION": "Elevation",
+   "ISACTIVE": "IsActive",
+   "LATITUDE": "Latitude",
+   "LONGITUDE": "Longitude",
+   "NAME": "Name",
+   "NONCLUSTEREDLATITUDE": "SchematicLatitude",
+   "NONCLUSTEREDLONGITUDE": "SchematicLongitude",
+   "PRESSURE": "Pressure",
+   "PRODUCTIONSTREAM": "ProductionStream",
+   "X_COORD": "X",
+   "Y_COORD": "Y"
+  },
+  "Parameters.ThreePhaseSeparator": {
+   "ELEVATION": "Elevation",
+   "GASOILEFFICIENCY": "GasOilEfficiency",
+   "ISACTIVE": "IsActive",
+   "LATITUDE": "Latitude",
+   "LONGITUDE": "Longitude",
+   "NAME": "Name",
+   "NONCLUSTEREDLATITUDE": "SchematicLatitude",
+   "NONCLUSTEREDLONGITUDE": "SchematicLongitude",
+   "PRESSURE": "Pressure",
+   "PRODUCTFLUID": "ProductFluid",
+   "WATEROILEFFICIENCY": "WaterOilEfficiency",
+   "X_COORD": "X",
+   "Y_COORD": "Y"
+  },
+  "Parameters.RateConstraint": {
+   "GASFLOWRATE": "GasFlowRate",
+   "LIQUIDFLOWRATE": "LiquidFlowRate",
+   "MASSFLOWRATE": "MassFlowRate",
+   "OILFLOWRATE": "OilFlowRate",
+   "WATERFLOWRATE": "WaterFlowRate"
+  },
+  "Parameters.OptimizerInitialConditions": {
+   "CHOKESIZE": "BeanSize",
+   "CONSTRAINTTYPE": "ConstraintType",
+   "DUALSTRINGWELLID": "SiblingWellId",
+   "ESPFREQUENCY": "ESPOperatingFrequency",
+   "INJECTIONGAS": "InjectionRate",
+   "PCPSPEED": "PCPOperatingSpeed"
+  }
+ },
+ "tasks": {
+  "gldiagnosticssimulation": {
+   "delete_results": {
+    "signature": "(simulation_id)",
+    "doc": "Delete a simulation.\n\nDelete a simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nbool\n    Whether the simulation is deleted or not.\n\nExamples\n--------\n>>> model.tasks.networksimulation.delete_results(simulation_id)"
+   },
+   "delete_sensitivities": {
+    "signature": "(producer, study: Optional[str] = None)",
+    "doc": "Deletes the sensitivities of a simulation(if any)\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nExamples\n--------\n>>> model.tasks.ptprofilesimulation.delete_sensitivities(\"Well 1\", study = \"Study 1\")"
+   },
+   "generate_engine_files": {
+    "signature": "(producer, folder_path: Optional[str] = None, study: Optional[str] = None) -> List[str]",
+    "doc": "Create engine files for the specified study.\n\nGenerate the engine file(s) for the requested study. The files are written\nto the specified folder, or to the current model folder if one is not given.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the GLDiagnostics simulation task.\nfolder_path : str\n    Optional. The folder location where the generated files are written to.\n    If not specified, the files will be written to current pipesim model folder.\nstudy : str\n    Optional. The study name.\n\nReturns\n-------\nList[str]\n    The list of engine files generated.\n\nExamples\n--------\n>>> engine_files = model.tasks.gldiagnosticssimulation.generate_engine_files(\n                            producer=\"Well 1\")\n>>> engine_files = model.tasks.gldiagnosticssimulation.generate_engine_files(\n                            producer=\"Well 1\", folder_path=\"D:/Temp\")\n>>> engine_files = model.tasks.gldiagnosticssimulation.generate_engine_files(\n                            producer=\"Well 1\", folder_path=\"D:/Temp\",\n                            study=\"Study 1\")"
+   },
+   "get_conditions": {
+    "signature": "(producer, study: Optional[str] = None)",
+    "doc": "Returns the study conditions.\n\nReturns the GLDiagnostics simulation conditions for the specified study.\nIf the GLDiagnostics simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the GLDiagnostics simulation task\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndictZ \n    The GLDiagnostics settings in a dictionary format.\n\nExamples\n--------\n>>> studyptsim1 = model.tasks.gldiagnosticssimulation.get_conditions(\"Well 1\")\n>>> studyptsim1 = model.tasks.gldiagnosticssimulation.get_conditions(\"Well 1\",\n                           \"Study 2\")"
+   },
+   "get_messages": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the simulation progress message of the simulation\n\nReturns the simulation progress message from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nmessages: list\n    The simulation messages returned by the simulator.\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_messages(simulation_id)"
+   },
+   "get_results": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the results from the simulation.\n\nReturns the results from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n>>> sim_results = model.tasks.networksimulation.get_results(simulation_id)"
+   },
+   "get_sensitivity_variables": {
+    "signature": "(producer, study: Optional[str] = None) -> List[str]",
+    "doc": "Get the available sensitivity variable list.\n\nGet the list of possible sensitivity variables for the GLDiagnostics simulation task.\nIf the GLDiagnostics simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the GLDiagnostics simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nlist\n    a list of sensitivity variables names that can be applied to this task.\n\nExamples\n--------\n>>> model.tasks.gldiagnosticssimulation.get_sensitivity_variables(\"Well 1\")\n>>> model.tasks.gldiagnosticssimulation.get_sensitivity_variables(\"Well 1\",\n                  study=\"Study 2\")"
+   },
+   "get_state": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the state of the simulation\n\nReturns the state from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nSimulationState:\n    The state of the simulation. sim_status indicates whether the simulation is still running.\n    messages contains the simulation messages returned by the simulator.\n\nExamples\n--------\n>>> sim_state = model.tasks.networksimulation.get_state(simulation_id)"
+   },
+   "get_summary": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the warning, info and error messages of the simulation\n\nReturns the warning, info and error messages from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nsummary: dictionary\n    The keys of the dictionary are \"Error\", \"Info\" and \"Warning\" and their\n    values are a list of corresponding messages as shown in Stingray UI\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_summary(simulation_id)"
+   },
+   "reset_conditions": {
+    "signature": "(producer, study: Optional[str] = None)",
+    "doc": "Resets the study conditions to be synchronized with the model.\n\nResets the study conditions to be synchronized with the model for the specified study.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the GLDiagnostics simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nbool\n    Whether the reset succeeded (True) or not (False).\n\nExamples\n--------\n>>> model.tasks.gldiagnosticssimulation.reset_conditions(\"Well 1\")\n>>> model.tasks.gldiagnosticssimulation.reset_conditions(\n                                    \"Well 1\", study = \"Study 1\")"
+   },
+   "run": {
+    "signature": "(producer, parameters={}, boundaries: Optional[dict] = {}, profile_variables: Optional[list] = None, system_variables: Optional[list] = None, study: Optional[str] = None)",
+    "doc": "Runs a GLDiagnostics simulation.\n\nRuns a GLDiagnostics simulation. Optionally the\nparameters and variables may be set at the same time\navoiding the need to use set_conditions().\nIf the GLDiagnostics simulation task does not exist in the study, a new one will be created.\nThe method waits until the simulation has finished before returning, and then returns\nthe results.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the GLDiagnostics simulation task.\nparameters : dict\n    Optional. The parameters and respective values to set.\nboundaries : dict\n    Optional. The boundary conditions to be set on the study.\nprofile_variables : list\n    Optional. The list of profile variables to be returned with the\n    simulation profile results. If omitted then all the possible\n    profile variables are returned.\nsystem_variables : list\n    Optional. The list of system variables to be returned with the\n    simulation system results. If omitted then all the possible\n    system variables are returned.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n\n>>> sim_results = model.tasks.gldiagnosticssimulation.run( \"Well 1\",\n        parameters={Parameters.GLDiagnosticsSimulation.OUTLETPRESSURE:200,\n                    Parameters.GLDiagnosticsSimulation.SENSITIVITYVARIABLE:\n            {Parameters.GLDiagnosticsSimulation.SensitivityVariable.VARIABLE:\n            \"VertComp/ReservoirPressure\",\n            Parameters.GLDiagnosticsSimulation.SensitivityVariable.VALUES:\n            [2000,3000,4000]}\n        }\n        profile_variables=OutputVariables.Profile.GAS_FIELD,\n        system_variables=OutputVariables.System.GAS_FIELD)"
+   },
+   "set_conditions": {
+    "signature": "(producer, parameters={}, boundaries: Optional[dict] = {}, study: Optional[str] = None)",
+    "doc": "Sets the study conditions.\n\nSets the GLDiagnostics simulation task conditions for the specified study.\nIf the GLDiagnostics simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the GLDiagnostics simulation task.\nparameters : dict\n    Required. The conditions for GLDiagnostics task to be set on the study.\nboundaries : dict\n    Optional. The boundary conditions to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nGLDiagnostics operation\n    The existing or created GLDiagnostics operation.\n\nExamples\n--------\n>>> model.tasks.gldiagnosticssimulation.set_conditions(\"Well 1\",\n            parameters={Parameters.GLDiagnosticsSimulation.OUTLETPRESSURE:150,\n                        Parameters.GLDiagnosticsSimulation.SURFACEINJECTIONPRESSURE:1750,\n                        Parameters.GLDiagnosticsSimulation.TARGETINJECTIONRATE: 2.5})\n>>> model.tasks.gldiagnosticssimulation.set_conditions(\"Well 1\",\n            parameters={Parameters.GLDiagnosticsSimulation.OUTLETPRESSURE:150,\n                        Parameters.GLDiagnosticsSimulation.SURFACEINJECTIONPRESSURE:1750,\n                        Parameters.GLDiagnosticsSimulation.TARGETINJECTIONRATE: 2.5},\n            study=\"Study 2\")"
+   },
+   "start": {
+    "signature": "(producer, parameters={}, boundaries: Optional[dict] = {}, profile_variables: Optional[list] = None, system_variables: Optional[list] = None, study: Optional[str] = None)",
+    "doc": "Starts running a GLDiagnostics simulation, returning the simulation id\nimmediately which can be used later to check the status and get the results\nIf the GLDiagnostics simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the GLDiagnostics simulation task.\nparameters : dict\n    Optional. The parameters and respective values to set.\nboundaries : dict\n    Optional. The boundary conditions to be set on the study.\nprofile_variables : list\n    Optional. The list of profile variables to be returned with the\n    simulation profile results. If omitted then all the possible\n    profile variables are returned.\nsystem_variables : list\n    Optional. The list of system variables to be returned with the\n    simulation system results. If omitted then all the possible\n    system variables are returned.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nstr\n    The simulation id, which can be used to access simulation status and get the results.\n\nExamples\n--------\n>>> sim_id = model.tasks.gldiagnosticssimulation.start( \"Well 1\",\n        parameters={Parameters.GLDiagnosticsSimulation.OUTLETPRESSURE:200,\n                    Parameters.GLDiagnosticsSimulation.SENSITIVITYVARIABLE:\n            {Parameters.GLDiagnosticsSimulation.SensitivityVariable.VARIABLE:\n            \"VertComp/ReservoirPressure\",\n            Parameters.GLDiagnosticsSimulation.SensitivityVariable.VALUES:\n            [2000,3000,4000]}\n                    }\n        profile_variables=OutputVariables.Profile.GAS_FIELD,\n        system_variables=OutputVariables.System.GAS_FIELD)"
+   },
+   "validate": {
+    "signature": "(producer, study: Optional[str] = None, validate_model=True) -> List[sixgill.validation.ValidationIssue]",
+    "doc": " Validates the task\n\n Parameters\n ----------\nproducer : str\n    Required.\n    The name of the producer for the simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n validate_model: Boolean\n     True by default.\n     If True, it validates the whole model plus the task.\n\n Returns\n -------\n list\n     a list of ValidationIssue instances.\n\n Examples\n --------\n >>> issues = model.tasks.ptprofilesimulation.validate(producer=\"Well2 - Oil\", study = \"Study 1\")\n >>> for issue in issues:\n         print(issue.message)\n         print(issue.path)\n         print(issue.property_name)\n\n "
+   }
+  },
+  "networkoptimizersimulation": {
+   "apply_results": {
+    "signature": "(study: Optional[str] = None)",
+    "doc": "Applies the optimization results to the model.\n\nParameters\n----------\nstudy : str\n    Optional. The study name.\n\nExamples\n--------\n>>> model.tasks.networkoptimizersimulation.apply_results()\n>>> model.tasks.networkoptimizersimulation.get_engine_files(study='Study 1')"
+   },
+   "delete_results": {
+    "signature": "(simulation_id)",
+    "doc": "Delete a simulation.\n\nDelete a simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nbool\n    Whether the simulation is deleted or not.\n\nExamples\n--------\n>>> model.tasks.networksimulation.delete_results(simulation_id)"
+   },
+   "generate_engine_files": {
+    "signature": "(folder_path: Optional[str] = None, study: Optional[str] = None, generate_keyword_files=False, generate_request_message: Optional[sixgill.definitions.RequestMessageType] = <RequestMessageType.NONE: 'None'>) -> List[str]",
+    "doc": "Create network optimizer engine files.\nCreate network optimizer engine files for the specified study. The files are written\nto the specified folder, or to the current model folder if one is not given.\n\nParameters\n----------\nfolder_path : str\n    Optional. The folder location where the generated files are written to.\n    If not specified, the files will be written to current pipesim model file folder.\nstudy : str\n    Optional. The study name.\ngenerate_keyword_files : True/False\ngenerate_request_message: RequestMessageType\n    NONE: No Request message is generated\n    DATA_ONLY: Only data section, no model_text,, no \"data\" keyword, the request message is same as today\n    DATA_AND_MODELTEXT: {\"model_text\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxx\", \"data\" :{....}}\n    DATA_AND_MODELFILENAME: {\"model_filename\": \"filename.tnt\", \"data\" :{....}}\n\nReturns\n-------\nList[str]\n    The list of engine files generated.\n\nExamples\n--------\n>>> engine_files = model.tasks.networkoptimizersimulation.generate_engine_files()\n>>> engine_files = model.tasks.networkoptimizersimulation.generate_engine_files(\n                           study='Study 1')\n>>> engine_files = model.tasks.networkoptimizersimulation.generate_engine_files(\n                           folder_path=\"D:/Temp\", study='Study 1')"
+   },
+   "get_conditions": {
+    "signature": "(study: Optional[str] = None) -> Dict",
+    "doc": "Returns the network optimizer boundary conditions.\n\nReturns the network optimizer boundary conditions for the specified study.\nIf the network optimizer simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndict\n    The boundary condition for the study specified.\n\nExamples\n--------\n>>> studynetsim1 = model.tasks.networkoptimizersimulation.get_conditions()\n>>> studynetsim1 = model.tasks.networkoptimizersimulation.get_conditions(\"Study 1\")\n>>> studynetsim1 = model.tasks.networkoptimizersimulation.get_conditions(study=\"Study 1\")"
+   },
+   "get_engine_files": {
+    "signature": "(study: Optional[str] = None, generate_keyword_files=False, generate_request_message: Optional[sixgill.definitions.RequestMessageType] = <RequestMessageType.NONE: 'None'>) -> List[str]",
+    "doc": "Get engine files for the specified study.\n\nGenerate the engine file(s) for the requested study. The files are written\nto the specified folder, or to the current model folder if one is not given.\n\nParameters\n----------\nstudy : str\n    Optional. The study name.\ngenerate_keyword_files: True/False\ngenerate_request_message: RequestMessageType\n    NONE: No Request message is generated\n    DATA_ONLY: Only data section, no model_text,, no \"data\" keyword, the request message is same as today\n    DATA_AND_MODELTEXT: {\"model_text\": \"xxxxxxxxxxxxxxxxxxxxxxxxxxx\", \"data\" :{....}}\n    DATA_AND_MODELFILENAME: {\"model_filename\": \"filename.tnt\", \"data\" :{....}}\n\nReturns\n-------\nDictionary\n    The list of engine files generated.\n\nExamples\n--------\n>>> files_content = model.tasks.networkoptimizersimulation.get_engine_files()\n>>> files_content = model.tasks.networkoptimizersimulation.get_engine_files(\n                           study='Study 1', generate_keyword_files=True)\n>>> files_content = model.tasks.networkoptimizersimulation.get_engine_files(\n                           generate_request_message=\"DATA_ONLY\", study='Study 1')\n>>> # Get the curve file content of Well_1:\n>>> print(files_content['Well_1'])\n>>> # Get the tnt content(the key is the project name.tnt):\n>>> print(files_content['CSN_312_ESP Optimization.tnt'])\n>>> # Get the request message(json)\n>>> print(files_content['RequestMessage'])\n>>> # Get the request message 64(json)\n>>> print(files_content['RequestMessage64'])"
+   },
+   "get_initial_conditions": {
+    "signature": "(study: Optional[str] = None) -> Dict",
+    "doc": "Returns the network optimizer initial conditions .\n\nReturns the network optimizer initial conditions for the specified study.\nIf the network optimizer simulation task does not exist in the study, a new one will be created.\n\n Initial conditions includes: Control type, injection gas, ESP freq, PCP speed, Choke size and Dual string.\n\nParameters\n----------\n\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndict\n    The initial conditions for the study specified\n\nExamples\n--------\n>>> studynetsim1 = model.tasks.networkoptimizersimulation.get_initial_conditions()\n>>> studynetsim1 = model.tasks.networkoptimizersimulation.get_initial_conditions(\"Study 1\")\n>>> studynetsim1 = model.tasks.networkoptimizersimulation.get_initial_conditions(study=\"Study 1\")"
+   },
+   "get_local_constraints": {
+    "signature": "(study: Optional[str] = None) -> Dict",
+    "doc": "Returns the network optimizer task local_constraints.\n\nReturns the network optimizer task local_constraints for the specified study.\nIf the network optimizer simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\n\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndict\n    The the network optimizer task local_constraints.\n\nExamples\n--------\n>>> studynetsim1 = model.tasks.networkoptimizersimulation.get_local_constraints()\n>>> studynetsim1 = model.tasks.networkoptimizersimulation.get_local_constraints(\"Study 1\")\n>>> studynetsim1 = model.tasks.networkoptimizersimulation.get_local_constraints(study=\"Study 1\")"
+   },
+   "get_messages": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the simulation progress message of the simulation\n\nReturns the simulation progress message from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nmessages: list\n    The simulation messages returned by the simulator.\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_messages(simulation_id)"
+   },
+   "get_parameters": {
+    "signature": "(study: Optional[str] = None) -> Dict",
+    "doc": " Returns the network optimizer task parameters.\n\n Returns the network optimizer task parameters for the specified study.\n If the network optimizer simulation task does not exist in the study, a new one will be created.\n\n            Parameters includes: optimization control( optimization type, control variables, optimization targets and global constraints) and options (optimization, initialization, network solver, search and well curve parameters options)\n\n Parameters\n----------\n\n study : str\n     Optional. The name of the study. If no name is specified and there is one default study,\n     the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n -------\n dict\n     The the network optimizer task parameters.\n\n Examples\n --------\n >>> parsmeters1 = model.tasks.networkoptimizersimulation.get_parameters()\n >>> parsmeters1 = model.tasks.networkoptimizersimulation.get_parameters(\"Study 1\")\n >>> parsmeters1 = model.tasks.networkoptimizersimulation.get_parameters(study=\"Study 1\")\n\n "
+   },
+   "get_results": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the results from the simulation.\n\nReturns the results from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n>>> sim_results = model.tasks.networksimulation.get_results(simulation_id)"
+   },
+   "get_state": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the state of the simulation\n\nReturns the state from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nSimulationState:\n    The state of the simulation. sim_status indicates whether the simulation is still running.\n    messages contains the simulation messages returned by the simulator.\n\nExamples\n--------\n>>> sim_state = model.tasks.networksimulation.get_state(simulation_id)"
+   },
+   "get_summary": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the warning, info and error messages of the simulation\n\nReturns the warning, info and error messages from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nsummary: dictionary\n    The keys of the dictionary are \"Error\", \"Info\" and \"Warning\" and their\n    values are a list of corresponding messages as shown in Stingray UI\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_summary(simulation_id)"
+   },
+   "reset_conditions": {
+    "signature": "(study: Optional[str] = None)",
+    "doc": "Resets the network optimizer boundary conditions from the model.\n\nResets the network optimizer boundary conditions for the study specified from the model.\n\nParameters\n----------\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nBool\n                     True or False.\n    The reset succeeded (True) or not (False).\n\nExamples\n--------\n>>> model.tasks.networkoptimizersimulation.reset_conditions()\n>>> model.tasks.networkoptimizersimulation.reset_conditions(study = \"Study 1\")"
+   },
+   "reset_dual_strings": {
+    "signature": "(study: Optional[str] = None)",
+    "doc": "        Resets to unpair dual strings for all the wells.\n\nResets to unpair dual strings for all the wells for a specific study\nIf the network optimizer simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\n-------\nNetwork optimizer simulation operation\n    The existing or created network optimizer simulation operation.\n\nExamples\n--------\n>>> model.tasks.networkoptimizersimulation.reset_dual_strings(study = \"Study 1\")\n>>> model.tasks.networkoptimizersimulation.reset_dual_strings() "
+   },
+   "run": {
+    "signature": "(boundaries: Optional[dict] = None, constraints: Optional[dict] = None, initial_conditions: Optional[dict] = None, parameters: Optional[dict] = None, study: Optional[str] = None)",
+    "doc": "Runs a network optimizer task\n\nRuns a network optimizer task for the specified study.\nIf the network optimizer simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nboundaries : dict\n    Optional. The boundary conditions to be set on the study.\nconstraints : dict\n    Optional. The blocal constraints to be set on the study.\ninitial_conditions : dict\n    Optional. The initial conditions to be set on the study.\nparameters : dict\n    Optional.The parameters to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns: dict\n    Results of a network optimization run.\n\nExamples\n--------\n>>> model.tasks.networkoptimizersimulation.run(\n            parameters=\n            {\n            Parameters.NetworkOptimizerSimulation.OptimizationControl.ControlVariables.CHOKEBEANSIZE:True,\n            Parameters.NetworkOptimizerSimulation.OptimizationControl.OptimizationTargets.INJECTIONRATE:3\n            })\n>>> model.tasks.networkoptimizersimulation.run(\n            parameters=\n            {\n            Parameters.NetworkOptimizerSimulation.OptimizationControl.ControlVariables.CHOKEBEANSIZE:True,\n            Parameters.NetworkOptimizerSimulation.OptimizationControl.OptimizationTargets.INJECTIONRATE:3\n            }, study = \"Study 1\")"
+   },
+   "set_conditions": {
+    "signature": "(boundaries: Optional[dict] = None, study: Optional[str] = None)",
+    "doc": "Sets the network optimizer boundary conditions.\n\nSets the network optimizer boundary conditions for the study specified.\nIf the network optimizer simulation task does not exist in the study, a new one will be created.\n\n\nParameters\n----------\nboundaries : dict\n    Optional. The boundary conditions to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nNetwork optimizer simulation operation\n    The existing or created network optimizer simulation operation.\n\nExamples\n--------\n>>> model.tasks.networkoptimizersimulation.set_conditions(\n            boundaries={\"Well:VertComp\":{\n                            Parameters.Boundary.PRESSURE:NAN,\n                            Parameters.Boundary.TEMPERATURE:150,\n                            Parameters.Boundary.FLOWRATETYPE:Constants.FlowRateType.GASFLOWRATE,\n                            Parameters.Boundary.GASFLOWRATE:5}\n                        })\n>>> model.tasks.networkoptimizersimulation.set_conditions(\n            boundaries={\"Well:VertComp\":{\n                            Parameters.Boundary.PRESSURE:3000,\n                            Parameters.Boundary.TEMPERATURE:150,\n                            Parameters.Boundary.FLOWRATETYPE:Constants.FlowRateType.GASFLOWRATE,\n                            Parameters.Boundary.GASFLOWRATE:NAN}\n                        },\n            study = \"Study 1\")"
+   },
+   "set_dual_strings": {
+    "signature": "(reset=False, pair_wells: Optional[list] = None, unpair_wells: Optional[list] = None, study: Optional[str] = None)",
+    "doc": "               Sets the network optimizer task dual string parameters\nPairs/unpairs wells(when pairing, two wells will be combined to act as one). Note: To get dual string parameters, use get_initial_conditions.\n\n       If the network optimizer simulation task does not exist in the study, a new one will be created.\n\n       Parameters\n       ----------\n       pair_wells : list of strings\n           Optional.The names of the wells to be paired(must be even number of well names).\n       unpair_wells : list of strings\n           Optional.The names of the paired wells to be separated(must be even number of well names).\n       reset : boolean\n           Optional: Separates all dual strings\n       study : str\n           Optional. The name of the study. If no name is specified and there is one default study,\n           the default study will be used. If there are multiple studies in the model, study name is required.\n\n       Returns\n       -------\n       -------\n       Network optimizer simulation operation\n           The existing or created network optimizer simulation operation.\n\n       Examples\n       --------\n       >>> model.tasks.networkoptimizersimulation.set_dual_strings(\n                   pair_wells=[\"well_1\",\"well_3\"], study = \"Study 1\"\n                   )\n       >>> model.tasks.networkoptimizersimulation.set_dual_strings(\n                   reset=True, study = \"Study 1\"\n                   )\n       >>> model.tasks.networkoptimizersimulation.set_dual_strings(\n                   pair_wells=[\"well_1\",\"well_3\"],\n                   unpair_wells=[\"well_4\",\"well_2\"],\n                   study = \"Study 1\")\n\n       "
+   },
+   "set_initial_conditions": {
+    "signature": "(initial_conditions: Optional[dict] = None, study: Optional[str] = None)",
+    "doc": "Sets the network optimizer initial conditions. \n\nSets the network optimizer initial conditions for the specified study.\nIf the network optimizer simulation task does not exist in the study, a new one will be created.\n\n Initial conditions includes: Control type, injection gas, ESP freq, PCP speed and Choke size without dual string. Dual string is done separately\n\nParameters\n----------\ninitial_conditions : dict\n    Optional. The initial conditions to be set on the study(Note: dual strings has to be set separately).\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nNetwork optimizer simulation operation\n    The existing or created network optimizer simulation operation.\n\nExamples\n--------\n>>> model.tasks.networkoptimizersimulation.set_initial_conditions(\n            boundaries={\"Well:VertComp\":{Parameters.OptimizerInitialConditions.INJECTIONGAS:NAN,\n            Parameters.OptimizerInitialConditions.ESPFREQUENCY:55}})"
+   },
+   "set_local_constraints": {
+    "signature": "(constraints: Optional[dict] = None, study: Optional[str] = None)",
+    "doc": "Sets the network optimizer task local_constraints.\n\nSets the network optimizer task local_constraints for the specified study.\nIf the network optimizer simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nconstraints : dict\n    Optional. The local constraints to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nNetwork optimizer simulation operation\n    The existing or created network optimizer simulation operation.\n\nExamples\n--------\n>>> model.tasks.networkoptimizersimulation.set_local_constraints(\n            constraints={\"Well:VertComp\":{\n                Parameters.LocalConstraint.MAXPOWER:150,\n                Parameters.LocalConstraint.MINLIQUIDRATE:150}\n            })\n>>> model.tasks.networkoptimizersimulation.set_local_constraints(\n        constraints={\"Well:VertComp\":{\n                Parameters.LocalConstraint.MAXPOWER:150,\n                Parameters.LocalConstraint.MINLIQUIDRATE:150}},\n        study = \"Study 1\")"
+   },
+   "set_parameters": {
+    "signature": "(parameters, study: Optional[str] = None)",
+    "doc": "Sets the network optimizer task parameters.\n\nSets the network optimizer task parameters for specified study.\nIf the network optimizer simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nparameters : dict\n    The parameters to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nNetwork optimizer simulation operation\n    The existing or created network optimizer simulation operation.\n\nExamples\n--------\n>>> model.tasks.networkoptimizersimulation.set_parameters(\n            parameters=\n            {\n            Parameters.NetworkOptimizerSimulation.OptimizationControl.ControlVariables.CHOKEBEANSIZE:True,\n            Parameters.NetworkOptimizerSimulation.OptimizationControl.OptimizationTargets.INJECTIONRATE:3\n            })\n>>> model.tasks.networkoptimizersimulation.set_parameters(\n            parameters=\n            {\n            Parameters.NetworkOptimizerSimulation.OptimizationControl.ControlVariables.CHOKEBEANSIZE:True,\n            Parameters.NetworkOptimizerSimulation.OptimizationControl.OptimizationTargets.INJECTIONRATE:3\n            }, study = \"Study 1\")"
+   },
+   "start": {
+    "signature": "(boundaries: Optional[dict] = None, constraints: Optional[dict] = None, initial_conditions: Optional[dict] = None, parameters: Optional[dict] = None, study: Optional[str] = None)",
+    "doc": "Starts running a simulation of the specified type, returning the simulation id\nimmediately which can be used later to check the status and get the results.\nIf the network optimizer simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nboundaries : dict\n    Optional. The boundary conditions to be set on the study.\nconstraints : dict\n    Optional. The blocal constraints to be set on the study.\ninitial_conditions : dict\n    Optional. The initial conditions to be set on the study.\nparameters : dict\n    Optional.The parameters to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nstr\n    The simulation id, which can be used to access simulation status and get the results.\n\nExamples\n--------\n>>> model.tasks.networkoptimizersimulation.start(\n            parameters=\n            {\n            Parameters.NetworkOptimizerSimulation.OptimizationControl.ControlVariables.CHOKEBEANSIZE:True,\n            Parameters.NetworkOptimizerSimulation.OptimizationControl.OptimizationTargets.INJECTIONRATE:3\n            })\n>>> model.tasks.networkoptimizersimulation.start(\n            parameters=\n            {\n            Parameters.NetworkOptimizerSimulation.OptimizationControl.ControlVariables.CHOKEBEANSIZE:True,\n            Parameters.NetworkOptimizerSimulation.OptimizationControl.OptimizationTargets.INJECTIONRATE:3\n            }, study = \"Study 1\")"
+   },
+   "validate": {
+    "signature": "(study: Optional[str] = None, validate_model=True) -> List[sixgill.validation.ValidationIssue]",
+    "doc": "Validates the task\n\nParameters\n----------\nstudy : str\n   Optional. The name of the study. If no name is specified and there is one default study,\n   the default study will be used. If there are multiple studies in the model, study name is required.\nvalidate_model: Boolean\n    True by default.\n    If True, it validates the whole model plus the task\nReturns\n-------\nlist\n    a list of ValidationIssue instances.\n\nExamples\n--------\n>>> issues = model.tasks.networksimulation.validate()\n>>> for issue in issues:\n        print(issue.message)\n        print(issue.path)\n        print(issue.property_name)"
+   }
+  },
+  "networksimulation": {
+   "delete_constraints": {
+    "signature": "(study: Optional[str] = None)",
+    "doc": "Deletes the study constraints.\n\nParameters\n----------\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nbool\n    Whether the reset succeeded (True) or not (False).\n\nExamples\n--------\n>>> model.tasks.networksimulation.delete_constraints()\n>>> model.tasks.networksimulation.delete_constraints(study = \"Study 1\")"
+   },
+   "delete_results": {
+    "signature": "(simulation_id)",
+    "doc": "Delete a simulation.\n\nDelete a simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nbool\n    Whether the simulation is deleted or not.\n\nExamples\n--------\n>>> model.tasks.networksimulation.delete_results(simulation_id)"
+   },
+   "generate_engine_files": {
+    "signature": "(folder_path: Optional[str] = None, study: Optional[str] = None) -> List[str]",
+    "doc": "Create engine files for the specified study.\n\nGenerate the engine file(s) for the requested study. The files are written\nto the specified folder, or to the current model folder if one is not given.\n\nParameters\n----------\nfolder_path : str\n    Optional. The folder location where the generated files are written to.\n    If not specified, the files will be written to current pipesim model file folder.\nstudy : str\n    Optional. The study name.\n\nReturns\n-------\nList[str]\n    The list of engine files generated.\n\nExamples\n--------\n>>> engine_files = model.tasks.networksimulation.generate_engine_files()\n>>> engine_files = model.tasks.networksimulation.generate_engine_files(\n                           study='Study 1')\n>>> engine_files = model.tasks.networksimulation.generate_engine_files(\n                           folder_path=\"D:\\Temp\", study='Study 1')"
+   },
+   "get_conditions": {
+    "signature": "(use_surface_condition: Optional[bool] = None, study: Optional[str] = None) -> Dict",
+    "doc": "Returns the study conditions.\n\nReturns the network simulation conditions for the specified study.\nIf the network simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nuse_surface_condition : bool\n    Optional. get surface conditions or reservoir conditions. If not provided,\n    default is the conditions used in the model.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndict\n    The study conditions.\n\nExamples\n--------\n>>> studynetsim1 = model.tasks.networksimulation.get_conditions()\n>>> studynetsim1 = model.tasks.networksimulation.get_conditions(\"Study 1\")\n>>> studynetsim1 = model.tasks.networksimulation.get_conditions(\n                        use_surface_condition=True, study=\"Study 1\")"
+   },
+   "get_constraints": {
+    "signature": "(study: Optional[str] = None) -> Dict",
+    "doc": "Returns the study constraints.\n\nReturns the network simulation conditions for the specified study.\nIf the network simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndict\n    The study conditions.\n\nExamples\n--------\n>>> studynetsim1 = model.tasks.networksimulation.get_constraints()\n>>> studynetsim1 = model.tasks.networksimulation.get_constraints(\"Study 1\")"
+   },
+   "get_messages": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the simulation progress message of the simulation\n\nReturns the simulation progress message from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nmessages: list\n    The simulation messages returned by the simulator.\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_messages(simulation_id)"
+   },
+   "get_results": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the results from the simulation.\n\nReturns the results from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n>>> sim_results = model.tasks.networksimulation.get_results(simulation_id)"
+   },
+   "get_state": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the state of the simulation\n\nReturns the state from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nSimulationState:\n    The state of the simulation. sim_status indicates whether the simulation is still running.\n    messages contains the simulation messages returned by the simulator.\n\nExamples\n--------\n>>> sim_state = model.tasks.networksimulation.get_state(simulation_id)"
+   },
+   "get_summary": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the warning, info and error messages of the simulation\n\nReturns the warning, info and error messages from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nsummary: dictionary\n    The keys of the dictionary are \"Error\", \"Info\" and \"Warning\" and their\n    values are a list of corresponding messages as shown in Stingray UI\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_summary(simulation_id)"
+   },
+   "get_use_surface_conditions": {
+    "signature": "(study: Optional[str] = None)",
+    "doc": "Returns the value of use surface conditions.\n\nReturns the value of use surface conditions for the specified study.\nIf the network simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nbool\n    The value of use surface conditions.\n\nExamples\n--------\n>>> use_surface = model.tasks.networksimulation.get_use_surface_conditions()\n>>> use_surface = model.tasks.networksimulation.get_use_surface_conditions(\"Study 1\")"
+   },
+   "reset_conditions": {
+    "signature": "(study: Optional[str] = None)",
+    "doc": "Resets the study conditions to be synchronized with the model.\n\nResets the study conditions to be synchronized with the model for the specified study.\n\nParameters\n----------\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nbool\n    Whether the reset succeeded (True) or not (False).\n\nExamples\n--------\n>>> model.tasks.networksimulation.reset_conditions()\n>>> model.tasks.networksimulation.reset_conditions(study = \"Study 1\")"
+   },
+   "run": {
+    "signature": "(profile_variables: Optional[list] = None, system_variables: Optional[list] = None, boundaries: Optional[dict] = {}, constraints: Optional[dict] = {}, use_surface_condition: Optional[bool] = None, study: Optional[str] = None, options: Optional[dict] = {})",
+    "doc": "Runs a network simulation.\n\nRuns a network simulation. Optionally the\nboundaries, constraints, and variables may be set at the same time\navoiding the need to use set_conditions().\nIf the network simulation task does not exist in the study, a new one will be created.\nThe method waits until the simulation has finished before returning, and then returns\nthe results.\n\nParameters\n----------\nuse_surface_condition : bool\n    Optional. use surface conditions or reservoir conditions. If not provided,\n    default is the conditions used in the model.\nboundaries : dict\n    Optional. The boundary conditions to be set on the study.\nconstraints : dict\n    Optional. The constraints to be set on the study.\nprofile_variables : list\n    Optional. The list of profile variables to be returned with the\n    simulation profile results. If omitted then all the possible\n    profile variables are returned.\nsystem_variables : list\n    Optional. The list of system variables to be returned with the\n    simulation system results. If omitted then all the possible\n    system variables are returned.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\noptions : dict\n    Optional. simulations options like generating ouput files and using Restart\n\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n\n>>> sim_results = model.tasks.networksimulation.run(\n            use_surface_condition=False,\n            boundaries={\"Well1.Comp1\":{\n                                Parameters.Boundary.PRESSURE:NAN,\n                                Parameters.Boundary.LIQUIDFLOWRATE:200,\n                                Parameters.Boundary.FLOWRATETYPE:Constants.FlowRateType.LIQUIDFLOWRATE}\n                        },\n            constraints={\"Well\":{Parameters.RateConstraint.LIQUIDFLOWRATE:200.0}},\n            profile_variables=OutputVariables.Profile.GAS_FIELD,\n            system_variables=OutputVariables.System.GAS_FIELD,\n            options={SimulationOptions.GENERATEOUTPUTFILE:True,\n                    SimulationOptions.RESTART:False,\n                    SimulationOptions.PARALLELISM:4})#generate output file, don't use restart files, run with 4 cores"
+   },
+   "set_conditions": {
+    "signature": "(boundaries: Optional[dict] = {}, constraints: Optional[dict] = {}, use_surface_condition: Optional[bool] = None, study: Optional[str] = None)",
+    "doc": "Sets the study conditions.\n\nSets the study conditions for the specified study.\nIf the network simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nuse_surface_condition : bool\n    Optional. set surface conditions or reservoir conditions. If not provided,\n    default is the conditions used in the model.\nboundaries : dict\n    Optional. The boundary conditions to be set on the study.\nconstraints : dict\n    Optional. The rate constraints to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nNetwork simulation operation\n    The existing or created network simulation operation.\n\nExamples\n--------\n>>> model.tasks.networksimulation.set_conditions(\n            boundaries={\"Well:VertComp\":{\n                Parameters.Boundary.PRESSURE:NAN,\n                Parameters.Boundary.TEMPERATURE:150,\n                Parameters.Boundary.FLOWRATETYPE:Constants.FlowRateType.GASFLOWRATE,\n                Parameters.Boundary.GASFLOWRATE:5}},\n            constraints={\"Well\":{Parameters.RateConstraint.LIQUIDFLOWRATE:200.0}})\n>>> model.tasks.networksimulation.set_conditions(use_surface_condition=False,\n            boundaries={\"Well:VertComp\":{\n                            Parameters.Boundary.PRESSURE:NAN,\n                            Parameters.Boundary.TEMPERATURE:150,\n                            Parameters.Boundary.FLOWRATETYPE:Constants.FlowRateType.GASFLOWRATE,\n                            Parameters.Boundary.GASFLOWRATE:5}},\n            study = \"Study 1\")"
+   },
+   "set_constraints": {
+    "signature": "(constraints, study: Optional[str] = None)",
+    "doc": "Sets the study constraints.\n\nSets the study constraints for the specified study.\nIf the network simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nconstraints : dict\n    The constraints to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nNetwork simulation operation\n    The existing or created network simulation operation.\n\nExamples\n--------\n>>> model.tasks.networksimulation.set_constraints(constraints={\"Well\":{Parameters.RateConstraint.LIQUIDFLOWRATE:200.0}})\n>>> model.tasks.networksimulation.set_constraints({\"Well\":{Parameters.RateConstraint.LIQUIDFLOWRATE:200.0}})\n>>> model.tasks.networksimulation.set_constraints(\n            constraints={\"Well\":{Parameters.RateConstraint.LIQUIDFLOWRATE:200.0}},\n            study = \"Study 1\")"
+   },
+   "set_use_surface_conditions": {
+    "signature": "(value: bool, study: Optional[str] = None)",
+    "doc": "Sets the value of use surface conditions.\n\nSets the the value of use surface conditions for the specified study.\nIf the network simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nvalue : bool\n    The value of use surface conditions. If true, set to use surface conditions.\n    If false, set to use reservoir conditions.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nExamples\n--------\n>>> model.tasks.networksimulation.set_use_surface_conditions(True)\n>>> model.tasks.networksimulation.set_use_surface_conditions(False, study = \"Study 1\")"
+   },
+   "start": {
+    "signature": "(profile_variables: Optional[list] = None, system_variables: Optional[list] = None, boundaries: Optional[dict] = {}, constraints: Optional[dict] = {}, use_surface_condition: Optional[bool] = None, options: Optional[dict] = {}, study: Optional[str] = None) -> str",
+    "doc": "Starts running a simulation of the specified type, returning the simulation id\nimmediately which can be used later to check the status and get the results.\nIf the network simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nuse_surface_condition : bool\n    Optional. use surface conditions or reservoir conditions. If not provided,\n    default is the conditions used in the model.\nparameters : dict\n    Optional. The parameters and respective values to set.\n    For PT Profile, it must contain the name of the StartNode (Well or Source)\nboundaries : dict\n    Optional. The boundary conditions to be set on the study.\nconstraints : dict\n    Optional. The constraints to be set on the study.\nsensitivities : dict\n    Optional. For PT Profile simulations, the sensitivities.\nprofile_variables : list\n    Optional. The list of profile variables to be returned with the\n    simulation profile results. If omitted then all the possible\n    profile variables are returned.\nsystem_variables : list\n    Optional. The list of system variables to be returned with the\n    simulation system results. If omitted then all the possible\n    system variables are returned.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\noptions : dict\n    Optional. simulations options like generating ouput files and using Restart\nReturns\n-------\nstr\n    The simulation id, which can be used to access simulation status and get the results.\n\nExamples\n--------\n>>> sim_id = model.tasks.networksimulation.start(use_surface_condition=False,\n                  boundaries={\"Well1.Comp1\":{\n                                        Parameters.Boundary.PRESSURE:NAN,\n                                        Parameters.Boundary.LIQUIDFLOWRATE:200,\n                                        Parameters.Boundary.FLOWRATETYPE:Constants.FlowRateType.LIQUIDFLOWRATE}\n                              },\n                  constraints={\"Well\":{Parameters.RateConstraint.LIQUIDFLOWRATE:200.0}},  \n                  profile_variables=OutputVariables.Profile.GAS_FIELD,\n                  system_variables=OutputVariables.System.GAS_FIELD,\n                  options={SimulationOptions.GENERATEOUTPUTFILE:True,\n                            SimulationOptions.RESTART:False,\n                            SimulationOptions.PARALLELISM:4}) #generate output file,"
+   },
+   "validate": {
+    "signature": "(study: Optional[str] = None, validate_model=True) -> List[sixgill.validation.ValidationIssue]",
+    "doc": "Validates the task\n\nParameters\n----------\nstudy : str\n   Optional. The name of the study. If no name is specified and there is one default study,\n   the default study will be used. If there are multiple studies in the model, study name is required.\nvalidate_model: Boolean\n    True by default.\n    If True, it validates the whole model plus the task\nReturns\n-------\nlist\n    a list of ValidationIssue instances.\n\nExamples\n--------\n>>> issues = model.tasks.networksimulation.validate()\n>>> for issue in issues:\n        print(issue.message)\n        print(issue.path)\n        print(issue.property_name)"
+   }
+  },
+  "nodalanalysis": {
+   "delete_results": {
+    "signature": "(simulation_id)",
+    "doc": "Delete a simulation.\n\nDelete a simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nbool\n    Whether the simulation is deleted or not.\n\nExamples\n--------\n>>> model.tasks.networksimulation.delete_results(simulation_id)"
+   },
+   "delete_sensitivities": {
+    "signature": "(producer, study: Optional[str] = None)",
+    "doc": "Deletes the sensitivities of a simulation(if any)\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nExamples\n--------\n>>> model.tasks.ptprofilesimulation.delete_sensitivities(\"Well 1\", study = \"Study 1\")"
+   },
+   "generate_engine_files": {
+    "signature": "(producer, folder_path: Optional[str] = None, study: Optional[str] = None) -> List[str]",
+    "doc": "Create engine files for the specified study.\n\nGenerate the engine file(s) for the requested study. The files are written\nto the specified folder, or to the current model folder if one is not given.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the Nodal analysis simulation task.\nfolder_path : str\n    Optional. The folder location where the generated files are written to.\n    If not specified, the files will be written to current pipesim model folder.\nstudy : str\n    Optional. The study name.\n\nReturns\n-------\nList[str]\n    The list of engine files generated.\n\nExamples\n--------\n>>> engine_files = model.tasks.nodalanalysis.generate_engine_files(\n                            producer=\"Well 1\")\n>>> engine_files = model.tasks.nodalanalysis.generate_engine_files(\n                            producer=\"Well 1\", \n                            folder_path=\"D:\\Temp\")\n>>> engine_files = model.tasks.nodalanalysis.generate_engine_files(\n                            producer=\"Well 1\", \n                            folder_path=\"D:\\Temp\",\n                            study=\"Study 1\")"
+   },
+   "get_conditions": {
+    "signature": "(producer, nodal_point_settings: Optional[dict] = None, study: Optional[str] = None)",
+    "doc": "Returns the nodal analysis general conditions in one dictionary and inlet condtions in anohter dictionary.\n\nReturns the nodal analysis general conditions for the specified study.\nIf the nodal analysis task does not exist in the study, a new one will be created. If the producer is a \nwell and nodal point settings are not provided, a default nodal point at bottom hole will be created. \nIf nodal point settings are provided, a new nodal point will be created and be applied to the existing or \nnewly created nodal analysis task. \n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the nodal analysis simulation task\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\nnodal_point_settings: dict\n    Optional. The settings for nodal point to be created. The new nodal point is applied to the \n    existing or newly created nodal analysis task.  \n\nReturns\n-------\ndict\n    Nodal analysis simulation settings in the first dictionary, and inlet conditions in the second dictionary\n\nExamples\n--------\n>>> na_sim, inlet_cond = model.tasks.nodalanalysis.get_conditions(\"Well 1\")\n>>> na_sim, inlet_cond = model.tasks.nodalanalysis.get_conditions(\n    \"Well 1\", \n    nodal_point_settings = {\n    Parameters.NodalPoint.NODALTYPE: Constants.NodalPointType.SURFACE,\n    Parameters.NodalPoint.EQUIPMENT: 'Choke',\n    Parameters.NodalPoint.NAME: 'NA1'\n    })\n>>> na_sim, inlet_cond = model.tasks.nodalanalysis.get_conditions(\n    \"Well 1\", \"Study 2\", \n    nodal_point_settings = {\n    Parameters.NodalPoint.NODALTYPE: Constants.NodalPointType.DOWNHOLE,\n    Parameters.NodalPoint.DEPTH: 1000,\n    Parameters.NodalPoint.WELLSTRINGTYPE: Constants.TubingSectionType.TUBING,\n    Parameters.NodalPoint.NAME: 'NA2'\n    })"
+   },
+   "get_messages": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the simulation progress message of the simulation\n\nReturns the simulation progress message from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nmessages: list\n    The simulation messages returned by the simulator.\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_messages(simulation_id)"
+   },
+   "get_results": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the results from the simulation.\n\nReturns the results from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n>>> sim_results = model.tasks.networksimulation.get_results(simulation_id)"
+   },
+   "get_state": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the state of the simulation\n\nReturns the state from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nSimulationState:\n    The state of the simulation. sim_status indicates whether the simulation is still running.\n    messages contains the simulation messages returned by the simulator.\n\nExamples\n--------\n>>> sim_state = model.tasks.networksimulation.get_state(simulation_id)"
+   },
+   "get_summary": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the warning, info and error messages of the simulation\n\nReturns the warning, info and error messages from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nsummary: dictionary\n    The keys of the dictionary are \"Error\", \"Info\" and \"Warning\" and their\n    values are a list of corresponding messages as shown in Stingray UI\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_summary(simulation_id)"
+   },
+   "reset_conditions": {
+    "signature": "(producer, study: Optional[str] = None)",
+    "doc": "Resets the study conditions to be synchronized with the model.\n\nResets the study conditions to be synchronized with the model for the specified study.\n\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the nodal analysis simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nbool\n    Whether the reset succeeded (True) or not (False).\n\nExamples\n--------\n>>> model.tasks.nodalanalysis.reset_conditions(\"Well 1\")\n>>> model.tasks.nodalanalysis.reset_conditions(\"Well 1\",study = \"Study 1\")"
+   },
+   "run": {
+    "signature": "(producer, parameters={}, inlet_conditions: Optional[dict] = None, nodal_point_settings: Optional[dict] = None, profile_variables: Optional[list] = None, system_variables: Optional[list] = None, study: Optional[str] = None)",
+    "doc": "Runs a nodal analysis simulation.\n\nRuns a nodal analysis simulation. Optionally the parameters, nodal point settings and variables \nmay be set at the same time avoiding the need to use set_conditions().\nIf the nodal analysis task does not exist in the study, a new one will be created.\nThe method waits until the simulation has finished before returning, and then returns\nthe results.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the nodal analysis simulation task.\nparameters : dict\n    Optional. The parameters and respective values to set.\nnodal_point_settings: dict\n    Optional. The settings for nodal point to be created. The new nodal point is \n    applied to the existing or newly created nodal analysis task.  \nprofile_variables : list\n    Optional. The list of profile variables to be returned with the\n    simulation profile results. If omitted then all the possible\n    profile variables are returned.\nsystem_variables : list\n    Optional. The list of system variables to be returned with the\n    simulation system results. If omitted then all the possible\n    system variables are returned.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n\n>>> sim_results = model.tasks.nodalanalysis.run( \"Well 1\",\n        parameters={\n            Parameters.NodalAnalysisSimulation.OUTLETPRESSURE: 3000,\n            Parameters.NodalAnalysisSimulation.BRANCHTERMINATOR: \"Choke\"\n        }\n        nodal_point_settings = {\n            Parameters.NodalPoint.NODALTYPE: Constants.NodalPointType.SURFACE,\n            Parameters.NodalPoint.EQUIPMENT: 'Choke',\n            Parameters.NodalPoint.NAME: 'NA4'\n        }\n        profile_variables=OutputVariables.Profile.GAS_FIELD,\n        system_variables=OutputVariables.System.GAS_FIELD)"
+   },
+   "set_conditions": {
+    "signature": "(producer, parameters={}, inlet_conditions: Optional[dict] = None, nodal_point_settings: Optional[dict] = None, study: Optional[str] = None)",
+    "doc": "Sets the study conditions.\n\nSets the nodal analysis profile simulation task conditions for the specified study.\nIf the nodal analysis simulation task does not exist in the study, a new one will be created.If the producer is a \nwell and nodal point settings are not provided, a default nodal point at bottom hole will be created. \nIf nodal point settings are provided, a new nodal point will be created and be applied to the existing or \nnewly created nodal analysis task. \n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the nodal analysis simulation task.\nparameters : dict\n    Required. The conditions for nodal analysis task to be set on the study.\ninlet_conditions: dict\n    Optional. The inlet conditions for nodal analysis task to be set on the study. \nnodal_point_settings: dict\n    Optional. The settings for nodal point to be created. The new nodal point is applied to the \n    existing or newly created nodal analysis task.  \nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\nReturns\n-------\nNodal analysis operation\n    The exisitng or created nodal analysis operation \n\nExamples\n--------\n>>> model.tasks.nodalanalysis.set_conditions(\"Well 1\",\n        parameters={\n        Parameters.NodalAnalysisSimulation.LIMITINFLOW: True,\n        Parameters.NodalAnalysisSimulation.LIMITOUTFLOW: False,\n        Parameters.NodalAnalysisSimulation.OUTFLOWPOINTS: 40,\n        Parameters.NodalAnalysisSimulation.INFLOWPOINTS: 50,\n        Parameters.NodalAnalysisSimulation.MAXFLOWRATETYPE: \n                                Constants.FlowRateType.GASFLOWRATE,\n        Parameters.NodalAnalysisSimulation.OUTLETPRESSURE: 3000,\n        Parameters.NodalAnalysisSimulation.MAXGASRATE: 300,\n        Parameters.NodalAnalysisSimulation.MAXOUTFLOWPRESSURE: 400,\n        Parameters.NodalAnalysisSimulation.BRANCHTERMINATOR: \"Choke\"\n        },\n        inlet_conditions={\n            \"Well1.Comp1\":{Parameters.Boundary.PRESSURE:4000,\n                            Parameters.Boundary.TEMPERATURE:200}\n        },\n        nodal_point_settings={\n        Parameters.NodalPoint.NODALTYPE: Constants.NodalPointType.DOWNHOLE,\n        Parameters.NodalPoint.DEPTH: 1000,\n        Parameters.NodalPoint.WELLSTRINGTYPE: Constants.TubingSectionType.TUBING,\n        Parameters.NodalPoint.NAME: 'NA2'\n        }\n    )\n>>> model.tasks.nodalanaly"
+   },
+   "start": {
+    "signature": "(producer, parameters={}, inlet_conditions: Optional[dict] = None, nodal_point_settings: Optional[dict] = None, profile_variables: Optional[list] = None, system_variables: Optional[list] = None, study: Optional[str] = None)",
+    "doc": "Starts running a nodal analysis simulation, returning the simulation id\nimmediately which can be used later to check the status and get the results\nIf the nodal analysis simulation task does not exist in the study, a new one \nwill be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the nodal analysis simulation task.\nparameters : dict\n    Optional. The parameters and respective values to set.\nnodal_point_settings: dict\n    Optional. The settings for nodal point to be created. The new nodal point is \n    applied to the existing or newly created nodal analysis task.  \nprofile_variables : list\n    Optional. The list of profile variables to be returned with the\n    simulation profile results. If omitted then all the possible\n    profile variables are returned.\nsystem_variables : list\n    Optional. The list of system variables to be returned with the\n    simulation system results. If omitted then all the possible\n    system variables are returned.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nstr\n    The simulation id, which can be used to access simulation status and get the results.\n\nExamples\n--------\n>>> sim_id = model.tasks.nodalanalysis.start(\"Well 1\",\n        parameters={\n            Parameters.NodalAnalysisSimulation.OUTLETPRESSURE: 3000,\n            Parameters.NodalAnalysisSimulation.BRANCHTERMINATOR: \"Choke\"\n        },\n        nodal_point_settings = {\n            Parameters.NodalPoint.NODALTYPE: Constants.NodalPointType.SURFACE,\n            Parameters.NodalPoint.EQUIPMENT: 'Choke',\n            Parameters.NodalPoint.NAME: 'NA4'\n        },\n        profile_variables=OutputVariables.Profile.GAS_FIELD,\n        system_variables=OutputVariables.System.GAS_FIELD)"
+   },
+   "validate": {
+    "signature": "(producer, study: Optional[str] = None, validate_model=True) -> List[sixgill.validation.ValidationIssue]",
+    "doc": " Validates the task\n\n Parameters\n ----------\nproducer : str\n    Required.\n    The name of the producer for the simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n validate_model: Boolean\n     True by default.\n     If True, it validates the whole model plus the task.\n\n Returns\n -------\n list\n     a list of ValidationIssue instances.\n\n Examples\n --------\n >>> issues = model.tasks.ptprofilesimulation.validate(producer=\"Well2 - Oil\", study = \"Study 1\")\n >>> for issue in issues:\n         print(issue.message)\n         print(issue.path)\n         print(issue.property_name)\n\n "
+   }
+  },
+  "ptprofilesimulation": {
+   "delete_results": {
+    "signature": "(simulation_id)",
+    "doc": "Delete a simulation.\n\nDelete a simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nbool\n    Whether the simulation is deleted or not.\n\nExamples\n--------\n>>> model.tasks.networksimulation.delete_results(simulation_id)"
+   },
+   "delete_sensitivities": {
+    "signature": "(producer, study: Optional[str] = None)",
+    "doc": "Deletes the sensitivities of a simulation(if any)\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nExamples\n--------\n>>> model.tasks.ptprofilesimulation.delete_sensitivities(\"Well 1\", study = \"Study 1\")"
+   },
+   "generate_engine_files": {
+    "signature": "(producer, folder_path: Optional[str] = None, study: Optional[str] = None) -> List[str]",
+    "doc": "Create engine files for the specified study.\n\nGenerate the engine file(s) for the requested study. The files are written\nto the specified folder, or to the current model folder if one is not given.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the PT profile simulation task.\nfolder_path : str\n    Optional. The folder location where the generated files are written to.\n    If not specified, the files will be written to current pipesim model folder.\nstudy : str\n    Optional. The study name.\n\nReturns\n-------\nList[str]\n    The list of engine files generated.\n\nExamples\n--------\n>>> engine_files = model.tasks.ptprofilesimulation.generate_engine_files(\n                            producer=\"Well 1\")\n>>> engine_files = model.tasks.ptprofilesimulation.generate_engine_files(\n                            producer=\"Well 1\", folder_path=\"D:\\Temp\")\n>>> engine_files = model.tasks.ptprofilesimulation.generate_engine_files(\n                            producer=\"Well 1\", folder_path=\"D:\\Temp\",\n                            study=\"Study 1\")"
+   },
+   "get_calculated_variables": {
+    "signature": "(producer, study: Optional[str] = None) -> List[str]",
+    "doc": "get the possible calculated variable list.\n\nGet the list of possible calculated variable for the PT profile simulation task.\nIf the PT profile simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the PT profile simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nlist\n    a list of possible calculated variable names that can be applied to this task.\n\nExamples\n--------\n>>> model.tasks.ptprofilesimulation.get_calculated_variables(\"Well 1\")\n>>> model.tasks.ptprofilesimulation.get_calculated_variables(\"Well 1\",\n                  study=\"Study 2\")"
+   },
+   "get_conditions": {
+    "signature": "(producer, study: Optional[str] = None)",
+    "doc": "Returns the study conditions.\n\nReturns the PT profile simulation conditions for the specified study.\nIf the PT profile simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the PT profile simulation task\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndictZ \n    The PT profile settings in a dictionary format.\n\nExamples\n--------\n>>> studyptsim1 = model.tasks.ptprofilesimulation.get_conditions(\"Well 1\")\n>>> studyptsim1 = model.tasks.ptprofilesimulation.get_conditions(\"Well 1\",\n                           \"Study 2\")"
+   },
+   "get_messages": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the simulation progress message of the simulation\n\nReturns the simulation progress message from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nmessages: list\n    The simulation messages returned by the simulator.\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_messages(simulation_id)"
+   },
+   "get_results": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the results from the simulation.\n\nReturns the results from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n>>> sim_results = model.tasks.networksimulation.get_results(simulation_id)"
+   },
+   "get_sensitivity_variables": {
+    "signature": "(producer, study: Optional[str] = None) -> List[str]",
+    "doc": "Get the available sensitivity variable list.\n\nGet the list of possible sensitivity variables for the PT profile simulation task.\nIf the PT profile simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the PT profile simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nlist\n    a list of sensitivity variables names that can be applied to this task.\n\nExamples\n--------\n>>> model.tasks.ptprofilesimulation.get_sensitivity_variables(\"Well 1\")\n>>> model.tasks.ptprofilesimulation.get_sensitivity_variables(\"Well 1\",\n                  study=\"Study 2\")"
+   },
+   "get_state": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the state of the simulation\n\nReturns the state from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nSimulationState:\n    The state of the simulation. sim_status indicates whether the simulation is still running.\n    messages contains the simulation messages returned by the simulator.\n\nExamples\n--------\n>>> sim_state = model.tasks.networksimulation.get_state(simulation_id)"
+   },
+   "get_summary": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the warning, info and error messages of the simulation\n\nReturns the warning, info and error messages from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nsummary: dictionary\n    The keys of the dictionary are \"Error\", \"Info\" and \"Warning\" and their\n    values are a list of corresponding messages as shown in Stingray UI\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_summary(simulation_id)"
+   },
+   "reset_conditions": {
+    "signature": "(producer, study: Optional[str] = None)",
+    "doc": "Resets the study conditions to be synchronized with the model.\n\nResets the study conditions to be synchronized with the model for the specified study.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the PT profile simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nbool\n    Whether the reset succeeded (True) or not (False).\n\nExamples\n--------\n>>> model.tasks.ptprofilesimulation.reset_conditions(\"Well 1\")\n>>> model.tasks.ptprofilesimulation.reset_conditions(\n                                    \"Well 1\", study = \"Study 1\")"
+   },
+   "run": {
+    "signature": "(producer, parameters={}, profile_variables: Optional[list] = None, system_variables: Optional[list] = None, study: Optional[str] = None)",
+    "doc": "Runs a PT Profile simulation.\n\nRuns a PT Profile simulation. Optionally the\nparameters and variables may be set at the same time\navoiding the need to use set_conditions().\nIf the PT profile simulation task does not exist in the study, a new one will be created.\nThe method waits until the simulation has finished before returning, and then returns\nthe results.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the PT profile simulation task.\nparameters : dict\n    Optional. The parameters and respective values to set.\nprofile_variables : list\n    Optional. The list of profile variables to be returned with the\n    simulation profile results. If omitted then all the possible\n    profile variables are returned.\nsystem_variables : list\n    Optional. The list of system variables to be returned with the\n    simulation system results. If omitted then all the possible\n    system variables are returned.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n\n>>> sim_results = model.tasks.ptfilesimulation.run( \"Well 1\",\n        parameters={Parameters.PTProfileSimulation.OUTLETPRESSURE:200,\n                    Parameters.PTProfileSimulation.SENSITIVITYVARIABLE:\n            {Parameters.PTProfileSimulation.SensitivityVariable.VARIABLE:\n            \"VertComp/ReservoirPressure\",\n            Parameters.PTProfileSimulation.SensitivityVariable.VALUES:\n            [2000,3000,4000]}\n        }\n        profile_variables=OutputVariables.Profile.GAS_FIELD,\n        system_variables=OutputVariables.System.GAS_FIELD)"
+   },
+   "set_conditions": {
+    "signature": "(producer, parameters={}, study: Optional[str] = None)",
+    "doc": "Sets the study conditions.\n\nSets the PT profile simulation task conditions for the specified study.\nIf the PT profile simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the PT profile simulation task.\nparameters : dict\n    Required. The conditions for PT profile task to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nPT profile operation\n    The existing or created PT profile operation.\n\nExamples\n--------\n>>> model.tasks.ptprofilesimulation.set_conditions(\"Well 1\",\n            parameters={Parameters.PTProfileSimulation.INLETPRESSURE:3000,\n                        Parameters.PTProfileSimulation.OUTLETPRESSURE:150,\n                        Parameters.PTProfileSimulation.FLOWRATETYPE:Constants.FlowRateType.GASFLOWRATE,\n                        Parameters.PTProfileSimulation.GASFLOWRATE:5})\n>>> model.tasks.ptprofilesimulation.set_conditions(\"Well 1\",\n            parameters={Parameters.PTProfileSimulation.INLETPRESSURE:3000,\n                        Parameters.PTProfileSimulation.OUTLETPRESSURE:150,\n                        Parameters.PTProfileSimulation.FLOWRATETYPE:Constants.FlowRateType.GASFLOWRATE,\n                        Parameters.PTProfileSimulation.GASFLOWRATE:5},\n            study=\"Study 2\")"
+   },
+   "start": {
+    "signature": "(producer, parameters={}, profile_variables: Optional[list] = None, system_variables: Optional[list] = None, study: Optional[str] = None)",
+    "doc": "Starts running a PT Profile simulation, returning the simulation id\nimmediately which can be used later to check the status and get the results\nIf the PT profile simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the PT profile simulation task.\nparameters : dict\n    Optional. The parameters and respective values to set.\nprofile_variables : list\n    Optional. The list of profile variables to be returned with the\n    simulation profile results. If omitted then all the possible\n    profile variables are returned.\nsystem_variables : list\n    Optional. The list of system variables to be returned with the\n    simulation system results. If omitted then all the possible\n    system variables are returned.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nstr\n    The simulation id, which can be used to access simulation status and get the results.\n\nExamples\n--------\n>>> sim_id = model.tasks.ptfilesimulation.start( \"Well 1\",\n        parameters={Parameters.PTProfileSimulation.OUTLETPRESSURE:200,\n                    Parameters.PTProfileSimulation.SENSITIVITYVARIABLE:\n            {Parameters.PTProfileSimulation.SensitivityVariable.VARIABLE:\n            \"VertComp/ReservoirPressure\",\n            Parameters.PTProfileSimulation.SensitivityVariable.VALUES:\n            [2000,3000,4000]}\n                    }\n        profile_variables=OutputVariables.Profile.GAS_FIELD,\n        system_variables=OutputVariables.System.GAS_FIELD)"
+   },
+   "validate": {
+    "signature": "(producer, study: Optional[str] = None, validate_model=True) -> List[sixgill.validation.ValidationIssue]",
+    "doc": " Validates the task\n\n Parameters\n ----------\nproducer : str\n    Required.\n    The name of the producer for the simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n validate_model: Boolean\n     True by default.\n     If True, it validates the whole model plus the task.\n\n Returns\n -------\n list\n     a list of ValidationIssue instances.\n\n Examples\n --------\n >>> issues = model.tasks.ptprofilesimulation.validate(producer=\"Well2 - Oil\", study = \"Study 1\")\n >>> for issue in issues:\n         print(issue.message)\n         print(issue.path)\n         print(issue.property_name)\n\n "
+   }
+  },
+  "systemanalysissimulation": {
+   "delete_results": {
+    "signature": "(simulation_id)",
+    "doc": "Delete a simulation.\n\nDelete a simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nbool\n    Whether the simulation is deleted or not.\n\nExamples\n--------\n>>> model.tasks.networksimulation.delete_results(simulation_id)"
+   },
+   "delete_sensitivities": {
+    "signature": "(producer, study: Optional[str] = None)",
+    "doc": "Deletes the sensitivities of a simulation(if any)\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nExamples\n--------\n>>> model.tasks.ptprofilesimulation.delete_sensitivities(\"Well 1\", study = \"Study 1\")"
+   },
+   "generate_engine_files": {
+    "signature": "(producer, folder_path: Optional[str] = None, study: Optional[str] = None) -> List[str]",
+    "doc": "Create engine files for the specified study.\n\nGenerate the engine file(s) for the requested study. The files are written\nto the specified folder, or to the current model folder if one is not given.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the System analysis simulation task.\nfolder_path : str\n    Optional. The folder location where the generated files are written to.\n    If not specified, the files will be written to current pipesim model folder.\nstudy : str\n    Optional. The study name.\n\nReturns\n-------\nList[str]\n    The list of engine files generated.\n\nExamples\n--------\n>>> engine_files = model.tasks.systemanalysissimulation.generate_engine_files(\n                            producer=\"Well 1\")\n>>> engine_files = model.tasks.systemanalysissimulation.generate_engine_files(\n                            producer=\"Well 1\", folder_path=\"D:/Temp\")\n>>> engine_files = model.tasks.systemanalysissimulation.generate_engine_files(\n                            producer=\"Well 1\", folder_path=\"D:/Temp\",\n                            study=\"Study 1\")"
+   },
+   "get_calculated_variables": {
+    "signature": "(producer, study: Optional[str] = None) -> List[str]",
+    "doc": "get the possible calculated variable list.\n\nGet the list of possible calculated variable for the System analysis simulation task.\nIf the System analysis simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the System analysis simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nlist\n    a list of possible calculated variable names that can be applied to this task.\n\nExamples\n--------\n>>> model.tasks.systemanalysissimulation.get_calculated_variables(\"Well 1\")\n>>> model.tasks.systemanalysissimulation.get_calculated_variables(\"Well 1\",\n                  study=\"Study 2\")"
+   },
+   "get_conditions": {
+    "signature": "(producer, study: Optional[str] = None)",
+    "doc": "Returns the study conditions.\n\nReturns the System analysis simulation conditions for the specified study.\nIf the System analysis task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the System analysis simulation task\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndictZ \n    The System analysis settings in a dictionary format.\n\nExamples\n--------\n>>> studyptsim1 = model.tasks.systemanalysissimulation.get_conditions(\"Well 1\")\n>>> studyptsim1 = model.tasks.systemanalysissimulation.get_conditions(\"Well 1\",\n                           \"Study 2\")"
+   },
+   "get_messages": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the simulation progress message of the simulation\n\nReturns the simulation progress message from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nmessages: list\n    The simulation messages returned by the simulator.\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_messages(simulation_id)"
+   },
+   "get_results": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the results from the simulation.\n\nReturns the results from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n>>> sim_results = model.tasks.networksimulation.get_results(simulation_id)"
+   },
+   "get_sensitivity_variables": {
+    "signature": "(producer, study: Optional[str] = None) -> List[str]",
+    "doc": "Get the available sensitivity variable list.\n\nGet the list of possible sensitivity variables for the System analysis simulation task.\nIf the System analysis simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the System analysis simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nlist\n    a list of sensitivity variables names that can be applied to this task.\n\nExamples\n--------\n>>> model.tasks.systemanalysissimulation.get_sensitivity_variables(\"Well 1\")\n>>> model.tasks.systemanalysissimulation.get_sensitivity_variables(\"Well 1\",\n                  study=\"Study 2\")"
+   },
+   "get_state": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the state of the simulation\n\nReturns the state from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nSimulationState:\n    The state of the simulation. sim_status indicates whether the simulation is still running.\n    messages contains the simulation messages returned by the simulator.\n\nExamples\n--------\n>>> sim_state = model.tasks.networksimulation.get_state(simulation_id)"
+   },
+   "get_summary": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the warning, info and error messages of the simulation\n\nReturns the warning, info and error messages from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nsummary: dictionary\n    The keys of the dictionary are \"Error\", \"Info\" and \"Warning\" and their\n    values are a list of corresponding messages as shown in Stingray UI\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_summary(simulation_id)"
+   },
+   "reset_conditions": {
+    "signature": "(producer, study: Optional[str] = None)",
+    "doc": "Resets the study conditions to be synchronized with the model.\n\nResets the study conditions to be synchronized with the model for the specified study.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the System analysis simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nbool\n    Whether the reset succeeded (True) or not (False).\n\nExamples\n--------\n>>> model.tasks.systemanalysissimulation.reset_conditions(\"Well 1\")\n>>> model.tasks.systemanalysissimulation.reset_conditions(\n                                    \"Well 1\", study = \"Study 1\")"
+   },
+   "run": {
+    "signature": "(producer, parameters={}, profile_variables: Optional[list] = None, system_variables: Optional[list] = None, study: Optional[str] = None)",
+    "doc": "Runs a System analysis simulation.\n\nRuns a System analysis simulation. Optionally the\nparameters and variables may be set at the same time\navoiding the need to use set_conditions().\nIf the System analysis simulation task does not exist in the study, a new one will be created.\nThe method waits until the simulation has finished before returning, and then returns\nthe results.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the System analysis simulation task.\nparameters : dict\n    Optional. The parameters and respective values to set.\nprofile_variables : list\n    Optional. The list of profile variables to be returned with the\n    simulation profile results. If omitted then all the possible\n    profile variables are returned.\nsystem_variables : list\n    Optional. The list of system variables to be returned with the\n    simulation system results. If omitted then all the possible\n    system variables are returned.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n\n>>> sim_results = model.tasks.systemanalysissimulation.run( \"Well 1\",\n        parameters={Parameters.SystemAnalysisSimulation.OUTLETPRESSURE:200,\n                    Parameters.SystemAnalysisSimulation.SENSITIVITYVARIABLE:\n            {Parameters.SystemAnalysisSimulation.SensitivityVariable.VARIABLE:\n            \"VertComp/ReservoirPressure\",\n            Parameters.SystemAnalysisSimulation.SensitivityVariable.VALUES:\n            [2000,3000,4000]}\n        }\n        profile_variables=OutputVariables.Profile.GAS_FIELD,\n        system_variables=OutputVariables.System.GAS_FIELD)"
+   },
+   "set_conditions": {
+    "signature": "(producer, parameters={}, study: Optional[str] = None)",
+    "doc": "Sets the study conditions.\n\nSets the System analysis simulation task conditions for the specified study.\nIf the System analysis simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the System analysis simulation task.\nparameters : dict\n    Required. The conditions for System analysis task to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nSystem analysis operation\n    The existing or created System analysis operation.\n\nExamples\n--------\n>>> model.tasks.systemanalysissimulation.set_conditions(\"Well 1\",\n            parameters={Parameters.SystemAnalysisSimulation.INLETPRESSURE:3000,\n                        Parameters.SystemAnalysisSimulation.OUTLETPRESSURE:150,\n                        Parameters.SystemAnalysisSimulation.FLOWRATETYPE:Constants.FlowRateType.GASFLOWRATE,\n                        Parameters.SystemAnalysisSimulation.LIQUIDFLOWRATE:5})\n>>> model.tasks.systemanalysissimulation.set_conditions(\"Well 1\",\n            parameters={Parameters.SystemAnalysisSimulation.INLETPRESSURE:3000,\n                        Parameters.SystemAnalysisSimulation.OUTLETPRESSURE:150,\n                        Parameters.SystemAnalysisSimulation.FLOWRATETYPE:Constants.FlowRateType.GASFLOWRATE,\n                        Parameters.SystemAnalysisSimulation.LIQUIDFLOWRATE:5},\n            study=\"Study 2\")"
+   },
+   "start": {
+    "signature": "(producer, parameters={}, profile_variables: Optional[list] = None, system_variables: Optional[list] = None, study: Optional[str] = None)",
+    "doc": "Starts running a System analysis simulation, returning the simulation id\nimmediately which can be used later to check the status and get the results\nIf the System analysis simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the System analysis simulation task.\nparameters : dict\n    Optional. The parameters and respective values to set.\nprofile_variables : list\n    Optional. The list of profile variables to be returned with the\n    simulation profile results. If omitted then all the possible\n    profile variables are returned.\nsystem_variables : list\n    Optional. The list of system variables to be returned with the\n    simulation system results. If omitted then all the possible\n    system variables are returned.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nstr\n    The simulation id, which can be used to access simulation status and get the results.\n\nExamples\n--------\n>>> sim_id = model.tasks.systemanalysissimulation.start( \"Well 1\",\n        parameters={Parameters.SystemAnalysisSimulation.OUTLETPRESSURE:200,\n                    Parameters.SystemAnalysisSimulation.SENSITIVITYVARIABLE:\n                        {Parameters.SystemAnalysisSimulation.SensitivityVariable.VARIABLE:\"VertComp/ReservoirPressure\",\n                         Parameters.SystemAnalysisSimulation.SensitivityVariable.VALUES:[2000,3000,4000]\n                         }\n                    }\n        profile_variables=OutputVariables.Profile.GAS_FIELD,\n        system_variables=OutputVariables.System.GAS_FIELD)"
+   },
+   "validate": {
+    "signature": "(producer, study: Optional[str] = None, validate_model=True) -> List[sixgill.validation.ValidationIssue]",
+    "doc": " Validates the task\n\n Parameters\n ----------\nproducer : str\n    Required.\n    The name of the producer for the simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n validate_model: Boolean\n     True by default.\n     If True, it validates the whole model plus the task.\n\n Returns\n -------\n list\n     a list of ValidationIssue instances.\n\n Examples\n --------\n >>> issues = model.tasks.ptprofilesimulation.validate(producer=\"Well2 - Oil\", study = \"Study 1\")\n >>> for issue in issues:\n         print(issue.message)\n         print(issue.path)\n         print(issue.property_name)\n\n "
+   }
+  },
+  "vfptablessimulation": {
+   "delete_results": {
+    "signature": "(simulation_id)",
+    "doc": "Delete a simulation.\n\nDelete a simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nbool\n    Whether the simulation is deleted or not.\n\nExamples\n--------\n>>> model.tasks.networksimulation.delete_results(simulation_id)"
+   },
+   "delete_sensitivities": {
+    "signature": "(producer, study: Optional[str] = None)",
+    "doc": "Deletes the sensitivities of a simulation(if any)\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nExamples\n--------\n>>> model.tasks.ptprofilesimulation.delete_sensitivities(\"Well 1\", study = \"Study 1\")"
+   },
+   "generate_engine_files": {
+    "signature": "(producer, folder_path: Optional[str] = None, study: Optional[str] = None) -> List[str]",
+    "doc": "Create engine files for the specified study.\n\nGenerate the engine file(s) for the requested study. The files are written\nto the specified folder, or to the current model folder if one is not given.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the VFP tables simulation task.\nfolder_path : str\n    Optional. The folder location where the generated files are written to.\n    If not specified, the files will be written to current pipesim model folder.\nstudy : str\n    Optional. The study name.\n\nReturns\n-------\nList[str]\n    The list of engine files generated.\n\nExamples\n--------\n>>> engine_files = model.tasks.vfptablessimulation.generate_engine_files(\n                            producer=\"Well 1\")\n>>> engine_files = model.tasks.vfptablessimulation.generate_engine_files(\n                            producer=\"Well 1\", folder_path=\"D:/Temp\")\n>>> engine_files = model.tasks.vfptablessimulation.generate_engine_files(\n                            producer=\"Well 1\", folder_path=\"D:/Temp\",\n                            study=\"Study 1\")"
+   },
+   "get_artificial_lift_variables": {
+    "signature": "(producer, study: Optional[str] = None) -> List[str]",
+    "doc": "Get the available artificial lift sensitivity variable list.\n\nIf the VFP tables simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the VFP tables simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nlist\n    a list of sensitivity variables names that can be applied to this task.\n\nExamples\n--------\n>>> model.tasks.vfptablessimulation.get_artificial_lift_variables(\"Well 1\")\n>>> model.tasks.vfptablessimulation.get_artificial_lift_variables(\"Well 1\",\n                  study=\"Study 2\")"
+   },
+   "get_conditions": {
+    "signature": "(producer, study: Optional[str] = None) -> Dict",
+    "doc": "Returns the VFP tables boundary conditions.\n\nReturns the VFP tables boundary conditions for the specified study.\nIf the VFP tables simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the VFP tables simulation task\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndict\n    The boundary condition for the study specified.\n\nExamples\n--------\n>>> vfp_sim_conditions = model.tasks.vfptablessimulation.get_conditions(\"Well 1\")\n>>> vfp_sim_conditions = model.tasks.vfptablessimulation.get_conditions(\"Well 1\", \"Study 1\")\n>>> vfp_sim_conditions = model.tasks.vfptablessimulation.get_conditions(\"Well 1\", study=\"Study 1\")"
+   },
+   "get_messages": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the simulation progress message of the simulation\n\nReturns the simulation progress message from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nmessages: list\n    The simulation messages returned by the simulator.\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_messages(simulation_id)"
+   },
+   "get_results": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the results from the simulation.\n\nReturns the results from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n>>> sim_results = model.tasks.networksimulation.get_results(simulation_id)"
+   },
+   "get_state": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the state of the simulation\n\nReturns the state from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nSimulationState:\n    The state of the simulation. sim_status indicates whether the simulation is still running.\n    messages contains the simulation messages returned by the simulator.\n\nExamples\n--------\n>>> sim_state = model.tasks.networksimulation.get_state(simulation_id)"
+   },
+   "get_summary": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the warning, info and error messages of the simulation\n\nReturns the warning, info and error messages from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nsummary: dictionary\n    The keys of the dictionary are \"Error\", \"Info\" and \"Warning\" and their\n    values are a list of corresponding messages as shown in Stingray UI\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_summary(simulation_id)"
+   },
+   "run": {
+    "signature": "(producer, parameters: Optional[dict] = None, study: Optional[str] = None)",
+    "doc": "Runs a VFP tables task\n\nRuns a VFP tables task for the specified study.\nIf the VFP tables simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the VFP tables simulation task.\nparameters : dict\n    Optional. The parameters and respective values on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns: dict\n    Results of a VFP tables simulation run.\n\nExamples\n--------\n>>> model.tasks.vfptablessimulation.run(\"Well 1\",\n            parameters={\n                Parameters.VfpTablesSimulation.RESERVOIRSIMULATOR:Constants.VFPTablesOperationTable.ECLIPSE, \n                Parameters.VfpTablesSimulation.BOTTOMHOLEDATUMDEPTH:150.2,\n                Parameters.VfpTablesSimulation.TABLENUMBER:2,\n                Parameters.VfpTablesSimulation.INCLUDETEMPERATURE:True,\n                Parameters.VfpTablesSimulation.VFPTABLETYPE:Constants.VfpTablesType.PRODUCTION,\n                        })\n>>> model.tasks.vfptablessimulation.run(\"Well 1\",\n            parameters={\n                Parameters.VfpTablesSimulation.RESERVOIRSIMULATOR:Constants.VFPTablesOperationTable.ECLIPSE, \n                Parameters.VfpTablesSimulation.BOTTOMHOLEDATUMDEPTH:150.2,\n                Parameters.VfpTablesSimulation.TABLENUMBER:2,\n                Parameters.VfpTablesSimulation.INCLUDETEMPERATURE:True,\n                Parameters.VfpTablesSimulation.VFPTABLETYPE:Constants.VfpTablesType.PRODUCTION,\n                        }, study = \"Study 1\")"
+   },
+   "set_conditions": {
+    "signature": "(producer, parameters={}, study: Optional[str] = None)",
+    "doc": "Sets the VFP tables boundary conditions.\n\nSets the VFP tables boundary conditions for the study specified.\nIf the VFP tables simulation task does not exist in the study, a new one will be created.\n\n\nParameters\n----------\nparameters : dict\n    Required. The conditions for VFP tables task to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nVFP tables simulation operation\n    The existing or created VFP tables simulation operation.\n\nExamples\n--------\n>>> model.tasks.vfptablessimulation.set_conditions(\"Well 1\",\n            parameters={\n                Parameters.VfpTablesSimulation.RESERVOIRSIMULATOR:Constants.VFPTablesOperationTable.ECLIPSE, \n                Parameters.VfpTablesSimulation.BOTTOMHOLEDATUMDEPTH:150.2,\n                Parameters.VfpTablesSimulation.TABLENUMBER:2,\n                Parameters.VfpTablesSimulation.INCLUDETEMPERATURE:True,\n                Parameters.VfpTablesSimulation.BRANCHTERMINATOR:\"J-1\",\n                        })\n>>> model.tasks.vfptablessimulation.set_conditions(\"Source 1\",\n            parameters={\n                Parameters.VfpTablesSimulation.RESERVOIRSIMULATOR:Constants.VFPTablesOperationTable.ECLIPSE, \n                Parameters.VfpTablesSimulation.BOTTOMHOLEDATUMDEPTH:150.2,\n                Parameters.VfpTablesSimulation.TABLENUMBER:2,\n                Parameters.VfpTablesSimulation.INCLUDETEMPERATURE:True,\n                Parameters.VfpTablesSimulation.VFPTABLETYPE:Constants.VfpTablesType.PRODUCTION,\n                        }, study = \"Study 1\")"
+   },
+   "start": {
+    "signature": "(producer, parameters: Optional[dict] = None, study: Optional[str] = None)",
+    "doc": "Starts running a simulation of the specified type, returning the simulation id\nimmediately which can be used later to check the status and get the results.\nIf the VFP tables simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the VFP tables simulation task.\nparameters : dict\n    Optional. The boundary conditions to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nstr\n    The simulation id, which can be used to access simulation status and get the results.\n\nExamples\n--------\n>>> model.tasks.vfptablessimulation.start(\"Source 1\",\n            parameters={\n                Parameters.VfpTablesSimulation.RESERVOIRSIMULATOR:Constants.VFPTablesOperationTable.ECLIPSE, \n                Parameters.VfpTablesSimulation.BOTTOMHOLEDATUMDEPTH:150.2,\n                Parameters.VfpTablesSimulation.TABLENUMBER:2,\n                Parameters.VfpTablesSimulation.INCLUDETEMPERATURE:True,\n                Parameters.VfpTablesSimulation.VFPTABLETYPE:Constants.VfpTablesType.PRODUCTION,\n                        })\n>>> model.tasks.vfptablessimulation.start(\"Source 1\",\n            parameters={\n                Parameters.VfpTablesSimulation.RESERVOIRSIMULATOR:Constants.VFPTablesOperationTable.ECLIPSE, \n                Parameters.VfpTablesSimulation.BOTTOMHOLEDATUMDEPTH:150.2,\n                Parameters.VfpTablesSimulation.TABLENUMBER:2,\n                Parameters.VfpTablesSimulation.INCLUDETEMPERATURE:True,\n                Parameters.VfpTablesSimulation.VFPTABLETYPE:Constants.VfpTablesType.PRODUCTION,\n                        }, study = \"Study 1\")"
+   },
+   "validate": {
+    "signature": "(producer, study: Optional[str] = None, validate_model=True) -> List[sixgill.validation.ValidationIssue]",
+    "doc": " Validates the task\n\n Parameters\n ----------\nproducer : str\n    Required.\n    The name of the producer for the simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n validate_model: Boolean\n     True by default.\n     If True, it validates the whole model plus the task.\n\n Returns\n -------\n list\n     a list of ValidationIssue instances.\n\n Examples\n --------\n >>> issues = model.tasks.ptprofilesimulation.validate(producer=\"Well2 - Oil\", study = \"Study 1\")\n >>> for issue in issues:\n         print(issue.message)\n         print(issue.path)\n         print(issue.property_name)\n\n "
+   }
+  },
+  "wellperformancecurvessimulation": {
+   "delete_results": {
+    "signature": "(simulation_id)",
+    "doc": "Delete a simulation.\n\nDelete a simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nbool\n    Whether the simulation is deleted or not.\n\nExamples\n--------\n>>> model.tasks.networksimulation.delete_results(simulation_id)"
+   },
+   "delete_sensitivities": {
+    "signature": "(producer, study: Optional[str] = None)",
+    "doc": "Deletes the sensitivities of a simulation(if any)\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nExamples\n--------\n>>> model.tasks.ptprofilesimulation.delete_sensitivities(\"Well 1\", study = \"Study 1\")"
+   },
+   "generate_engine_files": {
+    "signature": "(producer, folder_path: Optional[str] = None, study: Optional[str] = None) -> List[str]",
+    "doc": "Create engine files for the specified study.\n\nGenerate the engine file(s) for the requested study. The files are written\nto the specified folder, or to the current model folder if one is not given.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the Well performance curves simulation task.\nfolder_path : str\n    Optional. The folder location where the generated files are written to.\n    If not specified, the files will be written to current pipesim model folder.\nstudy : str\n    Optional. The study name.\n\nReturns\n-------\nList[str]\n    The list of engine files generated.\n\nExamples\n--------\n>>> engine_files = model.tasks.wellperformancecurvessimulation.generate_engine_files(\n                            producer=\"Well 1\")\n>>> engine_files = model.tasks.wellperformancecurvessimulation.generate_engine_files(\n                            producer=\"Well 1\", folder_path=\"D:\\Temp\")\n>>> engine_files = model.tasks.wellperformancecurvessimulation.generate_engine_files(\n                            producer=\"Well 1\", folder_path=\"D:\\Temp\",\n                            study=\"Study 1\")"
+   },
+   "get_conditions": {
+    "signature": "(producer, study: Optional[str] = None)",
+    "doc": "Returns the study conditions.\n\nReturns the Well performance curves simulation conditions for the specified study.\nIf the Well performance curves simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the Well performance curves simulation task\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\ndict\n    The Well performance curves settings in a dictionary format.\n\nExamples\n--------\n>>> studyptsim1 = model.tasks.wellperformancecurvessimulation.get_conditions(\"Well 1\")\n>>> studyptsim1 = model.tasks.wellperformancecurvessimulation.get_conditions(\"Well 1\",\n                           \"Study 2\")"
+   },
+   "get_messages": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the simulation progress message of the simulation\n\nReturns the simulation progress message from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nmessages: list\n    The simulation messages returned by the simulator.\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_messages(simulation_id)"
+   },
+   "get_results": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the results from the simulation.\n\nReturns the results from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n>>> sim_results = model.tasks.networksimulation.get_results(simulation_id)"
+   },
+   "get_sensitivity_variables": {
+    "signature": "(producer, study: Optional[str] = None) -> List[str]",
+    "doc": "Get the available sensitivity variable list.\n\nGet the list of possible sensitivity variables for the Well performance curves simulation task.\nIf the Well performance curves simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the Well performance curves simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nlist\n    a list of sensitivity variables names that can be applied to this task.\n\nExamples\n--------\n>>> model.tasks.wellperformancecurvessimulation.get_sensitivity_variables(\"Well 1\")\n>>> model.tasks.wellperformancecurvessimulation.get_sensitivity_variables(\"Well 1\",\n                  study=\"Study 2\")"
+   },
+   "get_state": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the state of the simulation\n\nReturns the state from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nSimulationState:\n    The state of the simulation. sim_status indicates whether the simulation is still running.\n    messages contains the simulation messages returned by the simulator.\n\nExamples\n--------\n>>> sim_state = model.tasks.networksimulation.get_state(simulation_id)"
+   },
+   "get_summary": {
+    "signature": "(simulation_id)",
+    "doc": "Returns the warning, info and error messages of the simulation\n\nReturns the warning, info and error messages from the simulation.\n\nParameters\n----------\nsimulation_id: str\n    Required. The id of the simulation returned from start_simulation call.\n\nReturns\n-------\nsummary: dictionary\n    The keys of the dictionary are \"Error\", \"Info\" and \"Warning\" and their\n    values are a list of corresponding messages as shown in Stingray UI\n\nExamples\n--------\n>>> messages = model.tasks.networksimulation.get_summary(simulation_id)"
+   },
+   "run": {
+    "signature": "(producer, parameters={}, system_variables: Optional[list] = None, study: Optional[str] = None)",
+    "doc": "Runs a Well performance curves simulation.\n\nRuns a Well performance curves simulation. Optionally the\nparameters and variables may be set at the same time\navoiding the need to use set_conditions().\nIf the Well performance curves simulation task does not exist in the study, a new one will be created.\nThe method waits until the simulation has finished before returning, and then returns\nthe results.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the Well performance curves simulation task.\nparameters : dict\n    Optional. The parameters and respective values to set.\nsystem_variables : list\n    Optional. The list of system variables to be returned with the\n    simulation system results. If omitted then all the possible\n    system variables are returned.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\nReturns\n-------\ndict\n    The simulation results.\n\nExamples\n--------\n\n>>> sim_results = model.tasks.wellperformancecurvessimulation.run( \"Well 1\")\n        "
+   },
+   "set_conditions": {
+    "signature": "(producer, parameters={}, study: Optional[str] = None)",
+    "doc": "Sets the study conditions.\n\nSets the Well performance curves simulation task conditions for the specified study.\nIf the Well performance curves simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the Well performance curves simulation task.\nparameters : dict\n    Required. The conditions for Well performance curves task to be set on the study.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nWell performance curves operation\n    The existing or created Well performance curves operation.\n\nExamples\n--------\n>>> model.tasks.wellperformancecurvessimulation.set_conditions(\"Well 1\", parameters=studyptsim1)\n>>> model.tasks.wellperformancecurvessimulation.set_conditions(\"Well 1\", parameters=studyptsim1,\n                           \"Study 2\")"
+   },
+   "start": {
+    "signature": "(producer, parameters={}, system_variables: Optional[list] = None, study: Optional[str] = None)",
+    "doc": "Starts running a Well performance curves simulation, returning the simulation id\nimmediately which can be used later to check the status and get the results\nIf the Well performance curves simulation task does not exist in the study, a new one will be created.\n\nParameters\n----------\nproducer : str\n    Required. The name of the producer for the Well performance curves simulation task.\nparameters : dict\n    Optional. The parameters and respective values to set.\nsystem_variables : list\n    Optional. The list of system variables to be returned with the\n    simulation system results. If omitted then all the possible\n    system variables are returned.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n\nReturns\n-------\nstr\n    The simulation id, which can be used to access simulation status and get the results.\n\nExamples\n--------\n>>> sim_id = model.tasks.wellperformancecurvessimulation.start( \"Well 1\")"
+   },
+   "validate": {
+    "signature": "(producer, study: Optional[str] = None, validate_model=True) -> List[sixgill.validation.ValidationIssue]",
+    "doc": " Validates the task\n\n Parameters\n ----------\nproducer : str\n    Required.\n    The name of the producer for the simulation task.\nstudy : str\n    Optional. The name of the study. If no name is specified and there is one default study,\n    the default study will be used. If there are multiple studies in the model, study name is required.\n validate_model: Boolean\n     True by default.\n     If True, it validates the whole model plus the task.\n\n Returns\n -------\n list\n     a list of ValidationIssue instances.\n\n Examples\n --------\n >>> issues = model.tasks.ptprofilesimulation.validate(producer=\"Well2 - Oil\", study = \"Study 1\")\n >>> for issue in issues:\n         print(issue.message)\n         print(issue.path)\n         print(issue.property_name)\n\n "
+   }
+  }
+ },
+ "equipment_values": {
+  "CSN_301_Small Network": {
+   "TwoPhaseSeparator|Separator": {
+    "Separator": {
+     "Name": "Separator",
+     "Pressure": null,
+     "IsActive": true,
+     "Efficiency": 99.9,
+     "DiscardedStream": "liquid",
+     "ProductionStream": "gas"
+    }
+   },
+   "Pump|Pmp": {
+    "Pmp": {
+     "Name": "Pmp",
+     "Pressure": null,
+     "Route": "Mollier",
+     "Power": 372.84993579113507,
+     "IsActive": true,
+     "PressureRatio": null,
+     "Efficiency": 100.0,
+     "PressureDifferential": null,
+     "UseCurves": false
+    }
+   },
+   "Compressor|Compressor": {
+    "Compressor": {
+     "Name": "Compressor",
+     "Pressure": null,
+     "HonourStonewallLimit": true,
+     "IsReciprocating": null,
+     "Route": "routeAdiabatic",
+     "Power": 1043.9798202151783,
+     "IsActive": true,
+     "PressureRatio": null,
+     "Efficiency": 70.0,
+     "PressureDifferential": null,
+     "UseCurves": false
+    }
+   },
+   "Choke|Choke": {
+    "Choke": {
+     "Name": "Choke",
+     "AdjustSubcriticalCorrelation": false,
+     "BeanSize": 50.8,
+     "BothPhasesFlowCoefficient": null,
+     "CalculateCriticalPressureRatio": false,
+     "CriticalCorrelation": "Mechanistic",
+     "CriticalPressureRatio": 0.53,
+     "DischargeCoefficient": null,
+     "FlowRateLimitType": "LiquidFlowRate",
+     "GasExpansionFactor": null,
+     "GasFlowRateLimit": null,
+     "GasPhaseFlowCoefficient": null,
+     "HeatCapacityRatio": null,
+     "LiquidFlowRateLimit": null,
+     "LiquidPhaseFlowCoefficient": null,
+     "MassFlowRateLimit": null,
+     "OilFlowRateLimit": null,
+     "PrintDetailedCalculations": false,
+     "SubCriticalCorrelation": "Mechanistic",
+     "Tolerance": 0.5,
+     "UpstreamPipeID": null,
+     "UseFlowrateForCriticalFlow": true,
+     "UsePressureRatioForCriticalFlow": true,
+     "UseSonicDownstreamVelocityForCriticalFlow": true,
+     "UseSonicUpstreamVelocityForCriticalFlow": true,
+     "WaterFlowRateLimit": null,
+     "IsActive": true
+    }
+   },
+   "Packer|Well:Packer": {
+    "Well:Packer": {
+     "Name": "Packer",
+     "IsActive": true
+    }
+   },
+   "_connections": [
+    {
+     "Source": "FL-3",
+     "Source Port": "",
+     "Destination": "Manifold"
+    },
+    {
+     "Source": "Choke",
+     "Source Port": "",
+     "Destination": "FL-2"
+    },
+    {
+     "Source": "FL-2",
+     "Source Port": "",
+     "Destination": "Manifold"
+    },
+    {
+     "Source": "Source",
+     "Source Port": "",
+     "Destination": "FL-3"
+    },
+    {
+     "Source": "Manifold",
+     "Source Port": "",
+     "Destination": "FL-4"
+    },
+    {
+     "Source": "FL-4",
+     "Source Port": "",
+     "Destination": "Separator"
+    },
+    {
+     "Source": "Compressor",
+     "Source Port": "",
+     "Destination": "GL-2"
+    },
+    {
+     "Source": "GL-2",
+     "Source Port": "",
+     "Destination": "Gas-Sales"
+    },
+    {
+     "Source": "Separator",
+     "Source Port": "Bottom Port",
+     "Destination": "LL-1"
+    },
+    {
+     "Source": "LL-1",
+     "Source Port": "",
+     "Destination": "Pmp"
+    },
+    {
+     "Source": "Separator",
+     "Source Port": "Top Port",
+     "Destination": "GL-1"
+    },
+    {
+     "Source": "GL-1",
+     "Source Port": "",
+     "Destination": "Compressor"
+    },
+    {
+     "Source": "LL-2",
+     "Source Port": "",
+     "Destination": "Oil-Facility"
+    },
+    {
+     "Source": "Pmp",
+     "Source Port": "",
+     "Destination": "LL-2"
+    },
+    {
+     "Source": "Well",
+     "Source Port": "",
+     "Destination": "FL-1"
+    },
+    {
+     "Source": "FL-1",
+     "Source Port": "",
+     "Destination": "Choke"
+    }
+   ]
+  },
+  "Nodal_example": {
+   "GasLiftInjection|Well 1 - oil:Gas lift injection": {
+    "Well 1 - oil:Gas lift injection": {
+     "Name": "Gas lift injection",
+     "GLR": null,
+     "DischargeCoefficient": null,
+     "Manufacturer": "",
+     "Series": "",
+     "IsActive": true,
+     "BellowArea": null,
+     "DischargeToFullyOpen": null,
+     "GasLiftType": "InjectionGasRate",
+     "GasRate": 0.056633693184019944,
+     "GLRIncrease": null,
+     "PortArea": null,
+     "PortSize": null,
+     "Ptro": null,
+     "SpringPressure": null,
+     "ValveChoke": null,
+     "ValveDiameter": null,
+     "ValveSize": null,
+     "ValveType": ""
+    }
+   },
+   "ESP|Well 2 - ESP:ESP": {
+    "Well 2 - ESP:ESP": {
+     "Name": "ESP",
+     "Diameter": 130.302,
+     "HeadFactor": 1.0,
+     "Manufacturer": "Reda",
+     "Model": "G6200N",
+     "BaseFrequency": 59.99999999999986,
+     "CasingID": null,
+     "PermanentMagnetMotor": false,
+     "NumberOfPoles": 2,
+     "OverrideSlippageFactor": false,
+     "SlippageFactor": null,
+     "FlowrateFactor": 1.0,
+     "GasSeparatorEfficiency": 72.0,
+     "HasGasSeparator": true,
+     "MaxFlowRate": 1271.898432,
+     "MinFlowRate": 715.4428679999984,
+     "NumberStages": 197,
+     "OperatingFrequency": 59.999999999999865,
+     "OperatingProductionRate": null,
+     "Power": null,
+     "PowerFactor": 1.0,
+     "Series": "",
+     "UsePower": false,
+     "UseStageByStageCalc": false,
+     "UseViscosityCorrection": true,
+     "CoefficientA": 1.0,
+     "CoefficientB": 0.0,
+     "IsPowerCorrectionCalculated": false,
+     "PowerCorrection": false,
+     "CableLengthBelowPump": false,
+     "RecombineGas": 30.48,
+     "IsActive": true,
+     "CableName": "",
+     "VDrop": null,
+     "MaxAmps": null,
+     "MotorManufacturer": "",
+     "MotorName": "",
+     "NPPower": null,
+     "NPVoltage": null,
+     "NPAmperage": null,
+     "FloorEfficiency": null,
+     "FloorPowerFactor": null,
+     "AMPValues": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "EFFValues": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ],
+     "PFValues": [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+     ]
+    }
+   },
+   "Choke|choke_1": {
+    "choke_1": {
+     "Name": "choke_1",
+     "AdjustSubcriticalCorrelation": true,
+     "BeanSize": 50.8,
+     "BothPhasesFlowCoefficient": null,
+     "CalculateCriticalPressureRatio": false,
+     "CriticalCorrelation": "Mechanistic",
+     "CriticalPressureRatio": 0.53,
+     "DischargeCoefficient": null,
+     "FlowRateLimitType": "LiquidFlowRate",
+     "GasExpansionFactor": null,
+     "GasFlowRateLimit": null,
+     "GasPhaseFlowCoefficient": null,
+     "HeatCapacityRatio": null,
+     "LiquidFlowRateLimit": null,
+     "LiquidPhaseFlowCoefficient": null,
+     "MassFlowRateLimit": null,
+     "OilFlowRateLimit": null,
+     "PrintDetailedCalculations": false,
+     "SubCriticalCorrelation": "Mechanistic",
+     "Tolerance": 0.5,
+     "UpstreamPipeID": null,
+     "UseFlowrateForCriticalFlow": true,
+     "UsePressureRatioForCriticalFlow": true,
+     "UseSonicDownstreamVelocityForCriticalFlow": true,
+     "UseSonicUpstreamVelocityForCriticalFlow": true,
+     "WaterFlowRateLimit": null,
+     "IsActive": true
+    }
+   },
+   "Choke|choke_2": {
+    "choke_2": {
+     "Name": "choke_2",
+     "AdjustSubcriticalCorrelation": true,
+     "BeanSize": 50.8,
+     "BothPhasesFlowCoefficient": null,
+     "CalculateCriticalPressureRatio": false,
+     "CriticalCorrelation": "Mechanistic",
+     "CriticalPressureRatio": 0.53,
+     "DischargeCoefficient": null,
+     "FlowRateLimitType": "LiquidFlowRate",
+     "GasExpansionFactor": null,
+     "GasFlowRateLimit": null,
+     "GasPhaseFlowCoefficient": null,
+     "HeatCapacityRatio": null,
+     "LiquidFlowRateLimit": null,
+     "LiquidPhaseFlowCoefficient": null,
+     "MassFlowRateLimit": null,
+     "OilFlowRateLimit": null,
+     "PrintDetailedCalculations": false,
+     "SubCriticalCorrelation": "Mechanistic",
+     "Tolerance": 0.5,
+     "UpstreamPipeID": null,
+     "UseFlowrateForCriticalFlow": true,
+     "UsePressureRatioForCriticalFlow": true,
+     "UseSonicDownstreamVelocityForCriticalFlow": true,
+     "UseSonicUpstreamVelocityForCriticalFlow": true,
+     "WaterFlowRateLimit": null,
+     "IsActive": true
+    }
+   },
+   "Choke|choke_3": {
+    "choke_3": {
+     "Name": "choke_3",
+     "AdjustSubcriticalCorrelation": true,
+     "BeanSize": 50.8,
+     "BothPhasesFlowCoefficient": null,
+     "CalculateCriticalPressureRatio": false,
+     "CriticalCorrelation": "Mechanistic",
+     "CriticalPressureRatio": 0.53,
+     "DischargeCoefficient": null,
+     "FlowRateLimitType": "LiquidFlowRate",
+     "GasExpansionFactor": null,
+     "GasFlowRateLimit": null,
+     "GasPhaseFlowCoefficient": null,
+     "HeatCapacityRatio": null,
+     "LiquidFlowRateLimit": null,
+     "LiquidPhaseFlowCoefficient": null,
+     "MassFlowRateLimit": null,
+     "OilFlowRateLimit": null,
+     "PrintDetailedCalculations": false,
+     "SubCriticalCorrelation": "Mechanistic",
+     "Tolerance": 0.5,
+     "UpstreamPipeID": null,
+     "UseFlowrateForCriticalFlow": true,
+     "UsePressureRatioForCriticalFlow": true,
+     "UseSonicDownstreamVelocityForCriticalFlow": true,
+     "UseSonicUpstreamVelocityForCriticalFlow": true,
+     "WaterFlowRateLimit": null,
+     "IsActive": true
+    }
+   },
+   "Choke|choke_4": {
+    "choke_4": {
+     "Name": "choke_4",
+     "AdjustSubcriticalCorrelation": true,
+     "BeanSize": 50.8,
+     "BothPhasesFlowCoefficient": null,
+     "CalculateCriticalPressureRatio": false,
+     "CriticalCorrelation": "Mechanistic",
+     "CriticalPressureRatio": 0.53,
+     "DischargeCoefficient": null,
+     "FlowRateLimitType": "LiquidFlowRate",
+     "GasExpansionFactor": null,
+     "GasFlowRateLimit": null,
+     "GasPhaseFlowCoefficient": null,
+     "HeatCapacityRatio": null,
+     "LiquidFlowRateLimit": null,
+     "LiquidPhaseFlowCoefficient": null,
+     "MassFlowRateLimit": null,
+     "OilFlowRateLimit": null,
+     "PrintDetailedCalculations": false,
+     "SubCriticalCorrelation": "Mechanistic",
+     "Tolerance": 0.5,
+     "UpstreamPipeID": null,
+     "UseFlowrateForCriticalFlow": true,
+     "UsePressureRatioForCriticalFlow": true,
+     "UseSonicDownstreamVelocityForCriticalFlow": true,
+     "UseSonicUpstreamVelocityForCriticalFlow": true,
+     "WaterFlowRateLimit": null,
+     "IsActive": true
+    }
+   },
+   "Packer|Well 1 - oil:Packer": {
+    "Well 1 - oil:Packer": {
+     "Name": "Packer",
+     "IsActive": true
+    }
+   },
+   "Packer|Well 2 - ESP:Packer": {
+    "Well 2 - ESP:Packer": {
+     "Name": "Packer",
+     "IsActive": true
+    }
+   },
+   "Packer|Well 3 - gas:Packer": {
+    "Well 3 - gas:Packer": {
+     "Name": "Packer",
+     "IsActive": true
+    }
+   },
+   "Packer|Well 4 - Horizontal Gas well:Packer": {
+    "Well 4 - Horizontal Gas well:Packer": {
+     "Name": "Packer",
+     "IsActive": true
+    }
+   },
+   "_connections": [
+    {
+     "Source": "FL1",
+     "Source Port": "",
+     "Destination": "J"
+    },
+    {
+     "Source": "FL2",
+     "Source Port": "",
+     "Destination": "J"
+    },
+    {
+     "Source": "J",
+     "Source Port": "",
+     "Destination": "TL1"
+    },
+    {
+     "Source": "TL1",
+     "Source Port": "",
+     "Destination": "J 1"
+    },
+    {
+     "Source": "choke_1",
+     "Source Port": "",
+     "Destination": "FL1"
+    },
+    {
+     "Source": "J 1",
+     "Source Port": "",
+     "Destination": "FL4"
+    },
+    {
+     "Source": "FL3",
+     "Source Port": "",
+     "Destination": "J 1"
+    },
+    {
+     "Source": "J 1",
+     "Source Port": "",
+     "Destination": "TL2"
+    },
+    {
+     "Source": "TL2",
+     "Source Port": "",
+     "Destination": "sink"
+    },
+    {
+     "Source": "Well 1 - oil",
+     "Source Port": "",
+     "Destination": "choke_1"
+    },
+    {
+     "Source": "Well 4 - Horizontal Gas well",
+     "Source Port": "",
+     "Destination": "choke_4"
+    },
+    {
+     "Source": "choke_3",
+     "Source Port": "",
+     "Destination": "FL2"
+    },
+    {
+     "Source": "Well 3 - gas",
+     "Source Port": "",
+     "Destination": "choke_3"
+    },
+    {
+     "Source": "FL4",
+     "Source Port": "",
+     "Destination": "choke_4"
+    },
+    {
+     "Source": "Well 2 - ESP",
+     "Source Port": "",
+     "Destination": "choke_2"
+    },
+    {
+     "Source": "choke_2",
+     "Source Port": "",
+     "Destination": "FL3"
+    }
+   ]
+  }
+ },
+ "errors": [
+  "not found: CSN_312_Gas_Lift_Optimization",
+  "not found: CSN_313_ESP_Optimization",
+  "not found: TF_M3B_Final_Oil_Well",
+  "not found: TF_M6_Pipeline_Network"
+ ]
+}

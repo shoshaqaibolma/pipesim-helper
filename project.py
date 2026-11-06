@@ -1,0 +1,611 @@
+"""
+Project description: a declarative PIPESIM network (what the case studies contain), independent of sixgill.
+The agent fills it from the user's description; check_project() lists every missing input per component
+and validates the topology, the same way study.check() does for studies. netbuilder.py turns it into a .pips.
+
+{
+  "name": "Field A gathering", "units": "METRIC",
+  "fluids":    [{"name": "BO-1", "type": "black_oil", "api": 35, "gor": 120, "water_cut": 10, "gas_sg": 0.7}],
+  "wells":     [{"name": "W1", "fluid": "BO-1", "reservoir_pressure": 260, "reservoir_temperature": 95,
+                 "ipr": {"model": "pi", "liquid_pi": 8}, "depth": 2600, "tubing_id": 76}],
+  "sources":   [{"name": "S1", "fluid": "BO-1", "pressure": 40, "temperature": 60, "liquid_rate": 500}],
+  "junctions": [{"name": "J1"}],
+  "sinks":     [{"name": "Separator", "pressure": 15}],
+  "chokes":    [{"name": "CK-1", "from": "W1", "bean_size": 12.7}],  # mm; optional: sits right after its "from" node
+  "flowlines": [{"name": "FL-1", "from": "CK-1", "to": "J1", "length": 2000, "id": 150, "elevation_change": 0},
+                {"name": "FL-2", "from": "J1", "to": "Separator", "length": 5000, "id": 200, "elevation_change": 10}]
+}
+Topology: nodes are wells, sources, chokes, junctions and sinks; flowlines connect two nodes; a choke is
+connected directly to its upstream node. Every well/source must reach a sink. Lists merge by "name"
+(see merge_project), so the agent can change one well without resending the others.
+"""
+import copy, re
+
+UNITS_METRIC = {"pressure": "bara", "temperature": "degC", "length": "m", "id": "mm", "bean": "mm", "rate": "sm3/d",
+                "gas_rate": "mmsm3/d", "pi": "sm3/d/bar", "gor": "sm3/sm3", "pct": "%"}
+
+# entity -> field -> (question, unit, default). None default = must be asked, no sensible default.
+FIELDS = {
+    "fluids": {
+        "type": ("Fluid model: black_oil (oil: API, GOR, water cut) or gas (gas/condensate: gas SG, OGR, WGR)?",
+                 "", "black_oil"),
+    },
+    "wells": {
+        "fluid":                 ("Which fluid does this well produce?", "", None),
+        "reservoir_pressure":    ("Reservoir pressure?", "bara", None),
+        "reservoir_temperature": ("Reservoir temperature?", "degC", 90.0),
+        "ipr":                   ("Inflow (IPR): productivity index (liquid_pi, sm3/d/bar), Vogel (aof, sm3/d), or gas "
+                                  "back-pressure q = C (Pr^2 - Pwf^2)^n (c in mmsm3/d/bar^2n, n 0.5-1)?",
+                                  "", {"model": "pi", "liquid_pi": 10.0}),
+        "depth":                 ("Depth to mid-perforation (vertical)?", "m", None),
+        "tubing_id":             ("Tubing inner diameter?", "mm", 76.0),
+    },
+    "sources": {   # plus exactly one of SOURCE_BC
+        "fluid":       ("Which fluid enters at this source?", "", None),
+        "temperature": ("Source temperature?", "degC", 60.0),
+    },
+    "sinks": {"pressure": ("Delivery / separator pressure?", "bara", None)},
+    "flowlines": {
+        "from": ("Upstream end (well, source, junction or choke)?", "", None),
+        "to":   ("Downstream end (junction, sink or choke)?", "", None),
+        "length": ("Flowline length?", "m", None),
+        "id": ("Flowline inner diameter?", "mm", 150.0),
+        "elevation_change": ("Elevation change, positive uphill?", "m", 0.0),
+    },
+    "chokes": {"bean_size": ("Choke bean size (diameter)?", "mm", 12.7)},   # inlet: "from" or a flowline ending here
+    "junctions": {},
+    "separators": {"efficiency": ("Separation efficiency?", "%", 100.0)},   # outlets: flowlines with port gas/liquid
+    "pumps": {"efficiency": ("Pump efficiency?", "%", 70.0)},               # plus exactly one of EQUIP_SPEC
+    "compressors": {"efficiency": ("Compressor efficiency?", "%", 70.0)},   # plus exactly one of EQUIP_SPEC
+}
+INLINE = ("chokes", "pumps", "compressors")   # one inlet ("from" or a flowline ending here), one outlet
+EQUIP_SPEC = {"pressure": "bara (discharge)", "pressure_rise": "bar", "pressure_ratio": "-", "power": "kW"}
+PORTS = ("gas", "liquid")
+IPR_FIELDS = {"pi": ["liquid_pi"], "vogel": ["aof"], "backpressure": ["c", "n"]}
+FLUID_FIELDS = {
+    "black_oil": {"api":       ("Oil gravity?", "API", 35.0),
+                  "gor":       ("Producing gas-oil ratio?", "sm3/sm3", 100.0),
+                  "water_cut": ("Water cut?", "%", 0.0),
+                  "gas_sg":    ("Gas specific gravity?", "air=1", 0.7)},
+    "gas":       {"gas_sg":    ("Gas specific gravity?", "air=1", 0.65),
+                  "ogr":       ("Condensate-gas ratio (0 for dry gas)?", "sm3/mmsm3", 0.0),
+                  "wgr":       ("Water-gas ratio?", "sm3/mmsm3", 0.0),
+                  "api":       ("Condensate gravity?", "API", 50.0)},
+}
+RESERVED_FLUID_NAMES = {"water", "methane", "ethane", "propane", "butane", "isobutane", "pentane", "isopentane",
+                        "hexane", "heptane", "nitrogen", "carbon dioxide", "hydrogen sulfide", "oxygen", "hydrogen"}
+SOURCE_BC = {"pressure": "bara", "liquid_rate": "sm3/d", "gas_rate": "mmsm3/d"}
+
+
+def completion_name(well):
+    """Completions get unique names: PIPESIM reports results by short name, so two "Completion"s would collide."""
+    return f"{well}_Comp"
+NODE_KINDS = ("wells", "sources", "junctions", "sinks", "chokes", "separators", "pumps", "compressors")
+
+
+def check_project(p):
+    missing, errors = [], []
+
+    def ask(path, q, unit="", default=None):
+        missing.append({"field": path, "question": q, "unit": unit, "suggested_default": default})
+
+    if not p.get("name"):
+        ask("project.name", "Project name?", "", "New project")
+    for k in p:
+        if k not in ("name", "units", "ambient_temperature", *FIELDS):
+            errors.append(f"Remove project key '{k}'. Allowed: {['name', 'units', 'ambient_temperature', *FIELDS]}")
+    if p.get("units", "METRIC") != "METRIC":
+        errors.append("Projects are described in METRIC units (bara, degC, m, mm, sm3/d); set units to METRIC.")
+    if not p.get("wells") and not p.get("sources"):
+        ask("project.wells", "How many wells (or sources), and their names?")
+    if not p.get("sinks"):
+        ask("project.sinks", "Where does the production go (sink/separator name and pressure)?", "bara",
+            [{"name": "Separator", "pressure": 15.0}])
+
+    names = {}
+    for kind in FIELDS:
+        for i, e in enumerate(p.get(kind) or []):
+            n = e.get("name")
+            if not n:
+                errors.append(f"{kind}[{i}] has no name"); continue
+            if n in names:
+                errors.append(f"Duplicate name '{n}' ({names[n]} and {kind}). Names must be unique.")
+            names[n] = kind
+            unknown = sorted(k for k in e if k not in allowed_keys(kind))
+            if unknown:
+                errors.append(f"{n}: unknown field(s) {unknown} for {kind}. Allowed: {sorted(allowed_keys(kind) - {'_delete'})}")
+            for f, (q, unit, dflt) in FIELDS[kind].items():
+                if e.get(f) is None:
+                    ask(f"{kind}.{n}.{f}", f"{n}: {q}", unit, dflt)
+            if kind == "wells" and isinstance(e.get("ipr"), dict):
+                model = e["ipr"].get("model")
+                if model not in IPR_FIELDS:
+                    errors.append(f"{n}: ipr.model must be one of {list(IPR_FIELDS)}")
+                else:
+                    for f in IPR_FIELDS[model]:
+                        if f not in e["ipr"]:
+                            ask(f"wells.{n}.ipr.{f}", f"{n}: IPR parameter {f}?",
+                                {"liquid_pi": "sm3/d/bar", "aof": "sm3/d", "c": "mmsm3/d/bar^2n", "n": ""}[f])
+            if kind == "fluids" and str(n).strip().lower() in RESERVED_FLUID_NAMES:
+                errors.append(f"Fluid name '{n}' clashes with a built-in PIPESIM fluid component; use e.g. '{n}_fluid'")
+            if kind == "fluids":
+                ftype = e.get("type", "black_oil")
+                if ftype not in FLUID_FIELDS:
+                    errors.append(f"Fluid {n}: type must be one of {list(FLUID_FIELDS)}")
+                else:
+                    for f, (q, unit, dflt) in FLUID_FIELDS[ftype].items():
+                        if e.get(f) is None:
+                            ask(f"fluids.{n}.{f}", f"{n}: {q}", unit, dflt)
+            if kind == "wells" and "gas_lift" in e:
+                gl = e["gas_lift"]
+                if not isinstance(gl, dict):
+                    errors.append(f"{n}: gas_lift must be {{\"depth\": m, \"rate\": mmsm3/d}}")
+                else:
+                    for f, q, unit in (("depth", "gas lift injection depth (measured)?", "m"),
+                                       ("rate", "gas lift injection rate?", "mmsm3/d")):
+                        if f not in gl:
+                            ask(f"wells.{n}.gas_lift.{f}", f"{n}: {q}", unit, None)
+                    if isinstance(gl.get("depth"), (int, float)) and isinstance(e.get("depth"), (int, float)) \
+                            and gl["depth"] >= e["depth"]:
+                        errors.append(f"{n}: gas lift depth {gl['depth']} m must be above the completion ({e['depth']} m)")
+                    if isinstance(gl.get("rate"), (int, float)) and gl["rate"] > 2:
+                        errors.append(f"{n}: gas lift rate {gl['rate']} mmsm3/d is very high; the unit is mmsm3/d "
+                                      "(0.05 = 50,000 sm3/d)")
+            if kind in ("pumps", "compressors"):
+                given = [k for k in EQUIP_SPEC if k in e]
+                if not given:
+                    ask(f"{kind}.{n}.pressure", f"{n}: how is it specified? Give exactly one of: discharge pressure "
+                        "(bara), pressure_rise (bar), pressure_ratio, or power (kW).", "", None)
+                elif len(given) > 1:
+                    errors.append(f"{n}: give only one of {list(EQUIP_SPEC)} (got {given})")
+            if kind == "sources":
+                given = [k for k in SOURCE_BC if e.get(k) is not None]
+                if not given:
+                    ask(f"sources.{n}.pressure", f"{n}: fixed pressure (bara), OR fixed flow rate: liquid_rate (sm3/d) "
+                        "or gas_rate (mmsm3/d)? Give exactly one; PIPESIM calculates the rest.", "", None)
+                elif len(given) > 1:
+                    errors.append(f"Source {n}: give only one of {list(SOURCE_BC)} (got {given}); "
+                                  "PIPESIM calculates the others.")
+    fluids = {f.get("name") for f in p.get("fluids") or []}
+    for kind in ("wells", "sources"):
+        for e in p.get(kind) or []:
+            if e.get("fluid") and e["fluid"] not in fluids:
+                errors.append(f"{e.get('name')}: fluid '{e['fluid']}' is not defined in fluids {sorted(fluids)}")
+
+    for f in p.get("flowlines") or []:
+        for k in ("length", "id"):
+            v = f.get(k)
+            if isinstance(v, (int, float)) and v <= 0:
+                errors.append(f"{f.get('name')}: {k} must be greater than 0 (got {v}). If two components are "
+                              "directly connected, use a choke/pump/compressor 'from' link instead of a 0 m flowline.")
+    # topology: edges are flowlines plus direct "from" links of in-line equipment (chokes, pumps, compressors);
+    # every well/source must reach a sink, no cycles, no dead ends, separators leave through named ports
+    edges = [(e.get("from"), e.get("to"), e.get("name")) for e in p.get("flowlines") or []]
+    edges += [(e.get("from"), e.get("name"), e.get("name")) for k in INLINE for e in p.get(k) or [] if e.get("from")]
+    for e in p.get("flowlines") or []:
+        port, src = e.get("port"), e.get("from")
+        if names.get(src) == "separators":
+            if port is None:
+                ask(f"flowlines.{e.get('name')}.port", f"{e.get('name')}: which outlet of separator {src} does it "
+                    "leave from: gas (top) or liquid (bottom)?", "", None)
+            elif port not in PORTS:
+                errors.append(f"{e.get('name')}: port must be one of {list(PORTS)}")
+        elif port is not None:
+            errors.append(f"{e.get('name')}: 'port' is only for flowlines leaving a separator")
+    for e in p.get("flowlines") or []:
+        for end in ("from", "to"):
+            if names.get(e.get(end)) == "flowlines":
+                errors.append(f"{e.get('name')}: '{e[end]}' is a flowline. Flowlines connect nodes "
+                              "(wells, sources, chokes, junctions, sinks); add a junction between two flowlines.")
+    for a, b, n in edges:
+        for end in (a, b):
+            if end is not None and end not in names:
+                errors.append(f"{n}: unknown endpoint '{end}'")
+        if names.get(a) == "sinks":
+            errors.append(f"{n}: a sink cannot be upstream")
+        if names.get(b) in ("wells", "sources"):
+            errors.append(f"{n}: a well/source cannot be downstream")
+    out = {}
+    for a, b, n in edges:
+        out.setdefault(a, []).append(b)
+    def reaches_sink(node, seen=()):
+        if names.get(node) == "sinks":
+            return True
+        if node in seen:
+            errors.append(f"Loop in the network at '{node}' (looped networks are not supported yet)")
+            return False
+        return any(reaches_sink(nx, seen + (node,)) for nx in out.get(node, []))
+    has_nodes = p.get("wells") or p.get("sources")
+    if has_nodes and not edges:
+        ask("project.flowlines", "How are the wells connected to the sink? For each flowline: from, to, length, "
+            "inner diameter, elevation change (or: 'one flowline per well straight to the sink').")
+    elif all(not m["field"].endswith((".from", ".to")) for m in missing):
+        for kind in ("wells", "sources"):
+            for e in p.get(kind) or []:
+                n = e.get("name")
+                if n and not reaches_sink(n):
+                    errors.append(f"{n} is not connected to any sink. Add a flowline from {n} towards a sink.")
+        inlets = {}
+        for a, b, n in edges:
+            inlets[b] = inlets.get(b, 0) + 1
+        for kind in ("junctions", "separators", *INLINE):
+            for j in p.get(kind) or []:
+                n = j.get("name")
+                if n and n not in out:
+                    errors.append(f"{kind[:-1].title()} {n} has no outgoing flowline")
+        for kind in INLINE:
+            for j in p.get(kind) or []:
+                n = j.get("name")
+                if n and inlets.get(n, 0) == 0:
+                    errors.append(f"{kind[:-1].title()} {n} has no inlet: set its \"from\" (installed right after "
+                                  "that node) or end a flowline at it")
+                elif n and inlets.get(n, 0) > 1:
+                    errors.append(f"{kind[:-1].title()} {n} has {inlets[n]} inlets; it can have only one (either "
+                                  "\"from\" or one flowline ending at it)")
+        for kind in ("sinks", "separators"):   # VERIFIED (job 16): "The inlet port of destination SEP has been occupied"
+            for j in p.get(kind) or []:
+                n = j.get("name")
+                if n and inlets.get(n, 0) > 1:
+                    errors.append(f"{kind[:-1].title()} {n} has {inlets[n]} inlets; PIPESIM allows one. Join the lines "
+                                  f"in a junction first (e.g. flowlines into a manifold, one line from it to {n}).")
+        for j in p.get("separators") or []:
+            n = j.get("name")
+            if n and inlets.get(n, 0) == 0:
+                errors.append(f"Separator {n} has no inlet flowline")
+            ports = [e.get("port") for e in p.get("flowlines") or [] if e.get("from") == n]
+            if len(ports) > 2 or len([x for x in ports if x]) != len(set(x for x in ports if x)):
+                errors.append(f"Separator {n}: at most one flowline per outlet (gas, liquid); got {ports}")
+        for kind in ("wells", "sources", *INLINE):
+            for e in p.get(kind) or []:
+                n = e.get("name")
+                if n and len(out.get(n, [])) > 1:
+                    errors.append(f"{n} has {len(out[n])} outgoing connections; a {kind[:-1]} can feed only one. "
+                                  "Put a junction after it to split the flow.")
+    warn, hard = sanity(p)
+    errors = list(dict.fromkeys(errors + hard))
+    if errors:
+        nxt = "Fix every item in 'errors' with ONE update call, then check again."
+    elif missing:
+        nxt = ("STOP calling tools. Ask the user about every item in 'missing' in ONE numbered message "
+               "(group by component), with the suggested defaults. Wait for the answer.")
+    else:
+        nxt = "Project complete. Continue with the study spec (model.source = \"project\")."
+        if warn:
+            nxt += (" Tell the user about every item in 'warnings' (likely unit or typing mistakes) in one short line "
+                    "each when you show the plan; do not change the values unless the user says so.")
+    out = {"ready": not missing and not errors, "next_step": nxt, "missing": missing, "errors": errors}
+    if warn:
+        out["warnings"] = warn
+    return out
+
+
+# Engineering sanity ranges (METRIC). Outside them a value is usually a unit mistake (psi for bara, inch for mm,
+# ft for m) or a typing error; the check warns but does not block, except for physically impossible values.
+RANGES = {
+    ("wells", "reservoir_pressure"): (20, 1200, "bara", "psi entered as bara?"),
+    ("wells", "reservoir_temperature"): (5, 220, "degC", "degF entered as degC?"),
+    ("wells", "depth"): (150, 7500, "m", "ft entered as m?"),
+    ("wells", "tubing_id"): (30, 180, "mm", "inches entered as mm?"),
+    ("sinks", "pressure"): (1, 250, "bara", "psi entered as bara?"),
+    ("sources", "pressure"): (1, 400, "bara", "psi entered as bara?"),
+    ("sources", "temperature"): (-20, 200, "degC", "degF entered as degC?"),
+    ("sources", "gas_rate"): (0.001, 60, "mmsm3/d", "sm3/d entered as mmsm3/d?"),
+    ("sources", "liquid_rate"): (1, 50000, "sm3/d", ""),
+    ("flowlines", "id"): (25, 1500, "mm", "inches entered as mm?"),
+    ("flowlines", "length"): (10, 300000, "m", "km entered as m?"),
+    ("chokes", "bean_size"): (2, 150, "mm", "1/64 inch entered as mm?"),
+}
+FLUID_RANGES = {
+    "api": (8, 65, "", "check the oil gravity"),
+    "gas_sg": (0.55, 1.6, "", "gas SG is relative to air (0.55-1.6)"),
+    "gor": (1, 2500, "sm3/sm3", "scf/stb entered as sm3/sm3? Above about 2500 sm3/sm3 a gas-condensate (type gas) fluid fits better"),
+    "ogr": (0, 1000, "sm3/mmsm3", "stb/mmscf entered as sm3/mmsm3?"),
+    "wgr": (0, 1000, "sm3/mmsm3", ""),
+}
+PI_RANGE = (0.05, 100, "sm3/d/bar")
+
+
+def _num(v):
+    return isinstance(v, (int, float)) and not isinstance(v, bool)
+
+
+def sanity(p):
+    """(warnings, errors) from engineering ranges and simple physics."""
+    warn, err = [], []
+    for (kind, f), (lo, hi, unit, hint) in RANGES.items():
+        for e in p.get(kind) or []:
+            v = e.get(f)
+            if _num(v) and not lo <= v <= hi:
+                warn.append(f"{e.get('name')}: {f.replace('_', ' ')} {v} {unit} is outside the usual {lo}-{hi} {unit}"
+                            + (f" ({hint})" if hint else ""))
+    for e in p.get("fluids") or []:
+        n = e.get("name")
+        for f, (lo, hi, unit, hint) in FLUID_RANGES.items():
+            v = e.get(f)
+            if _num(v) and not lo <= v <= hi:
+                warn.append(f"Fluid {n}: {f.upper()} {v} {unit} is outside the usual {lo}-{hi} {unit} ({hint})".replace("  ", " "))
+        wc = e.get("water_cut")
+        if _num(wc) and not 0 <= wc <= 100:
+            err.append(f"Fluid {n}: water cut must be 0-100 % (got {wc})")
+        elif _num(wc) and 0 < wc < 1:
+            warn.append(f"Fluid {n}: water cut {wc} % is very low; if a fraction was meant, {wc} = {wc * 100:g} %")
+    for e in p.get("wells") or []:
+        ipr = e.get("ipr") if isinstance(e.get("ipr"), dict) else {}
+        pi = ipr.get("liquid_pi")
+        if _num(pi) and not PI_RANGE[0] <= pi <= PI_RANGE[1]:
+            warn.append(f"{e.get('name')}: PI {pi} sm3/d/bar is outside the usual {PI_RANGE[0]}-{PI_RANGE[1]} "
+                        "sm3/d/bar (stb/d/psi is about 2.3 times smaller in these units)")
+    for f in p.get("flowlines") or []:
+        L, dz = f.get("length"), f.get("elevation_change")
+        if _num(L) and _num(dz) and L > 0 and abs(dz) > L:
+            err.append(f"{f.get('name')}: elevation change {dz} m is larger than the length {L} m")
+    res = [e["reservoir_pressure"] for e in p.get("wells") or [] if _num(e.get("reservoir_pressure"))]
+    boosted = p.get("pumps") or p.get("compressors") or [w for w in p.get("wells") or [] if w.get("gas_lift")]
+    for s in p.get("sinks") or []:
+        ps = s.get("pressure")
+        if res and _num(ps) and ps >= max(res) and not p.get("sources") and not boosted:
+            warn.append(f"Sink {s.get('name')} at {ps} bara is at or above every reservoir pressure (max {max(res)} "
+                        "bara): no well can flow")
+    return warn, err
+
+
+EXTRA_KEYS = {"wells": {"casing_id", "casing_wall", "tubing_wall", "gas_lift"}, "sources": set(SOURCE_BC),
+              "chokes": {"from"}, "pumps": {"from", *EQUIP_SPEC}, "compressors": {"from", *EQUIP_SPEC},
+              "flowlines": {"port"}}
+
+
+def gas_lift_name(well):
+    return f"{well}_GL"
+
+
+def allowed_keys(kind):
+    keys = {"name", "_delete"} | set(FIELDS[kind]) | EXTRA_KEYS.get(kind, set())
+    if kind == "fluids":
+        keys |= {f for fields in FLUID_FIELDS.values() for f in fields}
+    return keys
+
+
+# Names a language model (or a person) tends to use -> the project's field names.
+SYNONYMS = {
+    "fluids": {"oil_api": "api", "api_gravity": "api", "oil_gravity": "api", "gas_oil_ratio": "gor",
+               "watercut": "water_cut", "wc": "water_cut", "water_cut_pct": "water_cut",
+               "gas_specific_gravity": "gas_sg", "gas_gravity": "gas_sg", "sg_gas": "gas_sg", "fluid_type": "type",
+               "model": "type", "condensate_gas_ratio": "ogr", "water_gas_ratio": "wgr"},
+    "wells": {"reservoir_temp": "reservoir_temperature", "res_pressure": "reservoir_pressure",
+              "reservoir_pressure_bara": "reservoir_pressure", "well_depth": "depth", "tvd": "depth", "depth_m": "depth",
+              "tubing_diameter": "tubing_id", "tubing_inner_diameter": "tubing_id", "fluid_name": "fluid",
+              "gaslift": "gas_lift", "gas_lift_injection": "gas_lift"},
+    "sources": {"fluid_name": "fluid", "temp": "temperature", "liquid_flowrate": "liquid_rate",
+                "gas_flowrate": "gas_rate", "oil_rate": "liquid_rate", "flow_rate": "liquid_rate"},
+    "sinks": {"pressure_bara": "pressure", "separator_pressure": "pressure"},
+    "flowlines": {"inner_diameter": "id", "diameter": "id", "id_mm": "id", "length_m": "length",
+                  "elevation": "elevation_change", "elevation_difference": "elevation_change",
+                  "from_node": "from", "to_node": "to", "upstream": "from", "downstream": "to",
+                  "source": "from", "destination": "to"},
+    "chokes": {"bean": "bean_size", "bean_size_mm": "bean_size", "size": "bean_size", "upstream": "from", "after": "from"},
+    "junctions": {},
+    "separators": {},
+    "pumps": {"upstream": "from", "after": "from", "discharge_pressure": "pressure", "delta_p": "pressure_rise",
+              "dp": "pressure_rise", "pressure_differential": "pressure_rise", "ratio": "pressure_ratio"},
+    "compressors": {"upstream": "from", "after": "from", "discharge_pressure": "pressure", "delta_p": "pressure_rise",
+                    "dp": "pressure_rise", "pressure_differential": "pressure_rise", "ratio": "pressure_ratio"},
+}
+IGNORED_KEYS = {"type", "kind", "description", "comment"}   # harmless extras, dropped with a note (fluids keep "type")
+FLUID_TYPES = {"black_oil": "black_oil", "blackoil": "black_oil", "black oil": "black_oil", "black-oil": "black_oil",
+               "oil": "black_oil", "gas": "gas", "dry_gas": "gas", "drygas": "gas", "dry gas": "gas",
+               "condensate": "gas", "gas_condensate": "gas", "wet_gas": "gas"}
+PI_KEYS = ("liquid_pi", "productivity_index", "pi", "liquid_productivity_index")
+
+
+def normalize_item(kind, item):
+    """Map synonyms to field names. Returns (item, notes, errors); never raises."""
+    notes, errors = [], []
+    if not isinstance(item, dict):
+        return None, notes, [f"{kind}: every item must be an object with a name, got {item!r}"]
+    e, label = {}, item.get("name", f"{kind}[?]")
+    for k, v in item.items():
+        key = SYNONYMS.get(kind, {}).get(k, k)
+        if kind == "flowlines" and k == "length_km":
+            key, v = "length", v * 1000.0
+            notes.append(f"{label}: length_km {item[k]} -> length {v} m")
+        elif key != k:
+            notes.append(f"{label}: {k} -> {key}")
+        if kind == "wells" and key in PI_KEYS:
+            e["ipr"] = {"model": "pi", "liquid_pi": v}
+            notes.append(f"{label}: {k} -> ipr {{model: pi, liquid_pi: {v}}}")
+            continue
+        if kind == "wells" and key in ("aof", "c", "n"):
+            ipr = e.setdefault("ipr", {"model": "vogel" if key == "aof" else "backpressure"})
+            ipr[key] = v
+            continue
+        if key in IGNORED_KEYS and not (kind == "fluids" and key == "type"):
+            notes.append(f"{label}: ignored '{k}'")
+            continue
+        e[key] = v
+    if kind == "fluids" and isinstance(e.get("type"), str):
+        t = FLUID_TYPES.get(e["type"].strip().lower())
+        if t and t != e["type"]:
+            notes.append(f"{label}: type {e['type']} -> {t}")
+            e["type"] = t
+    if kind == "fluids" and isinstance(e.get("water_cut"), (int, float)) and 0 < e["water_cut"] < 1:
+        notes.append(f"{label}: water_cut {e['water_cut']} read as a fraction -> {e['water_cut'] * 100:g} %")
+        e["water_cut"] = e["water_cut"] * 100
+    if not e.get("name"):
+        errors.append(f"{kind}: an item has no \"name\" (every item needs a unique name): {item}")
+        return None, notes, errors
+    unknown = sorted(k for k in e if k not in allowed_keys(kind))
+    if unknown:
+        errors.append(f"{e['name']}: unknown field(s) {unknown} for {kind}. Allowed: {sorted(allowed_keys(kind) - {'_delete'})}")
+        e = {k: v for k, v in e.items() if k not in unknown}
+    return e, notes, errors
+
+
+def apply_patch(base, patch):
+    """Normalise a partial project, drop invalid items with a clear error, merge the rest by name.
+    Returns (project, notes, errors). The stored project never contains unnamed or unknown-field items."""
+    notes, errors, clean = [], [], {}
+    for k, v in (patch or {}).items():
+        if k in FIELDS:
+            if not isinstance(v, list):
+                v = [v] if isinstance(v, dict) else []
+            items = []
+            for item in v:
+                e, n, err = normalize_item(k, item)
+                notes += n
+                errors += err
+                if e is not None:
+                    items.append(e)
+            clean[k] = items
+        elif k in ("name", "units", "ambient_temperature"):
+            clean[k] = v
+        else:
+            errors.append(f"Unknown project key '{k}'. Allowed: name, units, ambient_temperature, {', '.join(FIELDS)}")
+    return merge_project(base, clean), notes, errors
+
+
+def merge_project(base, patch):
+    """Merge a partial project into the current one. Lists merge by name; {"name": x, "_delete": true} removes x."""
+    out = copy.deepcopy(base or {})
+    for k, v in (patch or {}).items():
+        if isinstance(v, list) and k in FIELDS:
+            cur = {e.get("name"): e for e in out.get(k, [])}
+            order = [e.get("name") for e in out.get(k, [])]
+            for e in v:
+                n = e.get("name")
+                if e.get("_delete"):
+                    cur.pop(n, None)
+                    order = [o for o in order if o != n]
+                elif n in cur:
+                    merged = copy.deepcopy(cur[n])
+                    for kk, vv in e.items():
+                        merged[kk] = (dict(merged[kk], **vv) if isinstance(vv, dict) and isinstance(merged.get(kk), dict)
+                                      else copy.deepcopy(vv))
+                    cur[n] = merged
+                else:
+                    cur[n] = copy.deepcopy(e)
+                    order.append(n)
+            out[k] = [cur[n] for n in order if n in cur]
+        else:
+            out[k] = copy.deepcopy(v)
+    return out
+
+
+def known_components(p):
+    """Component names the built model will have, by sixgill component type (for validating study variables)."""
+    wells = [w["name"] for w in p.get("wells") or [] if w.get("name")]
+    return {"Well": wells, "Completion": [f"{w}:{completion_name(w)}" for w in wells],
+            "Tubing": [f"{w}:Tubing" for w in wells],
+            "GasLiftInjection": [f"{w['name']}:{gas_lift_name(w['name'])}" for w in p.get("wells") or []
+                                 if w.get("name") and w.get("gas_lift")],
+            "Source": [e["name"] for e in p.get("sources") or []], "Sink": [e["name"] for e in p.get("sinks") or []],
+            "Junction": [e["name"] for e in p.get("junctions") or []], "Choke": [e["name"] for e in p.get("chokes") or []],
+            "TwoPhaseSeparator": [e["name"] for e in p.get("separators") or []],
+            "Pump": [e["name"] for e in p.get("pumps") or []],
+            "Compressor": [e["name"] for e in p.get("compressors") or []],
+            "Flowline": [e["name"] for e in p.get("flowlines") or []],
+            "BlackOilFluid": [e["name"] for e in p.get("fluids") or []]}
+
+
+def apply_defaults(p, fields):
+    """Fill the given missing fields (paths from check_project, or "all") with their suggested defaults.
+    Fields without a sensible default stay missing and must be asked."""
+    p = copy.deepcopy(p)
+    for m in check_project(p)["missing"]:
+        if (fields == "all" or "all" in fields or m["field"] in fields) and m["suggested_default"] is not None:
+            kind, name, *rest = m["field"].split(".")
+            if kind == "project":
+                p[name] = copy.deepcopy(m["suggested_default"])
+                continue
+            ent = next(e for e in p[kind] if e.get("name") == name)
+            if len(rest) == 2:
+                ent.setdefault(rest[0], {})[rest[1]] = m["suggested_default"]
+            else:
+                ent[rest[0]] = copy.deepcopy(m["suggested_default"])
+    return p
+
+
+def _g(v):
+    return f"{v:g}" if isinstance(v, (int, float)) and not isinstance(v, bool) else str(v)
+
+
+def describe_item(kind, e):
+    """One engineer-readable line per component, with units."""
+    g = lambda k, unit="": (f"{_g(e[k])}{(' ' + unit) if unit else ''}" if k in e else "?")
+    if kind == "fluids":
+        if e.get("type") == "gas":
+            return f"gas, SG {g('gas_sg')}, OGR {g('ogr', 'sm3/mmsm3')}, WGR {g('wgr', 'sm3/mmsm3')}"
+        return f"black oil, {g('api', 'API')}, GOR {g('gor', 'sm3/sm3')}, water cut {g('water_cut', '%')}, gas SG {g('gas_sg')}"
+    if kind == "wells":
+        ipr = e.get("ipr") or {}
+        inflow = {"pi": lambda: f"PI {_g(ipr.get('liquid_pi'))} sm3/d/bar", "vogel": lambda: f"Vogel AOF {_g(ipr.get('aof'))} sm3/d",
+                  "backpressure": lambda: f"back-pressure C {_g(ipr.get('c'))} mmsm3/d/bar2n, n {_g(ipr.get('n'))}"}
+        parts = [f"reservoir {g('reservoir_pressure', 'bara')} / {g('reservoir_temperature', 'degC')}",
+                 f"depth {g('depth', 'm')}", f"tubing {g('tubing_id', 'mm')}",
+                 inflow.get(ipr.get("model"), lambda: "inflow ?")(), f"fluid {g('fluid')}"]
+        if e.get("gas_lift"):
+            gl = e["gas_lift"]
+            parts.append(f"gas lift {_g(gl.get('rate'))} mmsm3/d at {_g(gl.get('depth'))} m")
+        return ", ".join(parts)
+    if kind == "sources":
+        bc = next((f"{k.replace('_', ' ')} {_g(e[k])} {u}" for k, u in SOURCE_BC.items() if k in e), "boundary ?")
+        return f"{bc}, {g('temperature', 'degC')}, fluid {g('fluid')}"
+    if kind == "sinks":
+        return f"{g('pressure', 'bara')}"
+    if kind == "flowlines":
+        port = f" ({e['port']} outlet)" if e.get("port") else ""
+        return (f"{g('from')}{port} -> {g('to')}, {g('length', 'm')}, ID {g('id', 'mm')}, "
+                f"elevation {'+' if (e.get('elevation_change') or 0) >= 0 else ''}{g('elevation_change', 'm')}")
+    if kind == "chokes":
+        return f"bean {g('bean_size', 'mm')}" + (f", right after {e['from']}" if e.get("from") else "")
+    if kind == "separators":
+        return f"two-phase, efficiency {g('efficiency', '%')}"
+    if kind in ("pumps", "compressors"):
+        spec = next((f"{k.replace('_', ' ')} {_g(e[k])} {u.split(' ')[0]}" for k, u in EQUIP_SPEC.items() if k in e), "spec ?")
+        return f"{spec}, efficiency {g('efficiency', '%')}" + (f", right after {e['from']}" if e.get("from") else "")
+    return ""
+
+
+ORDER = ("fluids", "wells", "sources", "chokes", "junctions", "separators", "pumps", "compressors", "flowlines", "sinks")
+
+
+def summary(p):
+    lines = [f"PROJECT: {p.get('name')} ({p.get('units', 'METRIC')})"]
+    for kind in ORDER:
+        for i, e in enumerate(p.get(kind) or []):
+            name = e.get("name", f"<unnamed {kind}[{i}]>")
+            lines.append(f"  {kind[:-1]:<10} {name}: {describe_item(kind, e)}")
+    return "\n".join(lines)
+
+def rename(p, old, new):
+    """Rename one item everywhere it is referenced (fluid, from, to)."""
+    p = copy.deepcopy(p)
+    for kind in FIELDS:
+        for e in p.get(kind) or []:
+            if e.get("name") == old:
+                e["name"] = new
+            for ref in ("fluid", "from", "to"):
+                if e.get(ref) == old:
+                    e[ref] = new
+    return p
+
+
+def replace_placeholders(p, placeholders, user_text):
+    """FLUIDS named like a recipe example although the user never wrote that name get a plain name (BO / Gas).
+    Only fluids: other names (flowlines "FL-A" for a well "A", ...) are usually built from the user's own names.
+    Returns (project, [(old, new)])."""
+    said = str(user_text).lower()
+    taken = {e.get("name") for kind in FIELDS for e in p.get(kind) or []}
+    done = []
+    for e in list(p.get("fluids") or []):
+        n = e.get("name")
+        if n not in placeholders or re.search(rf"(?<![\w-]){re.escape(str(n).lower())}(?![\w-])", said):
+            continue
+        base = "Gas" if e.get("type") == "gas" else "BO"
+        new, k = base, 1
+        while new in taken:
+            k += 1
+            new = f"{base}{k}"
+        taken.add(new)
+        p = rename(p, n, new)
+        done.append((n, new))
+    return p, done

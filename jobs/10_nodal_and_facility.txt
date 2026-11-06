@@ -1,0 +1,4 @@
+# Nodal re-test (fixed curve reading; plots copied to runner\\artifacts), then a CSN_301-style facility built from a
+# description with a compressor-power sweep. Test models in %TEMP% / runs\.
+"D:\Program\Pipesim toolkit\python.exe" tests\real_nodal_test.py
+"D:\Program\Pipesim toolkit\python.exe" tests\real_facility_test.py

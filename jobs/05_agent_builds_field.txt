@@ -1,0 +1,5 @@
+# The local LLM agent (Qwen 3.5 9B via start_llm.bat / llama-server in D:\llama.cpp, set up earlier) builds a 2-well
+# field from a plain-language description and runs a separator-pressure sweep. The test starts llama-server and stops
+# it afterwards; models are built in %TEMP% and results go to the repo's runs\ folder.
+"D:\Program\Pipesim toolkit\python.exe" tests\real_build_test.py
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\field_project.txt

@@ -1,0 +1,15 @@
+## Tornado Analysis Results for W1 Oil Rate
+
+### Ranking for SEP Oil Rate (sm³/d):
+1. **Water cut** (20-50%): Swing of **265.8 sm³/d** (21.7% increase to 507.7, 42.0% decrease to 241.8)
+2. Reservoir pressure (200-250 bara): Swing of **193.3 sm³/d** (28.0% decrease to 300.5, 18.4% increase to 493.8)
+3. Productivity index (6-14): Swing of **189.5 sm³/d** (27.2% decrease to 303.6, 18.2% increase to 493.2)
+
+- Oil rate: **417.2 sm³/d**
+- Liquid rate: 596.0 sm³/d
+- Gas rate: 0.0376 mmsm³/d
+- Water cut at 50% crashes oil rate to 241.8 sm³/d (-42.0% from base)
+
+**Recommendation:** A 30% uncertainty in water cut (20-50%) creates a 64 sm³/d uncertainty range in oil rate, far exceeding the ~56 sm³/d range from reservoir pressure/PI uncertainties combined.
+**Water cut uncertainty dominates**, which is **35% larger** than the combined uncertainty from reservoir pressure and PI.
+Report: `D:\github reps\pipesim helper\runs\20261104-141216-136\report.md`

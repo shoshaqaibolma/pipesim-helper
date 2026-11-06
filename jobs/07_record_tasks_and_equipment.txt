@@ -1,0 +1,4 @@
+# Read-only recording for the next project types: simulation-task API, separator ports, equipment parameters/values
+# (temp copies of 6 case studies), then a re-run of the case-study recording now that in-well values can be read.
+"D:\Program\Pipesim toolkit\python.exe" tools\introspect_tasks.py "D:\Program\Pipesim2023.1\Case Studies"
+"D:\Program\Pipesim toolkit\python.exe" tools\introspect.py "D:\Program\Pipesim2023.1\Case Studies" 60

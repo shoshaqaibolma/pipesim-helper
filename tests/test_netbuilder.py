@@ -1,0 +1,204 @@
+"""Network builder + adapter tests with the fake sixgill (no PIPESIM needed). Numbers mean nothing."""
+import os, sys, tempfile
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path[:0] = [os.path.join(HERE, "fake_sixgill"), os.path.dirname(HERE)]
+import netbuilder, executor, study, sixgill_adapter as sa
+import project as prj
+
+FIELD = {"name": "Field A", "ambient_temperature": 12,
+         "fluids": [{"name": "BO", "type": "black_oil", "api": 35, "gor": 120, "water_cut": 10, "gas_sg": 0.7}],
+         "wells": [{"name": w, "fluid": "BO", "reservoir_pressure": p, "reservoir_temperature": 90,
+                    "ipr": {"model": "pi", "liquid_pi": pi}, "depth": 2500, "tubing_id": 76}
+                   for w, p, pi in (("W1", 260, 8), ("W2", 240, 12))],
+         "chokes": [{"name": "CK1", "from": "W1", "bean_size": 32}],
+         "junctions": [{"name": "J1"}], "sinks": [{"name": "Sep", "pressure": 15}],
+         "flowlines": [{"name": "FL1", "from": "CK1", "to": "J1", "length": 1500, "id": 100, "elevation_change": 0},
+                       {"name": "FL2", "from": "W2", "to": "J1", "length": 900, "id": 100, "elevation_change": 5},
+                       {"name": "FL3", "from": "J1", "to": "Sep", "length": 4000, "id": 200, "elevation_change": 0}]}
+assert prj.check_project(FIELD)["ready"], prj.check_project(FIELD)
+
+# 1. build: every component and connection is created; the sink boundary condition is set and verified
+tmp = tempfile.mkdtemp()
+m, rep = netbuilder.build(FIELD, os.path.join(tmp, "field.pips"))
+assert m.comps["Well"] == ["W1", "W2"] and m.comps["Completion"] == ["W1:W1_Comp", "W2:W2_Comp"], m.comps
+assert m.edges == {"W1": ["CK1"], "CK1": ["FL1"], "FL1": ["J1"], "W2": ["FL2"], "FL2": ["J1"], "J1": ["FL3"], "FL3": ["Sep"]}, m.edges
+assert rep["connections"] == 7 and rep["boundaries_synced"] and not rep["validation"], rep
+assert rep["boundary_conditions"] == {"Sep": "ok", "W1:W1_Comp": "ok", "W2:W2_Comp": "ok"}, rep
+assert m.comps["Casing"] == ["W1:Casing", "W2:Casing"]
+m.close()
+assert os.path.exists(netbuilder.build_file(FIELD, os.path.join(tmp, "out.pips"))["file"])
+print("build: 2 wells, choke, junction, sink; 7 connections; sink boundary condition verified")
+
+# 2. the adapter is what makes a sink-pressure sweep work (a plain set_value does not move the boundary)
+m, _ = netbuilder.build(FIELD, os.path.join(tmp, "f2.pips"))
+r1 = m.tasks.networksimulation.run().node["VolumeFlowrateLiquidStockTank"]["Sep"]
+m.set_value(Sink="Sep", parameter="Pressure", value=40)
+assert m.tasks.networksimulation.run().node["VolumeFlowrateLiquidStockTank"]["Sep"] == r1  # like CSN_301 on 2023.1
+sa.set_param(m, "Sink", "Sep", "Pressure", 40)
+assert m.tasks.networksimulation.run().node["VolumeFlowrateLiquidStockTank"]["Sep"] < r1
+assert sa.get_param(m, "Sink", "Sep", "Pressure") == 40
+# in-well items: Completion="W1:Completion" is rejected (as on 2023.1); the adapter uses Well="W1", Completion="Completion"
+try:
+    m.get_value(Completion="W1:W1_Comp", parameter="ReservoirPressure"); raise AssertionError("expected failure")
+except LookupError:
+    pass
+assert sa.get_value(m, "Completion", "W1:W1_Comp", "ReservoirPressure") == 260
+r2 = m.tasks.networksimulation.run().node["VolumeFlowrateLiquidStockTank"]["W1"]
+sa.set_param(m, "Completion", "W1:W1_Comp", "ReservoirPressure", 300)   # reservoir pressure is a boundary value too
+assert m.tasks.networksimulation.run().node["VolumeFlowrateLiquidStockTank"]["W1"] > r2
+assert sa.get_param(m, "Completion", "W1:W1_Comp", "ReservoirPressure") == 300
+print("adapter: set_value alone leaves the network result unchanged; set_param moves the boundary condition "
+      "(sink pressure and well reservoir pressure); in-well items addressed as Well=..., Completion=...")
+
+# 3. a study on the described project: sweep the separator pressure, results must change, no warning
+spec = {"objective": "Separator pressure vs field rate", "units": "METRIC", "model": {"source": "project"},
+        "analysis": {"type": "sweep", "variables": [{"component_type": "Sink", "name": "Sep", "parameter": "Pressure",
+                                                      "values": [10, 20, 30]}]}}
+c = study.check(spec, project=FIELD)
+assert c["ready"], c
+assert "W1: reservoir 260 bara" in study.plan_text(spec, FIELD)
+r = executor.run(spec, progress=lambda s: None, project=FIELD)
+assert "[sm3/d]" in r["table"][0], r["table"][0]          # units from the results go into the headers
+liq = [float(row.split(" | ")[2]) for row in r["table"][2:]]
+assert liq == sorted(liq, reverse=True) and liq[0] > liq[-1] and not r["warnings"], r
+assert os.path.exists(os.path.join(r["output_dir"], "project.json"))
+sm = r["summary"]["Sep oil rate"]       # precomputed numbers the LLM quotes instead of calculating
+assert sm["highest"]["case"] == "Sep.Pressure=10" and sm["lowest"]["case"] == "Sep.Pressure=30", sm
+b, v30 = sm["base"], next(float(x.split(" | ")[3]) for x in r["table"] if x.startswith("Sep.Pressure=30"))
+assert abs(sm["change_vs_base_pct"]["Sep.Pressure=30"] - round(100 * (v30 - b) / b, 2)) < 0.02, sm
+assert "Sep oil rate change vs base [%]" in r["table"][0]
+print("study on project: separator pressure 10->30 bara lowers field liquid", [round(x) for x in liq])
+
+# 4. a variable with no effect on the outputs triggers the flat-result warning
+spec2 = dict(spec, analysis={"type": "sweep", "variables": [{"component_type": "Flowline", "name": "FL3",
+                                                             "parameter": "InnerDiameter", "values": [150, 250]}]})
+r = executor.run(spec2, progress=lambda s: None, project=FIELD)
+assert r["warnings"] and "No recorded result changed" in r["warnings"][0]
+print("flat results are flagged:", r["warnings"][0][:70], "...")
+
+# 5. a gas pipeline: rate-specified source (PIPESIM calculates its pressure), gas fluid by OGR/WGR
+PIPE = {"name": "Gas export", "fluids": [{"name": "DryGas", "type": "gas", "gas_sg": 0.65, "ogr": 0, "wgr": 0, "api": 50}],
+        "sources": [{"name": "Plant", "fluid": "DryGas", "temperature": 40, "gas_rate": 2.0}],
+        "sinks": [{"name": "Terminal", "pressure": 50}],
+        "flowlines": [{"name": "Export", "from": "Plant", "to": "Terminal", "length": 20000, "id": 254, "elevation_change": 0}]}
+assert prj.check_project(PIPE)["ready"], prj.check_project(PIPE)
+m, rep = netbuilder.build(PIPE, os.path.join(tmp, "pipe.pips"))
+assert rep["boundary_conditions"] == {"Terminal": "ok", "Plant": "ok"}, rep
+assert m.v[("BlackOilFluid", "DryGas", "UseGasRatio")] == "OGR" and m.v[("Source", "Plant", "GasFlowRate")] == 2.0
+r = m.tasks.networksimulation.run().node
+assert r["VolumeFlowrateGasStockTank"]["Terminal"] == 2.0 and r["Pressure"]["Plant"] > 50, r
+m.close()
+print("gas pipeline: rate-specified source, OGR/WGR gas fluid, boundary conditions verified")
+
+# 6. gas lift: injection point inside the well; a gas-lift-rate sweep through the adapter changes the well rate
+GL = dict(FIELD, wells=[dict(FIELD["wells"][0], gas_lift={"depth": 2000, "rate": 0.05}), FIELD["wells"][1]])
+assert prj.check_project(GL)["ready"], prj.check_project(GL)
+m, rep = netbuilder.build(GL, os.path.join(tmp, "gl.pips"))
+assert m.comps["GasLiftInjection"] == ["W1:W1_GL"] and m.v[("GasLiftInjection", "W1:W1_GL", "GasRate")] == 0.05
+m.close()
+spec_gl = dict(spec, analysis={"type": "sweep", "variables": [{"component_type": "GasLiftInjection", "name": "W1:W1_GL",
+                                                               "parameter": "GasRate", "values": [0.0, 0.05, 0.1]}]})
+assert study.check(spec_gl, project=GL)["ready"], study.check(spec_gl, project=GL)
+r = executor.run(spec_gl, progress=lambda s: None, project=GL)
+assert not r["warnings"] and r["summary"]["W1 liquid rate"]["highest"]["case"] != "W1_GL.GasRate=0.0", r["summary"]
+bad = dict(FIELD, wells=[dict(FIELD["wells"][0], gas_lift={"depth": 3000, "rate": 5}), FIELD["wells"][1]])
+errs = prj.check_project(bad)["errors"]
+assert any("above the completion" in e for e in errs) and any("very high" in e for e in errs), errs
+print("gas lift: injection point built in the well; gas-lift-rate sweep changes the well rate; bad depth/rate caught")
+
+# 7. nodal analysis of a built well: operating point, curves, nodal plot
+spec_n = dict(spec, analysis={"type": "nodal", "producer": "W1", "outlet_pressure": 20})
+assert study.check(spec_n, project=FIELD)["ready"], study.check(spec_n, project=FIELD)
+assert "outlet pressure: 20 bara" in study.plan_text(spec_n, FIELD)
+r = executor.run(spec_n, progress=lambda s: None, project=FIELD)
+opp = r["summary"]["operating_point"]
+assert opp["liquid_rate [sm3/d]"] > 0 and opp["bottomhole_pressure [bara]"] < 260, opp
+assert any(c.endswith("nodal.png") for c in r["charts"]) and not r["warnings"], r
+import sixgill_adapter as _sa
+m2, _ = netbuilder.build(FIELD, os.path.join(tmp, "nodal2.pips"))
+res = _sa.nodal(m2, "W1", 20, completion="W1_Comp")
+q, p = res["curves"]["inflow_0"]["rate"], res["curves"]["inflow_0"]["pressure"]
+assert q == sorted(q) and all(x == x for x in q + p) and max(q) > 100, q[:5]   # liquid basis, sorted, no NaN
+assert p[0] > p[-1]                                                              # IPR falls with rate
+m2.close()
+assert any("Ask" in m["question"] or "pressure" in m["question"] for m in
+           study.check(dict(spec, analysis={"type": "nodal", "producer": "W1"}), project=FIELD)["missing"])
+assert any("No well named" in e for e in
+           study.check(dict(spec, analysis={"type": "nodal", "producer": "X", "outlet_pressure": 5}), project=FIELD)["errors"])
+print("nodal: operating point", round(opp["liquid_rate [sm3/d]"]), "sm3/d at Pwf", round(opp["bottomhole_pressure [bara]"], 1),
+      "bara; IPR/VLP chart written; missing outlet pressure asked; unknown well caught")
+
+# 8. a CSN_301-like facility: choke fed by a flowline, separator with gas and liquid outlets, compressor, pump
+FAC = {"name": "Facility", "fluids": FIELD["fluids"], "wells": [FIELD["wells"][0]],
+       "chokes": [{"name": "CK", "bean_size": 50.8}], "junctions": [{"name": "MAN"}],
+       "separators": [{"name": "SEP1", "efficiency": 99.9}],
+       "compressors": [{"name": "C1", "efficiency": 70, "power": 1000}],
+       "pumps": [{"name": "P1", "efficiency": 70, "pressure_rise": 10}],
+       "sinks": [{"name": "GasSales", "pressure": 41}, {"name": "OilFacility", "pressure": 20}],
+       "flowlines": [{"name": "FL-1", "from": "W1", "to": "CK", "length": 60, "id": 154, "elevation_change": 3},
+                     {"name": "FL-2", "from": "CK", "to": "MAN", "length": 60, "id": 154, "elevation_change": 3},
+                     {"name": "FL-4", "from": "MAN", "to": "SEP1", "length": 30, "id": 154, "elevation_change": 0},
+                     {"name": "GL-1", "from": "SEP1", "port": "gas", "to": "C1", "length": 7, "id": 154, "elevation_change": 3},
+                     {"name": "GL-2", "from": "C1", "to": "GasSales", "length": 6096, "id": 154, "elevation_change": 0},
+                     {"name": "LL-1", "from": "SEP1", "port": "liquid", "to": "P1", "length": 61, "id": 154, "elevation_change": 3},
+                     {"name": "LL-2", "from": "P1", "to": "OilFacility", "length": 3109, "id": 154, "elevation_change": 0}]}
+c = prj.check_project(FAC)
+assert c["ready"], c
+m, rep = netbuilder.build(FAC, os.path.join(tmp, "fac.pips"))
+assert m.ports == {("SEP1", "GL-1"): "Top Port", ("SEP1", "LL-1"): "Bottom Port"}, m.ports
+assert m.v[("Compressor", "C1", "POWER")] == 1000 and m.v[("Pump", "P1", "PRESSUREDIFFERENTIAL")] == 10
+assert m.v[("TwoPhaseSeparator", "SEP1", "PRODUCTIONSTREAM")] == "GAS" and rep["validation"] == []
+m.close()
+spec_f = dict(spec, analysis={"type": "sweep", "variables": [{"component_type": "Sink", "name": "OilFacility",
+                                                              "parameter": "Pressure", "values": [15, 25]}]})
+r = executor.run(spec_f, progress=lambda s: None, project=FAC)
+assert "Total oil rate [sm3/d]" in r["table"][0] and "Total oil rate change vs base [%]" in r["table"][0], r["table"][0]
+assert "Total oil rate" in r["summary"]
+def errs(p): return prj.check_project(p)
+bad = dict(FAC, flowlines=[dict(f, port=None) if f["name"] == "GL-1" else f for f in FAC["flowlines"]])
+bad["flowlines"] = [{k: v for k, v in f.items() if v is not None} for f in bad["flowlines"]]
+assert any(x["field"] == "flowlines.GL-1.port" for x in errs(bad)["missing"])
+bad = dict(FAC, flowlines=[dict(f, port="gas") if f["name"] == "FL-1" else f for f in FAC["flowlines"]])
+assert any("only for flowlines leaving a separator" in e for e in errs(bad)["errors"])
+bad = dict(FAC, pumps=[{"name": "P1", "efficiency": 70, "power": 50, "pressure_rise": 10}])
+assert any("give only one" in e for e in errs(bad)["errors"])
+bad = dict(FAC, chokes=[{"name": "CK", "bean_size": 50.8, "from": "W1"}])     # 2 inlets: "from" and FL-1
+assert any("2 inlets" in e for e in errs(bad)["errors"]), errs(bad)
+bad = dict(FAC, flowlines=FAC["flowlines"] + [{"name": "GL-3", "from": "SEP1", "port": "gas", "to": "GasSales",
+                                               "length": 1, "id": 1, "elevation_change": 0}])
+assert any("at most one flowline per outlet" in e for e in errs(bad)["errors"]), errs(bad)
+print("facility: choke fed by a flowline, separator gas/liquid ports, compressor (power) and pump (pressure rise) built;")
+print("          missing port asked; misplaced port, double spec, 2 inlets, duplicate outlet caught")
+
+# 9. gas lift allocation: share 0.1 mmsm3/d between two gas-lifted wells to maximize oil
+GL2 = dict(FIELD, wells=[dict(w, gas_lift={"depth": 2000, "rate": 0.05}) for w in FIELD["wells"]])
+spec_o = dict(spec, analysis={"type": "optimize", "max_total": 0.1, "variables": [
+    {"component_type": "GasLiftInjection", "name": f"{w}:{w}_GL", "parameter": "GasRate", "values": [0, 0.05, 0.1]}
+    for w in ("W1", "W2")]})
+c = study.check(spec_o, project=GL2)
+assert c["ready"] and c["n_cases"] == 7, c                     # 6 feasible of 9 combinations + base
+assert "only combinations whose sum <= 0.1" in study.plan_text(spec_o, GL2)
+r = executor.run(spec_o, progress=lambda s: None, project=GL2)
+o = r["summary"]["optimum"]
+assert o["combinations_run"] == 6 and o["skipped_over_max_total"] == 3, o
+s_best = o["best"]["settings"]
+assert sum(s_best.values()) <= 0.1 + 1e-9 and o["best"]["value"] >= max(x["value"] for x in o["top"]), o
+assert any(c.endswith("optimize.png") for c in r["charts"]), r["charts"]
+assert study.check(dict(spec_o, objective=""), project=GL2)["ready"]                 # objective is optional
+assert "Find the best W1:W1_GL.GasRate" in study.plan_text(dict(spec_o, objective=""), GL2)
+rows = [{"case": "base", "W1 liquid rate": 500.0, "W2 liquid rate": 600.0, "_status": "Completed"},   # as in job 12:
+        {"case": "W1=0, W2=0.1", "W1 liquid rate": None, "W2 liquid rate": 776.3, "_status": "Completed"}]  # W1 dies
+nf = executor._summary({"type": "optimize"}, rows, ["W1 liquid rate", "W2 liquid rate"], [], ["W1", "W2"])["not_flowing"]
+assert nf["cases"] == {"W1=0, W2=0.1": ["W1"]}, nf
+bad = dict(spec_o, analysis=dict(spec_o["analysis"], max_total=-1))
+assert any("max_total must be" in e for e in study.check(bad, project=GL2)["errors"])
+print("optimize: 6 of 9 gas-lift combinations within 0.1 mmsm3/d run; best", o["best"]["case"], "->", o["best"]["value"])
+
+# 10. checker: unknown component in a project study, incomplete project, non-metric units
+bad = dict(spec, analysis={"type": "sweep", "variables": [{"component_type": "Sink", "name": "Nope",
+                                                           "parameter": "Pressure", "values": [1, 2]}]})
+assert any("Available Sink: ['Sep']" in e for e in study.check(bad, project=FIELD)["errors"])
+assert any("not complete" in e for e in study.check(spec, project={"name": "x", "wells": [{"name": "W"}]})["errors"])
+assert any("no project is described" in e for e in study.check(spec)["errors"])
+assert any("METRIC" in e for e in study.check(dict(spec, units="FIELD"), project=FIELD)["errors"])
+print("\nALL OK")

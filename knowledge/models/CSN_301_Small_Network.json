@@ -1,0 +1,1917 @@
+{
+ "file": "D:\\Program\\Pipesim2023.1\\Case Studies\\Python Toolkit\\PT Profile Simulation\\CSN_301_Small Network.pips",
+ "components": {
+  "BlackOilFluid": [
+   "B-Fluid"
+  ],
+  "Casing": [
+   "Well:Casing"
+  ],
+  "Choke": [
+   "Choke"
+  ],
+  "Completion": [
+   "Well:VertComp"
+  ],
+  "CompositionalFluid": [
+   "C-Fluid"
+  ],
+  "Compressor": [
+   "Compressor"
+  ],
+  "FlowCorrelation": [
+   "Default",
+   "FL-1:Default",
+   "FL-2:Default",
+   "FL-3:Default",
+   "FL-4:Default",
+   "GL-1:Default",
+   "GL-2:Default",
+   "LL-1:Default",
+   "LL-2:Default",
+   "Well:Default"
+  ],
+  "Flowline": [
+   "FL-1",
+   "FL-2",
+   "FL-3",
+   "FL-4",
+   "GL-1",
+   "GL-2",
+   "LL-1",
+   "LL-2"
+  ],
+  "FluidComponent": [
+   "Butane",
+   "C7-Plus",
+   "Carbon Dioxide",
+   "Ethane",
+   "Heptane",
+   "Hexane",
+   "Isobutane",
+   "Isopentane",
+   "Methane",
+   "Nitrogen",
+   "Pentane",
+   "Propane"
+  ],
+  "GlobalCatalog": [
+   "PIPESIM_FIELD"
+  ],
+  "GravelPack": [
+   "Well:VertComp:GravelPack"
+  ],
+  "IPRBackPressure": [
+   "Well:VertComp:IPRBACKPRESSURE"
+  ],
+  "IPRDarcy": [
+   "Well:VertComp:IPRDARCY"
+  ],
+  "IPRFetkovitch": [
+   "Well:VertComp:IPRFETKOVITCH"
+  ],
+  "IPRForchheimer": [
+   "Well:VertComp:IPRFORCHHEIMER"
+  ],
+  "IPRHorizontalPI": [
+   "Well:VertComp:IPRHORIZONTALPI"
+  ],
+  "IPRHydraulicFracture": [
+   "Well:VertComp:IPRHYDRAULICFRACTURE"
+  ],
+  "IPRJones": [
+   "Well:VertComp:IPRJONES"
+  ],
+  "IPRPIModel": [
+   "Well:VertComp:IPRPIModel"
+  ],
+  "IPRPSSBabuOdeh": [
+   "Well:VertComp:IPRPSSBABUODEH"
+  ],
+  "IPRSSJoshi": [
+   "Well:VertComp:IPRSSJOSHI"
+  ],
+  "IPRTriLinear": [
+   "Well:VertComp:IPRTRILINEAR"
+  ],
+  "Junction": [
+   "Manifold"
+  ],
+  "Packer": [
+   "Well:Packer"
+  ],
+  "Pump": [
+   "Pmp"
+  ],
+  "Sink": [
+   "Gas-Sales",
+   "Oil-Facility"
+  ],
+  "Source": [
+   "Source",
+   "Well:Source 1",
+   "Well:WellString outlet10269",
+   "Well:WellString outlet10271"
+  ],
+  "Study": [
+   "Study 1"
+  ],
+  "Tubing": [
+   "Well:Tubing"
+  ],
+  "TwoPhaseSeparator": [
+   "Separator"
+  ],
+  "Well": [
+   "Well"
+  ]
+ },
+ "values": {
+  "BlackOilFluid|B-Fluid": {
+   "B-Fluid": {
+    "Name": "B-Fluid",
+    "API": 32.0,
+    "DeadOilDensity": 865.4522908634464,
+    "DeadOilTemperature1": 98.88888888888886,
+    "DeadOilTemperature2": 36.66722222222222,
+    "DeadOilViscosity1": 0.002043627120000168,
+    "DeadOilViscosity2": 0.013888138739743221,
+    "DeadOilViscosityCorr": "BeggsAndRobinson",
+    "COFraction": 0.0,
+    "CO2Fraction": 0.0,
+    "H2Fraction": 0.0,
+    "H2SFraction": 0.0,
+    "N2Fraction": 0.0,
+    "GasSpecificGravity": 0.65,
+    "GLR": null,
+    "GOR": 1781.070779752787,
+    "GWR": null,
+    "LGR": null,
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "LiveOilViscosityCorr": "ChewandConnaly",
+    "OGR": 561.458365370799,
+    "Richardsonkoiw": 3.8,
+    "Richardsonkwio": 6.6,
+    "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+    "UndersaturatedOilViscosityParA": 0.0239,
+    "UndersaturatedOilViscosityParB": 0.01638,
+    "UseBraunerUllmanEquation": false,
+    "UseDeadOilDensity": false,
+    "UseGasRatio": "OGR",
+    "UserWatercutCutOff": 60.0,
+    "UseWaterRatio": "WaterCut",
+    "VandUserk1": 2.5,
+    "VandUserk2": 0.609,
+    "WaterCut": 20.0,
+    "WaterSpecificGravity": 1.03,
+    "WGR": null,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "Casing|Well:Casing": {
+   "Well:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 150.3934,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 15.039340000000001,
+    "Length": 1402.0800000000002,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Choke|Choke": {
+   "Choke": {
+    "Name": "Choke",
+    "AdjustSubcriticalCorrelation": false,
+    "BeanSize": 50.8,
+    "BothPhasesFlowCoefficient": null,
+    "CalculateCriticalPressureRatio": false,
+    "CriticalCorrelation": "Mechanistic",
+    "CriticalPressureRatio": 0.53,
+    "DischargeCoefficient": null,
+    "FlowRateLimitType": "LiquidFlowRate",
+    "GasExpansionFactor": null,
+    "GasFlowRateLimit": null,
+    "GasPhaseFlowCoefficient": null,
+    "HeatCapacityRatio": null,
+    "LiquidFlowRateLimit": null,
+    "LiquidPhaseFlowCoefficient": null,
+    "MassFlowRateLimit": null,
+    "OilFlowRateLimit": null,
+    "PrintDetailedCalculations": false,
+    "SubCriticalCorrelation": "Mechanistic",
+    "Tolerance": 0.5,
+    "UpstreamPipeID": null,
+    "UseFlowrateForCriticalFlow": true,
+    "UsePressureRatioForCriticalFlow": true,
+    "UseSonicDownstreamVelocityForCriticalFlow": true,
+    "UseSonicUpstreamVelocityForCriticalFlow": true,
+    "WaterFlowRateLimit": null,
+    "IsActive": true
+   }
+  },
+  "Completion|Well:VertComp": {
+   "Well:VertComp": {
+    "Name": "VertComp",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "B-Fluid",
+    "AssociatedCompositionalFluid": "C-Fluid",
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 173.3341983502526,
+    "ReservoirTemperature": 54.44444444444446,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": true,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRPIModel"
+   }
+  },
+  "CompositionalFluid|C-Fluid": {
+   "C-Fluid": {
+    "Name": "C-Fluid",
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "Richardsonkoiw": null,
+    "Richardsonkwio": null,
+    "UseBraunerUllmanEquation": false,
+    "UserWatercutCutOff": 60.0,
+    "VandUserk1": null,
+    "VandUserk2": null,
+    "ComponentFractionType": "Mole",
+    "SaltWaterDensity": null,
+    "SaltWaterDensityType": "DefaultDensity",
+    "SaltWaterSalinity": null,
+    "SaltWaterTemperature": null,
+    "ShowAllComponents": false,
+    "SodiumIon": null,
+    "CalciumIon": null,
+    "MagnesiumIon": null,
+    "PotassiumIon": null,
+    "StrontiumIon": null,
+    "BariumIon": null,
+    "IronIon": null,
+    "ChlorideIon": null,
+    "SulphateIon": null,
+    "BicarbonateIon": null,
+    "BromideIon": null,
+    "TotalDissolvedSolids": null,
+    "UseTunedFractions": false,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "Compressor|Compressor": {
+   "Compressor": {
+    "Name": "Compressor",
+    "Pressure": null,
+    "HonourStonewallLimit": true,
+    "IsReciprocating": null,
+    "Route": "routeAdiabatic",
+    "Power": 1043.9798202151783,
+    "IsActive": true,
+    "PressureRatio": null,
+    "Efficiency": 70.0,
+    "PressureDifferential": null,
+    "UseCurves": false
+   }
+  },
+  "FlowCorrelation|Default": {
+   "Well:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999997,
+    "IsActive": false
+   },
+   "Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": true
+   },
+   "FL-2:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999997,
+    "IsActive": false
+   },
+   "FL-3:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999997,
+    "IsActive": false
+   },
+   "GL-2:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999997,
+    "IsActive": false
+   },
+   "FL-4:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999997,
+    "IsActive": false
+   },
+   "LL-1:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999997,
+    "IsActive": false
+   },
+   "GL-1:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999997,
+    "IsActive": false
+   },
+   "LL-2:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999997,
+    "IsActive": false
+   },
+   "FL-1:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999997,
+    "IsActive": false
+   }
+  },
+  "FlowCorrelation|FL-1:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL-1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL-2:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL-2', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL-3:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL-3', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL-4:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL-4', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|GL-1:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'GL-1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|GL-2:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'GL-2', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|LL-1:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'LL-1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|LL-2:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'LL-2', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|Well:Default": {
+   "Well:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999999999997,
+    "IsActive": false
+   }
+  },
+  "Flowline|FL-1": {
+   "FL-1": {
+    "Name": "FL-1",
+    "AmbientAirTemperature": 12.777777777777771,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": 12.777777777777771,
+    "DepthAtStart": 0.0,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 3.0480000000000005,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "measuredDistance",
+    "HorizontalDistance": 60.96000000000001,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": false,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 154.051,
+    "Roughness": 0.04572,
+    "WallThickness": 7.112,
+    "Length": 61.03615243443839,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL-2": {
+   "FL-2": {
+    "Name": "FL-2",
+    "AmbientAirTemperature": 12.777777777777771,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": 12.777777777777771,
+    "DepthAtStart": 0.0,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 3.0480000000000005,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "measuredDistance",
+    "HorizontalDistance": 60.96000000000001,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": false,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 154.051,
+    "Roughness": 0.04572,
+    "WallThickness": 7.112,
+    "Length": 61.03615243443839,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL-3": {
+   "FL-3": {
+    "Name": "FL-3",
+    "AmbientAirTemperature": 12.777777777777771,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputMultipleValues",
+    "AmbientWaterTemperature": 12.777777777777771,
+    "DepthAtStart": 0.0,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 3.0480000000000005,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 762.0000000000001,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": false,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 139.7254,
+    "Roughness": 0.04572,
+    "WallThickness": 14.2748,
+    "Length": 762.0441941088964,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL-4": {
+   "FL-4": {
+    "Name": "FL-4",
+    "AmbientAirTemperature": 12.777777777777771,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": 12.777777777777771,
+    "DepthAtStart": 0.0,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 30.480000000000004,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": false,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 154.051,
+    "Roughness": 0.04572,
+    "WallThickness": 7.112,
+    "Length": 30.48,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|GL-1": {
+   "GL-1": {
+    "Name": "GL-1",
+    "AmbientAirTemperature": 12.777777777777771,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": 12.777777777777771,
+    "DepthAtStart": 0.0,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 3.0480000000000005,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "measuredDistance",
+    "HorizontalDistance": 6.096,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": 6.8155351954193595,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": false,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 154.051,
+    "Roughness": 0.04572,
+    "WallThickness": 7.112,
+    "Length": 6.8155351954193595,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|GL-2": {
+   "GL-2": {
+    "Name": "GL-2",
+    "AmbientAirTemperature": 12.777777777777771,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputMultipleValues",
+    "AmbientWaterTemperature": 12.777777777777771,
+    "DepthAtStart": 0.0,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 6096.000000000001,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": 6096.000000000001,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": false,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 154.051,
+    "Roughness": 0.04572,
+    "WallThickness": 6.019799999999999,
+    "Length": 6096.000000000002,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|LL-1": {
+   "LL-1": {
+    "Name": "LL-1",
+    "AmbientAirTemperature": 12.777777777777771,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": 12.777777777777771,
+    "DepthAtStart": 0.0,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 3.0480000000000005,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "measuredDistance",
+    "HorizontalDistance": 60.96000000000001,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": false,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 154.051,
+    "Roughness": 0.04572,
+    "WallThickness": 7.112,
+    "Length": 61.03615243443839,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|LL-2": {
+   "LL-2": {
+    "Name": "LL-2",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputMultipleValues",
+    "AmbientWaterTemperature": 15.555555600000048,
+    "DepthAtStart": 0.0,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 3108.96,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": 3108.96,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": false,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 154.051,
+    "Roughness": 0.04572,
+    "WallThickness": 6.019799999999999,
+    "Length": 3108.9599999999996,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "FluidComponent|Butane": {
+   "Butane": {
+    "Name": "Butane",
+    "Acf": 0.19850000739097595,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 58.12220001220703,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": 190.3000030517578,
+    "Pcrit": 37.96,
+    "ReferenceDensity": 582.5477792063984,
+    "SpecificGravity": 0.5837152096256497,
+    "Tboil": -0.5000061035156023,
+    "Tcrit": 152.0100036621094,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": 0.0002551020006649196,
+    "VcritViscosity": null,
+    "WatsonKFactor": 13.513203679654017,
+    "Zcrit": 0.2739384481346119
+   }
+  },
+  "FluidComponent|C7-Plus": {
+   "C7-Plus": {
+    "Name": "C7-Plus",
+    "Acf": null,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": true,
+    "MolecularWeight": 340.0,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": null,
+    "Pcrit": null,
+    "ReferenceDensity": null,
+    "SpecificGravity": 0.8,
+    "Tboil": 350.388888888889,
+    "Tcrit": null,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": null,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": null
+   }
+  },
+  "FluidComponent|Carbon Dioxide": {
+   "Carbon Dioxide": {
+    "Name": "Carbon Dioxide",
+    "Acf": 0.22300000488758087,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 44.00979995727539,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": 72.19999694824219,
+    "Pcrit": 73.773,
+    "ReferenceDensity": 834.8831016828508,
+    "SpecificGravity": 0.836556214111073,
+    "Tboil": -53.14999999999998,
+    "Tcrit": 30.978204345703148,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": 9.411847713636234e-05,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": 0.2745876265589068
+   }
+  },
+  "FluidComponent|Ethane": {
+   "Ethane": {
+    "Name": "Ethane",
+    "Acf": 0.09910000115633011,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 30.06999969482422,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": 110.0,
+    "Pcrit": 48.718,
+    "ReferenceDensity": 365.7149946136612,
+    "SpecificGravity": 0.3664478903944501,
+    "Tboil": -88.59999694824216,
+    "Tcrit": 32.17998657226565,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": 0.00014556040696334094,
+    "VcritViscosity": null,
+    "WatsonKFactor": 18.89948462426566,
+    "Zcrit": 0.27933707322628193
+   }
+  },
+  "FluidComponent|Heptane": {
+   "Heptane": {
+    "Name": "Heptane",
+    "Acf": 0.3497999906539917,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 100.2020034790039,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": 311.0,
+    "Pcrit": 27.27,
+    "ReferenceDensity": 686.1860509952993,
+    "SpecificGravity": 0.6875611733419833,
+    "Tboil": 98.42998657226565,
+    "Tcrit": 266.9800048828125,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": 0.00043190520955249667,
+    "VcritViscosity": null,
+    "WatsonKFactor": 12.71931127808027,
+    "Zcrit": 0.26226516009036355
+   }
+  },
+  "FluidComponent|Hexane": {
+   "Hexane": {
+    "Name": "Hexane",
+    "Acf": 0.29789999127388,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 86.17536163330078,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": 271.0,
+    "Pcrit": 30.181,
+    "ReferenceDensity": 661.4298942545465,
+    "SpecificGravity": 0.6627554050646759,
+    "Tboil": 68.73000488281252,
+    "Tcrit": 234.67000732421877,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": 0.0003695657942444086,
+    "VcritViscosity": null,
+    "WatsonKFactor": 12.834002628848653,
+    "Zcrit": 0.2641684271410926
+   }
+  },
+  "FluidComponent|Isobutane": {
+   "Isobutane": {
+    "Name": "Isobutane",
+    "Acf": 0.18440000712871552,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 58.12220001220703,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": 191.6999969482422,
+    "Pcrit": 36.4,
+    "ReferenceDensity": 561.0554795620529,
+    "SpecificGravity": 0.562179839240534,
+    "Tboil": -11.729986572265602,
+    "Tcrit": 134.70000610351565,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": 0.0002590673975646496,
+    "VcritViscosity": null,
+    "WatsonKFactor": 13.83551020174687,
+    "Zcrit": 0.278085918444527
+   }
+  },
+  "FluidComponent|Isopentane": {
+   "Isopentane": {
+    "Name": "Isopentane",
+    "Acf": 0.22699999809265137,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 72.1487808227539,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": 229.3999938964844,
+    "Pcrit": 33.77,
+    "ReferenceDensity": 622.9973604248779,
+    "SpecificGravity": 0.6242458521291362,
+    "Tboil": 27.879998779296898,
+    "Tcrit": 187.30001220703127,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": 0.0003060000017285347,
+    "VcritViscosity": null,
+    "WatsonKFactor": 13.059857211848666,
+    "Zcrit": 0.2699201618390249
+   }
+  },
+  "FluidComponent|Methane": {
+   "Methane": {
+    "Name": "Methane",
+    "Acf": 0.010400000028312206,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 16.042800903320312,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": 72.5999984741211,
+    "Pcrit": 45.992,
+    "ReferenceDensity": 145.75157045737413,
+    "SpecificGravity": 0.14604365777291997,
+    "Tboil": -161.520002746582,
+    "Tcrit": -82.58600463867185,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": 9.862781007541344e-05,
+    "VcritViscosity": null,
+    "WatsonKFactor": 40.105300190542394,
+    "Zcrit": 0.2862899884796932
+   }
+  },
+  "FluidComponent|Nitrogen": {
+   "Nitrogen": {
+    "Name": "Nitrogen",
+    "Acf": 0.03720000013709068,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 28.013479232788086,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": 60.09999847412109,
+    "Pcrit": 33.958,
+    "ReferenceDensity": 280.7388825083222,
+    "SpecificGravity": 0.28130148547928074,
+    "Tboil": -195.80200042724607,
+    "Tcrit": -146.95799865722654,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": 8.941425039665774e-05,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": 0.28938921436295684
+   }
+  },
+  "FluidComponent|Pentane": {
+   "Pentane": {
+    "Name": "Pentane",
+    "Acf": 0.25130000710487366,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 72.1487808227539,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": 231.0,
+    "Pcrit": 33.665,
+    "ReferenceDensity": 628.7889984447745,
+    "SpecificGravity": 0.6300490966380506,
+    "Tboil": 36.05999145507815,
+    "Tcrit": 196.55001220703127,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": 0.0003109860990662128,
+    "VcritViscosity": null,
+    "WatsonKFactor": 13.055723627875107,
+    "Zcrit": 0.2680799593185818
+   }
+  },
+  "FluidComponent|Propane": {
+   "Propane": {
+    "Name": "Propane",
+    "Acf": 0.15199999511241913,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": 44.09560012817383,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": 150.8000030517578,
+    "Pcrit": 42.4766,
+    "ReferenceDensity": 514.8963454830415,
+    "SpecificGravity": 0.5159282018868151,
+    "Tboil": -42.099996948242165,
+    "Tcrit": 96.70000610351565,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": 0.00019999999494757503,
+    "VcritViscosity": null,
+    "WatsonKFactor": 14.467835420653028,
+    "Zcrit": 0.27626090243293916
+   }
+  },
+  "GlobalCatalog|PIPESIM_FIELD": {
+   "PIPESIM_FIELD": {
+    "Name": "PIPESIM_FIELD",
+    "CatalogType": "CustomUnitSystem"
+   }
+  },
+  "GravelPack|Well:VertComp:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'GravelPack': 'VertComp:GravelPack', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|Well:VertComp:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRBackPressure': 'VertComp:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|Well:VertComp:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRDarcy': 'VertComp:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRFetkovitch|Well:VertComp:IPRFETKOVITCH": null,
+  "IPRForchheimer|Well:VertComp:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRForchheimer': 'VertComp:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|Well:VertComp:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRHorizontalPI': 'VertComp:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|Well:VertComp:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRHydraulicFracture': 'VertComp:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRJones|Well:VertComp:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRJones': 'VertComp:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|Well:VertComp:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRPIModel': 'VertComp:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|Well:VertComp:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRPSSBabuOdeh': 'VertComp:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|Well:VertComp:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRSSJoshi': 'VertComp:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|Well:VertComp:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well', 'IPRTriLinear': 'VertComp:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "Junction|Manifold": {
+   "Manifold": {
+    "Name": "Manifold",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Packer|Well:Packer": {
+   "Well:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
+  },
+  "Pump|Pmp": {
+   "Pmp": {
+    "Name": "Pmp",
+    "Pressure": null,
+    "Route": "Mollier",
+    "Power": 372.84993579113507,
+    "IsActive": true,
+    "PressureRatio": null,
+    "Efficiency": 100.0,
+    "PressureDifferential": null,
+    "UseCurves": false
+   }
+  },
+  "Sink|Gas-Sales": {
+   "Gas-Sales": {
+    "Name": "Gas-Sales",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 41.368542,
+    "IsActive": true,
+    "FlowrateType": "LiquidFlowRate"
+   }
+  },
+  "Sink|Oil-Facility": {
+   "Oil-Facility": {
+    "Name": "Oil-Facility",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 20.684271879505083,
+    "IsActive": true,
+    "FlowrateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Source": {
+   "Source": {
+    "Name": "Source",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": 0.05663369318640717,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": 60.0,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "B-Fluid",
+    "AssociatedCompositionalFluid": "C-Fluid",
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": true,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "GasFlowRate"
+   }
+  },
+  "Source|Well:Source 1": {
+   "Well:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "B-Fluid",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well:WellString outlet10269": {
+   "Well:WellString outlet10269": {
+    "Name": "WellString outlet10269",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well:WellString outlet10271": {
+   "Well:WellString outlet10271": {
+    "Name": "WellString outlet10271",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Study|Study 1": {
+   "Study 1": {
+    "Name": "Study 1",
+    "Description": ""
+   }
+  },
+  "Tubing|Well:Tubing": {
+   "Well:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 100.53320000000001,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 6.8834,
+    "Length": 1341.1200000000001,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "TwoPhaseSeparator|Separator": {
+   "Separator": {
+    "Name": "Separator",
+    "Pressure": null,
+    "IsActive": true,
+    "Efficiency": 99.9,
+    "DiscardedStream": "liquid",
+    "ProductionStream": "gas"
+   }
+  },
+  "Well|Well": {
+   "Well": {
+    "Name": "Well",
+    "GasSpecificGravity": 0.86,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": null,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "UseGasSpecificGravity",
+    "IsInjection": false,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "Well",
+    "IsMultiPointing": false
+   }
+  }
+ },
+ "probe": {
+  "about": {
+   "ok": true,
+   "result": {
+    "WebAPIVersion": "2023.1.615.0",
+    "ToolkitVersion": "2023.1",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_w4nfo2vw\\CSN_301_Small Network.pips",
+    "UnitSystem": "PIPESIM_METRIC",
+    "UiUnitSystem": "PIPESIM_FIELD"
+   }
+  },
+  "connections": {
+   "ok": true,
+   "result": [
+    {
+     "Source": "FL-3",
+     "Source Port": "",
+     "Destination": "Manifold"
+    },
+    {
+     "Source": "Choke",
+     "Source Port": "",
+     "Destination": "FL-2"
+    },
+    {
+     "Source": "FL-2",
+     "Source Port": "",
+     "Destination": "Manifold"
+    },
+    {
+     "Source": "Source",
+     "Source Port": "",
+     "Destination": "FL-3"
+    },
+    {
+     "Source": "Manifold",
+     "Source Port": "",
+     "Destination": "FL-4"
+    },
+    {
+     "Source": "FL-4",
+     "Source Port": "",
+     "Destination": "Separator"
+    },
+    {
+     "Source": "Compressor",
+     "Source Port": "",
+     "Destination": "GL-2"
+    },
+    {
+     "Source": "GL-2",
+     "Source Port": "",
+     "Destination": "Gas-Sales"
+    },
+    {
+     "Source": "Separator",
+     "Source Port": "Bottom Port",
+     "Destination": "LL-1"
+    },
+    {
+     "Source": "LL-1",
+     "Source Port": "",
+     "Destination": "Pmp"
+    },
+    {
+     "Source": "Separator",
+     "Source Port": "Top Port",
+     "Destination": "GL-1"
+    },
+    {
+     "Source": "GL-1",
+     "Source Port": "",
+     "Destination": "Compressor"
+    },
+    {
+     "Source": "LL-2",
+     "Source Port": "",
+     "Destination": "Oil-Facility"
+    },
+    {
+     "Source": "Pmp",
+     "Source Port": "",
+     "Destination": "LL-2"
+    },
+    {
+     "Source": "Well",
+     "Source Port": "",
+     "Destination": "FL-1"
+    },
+    {
+     "Source": "FL-1",
+     "Source Port": "",
+     "Destination": "Choke"
+    }
+   ]
+  },
+  "get_connections": {
+   "ok": true,
+   "result": {
+    "FL-3": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Manifold",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Choke": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL-2",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL-2": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Manifold",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Source": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL-3",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Manifold": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL-4",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL-4": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Separator",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Compressor": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "GL-2",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "GL-2": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Gas-Sales",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Separator": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "",
+     "Top Port": "GL-1",
+     "Bottom Port": "LL-1",
+     "Boot Port": ""
+    },
+    "LL-1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Pmp",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "GL-1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Compressor",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "LL-2": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Oil-Facility",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Pmp": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "LL-2",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Well": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL-1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL-1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Choke",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    }
+   }
+  },
+  "networksimulation.get_conditions": {
+   "ok": true,
+   "result": {
+    "Well:VertComp": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "Well",
+     "BoundaryNodeName": "VertComp",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 54.44444444444446,
+     "Pressure": 173.3341983502526,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "VertComp",
+     "IsBottomCompletion": false
+    },
+    "Source": {
+     "BoundaryNodeType": "Source",
+     "WellName": null,
+     "BoundaryNodeName": "Source",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 60.0,
+     "Pressure": null,
+     "FlowRateType": "GasFlowRate",
+     "GasFlowRate": 0.05663369318640717,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    },
+    "Gas-Sales": {
+     "BoundaryNodeType": "Sink",
+     "WellName": null,
+     "BoundaryNodeName": "Gas-Sales",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": null,
+     "Pressure": 41.368542,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    },
+    "Oil-Facility": {
+     "BoundaryNodeType": "Sink",
+     "WellName": null,
+     "BoundaryNodeName": "Oil-Facility",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": null,
+     "Pressure": 20.684271879505083,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    }
+   }
+  }
+ },
+ "about": {
+  "WebAPIVersion": "2023.1.615.0",
+  "ToolkitVersion": "2023.1",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_w4nfo2vw\\CSN_301_Small Network.pips",
+  "UnitSystem": "PIPESIM_METRIC",
+  "UiUnitSystem": "PIPESIM_FIELD"
+ },
+ "baseline": {
+  "state": "Completed",
+  "summary": {
+   "Info": [
+    "2026-11-04T07:56:52.369Z    Beginning simulation...",
+    "2026-11-04T07:56:52.366Z    Running with 6 cores",
+    "2026-11-04T07:56:57.366Z    Solver converged to a solution.",
+    "2026-11-04T07:56:57.400Z    Finished simulation"
+   ],
+   "Error": [],
+   "Warning": []
+  },
+  "messages": [
+   "2026-11-04T07:56:52.457Z    Service starting...",
+   "2026-11-04T07:56:52.487Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T07:56:52.718Z    Service listening at 'net.pipe://localhost/pipe/7d014ca2868d4a49bb5912afcb5f03ff'...",
+   "2026-11-04T07:56:52.836Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\21372",
+   "2026-11-04T07:56:52.836Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\21372\\CSN_301_Small Network.tnt (6)",
+   "2026-11-04T07:56:53.747Z    .......................................................................... ",
+   "2026-11-04T07:56:53.749Z    Processing branch Oil-Facility.. ",
+   "2026-11-04T07:56:53.749Z    Processing branch Separator_LL-1.. ",
+   "2026-11-04T07:56:53.750Z    Processing branch Source.. ",
+   "2026-11-04T07:56:53.752Z    Processing branch Well.. ",
+   "2026-11-04T07:56:53.753Z    Processing branch Manifold_Separator.. ",
+   "2026-11-04T07:56:53.754Z    Processing branch Separator_GL-1.. ",
+   "2026-11-04T07:56:53.756Z    Processing branch Gas-Sales.",
+   "2026-11-04T07:56:53.756Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T07:56:53.970Z    ",
+   "2026-11-04T07:56:54.373Z     Iteration   1 P error :  76.23 %, F error : 183.89 %, L error :   0.00 %",
+   "2026-11-04T07:56:54.659Z     Iteration   2 P error :  47.99 %, F error :  41.05 %, L error :   0.00 %",
+   "2026-11-04T07:56:54.929Z     Iteration   3 P error :  40.60 %, F error :  11.52 %, L error :   0.00 %",
+   "2026-11-04T07:56:55.187Z     Iteration   4 P error :  19.31 %, F error :  16.38 %, L error :   0.00 %",
+   "2026-11-04T07:56:55.439Z     Iteration   5 P error :  16.73 %, F error :  34.79 %, L error :   0.00 %",
+   "2026-11-04T07:56:55.656Z     Iteration   6 P error :   5.73 %, F error :  11.98 %, L error :   0.00 %",
+   "2026-11-04T07:56:55.854Z     Iteration   7 P error :   7.20 %, F error :   0.86 %, L error :   0.00 %",
+   "2026-11-04T07:56:56.044Z     Iteration   8 P error :   5.52 %, F error :   1.18 %, L error :   0.00 %",
+   "2026-11-04T07:56:56.222Z     Iteration   9 P error :   1.73 %, F error :   2.06 %, L error :   0.00 %",
+   "2026-11-04T07:56:56.409Z     Iteration  10 P error :   0.86 %, F error :   1.99 %, L error :   0.00 %",
+   "2026-11-04T07:56:56.580Z     Iteration  11 P error :   1.08 %, F error :   3.08 %, L error :   0.00 %",
+   "2026-11-04T07:56:56.750Z     Iteration  12 P error :   0.95 %, F error :   3.06 %, L error :   0.00 %",
+   "2026-11-04T07:56:56.910Z     Iteration  13 P error :   0.67 %, F error :   0.09 %, L error :   0.00 %",
+   "2026-11-04T07:56:56.911Z    ",
+   "2026-11-04T07:56:56.911Z    ",
+   "2026-11-04T07:56:56.911Z     Converged.                                                                     ",
+   "2026-11-04T07:56:56.911Z     ... network converged at iteration  13, final rms error :   0.671870E-02",
+   "2026-11-04T07:56:56.911Z      Start Post-Processing results",
+   "2026-11-04T07:56:57.007Z    ",
+   "2026-11-04T07:56:57.007Z       Elapsed time:",
+   "2026-11-04T07:56:57.007Z    ",
+   "2026-11-04T07:56:57.007Z       Network Executive      4.17",
+   "2026-11-04T07:56:57.007Z       PIPESIM sub-tasks      0.00",
+   "2026-11-04T07:56:57.007Z                         ---------",
+   "2026-11-04T07:56:57.007Z                 Total        4.17",
+   "2026-11-04T07:56:57.007Z    ",
+   "2026-11-04T07:56:57.007Z       CPU time:",
+   "2026-11-04T07:56:57.007Z    ",
+   "2026-11-04T07:56:57.007Z               User task      3.98",
+   "2026-11-04T07:56:57.007Z               System         0.44",
+   "2026-11-04T07:56:57.007Z                         ---------",
+   "2026-11-04T07:56:57.007Z                 Total        4.42",
+   "2026-11-04T07:56:57.013Z     Disposing communication agent.",
+   "2026-11-04T07:56:57.013Z     Disposing communication agent.",
+   "2026-11-04T07:56:57.014Z     Disposing communication agent.",
+   "2026-11-04T07:56:57.014Z     Disposing communication agent.",
+   "2026-11-04T07:56:57.015Z     Disposing communication agent.",
+   "2026-11-04T07:56:57.377Z     Disposing communication agent."
+  ],
+  "system": {},
+  "node": {
+   "Pressure": {
+    "Unit": "bara",
+    "Compressor": 84.66709202224133,
+    "Oil-Facility": 20.684271819744264,
+    "Separator": 46.107692531244886,
+    "Source": 46.704869591999675,
+    "Pmp": 26.337494838370606,
+    "Choke": 47.52175163680994,
+    "Gas-Sales": 41.36854365102284,
+    "Well": 67.05023561463324,
+    "Manifold": 46.59376501945589,
+    "VertComp": 166.44818832115945
+   },
+   "Temperature": {
+    "Unit": "degC",
+    "Compressor": 66.96800188742327,
+    "Oil-Facility": 24.264547543068034,
+    "Separator": 26.394040005138777,
+    "Source": 60.00000000000006,
+    "Pmp": 26.743025564540005,
+    "Choke": 25.849719337262,
+    "Gas-Sales": 41.55761891091771,
+    "Well": 32.16762484641481,
+    "Manifold": 26.59390990004715,
+    "VertComp": 53.812098639940416
+   },
+   "VolumeFlowrateLiquidStockTank": {
+    "Unit": "sm3/d",
+    "Compressor": 0.5656430416366756,
+    "Oil-Facility": 1186.6173462241604,
+    "Separator": 0.5662142516901058,
+    "Source": 32.69522495834796,
+    "Pmp": 1186.6173462241604,
+    "Choke": 804.6089921425155,
+    "Gas-Sales": 0.5656430416366756,
+    "Well": 804.6089921425155,
+    "Manifold": 837.3042171008635,
+    "VertComp": 804.6089921425155
+   },
+   "VolumeFlowrateOilStockTank": {
+    "Unit": "sm3/d",
+    "Compressor": 0.5656430416366756,
+    "Oil-Facility": 1186.6173462241604,
+    "Separator": 0.5662142516901058,
+    "Source": 32.69522495834796,
+    "Pmp": 1186.6173462241604,
+    "Choke": 804.6089921425155,
+    "Gas-Sales": 0.5656430416366756,
+    "Well": 804.6089921425155,
+    "Manifold": 837.3042171008635,
+    "VertComp": 804.6089921425155
+   },
+   "VolumeFlowrateGasStockTank": {
+    "Unit": "mmsm3/d",
+    "Compressor": 1.1272775707031673,
+    "Oil-Facility": 0.2575508115395249,
+    "Separator": 1.1284159428460099,
+    "Source": 0.056633693184019944,
+    "Pmp": 0.2575508115395249,
+    "Choke": 1.3937196900206072,
+    "Gas-Sales": 1.1272775707031673,
+    "Well": 1.3937196900206072,
+    "Manifold": 1.4503533832046271,
+    "VertComp": 1.3937196900206072
+   },
+   "VolumeFlowrateWaterStockTank": {
+    "Unit": "sm3/d",
+    "Compressor": 0.0,
+    "Oil-Facility": 0.0,
+    "Separator": 0.0,
+    "Source": 0.0,
+    "Pmp": 0.0,
+    "Choke": 0.0,
+    "Gas-Sales": 0.0,
+    "Well": 0.0,
+    "Manifold": 0.0,
+    "VertComp": 0.0
+   }
+  }
+ },
+ "seconds": 12.5
+}

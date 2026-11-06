@@ -1,0 +1,5 @@
+Our field has two oil wells, A and B, each with a 2 km, 100 mm flat line into manifold M, then a 3 km, 152 mm flat line to a separator at 18 bara. Black oil: 31 API, GOR 110 sm3/sm3, gas SG 0.7, water cut 30% today. Well A: reservoir 210 bara, depth 2300 m, PI 7 sm3/d/bar. Well B: reservoir 190 bara, depth 2200 m, PI 11 sm3/d/bar. Over field life the water cut will rise. Show how field oil and liquid change for water cut 10, 30, 50 and 70%, and tell me if a well stops flowing.
+Use the suggested defaults for everything else.
+Yes, approved. Run it.
+Approved.
+exit

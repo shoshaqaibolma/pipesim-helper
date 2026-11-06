@@ -1,0 +1,2 @@
+# Evaluation again after the fixes for copied example names and approvals (about 1 hour).
+"D:\Program\Pipesim toolkit\python.exe" tests\real_eval.py

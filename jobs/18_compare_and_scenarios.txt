@@ -1,0 +1,4 @@
+# Comparison (all P/T conditions, water fluid fix), then the two harder scenarios again.
+"D:\Program\Pipesim toolkit\python.exe" tools\rebuild_compare.py "D:\Program\Pipesim2023.1\Case Studies"
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\debottleneck.txt
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\pipeline_sizing.txt

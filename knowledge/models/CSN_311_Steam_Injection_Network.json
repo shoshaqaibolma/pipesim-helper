@@ -1,0 +1,2187 @@
+{
+ "file": "D:\\Program\\Pipesim2023.1\\Case Studies\\Network Models\\CSN_311_Steam Injection Network.pips",
+ "components": {
+  "BlackOilFluid": [
+   "water"
+  ],
+  "Casing": [
+   "Casing 1",
+   "Well_1:Casing",
+   "Well_2:Casing",
+   "Well_3:Casing"
+  ],
+  "Completion": [
+   "Well_1:Completion",
+   "Well_2:Completion",
+   "Well_3:Completion"
+  ],
+  "CompositionalFluid": [
+   "Steam"
+  ],
+  "FlowCorrelation": [
+   "Correlation IN_Steam_Injection_Well",
+   "FL 1:Correlation IN_Steam_Injection_Well",
+   "FL 2:Correlation IN_Steam_Injection_Well",
+   "FL 3:Correlation IN_Steam_Injection_Well",
+   "FL 4:Correlation IN_Steam_Injection_Well",
+   "FL 9:Correlation IN_Steam_Injection_Well",
+   "FL:Correlation IN_Steam_Injection_Well",
+   "Well_1:Correlation IN_Steam_Injection_Well",
+   "Well_2:Correlation IN_Steam_Injection_Well",
+   "Well_3:Correlation IN_Steam_Injection_Well"
+  ],
+  "Flowline": [
+   "FL",
+   "FL 1",
+   "FL 2",
+   "FL 3",
+   "FL 4",
+   "FL 9"
+  ],
+  "FluidComponent": [
+   "Salt Component",
+   "Water"
+  ],
+  "GlobalCatalog": [
+   "PIPESIM_FIELD"
+  ],
+  "GravelPack": [
+   "Well_1:Completion:GravelPack",
+   "Well_2:Completion:GravelPack",
+   "Well_3:Completion:GravelPack"
+  ],
+  "IPRBackPressure": [
+   "Well_1:Completion:IPRBACKPRESSURE",
+   "Well_2:Completion:IPRBACKPRESSURE",
+   "Well_3:Completion:IPRBACKPRESSURE"
+  ],
+  "IPRDarcy": [
+   "Well_1:Completion:IPRDARCY",
+   "Well_2:Completion:IPRDARCY",
+   "Well_3:Completion:IPRDARCY"
+  ],
+  "IPRFetkovitch": [
+   "Well_1:Completion:IPRFETKOVITCH",
+   "Well_2:Completion:IPRFETKOVITCH",
+   "Well_3:Completion:IPRFETKOVITCH"
+  ],
+  "IPRForchheimer": [
+   "Well_1:Completion:IPRFORCHHEIMER",
+   "Well_2:Completion:IPRFORCHHEIMER",
+   "Well_3:Completion:IPRFORCHHEIMER"
+  ],
+  "IPRHorizontalPI": [
+   "Well_1:Completion:IPRHORIZONTALPI",
+   "Well_2:Completion:IPRHORIZONTALPI",
+   "Well_3:Completion:IPRHORIZONTALPI"
+  ],
+  "IPRHydraulicFracture": [
+   "Well_1:Completion:IPRHYDRAULICFRACTURE",
+   "Well_2:Completion:IPRHYDRAULICFRACTURE",
+   "Well_3:Completion:IPRHYDRAULICFRACTURE"
+  ],
+  "IPRJones": [
+   "Well_1:Completion:IPRJONES",
+   "Well_2:Completion:IPRJONES",
+   "Well_3:Completion:IPRJONES"
+  ],
+  "IPRPIModel": [
+   "Well_1:Completion:IPRPIModel",
+   "Well_2:Completion:IPRPIModel",
+   "Well_3:Completion:IPRPIModel"
+  ],
+  "IPRPSSBabuOdeh": [
+   "Well_1:Completion:IPRPSSBABUODEH",
+   "Well_2:Completion:IPRPSSBABUODEH",
+   "Well_3:Completion:IPRPSSBABUODEH"
+  ],
+  "IPRSSJoshi": [
+   "Well_1:Completion:IPRSSJOSHI",
+   "Well_2:Completion:IPRSSJOSHI",
+   "Well_3:Completion:IPRSSJOSHI"
+  ],
+  "IPRTriLinear": [
+   "Well_1:Completion:IPRTRILINEAR",
+   "Well_2:Completion:IPRTRILINEAR",
+   "Well_3:Completion:IPRTRILINEAR"
+  ],
+  "Junction": [
+   "J 1",
+   "J 2"
+  ],
+  "Packer": [
+   "Well_1:Packer",
+   "Well_2:Packer",
+   "Well_3:Packer"
+  ],
+  "Source": [
+   "Source",
+   "WellString outlet11456",
+   "WellString outlet11458",
+   "Well_1:Source 1",
+   "Well_1:WellString outlet10609",
+   "Well_1:WellString outlet10618",
+   "Well_2:Source 1",
+   "Well_2:WellString outlet10777",
+   "Well_2:WellString outlet10786",
+   "Well_3:Source 1",
+   "Well_3:WellString outlet10642",
+   "Well_3:WellString outlet10651"
+  ],
+  "Study": [
+   "Study 1"
+  ],
+  "Tubing": [
+   "Tubing",
+   "Well_1:Tubing",
+   "Well_2:Tubing",
+   "Well_3:Tubing"
+  ],
+  "TwoPhaseSeparator": [
+   "steam trap"
+  ],
+  "Well": [
+   "Well_1",
+   "Well_2",
+   "Well_3"
+  ]
+ },
+ "values": {
+  "BlackOilFluid|water": {
+   "water": {
+    "Name": "water",
+    "API": 30.0,
+    "DeadOilDensity": 876.1699662920959,
+    "DeadOilTemperature1": 93.3333333333,
+    "DeadOilTemperature2": 15.555560000000014,
+    "DeadOilViscosity1": 0.0026439104305754587,
+    "DeadOilViscosity2": 0.16604354513726505,
+    "DeadOilViscosityCorr": "BeggsAndRobinson",
+    "COFraction": 0.0,
+    "CO2Fraction": 0.0,
+    "H2Fraction": 0.0,
+    "H2SFraction": 0.0,
+    "N2Fraction": 0.0,
+    "GasSpecificGravity": 0.64,
+    "GLR": 0.0,
+    "GOR": 0.0,
+    "GWR": null,
+    "LGR": null,
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "LiveOilViscosityCorr": "ChewandConnaly",
+    "OGR": null,
+    "Richardsonkoiw": 3.8,
+    "Richardsonkwio": 6.6,
+    "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+    "UndersaturatedOilViscosityParA": 0.0239,
+    "UndersaturatedOilViscosityParB": 0.01638,
+    "UseBraunerUllmanEquation": false,
+    "UseDeadOilDensity": false,
+    "UseGasRatio": "GLR",
+    "UserWatercutCutOff": 60.0,
+    "UseWaterRatio": "WaterCut",
+    "VandUserk1": 2.5,
+    "VandUserk2": 0.609,
+    "WaterCut": 100.0,
+    "WaterSpecificGravity": 1.02,
+    "WGR": null,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "Casing|Casing 1": {
+   "Casing 1": {
+    "Name": "Casing 1",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": null,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": null,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Casing|Well_1:Casing": {
+   "Well_1:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": 215.89999999999998,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 147.09140000000002,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 10.591799999999997,
+    "Length": 1828.8000000000002,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Casing|Well_2:Casing": {
+   "Well_2:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": 215.9,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 147.09140000000002,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 10.591799999999997,
+    "Length": 1828.8000000000002,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Casing|Well_3:Casing": {
+   "Well_3:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": 215.9,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 147.09140000000002,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 10.591799999999997,
+    "Length": 1828.8000000000002,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Completion|Well_1:Completion": {
+   "Well_1:Completion": {
+    "Name": "Completion",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "water",
+    "AssociatedCompositionalFluid": "Steam",
+    "AssociatedMFLFluid": null,
+    "Diameter": 17.779999999999998,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": 304.8,
+    "PhaseAngle": null,
+    "ReservoirPressure": 103.42135939752531,
+    "ReservoirTemperature": 93.33333333333343,
+    "ShotDensity": 13.123359580052492,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRDarcy"
+   }
+  },
+  "Completion|Well_2:Completion": {
+   "Well_2:Completion": {
+    "Name": "Completion",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "water",
+    "AssociatedCompositionalFluid": "Steam",
+    "AssociatedMFLFluid": null,
+    "Diameter": 17.779999999999998,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": 304.8,
+    "PhaseAngle": null,
+    "ReservoirPressure": 103.42135939752531,
+    "ReservoirTemperature": 93.33333333333343,
+    "ShotDensity": 13.123359580052492,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRDarcy"
+   }
+  },
+  "Completion|Well_3:Completion": {
+   "Well_3:Completion": {
+    "Name": "Completion",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "water",
+    "AssociatedCompositionalFluid": "Steam",
+    "AssociatedMFLFluid": null,
+    "Diameter": 17.779999999999998,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": 304.8,
+    "PhaseAngle": null,
+    "ReservoirPressure": 103.42135939752531,
+    "ReservoirTemperature": 93.33333333333343,
+    "ShotDensity": 13.123359580052492,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRDarcy"
+   }
+  },
+  "CompositionalFluid|Steam": {
+   "Steam": {
+    "Name": "Steam",
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "Richardsonkoiw": null,
+    "Richardsonkwio": null,
+    "UseBraunerUllmanEquation": false,
+    "UserWatercutCutOff": 60.0,
+    "VandUserk1": null,
+    "VandUserk2": null,
+    "ComponentFractionType": "Mole",
+    "SaltWaterDensity": null,
+    "SaltWaterDensityType": "DefaultDensity",
+    "SaltWaterSalinity": null,
+    "SaltWaterTemperature": null,
+    "ShowAllComponents": false,
+    "SodiumIon": 0.0,
+    "CalciumIon": 0.0,
+    "MagnesiumIon": 0.0,
+    "PotassiumIon": 0.0,
+    "StrontiumIon": 0.0,
+    "BariumIon": 0.0,
+    "IronIon": 0.0,
+    "ChlorideIon": 0.0,
+    "SulphateIon": 0.0,
+    "BicarbonateIon": 0.0,
+    "BromideIon": 0.0,
+    "TotalDissolvedSolids": 0.0,
+    "UseTunedFractions": false,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "FlowCorrelation|Correlation IN_Steam_Injection_Well": {
+   "Well_1:Correlation IN_Steam_Injection_Well": {
+    "Name": "Correlation IN_Steam_Injection_Well",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "Well_3:Correlation IN_Steam_Injection_Well": {
+    "Name": "Correlation IN_Steam_Injection_Well",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "Well_2:Correlation IN_Steam_Injection_Well": {
+    "Name": "Correlation IN_Steam_Injection_Well",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "Correlation IN_Steam_Injection_Well": {
+    "Name": "Correlation IN_Steam_Injection_Well",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": true
+   },
+   "FL:Correlation IN_Steam_Injection_Well": {
+    "Name": "Correlation IN_Steam_Injection_Well",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "FL 1:Correlation IN_Steam_Injection_Well": {
+    "Name": "Correlation IN_Steam_Injection_Well",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "FL 2:Correlation IN_Steam_Injection_Well": {
+    "Name": "Correlation IN_Steam_Injection_Well",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "FL 3:Correlation IN_Steam_Injection_Well": {
+    "Name": "Correlation IN_Steam_Injection_Well",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "FL 4:Correlation IN_Steam_Injection_Well": {
+    "Name": "Correlation IN_Steam_Injection_Well",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   },
+   "FL 9:Correlation IN_Steam_Injection_Well": {
+    "Name": "Correlation IN_Steam_Injection_Well",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   }
+  },
+  "FlowCorrelation|FL 1:Correlation IN_Steam_Injection_Well": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL 1', 'FlowCorrelation': 'Correlation IN_Steam_Injection_Well', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL 2:Correlation IN_Steam_Injection_Well": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL 2', 'FlowCorrelation': 'Correlation IN_Steam_Injection_Well', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL 3:Correlation IN_Steam_Injection_Well": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL 3', 'FlowCorrelation': 'Correlation IN_Steam_Injection_Well', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL 4:Correlation IN_Steam_Injection_Well": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL 4', 'FlowCorrelation': 'Correlation IN_Steam_Injection_Well', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL 9:Correlation IN_Steam_Injection_Well": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL 9', 'FlowCorrelation': 'Correlation IN_Steam_Injection_Well', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL:Correlation IN_Steam_Injection_Well": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL', 'FlowCorrelation': 'Correlation IN_Steam_Injection_Well', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|Well_1:Correlation IN_Steam_Injection_Well": {
+   "Well_1:Correlation IN_Steam_Injection_Well": {
+    "Name": "Correlation IN_Steam_Injection_Well",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   }
+  },
+  "FlowCorrelation|Well_2:Correlation IN_Steam_Injection_Well": {
+   "Well_2:Correlation IN_Steam_Injection_Well": {
+    "Name": "Correlation IN_Steam_Injection_Well",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   }
+  },
+  "FlowCorrelation|Well_3:Correlation IN_Steam_Injection_Well": {
+   "Well_3:Correlation IN_Steam_Injection_Well": {
+    "Name": "Correlation IN_Steam_Injection_Well",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": false
+   }
+  },
+  "Flowline|FL": {
+   "FL": {
+    "Name": "FL",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 154.051,
+    "Roughness": 0.04572,
+    "WallThickness": 7.112,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL 1": {
+   "FL 1": {
+    "Name": "FL 1",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 154.051,
+    "Roughness": 0.04572,
+    "WallThickness": 7.112,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL 2": {
+   "FL 2": {
+    "Name": "FL 2",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 77.9272,
+    "Roughness": 0.04572,
+    "WallThickness": 5.4864,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL 3": {
+   "FL 3": {
+    "Name": "FL 3",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 154.051,
+    "Roughness": 0.04572,
+    "WallThickness": 7.112,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL 4": {
+   "FL 4": {
+    "Name": "FL 4",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 102.26039999999999,
+    "Roughness": 0.04572,
+    "WallThickness": 6.019799999999999,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL 9": {
+   "FL 9": {
+    "Name": "FL 9",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": true,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 154.051,
+    "Roughness": 0.04572,
+    "WallThickness": 7.112,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "FluidComponent|Salt Component": {
+   "Salt Component": {
+    "Name": "Salt Component",
+    "Acf": null,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": null,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": null,
+    "Pcrit": null,
+    "ReferenceDensity": null,
+    "SpecificGravity": null,
+    "Tboil": null,
+    "Tcrit": null,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": null,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": null
+   }
+  },
+  "FluidComponent|Water": {
+   "Water": {
+    "Name": "Water",
+    "Acf": null,
+    "CalorificValue": null,
+    "EoSVolumeShift": null,
+    "HeatVapourisation": null,
+    "HydrocarbonForm": "Hydrocarbon",
+    "IsActive": true,
+    "IsUserDefined": false,
+    "MolecularWeight": null,
+    "OmegaA": null,
+    "OmegaB": null,
+    "Parachor": null,
+    "Pcrit": null,
+    "ReferenceDensity": null,
+    "SpecificGravity": null,
+    "Tboil": null,
+    "Tcrit": null,
+    "ThermalCoefficient0": null,
+    "ThermalCoefficient1": null,
+    "ThermalCoefficient2": null,
+    "ThermalCoefficient3": null,
+    "ThermalCoefficient4": null,
+    "ThermalCoefficient5": null,
+    "ThermalCoefficient6": null,
+    "ThermExpCoeff": null,
+    "Tmelt": null,
+    "Vcrit": null,
+    "VcritViscosity": null,
+    "WatsonKFactor": null,
+    "Zcrit": null
+   }
+  },
+  "GlobalCatalog|PIPESIM_FIELD": {
+   "PIPESIM_FIELD": {
+    "Name": "PIPESIM_FIELD",
+    "CatalogType": "CustomUnitSystem"
+   }
+  },
+  "GravelPack|Well_1:Completion:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'GravelPack': 'Completion:GravelPack', 'Template': '___NONE___'})"
+  },
+  "GravelPack|Well_2:Completion:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_2', 'GravelPack': 'Completion:GravelPack', 'Template': '___NONE___'})"
+  },
+  "GravelPack|Well_3:Completion:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_3', 'GravelPack': 'Completion:GravelPack', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|Well_1:Completion:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRBackPressure': 'Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|Well_2:Completion:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_2', 'IPRBackPressure': 'Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|Well_3:Completion:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_3', 'IPRBackPressure': 'Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|Well_1:Completion:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRDarcy': 'Completion:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|Well_2:Completion:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_2', 'IPRDarcy': 'Completion:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|Well_3:Completion:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_3', 'IPRDarcy': 'Completion:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRFetkovitch|Well_1:Completion:IPRFETKOVITCH": null,
+  "IPRFetkovitch|Well_2:Completion:IPRFETKOVITCH": null,
+  "IPRFetkovitch|Well_3:Completion:IPRFETKOVITCH": null,
+  "IPRForchheimer|Well_1:Completion:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRForchheimer': 'Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRForchheimer|Well_2:Completion:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_2', 'IPRForchheimer': 'Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRForchheimer|Well_3:Completion:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_3', 'IPRForchheimer': 'Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|Well_1:Completion:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRHorizontalPI': 'Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|Well_2:Completion:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_2', 'IPRHorizontalPI': 'Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|Well_3:Completion:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_3', 'IPRHorizontalPI': 'Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|Well_1:Completion:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRHydraulicFracture': 'Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|Well_2:Completion:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_2', 'IPRHydraulicFracture': 'Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|Well_3:Completion:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_3', 'IPRHydraulicFracture': 'Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRJones|Well_1:Completion:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRJones': 'Completion:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRJones|Well_2:Completion:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_2', 'IPRJones': 'Completion:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRJones|Well_3:Completion:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_3', 'IPRJones': 'Completion:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|Well_1:Completion:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRPIModel': 'Completion:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|Well_2:Completion:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_2', 'IPRPIModel': 'Completion:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|Well_3:Completion:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_3', 'IPRPIModel': 'Completion:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|Well_1:Completion:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRPSSBabuOdeh': 'Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|Well_2:Completion:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_2', 'IPRPSSBabuOdeh': 'Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|Well_3:Completion:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_3', 'IPRPSSBabuOdeh': 'Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|Well_1:Completion:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRSSJoshi': 'Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|Well_2:Completion:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_2', 'IPRSSJoshi': 'Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|Well_3:Completion:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_3', 'IPRSSJoshi': 'Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|Well_1:Completion:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_1', 'IPRTriLinear': 'Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|Well_2:Completion:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_2', 'IPRTriLinear': 'Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|Well_3:Completion:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well_3', 'IPRTriLinear': 'Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "Junction|J 1": {
+   "J 1": {
+    "Name": "J 1",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 2": {
+   "J 2": {
+    "Name": "J 2",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Packer|Well_1:Packer": {
+   "Well_1:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
+  },
+  "Packer|Well_2:Packer": {
+   "Well_2:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
+  },
+  "Packer|Well_3:Packer": {
+   "Well_3:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
+  },
+  "Source|Source": {
+   "Source": {
+    "Name": "Source",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 68.94757,
+    "Temperature": 315.55555555555566,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "water",
+    "AssociatedCompositionalFluid": "Steam",
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|WellString outlet11456": {
+   "WellString outlet11456": {
+    "Name": "WellString outlet11456",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|WellString outlet11458": {
+   "WellString outlet11458": {
+    "Name": "WellString outlet11458",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well_1:Source 1": {
+   "Well_1:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 68.94757293168361,
+    "Temperature": 322.2222222222223,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "water",
+    "AssociatedCompositionalFluid": "Steam",
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "MassFlowRate"
+   }
+  },
+  "Source|Well_1:WellString outlet10609": {
+   "Well_1:WellString outlet10609": {
+    "Name": "WellString outlet10609",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well_1:WellString outlet10618": {
+   "Well_1:WellString outlet10618": {
+    "Name": "WellString outlet10618",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well_2:Source 1": {
+   "Well_2:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 68.94757293168361,
+    "Temperature": 322.2222222222223,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "water",
+    "AssociatedCompositionalFluid": "Steam",
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "MassFlowRate"
+   }
+  },
+  "Source|Well_2:WellString outlet10777": {
+   "Well_2:WellString outlet10777": {
+    "Name": "WellString outlet10777",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well_2:WellString outlet10786": {
+   "Well_2:WellString outlet10786": {
+    "Name": "WellString outlet10786",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well_3:Source 1": {
+   "Well_3:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 68.94757293168361,
+    "Temperature": 322.2222222222223,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "water",
+    "AssociatedCompositionalFluid": "Steam",
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "MassFlowRate"
+   }
+  },
+  "Source|Well_3:WellString outlet10642": {
+   "Well_3:WellString outlet10642": {
+    "Name": "WellString outlet10642",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well_3:WellString outlet10651": {
+   "Well_3:WellString outlet10651": {
+    "Name": "WellString outlet10651",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Study|Study 1": {
+   "Study 1": {
+    "Name": "Study 1",
+    "Description": ""
+   }
+  },
+  "Tubing|Tubing": {
+   "Well_1:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 90.11919999999999,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 5.740399999999999,
+    "Length": 1767.8400000000001,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   },
+   "Well_3:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 90.11919999999999,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 5.740399999999999,
+    "Length": 1767.8400000000001,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   },
+   "Well_2:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 90.11919999999999,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 5.740399999999999,
+    "Length": 1767.8400000000001,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   },
+   "Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": null,
+    "CementTop": null,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": null,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": null,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Tubing|Well_1:Tubing": {
+   "Well_1:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 90.11919999999999,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 5.740399999999999,
+    "Length": 1767.8400000000001,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Tubing|Well_2:Tubing": {
+   "Well_2:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 90.11919999999999,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 5.740399999999999,
+    "Length": 1767.8400000000001,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Tubing|Well_3:Tubing": {
+   "Well_3:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 90.11919999999999,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 5.740399999999999,
+    "Length": 1767.8400000000001,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "TwoPhaseSeparator|steam trap": {
+   "steam trap": {
+    "Name": "steam trap",
+    "Pressure": null,
+    "IsActive": true,
+    "Efficiency": 99.0,
+    "DiscardedStream": "liquid",
+    "ProductionStream": "gas"
+   }
+  },
+  "Well|Well_1": {
+   "Well_1": {
+    "Name": "Well_1",
+    "GasSpecificGravity": 0.86,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": null,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "AssociateExistingFluid",
+    "IsInjection": true,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "Well_1",
+    "IsMultiPointing": false
+   }
+  },
+  "Well|Well_2": {
+   "Well_2": {
+    "Name": "Well_2",
+    "GasSpecificGravity": 0.86,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": null,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "AssociateExistingFluid",
+    "IsInjection": true,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "Well_2",
+    "IsMultiPointing": false
+   }
+  },
+  "Well|Well_3": {
+   "Well_3": {
+    "Name": "Well_3",
+    "GasSpecificGravity": 0.86,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": null,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "AssociateExistingFluid",
+    "IsInjection": true,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "Well_3",
+    "IsMultiPointing": false
+   }
+  }
+ },
+ "probe": {
+  "about": {
+   "ok": true,
+   "result": {
+    "WebAPIVersion": "2023.1.615.0",
+    "ToolkitVersion": "2023.1",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_ls0tseyo\\CSN_311_Steam Injection Network.pips",
+    "UnitSystem": "PIPESIM_METRIC",
+    "UiUnitSystem": "PIPESIM_FIELD"
+   }
+  },
+  "connections": {
+   "ok": true,
+   "result": [
+    {
+     "Source": "FL",
+     "Source Port": "",
+     "Destination": "J 1"
+    },
+    {
+     "Source": "FL 1",
+     "Source Port": "",
+     "Destination": "J 2"
+    },
+    {
+     "Source": "J 2",
+     "Source Port": "",
+     "Destination": "FL 3"
+    },
+    {
+     "Source": "FL 3",
+     "Source Port": "",
+     "Destination": "Well_2"
+    },
+    {
+     "Source": "J 2",
+     "Source Port": "",
+     "Destination": "FL 4"
+    },
+    {
+     "Source": "J 1",
+     "Source Port": "",
+     "Destination": "FL 1"
+    },
+    {
+     "Source": "FL 2",
+     "Source Port": "",
+     "Destination": "Well_1"
+    },
+    {
+     "Source": "J 1",
+     "Source Port": "",
+     "Destination": "FL 2"
+    },
+    {
+     "Source": "steam trap",
+     "Source Port": "Top Port",
+     "Destination": "FL"
+    },
+    {
+     "Source": "Source",
+     "Source Port": "",
+     "Destination": "FL 9"
+    },
+    {
+     "Source": "FL 9",
+     "Source Port": "",
+     "Destination": "steam trap"
+    },
+    {
+     "Source": "FL 4",
+     "Source Port": "",
+     "Destination": "Well_3"
+    }
+   ]
+  },
+  "get_connections": {
+   "ok": true,
+   "result": {
+    "FL": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL 1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 2",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 2": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL 4",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL 3": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Well_2",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL 2",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL 2": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Well_1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "steam trap": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "",
+     "Top Port": "FL",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Source": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL 9",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL 9": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "steam trap",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL 4": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Well_3",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    }
+   }
+  },
+  "networksimulation.get_conditions": {
+   "ok": true,
+   "result": {
+    "Well_1:Completion": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "Well_1",
+     "BoundaryNodeName": "Completion",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 121.11111111111109,
+     "Pressure": 103.42135939752531,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "Completion",
+     "IsBottomCompletion": false
+    },
+    "Well_3:Completion": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "Well_3",
+     "BoundaryNodeName": "Completion",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 121.11111111111109,
+     "Pressure": 103.42135939752531,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "Completion",
+     "IsBottomCompletion": false
+    },
+    "Well_2:Completion": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "Well_2",
+     "BoundaryNodeName": "Completion",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 121.11111111111109,
+     "Pressure": 103.42135939752531,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "Completion",
+     "IsBottomCompletion": false
+    },
+    "Source": {
+     "BoundaryNodeType": "Source",
+     "WellName": null,
+     "BoundaryNodeName": "Source",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 317.7777777777778,
+     "Pressure": 110.31611669069365,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": 0.0,
+     "OGR": null,
+     "GLR": 0.0,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 100.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    }
+   }
+  }
+ },
+ "about": {
+  "WebAPIVersion": "2023.1.615.0",
+  "ToolkitVersion": "2023.1",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_ls0tseyo\\CSN_311_Steam Injection Network.pips",
+  "UnitSystem": "PIPESIM_METRIC",
+  "UiUnitSystem": "PIPESIM_FIELD"
+ },
+ "baseline": {
+  "state": "Completed",
+  "summary": {
+   "Info": [
+    "2026-11-04T07:51:32.599Z    Beginning simulation...",
+    "2026-11-04T07:51:32.597Z    Running with 6 cores",
+    "2026-11-04T07:51:45.529Z    Solver converged to a solution.",
+    "2026-11-04T07:51:45.554Z    Finished simulation"
+   ],
+   "Error": [],
+   "Warning": []
+  },
+  "messages": [
+   "2026-11-04T07:51:32.704Z    Service starting...",
+   "2026-11-04T07:51:32.735Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T07:51:32.957Z    Service listening at 'net.pipe://localhost/pipe/6ca87589295e47d0811acdefc808f19e'...",
+   "2026-11-04T07:51:33.051Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\15632",
+   "2026-11-04T07:51:33.051Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\15632\\CSN_311_Steam Injection Network.tnt (6)",
+   "2026-11-04T07:51:33.106Z    .................................................................................... ",
+   "2026-11-04T07:51:33.110Z    Processing branch Well_3.. ",
+   "2026-11-04T07:51:33.112Z    Processing branch Well_2.. ",
+   "2026-11-04T07:51:33.114Z    Processing branch Source.. ",
+   "2026-11-04T07:51:33.116Z    Processing branch Well_1.. ",
+   "2026-11-04T07:51:33.118Z    Processing branch J 1_J 2.",
+   "2026-11-04T07:51:33.118Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T07:51:33.342Z    ",
+   "2026-11-04T07:51:33.761Z     OUTNET: DPs mismatch:  -1785.8     <>  -1786.5     :   1.3422     +   764.81     + -0.32530E-02 +  -2555.3     +   0.0000     +   2.6468    ",
+   "2026-11-04T07:51:33.761Z     OUTNET: DPs mismatch:  -1785.8     <>  -1786.5     :   1.3422     +   764.81     + -0.32530E-02 +  -2555.3     +   0.0000     +   2.6468    ",
+   "2026-11-04T07:51:33.761Z     extract_branch_results: DPs mismatch 1:   -.6536539823907788       -1786.503203720211       -1785.849549737821",
+   "2026-11-04T07:51:33.761Z     extract_branch_results: DPs mismatch 2:   -.6536539823907788       -1786.503203720211       -1785.849549737821",
+   "2026-11-04T07:51:33.761Z     Iteration   1 P error :  66.62 %, F error : 189.18 %, L error :   0.00 %",
+   "2026-11-04T07:51:34.062Z     Iteration   2 P error :  40.69 %, F error :   3.76 %, L error :   0.00 %",
+   "2026-11-04T07:51:34.383Z     Iteration   3 P error :  40.85 %, F error :   2.71 %, L error :   0.00 %",
+   "2026-11-04T07:51:34.632Z     Iteration   4 P error :  25.73 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:51:34.777Z     Iteration   5 P error :  25.07 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:51:35.121Z     Iteration   6 P error :  27.62 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:51:35.162Z    ",
+   "2026-11-04T07:51:35.162Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 22 iterations.",
+   "2026-11-04T07:51:35.206Z     Iteration   7 P error :  48.14 %, F error :   0.17 %, L error :   0.00 %",
+   "2026-11-04T07:51:35.351Z     Iteration   8 P error :  24.32 %, F error :   0.17 %, L error :   0.00 %",
+   "2026-11-04T07:51:35.484Z     Iteration   9 P error :  21.10 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:51:35.539Z     Iteration  10 P error :  11.92 %, F error :   0.13 %, L error :   0.00 %",
+   "2026-11-04T07:51:35.539Z     Boundary node \"Source\" has been switched off as the node connecting branch \"Source\"is skipped.",
+   "2026-11-04T07:51:35.568Z    ",
+   "2026-11-04T07:51:35.568Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 22 iterations.",
+   "2026-11-04T07:51:35.572Z    ",
+   "2026-11-04T07:51:35.572Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 22 iterations.",
+   "2026-11-04T07:51:35.645Z     Iteration  11 P error :  66.56 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:51:35.645Z     Boundary node \"Source\" has been switched off as the node connecting branch \"Source\"is skipped.",
+   "2026-11-04T07:51:35.676Z    ",
+   "2026-11-04T07:51:35.676Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 24 iterations.",
+   "2026-11-04T07:51:35.696Z     Iteration  12 P error :  50.17 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:51:35.991Z     Iteration  13 P error :  67.77 %, F error :  22.54 %, L error :   0.00 %",
+   "2026-11-04T07:51:36.359Z     Iteration  14 P error :  68.40 %, F error :   3.70 %, L error :   0.00 %",
+   "2026-11-04T07:51:36.553Z     Iteration  15 P error :  35.01 %, F error :  36.11 %, L error :   0.00 %",
+   "2026-11-04T07:51:36.606Z     Iteration  16 P error :  10.91 %, F error :   0.04 %, L error :   0.00 %",
+   "2026-11-04T07:51:36.607Z     Boundary node \"Source\" has been switched off as the node connecting branch \"Source\"is skipped.",
+   "2026-11-04T07:51:36.640Z    ",
+   "2026-11-04T07:51:36.640Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 24 iterations.",
+   "2026-11-04T07:51:36.643Z    ",
+   "2026-11-04T07:51:36.643Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 24 iterations.",
+   "2026-11-04T07:51:36.828Z     Iteration  17 P error :  66.62 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:51:36.869Z    ",
+   "2026-11-04T07:51:36.869Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 22 iterations.",
+   "2026-11-04T07:51:36.888Z     Iteration  18 P error :  47.97 %, F error :  20.54 %, L error :   0.00 %",
+   "2026-11-04T07:51:37.143Z     Iteration  19 P error :  59.77 %, F error :   0.23 %, L error :   0.00 %",
+   "2026-11-04T07:51:37.305Z     Iteration  20 P error :  48.70 %, F error :   0.25 %, L error :   0.00 %",
+   "2026-11-04T07:51:37.463Z     Iteration  21 P error :  31.67 %, F error :   0.06 %, L error :   0.00 %",
+   "2026-11-04T07:51:37.501Z    ",
+   "2026-11-04T07:51:37.501Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 19 iterations.",
+   "2026-11-04T07:51:37.555Z     Iteration  22 P error :  48.15 %, F error :   0.24 %, L error :   0.00 %",
+   "2026-11-04T07:51:37.595Z    ",
+   "2026-11-04T07:51:37.595Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 22 iterations.",
+   "2026-11-04T07:51:37.836Z     Iteration  23 P error :  47.79 %, F error :   0.21 %, L error :   0.00 %",
+   "2026-11-04T07:51:37.948Z     Iteration  24 P error :  27.15 %, F error :   0.02 %, L error :   0.00 %",
+   "2026-11-04T07:51:38.069Z     Iteration  25 P error :  40.18 %, F error :   0.02 %, L error :   0.00 %",
+   "2026-11-04T07:51:38.129Z     Iteration  26 P error :  12.31 %, F error :   0.08 %, L error :   0.00 %",
+   "2026-11-04T07:51:38.344Z     Iteration  27 P error :  25.08 %, F error :   0.07 %, L error :   0.00 %",
+   "2026-11-04T07:51:38.387Z    ",
+   "2026-11-04T07:51:38.388Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 24 iterations.",
+   "2026-11-04T07:51:38.437Z     Iteration  28 P error :  48.44 %, F error :   0.13 %, L error :   0.00 %",
+   "2026-11-04T07:51:38.576Z     Iteration  29 P error :  22.89 %, F error :   0.12 %, L error :   0.00 %",
+   "2026-11-04T07:51:38.809Z     Iteration  30 P error :  22.34 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:51:38.954Z     Iteration  31 P error :  17.63 %, F error :   0.03 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.080Z     Iteration  32 P error :  15.72 %, F error :   0.02 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.151Z     Iteration  33 P error :   9.75 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.194Z    ",
+   "2026-11-04T07:51:39.195Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 24 iterations.",
+   "2026-11-04T07:51:39.305Z     Iteration  34 P error :  63.64 %, F error :   0.44 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.336Z     Iteration  35 P error :  27.98 %, F error :   0.49 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.395Z     Iteration  36 P error :   4.55 %, F error :   0.04 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.455Z     Iteration  37 P error :   5.04 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.496Z    ",
+   "2026-11-04T07:51:39.496Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 22 iterations.",
+   "2026-11-04T07:51:39.537Z     Iteration  38 P error :  48.16 %, F error :   0.04 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.567Z     Iteration  39 P error :   7.19 %, F error :   0.02 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.626Z     Iteration  40 P error :   5.82 %, F error :   0.03 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.683Z     Iteration  41 P error :  10.99 %, F error :   0.05 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.732Z     Iteration  42 P error :   6.69 %, F error :   0.08 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.781Z     Iteration  43 P error :   7.21 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.820Z     Iteration  44 P error :   5.34 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.859Z     Iteration  45 P error :   5.31 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.908Z     Iteration  46 P error :   8.34 %, F error :   0.02 %, L error :   0.00 %",
+   "2026-11-04T07:51:39.958Z     Iteration  47 P error :  12.15 %, F error :   0.07 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.048Z     Iteration  48 P error :  51.68 %, F error :   0.18 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.096Z     Iteration  49 P error :  11.78 %, F error :   0.15 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.143Z     Iteration  50 P error :  11.39 %, F error :   0.02 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.225Z     Iteration  51 P error :  32.78 %, F error :   0.06 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.273Z     Iteration  52 P error :  15.38 %, F error :   0.08 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.320Z     Iteration  53 P error :  36.86 %, F error :   0.02 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.370Z     Iteration  54 P error :  14.21 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.440Z     Iteration  55 P error :  47.54 %, F error :   0.08 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.490Z     Iteration  56 P error :  10.67 %, F error :   0.21 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.550Z     Iteration  57 P error :  21.45 %, F error :   0.15 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.580Z    ",
+   "2026-11-04T07:51:40.580Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 20 iterations.",
+   "2026-11-04T07:51:40.640Z     Iteration  58 P error :  48.21 %, F error :   0.11 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.695Z     Iteration  59 P error :  37.45 %, F error :   0.12 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.794Z     Iteration  60 P error :  27.32 %, F error :   0.21 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.844Z     Iteration  61 P error :   6.72 %, F error :   0.06 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.894Z     Iteration  62 P error :   7.24 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.944Z     Iteration  63 P error :  10.44 %, F error :   0.02 %, L error :   0.00 %",
+   "2026-11-04T07:51:40.980Z    ",
+   "2026-11-04T07:51:40.980Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 19 iterations.",
+   "2026-11-04T07:51:41.028Z     Iteration  64 P error :  48.28 %, F error :   0.07 %, L error :   0.00 %",
+   "2026-11-04T07:51:41.076Z     Iteration  65 P error :  13.50 %, F error :   0.07 %, L error :   0.00 %",
+   "2026-11-04T07:51:41.125Z     Iteration  66 P error :   8.37 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:51:41.173Z     Iteration  67 P error :   8.21 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:51:41.231Z     Iteration  68 P error :  27.42 %, F error :   0.05 %, L error :   0.00 %",
+   "2026-11-04T07:51:41.280Z     Iteration  69 P error :   2.09 %, F error :   0.07 %, L error :   0.00 %",
+   "2026-11-04T07:51:41.712Z     Iteration  70 P error :  30.23 %, F error :   0.08 %, L error :   0.00 %",
+   "2026-11-04T07:51:41.712Z     Boundary node \"Source\" has been switched off as the node connecting branch \"Source\"is skipped.",
+   "2026-11-04T07:51:41.741Z    ",
+   "2026-11-04T07:51:41.741Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 24 iterations.",
+   "2026-11-04T07:51:41.746Z    ",
+   "2026-11-04T07:51:41.746Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 24 iterations.",
+   "2026-11-04T07:51:41.915Z     Iteration  71 P error :  66.62 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:51:42.024Z     Iteration  72 P error :  45.41 %, F error :  22.38 %, L error :   0.00 %",
+   "2026-11-04T07:51:42.272Z     Iteration  73 P error :  27.95 %, F error :   7.04 %, L error :   0.00 %",
+   "2026-11-04T07:51:42.272Z     Boundary node \"Source\" has been switched off as the node connecting branch \"Source\"is skipped.",
+   "2026-11-04T07:51:42.303Z    ",
+   "2026-11-04T07:51:42.303Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 25 iterations.",
+   "2026-11-04T07:51:42.308Z    ",
+   "2026-11-04T07:51:42.308Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 25 iterations.",
+   "2026-11-04T07:51:42.495Z     Iteration  74 P error :  66.63 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:51:42.811Z     Iteration  75 P error :  40.94 %, F error :  19.56 %, L error :   0.00 %",
+   "2026-11-04T07:51:43.367Z     Iteration  76 P error :  19.92 %, F error :  11.68 %, L error :   0.00 %",
+   "2026-11-04T07:51:43.645Z     Iteration  77 P error :  21.67 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:51:43.887Z     Iteration  78 P error :  18.92 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:51:44.049Z     Iteration  79 P error :  20.06 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:51:44.246Z     Iteration  80 P error :  16.51 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:51:44.426Z     Iteration  81 P error :  19.40 %, F error :   0.06 %, L error :   0.00 %",
+   "2026-11-04T07:51:44.467Z    ",
+   "2026-11-04T07:51:44.467Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 22 iterations.",
+   "2026-11-04T07:51:44.503Z     Iteration  82 P error :  48.12 %, F error :   0.06 %, L error :   0.00 %",
+   "2026-11-04T07:51:44.538Z     Iteration  83 P error :  15.52 %, F error :   0.05 %, L error :   0.00 %",
+   "2026-11-04T07:51:44.601Z     Iteration  84 P error :  15.06 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:51:44.658Z     Iteration  85 P error :   8.84 %, F error :   0.11 %, L error :   0.00 %",
+   "2026-11-04T07:51:44.699Z    ",
+   "2026-11-04T07:51:44.699Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 21 iterations.",
+   "2026-11-04T07:51:44.760Z     Iteration  86 P error :  48.11 %, F error :   0.08 %, L error :   0.00 %",
+   "2026-11-04T07:51:44.823Z     Iteration  87 P error :  15.11 %, F error :   0.18 %, L error :   0.00 %",
+   "2026-11-04T07:51:44.880Z     Iteration  88 P error :   8.90 %, F error :   0.04 %, L error :   0.00 %",
+   "2026-11-04T07:51:44.937Z     Iteration  89 P error :   7.44 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:51:44.996Z     Iteration  90 P error :   4.14 %, F error :   0.02 %, L error :   0.00 %",
+   "2026-11-04T07:51:45.053Z     Iteration  91 P error :   4.76 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:51:45.111Z     Iteration  92 P error :   1.78 %, F error :   0.03 %, L error :   0.00 %",
+   "2026-11-04T07:51:45.112Z    ",
+   "2026-11-04T07:51:45.112Z    ",
+   "2026-11-04T07:51:45.112Z     Converged.                                                                     ",
+   "2026-11-04T07:51:45.112Z    ",
+   "2026-11-04T07:51:45.112Z    WARNING: node J 1 has flow residual of  0.79458     lb/s (  1.6354%)",
+   "2026-11-04T07:51:45.112Z     ... network converged at iteration  92, final rms error :   0.177936E-01",
+   "2026-11-04T07:51:45.112Z      Start Post-Processing results",
+   "2026-11-04T07:51:45.195Z    ",
+   "2026-11-04T07:51:45.196Z       Elapsed time:",
+   "2026-11-04T07:51:45.196Z    ",
+   "2026-11-04T07:51:45.196Z       Network Executive     12.15",
+   "2026-11-04T07:51:45.196Z       PIPESIM sub-tasks      0.00",
+   "2026-11-04T07:51:45.196Z                         ---------",
+   "2026-11-04T07:51:45.196Z                 Total       12.15",
+   "2026-11-04T07:51:45.196Z    ",
+   "2026-11-04T07:51:45.196Z       CPU time:",
+   "2026-11-04T07:51:45.196Z    ",
+   "2026-11-04T07:51:45.196Z               User task     11.28",
+   "2026-11-04T07:51:45.196Z               System         1.19",
+   "2026-11-04T07:51:45.196Z                         ---------",
+   "2026-11-04T07:51:45.196Z                 Total       12.47",
+   "2026-11-04T07:51:45.201Z     Disposing communication agent.",
+   "2026-11-04T07:51:45.201Z     Disposing communication agent.",
+   "2026-11-04T07:51:45.201Z     Disposing communication agent.",
+   "2026-11-04T07:51:45.201Z     Disposing communication agent.",
+   "2026-11-04T07:51:45.204Z     Disposing communication agent.",
+   "2026-11-04T07:51:45.534Z     Disposing communication agent."
+  ],
+  "system": {},
+  "node": {
+   "Pressure": {
+    "Unit": "bara",
+    "Completion": 103.42135939617293,
+    "Well_2": 105.69112835394269,
+    "J 1": 109.18859965083416,
+    "Well_3": 105.85521548862076,
+    "J 2": 109.07904323493116,
+    "steam trap": 110.10157972923109,
+    "Well_1": 108.97136663389298,
+    "Source": 110.31611669069365
+   },
+   "Temperature": {
+    "Unit": "degC",
+    "Completion": 313.4818631541466,
+    "Well_2": 315.09380161244644,
+    "J 1": 317.52578764592215,
+    "Well_3": 315.2092878685802,
+    "J 2": 317.45053255808034,
+    "steam trap": 318.1506453811006,
+    "Well_1": 317.3765113969829,
+    "Source": 318.29689212394794
+   },
+   "VolumeFlowrateLiquidStockTank": {
+    "Unit": "sm3/d",
+    "Completion": 296.88435524012186,
+    "Well_2": 296.88435524012186,
+    "J 1": 937.7242084373614,
+    "Well_3": 314.3929838256364,
+    "J 2": 611.2773390659096,
+    "steam trap": 937.7242084373614,
+    "Well_1": 326.10606357745365,
+    "Source": 1172.495740949455
+   },
+   "VolumeFlowrateOilStockTank": {
+    "Unit": "sm3/d",
+    "Completion": 0.0,
+    "Well_2": 0.0,
+    "J 1": 0.0,
+    "Well_3": 0.0,
+    "J 2": 0.0,
+    "steam trap": 0.0,
+    "Well_1": 0.0,
+    "Source": 0.0
+   },
+   "VolumeFlowrateGasStockTank": {
+    "Unit": "mmsm3/d",
+    "Completion": 0.0,
+    "Well_2": 0.0,
+    "J 1": 0.0,
+    "Well_3": 0.0,
+    "J 2": 0.0,
+    "steam trap": 0.0,
+    "Well_1": 0.0,
+    "Source": 0.0
+   },
+   "VolumeFlowrateWaterStockTank": {
+    "Unit": "sm3/d",
+    "Completion": 296.88435524012186,
+    "Well_2": 296.88435524012186,
+    "J 1": 937.7242084373614,
+    "Well_3": 314.3929838256364,
+    "J 2": 611.2773390659096,
+    "steam trap": 937.7242084373614,
+    "Well_1": 326.10606357745365,
+    "Source": 1172.495740949455
+   }
+  }
+ },
+ "seconds": 19.7
+}

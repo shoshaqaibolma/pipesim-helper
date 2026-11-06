@@ -1,0 +1,11 @@
+# Regression run after the latest changes: every real-PIPESIM test, then the two main agent conversations
+# (the agent tests start/stop llama-server via start_llm.bat). Models in %TEMP% / runs\; charts to runner\artifacts\.
+"D:\Program\Pipesim toolkit\python.exe" tests\real_build_test.py
+"D:\Program\Pipesim toolkit\python.exe" tests\real_pipeline_test.py
+"D:\Program\Pipesim toolkit\python.exe" tests\real_project_study.py
+"D:\Program\Pipesim toolkit\python.exe" tests\real_gaslift_test.py
+"D:\Program\Pipesim toolkit\python.exe" tests\real_nodal_test.py
+"D:\Program\Pipesim toolkit\python.exe" tests\real_facility_test.py
+"D:\Program\Pipesim toolkit\python.exe" tests\real_optimize_test.py
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\field_project.txt
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py - tests\scripts\gaslift_allocation.txt

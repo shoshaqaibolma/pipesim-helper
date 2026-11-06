@@ -1,0 +1,732 @@
+{
+ "TF_M2A_Water_Pipeline": {
+  "type": "pipeline (P/T profile)",
+  "notes": [
+   "fluid Water_fluid: GLR 0 converted to GOR 0"
+  ],
+  "pt_conditions": {
+   "Description": "",
+   "InletPressure": 82.73708751802033,
+   "FlowRateType": "LiquidFlowRate",
+   "LiquidFlowRate": 953.9238239999976,
+   "CalculationVariableType": "calcOutletPressure"
+  },
+  "original_state": "Completed",
+  "project": {
+   "name": "TF_M2A_Water Pipeline.pips",
+   "fluids": [
+    {
+     "name": "Water_fluid",
+     "type": "black_oil",
+     "api": 7.2254902,
+     "gor": 0,
+     "water_cut": 100.0,
+     "gas_sg": 0.6636
+    }
+   ],
+   "sources": [
+    {
+     "name": "MySource",
+     "fluid": "Water_fluid",
+     "temperature": 15.555555555555657,
+     "liquid_rate": 953.9238239999976
+    }
+   ],
+   "sinks": [
+    {
+     "name": "MySink",
+     "pressure": 1.0
+    }
+   ],
+   "junctions": [],
+   "flowlines": [
+    {
+     "name": "FL",
+     "from": "MySource",
+     "to": "MySink",
+     "length": 6096.0,
+     "id": 77.9272,
+     "elevation_change": 304.8
+    }
+   ],
+   "ambient_temperature": 15.555555600000048
+  },
+  "build": {
+   "boundary_conditions": {
+    "MySink": "ok",
+    "MySource": "ok"
+   },
+   "validation": []
+  },
+  "rebuilt_state": "Completed",
+  "level1": [
+   {
+    "node": "system",
+    "variable": "SystemInletPressure",
+    "unit": "bara",
+    "original": 82.7371,
+    "rebuilt": 82.7371,
+    "diff_pct": 0.0
+   },
+   {
+    "node": "system",
+    "variable": "SystemOutletPressure",
+    "unit": "bara",
+    "original": 7.5518,
+    "rebuilt": 12.7903,
+    "diff_pct": 69.37
+   },
+   {
+    "node": "system",
+    "variable": "SystemOutletTemperature",
+    "unit": "degC",
+    "original": -5.6202,
+    "rebuilt": 16.4505,
+    "diff_pct": 392.7
+   },
+   {
+    "node": "system",
+    "variable": "InletVolumeFlowrateLiquid",
+    "unit": "sm3/d",
+    "original": 947.0594,
+    "rebuilt": 950.1119,
+    "diff_pct": 0.32
+   },
+   {
+    "node": "system",
+    "variable": "OutletVolumeFlowrateLiquid",
+    "unit": "sm3/d",
+    "original": 950.5986,
+    "rebuilt": 953.5214,
+    "diff_pct": 0.31
+   },
+   {
+    "node": "system",
+    "variable": "OutletVolumeFlowrateGas",
+    "unit": "mmsm3/d",
+    "original": 0.0,
+    "rebuilt": 0.0,
+    "diff_pct": 0.0
+   },
+   {
+    "node": "system",
+    "variable": "SystemPressureLoss",
+    "unit": "bar",
+    "original": 75.1853,
+    "rebuilt": 69.9468,
+    "diff_pct": -6.97
+   },
+   {
+    "node": "system",
+    "variable": "TotalLiquidHoldup",
+    "unit": "sm3",
+    "original": 29.1109,
+    "rebuilt": 29.1123,
+    "diff_pct": 0.0
+   }
+  ],
+  "copied_details": 35,
+  "rebuilt2_state": "Completed",
+  "level2": [
+   {
+    "node": "system",
+    "variable": "SystemInletPressure",
+    "unit": "bara",
+    "original": 82.7371,
+    "rebuilt": 82.7371,
+    "diff_pct": 0.0
+   },
+   {
+    "node": "system",
+    "variable": "SystemOutletPressure",
+    "unit": "bara",
+    "original": 7.5518,
+    "rebuilt": 10.0831,
+    "diff_pct": 33.52
+   },
+   {
+    "node": "system",
+    "variable": "SystemOutletTemperature",
+    "unit": "degC",
+    "original": -5.6202,
+    "rebuilt": 16.5155,
+    "diff_pct": 393.86
+   },
+   {
+    "node": "system",
+    "variable": "InletVolumeFlowrateLiquid",
+    "unit": "sm3/d",
+    "original": 947.0594,
+    "rebuilt": 950.1119,
+    "diff_pct": 0.32
+   },
+   {
+    "node": "system",
+    "variable": "OutletVolumeFlowrateLiquid",
+    "unit": "sm3/d",
+    "original": 950.5986,
+    "rebuilt": 953.6599,
+    "diff_pct": 0.32
+   },
+   {
+    "node": "system",
+    "variable": "OutletVolumeFlowrateGas",
+    "unit": "mmsm3/d",
+    "original": 0.0,
+    "rebuilt": 0.0,
+    "diff_pct": 0.0
+   },
+   {
+    "node": "system",
+    "variable": "SystemPressureLoss",
+    "unit": "bar",
+    "original": 75.1853,
+    "rebuilt": 72.654,
+    "diff_pct": -3.37
+   },
+   {
+    "node": "system",
+    "variable": "TotalLiquidHoldup",
+    "unit": "sm3",
+    "original": 29.1109,
+    "rebuilt": 29.1109,
+    "diff_pct": 0.0
+   }
+  ]
+ },
+ "TF_M2B_Gas_Pipeline": {
+  "type": "pipeline (P/T profile)",
+  "notes": [],
+  "pt_conditions": {
+   "Description": "",
+   "InletPressure": 82.73708751802033,
+   "OutletPressure": 41.368543759010166,
+   "FlowRateType": "GasFlowRate",
+   "GasFlowRate": 0.28316846592009975,
+   "LiquidFlowRate": 953.9238239999976,
+   "CalculationVariableType": "calcFlowrate"
+  },
+  "original_state": "Completed",
+  "project": {
+   "name": "TF_M2B_Gas Pipeline.pips",
+   "fluids": [
+    {
+     "name": "Gas",
+     "type": "gas",
+     "gas_sg": 0.64,
+     "ogr": 0,
+     "wgr": 0,
+     "api": 30.0
+    }
+   ],
+   "sources": [
+    {
+     "name": "MySource",
+     "fluid": "Gas",
+     "temperature": 15.555555555555657,
+     "liquid_rate": 953.9238239999976
+    }
+   ],
+   "sinks": [
+    {
+     "name": "MySink",
+     "pressure": 41.368543759010166
+    }
+   ],
+   "junctions": [],
+   "flowlines": [
+    {
+     "name": "FL",
+     "from": "MySource",
+     "to": "MySink",
+     "length": 6096.0,
+     "id": 77.9272,
+     "elevation_change": 304.8
+    }
+   ],
+   "ambient_temperature": 15.555555600000048
+  },
+  "build": {
+   "boundary_conditions": {
+    "MySink": "ok",
+    "MySource": "ok"
+   },
+   "validation": []
+  },
+  "rebuilt_state": "Completed",
+  "level1": [
+   {
+    "node": "system",
+    "variable": "SystemInletPressure",
+    "unit": "bara",
+    "original": 82.7371,
+    "rebuilt": 82.7371,
+    "diff_pct": 0.0
+   },
+   {
+    "node": "system",
+    "variable": "SystemOutletPressure",
+    "unit": "bara",
+    "original": 41.3884,
+    "rebuilt": 41.3673,
+    "diff_pct": -0.05
+   },
+   {
+    "node": "system",
+    "variable": "SystemOutletTemperature",
+    "unit": "degC",
+    "original": -0.5076,
+    "rebuilt": 12.4309,
+    "diff_pct": 2549.0
+   },
+   {
+    "node": "system",
+    "variable": "InletVolumeFlowrateLiquid",
+    "unit": "sm3/d",
+    "original": 0.0,
+    "rebuilt": 0.0,
+    "diff_pct": 0.0
+   },
+   {
+    "node": "system",
+    "variable": "OutletVolumeFlowrateLiquid",
+    "unit": "sm3/d",
+    "original": 0.0,
+    "rebuilt": 0.0,
+    "diff_pct": 0.0
+   },
+   {
+    "node": "system",
+    "variable": "OutletVolumeFlowrateGas",
+    "unit": "mmsm3/d",
+    "original": 0.308,
+    "rebuilt": 0.3227,
+    "diff_pct": 4.75
+   },
+   {
+    "node": "system",
+    "variable": "SystemPressureLoss",
+    "unit": "bar",
+    "original": 41.3487,
+    "rebuilt": 41.3698,
+    "diff_pct": 0.05
+   },
+   {
+    "node": "system",
+    "variable": "TotalLiquidHoldup",
+    "unit": "sm3",
+    "original": 0.0,
+    "rebuilt": 0.0,
+    "diff_pct": 0.0
+   }
+  ],
+  "copied_details": 36,
+  "rebuilt2_state": "Completed",
+  "level2": [
+   {
+    "node": "system",
+    "variable": "SystemInletPressure",
+    "unit": "bara",
+    "original": 82.7371,
+    "rebuilt": 82.7371,
+    "diff_pct": 0.0
+   },
+   {
+    "node": "system",
+    "variable": "SystemOutletPressure",
+    "unit": "bara",
+    "original": 41.3884,
+    "rebuilt": 41.371,
+    "diff_pct": -0.04
+   },
+   {
+    "node": "system",
+    "variable": "SystemOutletTemperature",
+    "unit": "degC",
+    "original": -0.5076,
+    "rebuilt": 12.39,
+    "diff_pct": 2540.94
+   },
+   {
+    "node": "system",
+    "variable": "InletVolumeFlowrateLiquid",
+    "unit": "sm3/d",
+    "original": 0.0,
+    "rebuilt": 0.0,
+    "diff_pct": 0.0
+   },
+   {
+    "node": "system",
+    "variable": "OutletVolumeFlowrateLiquid",
+    "unit": "sm3/d",
+    "original": 0.0,
+    "rebuilt": 0.0,
+    "diff_pct": 0.0
+   },
+   {
+    "node": "system",
+    "variable": "OutletVolumeFlowrateGas",
+    "unit": "mmsm3/d",
+    "original": 0.308,
+    "rebuilt": 0.3032,
+    "diff_pct": -1.58
+   },
+   {
+    "node": "system",
+    "variable": "SystemPressureLoss",
+    "unit": "bar",
+    "original": 41.3487,
+    "rebuilt": 41.3661,
+    "diff_pct": 0.04
+   },
+   {
+    "node": "system",
+    "variable": "TotalLiquidHoldup",
+    "unit": "sm3",
+    "original": 0.0,
+    "rebuilt": 0.0,
+    "diff_pct": 0.0
+   }
+  ]
+ },
+ "TF_M2C_Multiphase_Pipeline": {
+  "type": "pipeline (P/T profile)",
+  "notes": [],
+  "pt_conditions": {
+   "Description": "",
+   "InletPressure": 330.9483500720813,
+   "OutletPressure": 41.368543759010166,
+   "FlowRateType": "LiquidFlowRate",
+   "GasFlowRate": 0.28316846592009975,
+   "LiquidFlowRate": 1589.873039999996,
+   "CalculationVariableType": "calcOutletPressure"
+  },
+  "original_state": "Completed",
+  "project": {
+   "name": "TF_M2C_Multiphase Pipeline.pips",
+   "fluids": [
+    {
+     "name": "Multiphase",
+     "type": "black_oil",
+     "api": 30.0,
+     "gor": 142.4860772128069,
+     "water_cut": 0,
+     "gas_sg": 0.64
+    }
+   ],
+   "sources": [
+    {
+     "name": "MySource",
+     "fluid": "Multiphase",
+     "temperature": 15.555555555555657,
+     "liquid_rate": 1589.873039999996
+    }
+   ],
+   "sinks": [
+    {
+     "name": "MySink",
+     "pressure": 41.368543759010166
+    }
+   ],
+   "junctions": [],
+   "flowlines": [
+    {
+     "name": "FL",
+     "from": "MySource",
+     "to": "MySink",
+     "length": 6096.0,
+     "id": 77.9272,
+     "elevation_change": 304.8
+    }
+   ],
+   "ambient_temperature": 15.555555600000048
+  },
+  "build": {
+   "boundary_conditions": {
+    "MySink": "ok",
+    "MySource": "ok"
+   },
+   "validation": []
+  },
+  "rebuilt_state": "Completed",
+  "level1": [
+   {
+    "node": "system",
+    "variable": "SystemInletPressure",
+    "unit": "bara",
+    "original": 330.9484,
+    "rebuilt": 330.9484,
+    "diff_pct": 0.0
+   },
+   {
+    "node": "system",
+    "variable": "SystemOutletPressure",
+    "unit": "bara",
+    "original": 67.8522,
+    "rebuilt": 85.9224,
+    "diff_pct": 26.63
+   },
+   {
+    "node": "system",
+    "variable": "SystemOutletTemperature",
+    "unit": "degC",
+    "original": 20.2099,
+    "rebuilt": 18.3836,
+    "diff_pct": -9.04
+   },
+   {
+    "node": "system",
+    "variable": "InletVolumeFlowrateLiquid",
+    "unit": "sm3/d",
+    "original": 2097.9097,
+    "rebuilt": 2097.9097,
+    "diff_pct": 0.0
+   },
+   {
+    "node": "system",
+    "variable": "OutletVolumeFlowrateLiquid",
+    "unit": "sm3/d",
+    "original": 1703.6827,
+    "rebuilt": 1734.2015,
+    "diff_pct": 1.79
+   },
+   {
+    "node": "system",
+    "variable": "OutletVolumeFlowrateGas",
+    "unit": "mmsm3/d",
+    "original": 0.1731,
+    "rebuilt": 0.1579,
+    "diff_pct": -8.78
+   },
+   {
+    "node": "system",
+    "variable": "SystemPressureLoss",
+    "unit": "bar",
+    "original": 263.0962,
+    "rebuilt": 245.026,
+    "diff_pct": -6.87
+   },
+   {
+    "node": "system",
+    "variable": "TotalLiquidHoldup",
+    "unit": "sm3",
+    "original": 26.2172,
+    "rebuilt": 26.679,
+    "diff_pct": 1.76
+   }
+  ],
+  "copied_details": 35,
+  "rebuilt2_state": "Completed",
+  "level2": [
+   {
+    "node": "system",
+    "variable": "SystemInletPressure",
+    "unit": "bara",
+    "original": 330.9484,
+    "rebuilt": 330.9484,
+    "diff_pct": 0.0
+   },
+   {
+    "node": "system",
+    "variable": "SystemOutletPressure",
+    "unit": "bara",
+    "original": 67.8522,
+    "rebuilt": 71.4328,
+    "diff_pct": 5.28
+   },
+   {
+    "node": "system",
+    "variable": "SystemOutletTemperature",
+    "unit": "degC",
+    "original": 20.2099,
+    "rebuilt": 18.2218,
+    "diff_pct": -9.84
+   },
+   {
+    "node": "system",
+    "variable": "InletVolumeFlowrateLiquid",
+    "unit": "sm3/d",
+    "original": 2097.9097,
+    "rebuilt": 2097.9097,
+    "diff_pct": 0.0
+   },
+   {
+    "node": "system",
+    "variable": "OutletVolumeFlowrateLiquid",
+    "unit": "sm3/d",
+    "original": 1703.6827,
+    "rebuilt": 1707.6071,
+    "diff_pct": 0.23
+   },
+   {
+    "node": "system",
+    "variable": "OutletVolumeFlowrateGas",
+    "unit": "mmsm3/d",
+    "original": 0.1731,
+    "rebuilt": 0.1699,
+    "diff_pct": -1.9
+   },
+   {
+    "node": "system",
+    "variable": "SystemPressureLoss",
+    "unit": "bar",
+    "original": 263.0962,
+    "rebuilt": 259.5156,
+    "diff_pct": -1.36
+   },
+   {
+    "node": "system",
+    "variable": "TotalLiquidHoldup",
+    "unit": "sm3",
+    "original": 26.2172,
+    "rebuilt": 26.3405,
+    "diff_pct": 0.47
+   }
+  ]
+ },
+ "TF_M3A_Base_Oil_Well": {
+  "type": "well (nodal analysis)",
+  "notes": [
+   "original well has a deviation survey; rebuilt well is vertical"
+  ],
+  "completion": {
+   "ReservoirPressure": 248.211262554061,
+   "ReservoirTemperature": 93.33333333333343,
+   "IPRModel": "IPRPIModel",
+   "AssociatedBlackOilFluid": "BOFluid",
+   "FluidEntryType": "SinglePoint",
+   "GeometryProfileType": "Vertical"
+  },
+  "trajectory_rows": 6,
+  "project": {
+   "name": "TF_M3A_Base Oil Well.pips",
+   "fluids": [
+    {
+     "name": "BOFluid",
+     "type": "black_oil",
+     "api": 36.0,
+     "gor": 89.0537982580043,
+     "water_cut": 10.0,
+     "gas_sg": 0.8
+    }
+   ],
+   "wells": [
+    {
+     "name": "W",
+     "fluid": "BOFluid",
+     "reservoir_pressure": 248.211262554061,
+     "reservoir_temperature": 93.33333333333343,
+     "depth": 2682.2400000000002,
+     "tubing_id": 100.53320000000001,
+     "tubing_wall": 6.8834,
+     "ipr": {
+      "model": "pi",
+      "liquid_pi": 18.447326655867215
+     },
+     "casing_id": 190.7794,
+     "casing_wall": 14.147800000000002
+    }
+   ],
+   "sinks": [
+    {
+     "name": "S",
+     "pressure": 20.0
+    }
+   ],
+   "flowlines": [
+    {
+     "name": "F",
+     "from": "W",
+     "to": "S",
+     "length": 10,
+     "id": 150,
+     "elevation_change": 0
+    }
+   ]
+  },
+  "original": {
+   "liquid_rate": 1424.136,
+   "oil_rate": 1281.722,
+   "reservoir_gas_rate": 0.114,
+   "water_rate": 142.414,
+   "bottomhole_pressure": 171.011,
+   "outlet_pressure": 20.0
+  },
+  "steps": [
+   {
+    "step": "rebuilt from the description",
+    "result": {
+     "liquid_rate": 1811.052,
+     "oil_rate": 1629.946,
+     "reservoir_gas_rate": 0.145,
+     "water_rate": 181.105,
+     "bottomhole_pressure": 150.037,
+     "outlet_pressure": 20.0
+    },
+    "note": null
+   },
+   {
+    "step": "+ full fluid settings",
+    "result": {
+     "liquid_rate": 1801.351,
+     "oil_rate": 1621.216,
+     "reservoir_gas_rate": 0.144,
+     "water_rate": 180.135,
+     "bottomhole_pressure": 150.563,
+     "outlet_pressure": 20.0
+    },
+    "note": null
+   },
+   {
+    "step": "+ deviation survey",
+    "result": {
+     "liquid_rate": 1811.052,
+     "oil_rate": 1629.946,
+     "reservoir_gas_rate": 0.145,
+     "water_rate": 181.105,
+     "bottomhole_pressure": 150.037,
+     "outlet_pressure": 20.0
+    },
+    "note": null
+   },
+   {
+    "step": "+ geothermal profile",
+    "result": {
+     "liquid_rate": 1811.052,
+     "oil_rate": 1629.946,
+     "reservoir_gas_rate": 0.145,
+     "water_rate": 181.105,
+     "bottomhole_pressure": 150.037,
+     "outlet_pressure": 20.0
+    },
+    "note": null
+   },
+   {
+    "step": "+ exact tubing/casing lengths",
+    "result": {
+     "outlet_pressure": 20.0
+    },
+    "note": "tubing 2621.28 m, casing 2743.2000000000003 m"
+   },
+   {
+    "step": "+ well settings",
+    "result": {
+     "liquid_rate": 1811.052,
+     "oil_rate": 1629.946,
+     "reservoir_gas_rate": 0.145,
+     "water_rate": 181.105,
+     "bottomhole_pressure": 150.037,
+     "outlet_pressure": 20.0
+    },
+    "note": null
+   },
+   {
+    "step": "+ all of the above",
+    "result": {
+     "outlet_pressure": 20.0
+    },
+    "note": null
+   }
+  ]
+ }
+}

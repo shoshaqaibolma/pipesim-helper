@@ -1,0 +1,5 @@
+Build a new PIPESIM model of a small oil field and study it. Two oil wells, W1 and W2, flow into a manifold J1, then a 5 km trunkline goes to a separator at 15 bara. Black oil: 35 API, GOR 100 sm3/sm3, 20% water cut. W1: reservoir 250 bara, depth 2500 m, PI 10 sm3/d/bar. W2: reservoir 230 bara, depth 2400 m, PI 15 sm3/d/bar. Flowlines from each well to J1: 1.5 km and 0.9 km, 100 mm ID, flat. Trunkline: 152 mm ID, 10 m uphill. Question: how does the field oil rate change if the separator pressure goes from 10 to 30 bara?
+Use the suggested defaults for everything else.
+Yes, the plan is approved. Run it.
+Approved. Run the study and explain the result.
+exit

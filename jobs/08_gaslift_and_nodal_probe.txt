@@ -1,0 +1,4 @@
+# Gas lift performance curve on a built test well (temp folder / runs\), then a read-only probe of nodal analysis,
+# separator ports and equipment units (one built test well in %TEMP%, temp copies of CSN_301 and Nodal_example).
+"D:\Program\Pipesim toolkit\python.exe" tests\real_gaslift_test.py
+"D:\Program\Pipesim toolkit\python.exe" tools\probe_nodal.py "D:\Program\Pipesim2023.1\Case Studies"

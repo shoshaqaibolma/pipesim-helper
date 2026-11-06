@@ -1,0 +1,3 @@
+# boundary-condition probe on the sample network, then record the API and all case studies
+"D:\Program\Pipesim toolkit\python.exe" tools\probe_bc.py "D:\Program\Pipesim2023.1\Case Studies\Network Models\CSN_301_Small Network.pips"
+"D:\Program\Pipesim toolkit\python.exe" tools\introspect.py "D:\Program\Pipesim2023.1\Case Studies" 60

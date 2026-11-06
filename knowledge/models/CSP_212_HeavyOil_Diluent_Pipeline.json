@@ -1,0 +1,586 @@
+{
+ "file": "D:\\Program\\Pipesim2023.1\\Case Studies\\Pipeline Models\\CSP_212_HeavyOil Diluent Pipeline.pips",
+ "components": {
+  "BlackOilFluid": [
+   "diluent",
+   "oil"
+  ],
+  "FlowCorrelation": [
+   "Default",
+   "feed line:Default",
+   "oil pipeline:Default"
+  ],
+  "Flowline": [
+   "feed line",
+   "oil pipeline"
+  ],
+  "Injector": [
+   "diluent"
+  ],
+  "Pump": [
+   "Pump"
+  ],
+  "Sink": [
+   "Sink"
+  ],
+  "Source": [
+   "Manifold"
+  ],
+  "Study": [
+   "Study 1"
+  ]
+ },
+ "values": {
+  "BlackOilFluid|diluent": {
+   "diluent": {
+    "Name": "diluent",
+    "API": 50.0,
+    "DeadOilDensity": 779.6223116042615,
+    "DeadOilTemperature1": 93.3333333333,
+    "DeadOilTemperature2": 15.555560000000014,
+    "DeadOilViscosity1": 0.0006642120219455414,
+    "DeadOilViscosity2": 0.004623183299656131,
+    "DeadOilViscosityCorr": "BeggsAndRobinson",
+    "COFraction": 0.0,
+    "CO2Fraction": 0.0,
+    "H2Fraction": 0.0,
+    "H2SFraction": 0.0,
+    "N2Fraction": 0.0,
+    "GasSpecificGravity": 0.64,
+    "GLR": null,
+    "GOR": 0.0,
+    "GWR": null,
+    "LGR": null,
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "LiveOilViscosityCorr": "ChewandConnaly",
+    "OGR": null,
+    "Richardsonkoiw": 3.8,
+    "Richardsonkwio": 6.6,
+    "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+    "UndersaturatedOilViscosityParA": 0.0239,
+    "UndersaturatedOilViscosityParB": 0.01638,
+    "UseBraunerUllmanEquation": false,
+    "UseDeadOilDensity": false,
+    "UseGasRatio": "GOR",
+    "UserWatercutCutOff": 60.0,
+    "UseWaterRatio": "WaterCut",
+    "VandUserk1": 2.5,
+    "VandUserk2": 0.609,
+    "WaterCut": 0.0,
+    "WaterSpecificGravity": 1.02,
+    "WGR": null,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "BlackOilFluid|oil": {
+   "oil": {
+    "Name": "oil",
+    "API": 16.0,
+    "DeadOilDensity": 959.3318613977863,
+    "DeadOilTemperature1": 93.3333333333,
+    "DeadOilTemperature2": 15.555560000000014,
+    "DeadOilViscosity1": 0.01096763473975516,
+    "DeadOilViscosity2": 4.5161235117923875,
+    "DeadOilViscosityCorr": "BeggsAndRobinson",
+    "COFraction": 0.0,
+    "CO2Fraction": 0.0,
+    "H2Fraction": 0.0,
+    "H2SFraction": 0.0,
+    "N2Fraction": 0.0,
+    "GasSpecificGravity": 0.64,
+    "GLR": null,
+    "GOR": 0.0,
+    "GWR": null,
+    "LGR": null,
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "LiveOilViscosityCorr": "ChewandConnaly",
+    "OGR": null,
+    "Richardsonkoiw": 3.8,
+    "Richardsonkwio": 6.6,
+    "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+    "UndersaturatedOilViscosityParA": 0.0239,
+    "UndersaturatedOilViscosityParB": 0.01638,
+    "UseBraunerUllmanEquation": false,
+    "UseDeadOilDensity": false,
+    "UseGasRatio": "GOR",
+    "UserWatercutCutOff": 60.0,
+    "UseWaterRatio": "WaterCut",
+    "VandUserk1": 2.5,
+    "VandUserk2": 0.609,
+    "WaterCut": 30.0,
+    "WaterSpecificGravity": 1.02,
+    "WGR": null,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "FlowCorrelation|Default": {
+   "Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   },
+   "feed line:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "oil pipeline:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   }
+  },
+  "FlowCorrelation|feed line:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'feed line', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|oil pipeline:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'oil pipeline', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "Flowline|feed line": {
+   "feed line": {
+    "Name": "feed line",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": 0.0,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 3.048,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": 3.048,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 154.051,
+    "Roughness": 0.04572,
+    "WallThickness": 7.112,
+    "Length": 3.048,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|oil pipeline": {
+   "oil pipeline": {
+    "Name": "oil pipeline",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": 0.0,
+    "DetailedModel": true,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": null,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": null,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 10.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 146.3294,
+    "Roughness": 0.04572,
+    "WallThickness": 10.9728,
+    "Length": null,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Injector|diluent": {
+   "diluent": {
+    "Name": "diluent",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": 15.89873039999996,
+    "MassFlowRate": null,
+    "Temperature": 15.555555555555657,
+    "AssociatedBlackOilFluid": "diluent",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "FlowrateType": "LiquidFlowRate",
+    "InjectedFluid": "liquid"
+   }
+  },
+  "Pump|Pump": {
+   "Pump": {
+    "Name": "Pump",
+    "Pressure": null,
+    "Route": "Isothermal",
+    "Power": null,
+    "IsActive": true,
+    "PressureRatio": null,
+    "Efficiency": 100.0,
+    "PressureDifferential": null,
+    "UseCurves": true
+   }
+  },
+  "Sink|Sink": {
+   "Sink": {
+    "Name": "Sink",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 55.15805834534689,
+    "IsActive": true,
+    "FlowrateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Manifold": {
+   "Manifold": {
+    "Name": "Manifold",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 55.15805834534689,
+    "Temperature": 32.222222222222285,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": "oil",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Study|Study 1": {
+   "Study 1": {
+    "Name": "Study 1",
+    "Description": ""
+   }
+  }
+ },
+ "probe": {
+  "about": {
+   "ok": true,
+   "result": {
+    "WebAPIVersion": "2023.1.615.0",
+    "ToolkitVersion": "2023.1",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_7zj6frfa\\CSP_212_HeavyOil Diluent Pipeline.pips",
+    "UnitSystem": "PIPESIM_METRIC",
+    "UiUnitSystem": ""
+   }
+  },
+  "connections": {
+   "ok": true,
+   "result": [
+    {
+     "Source": "Manifold",
+     "Source Port": "",
+     "Destination": "feed line"
+    },
+    {
+     "Source": "feed line",
+     "Source Port": "",
+     "Destination": "diluent"
+    },
+    {
+     "Source": "Pump",
+     "Source Port": "",
+     "Destination": "oil pipeline"
+    },
+    {
+     "Source": "oil pipeline",
+     "Source Port": "",
+     "Destination": "Sink"
+    },
+    {
+     "Source": "diluent",
+     "Source Port": "",
+     "Destination": "Pump"
+    }
+   ]
+  },
+  "get_connections": {
+   "ok": true,
+   "result": {
+    "Manifold": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "feed line",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "feed line": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "diluent",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Pump": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "oil pipeline",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "oil pipeline": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Sink",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "diluent": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "Pump",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    }
+   }
+  },
+  "networksimulation.get_conditions": {
+   "ok": true,
+   "result": {
+    "Manifold": {
+     "BoundaryNodeType": "Source",
+     "WellName": null,
+     "BoundaryNodeName": "Manifold",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": true,
+     "Temperature": 32.222222222222285,
+     "Pressure": 55.15805834534689,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 0.0,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 30.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    },
+    "Sink": {
+     "BoundaryNodeType": "Sink",
+     "WellName": null,
+     "BoundaryNodeName": "Sink",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": true,
+     "Temperature": null,
+     "Pressure": 55.15805834534689,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    },
+    "diluent": {
+     "BoundaryNodeType": "Injector",
+     "WellName": null,
+     "BoundaryNodeName": "diluent",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": true,
+     "Temperature": 15.555555555555657,
+     "Pressure": null,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": 15.89873039999996,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 0.0,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 0.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    }
+   }
+  }
+ },
+ "about": {
+  "WebAPIVersion": "2023.1.615.0",
+  "ToolkitVersion": "2023.1",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_7zj6frfa\\CSP_212_HeavyOil Diluent Pipeline.pips",
+  "UnitSystem": "PIPESIM_METRIC",
+  "UiUnitSystem": ""
+ },
+ "baseline": {
+  "state": "Completed",
+  "summary": {
+   "Info": [
+    "2026-11-04T07:53:07.743Z    Beginning simulation...",
+    "2026-11-04T07:53:07.741Z    Running with 1 core",
+    "2026-11-04T07:53:08.563Z    Solver converged to a solution.",
+    "2026-11-04T07:53:08.583Z    Finished simulation"
+   ],
+   "Error": [],
+   "Warning": []
+  },
+  "messages": [
+   "2026-11-04T07:53:07.793Z    Service starting...",
+   "2026-11-04T07:53:07.810Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T07:53:07.994Z    Service listening at 'net.pipe://localhost/pipe/ac131c52f04e4a90933bcd4aa198e09f'...",
+   "2026-11-04T07:53:08.076Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\23600",
+   "2026-11-04T07:53:08.077Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\23600\\CSP_212_HeavyOil Diluent Pipeline.tnt (1)",
+   "2026-11-04T07:53:08.131Z    .......................................................................................... ",
+   "2026-11-04T07:53:08.132Z    Processing branch Sink.. ",
+   "2026-11-04T07:53:08.135Z    Processing branch Manifold.",
+   "2026-11-04T07:53:08.135Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T07:53:08.247Z    ",
+   "2026-11-04T07:53:08.258Z     Iteration   1 P error :  17.88 %, F error :   4.33 %, L error :   0.00 %",
+   "2026-11-04T07:53:08.270Z     Iteration   2 P error :  32.96 %, F error :   3.88 %, L error :   0.00 %",
+   "2026-11-04T07:53:08.281Z     Iteration   3 P error :   0.23 %, F error :   1.61 %, L error :   0.00 %",
+   "2026-11-04T07:53:08.292Z     Iteration   4 P error :   0.26 %, F error :   0.03 %, L error :   0.00 %",
+   "2026-11-04T07:53:08.293Z    ",
+   "2026-11-04T07:53:08.293Z    ",
+   "2026-11-04T07:53:08.293Z     Converged.                                                                     ",
+   "2026-11-04T07:53:08.293Z     ... network converged at iteration   4, final rms error :   0.259116E-02",
+   "2026-11-04T07:53:08.293Z      Start Post-Processing results",
+   "2026-11-04T07:53:08.315Z    ",
+   "2026-11-04T07:53:08.315Z       Elapsed time:",
+   "2026-11-04T07:53:08.315Z    ",
+   "2026-11-04T07:53:08.315Z       Network Executive      0.07",
+   "2026-11-04T07:53:08.315Z       PIPESIM sub-tasks      0.17",
+   "2026-11-04T07:53:08.315Z                         ---------",
+   "2026-11-04T07:53:08.315Z                 Total        0.24",
+   "2026-11-04T07:53:08.315Z    ",
+   "2026-11-04T07:53:08.315Z       CPU time:",
+   "2026-11-04T07:53:08.315Z    ",
+   "2026-11-04T07:53:08.315Z               User task      0.38",
+   "2026-11-04T07:53:08.315Z               System         0.11",
+   "2026-11-04T07:53:08.315Z                         ---------",
+   "2026-11-04T07:53:08.315Z                 Total        0.48",
+   "2026-11-04T07:53:08.567Z     Disposing communication agent."
+  ],
+  "system": {},
+  "node": {
+   "Pressure": {
+    "Unit": "bara",
+    "Pump": 104.8999934136623,
+    "Manifold": 55.158058345346824,
+    "diluent": 55.156465667826154,
+    "Sink": 55.158058518831126
+   },
+   "Temperature": {
+    "Unit": "degC",
+    "Pump": 45.68950178383017,
+    "Manifold": 32.222222222222285,
+    "diluent": 30.642586569546268,
+    "Sink": 15.770309355429504
+   },
+   "VolumeFlowrateLiquidStockTank": {
+    "Unit": "sm3/d",
+    "Pump": 104.14200338811416,
+    "Manifold": 88.24327293051418,
+    "diluent": 104.14200338811416,
+    "Sink": 104.09344965738525
+   },
+   "VolumeFlowrateOilStockTank": {
+    "Unit": "sm3/d",
+    "Pump": 77.66902150895991,
+    "Manifold": 61.770291051359926,
+    "diluent": 77.66902150895991,
+    "Sink": 77.63281017603337
+   },
+   "VolumeFlowrateGasStockTank": {
+    "Unit": "mmsm3/d",
+    "Pump": 0.0,
+    "Manifold": 0.0,
+    "diluent": 0.0,
+    "Sink": 0.0
+   },
+   "VolumeFlowrateWaterStockTank": {
+    "Unit": "sm3/d",
+    "Pump": 26.47298187915425,
+    "Manifold": 26.472981879154258,
+    "diluent": 26.47298187915425,
+    "Sink": 26.46063948135188
+   }
+  }
+ },
+ "seconds": 7.7
+}

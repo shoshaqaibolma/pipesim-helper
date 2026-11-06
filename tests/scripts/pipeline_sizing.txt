@@ -1,0 +1,5 @@
+Design a gas export pipeline: dry gas (gas SG 0.62, no condensate, no water) enters at the plant at 3 MMsm3/d and 40 degC, flows 25 km over flat ground to a terminal held at 60 bara. The plant can deliver at most 90 bara. Which inner diameter is the smallest that works: 203, 254 or 305 mm? Show the inlet pressure for each.
+Use the suggested defaults for everything else.
+Yes, approved. Run it.
+Approved.
+exit

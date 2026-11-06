@@ -1,0 +1,2 @@
+# Plain vs knowledge after the choke recipe and the steps rule, about 40 minutes.
+"D:\Program\Pipesim toolkit\python.exe" tests\real_eval.py

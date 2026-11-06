@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+runs/
+*.gguf
+projects/
+/*.pips
+/*.pipr
+/*.project.json
+/config.bat

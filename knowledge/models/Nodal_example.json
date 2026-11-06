@@ -1,0 +1,2674 @@
+{
+ "file": "D:\\Program\\Pipesim2023.1\\Case Studies\\Python Toolkit\\Nodal Analysis\\Nodal_example.pips",
+ "components": {
+  "BlackOilFluid": [
+   "oil",
+   "wet gas"
+  ],
+  "Casing": [
+   "Well 1 - oil:Casing",
+   "Well 2 - ESP:Casing",
+   "Well 3 - gas:Casing",
+   "Well 4 - Horizontal Gas well:Casing"
+  ],
+  "Choke": [
+   "choke_1",
+   "choke_2",
+   "choke_3",
+   "choke_4"
+  ],
+  "Completion": [
+   "Well 1 - oil:Completion",
+   "Well 2 - ESP:Completion",
+   "Well 3 - gas:lower",
+   "Well 3 - gas:upper",
+   "Well 4 - Horizontal Gas well:Completion"
+  ],
+  "ESP": [
+   "Well 2 - ESP:ESP"
+  ],
+  "FlowCorrelation": [
+   "Default",
+   "FL1:Default",
+   "FL2:Default",
+   "FL3:Default",
+   "FL4:Default",
+   "TL1:Default",
+   "TL2:Default",
+   "Well 1 - oil:Default",
+   "Well 2 - ESP:Correlation ESP_Lift_Simulation",
+   "Well 3 - gas:Default",
+   "Well 4 - Horizontal Gas well:Default"
+  ],
+  "Flowline": [
+   "FL1",
+   "FL2",
+   "FL3",
+   "FL4",
+   "TL1",
+   "TL2"
+  ],
+  "GasLiftInjection": [
+   "Well 1 - oil:Gas lift injection"
+  ],
+  "GlobalCatalog": [
+   "CustomPlotVariables",
+   "PIPESIM_FIELD"
+  ],
+  "GravelPack": [
+   "Well 1 - oil:Completion:GravelPack",
+   "Well 2 - ESP:Completion:GravelPack",
+   "Well 3 - gas:lower:GravelPack",
+   "Well 3 - gas:upper:GravelPack",
+   "Well 4 - Horizontal Gas well:Completion:GravelPack"
+  ],
+  "IPRBackPressure": [
+   "Well 1 - oil:Completion:IPRBACKPRESSURE",
+   "Well 2 - ESP:Completion:IPRBACKPRESSURE",
+   "Well 3 - gas:lower:IPRBACKPRESSURE",
+   "Well 3 - gas:upper:IPRBACKPRESSURE",
+   "Well 4 - Horizontal Gas well:Completion:IPRBACKPRESSURE"
+  ],
+  "IPRDarcy": [
+   "Well 1 - oil:Completion:IPRDARCY",
+   "Well 2 - ESP:Completion:IPRDARCY",
+   "Well 3 - gas:lower:IPRDARCY",
+   "Well 3 - gas:upper:IPRDARCY",
+   "Well 4 - Horizontal Gas well:Completion:IPRDARCY"
+  ],
+  "IPRFetkovitch": [
+   "Well 1 - oil:Completion:IPRFETKOVITCH",
+   "Well 2 - ESP:Completion:IPRFETKOVITCH",
+   "Well 3 - gas:lower:IPRFETKOVITCH",
+   "Well 3 - gas:upper:IPRFETKOVITCH",
+   "Well 4 - Horizontal Gas well:Completion:IPRFETKOVITCH"
+  ],
+  "IPRForchheimer": [
+   "Well 1 - oil:Completion:IPRFORCHHEIMER",
+   "Well 2 - ESP:Completion:IPRFORCHHEIMER",
+   "Well 3 - gas:lower:IPRFORCHHEIMER",
+   "Well 3 - gas:upper:IPRFORCHHEIMER",
+   "Well 4 - Horizontal Gas well:Completion:IPRFORCHHEIMER"
+  ],
+  "IPRHorizontalPI": [
+   "Well 1 - oil:Completion:IPRHORIZONTALPI",
+   "Well 2 - ESP:Completion:IPRHORIZONTALPI",
+   "Well 3 - gas:lower:IPRHORIZONTALPI",
+   "Well 3 - gas:upper:IPRHORIZONTALPI",
+   "Well 4 - Horizontal Gas well:Completion:IPRHORIZONTALPI"
+  ],
+  "IPRHydraulicFracture": [
+   "Well 1 - oil:Completion:IPRHYDRAULICFRACTURE",
+   "Well 2 - ESP:Completion:IPRHYDRAULICFRACTURE",
+   "Well 3 - gas:lower:IPRHYDRAULICFRACTURE",
+   "Well 3 - gas:upper:IPRHYDRAULICFRACTURE",
+   "Well 4 - Horizontal Gas well:Completion:IPRHYDRAULICFRACTURE"
+  ],
+  "IPRJones": [
+   "Well 1 - oil:Completion:IPRJONES",
+   "Well 2 - ESP:Completion:IPRJONES",
+   "Well 3 - gas:lower:IPRJONES",
+   "Well 3 - gas:upper:IPRJONES",
+   "Well 4 - Horizontal Gas well:Completion:IPRJONES"
+  ],
+  "IPRPIModel": [
+   "Well 1 - oil:Completion:IPRPIModel",
+   "Well 2 - ESP:Completion:IPRPIModel",
+   "Well 3 - gas:lower:IPRPIModel",
+   "Well 3 - gas:upper:IPRPIModel",
+   "Well 4 - Horizontal Gas well:Completion:IPRPIModel"
+  ],
+  "IPRPSSBabuOdeh": [
+   "Well 1 - oil:Completion:IPRPSSBABUODEH",
+   "Well 2 - ESP:Completion:IPRPSSBABUODEH",
+   "Well 3 - gas:lower:IPRPSSBABUODEH",
+   "Well 3 - gas:upper:IPRPSSBABUODEH",
+   "Well 4 - Horizontal Gas well:Completion:IPRPSSBABUODEH"
+  ],
+  "IPRSSJoshi": [
+   "Well 1 - oil:Completion:IPRSSJOSHI",
+   "Well 2 - ESP:Completion:IPRSSJOSHI",
+   "Well 3 - gas:lower:IPRSSJOSHI",
+   "Well 3 - gas:upper:IPRSSJOSHI",
+   "Well 4 - Horizontal Gas well:Completion:IPRSSJOSHI"
+  ],
+  "IPRTriLinear": [
+   "Well 1 - oil:Completion:IPRTRILINEAR",
+   "Well 2 - ESP:Completion:IPRTRILINEAR",
+   "Well 3 - gas:lower:IPRTRILINEAR",
+   "Well 3 - gas:upper:IPRTRILINEAR",
+   "Well 4 - Horizontal Gas well:Completion:IPRTRILINEAR"
+  ],
+  "Junction": [
+   "J",
+   "J 1"
+  ],
+  "Packer": [
+   "Well 1 - oil:Packer",
+   "Well 2 - ESP:Packer",
+   "Well 3 - gas:Packer",
+   "Well 4 - Horizontal Gas well:Packer"
+  ],
+  "Sink": [
+   "sink"
+  ],
+  "Source": [
+   "Well 1 - oil:Source 1",
+   "Well 1 - oil:WellString outlet10128",
+   "Well 1 - oil:WellString outlet10141",
+   "Well 2 - ESP:Source 1",
+   "Well 2 - ESP:WellString outlet10255",
+   "Well 2 - ESP:WellString outlet10266",
+   "Well 3 - gas:Source 1",
+   "Well 3 - gas:WellString outlet10172",
+   "Well 3 - gas:WellString outlet10186",
+   "Well 4 - Horizontal Gas well:Source 1",
+   "Well 4 - Horizontal Gas well:WellString outlet10212",
+   "Well 4 - Horizontal Gas well:WellString outlet10225"
+  ],
+  "Study": [
+   "Study 1"
+  ],
+  "Tubing": [
+   "Well 1 - oil:Tubing",
+   "Well 2 - ESP:Tubing",
+   "Well 3 - gas:Tubing",
+   "Well 4 - Horizontal Gas well:Tubing"
+  ],
+  "Well": [
+   "Well 1 - oil",
+   "Well 2 - ESP",
+   "Well 3 - gas",
+   "Well 4 - Horizontal Gas well"
+  ]
+ },
+ "values": {
+  "BlackOilFluid|oil": {
+   "oil": {
+    "Name": "oil",
+    "API": 36.0,
+    "DeadOilDensity": 844.7847734696924,
+    "DeadOilTemperature1": 93.3333333333,
+    "DeadOilTemperature2": 15.555560000000014,
+    "DeadOilViscosity1": 0.0015,
+    "DeadOilViscosity2": 0.01,
+    "DeadOilViscosityCorr": "User2Point",
+    "COFraction": 0.0,
+    "CO2Fraction": 0.01,
+    "H2Fraction": 0.0,
+    "H2SFraction": 0.0,
+    "N2Fraction": 0.0,
+    "GasSpecificGravity": 0.8,
+    "GLR": null,
+    "GOR": 89.0537982580043,
+    "GWR": null,
+    "LGR": null,
+    "LiquidViscosityCalc": "Brinkman",
+    "LiveOilViscosityCorr": "ChewandConnaly",
+    "OGR": null,
+    "Richardsonkoiw": 3.8,
+    "Richardsonkwio": 6.6,
+    "UndersaturatedOilViscosityCorr": "BergmanAndSutton",
+    "UndersaturatedOilViscosityParA": 0.0239,
+    "UndersaturatedOilViscosityParB": 0.01638,
+    "UseBraunerUllmanEquation": false,
+    "UseDeadOilDensity": false,
+    "UseGasRatio": "GOR",
+    "UserWatercutCutOff": 60.0,
+    "UseWaterRatio": "WaterCut",
+    "VandUserk1": 2.5,
+    "VandUserk2": 0.609,
+    "WaterCut": 10.0,
+    "WaterSpecificGravity": 1.05,
+    "WGR": null,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "BlackOilFluid|wet gas": {
+   "wet gas": {
+    "Name": "wet gas",
+    "API": 45.0,
+    "DeadOilDensity": 801.7079294967336,
+    "DeadOilTemperature1": 93.3333333333,
+    "DeadOilTemperature2": 15.555560000000014,
+    "DeadOilViscosity1": 0.0009020572974600953,
+    "DeadOilViscosity2": 0.011908833313774155,
+    "DeadOilViscosityCorr": "BeggsAndRobinson",
+    "COFraction": 0.0,
+    "CO2Fraction": 0.02,
+    "H2Fraction": 0.0,
+    "H2SFraction": 0.0,
+    "N2Fraction": 0.0,
+    "GasSpecificGravity": 0.67,
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "LiquidViscosityCalc": "ContinuousPhase",
+    "LiveOilViscosityCorr": "ChewandConnaly",
+    "OGR": 56.1458365370799,
+    "Richardsonkoiw": 3.8,
+    "Richardsonkwio": 6.6,
+    "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+    "UndersaturatedOilViscosityParA": 0.0239,
+    "UndersaturatedOilViscosityParB": 0.01638,
+    "UseBraunerUllmanEquation": false,
+    "UseDeadOilDensity": false,
+    "UseGasRatio": "OGR",
+    "UserWatercutCutOff": 60.0,
+    "UseWaterRatio": "WGR",
+    "VandUserk1": 2.5,
+    "VandUserk2": 0.609,
+    "WaterCut": 0.0,
+    "WaterSpecificGravity": 1.02,
+    "WGR": 28.07291826853995,
+    "Comment": "",
+    "HasOverride": false,
+    "IsBuiltinTemplate": false,
+    "IsTemplate": false,
+    "IsActive": true
+   }
+  },
+  "Casing|Well 1 - oil:Casing": {
+   "Well 1 - oil:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": 8042.938073662906,
+    "Grade": "N80",
+    "InnerDiameter": 144.14499999999995,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 12.065,
+    "Length": 2743.2000000000003,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Casing|Well 2 - ESP:Casing": {
+   "Well 2 - ESP:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": 254.0,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 177.0126,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 8.3312,
+    "Length": 3048.0,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Casing|Well 3 - gas:Casing": {
+   "Well 3 - gas:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": 7871.6660691669995,
+    "Grade": "L80",
+    "InnerDiameter": 108.6104,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 9.194799999999999,
+    "Length": 3840.48,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Casing|Well 4 - Horizontal Gas well:Casing": {
+   "Well 4 - Horizontal Gas well:Casing": {
+    "Name": "Casing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": 7915.487146957164,
+    "Grade": "C90",
+    "InnerDiameter": 121.36119999999998,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 9.1694,
+    "Length": 7620.0,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Choke|choke_1": {
+   "choke_1": {
+    "Name": "choke_1",
+    "AdjustSubcriticalCorrelation": true,
+    "BeanSize": 50.8,
+    "BothPhasesFlowCoefficient": null,
+    "CalculateCriticalPressureRatio": false,
+    "CriticalCorrelation": "Mechanistic",
+    "CriticalPressureRatio": 0.53,
+    "DischargeCoefficient": null,
+    "FlowRateLimitType": "LiquidFlowRate",
+    "GasExpansionFactor": null,
+    "GasFlowRateLimit": null,
+    "GasPhaseFlowCoefficient": null,
+    "HeatCapacityRatio": null,
+    "LiquidFlowRateLimit": null,
+    "LiquidPhaseFlowCoefficient": null,
+    "MassFlowRateLimit": null,
+    "OilFlowRateLimit": null,
+    "PrintDetailedCalculations": false,
+    "SubCriticalCorrelation": "Mechanistic",
+    "Tolerance": 0.5,
+    "UpstreamPipeID": null,
+    "UseFlowrateForCriticalFlow": true,
+    "UsePressureRatioForCriticalFlow": true,
+    "UseSonicDownstreamVelocityForCriticalFlow": true,
+    "UseSonicUpstreamVelocityForCriticalFlow": true,
+    "WaterFlowRateLimit": null,
+    "IsActive": true
+   }
+  },
+  "Choke|choke_2": {
+   "choke_2": {
+    "Name": "choke_2",
+    "AdjustSubcriticalCorrelation": true,
+    "BeanSize": 50.8,
+    "BothPhasesFlowCoefficient": null,
+    "CalculateCriticalPressureRatio": false,
+    "CriticalCorrelation": "Mechanistic",
+    "CriticalPressureRatio": 0.53,
+    "DischargeCoefficient": null,
+    "FlowRateLimitType": "LiquidFlowRate",
+    "GasExpansionFactor": null,
+    "GasFlowRateLimit": null,
+    "GasPhaseFlowCoefficient": null,
+    "HeatCapacityRatio": null,
+    "LiquidFlowRateLimit": null,
+    "LiquidPhaseFlowCoefficient": null,
+    "MassFlowRateLimit": null,
+    "OilFlowRateLimit": null,
+    "PrintDetailedCalculations": false,
+    "SubCriticalCorrelation": "Mechanistic",
+    "Tolerance": 0.5,
+    "UpstreamPipeID": null,
+    "UseFlowrateForCriticalFlow": true,
+    "UsePressureRatioForCriticalFlow": true,
+    "UseSonicDownstreamVelocityForCriticalFlow": true,
+    "UseSonicUpstreamVelocityForCriticalFlow": true,
+    "WaterFlowRateLimit": null,
+    "IsActive": true
+   }
+  },
+  "Choke|choke_3": {
+   "choke_3": {
+    "Name": "choke_3",
+    "AdjustSubcriticalCorrelation": true,
+    "BeanSize": 50.8,
+    "BothPhasesFlowCoefficient": null,
+    "CalculateCriticalPressureRatio": false,
+    "CriticalCorrelation": "Mechanistic",
+    "CriticalPressureRatio": 0.53,
+    "DischargeCoefficient": null,
+    "FlowRateLimitType": "LiquidFlowRate",
+    "GasExpansionFactor": null,
+    "GasFlowRateLimit": null,
+    "GasPhaseFlowCoefficient": null,
+    "HeatCapacityRatio": null,
+    "LiquidFlowRateLimit": null,
+    "LiquidPhaseFlowCoefficient": null,
+    "MassFlowRateLimit": null,
+    "OilFlowRateLimit": null,
+    "PrintDetailedCalculations": false,
+    "SubCriticalCorrelation": "Mechanistic",
+    "Tolerance": 0.5,
+    "UpstreamPipeID": null,
+    "UseFlowrateForCriticalFlow": true,
+    "UsePressureRatioForCriticalFlow": true,
+    "UseSonicDownstreamVelocityForCriticalFlow": true,
+    "UseSonicUpstreamVelocityForCriticalFlow": true,
+    "WaterFlowRateLimit": null,
+    "IsActive": true
+   }
+  },
+  "Choke|choke_4": {
+   "choke_4": {
+    "Name": "choke_4",
+    "AdjustSubcriticalCorrelation": true,
+    "BeanSize": 50.8,
+    "BothPhasesFlowCoefficient": null,
+    "CalculateCriticalPressureRatio": false,
+    "CriticalCorrelation": "Mechanistic",
+    "CriticalPressureRatio": 0.53,
+    "DischargeCoefficient": null,
+    "FlowRateLimitType": "LiquidFlowRate",
+    "GasExpansionFactor": null,
+    "GasFlowRateLimit": null,
+    "GasPhaseFlowCoefficient": null,
+    "HeatCapacityRatio": null,
+    "LiquidFlowRateLimit": null,
+    "LiquidPhaseFlowCoefficient": null,
+    "MassFlowRateLimit": null,
+    "OilFlowRateLimit": null,
+    "PrintDetailedCalculations": false,
+    "SubCriticalCorrelation": "Mechanistic",
+    "Tolerance": 0.5,
+    "UpstreamPipeID": null,
+    "UseFlowrateForCriticalFlow": true,
+    "UsePressureRatioForCriticalFlow": true,
+    "UseSonicDownstreamVelocityForCriticalFlow": true,
+    "UseSonicUpstreamVelocityForCriticalFlow": true,
+    "WaterFlowRateLimit": null,
+    "IsActive": true
+   }
+  },
+  "Completion|Well 1 - oil:Completion": {
+   "Well 1 - oil:Completion": {
+    "Name": "Completion",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "oil",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 248.211262554061,
+    "ReservoirTemperature": 93.33333333333343,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRPIModel"
+   }
+  },
+  "Completion|Well 2 - ESP:Completion": {
+   "Well 2 - ESP:Completion": {
+    "Name": "Completion",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "oil",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 149.47833176,
+    "ReservoirTemperature": 102.22222222222223,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRHydraulicFracture"
+   }
+  },
+  "Completion|Well 3 - gas:lower": {
+   "Well 3 - gas:lower": {
+    "Name": "lower",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": 56.1458365370799,
+    "UseGasRatio": "OGR",
+    "UseWaterRatio": "WGR",
+    "WaterCut": 0.0,
+    "WGR": 28.07291826853995,
+    "AssociatedBlackOilFluid": "wet gas",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 275.79029172673415,
+    "ReservoirTemperature": 110.00000000000006,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": true,
+    "UseConingData": false,
+    "UseFluidOverrides": true,
+    "UseTestData": true,
+    "IPRModel": "IPRJones"
+   }
+  },
+  "Completion|Well 3 - gas:upper": {
+   "Well 3 - gas:upper": {
+    "Name": "upper",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": 56.1458365370799,
+    "UseGasRatio": "OGR",
+    "UseWaterRatio": "WGR",
+    "WaterCut": 0.0,
+    "WGR": 0.0,
+    "AssociatedBlackOilFluid": "wet gas",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "SinglePoint",
+    "GeometryProfileType": "Vertical",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 262.0007771403974,
+    "ReservoirTemperature": 137.77777777777789,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": true,
+    "UseConingData": false,
+    "UseFluidOverrides": true,
+    "UseTestData": true,
+    "IPRModel": "IPRBackPressure"
+   }
+  },
+  "Completion|Well 4 - Horizontal Gas well:Completion": {
+   "Well 4 - Horizontal Gas well:Completion": {
+    "Name": "Completion",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "AssociatedBlackOilFluid": "wet gas",
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "Diameter": null,
+    "FluidEntryType": "Distributed",
+    "GeometryProfileType": "Horizontal",
+    "Length": null,
+    "PenetrationDepth": null,
+    "PhaseAngle": null,
+    "ReservoirPressure": 317.1588354857446,
+    "ReservoirTemperature": 93.33333333333343,
+    "ShotDensity": null,
+    "IsActive": true,
+    "CompletionTestType": "Multipoint",
+    "ConedGasSG": 0.65,
+    "OverridesInitialized": false,
+    "UseConingData": false,
+    "UseFluidOverrides": false,
+    "UseTestData": false,
+    "IPRModel": "IPRHorizontalPI"
+   }
+  },
+  "ESP|Well 2 - ESP:ESP": {
+   "Well 2 - ESP:ESP": {
+    "Name": "ESP",
+    "Diameter": 130.302,
+    "HeadFactor": 1.0,
+    "Manufacturer": "Reda",
+    "Model": "G6200N",
+    "BaseFrequency": 59.99999999999986,
+    "CasingID": null,
+    "PermanentMagnetMotor": false,
+    "NumberOfPoles": 2,
+    "OverrideSlippageFactor": false,
+    "SlippageFactor": null,
+    "FlowrateFactor": 1.0,
+    "GasSeparatorEfficiency": 72.0,
+    "HasGasSeparator": true,
+    "MaxFlowRate": 1271.898432,
+    "MinFlowRate": 715.4428679999984,
+    "NumberStages": 197,
+    "OperatingFrequency": 59.999999999999865,
+    "OperatingProductionRate": null,
+    "Power": null,
+    "PowerFactor": 1.0,
+    "Series": "",
+    "UsePower": false,
+    "UseStageByStageCalc": false,
+    "UseViscosityCorrection": true,
+    "CoefficientA": 1.0,
+    "CoefficientB": 0.0,
+    "IsPowerCorrectionCalculated": false,
+    "PowerCorrection": false,
+    "CableLengthBelowPump": false,
+    "RecombineGas": 30.48,
+    "IsActive": true,
+    "CableName": "",
+    "VDrop": null,
+    "MaxAmps": null,
+    "MotorManufacturer": "",
+    "MotorName": "",
+    "NPPower": null,
+    "NPVoltage": null,
+    "NPAmperage": null,
+    "FloorEfficiency": null,
+    "FloorPowerFactor": null,
+    "AMPValues": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "EFFValues": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ],
+    "PFValues": [
+     null,
+     null,
+     null,
+     null,
+     null,
+     null
+    ]
+   }
+  },
+  "FlowCorrelation|Default": {
+   "Well 1 - oil:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   },
+   "Well 3 - gas:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   },
+   "Well 4 - Horizontal Gas well:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   },
+   "Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   },
+   "FL1:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL2:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "TL1:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL3:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "FL4:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   },
+   "TL2:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": false
+   }
+  },
+  "FlowCorrelation|FL1:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL2:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL2', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL3:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL3', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|FL4:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'FL4', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|TL1:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL1', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|TL2:Default": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'TL2', 'FlowCorrelation': 'Default', 'Template': '___NONE___'})"
+  },
+  "FlowCorrelation|Well 1 - oil:Default": {
+   "Well 1 - oil:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   }
+  },
+  "FlowCorrelation|Well 2 - ESP:Correlation ESP_Lift_Simulation": {
+   "Well 2 - ESP:Correlation ESP_Lift_Simulation": {
+    "Name": "Correlation ESP_Lift_Simulation",
+    "SwapAngle": 44.99999999999999,
+    "IsActive": true
+   }
+  },
+  "FlowCorrelation|Well 3 - gas:Default": {
+   "Well 3 - gas:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   }
+  },
+  "FlowCorrelation|Well 4 - Horizontal Gas well:Default": {
+   "Well 4 - Horizontal Gas well:Default": {
+    "Name": "Default",
+    "SwapAngle": 44.99999997722788,
+    "IsActive": true
+   }
+  },
+  "Flowline|FL1": {
+   "FL1": {
+    "Name": "FL1",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 609.6,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": 609.6,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 77.9272,
+    "Roughness": 0.04572,
+    "WallThickness": 5.4864,
+    "Length": 609.6,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL2": {
+   "FL2": {
+    "Name": "FL2",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 609.6,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": 609.6,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 77.9272,
+    "Roughness": 0.04572,
+    "WallThickness": 5.4864,
+    "Length": 609.6,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL3": {
+   "FL3": {
+    "Name": "FL3",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 609.6,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": 609.6,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 77.9272,
+    "Roughness": 0.04572,
+    "WallThickness": 5.4864,
+    "Length": 609.6,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|FL4": {
+   "FL4": {
+    "Name": "FL4",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 609.6,
+    "IsDowncomer": false,
+    "IsFlipped": true,
+    "MeasuredDistance": 609.6,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 77.9272,
+    "Roughness": 0.04572,
+    "WallThickness": 5.4864,
+    "Length": 609.6,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|TL1": {
+   "TL1": {
+    "Name": "TL1",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 609.6,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": 609.6,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 102.26039999999999,
+    "Roughness": 0.04572,
+    "WallThickness": 6.019799999999999,
+    "Length": 609.6,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "Flowline|TL2": {
+   "TL2": {
+    "Name": "TL2",
+    "AmbientAirTemperature": 15.555555600000048,
+    "AmbientFluidType": "Air",
+    "AmbientTemperature": null,
+    "AmbientTemperatureOptions": "InputSingleValue",
+    "AmbientWaterTemperature": null,
+    "DepthAtStart": null,
+    "DetailedModel": false,
+    "DeviationSurveyCalc": "measuredDistance",
+    "ElevationDifference": 0.0,
+    "EnterSurveyLength": false,
+    "GeothermalSurveyIndex": "horizontalDistance",
+    "HorizontalDistance": 609.6,
+    "IsDowncomer": false,
+    "IsFlipped": false,
+    "MeasuredDistance": 609.6,
+    "PlatformHeight": null,
+    "SeabedDepth": null,
+    "ShowAsRiser": false,
+    "SurfaceTemperature": false,
+    "UndulationRate": 0.0,
+    "UseDepth": false,
+    "OverrideCorrosion": false,
+    "UseEnvironmentalData": false,
+    "UseGISData": false,
+    "UseGlobalSettings": true,
+    "WaterInterpolationMethod": "Interpolate",
+    "IsActive": true,
+    "InnerDiameter": 154.051,
+    "Roughness": 0.04572,
+    "WallThickness": 7.112,
+    "Length": 609.6,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "EnterOD": false,
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null
+   }
+  },
+  "GasLiftInjection|Well 1 - oil:Gas lift injection": {
+   "Well 1 - oil:Gas lift injection": {
+    "Name": "Gas lift injection",
+    "GLR": null,
+    "DischargeCoefficient": null,
+    "Manufacturer": "",
+    "Series": "",
+    "IsActive": true,
+    "BellowArea": null,
+    "DischargeToFullyOpen": null,
+    "GasLiftType": "InjectionGasRate",
+    "GasRate": 0.056633693184019944,
+    "GLRIncrease": null,
+    "PortArea": null,
+    "PortSize": null,
+    "Ptro": null,
+    "SpringPressure": null,
+    "ValveChoke": null,
+    "ValveDiameter": null,
+    "ValveSize": null,
+    "ValveType": ""
+   }
+  },
+  "GlobalCatalog|CustomPlotVariables": {
+   "CustomPlotVariables": {
+    "Name": "CustomPlotVariables",
+    "CatalogType": "PlotVariableSettings"
+   }
+  },
+  "GlobalCatalog|PIPESIM_FIELD": {
+   "PIPESIM_FIELD": {
+    "Name": "PIPESIM_FIELD",
+    "CatalogType": "CustomUnitSystem"
+   }
+  },
+  "GravelPack|Well 1 - oil:Completion:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'GravelPack': 'Completion:GravelPack', 'Template': '___NONE___'})"
+  },
+  "GravelPack|Well 2 - ESP:Completion:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'GravelPack': 'Completion:GravelPack', 'Template': '___NONE___'})"
+  },
+  "GravelPack|Well 3 - gas:lower:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'GravelPack': 'lower:GravelPack', 'Template': '___NONE___'})"
+  },
+  "GravelPack|Well 3 - gas:upper:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'GravelPack': 'upper:GravelPack', 'Template': '___NONE___'})"
+  },
+  "GravelPack|Well 4 - Horizontal Gas well:Completion:GravelPack": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'GravelPack': 'Completion:GravelPack', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|Well 1 - oil:Completion:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRBackPressure': 'Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|Well 2 - ESP:Completion:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRBackPressure': 'Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|Well 3 - gas:lower:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRBackPressure': 'lower:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|Well 3 - gas:upper:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRBackPressure': 'upper:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRBackPressure|Well 4 - Horizontal Gas well:Completion:IPRBACKPRESSURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRBackPressure': 'Completion:IPRBACKPRESSURE', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|Well 1 - oil:Completion:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRDarcy': 'Completion:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|Well 2 - ESP:Completion:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRDarcy': 'Completion:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|Well 3 - gas:lower:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRDarcy': 'lower:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|Well 3 - gas:upper:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRDarcy': 'upper:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRDarcy|Well 4 - Horizontal Gas well:Completion:IPRDARCY": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRDarcy': 'Completion:IPRDARCY', 'Template': '___NONE___'})"
+  },
+  "IPRFetkovitch|Well 1 - oil:Completion:IPRFETKOVITCH": null,
+  "IPRFetkovitch|Well 2 - ESP:Completion:IPRFETKOVITCH": null,
+  "IPRFetkovitch|Well 3 - gas:lower:IPRFETKOVITCH": null,
+  "IPRFetkovitch|Well 3 - gas:upper:IPRFETKOVITCH": null,
+  "IPRFetkovitch|Well 4 - Horizontal Gas well:Completion:IPRFETKOVITCH": null,
+  "IPRForchheimer|Well 1 - oil:Completion:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRForchheimer': 'Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRForchheimer|Well 2 - ESP:Completion:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRForchheimer': 'Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRForchheimer|Well 3 - gas:lower:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRForchheimer': 'lower:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRForchheimer|Well 3 - gas:upper:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRForchheimer': 'upper:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRForchheimer|Well 4 - Horizontal Gas well:Completion:IPRFORCHHEIMER": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRForchheimer': 'Completion:IPRFORCHHEIMER', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|Well 1 - oil:Completion:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRHorizontalPI': 'Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|Well 2 - ESP:Completion:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRHorizontalPI': 'Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|Well 3 - gas:lower:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRHorizontalPI': 'lower:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|Well 3 - gas:upper:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRHorizontalPI': 'upper:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHorizontalPI|Well 4 - Horizontal Gas well:Completion:IPRHORIZONTALPI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRHorizontalPI': 'Completion:IPRHORIZONTALPI', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|Well 1 - oil:Completion:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRHydraulicFracture': 'Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|Well 2 - ESP:Completion:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRHydraulicFracture': 'Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|Well 3 - gas:lower:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRHydraulicFracture': 'lower:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|Well 3 - gas:upper:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRHydraulicFracture': 'upper:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRHydraulicFracture|Well 4 - Horizontal Gas well:Completion:IPRHYDRAULICFRACTURE": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRHydraulicFracture': 'Completion:IPRHYDRAULICFRACTURE', 'Template': '___NONE___'})"
+  },
+  "IPRJones|Well 1 - oil:Completion:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRJones': 'Completion:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRJones|Well 2 - ESP:Completion:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRJones': 'Completion:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRJones|Well 3 - gas:lower:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRJones': 'lower:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRJones|Well 3 - gas:upper:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRJones': 'upper:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRJones|Well 4 - Horizontal Gas well:Completion:IPRJONES": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRJones': 'Completion:IPRJONES', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|Well 1 - oil:Completion:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRPIModel': 'Completion:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|Well 2 - ESP:Completion:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRPIModel': 'Completion:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|Well 3 - gas:lower:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRPIModel': 'lower:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|Well 3 - gas:upper:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRPIModel': 'upper:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPIModel|Well 4 - Horizontal Gas well:Completion:IPRPIModel": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRPIModel': 'Completion:IPRPIModel', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|Well 1 - oil:Completion:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRPSSBabuOdeh': 'Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|Well 2 - ESP:Completion:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRPSSBabuOdeh': 'Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|Well 3 - gas:lower:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRPSSBabuOdeh': 'lower:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|Well 3 - gas:upper:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRPSSBabuOdeh': 'upper:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRPSSBabuOdeh|Well 4 - Horizontal Gas well:Completion:IPRPSSBABUODEH": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRPSSBabuOdeh': 'Completion:IPRPSSBABUODEH', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|Well 1 - oil:Completion:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRSSJoshi': 'Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|Well 2 - ESP:Completion:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRSSJoshi': 'Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|Well 3 - gas:lower:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRSSJoshi': 'lower:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|Well 3 - gas:upper:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRSSJoshi': 'upper:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRSSJoshi|Well 4 - Horizontal Gas well:Completion:IPRSSJOSHI": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRSSJoshi': 'Completion:IPRSSJOSHI', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|Well 1 - oil:Completion:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 1 - oil', 'IPRTriLinear': 'Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|Well 2 - ESP:Completion:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 2 - ESP', 'IPRTriLinear': 'Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|Well 3 - gas:lower:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRTriLinear': 'lower:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|Well 3 - gas:upper:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 3 - gas', 'IPRTriLinear': 'upper:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "IPRTriLinear|Well 4 - Horizontal Gas well:Completion:IPRTRILINEAR": {
+   "_error": "No such context: ModelContext({'Study': '___NONE___', 'Well': 'Well 4 - Horizontal Gas well', 'IPRTriLinear': 'Completion:IPRTRILINEAR', 'Template': '___NONE___'})"
+  },
+  "Junction|J": {
+   "J": {
+    "Name": "J",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Junction|J 1": {
+   "J 1": {
+    "Name": "J 1",
+    "IsActive": true,
+    "TreatAsSource": null
+   }
+  },
+  "Packer|Well 1 - oil:Packer": {
+   "Well 1 - oil:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
+  },
+  "Packer|Well 2 - ESP:Packer": {
+   "Well 2 - ESP:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
+  },
+  "Packer|Well 3 - gas:Packer": {
+   "Well 3 - gas:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
+  },
+  "Packer|Well 4 - Horizontal Gas well:Packer": {
+   "Well 4 - Horizontal Gas well:Packer": {
+    "Name": "Packer",
+    "IsActive": true
+   }
+  },
+  "Sink|sink": {
+   "sink": {
+    "Name": "sink",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 34.47378646584177,
+    "IsActive": true,
+    "FlowrateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well 1 - oil:Source 1": {
+   "Well 1 - oil:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well 1 - oil:WellString outlet10128": {
+   "Well 1 - oil:WellString outlet10128": {
+    "Name": "WellString outlet10128",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well 1 - oil:WellString outlet10141": {
+   "Well 1 - oil:WellString outlet10141": {
+    "Name": "WellString outlet10141",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well 2 - ESP:Source 1": {
+   "Well 2 - ESP:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": 24.8211262554061,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well 2 - ESP:WellString outlet10255": {
+   "Well 2 - ESP:WellString outlet10255": {
+    "Name": "WellString outlet10255",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well 2 - ESP:WellString outlet10266": {
+   "Well 2 - ESP:WellString outlet10266": {
+    "Name": "WellString outlet10266",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well 3 - gas:Source 1": {
+   "Well 3 - gas:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well 3 - gas:WellString outlet10172": {
+   "Well 3 - gas:WellString outlet10172": {
+    "Name": "WellString outlet10172",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well 3 - gas:WellString outlet10186": {
+   "Well 3 - gas:WellString outlet10186": {
+    "Name": "WellString outlet10186",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well 4 - Horizontal Gas well:Source 1": {
+   "Well 4 - Horizontal Gas well:Source 1": {
+    "Name": "Source 1",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well 4 - Horizontal Gas well:WellString outlet10212": {
+   "Well 4 - Horizontal Gas well:WellString outlet10212": {
+    "Name": "WellString outlet10212",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Source|Well 4 - Horizontal Gas well:WellString outlet10225": {
+   "Well 4 - Horizontal Gas well:WellString outlet10225": {
+    "Name": "WellString outlet10225",
+    "GLR": null,
+    "GOR": null,
+    "GWR": null,
+    "LGR": null,
+    "OGR": null,
+    "UseGasRatio": "GLR",
+    "UseWaterRatio": "WaterCut",
+    "WaterCut": null,
+    "WGR": null,
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "Pressure": null,
+    "Temperature": null,
+    "UsePQCurve": false,
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "IsActive": true,
+    "OverridesInitialized": false,
+    "UseFluidOverrides": false,
+    "SelectedRateType": "LiquidFlowRate"
+   }
+  },
+  "Study|Study 1": {
+   "Study 1": {
+    "Name": "Study 1",
+    "Description": ""
+   }
+  },
+  "Tubing|Well 1 - oil:Tubing": {
+   "Well 1 - oil:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": 7986.478705518193,
+    "Grade": "N80",
+    "InnerDiameter": 57.37859999999999,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 7.823199999999999,
+    "Length": 2621.28,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Tubing|Well 2 - ESP:Tubing": {
+   "Well 2 - ESP:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 90.11919999999999,
+    "IsFlowPresentInside": true,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 5.740399999999999,
+    "Length": 2551.7856,
+    "CatalogLabel": "",
+    "CatalogName": "",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Tubing|Well 3 - gas:Tubing": {
+   "Well 3 - gas:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": 8312.3972046348,
+    "Grade": "N80",
+    "InnerDiameter": 50.672999999999995,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 4.826,
+    "Length": 3337.56,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Tubing|Well 4 - Horizontal Gas well:Tubing": {
+   "Well 4 - Horizontal Gas well:Tubing": {
+    "Name": "Tubing",
+    "AnnulusMaterialDensity": 1200.0,
+    "AnnulusMaterialType": "Mud",
+    "BoreholeDiameter": null,
+    "CementDensity": 1900.0,
+    "CementTop": 0.0,
+    "Density": null,
+    "Grade": "",
+    "InnerDiameter": 75.99680000000001,
+    "IsFlowPresentInside": false,
+    "Roughness": 0.0254,
+    "TopMeasuredDepth": 0.0,
+    "WallThickness": 6.4516,
+    "Length": 3048.0,
+    "CatalogLabel": "API",
+    "CatalogName": "API",
+    "AnnulusFlow": false,
+    "InnerPipeOutsideDiameter": null,
+    "OuterPipeInsideDiameter": null,
+    "OuterPipeWallThickness": null,
+    "IsActive": true,
+    "ThermalConductivity": 48.0075,
+    "CementThermalConductivity": 1.557,
+    "FluidThermalConductivity": 1.0034
+   }
+  },
+  "Well|Well 1 - oil": {
+   "Well 1 - oil": {
+    "Name": "Well 1 - oil",
+    "GasSpecificGravity": 0.6,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": null,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "UseGasSpecificGravity",
+    "IsInjection": false,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "Well 1 - oil",
+    "IsMultiPointing": false
+   }
+  },
+  "Well|Well 2 - ESP": {
+   "Well 2 - ESP": {
+    "Name": "Well 2 - ESP",
+    "GasSpecificGravity": 0.86,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": null,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "UseGasSpecificGravity",
+    "IsInjection": false,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "FL3",
+    "IsMultiPointing": false
+   }
+  },
+  "Well|Well 3 - gas": {
+   "Well 3 - gas": {
+    "Name": "Well 3 - gas",
+    "GasSpecificGravity": 0.86,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": -1.1111111111110858,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "UseGasSpecificGravity",
+    "IsInjection": false,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "Well 3 - gas",
+    "IsMultiPointing": false
+   }
+  },
+  "Well|Well 4 - Horizontal Gas well": {
+   "Well 4 - Horizontal Gas well": {
+    "Name": "Well 4 - Horizontal Gas well",
+    "GasSpecificGravity": 0.86,
+    "FlowRateType": "LiquidFlowRate",
+    "GasFlowRate": null,
+    "LiquidFlowRate": null,
+    "MassFlowRate": null,
+    "CheckValveSetting": "BlockReverse",
+    "AssociatedBlackOilFluid": null,
+    "AssociatedCompositionalFluid": null,
+    "AssociatedMFLFluid": null,
+    "AmbientTemperature": null,
+    "OverrideCorrosion": false,
+    "IsBuiltinTemplate": false,
+    "IsActive": true,
+    "TuningFactor": 1.0,
+    "DiagnosticsType": "FixedPressure",
+    "ThrottlingOption": "On",
+    "PressureGradientType": "FrictionElevation",
+    "TargetInjectionRate": null,
+    "SurfaceGasTemperature": null,
+    "SurfaceGasPressure": null,
+    "AlhanatiCheck": false,
+    "GasLiftInputOption": "UseGasSpecificGravity",
+    "IsInjection": false,
+    "Comments": "",
+    "MinValveInjectionDP": 10.342140000000002,
+    "NitrogenCorrectionType": "DakSutton",
+    "MinimumInjectionRate": 0.002831684832000997,
+    "MaximumInjectionRate": 0.4247526988801495,
+    "TestRackTemperature": 15.55600000000004,
+    "UseGasliftValve": false,
+    "WellheadDepth": 0.0,
+    "WellOutletEquipment": "choke_4",
+    "IsMultiPointing": false
+   }
+  }
+ },
+ "probe": {
+  "about": {
+   "ok": true,
+   "result": {
+    "WebAPIVersion": "2023.1.615.0",
+    "ToolkitVersion": "2023.1",
+    "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_vtidvc8b\\Nodal_example.pips",
+    "UnitSystem": "PIPESIM_METRIC",
+    "UiUnitSystem": "PIPESIM_FIELD"
+   }
+  },
+  "connections": {
+   "ok": true,
+   "result": [
+    {
+     "Source": "FL1",
+     "Source Port": "",
+     "Destination": "J"
+    },
+    {
+     "Source": "FL2",
+     "Source Port": "",
+     "Destination": "J"
+    },
+    {
+     "Source": "J",
+     "Source Port": "",
+     "Destination": "TL1"
+    },
+    {
+     "Source": "TL1",
+     "Source Port": "",
+     "Destination": "J 1"
+    },
+    {
+     "Source": "choke_1",
+     "Source Port": "",
+     "Destination": "FL1"
+    },
+    {
+     "Source": "J 1",
+     "Source Port": "",
+     "Destination": "FL4"
+    },
+    {
+     "Source": "FL3",
+     "Source Port": "",
+     "Destination": "J 1"
+    },
+    {
+     "Source": "J 1",
+     "Source Port": "",
+     "Destination": "TL2"
+    },
+    {
+     "Source": "TL2",
+     "Source Port": "",
+     "Destination": "sink"
+    },
+    {
+     "Source": "Well 1 - oil",
+     "Source Port": "",
+     "Destination": "choke_1"
+    },
+    {
+     "Source": "Well 4 - Horizontal Gas well",
+     "Source Port": "",
+     "Destination": "choke_4"
+    },
+    {
+     "Source": "choke_3",
+     "Source Port": "",
+     "Destination": "FL2"
+    },
+    {
+     "Source": "Well 3 - gas",
+     "Source Port": "",
+     "Destination": "choke_3"
+    },
+    {
+     "Source": "FL4",
+     "Source Port": "",
+     "Destination": "choke_4"
+    },
+    {
+     "Source": "Well 2 - ESP",
+     "Source Port": "",
+     "Destination": "choke_2"
+    },
+    {
+     "Source": "choke_2",
+     "Source Port": "",
+     "Destination": "FL3"
+    }
+   ]
+  },
+  "get_connections": {
+   "ok": true,
+   "result": {
+    "FL1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL2": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "TL1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "TL1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "choke_1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "J 1": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "TL2",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL3": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "J 1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "TL2": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "sink",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Well 1 - oil": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "choke_1",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Well 4 - Horizontal Gas well": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "choke_4",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "choke_3": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL2",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Well 3 - gas": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "choke_3",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "FL4": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "choke_4",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "Well 2 - ESP": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "choke_2",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    },
+    "choke_2": {
+     "Source": "",
+     "Source Port": "",
+     "Destination": "FL3",
+     "Top Port": "",
+     "Bottom Port": "",
+     "Boot Port": ""
+    }
+   }
+  },
+  "networksimulation.get_conditions": {
+   "ok": true,
+   "result": {
+    "Well 1 - oil:Completion": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "Well 1 - oil",
+     "BoundaryNodeName": "Completion",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 93.33333333333343,
+     "Pressure": 248.211262554061,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 89.0537982580043,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 10.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "Completion",
+     "IsBottomCompletion": false
+    },
+    "Well 3 - gas:upper": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "Well 3 - gas",
+     "BoundaryNodeName": "upper",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 137.77777777777789,
+     "Pressure": 262.0007771403974,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "OGR",
+     "GOR": null,
+     "OGR": 56.1458365370799,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WGR",
+     "WaterCut": 0.0,
+     "GWR": null,
+     "WGR": 0.0,
+     "CompletionName": "upper",
+     "IsBottomCompletion": false
+    },
+    "Well 3 - gas:lower": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "Well 3 - gas",
+     "BoundaryNodeName": "lower",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 110.00000000000006,
+     "Pressure": 275.79029172673415,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "OGR",
+     "GOR": null,
+     "OGR": 56.1458365370799,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WGR",
+     "WaterCut": 0.0,
+     "GWR": null,
+     "WGR": 28.07291826853995,
+     "CompletionName": "lower",
+     "IsBottomCompletion": false
+    },
+    "Well 4 - Horizontal Gas well:Completion": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "Well 4 - Horizontal Gas well",
+     "BoundaryNodeName": "Completion",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 93.33333333333343,
+     "Pressure": 317.1588354857446,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "OGR",
+     "GOR": null,
+     "OGR": 56.1458365370799,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WGR",
+     "WaterCut": 0.0,
+     "GWR": null,
+     "WGR": 28.07291826853995,
+     "CompletionName": "Completion",
+     "IsBottomCompletion": false
+    },
+    "Well 2 - ESP:Completion": {
+     "BoundaryNodeType": "Completion",
+     "WellName": "Well 2 - ESP",
+     "BoundaryNodeName": "Completion",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": 102.22222222222223,
+     "Pressure": 149.47833176,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GOR",
+     "GOR": 89.0537982580043,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": 10.0,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "Completion",
+     "IsBottomCompletion": false
+    },
+    "sink": {
+     "BoundaryNodeType": "Sink",
+     "WellName": null,
+     "BoundaryNodeName": "sink",
+     "IsActive": true,
+     "UsePQCurve": false,
+     "IsSurfaceCondition": false,
+     "Temperature": null,
+     "Pressure": 34.47378646584177,
+     "FlowRateType": "LiquidFlowRate",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "UseGasRatio": "GLR",
+     "GOR": null,
+     "OGR": null,
+     "GLR": null,
+     "LGR": null,
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "GWR": null,
+     "WGR": null,
+     "CompletionName": "",
+     "IsBottomCompletion": false
+    }
+   }
+  }
+ },
+ "about": {
+  "WebAPIVersion": "2023.1.615.0",
+  "ToolkitVersion": "2023.1",
+  "ModelFilename": "C:\\Users\\Home\\AppData\\Local\\Temp\\pipesim_introspect_vtidvc8b\\Nodal_example.pips",
+  "UnitSystem": "PIPESIM_METRIC",
+  "UiUnitSystem": "PIPESIM_FIELD"
+ },
+ "baseline": {
+  "state": "Completed",
+  "summary": {
+   "Info": [
+    "2026-11-04T07:56:36.148Z    Beginning simulation...",
+    "2026-11-04T07:56:36.147Z    Running with 7 cores",
+    "2026-11-04T07:56:44.131Z    Solver converged to a solution.",
+    "2026-11-04T07:56:44.176Z    Finished simulation"
+   ],
+   "Error": [],
+   "Warning": []
+  },
+  "messages": [
+   "2026-11-04T07:56:36.240Z    Service starting...",
+   "2026-11-04T07:56:36.282Z    Loading engine from D:\\Program\\Pipesim2023.1\\Programs",
+   "2026-11-04T07:56:36.518Z    Service listening at 'net.pipe://localhost/pipe/e55da509a185484faff0a91db3de7ea7'...",
+   "2026-11-04T07:56:36.597Z     CWD is now C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\8504",
+   "2026-11-04T07:56:36.597Z    Processing C:\\Users\\Home\\AppData\\Local\\Temp\\PIPESIM\\8504\\Nodal_example.tnt (7)",
+   "2026-11-04T07:56:36.647Z    .......................................................................................................................... ",
+   "2026-11-04T07:56:36.651Z    Processing branch Well 1 - oil.. ",
+   "2026-11-04T07:56:36.654Z    Processing branch Well 2 - ESP.. ",
+   "2026-11-04T07:56:36.657Z    Processing branch Well 4 - Horizontal Gas well.. ",
+   "2026-11-04T07:56:36.658Z    Processing branch J_J 1.. ",
+   "2026-11-04T07:56:36.661Z    Processing branch Well 3 - gas.. ",
+   "2026-11-04T07:56:36.663Z    Processing branch sink.",
+   "2026-11-04T07:56:36.663Z    Processing branch geometry (.PSM/.PST) files",
+   "2026-11-04T07:56:36.992Z    ",
+   "2026-11-04T07:56:37.407Z     Iteration   1 P error :  46.24 %, F error :   2.55 %, L error :   0.00 %",
+   "2026-11-04T07:56:37.496Z    ",
+   "2026-11-04T07:56:37.496Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:37.503Z     Iteration   2 P error :  19.26 %, F error :  20.28 %, L error :   0.00 %",
+   "2026-11-04T07:56:37.596Z    ",
+   "2026-11-04T07:56:37.596Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:37.704Z     Iteration   3 P error :  73.74 %, F error :   0.16 %, L error :   0.00 %",
+   "2026-11-04T07:56:37.755Z     Iteration   4 P error : 100.81 %, F error :   0.03 %, L error :   0.00 %",
+   "2026-11-04T07:56:37.838Z    ",
+   "2026-11-04T07:56:37.838Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:37.847Z     Iteration   5 P error :  16.07 %, F error :  22.33 %, L error :   0.00 %",
+   "2026-11-04T07:56:37.954Z    ",
+   "2026-11-04T07:56:37.954Z     Warning 29003127  from PSIM :  No solution possible after 9 iterations on branch Well 3 - gas.",
+   "2026-11-04T07:56:37.954Z    ",
+   "2026-11-04T07:56:37.954Z     Warning 29003126  from PSIM :  Simplex too far from required outlet pressure.",
+   "2026-11-04T07:56:37.957Z     Iteration   6 P error : 138.53 %, F error : 179.55 %, L error :   0.00 %",
+   "2026-11-04T07:56:38.074Z    ",
+   "2026-11-04T07:56:38.074Z     Warning 29003127  from PSIM :  No solution possible after 10 iterations on branch Well 3 - gas.",
+   "2026-11-04T07:56:38.074Z    ",
+   "2026-11-04T07:56:38.074Z     Warning 29003126  from PSIM :  Simplex too far from required outlet pressure.",
+   "2026-11-04T07:56:38.082Z     Iteration   7 P error :  62.81 %, F error : 178.96 %, L error :   0.00 %",
+   "2026-11-04T07:56:38.205Z    ",
+   "2026-11-04T07:56:38.205Z     Warning 29003127  from PSIM :  No solution possible after 11 iterations on branch Well 3 - gas.",
+   "2026-11-04T07:56:38.205Z    ",
+   "2026-11-04T07:56:38.205Z     Warning 29003126  from PSIM :  Simplex too far from required outlet pressure.",
+   "2026-11-04T07:56:38.214Z     Iteration   8 P error : 138.53 %, F error : 178.96 %, L error :   0.00 %",
+   "2026-11-04T07:56:38.372Z    ",
+   "2026-11-04T07:56:38.372Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
+   "2026-11-04T07:56:38.582Z     Iteration   9 P error :  20.65 %, F error : 178.96 %, L error :   0.00 %",
+   "2026-11-04T07:56:38.759Z    ",
+   "2026-11-04T07:56:38.759Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
+   "2026-11-04T07:56:38.813Z     Iteration  10 P error : 142.49 %, F error : 178.96 %, L error :   0.00 %",
+   "2026-11-04T07:56:38.876Z    ",
+   "2026-11-04T07:56:38.876Z    ",
+   "2026-11-04T07:56:38.876Z     WARNING:",
+   "2026-11-04T07:56:38.876Z    ",
+   "2026-11-04T07:56:38.876Z         The iterative solution for this case (if one exists)",
+   "2026-11-04T07:56:38.876Z         cannot be found without violating the user-specified",
+   "2026-11-04T07:56:38.876Z         lower limit. The iterative procedure is terminated.",
+   "2026-11-04T07:56:38.876Z    ",
+   "2026-11-04T07:56:38.960Z     Iteration  11 P error :  61.28 %, F error :  19.58 %, L error :   0.00 %",
+   "2026-11-04T07:56:39.005Z     Iteration  12 P error :  50.89 %, F error :   0.17 %, L error :   0.00 %",
+   "2026-11-04T07:56:39.086Z    ",
+   "2026-11-04T07:56:39.087Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:39.095Z     Iteration  13 P error :  48.44 %, F error : 185.05 %, L error :   0.00 %",
+   "2026-11-04T07:56:39.181Z    ",
+   "2026-11-04T07:56:39.181Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
+   "2026-11-04T07:56:39.189Z     Iteration  14 P error : 107.31 %, F error : 186.85 %, L error :   0.00 %",
+   "2026-11-04T07:56:39.399Z    ",
+   "2026-11-04T07:56:39.399Z    ",
+   "2026-11-04T07:56:39.399Z     WARNING:",
+   "2026-11-04T07:56:39.399Z    ",
+   "2026-11-04T07:56:39.399Z         The iterative solution for this case (if one exists)",
+   "2026-11-04T07:56:39.399Z         cannot be found without violating the user-specified",
+   "2026-11-04T07:56:39.399Z         lower limit. The iterative procedure is terminated.",
+   "2026-11-04T07:56:39.399Z    ",
+   "2026-11-04T07:56:39.686Z     Iteration  15 P error :  63.43 %, F error :   0.06 %, L error :   0.00 %",
+   "2026-11-04T07:56:39.778Z    ",
+   "2026-11-04T07:56:39.778Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
+   "2026-11-04T07:56:39.785Z     Iteration  16 P error :  47.34 %, F error : 187.22 %, L error :   0.00 %",
+   "2026-11-04T07:56:39.876Z    ",
+   "2026-11-04T07:56:39.876Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:40.055Z     Iteration  17 P error :  14.09 %, F error : 187.32 %, L error :   0.00 %",
+   "2026-11-04T07:56:40.104Z    ",
+   "2026-11-04T07:56:40.105Z    ",
+   "2026-11-04T07:56:40.105Z     WARNING:",
+   "2026-11-04T07:56:40.105Z    ",
+   "2026-11-04T07:56:40.105Z         The iterative solution for this case (if one exists)",
+   "2026-11-04T07:56:40.105Z         cannot be found without violating the user-specified",
+   "2026-11-04T07:56:40.105Z         lower limit. The iterative procedure is terminated.",
+   "2026-11-04T07:56:40.105Z    ",
+   "2026-11-04T07:56:40.352Z     Iteration  18 P error :  65.16 %, F error :   0.43 %, L error :   0.00 %",
+   "2026-11-04T07:56:40.436Z    ",
+   "2026-11-04T07:56:40.436Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:40.586Z     Iteration  19 P error :  13.86 %, F error : 187.35 %, L error :   0.00 %",
+   "2026-11-04T07:56:40.789Z     Iteration  20 P error :   8.43 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:56:40.884Z    ",
+   "2026-11-04T07:56:40.884Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:40.892Z     Iteration  21 P error :  13.59 %, F error : 187.27 %, L error :   0.00 %",
+   "2026-11-04T07:56:40.977Z    ",
+   "2026-11-04T07:56:40.977Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:40.985Z     Iteration  22 P error :  13.37 %, F error : 187.25 %, L error :   0.00 %",
+   "2026-11-04T07:56:41.040Z    ",
+   "2026-11-04T07:56:41.041Z    ",
+   "2026-11-04T07:56:41.041Z     WARNING:",
+   "2026-11-04T07:56:41.041Z    ",
+   "2026-11-04T07:56:41.041Z         The iterative solution for this case (if one exists)",
+   "2026-11-04T07:56:41.041Z         cannot be found without violating the user-specified",
+   "2026-11-04T07:56:41.041Z         lower limit. The iterative procedure is terminated.",
+   "2026-11-04T07:56:41.041Z    ",
+   "2026-11-04T07:56:41.305Z     Iteration  23 P error :  63.29 %, F error :   0.34 %, L error :   0.00 %",
+   "2026-11-04T07:56:41.340Z     Iteration  24 P error :  20.61 %, F error :   0.42 %, L error :   0.00 %",
+   "2026-11-04T07:56:41.424Z    ",
+   "2026-11-04T07:56:41.424Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:41.432Z     Iteration  25 P error :  14.63 %, F error : 187.30 %, L error :   0.00 %",
+   "2026-11-04T07:56:41.520Z    ",
+   "2026-11-04T07:56:41.520Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:41.528Z     Iteration  26 P error :  38.10 %, F error : 188.38 %, L error :   0.00 %",
+   "2026-11-04T07:56:41.583Z    ",
+   "2026-11-04T07:56:41.584Z    ",
+   "2026-11-04T07:56:41.584Z     WARNING:",
+   "2026-11-04T07:56:41.584Z    ",
+   "2026-11-04T07:56:41.584Z         The iterative solution for this case (if one exists)",
+   "2026-11-04T07:56:41.584Z         cannot be found without violating the user-specified",
+   "2026-11-04T07:56:41.584Z         lower limit. The iterative procedure is terminated.",
+   "2026-11-04T07:56:41.584Z    ",
+   "2026-11-04T07:56:41.849Z     Iteration  27 P error :  63.24 %, F error :   1.06 %, L error :   0.00 %",
+   "2026-11-04T07:56:41.938Z    ",
+   "2026-11-04T07:56:41.938Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:41.947Z     Iteration  28 P error :  19.65 %, F error : 187.60 %, L error :   0.00 %",
+   "2026-11-04T07:56:41.985Z     Iteration  29 P error :   9.13 %, F error :   0.07 %, L error :   0.00 %",
+   "2026-11-04T07:56:42.032Z     Iteration  30 P error :  30.89 %, F error :   0.20 %, L error :   0.00 %",
+   "2026-11-04T07:56:42.172Z    ",
+   "2026-11-04T07:56:42.172Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 16 iterations.",
+   "2026-11-04T07:56:42.180Z     Iteration  31 P error :  33.29 %, F error : 182.10 %, L error :   0.00 %",
+   "2026-11-04T07:56:42.262Z    ",
+   "2026-11-04T07:56:42.262Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:42.270Z     Iteration  32 P error :  60.84 %, F error : 187.86 %, L error :   0.00 %",
+   "2026-11-04T07:56:42.324Z    ",
+   "2026-11-04T07:56:42.324Z    ",
+   "2026-11-04T07:56:42.324Z     WARNING:",
+   "2026-11-04T07:56:42.324Z    ",
+   "2026-11-04T07:56:42.324Z         The iterative solution for this case (if one exists)",
+   "2026-11-04T07:56:42.324Z         cannot be found without violating the user-specified",
+   "2026-11-04T07:56:42.324Z         lower limit. The iterative procedure is terminated.",
+   "2026-11-04T07:56:42.324Z    ",
+   "2026-11-04T07:56:42.546Z     Iteration  33 P error :  62.97 %, F error :   0.85 %, L error :   0.00 %",
+   "2026-11-04T07:56:42.629Z    ",
+   "2026-11-04T07:56:42.629Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:42.636Z     Iteration  34 P error :  24.14 %, F error : 187.47 %, L error :   0.00 %",
+   "2026-11-04T07:56:42.720Z    ",
+   "2026-11-04T07:56:42.720Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:42.728Z     Iteration  35 P error :  17.32 %, F error : 187.42 %, L error :   0.00 %",
+   "2026-11-04T07:56:42.783Z    ",
+   "2026-11-04T07:56:42.783Z    ",
+   "2026-11-04T07:56:42.783Z     WARNING:",
+   "2026-11-04T07:56:42.783Z    ",
+   "2026-11-04T07:56:42.783Z         The iterative solution for this case (if one exists)",
+   "2026-11-04T07:56:42.783Z         cannot be found without violating the user-specified",
+   "2026-11-04T07:56:42.783Z         lower limit. The iterative procedure is terminated.",
+   "2026-11-04T07:56:42.783Z    ",
+   "2026-11-04T07:56:43.061Z     Iteration  36 P error :  63.38 %, F error :   0.48 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.096Z     Iteration  37 P error :   5.99 %, F error :   0.53 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.183Z    ",
+   "2026-11-04T07:56:43.183Z     Warning 29003129  from PSIM :  No solution possible (guess too small) after 15 iterations.",
+   "2026-11-04T07:56:43.190Z     Iteration  38 P error :  22.37 %, F error : 187.67 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.212Z     Iteration  39 P error :  10.09 %, F error :   0.14 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.249Z     Iteration  40 P error :  16.83 %, F error :   0.03 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.291Z     Iteration  41 P error :  36.56 %, F error :   0.14 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.335Z     Iteration  42 P error :  48.51 %, F error :   0.04 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.377Z     Iteration  43 P error :  14.08 %, F error :   0.06 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.418Z     Iteration  44 P error :   6.12 %, F error :   0.09 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.463Z     Iteration  45 P error :   5.98 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.508Z     Iteration  46 P error :  11.54 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.546Z     Iteration  47 P error :   8.09 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.581Z     Iteration  48 P error :   3.48 %, F error :   0.01 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.626Z     Iteration  49 P error :   3.85 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.661Z     Iteration  50 P error :   4.28 %, F error :   0.03 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.675Z     Iteration  51 P error :   2.21 %, F error :   0.03 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.714Z     Iteration  52 P error :   0.76 %, F error :   0.00 %, L error :   0.00 %",
+   "2026-11-04T07:56:43.714Z    ",
+   "2026-11-04T07:56:43.715Z    ",
+   "2026-11-04T07:56:43.715Z     Converged.                                                                     ",
+   "2026-11-04T07:56:43.715Z     ... network converged at iteration  52, final rms error :   0.756701E-02",
+   "2026-11-04T07:56:43.715Z      Start Post-Processing results",
+   "2026-11-04T07:56:43.747Z    ",
+   "2026-11-04T07:56:43.747Z       Elapsed time:",
+   "2026-11-04T07:56:43.747Z    ",
+   "2026-11-04T07:56:43.747Z       Network Executive      7.15",
+   "2026-11-04T07:56:43.747Z       PIPESIM sub-tasks      0.00",
+   "2026-11-04T07:56:43.747Z                         ---------",
+   "2026-11-04T07:56:43.747Z                 Total        7.15",
+   "2026-11-04T07:56:43.747Z    ",
+   "2026-11-04T07:56:43.747Z       CPU time:",
+   "2026-11-04T07:56:43.747Z    ",
+   "2026-11-04T07:56:43.747Z               User task      6.64",
+   "2026-11-04T07:56:43.747Z               System         0.86",
+   "2026-11-04T07:56:43.747Z                         ---------",
+   "2026-11-04T07:56:43.747Z                 Total        7.50",
+   "2026-11-04T07:56:43.751Z     Disposing communication agent.",
+   "2026-11-04T07:56:43.753Z     Disposing communication agent.",
+   "2026-11-04T07:56:43.753Z     Disposing communication agent.",
+   "2026-11-04T07:56:43.753Z     Disposing communication agent.",
+   "2026-11-04T07:56:43.753Z     Disposing communication agent.",
+   "2026-11-04T07:56:43.753Z     Disposing communication agent.",
+   "2026-11-04T07:56:44.136Z     Disposing communication agent."
+  ],
+  "system": {},
+  "node": {
+   "Pressure": {
+    "Unit": "bara",
+    "J": 45.99525043367798,
+    "Well 4 - Horizontal Gas well": 65.66473746030458,
+    "choke_1": 50.00316887618435,
+    "Completion": 177.7608088384792,
+    "Gas lift injection": 159.77923869504542,
+    "choke_3": 48.928419677239106,
+    "choke_2": 45.68389281384815,
+    "sink": 34.473786466612054,
+    "ESP": 232.07623924050085,
+    "upper": 155.2334096070589,
+    "lower": 160.41793438422533,
+    "Well 2 - ESP": 46.04330618690877,
+    "Well 3 - gas": 49.003784132937206,
+    "choke_4": 64.01697189911188,
+    "Well 1 - oil": 50.10860757081229,
+    "J 1": 41.113981835270565
+   },
+   "Temperature": {
+    "Unit": "degC",
+    "J": 95.12732431803767,
+    "Well 4 - Horizontal Gas well": 61.15067640620555,
+    "choke_1": 40.17614776669387,
+    "Completion": 95.3768717292545,
+    "Gas lift injection": 93.24610899220596,
+    "choke_3": 55.83252730711388,
+    "choke_2": 77.00302314879332,
+    "sink": 116.66784563040267,
+    "ESP": 105.54195891446142,
+    "upper": 128.80732356367827,
+    "lower": 111.95094650868037,
+    "Well 2 - ESP": 76.9936965151727,
+    "Well 3 - gas": 55.839089289380524,
+    "choke_4": 61.02201431609558,
+    "Well 1 - oil": 40.179650021969906,
+    "J 1": 118.42544537939312
+   },
+   "VolumeFlowrateLiquidStockTank": {
+    "Unit": "sm3/d",
+    "J": 338.5024975483716,
+    "Well 4 - Horizontal Gas well": 46.83486865622124,
+    "choke_1": 324.9056832675297,
+    "Completion": 324.90564253783754,
+    "Gas lift injection": 324.9056832675297,
+    "choke_3": 13.596716606550096,
+    "choke_2": 737.9469041549215,
+    "sink": 1123.2708702305954,
+    "ESP": 737.9469041549215,
+    "upper": 13.596716606550096,
+    "lower": 6.697505306634883,
+    "Well 2 - ESP": 737.9469041549215,
+    "Well 3 - gas": 13.596716606550096,
+    "choke_4": 46.83486865622124,
+    "Well 1 - oil": 324.9056832675297,
+    "J 1": 1123.2894424026933
+   },
+   "VolumeFlowrateOilStockTank": {
+    "Unit": "sm3/d",
+    "J": 303.7794160739357,
+    "Well 4 - Horizontal Gas well": 31.22324577081416,
+    "choke_1": 292.41511494077673,
+    "Completion": 292.41507828405383,
+    "Gas lift injection": 292.41511494077673,
+    "choke_3": 11.364213478150345,
+    "choke_2": 664.1522137394294,
+    "sink": 999.142994765548,
+    "ESP": 664.1522137394294,
+    "upper": 11.364213478150345,
+    "lower": 4.46500353775659,
+    "Well 2 - ESP": 664.1522137394294,
+    "Well 3 - gas": 11.364213478150345,
+    "choke_4": 31.22324577081416,
+    "Well 1 - oil": 292.41511494077673,
+    "J 1": 999.1595146060787
+   },
+   "VolumeFlowrateGasStockTank": {
+    "Unit": "mmsm3/d",
+    "J": 0.28507936271879336,
+    "Well 4 - Horizontal Gas well": 0.5561097253100243,
+    "choke_1": 0.08267432304211811,
+    "Completion": 0.02604067329477234,
+    "Gas lift injection": 0.08267432304211811,
+    "choke_3": 0.20240514293389297,
+    "choke_2": 0.03947772803667067,
+    "sink": 0.8806560197681467,
+    "ESP": 0.03947772803667067,
+    "upper": 0.20240514293389297,
+    "lower": 0.0795251047606047,
+    "Well 2 - ESP": 0.03947772803667067,
+    "Well 3 - gas": 0.20240514293389297,
+    "choke_4": 0.5561097253100243,
+    "Well 1 - oil": 0.08267432304211811,
+    "J 1": 0.8806705805438165
+   },
+   "VolumeFlowrateWaterStockTank": {
+    "Unit": "sm3/d",
+    "J": 34.72308147443594,
+    "Well 4 - Horizontal Gas well": 15.611622885407074,
+    "choke_1": 32.49056832675295,
+    "Completion": 32.49056425378374,
+    "Gas lift injection": 32.49056832675295,
+    "choke_3": 2.2325031283997503,
+    "choke_2": 73.79469041549211,
+    "sink": 124.12787546504747,
+    "ESP": 73.79469041549211,
+    "upper": 2.2325031283997503,
+    "lower": 2.2325017688782935,
+    "Well 2 - ESP": 73.79469041549211,
+    "Well 3 - gas": 2.2325031283997503,
+    "choke_4": 15.611622885407074,
+    "Well 1 - oil": 32.49056832675295,
+    "J 1": 124.12992779661454
+   }
+  }
+ },
+ "seconds": 16.9
+}
