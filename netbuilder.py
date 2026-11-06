@@ -3,6 +3,7 @@ Build a PIPESIM model (.pips) from a project description (see project.py).
 Every sixgill name goes through sixgill_adapter.P/C/MC, so tests/test_api_names.py can check each one
 against the API recorded on the real install (knowledge/api.json). Units: METRIC (bara, degC, m, mm, sm3/d).
 """
+import os, zipfile
 import project as prj
 import sixgill_adapter as sa
 from sixgill_adapter import P, C, MC
@@ -72,8 +73,12 @@ def _well(m, w, ambient):
             P("GasLiftInjection", "GASRATE"): w["gas_lift"]["rate"]})
 
 
-def build(project, path, units="METRIC"):
-    """Create the .pips at path. Returns (open model, build report). The caller closes the model."""
+def build(project, path, units="METRIC", thermal=None):
+    """Create the .pips at path. Returns (open model, build report). The caller closes the model.
+    thermal (default on, PIPESIM_THERMAL_DEFAULTS=0 turns it off): after saving, write PIPESIM's standard black-oil
+    thermal data and any flowline "u_value" into the file (the toolkit cannot set them, see pips_writer.py)."""
+    if thermal is None:
+        thermal = os.getenv("PIPESIM_THERMAL_DEFAULTS", "1") != "0"
     chk = prj.check_project(project)
     if not chk["ready"]:
         raise ValueError(f"Project is not complete: missing {[x['field'] for x in chk['missing']]}, "
@@ -166,9 +171,23 @@ def build(project, path, units="METRIC"):
             m.close()
         finally:
             raise
+    thermal_report = None
+    if thermal and zipfile.is_zipfile(path):
+        import pips_writer
+        m.close()
+        fluids = [f["name"] for f in project.get("fluids") or [] if f.get("type", "black_oil") in ("black_oil", "gas")]
+        pipes = {f["name"]: {"u_value": f["u_value"]} for f in project.get("flowlines") or [] if f.get("u_value") is not None}
+        try:
+            thermal_report = pips_writer.apply(path, fluids=fluids, pipes=pipes)
+        finally:
+            m = sa.open_model(path)
+        for node, values in wanted.items():   # boundary conditions must survive the reopen
+            cur = (sa.get_boundaries(m) or {}).get(node) or {}
+            if not (cur and all(sa._same(cur.get(k), v) for k, v in values.items())):
+                bcs[node] = "set after reopen" if sa.set_boundaries(m, node, values) else "NOT SET"
     n = sum(len(project.get(k) or []) for k in prj.FIELDS)
     return m, {"file": path, "components": n, "connections": links, "boundaries_synced": synced,
-               "boundary_conditions": bcs, "validation": issues}
+               "boundary_conditions": bcs, "validation": issues, "thermal": thermal_report}
 
 
 def build_file(project, path):

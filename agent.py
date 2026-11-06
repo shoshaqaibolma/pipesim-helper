@@ -67,7 +67,8 @@ PROJECT SCHEMA (every list item needs a unique "name"; units in brackets):
   separators:{{"name","efficiency"[%]}}  (two-phase; flowlines leaving it need "port":"gas" or "liquid")
   pumps / compressors: {{"name","efficiency"[%]}} plus ONE of "pressure"[bara discharge], "pressure_rise"[bar],
              "pressure_ratio", "power"[kW]; inlet like a choke ("from" or a flowline ending at it)
-  flowlines: {{"name","from","to","length"[m],"id"[mm],"elevation_change"[m, + uphill]}} (+ "port" after a separator)
+  flowlines: {{"name","from","to","length"[m],"id"[mm],"elevation_change"[m, + uphill]}} (+ "port" after a separator;
+             optional "u_value"[W/m2/K] only when the user gives a heat transfer coefficient, 0 = no heat loss)
 EXAMPLE (only for "2 wells into a manifold, 5 km trunkline to a separator at 15 bara"; copy the format, not the parts):
   {{"name":"Field A","fluids":[{{"name":"BO","type":"black_oil","api":35,"gor":100,"water_cut":20,"gas_sg":0.7}}],
    "wells":[{{"name":"W1","fluid":"BO","reservoir_pressure":250,"depth":2500,"ipr":{{"model":"pi","liquid_pi":10}}}},

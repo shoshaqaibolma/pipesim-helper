@@ -294,6 +294,7 @@ RANGES = {
     ("flowlines", "id"): (25, 1500, "mm", "inches entered as mm?"),
     ("flowlines", "length"): (10, 300000, "m", "km entered as m?"),
     ("chokes", "bean_size"): (2, 150, "mm", "1/64 inch entered as mm?"),
+    ("flowlines", "u_value"): (0, 60, "W/m2/K", "Btu/h/ft2/F x 5.678 = W/m2/K"),
 }
 FLUID_RANGES = {
     "api": (8, 65, "", "check the oil gravity"),
@@ -351,7 +352,7 @@ def sanity(p):
 
 EXTRA_KEYS = {"wells": {"casing_id", "casing_wall", "tubing_wall", "gas_lift"}, "sources": set(SOURCE_BC),
               "chokes": {"from"}, "pumps": {"from", *EQUIP_SPEC}, "compressors": {"from", *EQUIP_SPEC},
-              "flowlines": {"port"}}
+              "flowlines": {"port", "u_value"}}
 
 
 def gas_lift_name(well):
@@ -554,7 +555,8 @@ def describe_item(kind, e):
     if kind == "flowlines":
         port = f" ({e['port']} outlet)" if e.get("port") else ""
         return (f"{g('from')}{port} -> {g('to')}, {g('length', 'm')}, ID {g('id', 'mm')}, "
-                f"elevation {'+' if (e.get('elevation_change') or 0) >= 0 else ''}{g('elevation_change', 'm')}")
+                f"elevation {'+' if (e.get('elevation_change') or 0) >= 0 else ''}{g('elevation_change', 'm')}"
+                + (f", U {_g(e['u_value'])} W/m2/K" if e.get("u_value") is not None else ""))
     if kind == "chokes":
         return f"bean {g('bean_size', 'mm')}" + (f", right after {e['from']}" if e.get("from") else "")
     if kind == "separators":

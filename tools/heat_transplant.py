@@ -22,8 +22,10 @@ META = {"Id", "Version", "GUID", "Insert_Date", "Insert_User", "Produced_By", "S
         "Update_User", "Existence_Kind", "Name"}
 
 
-def prepare(path, tmp):
-    """Original P/T result + a saved level-2 rebuilt file. Returns a dict."""
+def prepare(path, tmp, thermal=False, u_from_original=False):
+    """Original P/T result + a saved level-2 rebuilt file. Returns a dict.
+    thermal: let the builder write the standard thermal data; u_from_original: give each flowline the U-value
+    the original uses (read from its file with pips_reader, as the assistant would)."""
     c = os.path.join(tmp, "orig.pips"); shutil.copy2(path, c)
     notes = []
     orig = sa.open_model(c)
@@ -61,8 +63,17 @@ def prepare(path, tmp):
                 proj["ambient_temperature"] = amb
     finally:
         orig.close()
+    if u_from_original:
+        import pips_reader
+        with pips_reader.Pips(c) as pr:
+            for f in proj["flowlines"]:
+                ht = pr.heat_transfer_in_use(f["name"]) or {}
+                u = ht.get("u_value")
+                if isinstance(u, dict) and isinstance(u.get("value"), (int, float)):
+                    f["u_value"] = u["value"]
     bpath = os.path.join(tmp, "rebuilt.pips")
-    built, _ = netbuilder.build(proj, bpath)
+    built, rep = netbuilder.build(proj, bpath, thermal=thermal)
+    notes.append(f"builder thermal report: {rep.get('thermal')}")
     try:
         for k, val in fv.items():
             if k not in FLUID_SKIP and val is not None and not isinstance(val, (list, dict)):
