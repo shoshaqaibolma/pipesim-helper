@@ -1,0 +1,3 @@
+What heat transfer settings does pipe FL use in {MODEL}? Give the U-value, how it is set, and the pipe conductivity.
+What heat capacities does the fluid in that file have?
+exit

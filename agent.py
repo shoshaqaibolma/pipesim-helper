@@ -94,6 +94,10 @@ Gas lift allocation ("share X mmsm3/d of lift gas between the wells to maximize 
 P/T profiles need ONE boundary condition in analysis.conditions: {{"outlet_pressure": x}} OR {{"liquid_flowrate": x}} OR {{"gas_flowrate": x}}.
 For existing models, refer to variables as component_type + name + parameter (e.g. Sink / "Sink-1" / "Pressure").
 Use model units (METRIC unless the user says FIELD). Never invent results: every number comes from a tool.
+VALUES INSIDE A MODEL FILE: for "what is the U-value / heat capacity / conductivity / insulation / correlation of X
+in <file>.pips" (anything get_values does not show), call read_pips(path, component, keyword). Quote only values it
+returns, with their unit; "SI (as stored)" means SI units (W/m/K, W/m2/K, J/kg/K, m, Pa). If it returns nothing,
+say the value is not stored in the file; never guess.
 Every check_spec and check_project result has a "next_step" field: always do exactly what it says.
 Keep messages short.{NUMBER_RULE}"""
 
@@ -224,12 +228,21 @@ def inspect_model(path: str, units: str = "METRIC"):
     return {"components": STATE["components"]}
 
 
+def read_pips(path: str, component: str = "", keyword: str = ""):
+    """Read values stored inside a .pips file that get_values cannot show: pipe heat transfer (U-value, insulation
+    type, conductivities), fluid thermal data (heat capacities, conductivities), per-pipe flow correlations, any
+    stored setting. component: an object name (e.g. "FL"); keyword: e.g. "u value", "heat capacity",
+    "conductivity", "correlation". Read-only, works on a copy."""
+    import pips_reader
+    return pips_reader.read_pips(path, component, keyword)
+
+
 def get_values(component_type: str, parameters: list, name: str = ""):
     """Read current parameter values from the inspected model (e.g. to find base-case values)."""
     return pt.get_values(component_type=component_type, parameters=parameters, name=name)
 
 
-FUNCS = {f.__name__: f for f in (update_spec, check_spec, propose_plan, run_study, inspect_model, get_values,
+FUNCS = {f.__name__: f for f in (update_spec, check_spec, propose_plan, run_study, inspect_model, get_values, read_pips,
                                   update_project, check_project, build_project, use_defaults)}
 _S = {"type": "string"}
 PARAMS = {
@@ -247,6 +260,7 @@ PARAMS = {
                                   "flowlines[]; every item has a unique name"}}, ["patch"]),
     "use_defaults": ({"fields": {"type": "array", "items": _S,
                                  "description": "[\"all\"] or field paths from check_project's missing list"}}, ["fields"]),
+    "read_pips": ({"path": _S, "component": _S, "keyword": _S}, ["path"]),
     "check_project": ({}, []),
     "build_project": ({"path": {"type": "string", "description": "Where to save the new .pips file"}}, ["path"]),
 }

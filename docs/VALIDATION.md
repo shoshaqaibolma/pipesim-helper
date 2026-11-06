@@ -128,3 +128,24 @@ scenario is therefore no longer held out; water_rise still is.
 Choke sizing now takes 6 calls with no errors (10 calls / 2 errors plain); pipeline sizing 8 calls (33 calls /
 11 errors plain); the held-out water-cut scenario is correct in both. This is the configuration shipped by
 default: recipes + sanity checks + number check on result replies; structured mode off.
+
+## 7. Where the remaining 1-4 % came from (jobs 27-29)
+
+- Job 27 copied every setting the Python Toolkit can read from the case study into the rebuilt model (ambient,
+  soil, roughness, wall thickness, full fluid settings, global flow correlations). The gap did not move, and the
+  water line still cooled from 15.6 degC to -5.6 degC in a 15.6 degC environment in the original only.
+- Job 28 opened the `.pips` files (a zip with an SQLite database, see `docs/PIPS_FILE.md`) and found tables the
+  toolkit does not expose: pipe heat transfer (U-value type and value, pipe conductivity) and fluid thermal data
+  (heat capacities, conductivities). In our models these are "Insulated" with a calculated U-value and empty
+  thermal data; in the case studies "UserSupplied" U-values and explicit heat capacities.
+- Job 29 wrote the original's hidden values into temp copies of the rebuilt models and reran the P/T profile:
+
+| Pipeline | rebuilt (level 2) | + pipe heat transfer | + fluid thermal data |
+|---|---|---|---|
+| TF_M2B gas, gas rate | -1.58 % | -1.53 % | **0.00 %** (outlet -0.51 degC, exact) |
+| TF_M2C multiphase, pressure loss | -1.36 % | -1.58 % | **+0.01 %** (outlet 20.21 degC, exact) |
+| TF_M2A water, pressure loss | -3.37 % | -3.37 % | -3.37 % (not explained yet) |
+
+So for the gas and multiphase pipelines the remaining difference is fully explained by the hidden thermal inputs:
+with them, our model reproduces PIPESIM to 0.01 %. The water line's original uses PIPESIM's built-in "Water" fluid
+template; the remaining 3.4 % there is still open.
