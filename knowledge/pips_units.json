@@ -1,0 +1,470 @@
+{
+ "note": "toolkit (METRIC) value = stored value * scale + offset; learned from the bundled case studies",
+ "columns": {
+  "AmbientAirTemperature": {
+   "scale": 1.0,
+   "offset": -273.15,
+   "unit": "degree celsius",
+   "samples": 313,
+   "tables": [
+    "AV_Flowline"
+   ]
+  },
+  "AmbientTemperature": {
+   "scale": 1.0,
+   "offset": -273.15,
+   "unit": "degree celsius",
+   "samples": 8,
+   "tables": [
+    "AV_Flowline"
+   ]
+  },
+  "AmbientWaterTemperature": {
+   "scale": 1.0,
+   "offset": -273.15,
+   "unit": "degree celsius",
+   "samples": 254,
+   "tables": [
+    "AV_Flowline"
+   ]
+  },
+  "BeanSize": {
+   "scale": 1000.0,
+   "offset": 0.0,
+   "unit": "millimeter",
+   "samples": 66,
+   "tables": [
+    "AV_Choke"
+   ]
+  },
+  "CO2Fraction": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "dimensionless",
+   "samples": 7,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "COFraction": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "dimensionless",
+   "samples": 1,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "CriticalPressureRatio": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "None",
+   "samples": 66,
+   "tables": [
+    "AV_Choke"
+   ]
+  },
+  "DeadOilTemperature1": {
+   "scale": 1.0,
+   "offset": -273.15,
+   "unit": "degree celsius",
+   "samples": 68,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "DeadOilTemperature2": {
+   "scale": 1.0,
+   "offset": -273.15,
+   "unit": "degree celsius",
+   "samples": 68,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "DeadOilViscosity1": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "kilogram per meter per second",
+   "samples": 64,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "DeadOilViscosity2": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "kilogram per meter per second",
+   "samples": 64,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "DepthAtStart": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "meter",
+   "samples": 2,
+   "tables": [
+    "AV_Flowline"
+   ]
+  },
+  "Efficiency": {
+   "scale": 100.0,
+   "offset": 0.0,
+   "unit": "percent",
+   "samples": 17,
+   "tables": [
+    "AV_Pump",
+    "AV_TwoPhaseSeparator"
+   ]
+  },
+  "ElevationDifference": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "meter",
+   "samples": 22,
+   "tables": [
+    "AV_Flowline"
+   ]
+  },
+  "GLR": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "standard cubic meters per standard cubic meter",
+   "samples": 7,
+   "tables": [
+    "AV_BlackOilFluid",
+    "AV_Source"
+   ]
+  },
+  "GOR": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "standard cubic meters per standard cubic meter",
+   "samples": 46,
+   "tables": [
+    "AV_BlackOilFluid",
+    "AV_Source"
+   ]
+  },
+  "GWR": {
+   "scale": NaN,
+   "offset": 0.0,
+   "unit": "standard cubic meters per standard cubic meter",
+   "samples": 4,
+   "tables": [
+    "AV_BlackOilFluid",
+    "AV_Source"
+   ]
+  },
+  "GasFlowRate": {
+   "scale": 0.08640000000003041,
+   "offset": 0.0,
+   "unit": "mmsm3/d",
+   "samples": 20,
+   "tables": [
+    "AV_Source"
+   ]
+  },
+  "H2Fraction": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "dimensionless",
+   "samples": 1,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "H2SFraction": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "dimensionless",
+   "samples": 2,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "HorizontalDistance": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "meter",
+   "samples": 258,
+   "tables": [
+    "AV_Flowline"
+   ]
+  },
+  "LGR": {
+   "scale": 1000000.0,
+   "offset": 0.0,
+   "unit": "sm3/mmsm3",
+   "samples": 7,
+   "tables": [
+    "AV_BlackOilFluid",
+    "AV_Source"
+   ]
+  },
+  "LiquidFlowRate": {
+   "scale": 86399.99999999981,
+   "offset": 0.0,
+   "unit": "standard cubic meters per day",
+   "samples": 9,
+   "tables": [
+    "AV_Source"
+   ]
+  },
+  "MeasuredDistance": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "meter",
+   "samples": 129,
+   "tables": [
+    "AV_Flowline"
+   ]
+  },
+  "N2Fraction": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "dimensionless",
+   "samples": 6,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "OGR": {
+   "scale": 1000000.0,
+   "offset": 0.0,
+   "unit": "sm3/mmsm3",
+   "samples": 30,
+   "tables": [
+    "AV_BlackOilFluid",
+    "AV_Source"
+   ]
+  },
+  "PlatformHeight": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "meter",
+   "samples": 6,
+   "tables": [
+    "AV_Flowline"
+   ]
+  },
+  "Power": {
+   "scale": 0.001,
+   "offset": 0.0,
+   "unit": "kilowatt",
+   "samples": 5,
+   "tables": [
+    "AV_Pump"
+   ]
+  },
+  "Pressure": {
+   "scale": 1e-05,
+   "offset": 0.0,
+   "unit": "bara",
+   "samples": 44,
+   "tables": [
+    "AV_Sink",
+    "AV_Source",
+    "AV_TwoPhaseSeparator"
+   ]
+  },
+  "PressureDifferential": {
+   "scale": 1e-05,
+   "offset": 0.0,
+   "unit": "bar",
+   "samples": 1,
+   "tables": [
+    "AV_Pump"
+   ]
+  },
+  "PressureRatio": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "None",
+   "samples": 1,
+   "tables": [
+    "AV_Pump"
+   ]
+  },
+  "Richardsonkoiw": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "None",
+   "samples": 68,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "Richardsonkwio": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "None",
+   "samples": 68,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "SeabedDepth": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "meter",
+   "samples": 4,
+   "tables": [
+    "AV_Flowline"
+   ]
+  },
+  "Temperature": {
+   "scale": 1.0,
+   "offset": -273.15,
+   "unit": "degree celsius",
+   "samples": 36,
+   "tables": [
+    "AV_Source"
+   ]
+  },
+  "Tolerance": {
+   "scale": 100.0,
+   "offset": 0.0,
+   "unit": "percent",
+   "samples": 66,
+   "tables": [
+    "AV_Choke"
+   ]
+  },
+  "UndersaturatedOilViscosityParA": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "None",
+   "samples": 68,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "UndersaturatedOilViscosityParB": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "None",
+   "samples": 68,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "UndulationRate": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "None",
+   "samples": 65,
+   "tables": [
+    "AV_Flowline"
+   ]
+  },
+  "UserWatercutCutOff": {
+   "scale": 100.0,
+   "offset": 0.0,
+   "unit": "percent",
+   "samples": 68,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "VandUserk1": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "None",
+   "samples": 68,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "VandUserk2": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "None",
+   "samples": 68,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  },
+  "WGR": {
+   "scale": 1000000.0000000001,
+   "offset": 0.0,
+   "unit": "sm3/mmsm3",
+   "samples": 3,
+   "tables": [
+    "AV_BlackOilFluid",
+    "AV_Source"
+   ]
+  },
+  "WaterCut": {
+   "scale": 100.0,
+   "offset": 0.0,
+   "unit": "percent",
+   "samples": 49,
+   "tables": [
+    "AV_BlackOilFluid",
+    "AV_Source"
+   ]
+  },
+  "WaterSpecificGravity": {
+   "scale": 1.0,
+   "offset": 0.0,
+   "unit": "dimensionless",
+   "samples": 68,
+   "tables": [
+    "AV_BlackOilFluid"
+   ]
+  }
+ },
+ "report": [
+  "API: no single conversion (68 samples, scales 1..4.152)",
+  "AmbientAirTemperature: toolkit = stored x 1 -273.15  [degree celsius]  (313 samples)",
+  "AmbientTemperature: toolkit = stored x 1 -273.15  [degree celsius]  (8 samples)",
+  "AmbientWaterTemperature: toolkit = stored x 1 -273.15  [degree celsius]  (254 samples)",
+  "BeanSize: toolkit = stored x 1000 +0  [millimeter]  (66 samples)",
+  "CO2Fraction: toolkit = stored x 1 +0  [dimensionless]  (7 samples)",
+  "COFraction: toolkit = stored x 1 +0  [dimensionless]  (1 samples)",
+  "CriticalPressureRatio: toolkit = stored x 1 +0  [None]  (66 samples)",
+  "DeadOilDensity: no single conversion (68 samples, scales 0.859..1)",
+  "DeadOilTemperature1: toolkit = stored x 1 -273.15  [degree celsius]  (68 samples)",
+  "DeadOilTemperature2: toolkit = stored x 1 -273.15  [degree celsius]  (68 samples)",
+  "DeadOilViscosity1: toolkit = stored x 1 +0  [kilogram per meter per second]  (64 samples)",
+  "DeadOilViscosity2: toolkit = stored x 1 +0  [kilogram per meter per second]  (64 samples)",
+  "DepthAtStart: toolkit = stored x 1 +0  [meter]  (2 samples)",
+  "Efficiency: toolkit = stored x 100 +0  [percent]  (17 samples)",
+  "ElevationDifference: toolkit = stored x 1 +0  [meter]  (22 samples)",
+  "GLR: toolkit = stored x 1 +0  [standard cubic meters per standard cubic meter]  (7 samples)",
+  "GOR: toolkit = stored x 1 +0  [standard cubic meters per standard cubic meter]  (46 samples)",
+  "GWR: toolkit = stored x nan +0  [standard cubic meters per standard cubic meter]  (4 samples)",
+  "GasFlowRate: toolkit = stored x 0.0864 +0  [mmsm3/d]  (20 samples)",
+  "GasSpecificGravity: no single conversion (68 samples, scales 0.9644..1.085)",
+  "H2Fraction: toolkit = stored x 1 +0  [dimensionless]  (1 samples)",
+  "H2SFraction: toolkit = stored x 1 +0  [dimensionless]  (2 samples)",
+  "HorizontalDistance: toolkit = stored x 1 +0  [meter]  (258 samples)",
+  "LGR: toolkit = stored x 1e+06 +0  [sm3/mmsm3]  (7 samples)",
+  "LiquidFlowRate: toolkit = stored x 86400 +0  [standard cubic meters per day]  (9 samples)",
+  "MeasuredDistance: toolkit = stored x 1 +0  [meter]  (129 samples)",
+  "N2Fraction: toolkit = stored x 1 +0  [dimensionless]  (6 samples)",
+  "OGR: toolkit = stored x 1e+06 +0  [sm3/mmsm3]  (30 samples)",
+  "PlatformHeight: toolkit = stored x 1 +0  [meter]  (6 samples)",
+  "Power: toolkit = stored x 0.001 +0  [kilowatt]  (5 samples)",
+  "Pressure: toolkit = stored x 1e-05 +0  [bara]  (44 samples)",
+  "PressureDifferential: toolkit = stored x 1e-05 +0  [bar]  (1 samples)",
+  "PressureRatio: toolkit = stored x 1 +0  [None]  (1 samples)",
+  "Richardsonkoiw: toolkit = stored x 1 +0  [None]  (68 samples)",
+  "Richardsonkwio: toolkit = stored x 1 +0  [None]  (68 samples)",
+  "SeabedDepth: toolkit = stored x 1 +0  [meter]  (4 samples)",
+  "Temperature: toolkit = stored x 1 -273.15  [degree celsius]  (36 samples)",
+  "Tolerance: toolkit = stored x 100 +0  [percent]  (66 samples)",
+  "UndersaturatedOilViscosityParA: toolkit = stored x 1 +0  [None]  (68 samples)",
+  "UndersaturatedOilViscosityParB: toolkit = stored x 1 +0  [None]  (68 samples)",
+  "UndulationRate: toolkit = stored x 1 +0  [None]  (65 samples)",
+  "UserWatercutCutOff: toolkit = stored x 100 +0  [percent]  (68 samples)",
+  "VandUserk1: toolkit = stored x 1 +0  [None]  (68 samples)",
+  "VandUserk2: toolkit = stored x 1 +0  [None]  (68 samples)",
+  "WGR: toolkit = stored x 1e+06 +0  [sm3/mmsm3]  (3 samples)",
+  "WaterCut: toolkit = stored x 100 +0  [percent]  (49 samples)",
+  "WaterSpecificGravity: toolkit = stored x 1 +0  [dimensionless]  (68 samples)"
+ ]
+}
