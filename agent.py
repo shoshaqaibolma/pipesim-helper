@@ -6,7 +6,7 @@ Usage:  python agent.py         (llama-server must be running, see start_llm.bat
 import json, os, re, sys
 from openai import OpenAI
 import pipesim_tools as pt
-import study, executor, netbuilder, recipes, numguard, structured
+import study, executor, netbuilder, recipes, numguard
 import project as prj
 from builder import TEMPLATES
 
@@ -16,10 +16,6 @@ MAX_STEPS = 25
 # A/B switches (both on by default): worked recipes + study-type table, and the invented-number check
 KNOWLEDGE = os.getenv("PIPESIM_AGENT_KNOWLEDGE", "1") != "0"
 NUMBER_GUARD = os.getenv("PIPESIM_NUMBER_GUARD", "1") != "0"
-# narrow schema-constrained extraction calls + only the tools that fit the current stage of the workflow
-# Experimental, OFF by default: in job 22 the 9B lost stated values under the grammar and the strict tool schema
-# overflowed the 16k context (0/8 studies). Kept for larger models / future work: PIPESIM_AGENT_STRUCTURED=1.
-STRUCTURED = os.getenv("PIPESIM_AGENT_STRUCTURED", "0") == "1"
 NUMBER_RULE = ("\nNUMBERS: every number you write must be in a tool result or in the user's message. Do not estimate, "
                "add up or convert results yourself; if a number is not in the results, say it was not calculated. "
                "Replies are checked automatically.") if NUMBER_GUARD else ""
@@ -265,34 +261,8 @@ PARAMS = {
     "check_project": ({}, []),
     "build_project": ({"path": {"type": "string", "description": "Where to save the new .pips file"}}, ["path"]),
 }
-if STRUCTURED:   # exact field names in the tool schema: llama-server can constrain the call to them
-    PARAMS["update_project"] = ({"patch": dict(structured.project_schema(for_tool=True),
-                                               description=PARAMS["update_project"][0]["patch"]["description"])},
-                                ["patch"])
 TOOLS = [{"type": "function", "function": {"name": n, "description": FUNCS[n].__doc__,
           "parameters": {"type": "object", "properties": p, "required": r}}} for n, (p, r) in PARAMS.items()]
-
-
-def offered_tools():
-    """Only the tools that make sense now: no run_study before the user has seen and answered a plan, no
-    propose_plan before the spec is ready, no build_project/use_defaults when they cannot do anything."""
-    if not STRUCTURED:
-        return TOOLS
-    key, names = _plan_key(), set(FUNCS)
-    if not (STATE["plan_ok_for"] == key and STATE["plan_turn"] != STATE["turn"] and STATE["ran_plan"] != key):
-        names.discard("run_study")
-    try:
-        spec_ready = bool(SPEC) and check_spec()["ready"]
-    except Exception:
-        spec_ready = False
-    if not spec_ready or (STATE["plan_ok_for"] == key and STATE["ran_plan"] != key):
-        names.discard("propose_plan")
-    pc = prj.check_project(PROJECT) if PROJECT else None
-    if not pc or not pc["ready"]:
-        names.discard("build_project")
-    if not pc or not pc["missing"]:
-        names.discard("use_defaults")
-    return [t for t in TOOLS if t["function"]["name"] in names]
 
 
 MAX_SPEC_CALLS = 10    # spec/project edit+check calls allowed per user turn before the agent must ask the user
@@ -325,7 +295,7 @@ def compact(msgs, limit=MAX_HISTORY_CHARS):
 def chat(client, msgs):
     msgs[:] = compact(msgs)
     return client.chat.completions.create(
-        model=MODEL, messages=msgs, tools=offered_tools(), temperature=0.0, max_tokens=MAX_REPLY_TOKENS,
+        model=MODEL, messages=msgs, tools=TOOLS, temperature=0.0, max_tokens=MAX_REPLY_TOKENS,
         # Qwen 3.5 thinks by default; on a 16k context that can eat the whole window and return an empty reply.
         extra_body={"chat_template_kwargs": {"enable_thinking": False}}).choices[0].message
 
@@ -385,49 +355,6 @@ def check_numbers(client, msgs, text, emit):
     return final
 
 
-def _inject(msgs, emit, name, args):
-    """Run a tool on the model's behalf and record it in the conversation as if the model had called it."""
-    STATE["inject_n"] = STATE.get("inject_n", 0) + 1
-    cid = f"pre{STATE['inject_n']}"
-    emit({"type": "tool", "name": name, "args": args})
-    try:
-        result = FUNCS[name](**args)
-    except Exception as e:
-        result = {"error": f"{type(e).__name__}: {e}"}
-    emit({"type": "result", "name": name, "result": result})
-    LEDGER.add_result(name, result)
-    msgs.append({"role": "assistant", "content": None, "tool_calls": [
-        {"id": cid, "type": "function", "function": {"name": name, "arguments": json.dumps(args)}}]})
-    msgs.append({"role": "tool", "tool_call_id": cid, "content": json.dumps(result, default=str)[:12000]})
-    return result
-
-
-def pre_steps(client, msgs, user, emit):
-    """Narrow, schema-constrained extraction of the network and of the study before the free agent loop."""
-    if APPROVAL.match(user) and len(user) < 80:
-        return
-    try:
-        if structured.wants_project(user, PROJECT):
-            patch, dropped = structured.extract_project(client, MODEL, user)
-            if dropped:
-                emit({"type": "tool", "name": "(extraction)", "args": {}})
-                emit({"type": "result", "name": "(extraction)", "result": {"dropped_unstated": dropped}})
-            if patch:
-                _inject(msgs, emit, "update_project", {"patch": patch})
-                _inject(msgs, emit, "check_project", {})
-        new_study = not SPEC.get("analysis") or STATE["ran_plan"] == _plan_key()
-        if new_study and structured.wants_study(user, PROJECT):
-            a, dropped = structured.extract_study(client, MODEL, user, PROJECT)
-            if a and a.get("type") in study.ANALYSES and a["type"] != "single_run":
-                update_spec({"analysis": None})
-                _inject(msgs, emit, "update_spec", {"patch": {"model": {"source": "project"}, "analysis": a}})
-                _inject(msgs, emit, "check_spec", {})
-    except Exception as e:   # extraction is an aid: on any failure the normal loop does the work
-        reason = {"reason": f"{type(e).__name__}: {str(e)[:200]}"}
-        emit({"type": "tool", "name": "(extraction skipped)", "args": reason})
-        emit({"type": "result", "name": "(extraction skipped)", "result": reason})
-
-
 def run_turn(client, msgs, user, emit):
     """One user turn: let the model call tools until it answers. emit(event) receives
     {"type": "tool", "name", "args"}, {"type": "result", "name", "result"}, {"type": "assistant", "text"},
@@ -446,8 +373,6 @@ def run_turn(client, msgs, user, emit):
             STATE["recipes_given"].update(r["name"] for r in hits)
             content += recipes.GUIDANCE + "\n\n".join(r["text"] for r in hits)
     msgs.append({"role": "user", "content": content})
-    if STRUCTURED:
-        pre_steps(client, msgs, user, emit)
     spec_calls, bad_json, ran = 0, 0, False
     try:
         for _ in range(MAX_STEPS):

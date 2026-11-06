@@ -98,7 +98,8 @@ check stops made-up values from reaching the user.
 - Job 22, structured mode (schema-constrained extraction + stage-based tool masking + strict tool schema):
   0/8. Under the grammar the 9B dropped stated values (API, depth, PI, all flowlines), invented a separator and a
   compressor, and the long strict tool schema pushed conversations over the 16k context. **Switched off by
-  default** (`PIPESIM_AGENT_STRUCTURED=1` to try it, e.g. with a larger model).
+  default** and later removed from the code (repository clean-up, Nov 6); the raw results are in
+  `knowledge/archive/eval_structured.json`.
 
 **Conclusion so far:** with the plain agent the 9B reached 8/8 correct answers in three of three runs (after
 re-scoring job 20); the knowledge layer cuts tool calls and errors where the layout is unusual (pipeline sizing

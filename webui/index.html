@@ -103,7 +103,7 @@ const $ = s => document.querySelector(s);
 const chat = $("#chat"), input = $("#input"), sendBtn = $("#send");
 let since = 0, busy = false, workBox = null, lastPlanCard = null;
 
-const LABELS = {read_pips: "Reading values stored in the model file", "(extraction)": "Reading the description", "(extraction skipped)": "Reading the description (fallback)", "(number check)": "Checking every number against the results", "(retry)": "Retrying (invalid tool call)", update_project: "Describing the project", check_project: "Checking the project inputs",
+const LABELS = {read_pips: "Reading values stored in the model file", "(number check)": "Checking every number against the results", "(retry)": "Retrying (invalid tool call)", update_project: "Describing the project", check_project: "Checking the project inputs",
   use_defaults: "Filling in suggested defaults", build_project: "Building the PIPESIM model",
   update_spec: "Setting up the study", check_spec: "Checking the study", propose_plan: "Preparing the plan",
   run_study: "Running PIPESIM", inspect_model: "Opening the model", get_values: "Reading model values"};
