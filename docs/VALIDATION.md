@@ -149,3 +149,18 @@ default: recipes + sanity checks + number check on result replies; structured mo
 So for the gas and multiphase pipelines the remaining difference is fully explained by the hidden thermal inputs:
 with them, our model reproduces PIPESIM to 0.01 %. The water line's original uses PIPESIM's built-in "Water" fluid
 template; the remaining 3.4 % there is still open.
+
+## 8. Job 32: the builder now writes the thermal data itself
+
+`netbuilder.build` writes PIPESIM's standard black-oil thermal data into every new model (`pips_writer.py`), and a
+flowline may carry a `u_value` (W/m2/K). Rebuilt from the short description, compared with the original P/T profile:
+
+| Pipeline | old builder | + standard thermal data | + U-value read from the original (`read_pips`) |
+|---|---|---|---|
+| TF_M2B gas: gas rate / outlet T | -1.58 % / 12.4 degC | -0.18 % / 1.4 degC | **0.00 % / -0.51 degC (exact)** |
+| TF_M2C multiphase: pressure loss / outlet T | -1.36 % / 18.2 degC | +0.16 % / 20.1 degC | **+0.01 % / 20.21 degC (exact)** |
+| TF_M2A water: pressure loss / outlet T | -3.37 % / 16.5 degC | -3.37 % / 16.5 degC | -3.37 % / 16.5 degC (open) |
+
+Regression on real PIPESIM: the 2-well separator sweep and the nodal tests still run; their results moved by about
+0.5 % (e.g. oil at 10 bara 1259 -> 1267 sm3/d, nodal 1090 -> 1093 sm3/d), as expected now that the fluid has
+PIPESIM's standard heat capacities instead of none. `PIPESIM_THERMAL_DEFAULTS=0` restores the old behaviour.
