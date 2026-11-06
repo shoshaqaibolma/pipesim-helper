@@ -1,0 +1,2382 @@
+{
+ "TF_M2A_Water_Pipeline": {
+  "steps": [
+   {
+    "step": "0. rebuilt (level 2)",
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 82.7371,
+      "rebuilt": 82.7371,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 7.5518,
+      "rebuilt": 10.0831,
+      "diff_pct": 33.52
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": -5.6202,
+      "rebuilt": 16.5155,
+      "diff_pct": 393.86
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 947.0594,
+      "rebuilt": 950.1119,
+      "diff_pct": 0.32
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 950.5986,
+      "rebuilt": 953.6599,
+      "diff_pct": 0.32
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 75.1853,
+      "rebuilt": 72.654,
+      "diff_pct": -3.37
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 29.1109,
+      "rebuilt": 29.1109,
+      "diff_pct": 0.0
+     }
+    ]
+   },
+   {
+    "step": "1. + pipe route",
+    "applied": [
+     "Flowline FL.MeasuredDistance: None -> 6103.615243443839",
+     "Flowline FL.Length: None -> 6103.615243443838"
+    ],
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 82.7371,
+      "rebuilt": 82.7371,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 7.5518,
+      "rebuilt": 10.0831,
+      "diff_pct": 33.52
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": -5.6202,
+      "rebuilt": 16.5155,
+      "diff_pct": 393.86
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 947.0594,
+      "rebuilt": 950.1119,
+      "diff_pct": 0.32
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 950.5986,
+      "rebuilt": 953.6599,
+      "diff_pct": 0.32
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 75.1853,
+      "rebuilt": 72.654,
+      "diff_pct": -3.37
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 29.1109,
+      "rebuilt": 29.1109,
+      "diff_pct": 0.0
+     }
+    ]
+   },
+   {
+    "step": "2. + heat transfer",
+    "applied": [],
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 82.7371,
+      "rebuilt": 82.7371,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 7.5518,
+      "rebuilt": 10.0831,
+      "diff_pct": 33.52
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": -5.6202,
+      "rebuilt": 16.5155,
+      "diff_pct": 393.86
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 947.0594,
+      "rebuilt": 950.1119,
+      "diff_pct": 0.32
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 950.5986,
+      "rebuilt": 953.6599,
+      "diff_pct": 0.32
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 75.1853,
+      "rebuilt": 72.654,
+      "diff_pct": -3.37
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 29.1109,
+      "rebuilt": 29.1109,
+      "diff_pct": 0.0
+     }
+    ]
+   },
+   {
+    "step": "3. + flow correlations",
+    "applied": [
+     "GlobalFlowCorrelation global.VerticalMultiphaseSource: BJA -> OLGAS",
+     "GlobalFlowCorrelation global.VerticalMultiphaseCorrelation: Hagedorn & Brown -> OLGAS v. 7.2 3-Phase"
+    ],
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 82.7371,
+      "rebuilt": 82.7371,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 7.5518,
+      "rebuilt": 10.0831,
+      "diff_pct": 33.52
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": -5.6202,
+      "rebuilt": 16.5155,
+      "diff_pct": 393.86
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 947.0594,
+      "rebuilt": 950.1119,
+      "diff_pct": 0.32
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 950.5986,
+      "rebuilt": 953.6599,
+      "diff_pct": 0.32
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 75.1853,
+      "rebuilt": 72.654,
+      "diff_pct": -3.37
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 29.1109,
+      "rebuilt": 29.1109,
+      "diff_pct": 0.0
+     }
+    ]
+   },
+   {
+    "step": "4. + segmentation and other",
+    "applied": [
+     "Flowline FL.DepthAtStart: None -> 0.0"
+    ],
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 82.7371,
+      "rebuilt": 82.7371,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 7.5518,
+      "rebuilt": 10.0831,
+      "diff_pct": 33.52
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": -5.6202,
+      "rebuilt": 16.5155,
+      "diff_pct": 393.86
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 947.0594,
+      "rebuilt": 950.1119,
+      "diff_pct": 0.32
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 950.5986,
+      "rebuilt": 953.6599,
+      "diff_pct": 0.32
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 75.1853,
+      "rebuilt": 72.654,
+      "diff_pct": -3.37
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 29.1109,
+      "rebuilt": 29.1109,
+      "diff_pct": 0.0
+     }
+    ]
+   }
+  ],
+  "notes": [
+   "fluid Water_fluid: GLR 0 converted to GOR 0",
+   "get_values FlowCorrelation=FL:Default: ContextError: No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL:Default', 'Template': '___NONE___'})",
+   "geometry FL: ValueError: Flowline FL is a simple flowline."
+  ],
+  "settings_dump": {
+   "original": {
+    "Flowline|FL": {
+     "Name": "FL",
+     "AmbientAirTemperature": 15.555555600000048,
+     "AmbientFluidType": "Air",
+     "AmbientTemperature": null,
+     "AmbientTemperatureOptions": "InputSingleValue",
+     "AmbientWaterTemperature": null,
+     "DepthAtStart": 0.0,
+     "DetailedModel": false,
+     "DeviationSurveyCalc": "measuredDistance",
+     "ElevationDifference": 304.8,
+     "EnterSurveyLength": false,
+     "GeothermalSurveyIndex": "horizontalDistance",
+     "HorizontalDistance": 6096.0,
+     "IsDowncomer": false,
+     "IsFlipped": false,
+     "MeasuredDistance": 6103.615243443839,
+     "PlatformHeight": null,
+     "SeabedDepth": null,
+     "ShowAsRiser": false,
+     "SurfaceTemperature": false,
+     "UndulationRate": 0.0,
+     "UseDepth": false,
+     "OverrideCorrosion": false,
+     "UseEnvironmentalData": false,
+     "UseGISData": false,
+     "UseGlobalSettings": true,
+     "WaterInterpolationMethod": "Interpolate",
+     "IsActive": true,
+     "InnerDiameter": 77.9272,
+     "Roughness": 0.04572,
+     "WallThickness": 5.4864,
+     "Length": 6103.615243443838,
+     "CatalogLabel": "",
+     "CatalogName": "",
+     "EnterOD": false,
+     "AnnulusFlow": false,
+     "InnerPipeOutsideDiameter": null,
+     "OuterPipeInsideDiameter": null,
+     "OuterPipeWallThickness": null
+    },
+    "Source|MySource": {
+     "Name": "MySource",
+     "GLR": null,
+     "GOR": null,
+     "GWR": null,
+     "LGR": null,
+     "OGR": null,
+     "UseGasRatio": "GLR",
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "WGR": null,
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "Pressure": null,
+     "Temperature": 15.555555555555657,
+     "UsePQCurve": false,
+     "AssociatedBlackOilFluid": "Water",
+     "AssociatedCompositionalFluid": null,
+     "AssociatedMFLFluid": null,
+     "IsActive": true,
+     "OverridesInitialized": false,
+     "UseFluidOverrides": false,
+     "SelectedRateType": "LiquidFlowRate"
+    },
+    "Sink|MySink": {
+     "Name": "MySink",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "Pressure": null,
+     "IsActive": true,
+     "FlowrateType": "LiquidFlowRate"
+    },
+    "FlowCorrelation|Default": {
+     "Name": "Default",
+     "SwapAngle": 44.99999997722788,
+     "IsActive": false
+    },
+    "BlackOilFluid|Water": {
+     "Name": "Water",
+     "API": 7.2254902,
+     "DeadOilDensity": 1020.0104490686708,
+     "DeadOilTemperature1": 93.3333333333,
+     "DeadOilTemperature2": 15.555560000000014,
+     "DeadOilViscosity1": 0.01096763473975516,
+     "DeadOilViscosity2": 4.5161235117923875,
+     "DeadOilViscosityCorr": "BeggsAndRobinson",
+     "COFraction": 0.0,
+     "CO2Fraction": 0.0,
+     "H2Fraction": 0.0,
+     "H2SFraction": 0.0,
+     "N2Fraction": 0.0,
+     "GasSpecificGravity": 0.6636,
+     "GLR": 0.0,
+     "GOR": null,
+     "GWR": null,
+     "LGR": null,
+     "LiquidViscosityCalc": "ContinuousPhase",
+     "LiveOilViscosityCorr": "ChewandConnaly",
+     "OGR": null,
+     "Richardsonkoiw": 3.8,
+     "Richardsonkwio": 6.6,
+     "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+     "UndersaturatedOilViscosityParA": 0.0239,
+     "UndersaturatedOilViscosityParB": 0.01638,
+     "UseBraunerUllmanEquation": false,
+     "UseDeadOilDensity": false,
+     "UseGasRatio": "GLR",
+     "UserWatercutCutOff": 60.0,
+     "UseWaterRatio": "WaterCut",
+     "VandUserk1": 2.5,
+     "VandUserk2": 0.609,
+     "WaterCut": 100.0,
+     "WaterSpecificGravity": 1.02,
+     "WGR": null,
+     "Comment": "",
+     "HasOverride": false,
+     "IsBuiltinTemplate": false,
+     "IsTemplate": false,
+     "IsActive": true
+    },
+    "SimulationSetting|global": {
+     "AmbientTemperature": 15.555555600000048,
+     "AtmosphericPressure": 1.01325,
+     "WindSpeed": 2.57222,
+     "SoilType": "ClayMoist",
+     "SoilConductivity": 0.77469397761,
+     "MetoceanDataLocation": "GOM",
+     "ErosionalVelocityConstant": 121.99032535652498,
+     "CorrosionModel": "deWaard1995",
+     "CorrosionEfficiency": 1.0,
+     "PipeSegmentationMaxReportingInterval": null,
+     "PipeSegmentationPrintSegmentationResult": false,
+     "PipeSegmentationMaxSegmentLength": null,
+     "NetworkSolver": "Standard",
+     "NetworkSolverTolerance": 1.0,
+     "NetworkSolverMaxIterations": 100,
+     "SingleBranchKeywords": "",
+     "NetworkTopKeywords": "",
+     "NetworkBottomKeywords": "",
+     "GISElevationInterval": 91.44,
+     "GISElevationMaxPoints": 50,
+     "GISElevationSourceType": "Esri",
+     "UseGlobalFlowCorrelations": true,
+     "UseGlobalCorrosionModel": true,
+     "UseGlobalHeatTransfer": true
+    },
+    "GlobalFlowCorrelation|global": {
+     "VerticalMultiphaseSource": "OLGAS",
+     "VerticalMultiphaseCorrelation": "OLGAS v. 7.2 3-Phase",
+     "VerticalMultiphaseHoldupFactor": 1.0,
+     "VerticalMultiphaseFrictionFactor": 1.0,
+     "HorizontalMultiphaseSource": "BJA",
+     "HorizontalMultiphaseCorrelation": "Beggs & Brill Revised",
+     "HorizontalMultiphaseHoldupFactor": 1.0,
+     "HorizontalMultiphaseFrictionFactor": 1.0,
+     "SwapAngle": 44.99999997722788,
+     "SinglePhaseCorrelation": "Moody",
+     "SinglePhaseFactor": 100.0
+    }
+   },
+   "rebuilt": {
+    "Flowline|FL": {
+     "Name": "FL",
+     "AmbientAirTemperature": 15.555555600000048,
+     "AmbientFluidType": "Air",
+     "AmbientTemperature": 15.555555600000048,
+     "AmbientTemperatureOptions": "InputSingleValue",
+     "AmbientWaterTemperature": null,
+     "DepthAtStart": null,
+     "DetailedModel": false,
+     "DeviationSurveyCalc": "measuredDistance",
+     "ElevationDifference": 304.8,
+     "EnterSurveyLength": false,
+     "GeothermalSurveyIndex": "horizontalDistance",
+     "HorizontalDistance": 6096.0,
+     "IsDowncomer": false,
+     "IsFlipped": false,
+     "MeasuredDistance": null,
+     "PlatformHeight": null,
+     "SeabedDepth": null,
+     "ShowAsRiser": false,
+     "SurfaceTemperature": false,
+     "UndulationRate": 0.0,
+     "UseDepth": false,
+     "OverrideCorrosion": false,
+     "UseEnvironmentalData": false,
+     "UseGISData": false,
+     "UseGlobalSettings": true,
+     "WaterInterpolationMethod": "Interpolate",
+     "IsActive": true,
+     "InnerDiameter": 77.9272,
+     "Roughness": 0.04572,
+     "WallThickness": 5.4864,
+     "Length": null,
+     "CatalogLabel": "",
+     "CatalogName": "",
+     "EnterOD": false,
+     "AnnulusFlow": false,
+     "InnerPipeOutsideDiameter": null,
+     "OuterPipeInsideDiameter": null,
+     "OuterPipeWallThickness": 12.7
+    },
+    "Source|MySource": {
+     "Name": "MySource",
+     "GLR": null,
+     "GOR": null,
+     "GWR": null,
+     "LGR": null,
+     "OGR": null,
+     "UseGasRatio": "GLR",
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "WGR": null,
+     "GasFlowRate": null,
+     "LiquidFlowRate": 953.9238239999976,
+     "MassFlowRate": null,
+     "Pressure": null,
+     "Temperature": 15.555555555555657,
+     "UsePQCurve": false,
+     "AssociatedBlackOilFluid": "Water_fluid",
+     "AssociatedCompositionalFluid": null,
+     "AssociatedMFLFluid": null,
+     "IsActive": true,
+     "OverridesInitialized": false,
+     "UseFluidOverrides": false,
+     "SelectedRateType": "LiquidFlowRate"
+    },
+    "Sink|MySink": {
+     "Name": "MySink",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "Pressure": 1.0,
+     "IsActive": true,
+     "FlowrateType": "LiquidFlowRate"
+    },
+    "FlowCorrelation|Default": {
+     "Name": "Default",
+     "SwapAngle": 44.99999997722788,
+     "IsActive": true
+    },
+    "BlackOilFluid|Water_fluid": {
+     "Name": "Water_fluid",
+     "API": 7.2254902,
+     "DeadOilDensity": 1020.0104490686708,
+     "DeadOilTemperature1": 93.3333333333,
+     "DeadOilTemperature2": 15.555560000000014,
+     "DeadOilViscosity1": 0.01096763473975516,
+     "DeadOilViscosity2": 4.5161235117923875,
+     "DeadOilViscosityCorr": "BeggsAndRobinson",
+     "COFraction": 0.0,
+     "CO2Fraction": 0.0,
+     "H2Fraction": 0.0,
+     "H2SFraction": 0.0,
+     "N2Fraction": 0.0,
+     "GasSpecificGravity": 0.6636,
+     "GLR": 0.0,
+     "GOR": null,
+     "GWR": null,
+     "LGR": null,
+     "LiquidViscosityCalc": "ContinuousPhase",
+     "LiveOilViscosityCorr": "ChewandConnaly",
+     "OGR": null,
+     "Richardsonkoiw": 3.8,
+     "Richardsonkwio": 6.6,
+     "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+     "UndersaturatedOilViscosityParA": 0.0239,
+     "UndersaturatedOilViscosityParB": 0.01638,
+     "UseBraunerUllmanEquation": false,
+     "UseDeadOilDensity": false,
+     "UseGasRatio": "GLR",
+     "UserWatercutCutOff": 60.0,
+     "UseWaterRatio": "WaterCut",
+     "VandUserk1": 2.5,
+     "VandUserk2": 0.609,
+     "WaterCut": 100.0,
+     "WaterSpecificGravity": 1.02,
+     "WGR": null,
+     "Comment": "",
+     "HasOverride": false,
+     "IsBuiltinTemplate": false,
+     "IsTemplate": false,
+     "IsActive": true
+    },
+    "SimulationSetting|global": {
+     "AmbientTemperature": 15.555555600000048,
+     "AtmosphericPressure": 1.01325,
+     "WindSpeed": 2.57222,
+     "SoilType": "ClayMoist",
+     "SoilConductivity": 0.77469397761,
+     "MetoceanDataLocation": "GOM",
+     "ErosionalVelocityConstant": 121.99032535652498,
+     "CorrosionModel": "deWaard1995",
+     "CorrosionEfficiency": 1.0,
+     "PipeSegmentationMaxReportingInterval": null,
+     "PipeSegmentationPrintSegmentationResult": false,
+     "PipeSegmentationMaxSegmentLength": null,
+     "NetworkSolver": "Standard",
+     "NetworkSolverTolerance": 1.0,
+     "NetworkSolverMaxIterations": 100,
+     "SingleBranchKeywords": "",
+     "NetworkTopKeywords": "",
+     "NetworkBottomKeywords": "",
+     "GISElevationInterval": 91.44,
+     "GISElevationMaxPoints": 50,
+     "GISElevationSourceType": "Esri",
+     "UseGlobalFlowCorrelations": true,
+     "UseGlobalCorrosionModel": true,
+     "UseGlobalHeatTransfer": true
+    },
+    "GlobalFlowCorrelation|global": {
+     "VerticalMultiphaseSource": "BJA",
+     "VerticalMultiphaseCorrelation": "Hagedorn & Brown",
+     "VerticalMultiphaseHoldupFactor": 1.0,
+     "VerticalMultiphaseFrictionFactor": 1.0,
+     "HorizontalMultiphaseSource": "BJA",
+     "HorizontalMultiphaseCorrelation": "Beggs & Brill Revised",
+     "HorizontalMultiphaseHoldupFactor": 1.0,
+     "HorizontalMultiphaseFrictionFactor": 1.0,
+     "SwapAngle": 44.99999997722788,
+     "SinglePhaseCorrelation": "Moody",
+     "SinglePhaseFactor": 100.0
+    }
+   }
+  },
+  "differences": [
+   {
+    "type": "Flowline",
+    "name": "FL",
+    "param": "DepthAtStart",
+    "original": 0.0,
+    "rebuilt": null
+   },
+   {
+    "type": "Flowline",
+    "name": "FL",
+    "param": "MeasuredDistance",
+    "original": 6103.615243443839,
+    "rebuilt": null
+   },
+   {
+    "type": "Flowline",
+    "name": "FL",
+    "param": "Length",
+    "original": 6103.615243443838,
+    "rebuilt": null
+   },
+   {
+    "type": "GlobalFlowCorrelation",
+    "name": "global",
+    "param": "VerticalMultiphaseSource",
+    "original": "OLGAS",
+    "rebuilt": "BJA"
+   },
+   {
+    "type": "GlobalFlowCorrelation",
+    "name": "global",
+    "param": "VerticalMultiphaseCorrelation",
+    "original": "OLGAS v. 7.2 3-Phase",
+    "rebuilt": "Hagedorn & Brown"
+   }
+  ],
+  "remaining_differences": []
+ },
+ "TF_M2B_Gas_Pipeline": {
+  "steps": [
+   {
+    "step": "0. rebuilt (level 2)",
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 82.7371,
+      "rebuilt": 82.7371,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 41.3884,
+      "rebuilt": 41.371,
+      "diff_pct": -0.04
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": -0.5076,
+      "rebuilt": 12.39,
+      "diff_pct": 2540.94
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.308,
+      "rebuilt": 0.3032,
+      "diff_pct": -1.58
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 41.3487,
+      "rebuilt": 41.3661,
+      "diff_pct": 0.04
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     }
+    ]
+   },
+   {
+    "step": "1. + pipe route",
+    "applied": [
+     "Flowline FL.MeasuredDistance: None -> 6103.615243443839",
+     "Flowline FL.Length: None -> 6103.615243443838"
+    ],
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 82.7371,
+      "rebuilt": 82.7371,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 41.3884,
+      "rebuilt": 41.371,
+      "diff_pct": -0.04
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": -0.5076,
+      "rebuilt": 12.39,
+      "diff_pct": 2540.94
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.308,
+      "rebuilt": 0.3032,
+      "diff_pct": -1.58
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 41.3487,
+      "rebuilt": 41.3661,
+      "diff_pct": 0.04
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     }
+    ]
+   },
+   {
+    "step": "2. + heat transfer",
+    "applied": [],
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 82.7371,
+      "rebuilt": 82.7371,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 41.3884,
+      "rebuilt": 41.371,
+      "diff_pct": -0.04
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": -0.5076,
+      "rebuilt": 12.39,
+      "diff_pct": 2540.94
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.308,
+      "rebuilt": 0.3032,
+      "diff_pct": -1.58
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 41.3487,
+      "rebuilt": 41.3661,
+      "diff_pct": 0.04
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     }
+    ]
+   },
+   {
+    "step": "3. + flow correlations",
+    "applied": [
+     "GlobalFlowCorrelation global.VerticalMultiphaseSource: BJA -> OLGAS",
+     "GlobalFlowCorrelation global.VerticalMultiphaseCorrelation: Hagedorn & Brown -> OLGAS v. 7.2 3-Phase"
+    ],
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 82.7371,
+      "rebuilt": 82.7371,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 41.3884,
+      "rebuilt": 41.371,
+      "diff_pct": -0.04
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": -0.5076,
+      "rebuilt": 12.39,
+      "diff_pct": 2540.94
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.308,
+      "rebuilt": 0.3032,
+      "diff_pct": -1.58
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 41.3487,
+      "rebuilt": 41.3661,
+      "diff_pct": 0.04
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     }
+    ]
+   },
+   {
+    "step": "4. + segmentation and other",
+    "applied": [
+     "Flowline FL.DepthAtStart: None -> 0.0"
+    ],
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 82.7371,
+      "rebuilt": 82.7371,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 41.3884,
+      "rebuilt": 41.371,
+      "diff_pct": -0.04
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": -0.5076,
+      "rebuilt": 12.39,
+      "diff_pct": 2540.94
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.308,
+      "rebuilt": 0.3032,
+      "diff_pct": -1.58
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 41.3487,
+      "rebuilt": 41.3661,
+      "diff_pct": 0.04
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 0.0,
+      "rebuilt": 0.0,
+      "diff_pct": 0.0
+     }
+    ]
+   }
+  ],
+  "notes": [
+   "get_values FlowCorrelation=FL:Default: ContextError: No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL:Default', 'Template': '___NONE___'})",
+   "geometry FL: ValueError: Flowline FL is a simple flowline."
+  ],
+  "settings_dump": {
+   "original": {
+    "Flowline|FL": {
+     "Name": "FL",
+     "AmbientAirTemperature": 15.555555600000048,
+     "AmbientFluidType": "Air",
+     "AmbientTemperature": null,
+     "AmbientTemperatureOptions": "InputSingleValue",
+     "AmbientWaterTemperature": null,
+     "DepthAtStart": 0.0,
+     "DetailedModel": false,
+     "DeviationSurveyCalc": "measuredDistance",
+     "ElevationDifference": 304.8,
+     "EnterSurveyLength": false,
+     "GeothermalSurveyIndex": "horizontalDistance",
+     "HorizontalDistance": 6096.0,
+     "IsDowncomer": false,
+     "IsFlipped": false,
+     "MeasuredDistance": 6103.615243443839,
+     "PlatformHeight": null,
+     "SeabedDepth": null,
+     "ShowAsRiser": false,
+     "SurfaceTemperature": false,
+     "UndulationRate": 0.0,
+     "UseDepth": false,
+     "OverrideCorrosion": false,
+     "UseEnvironmentalData": false,
+     "UseGISData": false,
+     "UseGlobalSettings": true,
+     "WaterInterpolationMethod": "Interpolate",
+     "IsActive": true,
+     "InnerDiameter": 77.9272,
+     "Roughness": 0.04572,
+     "WallThickness": 5.4864,
+     "Length": 6103.615243443838,
+     "CatalogLabel": "",
+     "CatalogName": "",
+     "EnterOD": false,
+     "AnnulusFlow": false,
+     "InnerPipeOutsideDiameter": null,
+     "OuterPipeInsideDiameter": null,
+     "OuterPipeWallThickness": null
+    },
+    "Source|MySource": {
+     "Name": "MySource",
+     "GLR": null,
+     "GOR": null,
+     "GWR": null,
+     "LGR": null,
+     "OGR": null,
+     "UseGasRatio": "GLR",
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "WGR": null,
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "Pressure": null,
+     "Temperature": 15.555555555555657,
+     "UsePQCurve": false,
+     "AssociatedBlackOilFluid": "Gas",
+     "AssociatedCompositionalFluid": null,
+     "AssociatedMFLFluid": null,
+     "IsActive": true,
+     "OverridesInitialized": false,
+     "UseFluidOverrides": false,
+     "SelectedRateType": "LiquidFlowRate"
+    },
+    "Sink|MySink": {
+     "Name": "MySink",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "Pressure": null,
+     "IsActive": true,
+     "FlowrateType": "LiquidFlowRate"
+    },
+    "FlowCorrelation|Default": {
+     "Name": "Default",
+     "SwapAngle": 44.99999997722788,
+     "IsActive": false
+    },
+    "BlackOilFluid|Gas": {
+     "Name": "Gas",
+     "API": 30.0,
+     "DeadOilDensity": 876.1699662920959,
+     "DeadOilTemperature1": 93.3333333333,
+     "DeadOilTemperature2": 15.555560000000014,
+     "DeadOilViscosity1": 0.0026439104305754587,
+     "DeadOilViscosity2": 0.07915488781229667,
+     "DeadOilViscosityCorr": "BeggsAndRobinson",
+     "COFraction": 0.0,
+     "CO2Fraction": 0.0,
+     "H2Fraction": 0.0,
+     "H2SFraction": 0.0,
+     "N2Fraction": 0.0,
+     "GasSpecificGravity": 0.64,
+     "GLR": null,
+     "GOR": null,
+     "GWR": null,
+     "LGR": null,
+     "LiquidViscosityCalc": "ContinuousPhase",
+     "LiveOilViscosityCorr": "ChewandConnaly",
+     "OGR": 0.0,
+     "Richardsonkoiw": 3.8,
+     "Richardsonkwio": 6.6,
+     "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+     "UndersaturatedOilViscosityParA": 0.0239,
+     "UndersaturatedOilViscosityParB": 0.01638,
+     "UseBraunerUllmanEquation": false,
+     "UseDeadOilDensity": false,
+     "UseGasRatio": "OGR",
+     "UserWatercutCutOff": 60.0,
+     "UseWaterRatio": "WGR",
+     "VandUserk1": 2.5,
+     "VandUserk2": 0.609,
+     "WaterCut": 0.0,
+     "WaterSpecificGravity": 1.02,
+     "WGR": 0.0,
+     "Comment": "",
+     "HasOverride": false,
+     "IsBuiltinTemplate": false,
+     "IsTemplate": false,
+     "IsActive": true
+    },
+    "BlackOilFluid|Water": {
+     "Name": "Water",
+     "API": 7.2254902,
+     "DeadOilDensity": 1020.0104490686708,
+     "DeadOilTemperature1": 93.3333333333,
+     "DeadOilTemperature2": 15.555560000000014,
+     "DeadOilViscosity1": 0.01096763473975516,
+     "DeadOilViscosity2": 4.5161235117923875,
+     "DeadOilViscosityCorr": "BeggsAndRobinson",
+     "COFraction": 0.0,
+     "CO2Fraction": 0.0,
+     "H2Fraction": 0.0,
+     "H2SFraction": 0.0,
+     "N2Fraction": 0.0,
+     "GasSpecificGravity": 0.6636,
+     "GLR": 0.0,
+     "GOR": null,
+     "GWR": null,
+     "LGR": null,
+     "LiquidViscosityCalc": "ContinuousPhase",
+     "LiveOilViscosityCorr": "ChewandConnaly",
+     "OGR": null,
+     "Richardsonkoiw": 3.8,
+     "Richardsonkwio": 6.6,
+     "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+     "UndersaturatedOilViscosityParA": 0.0239,
+     "UndersaturatedOilViscosityParB": 0.01638,
+     "UseBraunerUllmanEquation": false,
+     "UseDeadOilDensity": false,
+     "UseGasRatio": "GLR",
+     "UserWatercutCutOff": 60.0,
+     "UseWaterRatio": "WaterCut",
+     "VandUserk1": 2.5,
+     "VandUserk2": 0.609,
+     "WaterCut": 100.0,
+     "WaterSpecificGravity": 1.02,
+     "WGR": null,
+     "Comment": "",
+     "HasOverride": false,
+     "IsBuiltinTemplate": false,
+     "IsTemplate": false,
+     "IsActive": true
+    },
+    "SimulationSetting|global": {
+     "AmbientTemperature": 15.555555600000048,
+     "AtmosphericPressure": 1.01325,
+     "WindSpeed": 2.57222,
+     "SoilType": "ClayMoist",
+     "SoilConductivity": 0.77469397761,
+     "MetoceanDataLocation": "GOM",
+     "ErosionalVelocityConstant": 121.99032535652498,
+     "CorrosionModel": "deWaard1995",
+     "CorrosionEfficiency": 1.0,
+     "PipeSegmentationMaxReportingInterval": null,
+     "PipeSegmentationPrintSegmentationResult": false,
+     "PipeSegmentationMaxSegmentLength": null,
+     "NetworkSolver": "Standard",
+     "NetworkSolverTolerance": 1.0,
+     "NetworkSolverMaxIterations": 100,
+     "SingleBranchKeywords": "",
+     "NetworkTopKeywords": "",
+     "NetworkBottomKeywords": "",
+     "GISElevationInterval": 91.44,
+     "GISElevationMaxPoints": 50,
+     "GISElevationSourceType": "Esri",
+     "UseGlobalFlowCorrelations": true,
+     "UseGlobalCorrosionModel": true,
+     "UseGlobalHeatTransfer": true
+    },
+    "GlobalFlowCorrelation|global": {
+     "VerticalMultiphaseSource": "OLGAS",
+     "VerticalMultiphaseCorrelation": "OLGAS v. 7.2 3-Phase",
+     "VerticalMultiphaseHoldupFactor": 1.0,
+     "VerticalMultiphaseFrictionFactor": 1.0,
+     "HorizontalMultiphaseSource": "BJA",
+     "HorizontalMultiphaseCorrelation": "Beggs & Brill Revised",
+     "HorizontalMultiphaseHoldupFactor": 1.0,
+     "HorizontalMultiphaseFrictionFactor": 1.0,
+     "SwapAngle": 44.99999997722788,
+     "SinglePhaseCorrelation": "Moody",
+     "SinglePhaseFactor": 100.0
+    }
+   },
+   "rebuilt": {
+    "Flowline|FL": {
+     "Name": "FL",
+     "AmbientAirTemperature": 15.555555600000048,
+     "AmbientFluidType": "Air",
+     "AmbientTemperature": 15.555555600000048,
+     "AmbientTemperatureOptions": "InputSingleValue",
+     "AmbientWaterTemperature": null,
+     "DepthAtStart": null,
+     "DetailedModel": false,
+     "DeviationSurveyCalc": "measuredDistance",
+     "ElevationDifference": 304.8,
+     "EnterSurveyLength": false,
+     "GeothermalSurveyIndex": "horizontalDistance",
+     "HorizontalDistance": 6096.0,
+     "IsDowncomer": false,
+     "IsFlipped": false,
+     "MeasuredDistance": null,
+     "PlatformHeight": null,
+     "SeabedDepth": null,
+     "ShowAsRiser": false,
+     "SurfaceTemperature": false,
+     "UndulationRate": 0.0,
+     "UseDepth": false,
+     "OverrideCorrosion": false,
+     "UseEnvironmentalData": false,
+     "UseGISData": false,
+     "UseGlobalSettings": true,
+     "WaterInterpolationMethod": "Interpolate",
+     "IsActive": true,
+     "InnerDiameter": 77.9272,
+     "Roughness": 0.04572,
+     "WallThickness": 5.4864,
+     "Length": null,
+     "CatalogLabel": "",
+     "CatalogName": "",
+     "EnterOD": false,
+     "AnnulusFlow": false,
+     "InnerPipeOutsideDiameter": null,
+     "OuterPipeInsideDiameter": null,
+     "OuterPipeWallThickness": 12.7
+    },
+    "Source|MySource": {
+     "Name": "MySource",
+     "GLR": null,
+     "GOR": null,
+     "GWR": null,
+     "LGR": null,
+     "OGR": null,
+     "UseGasRatio": "GLR",
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "WGR": null,
+     "GasFlowRate": null,
+     "LiquidFlowRate": 953.9238239999976,
+     "MassFlowRate": null,
+     "Pressure": null,
+     "Temperature": 15.555555555555657,
+     "UsePQCurve": false,
+     "AssociatedBlackOilFluid": "Gas",
+     "AssociatedCompositionalFluid": null,
+     "AssociatedMFLFluid": null,
+     "IsActive": true,
+     "OverridesInitialized": false,
+     "UseFluidOverrides": false,
+     "SelectedRateType": "LiquidFlowRate"
+    },
+    "Sink|MySink": {
+     "Name": "MySink",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "Pressure": 41.368543759010166,
+     "IsActive": true,
+     "FlowrateType": "LiquidFlowRate"
+    },
+    "FlowCorrelation|Default": {
+     "Name": "Default",
+     "SwapAngle": 44.99999997722788,
+     "IsActive": true
+    },
+    "BlackOilFluid|Gas": {
+     "Name": "Gas",
+     "API": 30.0,
+     "DeadOilDensity": 876.1699662920959,
+     "DeadOilTemperature1": 93.3333333333,
+     "DeadOilTemperature2": 15.555560000000014,
+     "DeadOilViscosity1": 0.0026439104305754587,
+     "DeadOilViscosity2": 0.07915488781229667,
+     "DeadOilViscosityCorr": "BeggsAndRobinson",
+     "COFraction": 0.0,
+     "CO2Fraction": 0.0,
+     "H2Fraction": 0.0,
+     "H2SFraction": 0.0,
+     "N2Fraction": 0.0,
+     "GasSpecificGravity": 0.64,
+     "GLR": null,
+     "GOR": null,
+     "GWR": null,
+     "LGR": null,
+     "LiquidViscosityCalc": "ContinuousPhase",
+     "LiveOilViscosityCorr": "ChewandConnaly",
+     "OGR": 0.0,
+     "Richardsonkoiw": 3.8,
+     "Richardsonkwio": 6.6,
+     "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+     "UndersaturatedOilViscosityParA": 0.0239,
+     "UndersaturatedOilViscosityParB": 0.01638,
+     "UseBraunerUllmanEquation": false,
+     "UseDeadOilDensity": false,
+     "UseGasRatio": "OGR",
+     "UserWatercutCutOff": 60.0,
+     "UseWaterRatio": "WGR",
+     "VandUserk1": 2.5,
+     "VandUserk2": 0.609,
+     "WaterCut": 0.0,
+     "WaterSpecificGravity": 1.02,
+     "WGR": 0.0,
+     "Comment": "",
+     "HasOverride": false,
+     "IsBuiltinTemplate": false,
+     "IsTemplate": false,
+     "IsActive": true
+    },
+    "SimulationSetting|global": {
+     "AmbientTemperature": 15.555555600000048,
+     "AtmosphericPressure": 1.01325,
+     "WindSpeed": 2.57222,
+     "SoilType": "ClayMoist",
+     "SoilConductivity": 0.77469397761,
+     "MetoceanDataLocation": "GOM",
+     "ErosionalVelocityConstant": 121.99032535652498,
+     "CorrosionModel": "deWaard1995",
+     "CorrosionEfficiency": 1.0,
+     "PipeSegmentationMaxReportingInterval": null,
+     "PipeSegmentationPrintSegmentationResult": false,
+     "PipeSegmentationMaxSegmentLength": null,
+     "NetworkSolver": "Standard",
+     "NetworkSolverTolerance": 1.0,
+     "NetworkSolverMaxIterations": 100,
+     "SingleBranchKeywords": "",
+     "NetworkTopKeywords": "",
+     "NetworkBottomKeywords": "",
+     "GISElevationInterval": 91.44,
+     "GISElevationMaxPoints": 50,
+     "GISElevationSourceType": "Esri",
+     "UseGlobalFlowCorrelations": true,
+     "UseGlobalCorrosionModel": true,
+     "UseGlobalHeatTransfer": true
+    },
+    "GlobalFlowCorrelation|global": {
+     "VerticalMultiphaseSource": "BJA",
+     "VerticalMultiphaseCorrelation": "Hagedorn & Brown",
+     "VerticalMultiphaseHoldupFactor": 1.0,
+     "VerticalMultiphaseFrictionFactor": 1.0,
+     "HorizontalMultiphaseSource": "BJA",
+     "HorizontalMultiphaseCorrelation": "Beggs & Brill Revised",
+     "HorizontalMultiphaseHoldupFactor": 1.0,
+     "HorizontalMultiphaseFrictionFactor": 1.0,
+     "SwapAngle": 44.99999997722788,
+     "SinglePhaseCorrelation": "Moody",
+     "SinglePhaseFactor": 100.0
+    }
+   }
+  },
+  "differences": [
+   {
+    "type": "Flowline",
+    "name": "FL",
+    "param": "DepthAtStart",
+    "original": 0.0,
+    "rebuilt": null
+   },
+   {
+    "type": "Flowline",
+    "name": "FL",
+    "param": "MeasuredDistance",
+    "original": 6103.615243443839,
+    "rebuilt": null
+   },
+   {
+    "type": "Flowline",
+    "name": "FL",
+    "param": "Length",
+    "original": 6103.615243443838,
+    "rebuilt": null
+   },
+   {
+    "type": "BlackOilFluid",
+    "name": "Water",
+    "param": "(whole component)",
+    "original": "present",
+    "rebuilt": "missing"
+   },
+   {
+    "type": "GlobalFlowCorrelation",
+    "name": "global",
+    "param": "VerticalMultiphaseSource",
+    "original": "OLGAS",
+    "rebuilt": "BJA"
+   },
+   {
+    "type": "GlobalFlowCorrelation",
+    "name": "global",
+    "param": "VerticalMultiphaseCorrelation",
+    "original": "OLGAS v. 7.2 3-Phase",
+    "rebuilt": "Hagedorn & Brown"
+   }
+  ],
+  "remaining_differences": [
+   {
+    "type": "BlackOilFluid",
+    "name": "Water",
+    "param": "(whole component)",
+    "original": "present",
+    "rebuilt": "missing"
+   }
+  ]
+ },
+ "TF_M2C_Multiphase_Pipeline": {
+  "steps": [
+   {
+    "step": "0. rebuilt (level 2)",
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 330.9484,
+      "rebuilt": 330.9484,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 67.8522,
+      "rebuilt": 71.4328,
+      "diff_pct": 5.28
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": 20.2099,
+      "rebuilt": 18.2218,
+      "diff_pct": -9.84
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 2097.9097,
+      "rebuilt": 2097.9097,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 1703.6827,
+      "rebuilt": 1707.6071,
+      "diff_pct": 0.23
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.1731,
+      "rebuilt": 0.1699,
+      "diff_pct": -1.9
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 263.0962,
+      "rebuilt": 259.5156,
+      "diff_pct": -1.36
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 26.2172,
+      "rebuilt": 26.3405,
+      "diff_pct": 0.47
+     }
+    ]
+   },
+   {
+    "step": "1. + pipe route",
+    "applied": [
+     "Flowline FL.MeasuredDistance: None -> 6103.615243443839",
+     "Flowline FL.Length: None -> 6103.615243443838"
+    ],
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 330.9484,
+      "rebuilt": 330.9484,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 67.8522,
+      "rebuilt": 71.4328,
+      "diff_pct": 5.28
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": 20.2099,
+      "rebuilt": 18.2218,
+      "diff_pct": -9.84
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 2097.9097,
+      "rebuilt": 2097.9097,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 1703.6827,
+      "rebuilt": 1707.6071,
+      "diff_pct": 0.23
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.1731,
+      "rebuilt": 0.1699,
+      "diff_pct": -1.9
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 263.0962,
+      "rebuilt": 259.5156,
+      "diff_pct": -1.36
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 26.2172,
+      "rebuilt": 26.3405,
+      "diff_pct": 0.47
+     }
+    ]
+   },
+   {
+    "step": "2. + heat transfer",
+    "applied": [],
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 330.9484,
+      "rebuilt": 330.9484,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 67.8522,
+      "rebuilt": 71.4328,
+      "diff_pct": 5.28
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": 20.2099,
+      "rebuilt": 18.2218,
+      "diff_pct": -9.84
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 2097.9097,
+      "rebuilt": 2097.9097,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 1703.6827,
+      "rebuilt": 1707.6071,
+      "diff_pct": 0.23
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.1731,
+      "rebuilt": 0.1699,
+      "diff_pct": -1.9
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 263.0962,
+      "rebuilt": 259.5156,
+      "diff_pct": -1.36
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 26.2172,
+      "rebuilt": 26.3405,
+      "diff_pct": 0.47
+     }
+    ]
+   },
+   {
+    "step": "3. + flow correlations",
+    "applied": [
+     "GlobalFlowCorrelation global.HorizontalMultiphaseCorrelation: Beggs & Brill Revised -> Beggs & Brill Revised, Taitel Dukler map"
+    ],
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 330.9484,
+      "rebuilt": 330.9484,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 67.8522,
+      "rebuilt": 71.4388,
+      "diff_pct": 5.29
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": 20.2099,
+      "rebuilt": 18.2219,
+      "diff_pct": -9.84
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 2097.9097,
+      "rebuilt": 2097.9097,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 1703.6827,
+      "rebuilt": 1707.6179,
+      "diff_pct": 0.23
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.1731,
+      "rebuilt": 0.1699,
+      "diff_pct": -1.9
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 263.0962,
+      "rebuilt": 259.5096,
+      "diff_pct": -1.36
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 26.2172,
+      "rebuilt": 26.3412,
+      "diff_pct": 0.47
+     }
+    ]
+   },
+   {
+    "step": "4. + segmentation and other",
+    "applied": [
+     "Flowline FL.DepthAtStart: None -> 0.0"
+    ],
+    "state": "Completed",
+    "compare": [
+     {
+      "node": "system",
+      "variable": "SystemInletPressure",
+      "unit": "bara",
+      "original": 330.9484,
+      "rebuilt": 330.9484,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletPressure",
+      "unit": "bara",
+      "original": 67.8522,
+      "rebuilt": 71.4388,
+      "diff_pct": 5.29
+     },
+     {
+      "node": "system",
+      "variable": "SystemOutletTemperature",
+      "unit": "degC",
+      "original": 20.2099,
+      "rebuilt": 18.2219,
+      "diff_pct": -9.84
+     },
+     {
+      "node": "system",
+      "variable": "InletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 2097.9097,
+      "rebuilt": 2097.9097,
+      "diff_pct": 0.0
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateLiquid",
+      "unit": "sm3/d",
+      "original": 1703.6827,
+      "rebuilt": 1707.6179,
+      "diff_pct": 0.23
+     },
+     {
+      "node": "system",
+      "variable": "OutletVolumeFlowrateGas",
+      "unit": "mmsm3/d",
+      "original": 0.1731,
+      "rebuilt": 0.1699,
+      "diff_pct": -1.9
+     },
+     {
+      "node": "system",
+      "variable": "SystemPressureLoss",
+      "unit": "bar",
+      "original": 263.0962,
+      "rebuilt": 259.5096,
+      "diff_pct": -1.36
+     },
+     {
+      "node": "system",
+      "variable": "TotalLiquidHoldup",
+      "unit": "sm3",
+      "original": 26.2172,
+      "rebuilt": 26.3412,
+      "diff_pct": 0.47
+     }
+    ]
+   }
+  ],
+  "notes": [
+   "get_values FlowCorrelation=FL:Default: ContextError: No such context: ModelContext({'Study': '___NONE___', 'FlowCorrelation': 'FL:Default', 'Template': '___NONE___'})",
+   "geometry FL: ValueError: Flowline FL is a simple flowline."
+  ],
+  "settings_dump": {
+   "original": {
+    "Flowline|FL": {
+     "Name": "FL",
+     "AmbientAirTemperature": 15.555555600000048,
+     "AmbientFluidType": "Air",
+     "AmbientTemperature": null,
+     "AmbientTemperatureOptions": "InputSingleValue",
+     "AmbientWaterTemperature": null,
+     "DepthAtStart": 0.0,
+     "DetailedModel": false,
+     "DeviationSurveyCalc": "measuredDistance",
+     "ElevationDifference": 304.8,
+     "EnterSurveyLength": false,
+     "GeothermalSurveyIndex": "horizontalDistance",
+     "HorizontalDistance": 6096.0,
+     "IsDowncomer": false,
+     "IsFlipped": false,
+     "MeasuredDistance": 6103.615243443839,
+     "PlatformHeight": null,
+     "SeabedDepth": null,
+     "ShowAsRiser": false,
+     "SurfaceTemperature": false,
+     "UndulationRate": 0.0,
+     "UseDepth": false,
+     "OverrideCorrosion": false,
+     "UseEnvironmentalData": false,
+     "UseGISData": false,
+     "UseGlobalSettings": true,
+     "WaterInterpolationMethod": "Interpolate",
+     "IsActive": true,
+     "InnerDiameter": 77.9272,
+     "Roughness": 0.04572,
+     "WallThickness": 5.4864,
+     "Length": 6103.615243443838,
+     "CatalogLabel": "",
+     "CatalogName": "",
+     "EnterOD": false,
+     "AnnulusFlow": false,
+     "InnerPipeOutsideDiameter": null,
+     "OuterPipeInsideDiameter": null,
+     "OuterPipeWallThickness": null
+    },
+    "Source|MySource": {
+     "Name": "MySource",
+     "GLR": null,
+     "GOR": null,
+     "GWR": null,
+     "LGR": null,
+     "OGR": null,
+     "UseGasRatio": "GLR",
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "WGR": null,
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "Pressure": null,
+     "Temperature": 15.555555555555657,
+     "UsePQCurve": false,
+     "AssociatedBlackOilFluid": "Multiphase",
+     "AssociatedCompositionalFluid": null,
+     "AssociatedMFLFluid": null,
+     "IsActive": true,
+     "OverridesInitialized": false,
+     "UseFluidOverrides": false,
+     "SelectedRateType": "LiquidFlowRate"
+    },
+    "Sink|MySink": {
+     "Name": "MySink",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "Pressure": null,
+     "IsActive": true,
+     "FlowrateType": "LiquidFlowRate"
+    },
+    "FlowCorrelation|Default": {
+     "Name": "Default",
+     "SwapAngle": 44.99999997722788,
+     "IsActive": false
+    },
+    "BlackOilFluid|Gas": {
+     "Name": "Gas",
+     "API": 30.0,
+     "DeadOilDensity": 876.1699662920959,
+     "DeadOilTemperature1": 93.3333333333,
+     "DeadOilTemperature2": 15.555560000000014,
+     "DeadOilViscosity1": 0.0026439104305754587,
+     "DeadOilViscosity2": 0.07915488781229667,
+     "DeadOilViscosityCorr": "BeggsAndRobinson",
+     "COFraction": 0.0,
+     "CO2Fraction": 0.0,
+     "H2Fraction": 0.0,
+     "H2SFraction": 0.0,
+     "N2Fraction": 0.0,
+     "GasSpecificGravity": 0.64,
+     "GLR": null,
+     "GOR": null,
+     "GWR": null,
+     "LGR": null,
+     "LiquidViscosityCalc": "ContinuousPhase",
+     "LiveOilViscosityCorr": "ChewandConnaly",
+     "OGR": 0.0,
+     "Richardsonkoiw": 3.8,
+     "Richardsonkwio": 6.6,
+     "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+     "UndersaturatedOilViscosityParA": 0.0239,
+     "UndersaturatedOilViscosityParB": 0.01638,
+     "UseBraunerUllmanEquation": false,
+     "UseDeadOilDensity": false,
+     "UseGasRatio": "OGR",
+     "UserWatercutCutOff": 60.0,
+     "UseWaterRatio": "WGR",
+     "VandUserk1": 2.5,
+     "VandUserk2": 0.609,
+     "WaterCut": 0.0,
+     "WaterSpecificGravity": 1.02,
+     "WGR": 0.0,
+     "Comment": "",
+     "HasOverride": false,
+     "IsBuiltinTemplate": false,
+     "IsTemplate": false,
+     "IsActive": true
+    },
+    "BlackOilFluid|Multiphase": {
+     "Name": "Multiphase",
+     "API": 30.0,
+     "DeadOilDensity": 876.1699662920959,
+     "DeadOilTemperature1": 93.3333333333,
+     "DeadOilTemperature2": 15.555560000000014,
+     "DeadOilViscosity1": 0.0026439104305754587,
+     "DeadOilViscosity2": 0.07915488781229667,
+     "DeadOilViscosityCorr": "BeggsAndRobinson",
+     "COFraction": 0.0,
+     "CO2Fraction": 0.0,
+     "H2Fraction": 0.0,
+     "H2SFraction": 0.0,
+     "N2Fraction": 0.0,
+     "GasSpecificGravity": 0.64,
+     "GLR": null,
+     "GOR": 142.4860772128069,
+     "GWR": null,
+     "LGR": null,
+     "LiquidViscosityCalc": "ContinuousPhase",
+     "LiveOilViscosityCorr": "ChewandConnaly",
+     "OGR": null,
+     "Richardsonkoiw": 3.8,
+     "Richardsonkwio": 6.6,
+     "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+     "UndersaturatedOilViscosityParA": 0.0239,
+     "UndersaturatedOilViscosityParB": 0.01638,
+     "UseBraunerUllmanEquation": false,
+     "UseDeadOilDensity": false,
+     "UseGasRatio": "GOR",
+     "UserWatercutCutOff": 60.0,
+     "UseWaterRatio": "WaterCut",
+     "VandUserk1": 2.5,
+     "VandUserk2": 0.609,
+     "WaterCut": 0.0,
+     "WaterSpecificGravity": 1.02,
+     "WGR": null,
+     "Comment": "",
+     "HasOverride": false,
+     "IsBuiltinTemplate": false,
+     "IsTemplate": false,
+     "IsActive": true
+    },
+    "BlackOilFluid|Water": {
+     "Name": "Water",
+     "API": 7.2254902,
+     "DeadOilDensity": 1020.0104490686708,
+     "DeadOilTemperature1": 93.3333333333,
+     "DeadOilTemperature2": 15.555560000000014,
+     "DeadOilViscosity1": 0.01096763473975516,
+     "DeadOilViscosity2": 4.5161235117923875,
+     "DeadOilViscosityCorr": "BeggsAndRobinson",
+     "COFraction": 0.0,
+     "CO2Fraction": 0.0,
+     "H2Fraction": 0.0,
+     "H2SFraction": 0.0,
+     "N2Fraction": 0.0,
+     "GasSpecificGravity": 0.6636,
+     "GLR": 0.0,
+     "GOR": null,
+     "GWR": null,
+     "LGR": null,
+     "LiquidViscosityCalc": "ContinuousPhase",
+     "LiveOilViscosityCorr": "ChewandConnaly",
+     "OGR": null,
+     "Richardsonkoiw": 3.8,
+     "Richardsonkwio": 6.6,
+     "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+     "UndersaturatedOilViscosityParA": 0.0239,
+     "UndersaturatedOilViscosityParB": 0.01638,
+     "UseBraunerUllmanEquation": false,
+     "UseDeadOilDensity": false,
+     "UseGasRatio": "GLR",
+     "UserWatercutCutOff": 60.0,
+     "UseWaterRatio": "WaterCut",
+     "VandUserk1": 2.5,
+     "VandUserk2": 0.609,
+     "WaterCut": 100.0,
+     "WaterSpecificGravity": 1.02,
+     "WGR": null,
+     "Comment": "",
+     "HasOverride": false,
+     "IsBuiltinTemplate": false,
+     "IsTemplate": false,
+     "IsActive": true
+    },
+    "SimulationSetting|global": {
+     "AmbientTemperature": 15.555555600000048,
+     "AtmosphericPressure": 1.01325,
+     "WindSpeed": 2.57222,
+     "SoilType": "ClayMoist",
+     "SoilConductivity": 0.77469397761,
+     "MetoceanDataLocation": "GOM",
+     "ErosionalVelocityConstant": 121.99032535652498,
+     "CorrosionModel": "deWaard1995",
+     "CorrosionEfficiency": 1.0,
+     "PipeSegmentationMaxReportingInterval": null,
+     "PipeSegmentationPrintSegmentationResult": false,
+     "PipeSegmentationMaxSegmentLength": null,
+     "NetworkSolver": "Standard",
+     "NetworkSolverTolerance": 1.0,
+     "NetworkSolverMaxIterations": 100,
+     "SingleBranchKeywords": "",
+     "NetworkTopKeywords": "",
+     "NetworkBottomKeywords": "",
+     "GISElevationInterval": 91.44,
+     "GISElevationMaxPoints": 50,
+     "GISElevationSourceType": "Esri",
+     "UseGlobalFlowCorrelations": true,
+     "UseGlobalCorrosionModel": true,
+     "UseGlobalHeatTransfer": true
+    },
+    "GlobalFlowCorrelation|global": {
+     "VerticalMultiphaseSource": "BJA",
+     "VerticalMultiphaseCorrelation": "Hagedorn & Brown",
+     "VerticalMultiphaseHoldupFactor": 1.0,
+     "VerticalMultiphaseFrictionFactor": 1.0,
+     "HorizontalMultiphaseSource": "BJA",
+     "HorizontalMultiphaseCorrelation": "Beggs & Brill Revised, Taitel Dukler map",
+     "HorizontalMultiphaseHoldupFactor": 1.0,
+     "HorizontalMultiphaseFrictionFactor": 1.0,
+     "SwapAngle": 44.99999997722788,
+     "SinglePhaseCorrelation": "Moody",
+     "SinglePhaseFactor": 100.0
+    }
+   },
+   "rebuilt": {
+    "Flowline|FL": {
+     "Name": "FL",
+     "AmbientAirTemperature": 15.555555600000048,
+     "AmbientFluidType": "Air",
+     "AmbientTemperature": 15.555555600000048,
+     "AmbientTemperatureOptions": "InputSingleValue",
+     "AmbientWaterTemperature": null,
+     "DepthAtStart": null,
+     "DetailedModel": false,
+     "DeviationSurveyCalc": "measuredDistance",
+     "ElevationDifference": 304.8,
+     "EnterSurveyLength": false,
+     "GeothermalSurveyIndex": "horizontalDistance",
+     "HorizontalDistance": 6096.0,
+     "IsDowncomer": false,
+     "IsFlipped": false,
+     "MeasuredDistance": null,
+     "PlatformHeight": null,
+     "SeabedDepth": null,
+     "ShowAsRiser": false,
+     "SurfaceTemperature": false,
+     "UndulationRate": 0.0,
+     "UseDepth": false,
+     "OverrideCorrosion": false,
+     "UseEnvironmentalData": false,
+     "UseGISData": false,
+     "UseGlobalSettings": true,
+     "WaterInterpolationMethod": "Interpolate",
+     "IsActive": true,
+     "InnerDiameter": 77.9272,
+     "Roughness": 0.04572,
+     "WallThickness": 5.4864,
+     "Length": null,
+     "CatalogLabel": "",
+     "CatalogName": "",
+     "EnterOD": false,
+     "AnnulusFlow": false,
+     "InnerPipeOutsideDiameter": null,
+     "OuterPipeInsideDiameter": null,
+     "OuterPipeWallThickness": 12.7
+    },
+    "Source|MySource": {
+     "Name": "MySource",
+     "GLR": null,
+     "GOR": null,
+     "GWR": null,
+     "LGR": null,
+     "OGR": null,
+     "UseGasRatio": "GLR",
+     "UseWaterRatio": "WaterCut",
+     "WaterCut": null,
+     "WGR": null,
+     "GasFlowRate": null,
+     "LiquidFlowRate": 1589.873039999996,
+     "MassFlowRate": null,
+     "Pressure": null,
+     "Temperature": 15.555555555555657,
+     "UsePQCurve": false,
+     "AssociatedBlackOilFluid": "Multiphase",
+     "AssociatedCompositionalFluid": null,
+     "AssociatedMFLFluid": null,
+     "IsActive": true,
+     "OverridesInitialized": false,
+     "UseFluidOverrides": false,
+     "SelectedRateType": "LiquidFlowRate"
+    },
+    "Sink|MySink": {
+     "Name": "MySink",
+     "GasFlowRate": null,
+     "LiquidFlowRate": null,
+     "MassFlowRate": null,
+     "Pressure": 41.368543759010166,
+     "IsActive": true,
+     "FlowrateType": "LiquidFlowRate"
+    },
+    "FlowCorrelation|Default": {
+     "Name": "Default",
+     "SwapAngle": 44.99999997722788,
+     "IsActive": true
+    },
+    "BlackOilFluid|Multiphase": {
+     "Name": "Multiphase",
+     "API": 30.0,
+     "DeadOilDensity": 876.1699662920959,
+     "DeadOilTemperature1": 93.3333333333,
+     "DeadOilTemperature2": 15.555560000000014,
+     "DeadOilViscosity1": 0.0026439104305754587,
+     "DeadOilViscosity2": 0.07915488781229667,
+     "DeadOilViscosityCorr": "BeggsAndRobinson",
+     "COFraction": 0.0,
+     "CO2Fraction": 0.0,
+     "H2Fraction": 0.0,
+     "H2SFraction": 0.0,
+     "N2Fraction": 0.0,
+     "GasSpecificGravity": 0.64,
+     "GLR": null,
+     "GOR": 142.4860772128069,
+     "GWR": null,
+     "LGR": null,
+     "LiquidViscosityCalc": "ContinuousPhase",
+     "LiveOilViscosityCorr": "ChewandConnaly",
+     "OGR": null,
+     "Richardsonkoiw": 3.8,
+     "Richardsonkwio": 6.6,
+     "UndersaturatedOilViscosityCorr": "VasquezAndBeggs",
+     "UndersaturatedOilViscosityParA": 0.0239,
+     "UndersaturatedOilViscosityParB": 0.01638,
+     "UseBraunerUllmanEquation": false,
+     "UseDeadOilDensity": false,
+     "UseGasRatio": "GOR",
+     "UserWatercutCutOff": 60.0,
+     "UseWaterRatio": "WaterCut",
+     "VandUserk1": 2.5,
+     "VandUserk2": 0.609,
+     "WaterCut": 0.0,
+     "WaterSpecificGravity": 1.02,
+     "WGR": null,
+     "Comment": "",
+     "HasOverride": false,
+     "IsBuiltinTemplate": false,
+     "IsTemplate": false,
+     "IsActive": true
+    },
+    "SimulationSetting|global": {
+     "AmbientTemperature": 15.555555600000048,
+     "AtmosphericPressure": 1.01325,
+     "WindSpeed": 2.57222,
+     "SoilType": "ClayMoist",
+     "SoilConductivity": 0.77469397761,
+     "MetoceanDataLocation": "GOM",
+     "ErosionalVelocityConstant": 121.99032535652498,
+     "CorrosionModel": "deWaard1995",
+     "CorrosionEfficiency": 1.0,
+     "PipeSegmentationMaxReportingInterval": null,
+     "PipeSegmentationPrintSegmentationResult": false,
+     "PipeSegmentationMaxSegmentLength": null,
+     "NetworkSolver": "Standard",
+     "NetworkSolverTolerance": 1.0,
+     "NetworkSolverMaxIterations": 100,
+     "SingleBranchKeywords": "",
+     "NetworkTopKeywords": "",
+     "NetworkBottomKeywords": "",
+     "GISElevationInterval": 91.44,
+     "GISElevationMaxPoints": 50,
+     "GISElevationSourceType": "Esri",
+     "UseGlobalFlowCorrelations": true,
+     "UseGlobalCorrosionModel": true,
+     "UseGlobalHeatTransfer": true
+    },
+    "GlobalFlowCorrelation|global": {
+     "VerticalMultiphaseSource": "BJA",
+     "VerticalMultiphaseCorrelation": "Hagedorn & Brown",
+     "VerticalMultiphaseHoldupFactor": 1.0,
+     "VerticalMultiphaseFrictionFactor": 1.0,
+     "HorizontalMultiphaseSource": "BJA",
+     "HorizontalMultiphaseCorrelation": "Beggs & Brill Revised",
+     "HorizontalMultiphaseHoldupFactor": 1.0,
+     "HorizontalMultiphaseFrictionFactor": 1.0,
+     "SwapAngle": 44.99999997722788,
+     "SinglePhaseCorrelation": "Moody",
+     "SinglePhaseFactor": 100.0
+    }
+   }
+  },
+  "differences": [
+   {
+    "type": "Flowline",
+    "name": "FL",
+    "param": "DepthAtStart",
+    "original": 0.0,
+    "rebuilt": null
+   },
+   {
+    "type": "Flowline",
+    "name": "FL",
+    "param": "MeasuredDistance",
+    "original": 6103.615243443839,
+    "rebuilt": null
+   },
+   {
+    "type": "Flowline",
+    "name": "FL",
+    "param": "Length",
+    "original": 6103.615243443838,
+    "rebuilt": null
+   },
+   {
+    "type": "BlackOilFluid",
+    "name": "Gas",
+    "param": "(whole component)",
+    "original": "present",
+    "rebuilt": "missing"
+   },
+   {
+    "type": "BlackOilFluid",
+    "name": "Water",
+    "param": "(whole component)",
+    "original": "present",
+    "rebuilt": "missing"
+   },
+   {
+    "type": "GlobalFlowCorrelation",
+    "name": "global",
+    "param": "HorizontalMultiphaseCorrelation",
+    "original": "Beggs & Brill Revised, Taitel Dukler map",
+    "rebuilt": "Beggs & Brill Revised"
+   }
+  ],
+  "remaining_differences": [
+   {
+    "type": "BlackOilFluid",
+    "name": "Gas",
+    "param": "(whole component)",
+    "original": "present",
+    "rebuilt": "missing"
+   },
+   {
+    "type": "BlackOilFluid",
+    "name": "Water",
+    "param": "(whole component)",
+    "original": "present",
+    "rebuilt": "missing"
+   }
+  ]
+ }
+}
