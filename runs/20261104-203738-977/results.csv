@@ -1,5 +1,0 @@
-﻿case,Line.InnerDiameter,Terminal liquid rate [sm3/d],Terminal oil rate [sm3/d],Terminal gas rate [mmsm3/d],Plant liquid rate [sm3/d],Plant pressure [bara],_status
-base,203.0,0.0,0.0,2.9998867271152085,0.0,125.97650572632473,Completed
-Line.InnerDiameter=203,203,0.0,0.0,2.9998867271152085,0.0,125.97650572632473,Completed
-Line.InnerDiameter=254,254,0.0,0.0,2.9998867271152085,0.0,87.09216167950196,Completed
-Line.InnerDiameter=305,305,0.0,0.0,2.9998867271152085,0.0,71.92124364490056,Completed
