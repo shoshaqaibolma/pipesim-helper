@@ -1,142 +1,253 @@
-JOB jobs\28_inspect_pips.txt started 2026-11-06 14:58:40
+JOB jobs\29_heat_transplant.txt started 2026-11-06 15:03:05
 
-$ "D:\Program\Pipesim toolkit\python.exe" tools\inspect_pips.py "D:\Program\Pipesim2023.1\Case Studies"
+$ "D:\Program\Pipesim toolkit\python.exe" tools\heat_transplant.py "D:\Program\Pipesim2023.1\Case Studies"
 [exit 0]
-ll, "Existence_Kind": "Actual", "GUID": null, "Id": 10148, "Version": "1", "GroundConductivity": 0.77469397761, "IncludeInsideFilmCoeff": 1, "IsUCalculated": 0, "PipeBurialDepth": null, "PipeConductivity": 60.549998, "SurroundingFluidVelocity": 2.57222, "Survey_Id": null, "UCoe
-    Model:AV_PressureTempPOperation | AV_PressureTempPOperation = {"FlowRateConditionTemperature": 288.70556, "Id": 10174, "Name": "MySource - P/T profile"}
-    Model:AV_SinglePhaseCorrelation | AV_SinglePhaseCorrelation = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": "Actual", "GUID": null, "Id": 10660, "Version": "1", "AGADragFactor": 1.0, "CFactor": 100.0, "Correlation": "Moody", "PanHandleAEfficiency": 1.0, "PanHandleBEfficiency": 1.0, "WeymouthEfficiency": 1.0}
-    Model:AV_Source | AV_Source = {"Temperature": null, "Id": 10020, "Name": "Source 1"}
-    Model:AV_Source | AV_Source = {"Temperature": 288.70555555555563, "Id": 10113, "Name": "MySource"}
-    Model:AV_SpecialSensObject | AV_SpecialSensObject = {"SurfaceGasTemperature": null, "Id": 10177, "Name": "System Data"}
-    Model:AV_SpecialSensObject | AV_SpecialSensObject = {"SurfaceGasTemperature": null, "Id": 10343, "Name": "Gas lift data"}
-    Model:AV_Flowline | AV_Flowline = {"AmbientAirTemperature": 288.7055556, "AmbientFluidType": null, "AmbientTemperature": null, "AmbientTemperatureOptions": null, "AmbientWaterTemperature": null, "GeothermalSurveyIndex": "horizontalDistance", "OverrideCorrelation_Id": 10661, "SurfaceTemperature": 0, "Id": 10146, "Name": "FL"}
-  only in the REBUILT (or different value):
-    Model:AV_BlackOilCalibration | AV_BlackOilCalibration = {"GasCompressCorrelation": null, "GasViscCorrelation": null, "LiveOilViscCorrelation": null, "OilFVFCorrelation": null, "RsCorrelationCalibration_Id": null, "Id": 10044}
-    Model:AV_BlackOilCalibration | AV_BlackOilCalibration = {"GasCompressCorrelation": null, "GasViscCorrelation": null, "LiveOilViscCorrelation": null, "OilFVFCorrelation": null, "RsCorrelationCalibration_Id": null, "Id": 10058}
-    Model:AV_BlackOilCalibration | AV_BlackOilCalibration = {"GasCompressCorrelation": null, "GasViscCorrelation": null, "LiveOilViscCorrelation": null, "OilFVFCorrelation": null, "RsCorrelationCalibration_Id": null, "Id": 10072}
-    Model:AV_BlackOilCalibration | AV_BlackOilCalibration = {"GasCompressCorrelation": null, "GasViscCorrelation": null, "LiveOilViscCorrelation": null, "OilFVFCorrelation": null, "RsCorrelationCalibration_Id": null, "Id": 10086}
-    Model:AV_BlackOilCalibration | AV_BlackOilCalibration = {"GasCompressCorrelation": null, "GasViscCorrelation": null, "LiveOilViscCorrelation": null, "OilFVFCorrelation": null, "RsCorrelationCalibration_Id": null, "Id": 10100}
-    Model:AV_BlackOilCalibration | AV_BlackOilCalibration = {"GasCompressCorrelation": null, "GasViscCorrelation": null, "LiveOilViscCorrelation": null, "OilFVFCorrelation": null, "RsCorrelationCalibration_Id": null, "Id": 11336}
-    Model:AV_BlackOilCalibration | AV_BlackOilCalibration = {"GasCompressCorrelation": null, "GasViscCorrelation": null, "LiveOilViscCorrelation": null, "OilFVFCorrelation": null, "RsCorrelationCalibration_Id": null, "Id": 11349}
-    Model:AV_BlackOilFluid | AV_BlackOilFluid = {"DeadOilTemperature1": 366.4833333333, "DeadOilTemperature2": 288.70556, "ThermalData_Id": 10055, "Id": 10043, "Name": "Dry Gas"}
-    Model:AV_BlackOilFluid | AV_BlackOilFluid = {"DeadOilTemperature1": 366.4833333333, "DeadOilTemperature2": 288.70556, "ThermalData_Id": 10069, "Id": 10057, "Name": "Light Oil + Gas"}
-    Model:AV_BlackOilFluid | AV_BlackOilFluid = {"DeadOilTemperature1": 366.4833333333, "DeadOilTemperature2": 288.70556, "ThermalData_Id": 10083, "Id": 10071, "Name": "Heavy Oil + Gas"}
-    Model:AV_BlackOilFluid | AV_BlackOilFluid = {"DeadOilTemperature1": 366.4833333333, "DeadOilTemperature2": 288.70556, "ThermalData_Id": 10097, "Id": 10085, "Name": "Dead Oil"}
-    Model:AV_BlackOilFluid | AV_BlackOilFluid = {"DeadOilTemperature1": 366.4833333333, "DeadOilTemperature2": 288.70556, "ThermalData_Id": 10111, "Id": 10099, "Name": "Water"}
-    Model:AV_BlackOilFluid | AV_BlackOilFluid = {"DeadOilTemperature1": 366.4833333333, "DeadOilTemperature2": 288.70556, "ThermalData_Id": 11360, "Id": 11335, "Name": "Multiphase"}
-    Model:AV_BlackOilThermalData | AV_BlackOilThermalData = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": "Actual", "GUID": null, "Id": 10055, "Version": "1", "EnthalpyCalcMethod": "Method2009", "GasConductivity": 0.0346, "GasHeatCapacity": 2302.74, "LatentHeatOfVaporization": 325638.99, "OilConductivity": 0.1384, "OilHeatCapacity": 1884.06, "WaterConductivity
-    Model:AV_BlackOilThermalData | AV_BlackOilThermalData = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": null, "GUID": null, "Id": 10069, "Version": null, "EnthalpyCalcMethod": "Method2009", "GasConductivity": 0.0346, "GasHeatCapacity": 2302.74, "LatentHeatOfVaporization": 325638.99, "OilConductivity": 0.1384, "OilHeatCapacity": 1884.06, "WaterConductivity": 
-    Model:AV_BlackOilThermalData | AV_BlackOilThermalData = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": null, "GUID": null, "Id": 10083, "Version": null, "EnthalpyCalcMethod": "Method2009", "GasConductivity": 0.0346, "GasHeatCapacity": 2302.74, "LatentHeatOfVaporization": 325638.99, "OilConductivity": 0.1384, "OilHeatCapacity": 1884.06, "WaterConductivity": 
-    Model:AV_BlackOilThermalData | AV_BlackOilThermalData = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": null, "GUID": null, "Id": 10097, "Version": null, "EnthalpyCalcMethod": "Method2009", "GasConductivity": 0.0346, "GasHeatCapacity": 2302.74, "LatentHeatOfVaporization": 325638.99, "OilConductivity": 0.1384, "OilHeatCapacity": 1884.06, "WaterConductivity": 
-    Model:AV_BlackOilThermalData | AV_BlackOilThermalData = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": null, "GUID": null, "Id": 10111, "Version": null, "EnthalpyCalcMethod": "Method2009", "GasConductivity": 0.0346, "GasHeatCapacity": 2302.74, "LatentHeatOfVaporization": 325638.99, "OilConductivity": 0.1384, "OilHeatCapacity": 1884.06, "WaterConductivity": 
-    Model:AV_BlackOilThermalData | AV_BlackOilThermalData = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": "Actual", "GUID": null, "Id": 11347, "Version": "1", "EnthalpyCalcMethod": "Method2009", "GasConductivity": 0.0346, "GasHeatCapacity": 2302.74, "LatentHeatOfVaporization": 325638.99, "OilConductivity": 0.1384, "OilHeatCapacity": 1884.06, "WaterConductivity
-    Model:AV_BlackOilThermalData | AV_BlackOilThermalData = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": "Actual", "GUID": null, "Id": 11360, "Version": "1", "EnthalpyCalcMethod": "Method2009", "GasConductivity": null, "GasHeatCapacity": null, "LatentHeatOfVaporization": null, "OilConductivity": null, "OilHeatCapacity": null, "WaterConductivity": null, "Water
-    Model:AV_Borehole | AV_Borehole = {"HeatTransferMethod": null, "UseWellHeadAmbientTemperature": 1, "HeatTransferCoefficientStatus": "Specify", "ProductionFluidMeasTemperature": null, "Id": 10022, "Name": "Borehole"}
-    Model:AV_CalibrationPoint | AV_CalibrationPoint = {"Temperature": null, "Id": 10053}
-    Model:AV_CalibrationPoint | AV_CalibrationPoint = {"Temperature": null, "Id": 10054}
-    Model:AV_CalibrationPoint | AV_CalibrationPoint = {"Temperature": null, "Id": 10067}
-    Model:AV_CalibrationPoint | AV_CalibrationPoint = {"Temperature": null, "Id": 10068}
-    Model:AV_FlowCorrelation | AV_FlowCorrelation = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": "Actual", "GUID": null, "Id": 11372, "Version": "18562187-9bb7-4bba-be88-8ea7f006a222", "IsActive": 0, "Name": "Default", "HorizontalFlowCorrelation_Id": 11374, "Network_Id": 10017, "SinglePhaseFlowCorrelation_Id": 11375, "SwapAngle": 0.785398163, "Vertica
-    Model:AV_GeothermalSurvey | AV_GeothermalSurvey = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": "Actual", "GUID": null, "Id": 11400, "Version": "1", "Borehole_Id": null, "CurrentVelocity": null, "Flowline_Id": 11369, "HorizontalDistance": 0.0, "MeasuredDistance": 0.0, "Model_Id": null, "Sub_Type": "AV_FlowGeothermSurvey", "Temperature": 288.7055556, 
-    Model:AV_GeothermalSurvey | AV_GeothermalSurvey = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": null, "GUID": null, "Id": 11401, "Version": null, "Borehole_Id": null, "CurrentVelocity": null, "Flowline_Id": 11369, "HorizontalDistance": 6096.0, "MeasuredDistance": 6103.9189, "Model_Id": null, "Sub_Type": "AV_FlowGeothermSurvey", "Temperature": 288.705
-    Model:AV_HeatTransferOptions | AV_HeatTransferOptions = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": "Actual", "GUID": null, "Id": 10039, "Version": "1", "BurialMethod": "Method2009", "EnableHydrateSubcoolCalc": 0, "FilmMethod": "Kreith", "IsActive": 0, "UValueMultiplier": 1.0}
-    Model:AV_HeatTransferOptions | AV_HeatTransferOptions = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": "Actual", "GUID": null, "Id": 11376, "Version": "b4515f92-df99-49e3-8f25-49cbe8a8d55b", "BurialMethod": "Method2009", "EnableHydrateSubcoolCalc": 0, "FilmMethod": "Kreith", "IsActive": 0, "UValueMultiplier": 1.0}
-    Model:AV_MultiPhaseFCorrelation | AV_MultiPhaseFCorrelation = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": "Actual", "GUID": null, "Id": 10036, "Version": "1", "BlobData": null, "Correlation": "Hagedorn & Brown", "CorrelationSource": "BJA", "FrictionFactor": 1.0, "HModelCalibrationOperation_Id": null, "HoldupFactor": 1.0, "VModelCalibrationOperation_Id": null}
-    Model:AV_MultiPhaseFCorrelation | AV_MultiPhaseFCorrelation = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": null, "GUID": null, "Id": 10037, "Version": null, "BlobData": null, "Correlation": "Beggs & Brill Revised", "CorrelationSource": "BJA", "FrictionFactor": 1.0, "HModelCalibrationOperation_Id": null, "HoldupFactor": 1.0, "VModelCalibrationOperation_Id": null
-    Model:AV_MultiPhaseFCorrelation | AV_MultiPhaseFCorrelation = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": "Actual", "GUID": null, "Id": 11373, "Version": "18562187-9bb7-4bba-be88-8ea7f006a222", "BlobData": null, "Correlation": "Hagedorn & Brown", "CorrelationSource": "BJA", "FrictionFactor": 1.0, "HModelCalibrationOperation_Id": null, "HoldupFactor": 1.0, "VMo
-    Model:AV_MultiPhaseFCorrelation | AV_MultiPhaseFCorrelation = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": null, "GUID": null, "Id": 11374, "Version": "18562187-9bb7-4bba-be88-8ea7f006a222", "BlobData": null, "Correlation": "Beggs & Brill Revised", "CorrelationSource": "BJA", "FrictionFactor": 1.0, "HModelCalibrationOperation_Id": null, "HoldupFactor": 1.0, "VM
-    Model:AV_NetworkSimOperation | AV_NetworkSimOperation = {"FlowRateConditionTemperature": null, "Id": 11404, "Name": "NetworkSimOperation"}
-    Model:AV_PipeBase | AV_PipeBase = {"HeatTransfer_Id": 11371, "CementThermalConductivity": null, "FluidThermalConductivity": null, "ThermalConductivity": null, "Id": 11370, "Name": "FL"}
-    Model:AV_PipeHeatTransfer | AV_PipeHeatTransfer = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": "Actual", "GUID": null, "Id": 11371, "Version": "1", "GroundConductivity": 0.77469397761, "IncludeInsideFilmCoeff": 1, "IsUCalculated": 0, "PipeBurialDepth": null, "PipeConductivity": 45.0, "SurroundingFluidVelocity": 2.57222, "Survey_Id": null, "UCoeffUse
-    Model:AV_SinglePhaseCorrelation | AV_SinglePhaseCorrelation = {"Insert_Date": null, "Insert_User": null, "Produced_By": null, "SDAT_Label": null, "Update_Date": null, "Update_User": null, "Existence_Kind": "Actual", "GUID": null, "Id": 11375, "Version": "18562187-9bb7-4bba-be88-8ea7f006a222", "AGADragFactor": 1.0, "CFactor": 100.0, "Correlation": "Moody", "PanHandleAEfficiency": 1.0, "PanHandleBEfficiency": 1.0, "WeymouthEfficiency": 1.0}
-    Model:AV_Source | AV_Source = {"Temperature": null, "Id": 10019, "Name": "Well Outlet 10018"}
-    Model:AV_Source | AV_Source = {"Temperature": null, "Id": 11230, "Name": "WellString outlet10024"}
-    Model:AV_Source | AV_Source = {"Temperature": null, "Id": 11232, "Name": "WellString outlet10026"}
-    Model:AV_Source | AV_Source = {"Temperature": 288.70555555555563, "Id": 11362, "Name": "MySource"}
-    Model:AV_Flowline | AV_Flowline = {"AmbientAirTemperature": 288.7055556, "AmbientFluidType": null, "AmbientTemperature": 288.7055556, "AmbientTemperatureOptions": null, "AmbientWaterTemperature": null, "GeothermalSurveyIndex": "horizontalDistance", "OverrideCorrelation_Id": 11372, "SurfaceTemperature": 0, "Id": 11369, "Name": "FL"}
-    Model:AV_BoundaryPair | AV_BoundaryPair = {"Temperature": 288.70555555555563, "Id": 11406, "Name": "MySource"}
-    Model:AV_BoundaryPair | AV_BoundaryPair = {"Temperature": 288.70555555555563, "Id": 11407, "Name": "MySource"}
-    Model:AV_BoundaryPair | AV_BoundaryPair = {"Temperature": null, "Id": 11408, "Name": "MySink"}
-    Model:AV_BoundaryPair | AV_BoundaryPair = {"Temperature": null, "Id": 11409, "Name": "MySink"}
 
-written knowledge/pips_inspect.json
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 30288
+===== TF_M2A_Water_Pipeline
+hidden settings that differ (original / rebuilt):
+   AV_PipeBase FL.AnnulusMaterialDensity: 1200.0 / None
+   AV_PipeBase FL.AnnulusMaterialType: Mud / None
+   AV_PipeBase FL.CementDensity: 1900.0 / None
+   AV_PipeBase FL.OuterPipeWallThickness: None / 0.0127
+   AV_PipeBase FL.CementThermalConductivity: 1.557 / None
+   AV_PipeBase FL.FluidThermalConductivity: 1.0034 / None
+   AV_PipeBase FL.ThermalConductivity: 48.0075 / None
+   AV_PipeHeatTransfer FL.PipeConductivity: 60.549998 / 45.0
+   AV_PipeHeatTransfer FL.UCoeffUserAir: 0.0 / 11.356526682227
+   AV_PipeHeatTransfer FL.UTypeAir: UserSupplied / Insulated
+   AV_Flowline FL.AmbientTemperature: None / 288.7055556
+   AV_Flowline FL.DepthAtStart: 0.0 / None
+   AV_Flowline FL.MeasuredDistance: 6103.615243443839 / 6103.615243443838
+   AV_BlackOilFluid.IsBuiltinTemplate: 1 / 0
+   AV_BlackOilFluid.IsTemplate: 1 / 0
+   AV_BlackOilFluid.DeadOilViscosity1: None / 0.01096763473975516
+   AV_BlackOilFluid.DeadOilViscosity2: None / 4.5161235117923875
+   AV_BlackOilFluid.UseWaterRatio: WaterCut / None
+   AV_BlackOilThermalData.EnthalpyCalcMethod: None / Method2009
+   AV_BlackOilThermalData.GasConductivity: 0.0346 / None
+   AV_BlackOilThermalData.GasHeatCapacity: 2302.74 / None
+   AV_BlackOilThermalData.LatentHeatOfVaporization: 325638.99 / None
+   AV_BlackOilThermalData.OilConductivity: 0.1384 / None
+   AV_BlackOilThermalData.OilHeatCapacity: 1884.06 / None
+   AV_BlackOilThermalData.WaterConductivity: 0.6055 / None
+   AV_BlackOilThermalData.WaterHeatCapacity: 4186.8 / None
+ original:                                 loss 75.1853  outlet T -5.6202  liq 950.5986  gas 0.0
+ level 2 (in memory)                           loss 72.654 (-3.37 %)  outlet T 16.5155 (+393.86 %)  liq 953.6599 (+0.32 %)  gas 0.0 (+0.00 %)
+ A. rebuilt file reopened (level 2)            loss 72.654 (-3.37 %)  outlet T 16.5155 (+393.86 %)  liq 953.6599 (+0.32 %)  gas 0.0 (+0.00 %)
+ B. + pipe heat transfer (hidden table)        loss 72.6534 (-3.37 %)  outlet T 16.5351 (+394.21 %)  liq 953.664 (+0.32 %)  gas 0.0 (+0.00 %)
+ C. + pipe thermal properties (AV_PipeBase)    loss 72.6534 (-3.37 %)  outlet T 16.5351 (+394.21 %)  liq 953.664 (+0.32 %)  gas 0.0 (+0.00 %)
+ D. + fluid thermal data                       loss 72.6529 (-3.37 %)  outlet T 16.5427 (+394.34 %)  liq 953.6656 (+0.32 %)  gas 0.0 (+0.00 %)
+ E. + every other hidden flowline column       loss 72.6529 (-3.37 %)  outlet T 16.5427 (+394.34 %)  liq 953.6656 (+0.32 %)  gas 0.0 (+0.00 %)
+
+===== TF_M2B_Gas_Pipeline
+hidden settings that differ (original / rebuilt):
+   AV_PipeBase FL.AnnulusMaterialDensity: 1200.0 / None
+   AV_PipeBase FL.AnnulusMaterialType: Mud / None
+   AV_PipeBase FL.CementDensity: 1900.0 / None
+   AV_PipeBase FL.OuterPipeWallThickness: None / 0.0127
+   AV_PipeBase FL.CementThermalConductivity: 1.557 / None
+   AV_PipeBase FL.FluidThermalConductivity: 1.0034 / None
+   AV_PipeBase FL.ThermalConductivity: 48.0075 / None
+   AV_PipeHeatTransfer FL.PipeConductivity: 60.549998 / 45.0
+   AV_PipeHeatTransfer FL.UCoeffUserAir: 0.0 / 11.356526682227
+   AV_PipeHeatTransfer FL.UTypeAir: UserSupplied / Insulated
+   AV_Flowline FL.AmbientTemperature: None / 288.7055556
+   AV_Flowline FL.DepthAtStart: 0.0 / None
+   AV_Flowline FL.MeasuredDistance: 6103.615243443839 / 6103.615243443838
+   AV_BlackOilThermalData.EnthalpyCalcMethod: None / Method2009
+   AV_BlackOilThermalData.GasConductivity: 0.0346 / None
+   AV_BlackOilThermalData.GasHeatCapacity: 2302.74 / None
+   AV_BlackOilThermalData.LatentHeatOfVaporization: 325638.99 / None
+   AV_BlackOilThermalData.OilConductivity: 0.1384 / None
+   AV_BlackOilThermalData.OilHeatCapacity: 1884.06 / None
+   AV_BlackOilThermalData.WaterConductivity: 0.6055 / None
+   AV_BlackOilThermalData.WaterHeatCapacity: 4186.8 / None
+ original:                                 loss 41.3487  outlet T -0.5076  liq 0.0  gas 0.308
+ level 2 (in memory)                           loss 41.3661 (+0.04 %)  outlet T 12.39 (+2540.94 %)  liq 0.0 (+0.00 %)  gas 0.3032 (-1.58 %)
+ A. rebuilt file reopened (level 2)            loss 41.3661 (+0.04 %)  outlet T 12.39 (+2540.94 %)  liq 0.0 (+0.00 %)  gas 0.3032 (-1.58 %)
+ B. + pipe heat transfer (hidden table)        loss 41.366 (+0.04 %)  outlet T 11.9181 (+2447.96 %)  liq 0.0 (+0.00 %)  gas 0.3033 (-1.53 %)
+ C. + pipe thermal properties (AV_PipeBase)    loss 41.366 (+0.04 %)  outlet T 11.9181 (+2447.96 %)  liq 0.0 (+0.00 %)  gas 0.3033 (-1.53 %)
+ D. + fluid thermal data                       loss 41.3487 (+0.00 %)  outlet T -0.5076 (+0.00 %)  liq 0.0 (+0.00 %)  gas 0.308 (+0.00 %)
+ E. + every other hidden flowline column       loss 41.3487 (+0.00 %)  outlet T -0.5076 (+0.00 %)  liq 0.0 (+0.00 %)  gas 0.308 (+0.00 %)
+
+===== TF_M2C_Multiphase_Pipeline
+hidden settings that differ (original / rebuilt):
+   AV_PipeBase FL.AnnulusMaterialDensity: 1200.0 / None
+   AV_PipeBase FL.AnnulusMaterialType: Mud / None
+   AV_PipeBase FL.CementDensity: 1900.0 / None
+   AV_PipeBase FL.OuterPipeWallThickness: None / 0.0127
+   AV_PipeBase FL.CementThermalConductivity: 1.557 / None
+   AV_PipeBase FL.FluidThermalConductivity: 1.0034 / None
+   AV_PipeBase FL.ThermalConductivity: 48.0075 / None
+   AV_PipeHeatTransfer FL.PipeConductivity: 60.549998 / 45.0
+   AV_PipeHeatTransfer FL.UCoeffUserAir: 0.0 / 11.356526682227
+   AV_PipeHeatTransfer FL.UTypeAir: UserSupplied / Insulated
+   AV_Flowline FL.AmbientTemperature: None / 288.7055556
+   AV_Flowline FL.DepthAtStart: 0.0 / None
+   AV_Flowline FL.MeasuredDistance: 6103.615243443839 / 6103.615243443838
+   AV_BlackOilThermalData.EnthalpyCalcMethod: None / Method2009
+   AV_BlackOilThermalData.GasConductivity: 0.0346 / None
+   AV_BlackOilThermalData.GasHeatCapacity: 2302.74 / None
+   AV_BlackOilThermalData.LatentHeatOfVaporization: 325638.99 / None
+   AV_BlackOilThermalData.OilConductivity: 0.1384 / None
+   AV_BlackOilThermalData.OilHeatCapacity: 1884.06 / None
+   AV_BlackOilThermalData.WaterConductivity: 0.6055 / None
+   AV_BlackOilThermalData.WaterHeatCapacity: 4186.8 / None
+ original:                                 loss 263.0962  outlet T 20.2099  liq 1703.6827  gas 0.1731
+ level 2 (in memory)                           loss 259.5156 (-1.36 %)  outlet T 18.2218 (-9.84 %)  liq 1707.6071 (+0.23 %)  gas 0.1699 (-1.90 %)
+ A. rebuilt file reopened (level 2)            loss 259.5156 (-1.36 %)  outlet T 18.2218 (-9.84 %)  liq 1707.6071 (+0.23 %)  gas 0.1699 (-1.90 %)
+ B. + pipe heat transfer (hidden table)        loss 258.9311 (-1.58 %)  outlet T 18.4269 (-8.82 %)  liq 1708.8915 (+0.31 %)  gas 0.1694 (-2.15 %)
+ C. + pipe thermal properties (AV_PipeBase)    loss 258.9311 (-1.58 %)  outlet T 18.4269 (-8.82 %)  liq 1708.8915 (+0.31 %)  gas 0.1694 (-2.15 %)
+ D. + fluid thermal data                       loss 263.1128 (+0.01 %)  outlet T 20.21 (+0.00 %)  liq 1703.6537 (-0.00 %)  gas 0.1732 (+0.01 %)
+ E. + every other hidden flowline column       loss 263.1128 (+0.01 %)  outlet T 20.21 (+0.00 %)  liq 1703.6537 (-0.00 %)  gas 0.1732 (+0.01 %)
+
+written knowledge/heat_transplant.json
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 38736
 INFO:manta.server.manager:Python toolkit license is checked out successfully
 INFO:manta.server.manager:Waiting for PIPESIM server to start.
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 18916
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 32352
 INFO:manta.server.manager:Python toolkit license is checked out successfully
 INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:60686/api/metadata#'
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:62310/api/metadata#'
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 18592
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 144
 INFO:manta.server.manager:Python toolkit license is checked out successfully
 INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:61090/api/metadata#'
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:62444/api/metadata#'
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 38604
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 24712
 INFO:manta.server.manager:Python toolkit license is checked out successfully
 INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:61226/api/metadata#'
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:62581/api/metadata#'
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:sixgill.core.run_or_start_simulation:Simulation is running.
-INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
-INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 16004
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 35432
 INFO:manta.server.manager:Python toolkit license is checked out successfully
 INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:61624/api/metadata#'
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:62715/api/metadata#'
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
-INFO:manta.server.manager:Starting PIPESIM server on thread ID: 26524
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 39468
 INFO:manta.server.manager:Python toolkit license is checked out successfully
 INFO:manta.server.manager:Waiting for PIPESIM server to start.
-INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:61761/api/metadata#'
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:62850/api/metadata#'
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 9248
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:62986/api/metadata#'
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 16140
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:63121/api/metadata#'
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 27540
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:63259/api/metadata#'
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 332
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:63396/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 31472
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:63530/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 36088
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:63664/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 11176
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:63798/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 20072
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:63941/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 25408
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:64075/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 34444
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:64209/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 19316
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:64343/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 32780
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:64478/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 15088
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:64612/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 19528
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:64746/api/metadata#'
+INFO:sixgill.core.run_or_start_simulation:Simulation is running.
+INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
+INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
+INFO:manta.server.manager:Starting PIPESIM server on thread ID: 32192
+INFO:manta.server.manager:Python toolkit license is checked out successfully
+INFO:manta.server.manager:Waiting for PIPESIM server to start.
+INFO:sixgill.core.metadata:Using cached metadata for 'http://localhost:64880/api/metadata#'
 INFO:sixgill.core.run_or_start_simulation:Simulation is running.
 INFO:sixgill.core.run_or_start_simulation:Simulation is finished.
 INFO:sixgill.core.run_or_start_simulation:Simulation run successfully.
 
 
-JOB finished 2026-11-06 15:00:39
+JOB finished 2026-11-06 15:06:56
