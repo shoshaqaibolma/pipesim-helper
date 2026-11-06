@@ -1,0 +1,2 @@
+# Write the original's hidden heat-transfer / thermal values into temp copies of the rebuilt pipelines and rerun.
+"D:\Program\Pipesim toolkit\python.exe" tools\heat_transplant.py "D:\Program\Pipesim2023.1\Case Studies"
