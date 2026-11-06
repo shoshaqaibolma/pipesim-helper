@@ -74,12 +74,15 @@ def main():
 
     columns, report = {}, []
     for k, ps in sorted(pairs.items()):
+        ps = [x for x in ps if all(map(lambda v: v == v and abs(v) != float("inf"), x[:2]))]
+        if not ps:
+            continue
         offsets = [tv - sv for sv, tv, _, _ in ps]
         scales = [tv / sv for sv, tv, _, _ in ps]
         unit = statistics.mode([u for *_, u, _ in ps]) if ps else ""
         if all(abs(o + 273.15) < 0.01 for o in offsets):
             fit = {"scale": 1.0, "offset": -273.15}
-        elif max(scales) - min(scales) <= 1e-4 * max(abs(x) for x in scales):
+        elif all(s == s for s in scales) and max(scales) - min(scales) <= 1e-4 * max(abs(x) for x in scales):
             fit = {"scale": statistics.median(scales), "offset": 0.0}
         else:
             report.append(f"{k}: no single conversion ({len(ps)} samples, scales {min(scales):.4g}..{max(scales):.4g})")

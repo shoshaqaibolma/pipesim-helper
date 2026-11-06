@@ -1,0 +1,2 @@
+# Same questions after the reader fixes (U-value in use, search widens from the pipe to its fluid).
+"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py "D:\Program\Pipesim2023.1\Case Studies\Training Exercises\Pipesim Fundamentals\TF_M2B_Gas Pipeline.pips" tests\scripts\pips_question.txt

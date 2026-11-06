@@ -96,8 +96,8 @@ For existing models, refer to variables as component_type + name + parameter (e.
 Use model units (METRIC unless the user says FIELD). Never invent results: every number comes from a tool.
 VALUES INSIDE A MODEL FILE: for "what is the U-value / heat capacity / conductivity / insulation / correlation of X
 in <file>.pips" (anything get_values does not show), call read_pips(path, component, keyword). Quote only values it
-returns, with their unit; "SI (as stored)" means SI units (W/m/K, W/m2/K, J/kg/K, m, Pa). If it returns nothing,
-say the value is not stored in the file; never guess.
+returns, with their unit. For a pipe's U-value report "heat_transfer_in_use" (the side that applies: air or water);
+the other side's values are unused. If it returns nothing, say so; never guess.
 Every check_spec and check_project result has a "next_step" field: always do exactly what it says.
 Keep messages short.{NUMBER_RULE}"""
 

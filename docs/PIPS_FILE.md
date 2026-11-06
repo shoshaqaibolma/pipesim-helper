@@ -11,9 +11,13 @@ ones. They are still in the `.pips` file, and the assistant can read them with t
 - Rows have an `Id`. A row points to a related row with a `<Something>_Id` column, for example
   `AV_PipeBase.HeatTransfer_Id -> AV_PipeHeatTransfer.Id` and
   `AV_BlackOilFluid.ThermalData_Id -> AV_BlackOilThermalData.Id`.
-- Values are stored in **SI units**: temperatures in K, lengths in m, pressures in Pa, conductivities in W/m/K,
-  U-values in W/m2/K, heat capacities in J/kg/K. `read_pips` converts temperatures to degC and applies the
-  conversions verified by `tools/pips_units.py` (stored value vs the toolkit's METRIC value, across the case studies).
+- Values are stored in **SI units**: temperatures in K, lengths in m, pressures in Pa, rates in m3/s, power in W,
+  fractions 0-1. Verified in job 30 on 20 case studies: for 50 columns the stored value converts exactly to what the
+  toolkit reports (e.g. Pressure x 1e-5 = bara, LiquidFlowRate x 86400 = sm3/d, BeanSize x 1000 = mm,
+  temperatures - 273.15 = degC, WaterCut x 100 = %). `read_pips` applies these (`knowledge/pips_units.json`) and
+  labels hidden SI columns by name (W/m/K, W/m2/K, J/kg/K, mm).
+- A pipe has U-value settings for both surroundings (`UTypeAir`/`UCoeffUserAir` and `UTypeWater`/`UCoeffUserWater`);
+  only the side matching the pipe's `AmbientFluidType` is used. `read_pips` reports that one as `heat_transfer_in_use`.
 
 ## The settings that matter most (found in the training case studies)
 

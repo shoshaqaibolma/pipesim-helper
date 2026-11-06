@@ -10,7 +10,7 @@ Values are stored in PIPESIM's internal units, which are SI: temperatures in K, 
 Known conversions are applied (see UNITS); everything else is reported as stored, with that caveat.
 The file is never modified: it is copied to a temp folder and the database opened read-only.
 """
-import json, os, re, shutil, sqlite3, tempfile, zipfile
+import json, math, os, re, shutil, sqlite3, tempfile, zipfile
 
 META = {"Insert_Date", "Insert_User", "Produced_By", "SDAT_Label", "Update_Date", "Update_User", "Existence_Kind",
         "GUID", "Version"}
@@ -25,13 +25,26 @@ def _load_units():
         return {}
 
 
+# SI column -> display unit, by name (for columns the toolkit never shows, so no verified conversion exists)
+NAME_UNITS = [(r"^(UCoeff|HeatTransferCoeff)", 1.0, "W/m2/K"), (r"Conductivity$", 1.0, "W/m/K"),
+              (r"HeatCapacity$", 1.0, "J/kg/K"), (r"LatentHeat", 1.0, "J/kg"), (r"Density$", 1.0, "kg/m3"),
+              (r"(InnerDiameter|OuterDiameter|WallThickness|Thickness|Roughness)$", 1000.0, "mm"),
+              (r"(Length|Distance|Depth|Elevation\w*)$", 1.0, "m"), (r"Velocity$", 1.0, "m/s")]
+FLAGS = re.compile(r"^(Is|Use|Include|Enter|Enable|Annulus\w*Flow$|Show)")
+
+
 def convert(column, value):
     """(display value, unit, how) for a stored value."""
     if not isinstance(value, (int, float)) or isinstance(value, bool):
         return value, "", "as stored"
+    if FLAGS.match(column) and value in (0, 1):
+        return bool(value), "", "flag"
     learned = _load_units().get(column)
-    if learned:
+    if learned and math.isfinite(learned.get("scale", float("nan"))):
         return round(value * learned["scale"] + learned.get("offset", 0.0), 6), learned.get("unit", ""), "verified"
+    for rx, scale, unit in NAME_UNITS:
+        if re.search(rx, column):
+            return round(value * scale, 6), unit, "SI by name"
     if re.search(r"Temperature", column) and 150 < value < 1000:
         return round(value - 273.15, 4), "degC", "K -> degC (SI temperature)"
     return value, "SI (as stored)", "as stored"
@@ -66,6 +79,7 @@ class Pips:
         self.con = sqlite3.connect(f"file:{db}?mode=ro", uri=True)
         self.con.row_factory = sqlite3.Row
         self.tables = [r[0] for r in self.con.execute("select name from sqlite_master where type='table'")]
+        self.tables = [t for t in self.tables if not re.search(r"View$|Diagram|Layout|Symbol", t)]   # GUI layout only
         self.cols = {t: [r[1] for r in self.con.execute(f'pragma table_info("{t}")')] for t in self.tables}
 
     def close(self):
@@ -88,6 +102,30 @@ class Pips:
                 continue
             val, unit, how = convert(k, v)
             out[k] = {"value": val, "unit": unit} if unit else val
+        return out
+
+    def heat_transfer_in_use(self, name):
+        """Which U-value actually applies to a pipe: the one for its surroundings (air or water)."""
+        fl = self._rows("AV_Flowline", "Name = ?", (name,)) if "AV_Flowline" in self.tables else []
+        pb = self._rows("AV_PipeBase", "Name = ?", (name,)) if "AV_PipeBase" in self.tables else []
+        if not pb or pb[0].get("HeatTransfer_Id") is None or "AV_PipeHeatTransfer" not in self.tables:
+            return None
+        ht = self._rows("AV_PipeHeatTransfer", "Id = ?", (pb[0]["HeatTransfer_Id"],))
+        if not ht:
+            return None
+        ht = ht[0]
+        side = (fl[0].get("AmbientFluidType") if fl else None) or "Air"
+        side = "Water" if str(side).lower().startswith("water") else "Air"
+        utype = ht.get(f"UType{side}") or ht.get("UType")
+        u = ht.get(f"UCoeffUser{side}") if ht.get(f"UCoeffUser{side}") is not None else ht.get("UCoeffUser")
+        out = {"surroundings": side, "u_value_set_as": utype,
+               "pipe_wall_conductivity": {"value": ht.get("PipeConductivity"), "unit": "W/m/K"}}
+        if str(utype) == "UserSupplied":
+            out["u_value"] = {"value": u, "unit": "W/m2/K"}
+        else:
+            out["u_value"] = f"calculated by PIPESIM ({utype}); no user U-value applies"
+        out["note"] = (f"The pipe is in {side.lower()}, so the {side.lower()}-side settings apply; the other side's "
+                       "values in the file are not used.")
         return out
 
     def _target_table(self, table, column):
@@ -161,15 +199,26 @@ def read_pips(path, component="", keyword="", limit=60):
     "conductivity", "thermal", "correlation". Read-only."""
     with Pips(path) as p:
         out = {"file": os.path.basename(path),
-               "units_note": "PIPESIM stores SI units: temperatures converted K -> degC; values marked "
-                             "'SI (as stored)' are in SI (e.g. W/m/K, W/m2/K, J/kg/K, m, Pa)."}
+               "units_note": "Converted from PIPESIM's stored SI units to METRIC (degC, bara, mm, sm3/d ...); "
+                             "'SI (as stored)' marks values whose unit is not known beyond being SI."}
+        if component:
+            ht = p.heat_transfer_in_use(component)
+            if ht:
+                out["heat_transfer_in_use"] = ht
         if component and not keyword:
             out["component"] = p.components(component) or f"no object named {component!r}"
         else:
             hits = p.search(keyword or ".", component)
+            if not hits and component:   # e.g. heat capacities belong to the fluid, not to the pipe
+                hits = p.search(keyword or ".", "")
+                if hits:
+                    out["note"] = (f"nothing matched {keyword!r} on {component!r} itself; these are the matches in the "
+                                   "whole file (e.g. the fluid the pipe carries)")
             out["matches"] = hits[:limit]
             if len(hits) > limit:
                 out["truncated"] = f"{len(hits)} matches; narrow the keyword or give a component name"
+            if not hits:
+                out["note"] = f"no stored column matches {keyword!r} anywhere in this file"
         return out
 
 

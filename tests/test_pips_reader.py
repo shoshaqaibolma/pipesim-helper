@@ -43,13 +43,17 @@ comp = r["component"]
 base = next(v for k, v in comp.items() if k.startswith("AV_PipeBase"))
 ht = base["linked"]["HeatTransfer_Id -> AV_PipeHeatTransfer"]
 assert ht["UTypeAir"] == "UserSupplied" and ht["UCoeffUserAir"]["value"] == 0.0, ht
-assert ht["PipeConductivity"] == {"value": 60.549998, "unit": "SI (as stored)"}
+assert ht["PipeConductivity"] == {"value": 60.549998, "unit": "W/m/K"} and ht["IsUCalculated"] is False
+assert ht["UCoeffUserAir"]["unit"] == "W/m2/K"
+use = r["heat_transfer_in_use"]
+assert use["surroundings"] == "Air" and use["u_value_set_as"] == "UserSupplied", use
+assert use["u_value"] == {"value": 0.0, "unit": "W/m2/K"}, use
 fl = next(v for k, v in comp.items() if k.startswith("AV_Flowline"))
-assert fl["values"]["AmbientAirTemperature"]["unit"] == "degC" and abs(fl["values"]["AmbientAirTemperature"]["value"] - 15.5556) < 1e-3
+assert fl["values"]["AmbientAirTemperature"]["unit"].startswith("deg") and abs(fl["values"]["AmbientAirTemperature"]["value"] - 15.5556) < 1e-3
 fluid = pips_reader.read_pips(pips, component="Multiphase")["component"]
 td = next(v for k, v in fluid.items() if k.startswith("AV_BlackOilFluid"))["linked"]
 assert "ThermalData_Id -> AV_BlackOilThermalData" in td, td           # not the decoy AV_ThermalData
-assert td["ThermalData_Id -> AV_BlackOilThermalData"]["WaterHeatCapacity"]["value"] == 4186.8
+assert td["ThermalData_Id -> AV_BlackOilThermalData"]["WaterHeatCapacity"] == {"value": 4186.8, "unit": "J/kg/K"}
 print("reader: component + linked rows (heat transfer, fluid thermal data); K -> degC")
 
 # everyday words find the right columns, and the owner of a linked row is named
@@ -59,8 +63,11 @@ assert any(h["table"] == "AV_PipeHeatTransfer" and h["component"] == "FL" and "U
 hits = pips_reader.read_pips(pips, keyword="heat capacity")["matches"]
 assert any(h["values"].get("WaterHeatCapacity", {}).get("value") == 4186.8 for h in hits), hits
 assert pips_reader.read_pips(pips, keyword="nothing_like_this")["matches"] == []
+# job 30: heat capacities asked "for pipe FL" belong to the fluid -> the search widens instead of saying "not stored"
+r = pips_reader.read_pips(pips, component="FL", keyword="heat capacity")
+assert any(h["values"].get("WaterHeatCapacity", {}).get("value") == 4186.8 for h in r["matches"]) and "whole file" in r["note"], r
 assert open(pips, "rb").read() == before                                # never modified
-print("reader: 'u value' / 'heat capacity' map to the stored columns; file untouched")
+print("reader: 'u value' / 'heat capacity' map to the stored columns; a pipe filter widens to the fluid; file untouched")
 
 # learned unit conversions are applied when available
 pips_reader._load_units = lambda: {"MeasuredDistance": {"scale": 1.0, "offset": 0.0, "unit": "m"}}

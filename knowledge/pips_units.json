@@ -148,16 +148,6 @@
     "AV_Source"
    ]
   },
-  "GWR": {
-   "scale": NaN,
-   "offset": 0.0,
-   "unit": "standard cubic meters per standard cubic meter",
-   "samples": 4,
-   "tables": [
-    "AV_BlackOilFluid",
-    "AV_Source"
-   ]
-  },
   "GasFlowRate": {
    "scale": 0.08640000000003041,
    "offset": 0.0,
