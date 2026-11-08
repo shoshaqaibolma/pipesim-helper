@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Review guide (read first)
+    url: https://github.com/shoshaqaibolma/pipesim-helper/blob/main/docs/REVIEW.md
+    about: Workflow, real PIPESIM results and validation, about 10 minutes to read.

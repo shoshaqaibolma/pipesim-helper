@@ -4,6 +4,12 @@ A local AI assistant that operates SLB PIPESIM: it opens models, reads and chang
 network and P/T profile simulations, and explains the results. Everything runs on your own PC.
 No model data leaves the machine.
 
+> **Reviewers wanted.** If you work with PIPESIM or multiphase flow, please read the
+> [review guide](docs/REVIEW.md) (real results and validation, about 10 minutes) and leave an
+> [expert review](https://github.com/shoshaqaibolma/pipesim-helper/issues/new?template=expert-review.yml).
+
+![The web UI: a plan waiting for approval](docs/images/webui_plan.png)
+
 ```
  you (terminal)
       │
