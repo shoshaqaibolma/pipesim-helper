@@ -1,15 +1,17 @@
 """
 Browser chat window for the PIPESIM agent (standard library only; nothing to install).
-  "D:\\Program\\Pipesim toolkit\\python.exe" webui.py        then open http://127.0.0.1:8765  (agent_ui.bat does both)
+Normally started by launch.py (the desktop shortcut), which also starts the model server and opens the window.
+On its own:  "<PIPESIM toolkit>\\python.exe" webui.py   then open http://127.0.0.1:8765
 Listens on 127.0.0.1 only. One conversation at a time (a demo / single-user tool).
 """
-import json, os, sys, threading, time, urllib.request, webbrowser
+import json, os, socket, sys, threading, time, urllib.request, webbrowser
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs, unquote
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ROOT)
 import agent
+import settings
 
 PORT = int(os.getenv("PIPESIM_UI_PORT", "8765"))
 SERVED = {"runs": os.path.join(ROOT, "runs"), "projects": os.path.join(ROOT, "projects")}
@@ -87,6 +89,8 @@ def ui_result(name, result):
 
 
 SESSION = Session()
+# Set by launch.py: model() -> {"state", "detail"}, restart_model(), quit(). Empty when webui.py runs on its own.
+APP = {"model": None, "restart_model": None, "quit": None}
 
 
 def llm_ready():
@@ -118,7 +122,16 @@ class Handler(BaseHTTPRequestHandler):
             with SESSION.lock:
                 return self._send(200, {"events": SESSION.events[since:], "n": len(SESSION.events), "busy": SESSION.busy})
         if u.path == "/api/health":
-            return self._send(200, {"model": llm_ready(), "busy": SESSION.busy})
+            st = APP["model"]() if APP["model"] else {}
+            ready = llm_ready()
+            detail = "model ready" if ready else st.get("detail") or "model not running (start the app from its shortcut)"
+            return self._send(200, {"model": ready, "detail": detail, "state": "ready" if ready else st.get("state"),
+                                    "busy": SESSION.busy, "launcher": bool(APP["quit"])})
+        if u.path == "/api/settings":
+            s = settings.load()
+            return self._send(200, {"values": s, "problems": settings.problems(s), "file": settings.PATH,
+                                    "fields": [{"section": f[0], "key": f[1], "type": type(f[2]).__name__,
+                                                "label": f[3], "help": f[4]} for f in settings.FIELDS]})
         if u.path.startswith("/files/"):
             parts = unquote(u.path[len("/files/"):]).split("/", 1)
             base = SERVED.get(parts[0])
@@ -146,6 +159,29 @@ class Handler(BaseHTTPRequestHandler):
         if self.path == "/api/approve":
             ok = SESSION.start_turn("Approved. Go ahead.", approval=True)
             return self._send(200, {"ok": ok} if ok else {"ok": False, "error": "no plan waiting for approval"})
+        if self.path == "/api/settings":
+            s, errors = settings.coerce(body.get("values") or {})
+            if errors:
+                return self._send(400, {"ok": False, "error": "; ".join(errors)})
+            old = settings.load()
+            settings.save(s)
+            settings.apply_env(s)
+            agent.NUMBER_GUARD, agent.KNOWLEDGE = s["app"]["number_check"], s["app"]["recipes"]   # apply at once
+            model_changed = any(old[k] != s[k] for k in ("paths", "model"))
+            ports_changed = old["model"]["port"] != s["model"]["port"] or old["app"]["ui_port"] != s["app"]["ui_port"]
+            return self._send(200, {"ok": True, "problems": settings.problems(s), "ports_changed": ports_changed,
+                                    "restart": model_changed and not ports_changed and bool(APP["restart_model"])})
+        if self.path == "/api/restart-model":
+            if not APP["restart_model"] or SESSION.busy:
+                return self._send(409, {"ok": False, "error": "busy" if SESSION.busy else "not started from the app"})
+            settings.apply_env(settings.load())
+            APP["restart_model"]()
+            return self._send(200, {"ok": True})
+        if self.path == "/api/quit":
+            if not APP["quit"]:
+                return self._send(409, {"ok": False, "error": "not started from the app"})
+            threading.Timer(0.3, APP["quit"]).start()
+            return self._send(200, {"ok": True})
         if self.path == "/api/reset":
             if SESSION.busy:
                 return self._send(409, {"error": "busy"})
@@ -160,12 +196,31 @@ def install_hooks(session):
     agent.HOOKS["progress"] = lambda text: session.add({"type": "progress", "text": text})
 
 
-def serve(port=PORT, open_browser=True, client=None):
+class Server(ThreadingHTTPServer):
+    """Refuses a port another program is listening on. Python's default lets two servers share a port on Windows,
+    and the window would then show the other program."""
+    allow_reuse_address = False
+
+    def server_bind(self):
+        if hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        super().server_bind()
+
+
+def serve(port=PORT, open_browser=True, client=None, any_port=False):
+    """Starts the web server (call serve_forever on the result). any_port: if the port is taken, use the next free
+    one; httpd.server_address[1] is the port in use."""
     from openai import OpenAI
     SESSION.client = client or OpenAI(base_url=agent.BASE_URL, api_key="sk-local", timeout=900, max_retries=1)
     install_hooks(SESSION)
-    httpd = ThreadingHTTPServer(("127.0.0.1", port), Handler)
-    url = f"http://127.0.0.1:{port}"
+    for p in ([port] + (list(range(port + 1, port + 20)) + [0] if any_port else [])):
+        try:
+            httpd = Server(("127.0.0.1", p), Handler)
+            break
+        except OSError:
+            if not any_port or p == 0:
+                raise
+    url = f"http://127.0.0.1:{httpd.server_address[1]}"
     print(f"PIPESIM assistant running at {url}  (Ctrl+C to stop)")
     if open_browser:
         threading.Timer(1.0, lambda: webbrowser.open(url)).start()

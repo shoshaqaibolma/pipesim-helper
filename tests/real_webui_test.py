@@ -19,7 +19,7 @@ def healthy(url="http://127.0.0.1:8080/health"):
 def main():
     server = None
     if not healthy():
-        server = subprocess.Popen(["cmd", "/c", os.path.join(ROOT, "start_llm.bat")], cwd=ROOT,
+        server = subprocess.Popen([sys.executable, os.path.join(ROOT, "launch.py"), "--model-only"], cwd=ROOT,
                                   stdout=subprocess.DEVNULL, stderr=subprocess.STDOUT)
         for _ in range(180):
             if healthy():

@@ -20,13 +20,16 @@ No model data leaves the machine.
   mcp_server.py (optional) ──► same tools for Claude Desktop / LM Studio / other MCP clients
 ```
 
-**New PC? Follow [`INSTALL.md`](INSTALL.md)** (setup.bat creates `config.bat` with your paths and checks everything).
+## Install and start
+**Install:** download the ZIP, double-click **`install.bat`**, then open **PIPESIM Assistant** from the desktop.
+The installer finds PIPESIM's Python Toolkit, downloads the model server and the language model, checks PIPESIM with a
+real test run and makes the shortcut. Details and troubleshooting: [`INSTALL.md`](INSTALL.md).
 
-## Quick start (already set up on this PC)
-Double-click **`agent_ui.bat`** for the browser chat window (or `agent.bat` for the terminal).
+The app opens in its own window (Microsoft Edge app mode), starts the model server in the background and stops it when
+the window closes. `terminal.bat` (created by setup) gives the same assistant in a text window. Settings live in
+`settings.toml`, editable in the app under **Settings**.
 Validation against the official case studies and engineering scenarios: [`docs/VALIDATION.md`](docs/VALIDATION.md).
 
-In the terminal, `agent.bat` It starts the local model (Qwen 3.5 9B on the GPU) if needed, then the agent.
 Describe what you want; answer its questions (or say "use defaults"); approve the plan; read the results.
 Results, charts and a report go to `runs\<timestamp>\`; new models to `projects\`.
 
@@ -39,33 +42,15 @@ Example requests (all verified end to end on PIPESIM 2023.1 with the local model
 - "We only have 0.15 MMsm3/d of lift gas: how should we split it between W1 and W2 to get the most oil?"
 - "Open C:\...\my_model.pips and sweep the sink pressure from 10 to 40 bara." (works on a copy)
 
-## 1. Prerequisites (Windows PC with PIPESIM)
-- PIPESIM 2017.1 or later with a core license. The Python Toolkit is included with that license.
+## Requirements
+- PIPESIM 2017.1 or later with a core licence, and the PIPESIM Python Toolkit (it provides `sixgill`).
 - An NVIDIA GPU with 8 GB of VRAM or more. Qwen 3.5 9B at Q4_K_M is about 6 GB and fits entirely on an 8 GB card.
-- The Python environment that has `sixgill`. The PIPESIM installer ships the toolkit. Either use its bundled
-  Python, or `pip install` the sixgill wheel from the PIPESIM install folder into your own venv.
+  Without a GPU the installer sets up the CPU build (works, much slower).
+- The installer pins llama.cpp build `b12081` and Unsloth's `Qwen3.5-9B-Q4_K_M.gguf` (checked by SHA-256), the
+  versions this project is tested with. `--jinja` is required for tool calling.
 
-## 2. Install
-```bat
-cd pipesim-agent
-python -m pip install -r requirements.txt
-python selftest.py "C:\path\to\some_model.pips"
-```
-The self-test needs no LLM. If it fails, the cause is a sixgill API difference in your PIPESIM version.
-Adjust `pipesim_tools.py` using PIPESIM's Python Toolkit help, which has the exact signatures.
-
-## 3. Start the local model
-1. Download a CUDA build of llama.cpp: https://github.com/ggml-org/llama.cpp/releases
-2. Download the Qwen 3.5 9B Q4_K_M GGUF (about 6 GB) from Unsloth's or Qwen's Hugging Face page.
-   Fallback if tool calls come out malformed: Gemma 4 E4B (about 5 GB).
-3. Set `LLAMA_DIR` and `MODEL_PATH` in `config.bat` (created by `setup.bat`) and run `start_llm.bat`.
-   `--jinja` is required for tool calling.
-
-## 4. Run
-```bat
-"D:\Program\Pipesim toolkit\python.exe" agent.py
-```
-Describe what you want in plain language. Two kinds of request:
+## How a request is handled
+Two kinds of request:
 
 **Studies** on an existing `.pips` model, or on a quick single-well model:
 
@@ -74,7 +59,7 @@ Describe what you want in plain language. Two kinds of request:
 | Understand | Your request becomes a structured study spec (`study.py`) | LLM |
 | Ask | A checker lists every required input you didn't give, with suggested defaults | **Code** (cannot be skipped) |
 | Plan | A readable plan: model, cases, outputs, number of runs | You approve in chat |
-| Run | `executor.py` runs every case. The LLM does not drive individual runs | You confirm `y` in the terminal |
+| Run | `executor.py` runs every case in a separate process. The LLM does not drive individual runs | You approve (button in the app, `y` in the terminal) |
 | Analyze | CSV, charts and `report.md` in `runs/<timestamp>/`. The LLM explains the trends | LLM |
 
 Analysis types: `single_run`, `sweep` (1 variable), `grid` (2-3 variables, full factorial),
@@ -111,6 +96,10 @@ not the language model; networks with several sinks get field totals.
 - *Recipes* (`recipes.py`): a table "question -> study type" in the system prompt, and one or two short worked
   examples added to your message when it matches (manifold, pipeline, gas lift, nodal, tornado, grid, facility).
   Switch off with `PIPESIM_AGENT_KNOWLEDGE=0`.
+- *Crash isolation* (`executor.run_isolated`): the study runs in a child process. If PIPESIM's native engine crashes
+  or a case runs longer than the time limit (600 s, `case_timeout_s` in Settings), that case is marked FAILED and the
+  study restarts in a fresh process for the remaining cases. A crash on the base case stops the study with a clear
+  message.
 - *Sanity checks*: likely unit mistakes (psi for bara, inch for mm, ft for m, scf/stb for sm3/sm3) are reported as
   warnings before the plan; impossible inputs (water cut over 100 %, elevation larger than the line length) block.
 
@@ -134,6 +123,9 @@ Terminal commands: `spec` shows the current spec and project, `reset` starts ove
   `"D:\Program\Pipesim toolkit\python.exe" tests\real_agent_test.py "path\to\model.pips"`
 
 ## Tuning for a small local model
+- Malformed tool-call JSON is retried automatically (twice). Grammar-constrained output was tried and removed:
+  under a strict schema the 9B dropped stated values and invented equipment (0/8 correct vs 8/8, job 22 in
+  [`docs/VALIDATION.md`](docs/VALIDATION.md)), and no malformed call occurred in the later evaluations.
 - Temperature is 0 and thinking is off for tool calls. Low-bit quantizations reason less well, so the
   tools are coarse-grained and return compact, downsampled JSON.
 - If the model guesses parameter names, add the exact names your models use (from the Python Toolkit

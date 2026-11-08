@@ -7,3 +7,9 @@ projects/
 /*.pipr
 /*.project.json
 /config.bat
+settings.toml
+settings.toml.tmp
+logs/
+llm/
+/start.bat
+/terminal.bat

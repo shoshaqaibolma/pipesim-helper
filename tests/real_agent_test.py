@@ -41,7 +41,7 @@ def main():
     server = None
     if not healthy():
         print("starting llama-server ...")
-        server = subprocess.Popen(["cmd", "/c", os.path.join(ROOT, "start_llm.bat")], cwd=ROOT,
+        server = subprocess.Popen([sys.executable, os.path.join(ROOT, "launch.py"), "--model-only"], cwd=ROOT,
                                   stdout=open(os.path.join(tmp, "llama.log"), "w"), stderr=subprocess.STDOUT)
         for _ in range(180):
             if healthy() or server.poll() is not None:

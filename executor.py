@@ -2,7 +2,7 @@
 Deterministic study executor: takes an approved spec, runs every case in PIPESIM, and writes
 CSV, charts and a report. The LLM never drives individual runs, so a 300-case grid is as reliable as one run.
 """
-import csv, datetime, itertools, json, os, shutil
+import csv, datetime, itertools, json, os, queue, shutil, subprocess, sys, threading, time
 from sixgill import definitions as d
 import study
 import netbuilder
@@ -278,7 +278,10 @@ def _tornado_chart(path, bars, kpi):
     return path
 
 
-def run(spec, progress=print, project=None):
+def run(spec, progress=print, project=None, skip=None, on_case=None):
+    """Run the study in this process. skip: {case name: reason} for cases to mark FAILED without running them
+    (used by run_isolated after PIPESIM crashed or hung on that case). on_case(name) is called before each case."""
+    skip = skip or {}
     UNITS.clear()
     stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S-%f")[:-3]
     out = os.path.join(RUNS_DIR, stamp)
@@ -311,11 +314,17 @@ def run(spec, progress=print, project=None):
             for r, val in settings:
                 _set(model, r, val)
             progress(f"  case {len(rows) + 1}/{study.n_cases(spec)}: {name}")
-            try:
-                row = _run_case(model, kpis)
-                _add_totals(row, sinks)
-            except Exception as e:
-                row = {"_status": f"FAILED: {e}"}
+            if on_case:
+                on_case(name)
+            if name in skip:
+                row = {"_status": f"FAILED: {skip[name]}"}
+            else:
+                _test_fault(name)
+                try:
+                    row = _run_case(model, kpis)
+                    _add_totals(row, sinks)
+                except Exception as e:
+                    row = {"_status": f"FAILED: {e}"}
             for r, b in zip(refs, base_vals):  # restore the base case
                 _set(model, r, b)
             row = {"case": name, **{l: dict((rr, vv) for rr, vv in settings).get(r, b)
@@ -487,3 +496,104 @@ def _compact(rows, cols, limit=40):
     step = max(1, len(rows) // limit)
     sel = rows[::step]
     return [" | ".join(_head(c) for c in cols)] + [" | ".join(_fmt(r.get(c)) for c in cols) for r in sel]
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# Crash isolation. PIPESIM's engine is native code: an access violation or a hang inside it would otherwise take
+# the whole assistant down. run_isolated() runs the study in a child Python process. If the child dies or a case
+# stops answering, that case is marked FAILED and the study restarts in a fresh process without it.
+
+def _test_fault(name):
+    """Test hook only: simulate a native crash or a hang on one case (tests/test_isolation.py)."""
+    if os.getenv("PIPESIM_TEST_CRASH_CASE") == name:
+        os._exit(3)
+    if os.getenv("PIPESIM_TEST_HANG_CASE") == name:
+        time.sleep(3600)
+
+
+def _child_python():
+    exe = sys.executable
+    if os.path.basename(exe).lower() == "pythonw.exe":   # the windowless launcher: children need real stdout
+        alt = os.path.join(os.path.dirname(exe), "python.exe")
+        exe = alt if os.path.exists(alt) else exe
+    return exe
+
+
+def _child_run(job, progress, case_timeout):
+    """One child process. Returns {"kind": "result"|"error"|"crash", ...}."""
+    env = dict(os.environ, PYTHONIOENCODING="utf-8",
+               PYTHONPATH=os.pathsep.join(p for p in sys.path if p and os.path.isdir(p)))
+    proc = subprocess.Popen([_child_python(), os.path.abspath(__file__), "--child"], cwd=os.path.dirname(
+        os.path.abspath(__file__)), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+        env=env, creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0))
+    proc.stdin.write(json.dumps(job, default=str).encode("utf-8"))
+    proc.stdin.close()
+    lines, tail = queue.Queue(), []
+    threading.Thread(target=lambda: [lines.put(l) for l in iter(proc.stdout.readline, b"")] + [lines.put(None)],
+                     daemon=True).start()
+    current, last = None, time.time()
+    while True:
+        try:
+            raw = lines.get(timeout=1)
+        except queue.Empty:
+            if time.time() - last > case_timeout:
+                proc.kill()
+                return {"kind": "crash", "case": current,
+                        "why": f"PIPESIM did not answer for {case_timeout:.0f} s (stopped)"}
+            continue
+        if raw is None:
+            break
+        last = time.time()
+        line = raw.decode("utf-8", "replace").rstrip()
+        if not line.startswith("@@"):
+            if line.strip() and not line.startswith("INFO:"):
+                tail = (tail + [line])[-5:]   # sixgill / engine warnings and errors: kept for the crash message
+            continue
+        ev = json.loads(line[2:])
+        if ev["ev"] == "progress":
+            progress(ev["text"])
+        elif ev["ev"] == "case":
+            current = ev["name"]
+        elif ev["ev"] in ("result", "error"):
+            proc.wait()
+            return {"kind": ev["ev"], **ev}
+    code = proc.wait()
+    return {"kind": "crash", "case": current,
+            "why": f"PIPESIM stopped unexpectedly (exit code {code})" + (f": {tail[-1][:200]}" if tail else "")}
+
+
+def run_isolated(spec, progress=print, project=None, case_timeout=None, max_restarts=3):
+    """Like run(), but in a child process: a crash or hang on one case marks that case FAILED and the study
+    continues with the rest. Errors raised by the study itself are raised here, as run() would."""
+    case_timeout = case_timeout or float(os.getenv("PIPESIM_CASE_TIMEOUT", "600"))
+    skip = {}
+    for _ in range(max_restarts + 1):
+        out = _child_run({"spec": spec, "project": project, "skip": skip}, progress, case_timeout)
+        if out["kind"] == "result":
+            return out["result"]
+        if out["kind"] == "error":
+            raise RuntimeError(out["message"])
+        case = out.get("case")
+        if case is None or case == "base" or case in skip:
+            where = "while building or opening the model" if case is None else f"on case {case}"
+            raise RuntimeError(f"{out['why']} {where}. No results; nothing was changed in your files.")
+        skip[case] = out["why"]
+        progress(f"  ! {case}: {out['why']}. Marked FAILED; restarting PIPESIM for the remaining cases.")
+    raise RuntimeError(f"PIPESIM crashed on {len(skip)} cases in a row ({', '.join(skip)}); study stopped.")
+
+
+def _child_main():
+    def send(ev):
+        sys.stdout.write("@@" + json.dumps(ev, default=str) + "\n")
+        sys.stdout.flush()
+    job = json.loads(sys.stdin.buffer.read().decode("utf-8"))
+    try:
+        res = run(job["spec"], progress=lambda t: send({"ev": "progress", "text": t}), project=job["project"],
+                  skip=job["skip"], on_case=lambda n: send({"ev": "case", "name": n}))
+        send({"ev": "result", "result": res})
+    except Exception as e:
+        send({"ev": "error", "message": f"{type(e).__name__}: {e}"})
+
+
+if __name__ == "__main__" and sys.argv[1:] == ["--child"]:
+    _child_main()
