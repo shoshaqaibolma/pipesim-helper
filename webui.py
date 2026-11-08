@@ -24,20 +24,25 @@ class Session:
     def reset(self):
         self.msgs = agent.new_conversation()
         self.events, self.busy, self.approved = [], False, False
+        self.plan_pending = False   # a plan was shown and not yet approved (Approve runs it once)
 
     def add(self, ev):
         ev = dict(ev, t=time.time())
         if ev["type"] == "result":
             ev["result"] = ui_result(ev["name"], ev["result"])
         with self.lock:
+            if ev["type"] == "result" and ev["name"] == "propose_plan" and ev["result"].get("plan"):
+                self.plan_pending = True
             self.events.append(ev)
 
     def start_turn(self, text, approval=False):
         with self.lock:
-            if self.busy:
+            if self.busy or (approval and not self.plan_pending):
                 return False
             self.busy, self.approved = True, approval
-            self.events.append({"type": "user", "text": text, "t": time.time()})
+            if approval:
+                self.plan_pending = False
+            self.events.append({"type": "user", "text": text, "approval": approval, "t": time.time()})
 
         def work():
             try:
@@ -136,9 +141,11 @@ class Handler(BaseHTTPRequestHandler):
             text = (body.get("text") or "").strip()
             if not text:
                 return self._send(400, {"error": "empty message"})
-            return self._send(200, {"ok": SESSION.start_turn(text)})
+            ok = SESSION.start_turn(text)
+            return self._send(200, {"ok": ok} if ok else {"ok": False, "error": "the assistant is still working"})
         if self.path == "/api/approve":
-            return self._send(200, {"ok": SESSION.start_turn("Approved. Go ahead.", approval=True)})
+            ok = SESSION.start_turn("Approved. Go ahead.", approval=True)
+            return self._send(200, {"ok": ok} if ok else {"ok": False, "error": "no plan waiting for approval"})
         if self.path == "/api/reset":
             if SESSION.busy:
                 return self._send(409, {"error": "busy"})
