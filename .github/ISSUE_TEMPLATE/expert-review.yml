@@ -1,0 +1,83 @@
+name: Expert review
+description: Review the PIPESIM agent's engineering (about 15 minutes). Please read docs/REVIEW.md first.
+title: "[Review] "
+labels: ["expert-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reviewing. Please read [docs/REVIEW.md](https://github.com/shoshaqaibolma/pipesim-helper/blob/main/docs/REVIEW.md) first:
+        it shows the workflow, real PIPESIM results and the validation against the training case studies.
+        Ratings: **1** = poor or unacceptable, **5** = what you would expect from a senior engineer.
+  - type: input
+    id: background
+    attributes:
+      label: Your background (optional)
+      description: Role, years of experience, company type. Leave blank to stay anonymous.
+      placeholder: e.g. Production engineer, 8 years, operator
+  - type: dropdown
+    id: pipesim
+    attributes:
+      label: How much have you used PIPESIM?
+      options:
+        - Daily, for several years
+        - Regularly
+        - Occasionally
+        - Not PIPESIM, but other simulators (OLGA, PROSPER/GAP, HYSYS, ...)
+    validations:
+      required: true
+  - type: dropdown
+    id: r_setup
+    attributes:
+      label: "Study set-up: the plan, assumptions, defaults and units are what an engineer would choose"
+      options: ["1", "2", "3", "4", "5", "Can't judge"]
+    validations:
+      required: true
+  - type: dropdown
+    id: r_results
+    attributes:
+      label: "Plausibility: rates, pressures and trends look physically right"
+      options: ["1", "2", "3", "4", "5", "Can't judge"]
+    validations:
+      required: true
+  - type: dropdown
+    id: r_validation
+    attributes:
+      label: "Validation: the comparison with the case studies is convincing for the scope claimed"
+      options: ["1", "2", "3", "4", "5", "Can't judge"]
+    validations:
+      required: true
+  - type: dropdown
+    id: r_safety
+    attributes:
+      label: "Safeguards: the approval step, input checker and number check are enough to trust the output"
+      options: ["1", "2", "3", "4", "5", "Can't judge"]
+    validations:
+      required: true
+  - type: dropdown
+    id: r_use
+    attributes:
+      label: "Usefulness: I would use this for screening studies"
+      options: ["1", "2", "3", "4", "5", "Can't judge"]
+    validations:
+      required: true
+  - type: textarea
+    id: q_setup
+    attributes:
+      label: Are the studies set up the way you would set them up?
+      description: Plan, assumptions, suggested defaults, units. Which inputs should it never assume?
+  - type: textarea
+    id: q_results
+    attributes:
+      label: Are the results and validation numbers plausible?
+      description: Any view on the 27 % gap on the training well (flow correlation?) or the 3.4 % gap on the water line?
+  - type: textarea
+    id: q_trust
+    attributes:
+      label: Where would you trust it, and where not?
+      description: What would it need before you used it on a real field?
+  - type: textarea
+    id: q_other
+    attributes:
+      label: Anything else
+      description: Interface, report format, missing study types, ...
