@@ -86,6 +86,9 @@ assert post("/api/approve")["ok"]                          # the Approve button
 ev = wait()
 r = [e for e in ev if e["type"] == "result" and e["name"] == "run_study"][-1]["result"]
 assert "error" not in r and r["charts"] and r["report_url"], r
+r2 = post("/api/approve")                                  # a second click (e.g. after a page refresh) must not re-run
+assert not r2["ok"] and "no plan" in r2["error"], r2
+assert [e for e in ev if e["type"] == "user" and e.get("approval")], "approval not marked on the user event"
 assert get(r["charts"][0])[:4] == b"\x89PNG" and b"STUDY PLAN" in get(r["report_url"])
 assert any(e["type"] == "progress" for e in ev) and "Results" in ev[-1]["text"]
 assert urllib.request.urlopen(base + "/files/runs/../agent.py").status if False else True
@@ -94,7 +97,7 @@ try:
 except urllib.error.HTTPError as e:
     assert e.code == 404
 print("web UI: plan card, approval gate (refused without the button), run with progress, charts and report served,")
-print("        path traversal blocked")
+print("        approved plan cannot run twice, path traversal blocked")
 
 if os.getenv("SCREENSHOT"):   # Node Playwright script given in SCREENSHOT_SCRIPT, run against this server
     import subprocess
