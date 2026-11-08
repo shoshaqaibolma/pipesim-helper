@@ -1,7 +1,7 @@
 """
 PIPESIM study agent. Describe a study in plain language and it will:
   understand -> ask about missing parameters -> propose a plan -> (you approve) -> run -> analyze.
-Usage:  python agent.py         (llama-server must be running, see start_llm.bat)
+Usage:  python agent.py         (llama-server must be running: launch.py --model-only, or use launch.py --terminal)
 """
 import json, os, re, sys
 from openai import OpenAI
@@ -153,7 +153,7 @@ def run_study():
         return {"error": "The user has not approved the run yet. Ask them to approve the plan (in the web window: "
                          "the Approve button), then call run_study again."}
     pt.close_model() if pt._state["model"] else None
-    res = executor.run(SPEC, progress=HOOKS["progress"], project=PROJECT or None)
+    res = executor.run_isolated(SPEC, progress=HOOKS["progress"], project=PROJECT or None)
     STATE["ran_plan"] = _plan_key()
     return res
 
@@ -424,7 +424,7 @@ def run_turn(client, msgs, user, emit):
     except Exception as e:  # server down, timeout, context overflow...
         del msgs[turn_start:]  # drop the half-finished turn so the conversation stays valid
         kind = type(e).__name__
-        hint = ("Is llama-server running? Start start_llm.bat and check http://127.0.0.1:8080/health"
+        hint = ("Is the language model (llama-server) running? Start the app from its shortcut, or launch.py --model-only"
                 if "Connection" in kind else "Try again, or start a new chat if the conversation got too long.")
         emit({"type": "error", "text": f"could not reach the model: {kind}: {str(e)[:200]}. {hint}"})
 

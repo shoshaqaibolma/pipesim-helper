@@ -1,46 +1,38 @@
 """
-Checks a new installation step by step and says how to fix what is missing. Run with PIPESIM's Python:
+Checks an installation step by step and says how to fix what is missing. Run with PIPESIM's Python:
 
-  "<PIPESIM toolkit>\\python.exe" tools\\check_setup.py      (setup.bat does this for you)
+  "<PIPESIM toolkit>\\python.exe" tools\\check_setup.py      (install.bat does this for you)
 
 Checks: Python packages, the PIPESIM Python Toolkit (sixgill), a real PIPESIM simulation (licence and engine),
-llama-server and the model file from config.bat, the GPU, and whether the model server answers.
+the model server program and the model file from settings.toml, and the GPU. Exit code 1 if something failed.
 """
-import os, re, shutil, subprocess, sys, tempfile, urllib.request
+import os, shutil, subprocess, sys, tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
+import settings
+
+QUIET = "--quiet" in sys.argv
 results = []
 
 
 def report(name, ok, detail="", fix=""):
     results.append(ok)
-    print(f"[{'OK' if ok else 'FAIL' if ok is False else 'WARN'}] {name}" + (f": {detail}" if detail else ""))
+    print(f"      [{'OK' if ok else 'FAIL' if ok is False else 'WARN'}] {name}" + (f": {detail}" if detail else ""))
     if not ok and fix:
-        print(f"       fix: {fix}")
+        print(f"             fix: {fix}")
 
 
-def config():
-    path = os.path.join(ROOT, "config.bat")
-    if not os.path.exists(path):
-        path = os.path.join(ROOT, "config.example.bat")
-    vals = {}
-    for line in open(path, encoding="utf-8", errors="replace"):
-        m = re.match(r"\s*set\s+(\w+)=(.*)$", line, re.I)
-        if m:
-            vals[m.group(1).upper()] = m.group(2).strip().strip('"')
-    return path, vals
-
-
-print(f"Python {sys.version.split()[0]} at {sys.executable}\n")
+if not QUIET:
+    print(f"Python {sys.version.split()[0]} at {sys.executable}\n")
 
 # 1. packages
-for mod, pip_name in (("openai", "openai"), ("matplotlib", "matplotlib")):
+for mod in ("openai", "matplotlib"):
     try:
         __import__(mod)
-        report(f"package {pip_name}", True)
+        report(f"package {mod}", True)
     except Exception as e:
-        report(f"package {pip_name}", False, str(e), f'"{sys.executable}" -m pip install -r requirements.txt')
+        report(f"package {mod}", False, str(e), "run install.bat again")
 
 # 2. PIPESIM Python Toolkit
 try:
@@ -50,7 +42,7 @@ try:
 except Exception as e:
     have_sixgill = False
     report("PIPESIM Python Toolkit (sixgill)", False, str(e),
-           "set PIPESIM_PY in config.bat to the python.exe that comes with the PIPESIM Python Toolkit")
+           "run install.bat; it finds the PIPESIM Python Toolkit or lets you pick its python.exe")
 
 # 3. a real simulation: builds a 1-well model in a temp folder and runs it (needs the PIPESIM licence)
 if have_sixgill:
@@ -77,36 +69,29 @@ if have_sixgill:
         report("PIPESIM simulation (licence + engine)", False, f"{type(e).__name__}: {str(e)[:300]}",
                "open PIPESIM once to check the licence; the toolkit version must match the PIPESIM install")
 
-# 4. model server files
-cfg_path, cfg = config()
-print(f"\nSettings from {os.path.basename(cfg_path)}")
-llama = os.path.join(cfg.get("LLAMA_DIR", ""), "llama-server.exe")
-report("llama-server.exe", os.path.exists(llama), llama,
-       "download a llama.cpp release (CUDA build for NVIDIA) and set LLAMA_DIR in config.bat")
-model = cfg.get("MODEL_PATH", "")
-if os.path.exists(model):
-    report("model file", True, f"{model} ({os.path.getsize(model) / 1e9:.1f} GB)")
+# 4. model server program and model file
+cfg = settings.load()
+llama = cfg["paths"]["llama_server"]
+report("model server program", bool(llama) and os.path.isfile(llama), llama or "not set",
+       "run install.bat to download it, or set it in the app under Settings")
+model = cfg["paths"]["model"]
+if model and os.path.isfile(model):
+    report("language model file", True, f"{model} ({os.path.getsize(model) / 1e9:.1f} GB)")
 else:
-    report("model file", False, model, "download the Qwen 3.5 9B Q4_K_M .gguf and set MODEL_PATH in config.bat")
+    report("language model file", False, model or "not set",
+           "run install.bat to download it, or set it in the app under Settings")
 
 # 5. GPU
 try:
     out = subprocess.run(["nvidia-smi", "--query-gpu=name,memory.total", "--format=csv,noheader"],
                          capture_output=True, text=True, timeout=10).stdout.strip()
-    report("NVIDIA GPU", bool(out), out or "none found")
+    report("NVIDIA GPU", bool(out) or None, out or "none found: the model runs on the processor (slower)")
 except Exception:
-    report("NVIDIA GPU", None, "nvidia-smi not found. Without a GPU set LLM_GPU_LAYERS=0 in config.bat "
-                               "(works, but answers take much longer)")
+    report("NVIDIA GPU", None, "none found: the model runs on the processor (works, but answers take longer)")
 
-# 6. model server running?
-try:
-    ok = urllib.request.urlopen("http://127.0.0.1:8080/health", timeout=3).status == 200
-    report("model server", ok, "answering on http://127.0.0.1:8080")
-except Exception:
-    report("model server", None, "not running now (normal: agent_ui.bat starts it)")
-
-print()
-if all(r is not False for r in results):
-    print("All set. Double-click agent_ui.bat to open the assistant in your browser.")
-else:
-    print("Some checks failed: fix the items marked FAIL (see 'fix:'), then run setup.bat again.")
+ok = all(r is not False for r in results)
+if not QUIET:
+    print()
+    print("All set. Open 'PIPESIM Assistant' from the desktop shortcut." if ok else
+          "Some checks failed: fix the items marked FAIL (see 'fix:'), then run install.bat again.")
+sys.exit(0 if ok else 1)

@@ -126,6 +126,7 @@ shipped default.
 
 ## Want to run it yourself?
 
-You need a Windows PC with PIPESIM 2017.1 or later (a core license includes the Python Toolkit) and an NVIDIA GPU
-with 8 GB of VRAM. See [INSTALL.md](../INSTALL.md). The offline tests (`tests/test_*.py`) run without PIPESIM or a
+You need a Windows PC with PIPESIM 2017.1 or later and its Python Toolkit, ideally with an NVIDIA GPU with 8 GB of
+VRAM. Download the ZIP, double-click `install.bat`, then open **PIPESIM Assistant** from the desktop. The installer
+finds PIPESIM and downloads the model by itself. See [INSTALL.md](../INSTALL.md). The offline tests (`tests/test_*.py`) run without PIPESIM or a
 GPU, using a fake toolkit and a scripted model.

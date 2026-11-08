@@ -75,6 +75,25 @@ textarea{flex:1;resize:none;border:0;outline:0;background:transparent;color:var(
 @keyframes s{to{transform:rotate(360deg)}}
 .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:20}
 .lightbox.on{display:flex} .lightbox img{max-width:94vw;max-height:92vh;background:#fff;border-radius:8px}
+.dot.wait{background:var(--warn)}
+dialog{border:1px solid var(--line);border-radius:14px;padding:0;background:var(--panel);color:var(--text);
+  width:min(640px,calc(100vw - 32px));max-height:calc(100vh - 48px)}
+dialog::backdrop{background:rgba(0,0,0,.45)}
+dialog form{display:grid;gap:14px;padding:18px 20px}
+dialog h2{margin:0;font-size:18px}
+#setFields{display:grid;gap:14px}
+.field{display:grid;gap:4px}
+.field label{font-weight:600;font-size:14px}
+.field .help{color:var(--muted);font-size:12.5px}
+.field input[type=text],.field input[type=number]{font:inherit;font-size:14px;padding:7px 9px;border:1px solid var(--line);
+  border-radius:8px;background:var(--bg);color:var(--text);width:100%}
+.field.check{grid-template-columns:auto 1fr;align-items:start;column-gap:10px}
+.field.check .help{grid-column:2}
+.group{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.problems{background:var(--warn-bg);color:var(--warn);border-radius:8px;padding:8px 10px;font-size:13.5px}
+.problems:empty{display:none}
+.dlg-actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:flex-end}
+.dlg-actions .msg{margin-right:auto;font-size:13px;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -83,7 +102,18 @@ textarea{flex:1;resize:none;border:0;outline:0;background:transparent;color:var(
   <div class="spacer"></div>
   <div class="status"><span class="dot" id="dot"></span><span id="model">checking model…</span></div>
   <button id="reset" title="Start a new conversation">New chat</button>
+  <button id="settingsBtn" title="Paths, model and app settings">Settings</button>
+  <button id="quitBtn" title="Close the assistant and stop the language model" hidden>Quit</button>
 </header>
+<dialog id="settings"><form id="settingsForm" method="dialog">
+  <h2>Settings</h2>
+  <div class="problems" id="setProblems"></div>
+  <div id="setFields"></div>
+  <div class="help" id="setFile" style="color:var(--muted);font-size:12.5px"></div>
+  <div class="dlg-actions"><span class="msg" id="setMsg"></span>
+    <button type="button" id="setClose">Close</button>
+    <button type="submit" class="primary" id="setSave">Save</button></div>
+</form></dialog>
 <main id="chat">
   <div class="welcome" id="welcome">
     <h2>What should we simulate?</h2>
@@ -188,11 +218,50 @@ async function poll(){
   setTimeout(poll, busy ? 600 : 1500);
 }
 async function health(){
+  let wait = 5000;
   try { const j = await (await fetch("/api/health")).json();
-    $("#dot").className = "dot " + (j.model ? "ok" : "bad");
-    $("#model").textContent = j.model ? "model ready" : "model not running (start_llm.bat)"; } catch(e) {
+    $("#dot").className = "dot " + (j.model ? "ok" : j.state === "starting" ? "wait" : "bad");
+    $("#model").textContent = j.detail || (j.model ? "model ready" : "model not running");
+    $("#quitBtn").hidden = !j.launcher;
+    if (j.state === "starting") wait = 1500; } catch(e) {
     $("#dot").className = "dot bad"; $("#model").textContent = "assistant stopped"; }
-  setTimeout(health, 5000);
+  setTimeout(health, wait);
+}
+// ---- settings (settings.toml) ----
+let setMeta = null;
+async function openSettings(){
+  const j = await (await fetch("/api/settings")).json(); setMeta = j;
+  let html = "", group = "";
+  const names = {paths: "Files", model: "Language model", app: "App"};
+  j.fields.forEach(f => {
+    if (f.section !== group){ group = f.section; html += `<div class="group">${names[group] || group}</div>`; }
+    const id = `set_${f.section}_${f.key}`, v = j.values[f.section][f.key];
+    if (f.type === "bool") html += `<div class="field check"><input type="checkbox" id="${id}" ${v ? "checked" : ""}>
+        <label for="${id}">${esc(f.label)}</label><div class="help">${esc(f.help)}</div></div>`;
+    else html += `<div class="field"><label for="${id}">${esc(f.label)}</label>
+        <input type="${f.type === "int" ? "number" : "text"}" min="0" id="${id}" value="${esc(v)}" spellcheck="false">
+        <div class="help">${esc(f.help)}</div></div>`;
+  });
+  $("#setFields").innerHTML = html;
+  $("#setProblems").textContent = j.problems.join(" ");
+  $("#setFile").textContent = "Saved in " + j.file;
+  $("#setMsg").textContent = "";
+  $("#settings").showModal();
+}
+async function saveSettings(e){
+  e.preventDefault();
+  const values = {};
+  setMeta.fields.forEach(f => { const el = $(`#set_${f.section}_${f.key}`);
+    (values[f.section] ||= {})[f.key] = f.type === "bool" ? el.checked : el.value; });
+  const r = await post("/api/settings", {values});
+  if (!r.ok){ $("#setMsg").textContent = "Not saved: " + r.error; return; }
+  $("#setProblems").textContent = (r.problems || []).join(" ");
+  if (r.ports_changed) $("#setMsg").textContent = "Saved. Close and reopen the app to use the new port.";
+  else if (r.restart && !busy){
+    $("#setMsg").textContent = "Saved. Restarting the language model…";
+    await post("/api/restart-model"); health();
+  } else if (r.restart) $("#setMsg").textContent = "Saved. The model restarts with the new settings when you reopen the app.";
+  else $("#setMsg").textContent = "Saved.";
 }
 async function send(text){
   text = (text ?? input.value).trim(); if (!text || busy) return;
@@ -214,6 +283,11 @@ sendBtn.onclick = () => send();
 document.querySelectorAll(".ex").forEach(b => b.onclick = () => { input.value = b.textContent.trim(); autosize(); input.focus(); });
 $("#reset").onclick = async () => { const r = await fetch("/api/reset", {method: "POST"}); if (r.ok) location.reload(); };
 $("#lightbox").onclick = () => $("#lightbox").classList.remove("on");
+$("#settingsBtn").onclick = openSettings;
+$("#setClose").onclick = () => $("#settings").close();
+$("#settingsForm").addEventListener("submit", saveSettings);
+$("#quitBtn").onclick = async () => { const r = await post("/api/quit");
+  if (r.ok) document.body.innerHTML = '<p style="padding:40px;font:16px system-ui">The assistant has stopped. You can close this window.</p>'; };
 document.addEventListener("keydown", e => { if (e.key === "Escape") $("#lightbox").classList.remove("on"); });
 poll(); health();
 </script>

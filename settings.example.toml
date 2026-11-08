@@ -1,0 +1,19 @@
+# PIPESIM Assistant settings, for a manual installation: copy this file to settings.toml and set the three paths.
+# (install.bat writes settings.toml for you. The app's Settings button edits it too.)
+# Paths use single quotes, so backslashes need no escaping.
+
+[paths]
+pipesim_python = 'C:\Program Files\Schlumberger\PIPESIM Python Toolkit\python.exe'
+llama_server = 'C:\llama.cpp\llama-server.exe'
+model = 'C:\models\Qwen3.5-9B-Q4_K_M.gguf'
+
+[model]
+context = 16384      # 8192 if the GPU runs out of memory
+gpu_layers = 99      # 0 = CPU only (slow)
+port = 8080
+
+[app]
+ui_port = 8765
+number_check = true
+recipes = true
+case_timeout_s = 600

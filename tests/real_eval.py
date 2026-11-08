@@ -233,7 +233,7 @@ class Server:
         self.stop()
         self.n += 1
         self.log = os.path.join(self.tmp, f"llama_{self.n}.log")
-        self.proc = subprocess.Popen(["cmd", "/c", os.path.join(ROOT, "start_llm.bat")], cwd=ROOT,
+        self.proc = subprocess.Popen([sys.executable, os.path.join(ROOT, "launch.py"), "--model-only"], cwd=ROOT,
                                      stdout=open(self.log, "w"), stderr=subprocess.STDOUT)
         for _ in range(180):
             if healthy() or self.proc.poll() is not None:
