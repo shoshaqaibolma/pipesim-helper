@@ -121,7 +121,7 @@ def problems(s):
     for key, what in (("llama_server", "Model server program"), ("model", "Language model file")):
         p = s["paths"][key]
         if not p or not os.path.isfile(p):
-            out.append(f"{what} not found{': ' + p if p else ''}. Run install.bat again, or set it in Settings.")
+            out.append(f"{what} not found{': ' + p if p else ''}. Run install.bat, or set it in Settings (or in settings.toml).")
     return out
 
 

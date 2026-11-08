@@ -25,6 +25,10 @@ No model data leaves the machine.
 The installer finds PIPESIM's Python Toolkit, downloads the model server and the language model, checks PIPESIM with a
 real test run and makes the shortcut. Details and troubleshooting: [`INSTALL.md`](INSTALL.md).
 
+**Manual install (the standard way):** with the PIPESIM Toolkit's Python, run `pip install -r requirements.txt`,
+copy `settings.example.toml` to `settings.toml` and set the paths, then run `python launch.py` (or `--terminal`).
+Step by step: [`INSTALL.md` → Manual installation](INSTALL.md#manual-installation-without-installbat).
+
 The app opens in its own window (Microsoft Edge app mode), starts the model server in the background and stops it when
 the window closes. `terminal.bat` (created by setup) gives the same assistant in a text window. Settings live in
 `settings.toml`, editable in the app under **Settings**.
